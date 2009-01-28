@@ -1,0 +1,8 @@
+ActorFactoryInitializeActorClass PhysicsEventActor
+
+ActorFactorySetColor 0.0 1.0 0.0
+ActorFactorySetSize 30 5
+ActorFactorySetAlpha 1.0
+ActorFactorySetDensity 0.0
+
+ActorFactorySetCollisionId ground

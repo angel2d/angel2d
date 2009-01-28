@@ -1,0 +1,11 @@
+;Initialize it as PhysicsEventActor
+ActorFactoryInitializeActorClass PhysicsEventActor
+
+ActorFactorySetColor 1.0 0.0 1.0
+ActorFactorySetAlpha 1.0
+ActorFactorySetSize 3
+ActorFactorySetRestitution 0.95
+
+;TODO: Re-enable this when the sound is fixed. 
+;Here's the collision response that plays sound. Pretty straightforward, eh? 
+;ActorFactoryAddCollisionResponse ground PlaySoundCollisionResponse Resources\Sounds\sprong.wav

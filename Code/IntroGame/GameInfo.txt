@@ -1,0 +1,5 @@
+IntroGame is a modular introduction to various features of Angel. 
+
+It's not terribly exciting, but it's simple and well-commented, 
+so check out the source code for each screen if you're interested
+in how it was done. 

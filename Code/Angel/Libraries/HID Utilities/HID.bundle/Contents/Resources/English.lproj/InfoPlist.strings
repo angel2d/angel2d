@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "HIDBundle";
+CFBundleShortVersionString = "HIDBundle version 1.0";
+CFBundleGetInfoString = "HIDBundle version 1.0, Copyright 2001, Apple Computer, Inc.";

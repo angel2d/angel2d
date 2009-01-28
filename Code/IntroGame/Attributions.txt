@@ -1,0 +1,233 @@
+This file contains acknowledgements and copyright notices for all included
+software and resources. If you distribute software using Angel, you must
+distribute this file with it to comply with the license requirements for
+various Angel components. 
+
+You are free to add your own acknowledgements to this file as appropriate. 
+
+-----------------
+Angel image found on Flickr, uploaded by Special. 
+http://flickr.com/photos/special/229619/
+
+Some Rights Reserved: Creative Commons Attribution Non-Commerical 2.0
+http://creativecommons.org/licenses/by-nc/2.0/deed.en
+-----------------
+Inconsolata
+http://www.levien.com/type/myfonts/inconsolata.html
+Copyright © 2006-2007 Raph Levien with Reserved Font Name Inconsolata.
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+-----------------
+Angel
+Copyright © 2008-2009, Shane Liesegang
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright 
+      notice, this list of conditions and the following disclaimer in the 
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the copyright holder nor the names of any 
+      contributors may be used to endorse or promote products derived from 
+      this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE 
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-----------------
+GLFW
+http://glfw.sourceforge.net/
+Copyright © 2002-2007 Camilla Berglund <elmindreda@users.sourceforge.net>
+-----------------
+Python 2.5
+Portions of this software are © 2001-2008 Python Software Foundation; 
+All Rights Reserved
+-----------------
+FreeType2
+Portions of this software are copyright © 2008 The FreeType
+Project (www.freetype.org).  All rights reserved.
+-----------------
+Box2D
+http://www.box2d.org/
+Copyright © 2006-2007 Erin Catto http://www.gphysics.com
+-----------------
+FMOD Sound System
+copyright © Firelight Technologies Pty, Ltd., 1994-2007.
+-----------------
+FTGL
+http://ftgl.wiki.sourceforge.net/
+Copyright © 2001-3 Henry Maddocks
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-----------------
+This software uses the FreeImage open source image library. 
+See http://freeimage.sourceforge.net for details.
+
+FreeImage is used under the FIPL, version 1.0. 
+No modifications have been made to the FreeImage code included in this
+executable. 
+-----------------
+LibJPEG 6b
+http://www.ijg.org/
+This software is copyright © 1991-1998, Thomas G. Lane. All Rights Reserved.
+-----------------
+LibPNG 1.2.23
+http://www.libpng.org/
+Libpng is OSI Certified Open Source Software. OSI Certified is a certification
+mark of the Open Source Initiative.
+Copyright © 1998-2002 Glenn Randers-Pehrson.
+Version 0.96 Copyright © 1996, 1997 Andreas Dilger.
+Version 0.88 Copyright © 1995, 1996 Guy Eric Schalnat, Group 42, Inc.
+----------------- 
+LibTIFF 3.9.0
+http://www.remotesensing.org/libtiff/
+Copyright © 1988-1997 Sam Leffler
+Copyright © 1991-1997 Silicon Graphics, Inc.
+-----------------
+LibMNG 1.0.9
+http://www.libmng.com/
+Copyright © 2000-2003 Gerard Juyn (gerard@libmng.com).
+-----------------
+OpenEXR 1.6.1
+http://www.openexr.com/
+Copyright © 2007 Lucas Digital Ltd. LLC.
+-----------------
+OpenJPEG 1.2.0
+http://www.openjpeg.org/
+Copyright © 2002-2007, Communications and Remote Sensing Laboratory, Universite
+catholique de Louvain (UCL), Belgium
+-----------------
+ZLib 1.2.3
+http://www.zlib.net/
+Copyright © 1995-2005 Jean-loup Gailly and Mark Adler.
+
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, EXPRESS,
+IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+IN NO EVENT SHALL THE INITIAL DEVELOPER OR ANY OTHER CONTRIBUTOR BE LIABLE FOR
+ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND, OR ANY
+DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER OR NOT
+ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING
+OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+Permission to use, copy and distribute this software and its documentation for
+any purpose is hereby granted without fee, provided that the above copyright
+notices and this permission notice appear in all copies of the software and
+related documentation.
+-----------------
+A* Algorithm Implementation using STL is
+Copyright © 2001-2005 Justin Heyes-Jones
+-----------------
+

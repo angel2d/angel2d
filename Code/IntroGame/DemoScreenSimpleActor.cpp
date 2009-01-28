@@ -1,0 +1,80 @@
+#include "stdafx.h"
+#include "DemoScreenSimpleActor.h"
+
+
+DemoScreenSimpleActor::DemoScreenSimpleActor()
+{
+}
+
+void DemoScreenSimpleActor::Start()
+{
+	//Creating a new, generic actor is simple. 
+	a = new Actor();
+	
+	//Sizes and coordinates are always in GL units, which can mean whatever you decide they mean
+	// -- our physics packages (Box2D) assumes that they mean meters, though. 
+	a->SetSize(5.0f); 
+	
+	//R, G, B, [A]
+	a->SetColor(0,0,0);
+
+	//We have to add it to the world for it to be drawn. All Actors implement Update and Render
+	// methods that get called once per frame. All your logic should happen in the Update function,
+	// and you should only implement Render if you have to do something out of the ordinary. 
+	theWorld.Add(a);
+
+
+
+
+
+	//Demo housekeeping below this point. 
+	#pragma region Demo Housekeeping
+	t = new TextActor("Console", "Here's a simple Actor. (Press [B] to change it.)");
+	t->SetPosition(0, 3.5);
+	t->SetAlignment(TXT_Center);
+	theWorld.Add(t);
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenSimpleActor.cpp");
+	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
+	fileLoc->SetColor(.3f, .3f, .3f);
+	theWorld.Add(fileLoc);
+	_objects.push_back(fileLoc);
+	_objects.push_back(t);
+	_objects.push_back(a);
+	#pragma endregion
+}
+
+void DemoScreenSimpleActor::Update(float dt)
+{
+	if (!theController.IsConnected())
+	{
+		return;
+	}
+
+	//Here we're doing some input processing and altering the Actor based on it. 
+	if (theController.IsBButtonDown())
+	{
+		a->SetColor(1.0f, 0.0f, 1.0f, .5f); //R, G, B, A (there is also a Color class you can use)
+		a->ClearSpriteInfo(); //removes any texture that might have been assigned
+		t->SetDisplayString("Now it's purple and translucent. Press [Y] to give it a texture.");
+	}
+	if (theController.IsYButtonDown())
+	{
+		a->SetColor(1,1,1,1); //(white and opaque so the texture comes through fully)
+		a->ClearSpriteInfo();
+		a->SetSprite("Resources/Images/angel.png"); //Loads any image supported by FreeImage (see docs)
+		t->SetDisplayString("Pretty easy. You can do animations as well. Press [X] to check it out.");
+	}
+	if (theController.IsXButtonDown())
+	{
+		a->SetColor(1,1,1,1);
+		a->LoadSpriteFrames("Resources/Images/numbers/angel_01.png");
+		a->PlaySpriteAnimation(
+			0.5f,			//amount of time between frames
+			SAT_Loop,		//other options are SAT_PingPong and SAT_OneShot
+			0,				//starting frame
+			4,				//ending frame
+			"AngelNumbers"	//name of the animation so you can get the event when it finishes
+		);
+		t->SetDisplayString("You can also change the speed and looping behavior if you want. ([A] to move on.)");
+	}
+}

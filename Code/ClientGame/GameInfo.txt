@@ -1,0 +1,16 @@
+This file should contain: 
+    a) A basic setup for how to play your game
+    b) Any notes, stories, anecdotes, trials, or tribulations you wish to 
+       convey to someone who might one day download your game and not have 
+       you there to explain it to them. 
+
+Use the associated Attributions.txt for any assets or code you use that you 
+didn't create yourself from scratch. Be VERY careful with licensing. Creative 
+Commons is good, but make sure you give attribution. Open source code is also 
+OK, but make sure you understand the implications of the license.
+
+Replace any text in this file with your own information. It *will* be copied
+to your final distribution directory when you build in Release mode, so if you
+still have this placeholder text here, you'll look mighty foolish.
+
+And we wouldn't want that.
