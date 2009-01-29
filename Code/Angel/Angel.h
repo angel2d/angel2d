@@ -1,10 +1,10 @@
 #pragma once
 
 /**
- * @mainpage The Angel Engine, by Electronic Arts, Inc. 
+ * @mainpage The Angel Engine 
  * @section ReadMe
- * Make sure to first read the \c Introduction \c to \c Angel.txt file at the base 
- *  directory of the software distribution -- it contains a good rundown of what Angel 
+ * Make sure to first read the overview information at 
+ *  http://code.google.com/p/angel-engine/ -- it contains a good rundown of what Angel 
  *  is and, more importantly, what it is not. Calibrating your expectations can save
  *  a lot of heartache later. :-)
  * 
