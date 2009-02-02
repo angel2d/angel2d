@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	//		int windowHeight		default: 768
 	//		std::string windowName	default: "Angel Engine"
 	//		bool antiAliasing		default: false
-	theWorld.Initialize();
+	theWorld.Initialize(1024, 768, "Angel Engine", true);
 
 	//we're going to be using the built-in physics
 	theWorld.SetupPhysics();
