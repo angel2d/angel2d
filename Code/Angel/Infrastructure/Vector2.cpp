@@ -90,9 +90,9 @@ void Vector2::Normalize()
 	return Vector2(MathUtil::Max(value1.X, value2.X), MathUtil::Max(value1.Y, value2.Y));
 }
 
-/*static*/ Vector2 Vector2::Clamp(const Vector2& value1, const Vector2& min, const Vector2& max)
+/*static*/ Vector2 Vector2::Clamp(const Vector2& value, const Vector2& min, const Vector2& max)
 {
-	return Vector2(MathUtil::Clamp(value1.X, min.X, max.X), MathUtil::Clamp(value1.Y, min.Y, max.Y));
+	return Vector2(MathUtil::Clamp(value.X, min.X, max.X), MathUtil::Clamp(value.Y, min.Y, max.Y));
 }
 
 /*static*/ Vector2 Vector2::Lerp(const Vector2& value1, const Vector2& value2, float amount)
@@ -104,10 +104,10 @@ void Vector2::Normalize()
 	return -value;
 }
 
-/*static*/ Vector2 Vector2::Rotated(const Vector2& value, const float Radians)
+/*static*/ Vector2 Vector2::Rotate(const Vector2& value, const float radians)
 {
-    float c = cos(Radians);
-    float s = sin(Radians);
+    float c = cos(radians);
+    float s = sin(radians);
     return Vector2(value.X*c-value.Y*s,value.Y*c+value.X*s);
 }
 
@@ -154,44 +154,46 @@ ostream& operator<<(ostream& stream, const Vector2& out)
 {
 	return stream << out.X << ", " << out.Y;
 }
-/*static*/ void Vector2::UnitTest()
-{
-	Vector2 test(3, 4);
 
-	cout << test << endl;;
-
-	cout << "Length Sqr: " << test.LengthSquared() << endl;
-
-	cout << "Length: " << test.Length() << endl;
-
-
-	cout << "Distance: " << Vector2::Distance(test, Vector2::Zero) << endl;
-	cout << "Square Distance: " << Vector2::DistanceSquared(test, Vector2::Zero) << endl;
-
-	cout << "Dot: " << Vector2::Dot( Vector2(1), test ) << endl;
-
-	test.Normalize();
-	cout << "Normal: " << test << " yields length: " << test.Length() << endl;
-	test = Vector2(3,-4);
-	{
-		Vector2 checkIt(Vector2::Zero);
-		cout << "Normal: " << Vector2::Normalize(checkIt) << endl;
-
-	}
-
-	cout << "Reflect: " << Vector2::Reflect( Vector2(10, -10), Vector2::Normalize( Vector2(-1, 1) )) << endl;
-
-	cout << "Max: " << Vector2::Max( Vector2(100), Vector2(9, 1000)) << endl;
-	cout << "Min: " << Vector2::Min( Vector2(100), Vector2(9, 1000)) << endl;
-	cout << "Clamp: " << Vector2::Clamp( Vector2(0), Vector2(9, 1000), Vector2(1000, 1100)) << endl;
-
-
-	if( Vector2(10) == Vector2(10,10) )
-		cout << "Equal!" << endl;
-
-	if( Vector2(0,1) != Vector2(1,0) )
-		cout << "Not Equal!" << endl;
-
-	cout << (Vector2(10) + Vector2(9, 0)) << endl;
-
-}
+//TODO: when we actually make some unit tests, bring this back and put it there
+// /*static*/ void Vector2::UnitTest()
+// {
+// 	Vector2 test(3, 4);
+// 
+// 	cout << test << endl;;
+// 
+// 	cout << "Length Sqr: " << test.LengthSquared() << endl;
+// 
+// 	cout << "Length: " << test.Length() << endl;
+// 
+// 
+// 	cout << "Distance: " << Vector2::Distance(test, Vector2::Zero) << endl;
+// 	cout << "Square Distance: " << Vector2::DistanceSquared(test, Vector2::Zero) << endl;
+// 
+// 	cout << "Dot: " << Vector2::Dot( Vector2(1), test ) << endl;
+// 
+// 	test.Normalize();
+// 	cout << "Normal: " << test << " yields length: " << test.Length() << endl;
+// 	test = Vector2(3,-4);
+// 	{
+// 		Vector2 checkIt(Vector2::Zero);
+// 		cout << "Normal: " << Vector2::Normalize(checkIt) << endl;
+// 
+// 	}
+// 
+// 	cout << "Reflect: " << Vector2::Reflect( Vector2(10, -10), Vector2::Normalize( Vector2(-1, 1) )) << endl;
+// 
+// 	cout << "Max: " << Vector2::Max( Vector2(100), Vector2(9, 1000)) << endl;
+// 	cout << "Min: " << Vector2::Min( Vector2(100), Vector2(9, 1000)) << endl;
+// 	cout << "Clamp: " << Vector2::Clamp( Vector2(0), Vector2(9, 1000), Vector2(1000, 1100)) << endl;
+// 
+// 
+// 	if( Vector2(10) == Vector2(10,10) )
+// 		cout << "Equal!" << endl;
+// 
+// 	if( Vector2(0,1) != Vector2(1,0) )
+// 		cout << "Not Equal!" << endl;
+// 
+// 	cout << (Vector2(10) + Vector2(9, 0)) << endl;
+// 
+// }

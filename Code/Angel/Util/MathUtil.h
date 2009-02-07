@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Infrastructure/BoundingShapes.h"
+#include "../AI/BoundingShapes.h"
 #include "../Infrastructure/Vector2.h"
 #include "../Infrastructure/VecStructs.h"
 
@@ -48,7 +48,7 @@ public:
 	template<typename T>
 	static T Lerp(T value1, T value2, float amount)
 	{
-		return T(value1 + ((float)(value2 - value1) * amount ));
+		return T(value1 + ((T)(value2 - value1) * amount ));
 	}
 
 	static int Clamp(int value, int min, int max)
@@ -99,6 +99,9 @@ public:
 	static Vector2 ScreenToWorld(Vec2i screenCoordinates);
 	static Vector2 WorldToScreen(float x, float y);
 	static Vector2 WorldToScreen(Vector2 worldCoordinates);
+	static Vector2 GetWorldDimensions();
+	static float PixelsToWorldUnits(float pixels);
+	static float WorldUnitsToPixels(float worldUnits);
 
 	enum AABBSplittingAxis
 	{

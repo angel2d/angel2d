@@ -31,7 +31,9 @@ typedef std::vector<String>	StringList;
 
 %include world.i
 %include console.i
+%include sound.i
 %include actor.i
+%include camera.i
 %include physics_actor.i
 %include particles.i
 %include text_actor.i

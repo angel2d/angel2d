@@ -1,6 +1,12 @@
 #include "../Messaging/Message.h"
 
 
+Message::Message()
+{
+	_messageType = "GenericMessage";
+	_sender = NULL;
+}
+
 Message::Message(String messageType, MessageListener* sender)
 {
 	_messageType = messageType;
@@ -10,16 +16,6 @@ Message::Message(String messageType, MessageListener* sender)
 const String Message::GetMessageType()
 {
 	return _messageType;
-}
-
-const void* Message::GetPayload()
-{
-	return _payload;
-}
-
-void Message::SetPayload(void* payload)
-{
-	_payload = payload;
 }
 
 const MessageListener* Message::GetSender()

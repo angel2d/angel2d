@@ -1,8 +1,36 @@
 #include "../Actors/ParticleActor.h"
 
-#include "../Infrastructure/DeveloperConsole.h"
-#include "../Actors/ActorFactory.h"
 #include "../Util/MathUtil.h"
+
+ParticleActor::ParticleActor()
+{
+	_maxParticlesAlive = 0;
+	_particles = 0;
+
+	_particlesPerSecond = 20.0f;
+
+	_generationResidue = 0.0f;
+	_numParticlesAlive = 0;
+
+	_systemLifetime = 0.0f;
+	_particleLifetime = 2.0f;
+
+	_spreadRadians = 0.0f;
+
+	_endColor = Color(1.0f, 1.0f, 1.0f);
+
+	_minSpeed = 2.0f;
+	_maxSpeed = 4.0f;
+
+	_endScale = 1.0f;
+
+	_gravity = Vector2(0.0f, -4.0f);
+}
+
+ParticleActor::~ParticleActor()
+{
+	delete [] _particles;
+}
 
 void ParticleActor::Update(float dt)
 {
@@ -38,11 +66,7 @@ void ParticleActor::Update(float dt)
 				// Update our current velocity, which will be used next update.
 				currentParticle._vel =  currentParticle._vel + _gravity * dt;
 
-				currentParticle._color.R = MathUtil::Lerp(_color.R, _endColor.R, lifePercent);
-				currentParticle._color.G = MathUtil::Lerp(_color.G, _endColor.G, lifePercent);
-				currentParticle._color.B = MathUtil::Lerp(_color.B, _endColor.B, lifePercent);
-
-				currentParticle._color.A = MathUtil::Lerp(_startAlpha, _endAlpha, lifePercent);
+				currentParticle._color = MathUtil::Lerp(_color, _endColor, lifePercent);
 
 				currentParticle._scale = MathUtil::Lerp(1.0f, _endScale, lifePercent);
 				
@@ -193,11 +217,6 @@ void ParticleActor::SetSpread(float radians)
 	_spreadRadians = radians;
 }
 
-void ParticleActor::SetEndAlpha(float alpha)
-{
-	_endAlpha = alpha;
-}
-
 void ParticleActor::SetEndScale(float scale)
 {
 	_endScale = scale;
@@ -244,215 +263,3 @@ void ParticleActor::SetMaxParticles(int maxParticles)
 	}
 }
 
-
-// 
-// ActorFactory support.
-//
-void ActorFactorySetEmissionRate(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetEmissionRate( StringToFloat(input) );
-}
-
-void ActorFactorySetSystemLifetime(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetSystemLifetime( StringToFloat(input) );
-}
-
-void ActorFactorySetParticleLifetime(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetParticleLifetime( StringToFloat(input) );
-}
-
-void ActorFactorySetSpread(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetSpread( StringToFloat(input) );
-}
-
-void ActorFactorySetEndScale(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetEndScale( StringToFloat(input) );
-}
-
-void ActorFactorySetEndColor(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	float r,g,b;
-	r=g=b=0.0f;
-
-	StringList colors = SplitString(input);
-	int size = colors.size();
-	if( size > 0 )
-		r = StringToFloat(colors[0]);
-	if( size > 1 )
-		g = StringToFloat(colors[1]);
-	if( size > 2 )
-		b = StringToFloat(colors[2]);
-
-	pDel->SetEndColor( r, g, b	);
-}
-
-void ActorFactorySetEndAlpha(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetEndAlpha( StringToFloat(input) );
-}
-
-void ActorFactorySetMinSpeed(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetMinSpeed( StringToFloat(input) );
-}
-
-void ActorFactorySetMaxSpeed(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetMaxSpeed( StringToFloat(input) );
-}
-
-void ActorFactorySetGravity(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	StringList values = SplitString(input);
-	int size = values.size();
-
-	Vector2 gravity(0.0f, 0.0f);	
-
-	// X and Y are specified.
-	if (size == 2)
-	{
-		gravity.X = StringToFloat(values[0]);
-		gravity.Y = StringToFloat(values[1]);
-	}
-	// If only one value specified, assume it's just vertical.
-	else if (size == 1 )
-	{
-		gravity.X = 0.0f;
-		gravity.Y = StringToFloat(values[0]);
-	}
-
-	pDel->SetGravity(gravity);
-}
-
-void ActorFactorySetMaxParticles(const String& input)
-{
-	ACTORFACTORY_GETDELEGATE(pDel, ParticleActorFactoryDelegate);
-
-	pDel->SetMaxParticles( StringToInt(input) );
-}
-
-void ParticleActorFactoryDelegate::RegisterOriginalConsoleCommands()
-{
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetEmissionRate, ActorFactorySetEmissionRate, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetSystemLifetime, ActorFactorySetSystemLifetime, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetParticleLifetime, ActorFactorySetParticleLifetime, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetSpread, ActorFactorySetSpread, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetEndScale, ActorFactorySetEndScale, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetEndColor, ActorFactorySetEndColor, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetEndAlpha, ActorFactorySetEndAlpha, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetMinSpeed, ActorFactorySetMinSpeed, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetMaxSpeed, ActorFactorySetMaxSpeed, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetGravity, ActorFactorySetGravity, ConsoleCommand::CCF_CONFIG );
-	CONSOLE_DECLARECMDSTATICFLAGS( ActorFactorySetMaxParticles, ActorFactorySetMaxParticles, ConsoleCommand::CCF_CONFIG );
-}
-
-Actor* ParticleActorFactoryDelegate::CreateInstance()
-{
-	return new ParticleActor(); //rb - TODO - Revisit this.
-}
-
-void ParticleActorFactoryDelegate::FinishInstance(Actor* pActor)
-{
-	ParticleActor* pParticleActor = (ParticleActor*)pActor;
-	
-	pParticleActor->_particlesPerSecond = _emissionRate;
-	pParticleActor->_systemLifetime = _systemLifetime;
-	pParticleActor->_particleLifetime = _particleLifetime;
-	pParticleActor->_spreadRadians = _spreadRadians;
-
-	pParticleActor->_endColor = _end_color;
-
-	pParticleActor->_endScale = _endScale;
-	pParticleActor->_endAlpha = _endAlpha;
-
-	pParticleActor->_minSpeed = _minSpeed;
-	pParticleActor->_maxSpeed = _maxSpeed;
-
-	pParticleActor->_gravity = _gravity;
-
-	//rb - Make the rest of these use accessors.
-
-	pParticleActor->SetMaxParticles(_maxParticles);
-}
-
-//
-// Attribute set functions.
-//
-void ParticleActorFactoryDelegate::SetEmissionRate(float rate)
-{
-	_emissionRate = rate;
-}
-
-void ParticleActorFactoryDelegate::SetSystemLifetime(float lifetime)
-{
-	_systemLifetime = lifetime;
-}
-
-void ParticleActorFactoryDelegate::SetParticleLifetime(float lifetime)
-{
-	_particleLifetime = lifetime;
-}
-
-void ParticleActorFactoryDelegate::SetSpread(float spread)
-{
-	_spreadRadians = spread;	
-}
-
-void ParticleActorFactoryDelegate::SetEndScale(float endScale)
-{
-	_endScale = endScale;
-}
-
-void ParticleActorFactoryDelegate::SetEndColor(float r, float g, float b)
-{
-	_end_color = Color(r, g, b);
-}
-
-void ParticleActorFactoryDelegate::SetEndAlpha(float endAlpha)
-{
-	_endAlpha = endAlpha;
-}
-
-void ParticleActorFactoryDelegate::SetMinSpeed(float minSpeed)
-{
-	_minSpeed = minSpeed;
-}
-
-void ParticleActorFactoryDelegate::SetMaxSpeed(float maxSpeed)
-{
-	_maxSpeed = maxSpeed;
-}
-
-void ParticleActorFactoryDelegate::SetGravity(Vector2 gravity)
-{
-	_gravity = gravity;
-}
-
-void ParticleActorFactoryDelegate::SetMaxParticles(int maxParticles)
-{
-	_maxParticles = maxParticles;
-}

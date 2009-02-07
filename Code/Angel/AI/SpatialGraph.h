@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Infrastructure/Common.h"
-#include "../Infrastructure/BoundingShapes.h"
+#include "../AI/BoundingShapes.h"
 
 class SpatialGraph;
 class SpatialGraphKDNode;
@@ -104,6 +104,23 @@ public:
 	bool CanGo( const Vector2& from, const Vector2 to );
 	bool IsInPathableSpace( const Vector2& point );
 	bool FindNearestNonBlocked( const Vector2& fromPoint, Vector2& goTo );
+	
+	void EnableDrawBounds(bool enable);
+	const bool ToggleDrawBounds();
+	const bool GetDrawBounds();
+	void EnableDrawBlocked(bool enable);
+	const bool ToggleDrawBlocked();
+	const bool GetDrawBlocked();
+	void EnableDrawGridPoints(bool enable);
+	const bool ToggleDrawGridPoints();
+	const bool GetDrawGridPoints();
+	void EnableDrawGraph(bool enable);
+	const bool ToggleDrawGraph();
+	const bool GetDrawGraph();
+	void EnableDrawNodeIndex(bool enable);
+	const bool ToggleDrawNodeIndex();
+	const bool GetDrawNodeIndex();
+	
 protected:
 	SpatialGraphManager();
 	~SpatialGraphManager();
@@ -112,5 +129,10 @@ protected:
 
 private:
 	SpatialGraph*				_spatialGraph;
-
+	
+	bool _drawBounds;
+	bool _drawBlocked;
+	bool _drawGridPoints;
+	bool _drawGraph;
+	bool _drawNodeIndex;
 };

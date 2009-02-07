@@ -18,6 +18,7 @@
 #include "DemoScreenLayeredCollisionLevelFile.h"
 #include "DemoScreenParticleActors.h"
 #include "DemoScreenMessagePassing.h"
+#include "DemoScreenPathfinding.h"
 
 DemoScreen::DemoScreen() {}
 
@@ -28,8 +29,7 @@ void DemoScreen::Stop()
 	std::vector<Renderable*>::iterator it = _objects.begin();
 	while(_objects.end() != it)
 	{
-		theWorld.Remove(*it);
-		delete *it;
+		(*it)->Destroy();
 		it++;
 	}
 	_objects.clear();
@@ -63,7 +63,8 @@ DemoGameManager::DemoGameManager()
 	_screens.push_back(new DemoScreenCollisionLevelFile());				//12
 	_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//13
 	_screens.push_back(new DemoScreenConsole());						//14
-	_screens.push_back(new DemoScreenByeBye());							//15
+	_screens.push_back(new DemoScreenPathfinding());					//15
+	_screens.push_back(new DemoScreenByeBye());							//16
 
 	unsigned int startingIndex = 0;
 	if (_screens.size() > startingIndex)
@@ -81,7 +82,7 @@ DemoGameManager::DemoGameManager()
 	// allow them to not specify it if they don't need the functionality.
 	theSound.SetSoundCallback(this, &GameManager::SoundEnded);
 
-	sample = theSound.LoadSample("Resources/Sounds/Windows XP Menu Command.wav", false /*no stream*/);
+	sample = theSound.LoadSample("Resources/Sounds/click.ogg", false /*no stream*/);
 }
 
 DemoGameManager& DemoGameManager::GetInstance()

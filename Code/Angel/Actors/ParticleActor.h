@@ -1,7 +1,9 @@
+/** @file */
 #pragma once
 
 #include "../Actors/Actor.h"
 
+///A struct that keeps track of data for individual particles. 
 struct Particle
 {
 	Vector2 _pos;
@@ -12,56 +14,126 @@ struct Particle
 	float _scale;
 };
 
+
+///An Actor that draws and keeps track of drawing a particle system on screen. 
+/**
+ * Particle systems are a very common feature of most games -- they can be 
+ *  used for effects like fire, smoke, sparklies, etc. A discussion of the general
+ *  use of particles is beyond the scope of this documentation, but if you're
+ *  not familiar with the concept, this article by Jeff Lander is a good 
+ *  starting point. 
+ * 
+ * http://www.double.co.nz/dust/col0798.pdf
+ */
 class ParticleActor : public Actor
 {
 public:
 	friend class ParticleActorFactoryDelegate;
 
-	ParticleActor()
-	{
-		_maxParticlesAlive = 0;
-		_particles = 0;
-
-		_particlesPerSecond = 20.0f;
-
-		_generationResidue = 0.0f;
-		_numParticlesAlive = 0;
-
-		_systemLifetime = 0.0f;
-		_particleLifetime = 2.0f;
-
-		_spreadRadians = 0.0f;
-
-		_startAlpha = 1.0f;
-		_endAlpha = 1.0f;
-
-		_endColor = Color(1.0f, 1.0f, 1.0f);
-
-		_minSpeed = 2.0f;
-		_maxSpeed = 4.0f;
-
-		_endScale = 1.0f;
-
-		_gravity = Vector2(0.0f, -4.0f);
-	}
-
-	~ParticleActor()
-	{
-		delete [] _particles;
-	}
-
+	/** 
+	 * The default constructor creates a particle system that doesn't really 
+	 *  do anything, since its maximum number of particles is 0. You'll need
+	 *  to call the "Set" functions below to make it look purty.
+	 */
+	ParticleActor();
+	
+	/** 
+	 * Deletes all the particles this Actor is keeping track of. 
+	 */
+	~ParticleActor();
+	
+	/**
+	 * Override of the normal Renderable::Update function. Changes the 
+	 *  position and appearance of each individual particle appropriately.
+	 * 
+	 * @param dt The amount of time that's elapsed since the beginning of the last frame. 
+	 */
 	virtual void Update(float dt);
+	
+	/** 
+	 * Override of the normal Renderable::Render function. Draws each particle.
+	 */
 	virtual void Render();
 
+	/**
+	 * Change the rate at which this system releases particles. Default is 
+	 *  20 particles per second. 
+	 * 
+	 * @param pps The new release rate in particles per second. 
+	 */
 	void SetParticlesPerSecond(float pps);
+	
+	/**
+	 * Change the system lifetime for this Actor. If the lifetime is set
+	 *  less than or equal to 0.0 (the default), the system will last until 
+	 *  it's explicitly removed from the world. Otherwise the system will 
+	 *  properly remove and deallocate itself when the elapsed time is up. 
+	 *  (Useful for when you just want a burst of particles for a period of 
+	 *  time and don't want to set up housekeeping timer.)
+	 * 
+	 * @param lifetime The amount of time this system will persist, in seconds. 
+	 */
 	void SetSystemLifetime(float lifetime);
+	
+	/**
+	 * Change the lifetime of each individual particle. 
+	 * 
+	 * @param lifetime Particle lifetime in seconds
+	 */
 	void SetParticleLifetime(float lifetime);
+	
+	/**
+	 * Set the angle at which particles will disperse themselves. This affects
+	 *  their intial velocity only. Default is 0.0 (straight line to the right). 
+	 * 
+	 * @param radians Emission angle in radians
+	 */
 	void SetSpread(float radians);
-	void SetEndAlpha(float alpha);
+	
+	/**
+	 * Set the relative size each particle will grow (or shrink) to over its 
+	 *  lifetime. The starting size is set with the normal Actor::SetSize 
+	 *  function. The ending scale respects the starting aspect ratio. 
+	 * 
+	 * @param scale The multiplier gradually applied to each particle
+	 */
 	void SetEndScale(float scale);
+	
+	/**
+	 * Set the color each particle should be at the end of its life. Use an
+	 *  alpha of 0.0 to have the particles fade out over time. Starting color
+	 *  is set with the normal Actor::SetColor function. 
+	 * 
+	 * @param color The ending color for each particle in the system. 
+	 */
 	void SetEndColor(Color& color);
+	
+	/**
+	 * Set the range of potential initial speeds for the particles. Each 
+	 *  particle, at the start of its life, will randomly pick a speed in the 
+	 *  given range. 
+	 * 
+	 * @param minSpeed The speed (in GL units per second) of the slowest particle
+	 * @param maxSpeed The speed (in GL units per second) of the fastest particle
+	 */
 	void SetSpeedRange(float minSpeed, float maxSpeed);
+	
+	/**
+	 * Set the vector which will pull the particles in a specific direction 
+	 *  at a specified magnitude. The default is (0.0, -4.0).
+	 * 
+	 * @param gravity The vector in which the particles should be pulled
+	 *   (magnitude affecting the force of the pull). 
+	 */
 	void SetGravity(Vector2& gravity);
+	
+	/**
+	 * Set the maximum number of particles this system can keep track of
+	 *  at any one time. Decrease this number if you find you're having 
+	 *  performance issues with your particles. 
+	 * 
+	 * @param maxParticles The maximum number of particles for this system. 
+	 */
 	void SetMaxParticles(int maxParticles);
 
 protected:
@@ -73,56 +145,18 @@ protected:
 	int		_maxParticlesToGenerate;
 	float	_generationResidue;
 
-	float	_systemLifetime;		// How long the system will live.   (seconds) Good for one shot effects.
-	float	_particleLifetime;	// How long the particles will live. (seconds)
-
-	float	_spreadRadians;		// How much the particles can deviate in direction from the system.
-
-	float	_startAlpha; // Particles lerp from _startAlpha to _endAlpha over their lifetime.
-	float	_endAlpha;
-
-	Color	_endColor; // We use the Actor _color as the start color.
-
-	float	_minSpeed; // At emission, we choose a random speed between minSpeed and maxSpeed.
-	float	_maxSpeed;
-
-	float	_endScale; // Respects the starting aspect ratio of the sprite.
-
-	Vector2 _gravity;
-};
-
-class ParticleActorFactoryDelegate  : public ActorFactoryDelegate
-{
-public:
-	ParticleActorFactoryDelegate::ParticleActorFactoryDelegate() {}
-	virtual void RegisterOriginalConsoleCommands();
-	virtual Actor* CreateInstance(); 
-	virtual void FinishInstance(Actor* pInstance);
-
-	virtual void SetEmissionRate(float rate);
-	virtual void SetParticleLifetime(float lifetime);
-	virtual void SetSystemLifetime(float lifetime);
-	virtual void SetSpread(float spread);
-	virtual void SetEndScale(float endScale);
-	virtual void SetEndColor(float r, float g, float b);
-	virtual void SetEndAlpha(float endAlpha);
-	virtual void SetMinSpeed(float minSpeed);
-	virtual void SetMaxSpeed(float maxSpeed);
-	virtual void SetMaxParticles(int maxParticles);
-	virtual void SetGravity(Vector2 gravity);
-
-	friend class ParticleActorFactory;
-
-private:
-	float	_emissionRate;  // Particles per second.
 	float	_systemLifetime;
 	float	_particleLifetime;
+
 	float	_spreadRadians;
-	float	_endScale;
-	Color	_end_color;
-	float	_endAlpha;
-	float	_minSpeed;
+
+	Color	_endColor; 
+
+	float	_minSpeed; 
 	float	_maxSpeed;
-	int	_maxParticles;
+
+	float	_endScale; 
+
 	Vector2 _gravity;
 };
+

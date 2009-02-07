@@ -1,7 +1,6 @@
 #include "../AI/SpatialGraph.h"
 
 #include "../Infrastructure/TextRendering.h"
-#include "../Infrastructure/DeveloperConsole.h"
 #include "../Infrastructure/World.h"
 #include "../AI/Ray2.h"
 #include "../Util/DrawUtil.h"
@@ -19,13 +18,7 @@ void SpatialGraphKDNode::Render()
 		return;
 	}
 
-	CONSOLE_DECLAREVAR( sg_drawBounds );
-	CONSOLE_DECLAREVAR( sg_drawBlocked );
-	CONSOLE_DECLAREVAR( sg_drawGridPoints );
-	CONSOLE_DECLAREVAR( sg_drawGraph );
-	CONSOLE_DECLAREVAR( sg_drawNodeIndex );
-
-	if( sg_drawBlocked->GetIntVal() )
+	if( theSpatialGraph.GetDrawBlocked() )
 	{
 		if( bBlocked )
 		{
@@ -34,7 +27,7 @@ void SpatialGraphKDNode::Render()
 		}
 	}
 
-	if( sg_drawBounds->GetIntVal() )
+	if( theSpatialGraph.GetDrawBounds() )
 	{
 		glColor4f(0,0,0,1.f);
 		BBox.RenderOutline();
@@ -43,7 +36,7 @@ void SpatialGraphKDNode::Render()
 
 	Vector2 centroid = BBox.Centroid();
 
-	if( sg_drawNodeIndex->GetIntVal() )
+	if( theSpatialGraph.GetDrawNodeIndex() )
 	{
 		Vector2 screenCenter = MathUtil::WorldToScreen( centroid.X, centroid.Y );
 		//Print some vals
@@ -51,7 +44,7 @@ void SpatialGraphKDNode::Render()
 		DrawGameText( IntToString(Index), "ConsoleSmall", (int)screenCenter.X, (int)screenCenter.Y );
 	}
 
-	if( sg_drawGraph->GetIntVal() && !bBlocked )
+	if( theSpatialGraph.GetDrawGraph() && !bBlocked )
 	{
 		glColor3f(1.f,0.f,0.f);
 
@@ -72,7 +65,7 @@ void SpatialGraphKDNode::Render()
 		}
 	}
 
-	if( sg_drawGridPoints->GetIntVal() )
+	if( theSpatialGraph.GetDrawGridPoints() )
 	{
 		glColor3f(1.f,0.f,0.f);
 		Vector2List gridPoints;
@@ -247,12 +240,7 @@ SpatialGraphKDNode* SpatialGraph::FindNode(const Vector2& point)
 
 void SpatialGraph::Render()
 {
-	CONSOLE_DECLAREVAR( sg_drawBounds );
-	CONSOLE_DECLAREVAR( sg_drawBlocked );
-	CONSOLE_DECLAREVAR( sg_drawGridPoints );
-	CONSOLE_DECLAREVAR( sg_drawGraph );
-
-	bool bDrawAny = sg_drawBounds->GetIntVal() || sg_drawGridPoints->GetIntVal() || sg_drawGraph->GetIntVal() || sg_drawBlocked->GetIntVal();
+	bool bDrawAny = theSpatialGraph.GetDrawBounds() || theSpatialGraph.GetDrawGridPoints() || theSpatialGraph.GetDrawGraph() || theSpatialGraph.GetDrawBlocked();
 
 	if( bDrawAny && _root)
 	{
@@ -298,8 +286,10 @@ bool IsBlocked( const BoundingBox& bbox )
 			b2CollidePolygons(&m0, (b2PolygonShape*)shapeBounds, fakeBody->GetXForm(), pPolyShape, pPolyShape->GetBody()->GetXForm());
 
 			if( m0.pointCount > 0 )
-				return true;
-
+			{
+				theWorld.GetPhysicsWorld().DestroyBody(fakeBody);
+				return true;	
+			}
 		}
 		else if( pSh->GetType() == e_circleShape )
 		{
@@ -307,7 +297,10 @@ bool IsBlocked( const BoundingBox& bbox )
 			b2Manifold m0;
 			b2CollidePolygonAndCircle( &m0, (b2PolygonShape*)shapeBounds, fakeBody->GetXForm(), pCircleShape, pCircleShape->GetBody()->GetXForm());
 			if( m0.pointCount > 0 )
-				return true;
+			{
+				theWorld.GetPhysicsWorld().DestroyBody(fakeBody);
+				return true;				
+			}
 		}
 	}
 
@@ -581,8 +574,13 @@ SpatialGraphManager & SpatialGraphManager::GetInstance()
 	return *s_SpatialGraphManager;
 }
 
-SpatialGraphManager::SpatialGraphManager()
-: _spatialGraph(NULL)
+SpatialGraphManager::SpatialGraphManager():
+_spatialGraph(NULL),
+_drawBounds(false),
+_drawBlocked(false),
+_drawGridPoints(false),
+_drawGraph(false),
+_drawNodeIndex(false)
 {
 
 }
@@ -591,23 +589,6 @@ SpatialGraphManager::~SpatialGraphManager()
 {
 
 }
-
-void BuildSpatialGraph( const String& input )
-{
-	float entityWidth = 0.3f;
-	BoundingBox bounds(Vector2(-20), Vector2(20));
-
-	StringList args = SplitString(input);
-	if( args.size() > 0 )
-	{
-		float customWidth = StringToFloat(args[0]);
-		if( customWidth > 0.0f )
-			entityWidth = customWidth;
-	}
-
-	theSpatialGraph.CreateGraph( entityWidth, bounds);
-}
-
 
 void SpatialGraphManager::CreateGraph( float entityWidth, const BoundingBox& bounds )
 {
@@ -620,22 +601,8 @@ void SpatialGraphManager::CreateGraph( float entityWidth, const BoundingBox& bou
 //Vector2List s_tempPath;
 void SpatialGraphManager::Render()
 {
-
 	if( _spatialGraph  )
 		_spatialGraph->Render();
-
-	CONSOLE_DECLAREVAR(sg_astar_start);
-	CONSOLE_DECLAREVAR(sg_astar_end);
-
-	bool bHasStartEnd = sg_astar_start->HasVal() && sg_astar_end->HasVal();
-
-	if( bHasStartEnd )
-	{
-		glColor3f(0,0,1.f);
-		DrawPoint( sg_astar_start->GetVector2Val(), 0.2f );
-		DrawPoint( sg_astar_end->GetVector2Val(), 0.2f );
-	}
-
 }
 
 bool ContainsNode( SpatialGraphNeighborList& path, const SpatialGraphKDNode* node)
@@ -768,34 +735,6 @@ bool SpatialGraphManager::GetPath( const Vector2& source, const Vector2& dest, V
 	return true;
 }
 
-#if 0 //rb - Did this get purposely removed in Tim's branch?  tf - yes, but I'll keep the code around for testing
-void SpatialGraphManager::CalcTempAStar()
-{
-	CONSOLE_DECLAREVAR(sg_astar_start);
-	CONSOLE_DECLAREVAR(sg_astar_end);
-
-	bool bHasStartEnd = sg_astar_start->HasVal() && sg_astar_end->HasVal();
-	bool bHasChanged = false;
-
-	CONSOLE_ONCVARCHANGED(sg_astar_start, Vector2,
-	{
-		bHasChanged = true;
-	});
-
-	CONSOLE_ONCVARCHANGED(sg_astar_end, Vector2,
-	{
-		bHasChanged = true;
-	});
-
-	if( bHasStartEnd && bHasChanged )
-	{
-		s_tempPath.clear();
-
-		GetPath( sg_astar_start->GetVector2Val(), sg_astar_end->GetVector2Val(), s_tempPath );
-	}
-}
-#endif 
-
 bool SpatialGraphManager::CanGo( const Vector2& from, const Vector2 to )
 {
 
@@ -855,7 +794,85 @@ bool SpatialGraphManager::FindNearestNonBlocked( const Vector2& fromPoint, Vecto
 
 void SpatialGraphManager::Initialize()
 {
-	CONSOLE_DECLARECMDSTATIC( BuildSpatialGraph, BuildSpatialGraph );
-
 }
 
+
+void SpatialGraphManager::EnableDrawBounds(bool enable)
+{
+	_drawBounds = enable;
+}
+
+const bool SpatialGraphManager::ToggleDrawBounds()
+{
+	EnableDrawBounds( !GetDrawBounds() );
+	return GetDrawBounds();
+}
+
+const bool SpatialGraphManager::GetDrawBounds()
+{
+	return _drawBounds;
+}
+
+void SpatialGraphManager::EnableDrawBlocked(bool enable)
+{
+	_drawBlocked = enable;
+}
+
+const bool SpatialGraphManager::ToggleDrawBlocked()
+{
+	EnableDrawBlocked( !GetDrawBlocked() );
+	return GetDrawBlocked();
+}
+
+const bool SpatialGraphManager::GetDrawBlocked()
+{
+	return _drawBlocked;
+}
+
+void SpatialGraphManager::EnableDrawGridPoints(bool enable)
+{
+	_drawGridPoints = enable;
+}
+
+const bool SpatialGraphManager::ToggleDrawGridPoints()
+{
+	EnableDrawGridPoints( !GetDrawGridPoints() );
+	return GetDrawGridPoints();
+}
+
+const bool SpatialGraphManager::GetDrawGridPoints()
+{
+	return _drawGridPoints;
+}
+
+void SpatialGraphManager::EnableDrawGraph(bool enable)
+{
+	_drawGraph = enable;
+}
+
+const bool SpatialGraphManager::ToggleDrawGraph()
+{
+	EnableDrawGraph( !GetDrawGraph() );
+	return GetDrawGraph();
+}
+
+const bool SpatialGraphManager::GetDrawGraph()
+{
+	return _drawGraph;
+}
+
+void SpatialGraphManager::EnableDrawNodeIndex(bool enable)
+{
+	_drawNodeIndex = enable;
+}
+
+const bool SpatialGraphManager::ToggleDrawNodeIndex()
+{
+	EnableDrawNodeIndex( !GetDrawNodeIndex() );
+	return GetDrawNodeIndex();
+}
+
+const bool SpatialGraphManager::GetDrawNodeIndex()
+{
+	return _drawNodeIndex;
+}

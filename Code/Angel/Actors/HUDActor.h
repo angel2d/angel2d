@@ -24,7 +24,7 @@ class HUDActor : public Actor
 public:
 	
 	/**
-	 * Override of the Actor::Render function to handle drawing in screen-space.
+	 * Override of the Renderable::Render function to handle drawing in screen-space.
 	 */
 	virtual void Render();	
 };

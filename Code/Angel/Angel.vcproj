@@ -174,14 +174,6 @@
 			Name="AIEvents"
 			>
 			<File
-				RelativePath=".\AIEvents\CVarChangedAIEvent.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\AIEvents\CVarChangedAIEvent.h"
-				>
-			</File>
-			<File
 				RelativePath=".\AIEvents\GotoAIEvent.cpp"
 				>
 			</File>
@@ -219,50 +211,6 @@
 			</File>
 			<File
 				RelativePath=".\AIEvents\TraversalAIEvent.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="CollisionResponse"
-			>
-			<File
-				RelativePath=".\CollisionResponse\CollisionResponse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\CollisionResponse.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\CollisionResponseRegistry.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\CollisionResponseRegistry.inc"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\DestroyCollisionResponse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\DestroyCollisionResponse.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\PlaySoundCollisionResponse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\PlaySoundCollisionResponse.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\StunCollisionResponse.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CollisionResponse\StunCollisionResponse.h"
 				>
 			</File>
 		</Filter>
@@ -326,14 +274,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Physics\PhysicsEventActor.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Physics\PhysicsEventActor.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Physics\PhysicsUtil.h"
 				>
 			</File>
@@ -347,14 +287,6 @@
 			</File>
 			<File
 				RelativePath=".\Actors\Actor.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Actors\ActorFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Actors\ActorFactory.h"
 				>
 			</File>
 			<File
@@ -393,6 +325,14 @@
 		<Filter
 			Name="AI"
 			>
+			<File
+				RelativePath=".\AI\BoundingShapes.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\AI\BoundingShapes.h"
+				>
+			</File>
 			<File
 				RelativePath=".\AI\Brain.cpp"
 				>
@@ -490,14 +430,6 @@
 			Name="Infrastructure"
 			>
 			<File
-				RelativePath=".\Infrastructure\BoundingShapes.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Infrastructure\BoundingShapes.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Infrastructure\Camera.cpp"
 				>
 			</File>
@@ -523,14 +455,6 @@
 			</File>
 			<File
 				RelativePath=".\Infrastructure\Console.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Infrastructure\DeveloperConsole.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Infrastructure\DeveloperConsole.h"
 				>
 			</File>
 			<File
@@ -661,6 +585,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Scripting\Interfaces\camera.i"
+					>
+				</File>
+				<File
 					RelativePath=".\Scripting\Interfaces\color.i"
 					>
 				</File>
@@ -686,6 +614,10 @@
 				</File>
 				<File
 					RelativePath=".\Scripting\Interfaces\renderable.i"
+					>
+				</File>
+				<File
+					RelativePath=".\Scripting\Interfaces\sound.i"
 					>
 				</File>
 				<File

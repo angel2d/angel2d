@@ -89,6 +89,9 @@ const Vector2 Camera::GetWorldMinVertex()
 
 void Camera::Render()
 {
+	/*
+		TODO Make this so it only updates if things have been dirtied. 
+	*/
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(_position.X, _position.Y, _position.Z,
@@ -114,7 +117,7 @@ void Camera::SetPosition(float x, float y)
 void Camera::SetPosition(Vector2 v2)
 {
 //	_position = Vector3(v2.X, v2.Y, 0);
-	_position = Vector3(v2.X, v2.Y, _position.Z);	// JL - modified to not set camera to 0 
+	_position = Vector3(v2.X, v2.Y, _position.Z);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 

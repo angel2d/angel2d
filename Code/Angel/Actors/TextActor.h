@@ -2,6 +2,7 @@
 #pragma once
 
 #include "../Actors/Actor.h"
+//#include "../Infrastructure/Bounding
 
 /**
  * An enumeration for the alignment of text within a TextActor
@@ -39,7 +40,7 @@ public:
 	TextActor(String fontNickname="Console", String displayString="", TextAlignment align=TXT_Left, int lineSpacing=5);
 	
 	/**
-	 * Override of the Actor::Render function to draw text
+	 * Override of the Renderable::Render function to draw text
 	 */
 	virtual void Render();
 	
@@ -131,6 +132,17 @@ public:
 	 * @param message The message getting delivered. 
 	 */
 	virtual void ReceiveMessage(Message* message);
+	
+	/**
+	 * Since TextActors use their own methods of drawing, it can be difficult to 
+	 *  determine what space they're covering. If you want to do any kind of logic
+	 *  dealing with TextActor overlap, this is the way to get the BoundingBox
+	 *  information. 
+	 * 
+	 * @return A BoundingBox describing the area covered by the TextActor in 
+	 *   GL units (not pixels). 
+	 */
+	const BoundingBox GetBoundingBox();
 
 private:
 	struct TextNugget
@@ -151,4 +163,6 @@ private:
 	int _lineSpacing;
 
 	Vector2 _screenPosition;
+	
+	BoundingBox _extents;
 };

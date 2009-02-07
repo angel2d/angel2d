@@ -22,10 +22,9 @@ protected:
 
 //DemoGameManager is a singleton and inherits from:
 //  GameManager -- so we receive update and render calls, plus collision notifications
-//  CCmdMemberFunctorOwner -- so we can define console commands to use internal functions
 #define theDemoGame DemoGameManager::GetInstance()
 
-class DemoGameManager : public GameManager, public CCmdMemberFunctorOwner
+class DemoGameManager : public GameManager
 {
 public:
 

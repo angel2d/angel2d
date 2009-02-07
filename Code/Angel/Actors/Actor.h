@@ -258,6 +258,7 @@ public:
 	/**
 	 * Adds a tag to an Actor. If the Actor already has this tag, no action is taken.
 	 * 
+	 * @see TagCollection
 	 * @param newTag The tag to add
 	 */
 	void Tag(String newTag);
@@ -265,6 +266,7 @@ public:
 	/**
 	 * Removes a tag from an Actor. If the Actor doesn't have this tag, no action is taken.
 	 * 
+	 * @see TagCollection
 	 * @param oldTag The tag to remove
 	 */
 	void Untag(String oldTag);
@@ -272,6 +274,7 @@ public:
 	/**
 	 * Get all the tags for this ACtor. 
 	 * 
+	 * @see TagCollection
 	 * @return A StringSet (std::vector<std::string>) of all the Actor's tags
 	 */
 	const StringSet GetTags();
@@ -386,6 +389,21 @@ public:
 	 * Create an Actor from an archetype defined in an .ini file in 
 	 *  Config/ActorDef. Automatically adds the Actor to the World. 
 	 * 
+	 * The section titles in the .ini files designate the name of the archetype,
+	 *  while the values in each section specify the properties for that 
+	 *  archetype. Any function that can be called on an Actor can be used
+	 *  as a property -- things like SetSize can be called simply "size." 
+	 * 
+	 * Colors and Vectors can be defined as arrays, so the following definition
+	 *  is valid. 
+	 * 
+	 * \code
+	 * [my_actor]
+	 * color=[1, 0, 1]
+	 * alpha=0.5
+	 * size=5
+	 * \endcode
+	 * 
 	 * @param the name of the Actor archetype (the section header from the .ini)
 	 */
 	static Actor* Create(String archetype);
@@ -429,37 +447,4 @@ private:
 
 typedef std::vector<Actor*>		ActorList;
 typedef std::set<Actor*>		ActorSet;
-
-class ActorFactoryDelegate
-{
-public:
-	ActorFactoryDelegate::ActorFactoryDelegate()
-		: _renderLayer(1)
-	{}
-	virtual ~ActorFactoryDelegate() {}
-	
-	virtual void RegisterOriginalConsoleCommands();
-	virtual Actor* CreateInstance(); 
-	virtual void FinishInstance(Actor*) {}
-
-	virtual void SetSize( float x, float y );
-	virtual void SetPosition(float x, float y);
-	virtual void SetRotation(float rotation);
-	virtual void SetColor(float r, float g, float b);
-	virtual void SetAlpha(float newAlpha);
-	virtual void SetTag(String tag);
-	virtual void SetName(String name);
-	virtual void SetLayer(int layerIndex);
-	virtual void SetLayerName(String layerName );
-	virtual void SetSprite(String filename, int frame );
-	virtual void LoadSpriteFrames(String firstFilename);
-	virtual void Tag( const String& tag );
-	friend class ActorFactory;
-
-protected:
-	virtual void InitializeDelegate();
-
-private:
-	int						_renderLayer;
-};
 

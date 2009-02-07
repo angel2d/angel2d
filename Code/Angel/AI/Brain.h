@@ -24,11 +24,14 @@ public:
 
 	void Render();
 	void GotoNullState();
+	
+	void EnableDrawing(bool enable);
 
 protected:
 	BrainStateTable		_brainStateTable;
 	BrainStateTable::iterator _current;
 	Sentient*			_actor;
+	bool				_drawMe;
 };
 
 

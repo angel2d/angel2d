@@ -12,7 +12,7 @@ void DemoScreenByeBye::Start()
 	TextActor *t = new TextActor("Console", "That's all we've got in the demo app.");
 	t->SetPosition(0, 3.5);
 	t->SetAlignment(TXT_Center);
-	TextActor *t2 = new TextActor("Console", "Make sure to check out the documentation -- there are lots of other features.");
+	TextActor *t2 = new TextActor("Console", "Make sure to check out the documentation -- there are lots of other features.\n\nhttp://angel-engine.googlecode.com");
 	t2->SetPosition(0, 2);
 	t2->SetAlignment(TXT_Center);
 	TextActor *t3 = new TextActor("Console", "Press Esc to exit.");

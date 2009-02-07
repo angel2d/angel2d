@@ -93,7 +93,7 @@ bool Console::GetInput( int key )
 		_currentInput += key;
 		if (_currentInput.size() > 2)
 		{
-			_autoCompleteList = GetCompletions(_currentInput);			
+			_autoCompleteList = GetCompletions(_currentInput);
 		}
 	}
 
@@ -224,7 +224,7 @@ void Console::AdvanceInputHistory(int byVal)
 	_currentInput = _inputHistory[_inputHistoryPos];
 }
 
-void Console::ToggleConsole( const String& /*input*/ )
+void Console::ToggleConsole()
 {
 	Enable( !IsEnabled() );
 }

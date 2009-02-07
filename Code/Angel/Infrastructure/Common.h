@@ -1,3 +1,8 @@
+/** 
+ * @file Common.h 
+ *  This file handles the common definitions and includes that each platform
+ *   uses, as well as the C++ libraries used frequently in Angel. 
+ */
 #pragma once
 
 #if defined(WIN32)
@@ -11,6 +16,9 @@
 	#include <OpenGL/gl.h>
 	#include <OpenGL/glu.h>
 	#include <ext/hash_map>
+	
+	//GCC is picky about what types are allowed to be used as indices to hashes. 
+	// Defining this here lets us use std::strings to index, which is useful. 
 	#define hashmap_ns __gnu_cxx
 	namespace hashmap_ns
 	{

@@ -1,11 +1,12 @@
 import angel
-from angel import World, TagCollection, Actor, Switchboard
+from angel import World, TagCollection, Actor, Switchboard, Camera, SoundDevice
 
+# Singleton shortcuts
 theWorld = World.GetInstance()
-
 theTagList = TagCollection.GetInstance()
-
 theSwitchboard = Switchboard.GetInstance()
+theCamera = Camera.GetInstance()
+theSound = SoundDevice.GetInstance()
 
 def reset():
     theWorld.ResetWorld()

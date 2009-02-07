@@ -8,22 +8,42 @@ class MessageListener;
 class Message
 {
 public:
+	Message();
 	Message(String messageType, MessageListener* sender = NULL);
-
+	
 	virtual const String GetMessageType();
 	
-	virtual const void* GetPayload();
-	void SetPayload(void* payload);
-
 	const MessageListener* GetSender();
 	void SetSender(MessageListener* sender);
-
-private:
+	
+protected:
 	String _messageType;
 	MessageListener* _sender;
-	void* _payload;
 };
 
+template <class T>
+class TypedMessage : public Message
+{
+public:
+	TypedMessage(String messageType, T value, MessageListener* sender = NULL)
+	{
+		_messageType = messageType;
+		_value = value;
+		_sender = sender;
+	}
+	
+	const T GetValue()
+	{
+		return _value;
+	}
+	void SetValue(T value)
+	{
+		_value = value;
+	}
+	
+protected:
+	T _value;
+};
 
 class MessageListener
 {

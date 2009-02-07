@@ -1,4 +1,4 @@
-#include "../Infrastructure/BoundingShapes.h"
+#include "../AI/BoundingShapes.h"
 
 #include "../Infrastructure/Common.h"
 #include "../Util/MathUtil.h"

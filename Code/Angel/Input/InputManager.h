@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Infrastructure/Common.h"
-#include "../Infrastructure/DeveloperConsole.h"
 #include "../Util/StringUtil.h"
 
 class InputBinding
@@ -29,7 +28,7 @@ enum InputKeys
 
 #define theInput InputManager::GetInstance()
 
-class InputManager : public CCmdMemberFunctorOwner
+class InputManager
 {
 	typedef hashmap_ns::hash_map<int, InputBinding*>		BindingTable;
 	typedef hashmap_ns::hash_map<String, int>					KeyNameTable;

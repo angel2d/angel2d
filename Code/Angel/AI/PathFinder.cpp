@@ -2,10 +2,11 @@
 
 #include "../AI/SpatialGraph.h"
 #include "../Infrastructure/TextRendering.h"
-#include "../Infrastructure/DeveloperConsole.h"
 #include "../Util/DrawUtil.h"
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"
+
+bool PathFinder::_drawPaths = false;
 
 PathFinder::PathFinder()
 : _currentPathIndex(-1)
@@ -39,8 +40,7 @@ void PathFinder::FindNextMove( const Vector2& from, const Vector2& to, float arr
 
 void PathFinder::Render()
 {
-	CONSOLE_DECLAREVAR( ai_drawpath );
-	if( ai_drawpath->GetIntVal() == 0 )
+	if( !_drawPaths )
 		return;
 	if( _currentPath.size() > 0 )
 	{
@@ -76,6 +76,10 @@ void PathFinder::Render()
 
 }
 
+void PathFinder::EnableDrawPaths(bool enable)
+{
+	_drawPaths = enable;
+}
 
 
 class StartMoveState : public FindNextMoveState

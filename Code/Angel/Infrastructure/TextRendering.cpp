@@ -40,10 +40,11 @@ const bool UnRegisterFont(String nickname)
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if (it == _fontCache.end())
 	{
+		std::cout << "No font called \"" << nickname << "\"; un-registration failed." << std::endl;
 		return false;
 	}
 	delete it->second;
-	it->second = NULL; //redundant with next line, but to keep good habits...
+	it->second = NULL; 
 	_fontCache.erase(it);
 	return true;
 }

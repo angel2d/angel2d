@@ -49,7 +49,3 @@ void DemoScreenConsole::Start()
 	#pragma endregion
 }
 
-//void DemoScreenConsole::ChangeSize(const String& input)
-//{
-//	a->SetSize(StringToFloat(input));
-//}

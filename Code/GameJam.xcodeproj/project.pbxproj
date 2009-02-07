@@ -44,6 +44,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		340F35180F36BA4600650DF7 /* DemoScreenPathfinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */; };
+		340F35190F36BA4600650DF7 /* DemoScreenPathfinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */; };
 		342C29370E2AF9C50061D881 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9A0E284445001C79A5 /* Carbon.framework */; };
 		342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433A92B0E2AB09B00A02B4E /* IOKit.framework */; };
 		3433A8D60E2AADEF00A02B4E /* PID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CA0E2AADAE00A02B4E /* PID.h */; };
@@ -120,8 +122,9 @@
 		34344A870E3035A000FC041D /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34344A470E3035A000FC041D /* b2RevoluteJoint.cpp */; };
 		34344A880E3035A000FC041D /* b2RevoluteJoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 34344A480E3035A000FC041D /* b2RevoluteJoint.h */; };
 		34344A8A0E3035A000FC041D /* Box2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 34344A4B0E3035A000FC041D /* Box2D.h */; };
-		3434AD730E68FE1800034207 /* DeveloperConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3434AD710E68FE1800034207 /* DeveloperConsole.cpp */; };
-		3434AD740E68FE1800034207 /* DeveloperConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 3434AD720E68FE1800034207 /* DeveloperConsole.h */; };
+		34368DC90F3CDA9500DE94CD /* BoundingShapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34368DC70F3CDA9500DE94CD /* BoundingShapes.cpp */; };
+		34368DCA0F3CDA9500DE94CD /* BoundingShapes.h in Headers */ = {isa = PBXBuildFile; fileRef = 34368DC80F3CDA9500DE94CD /* BoundingShapes.h */; };
+		34368E040F3CDC8900DE94CD /* Callback.h in Headers */ = {isa = PBXBuildFile; fileRef = 34368E030F3CDC8900DE94CD /* Callback.h */; };
 		343F41980E31C19F0097B760 /* DemoScreenMessagePassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343F41960E31C19F0097B760 /* DemoScreenMessagePassing.cpp */; };
 		343F41990E31C19F0097B760 /* DemoScreenMessagePassing.h in Headers */ = {isa = PBXBuildFile; fileRef = 343F41970E31C19F0097B760 /* DemoScreenMessagePassing.h */; };
 		346E3BBF0E28642400E6C79E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
@@ -256,26 +259,17 @@
 		34F1FC3F0E5D21020065CD22 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F1FC130E5D1DD30065CD22 /* Python.framework */; };
 		34F1FC6C0E5D21140065CD22 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F1FC130E5D1DD30065CD22 /* Python.framework */; };
 		34F1FCA90E5D26970065CD22 /* Actor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1815C0E283FE0001C79A5 /* Actor.h */; };
-		34F1FCAA0E5D26970065CD22 /* ActorFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1815E0E283FE0001C79A5 /* ActorFactory.h */; };
 		34F1FCAB0E5D26970065CD22 /* FullScreenActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181600E283FE0001C79A5 /* FullScreenActor.h */; };
 		34F1FCAC0E5D26970065CD22 /* GridActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181620E283FE0001C79A5 /* GridActor.h */; };
 		34F1FCAD0E5D26970065CD22 /* ParticleActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181640E283FE0001C79A5 /* ParticleActor.h */; };
 		34F1FCAE0E5D26970065CD22 /* TextActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181660E283FE0001C79A5 /* TextActor.h */; };
-		34F1FCAF0E5D26970065CD22 /* CVarChangedAIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181750E283FF1001C79A5 /* CVarChangedAIEvent.h */; };
 		34F1FCB00E5D26970065CD22 /* GotoAIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181770E283FF1001C79A5 /* GotoAIEvent.h */; };
 		34F1FCB10E5D26970065CD22 /* GotoTargetAIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181790E283FF1001C79A5 /* GotoTargetAIEvent.h */; };
 		34F1FCB20E5D26970065CD22 /* NamedEventAIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1817B0E283FF1001C79A5 /* NamedEventAIEvent.h */; };
 		34F1FCB30E5D26970065CD22 /* TimerAIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1817D0E283FF1001C79A5 /* TimerAIEvent.h */; };
 		34F1FCB40E5D26970065CD22 /* TraversalAIEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1817F0E283FF1001C79A5 /* TraversalAIEvent.h */; };
-		34F1FCB50E5D26970065CD22 /* CollisionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181820E283FF1001C79A5 /* CollisionResponse.h */; };
-		34F1FCB60E5D26970065CD22 /* CollisionResponseRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181830E283FF1001C79A5 /* CollisionResponseRegistry.h */; };
-		34F1FCB70E5D26970065CD22 /* DestroyCollisionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181860E283FF1001C79A5 /* DestroyCollisionResponse.h */; };
-		34F1FCB80E5D26970065CD22 /* PlaySoundCollisionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181880E283FF1001C79A5 /* PlaySoundCollisionResponse.h */; };
-		34F1FCB90E5D26970065CD22 /* StunCollisionResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1818A0E283FF1001C79A5 /* StunCollisionResponse.h */; };
 		34F1FCBA0E5D26970065CD22 /* PhysicsActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181AC0E283FF1001C79A5 /* PhysicsActor.h */; };
 		34F1FCBB0E5D26970065CD22 /* PhysicsDebugDraw.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181AE0E283FF1001C79A5 /* PhysicsDebugDraw.h */; };
-		34F1FCBC0E5D26970065CD22 /* PhysicsEventActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181B00E283FF1001C79A5 /* PhysicsEventActor.h */; };
-		34F1FCBD0E5D26970065CD22 /* PhysicsUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181B10E283FF1001C79A5 /* PhysicsUtil.h */; };
 		34F1FCBE0E5D26970065CD22 /* Input.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181B40E283FF1001C79A5 /* Input.h */; };
 		34F1FCBF0E5D26970065CD22 /* InputKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181B50E283FF1001C79A5 /* InputKeys.h */; };
 		34F1FCC00E5D26970065CD22 /* InputManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A181B70E283FF1001C79A5 /* InputManager.h */; };
@@ -296,7 +290,6 @@
 		34F1FCCF0E5D26970065CD22 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 34974BB50E292E240018A032 /* Controller.h */; };
 		34F1FCD00E5D26970065CD22 /* Message.h in Headers */ = {isa = PBXBuildFile; fileRef = 343F41880E31C1460097B760 /* Message.h */; };
 		34F1FCD10E5D26970065CD22 /* Switchboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 343F418A0E31C1460097B760 /* Switchboard.h */; };
-		34F1FCD20E5D26970065CD22 /* BoundingShapes.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1B9A0E441C73006F63F5 /* BoundingShapes.h */; };
 		34F1FCD30E5D26970065CD22 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1B9C0E441C73006F63F5 /* Camera.h */; };
 		34F1FCD40E5D26970065CD22 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1B9D0E441C73006F63F5 /* Common.h */; };
 		34F1FCD50E5D26970065CD22 /* Console.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1B9F0E441C73006F63F5 /* Console.h */; };
@@ -307,7 +300,6 @@
 		34F1FCDA0E5D26970065CD22 /* TagCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BAA0E441C73006F63F5 /* TagCollection.h */; };
 		34F1FCDB0E5D26970065CD22 /* TextRendering.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BAC0E441C73006F63F5 /* TextRendering.h */; };
 		34F1FCDC0E5D26970065CD22 /* Textures.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BAE0E441C73006F63F5 /* Textures.h */; };
-		34F1FCDD0E5D26970065CD22 /* ValueCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BAF0E441C73006F63F5 /* ValueCache.h */; };
 		34F1FCDE0E5D26970065CD22 /* VecStructs.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BB00E441C73006F63F5 /* VecStructs.h */; };
 		34F1FCDF0E5D26970065CD22 /* Vector2.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BB20E441C73006F63F5 /* Vector2.h */; };
 		34F1FCE00E5D26970065CD22 /* Vector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DB1BB40E441C73006F63F5 /* Vector3.h */; };
@@ -329,11 +321,6 @@
 		34F1FCF00E5D26B20065CD22 /* MouseInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181B80E283FF1001C79A5 /* MouseInput.cpp */; };
 		34F1FCF10E5D26B20065CD22 /* PhysicsActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181AB0E283FF1001C79A5 /* PhysicsActor.cpp */; };
 		34F1FCF20E5D26B20065CD22 /* PhysicsDebugDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181AD0E283FF1001C79A5 /* PhysicsDebugDraw.cpp */; };
-		34F1FCF30E5D26B20065CD22 /* PhysicsEventActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181AF0E283FF1001C79A5 /* PhysicsEventActor.cpp */; };
-		34F1FCF40E5D26B20065CD22 /* CollisionResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181810E283FF1001C79A5 /* CollisionResponse.cpp */; };
-		34F1FCF50E5D26B20065CD22 /* DestroyCollisionResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181850E283FF1001C79A5 /* DestroyCollisionResponse.cpp */; };
-		34F1FCF60E5D26B20065CD22 /* StunCollisionResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181890E283FF1001C79A5 /* StunCollisionResponse.cpp */; };
-		34F1FCF70E5D26B20065CD22 /* CVarChangedAIEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181740E283FF1001C79A5 /* CVarChangedAIEvent.cpp */; };
 		34F1FCF80E5D26B20065CD22 /* GotoAIEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181760E283FF1001C79A5 /* GotoAIEvent.cpp */; };
 		34F1FCF90E5D26B20065CD22 /* GotoTargetAIEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181780E283FF1001C79A5 /* GotoTargetAIEvent.cpp */; };
 		34F1FCFA0E5D26B20065CD22 /* NamedEventAIEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A1817A0E283FF1001C79A5 /* NamedEventAIEvent.cpp */; };
@@ -344,11 +331,9 @@
 		34F1FCFF0E5D26B20065CD22 /* GridActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181610E283FE0001C79A5 /* GridActor.cpp */; };
 		34F1FD000E5D26B20065CD22 /* ParticleActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181630E283FE0001C79A5 /* ParticleActor.cpp */; };
 		34F1FD010E5D26B20065CD22 /* TextActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A181650E283FE0001C79A5 /* TextActor.cpp */; };
-		34F1FD020E5D26B20065CD22 /* ActorFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A1815D0E283FE0001C79A5 /* ActorFactory.cpp */; };
 		34F1FD030E5D26B20065CD22 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974BB40E292E240018A032 /* Controller.cpp */; };
 		34F1FD040E5D26B20065CD22 /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343F41870E31C1460097B760 /* Message.cpp */; };
 		34F1FD050E5D26B20065CD22 /* Switchboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343F41890E31C1460097B760 /* Switchboard.cpp */; };
-		34F1FD060E5D26B20065CD22 /* BoundingShapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DB1B990E441C73006F63F5 /* BoundingShapes.cpp */; };
 		34F1FD070E5D26B20065CD22 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DB1B9B0E441C73006F63F5 /* Camera.cpp */; };
 		34F1FD080E5D26B20065CD22 /* Console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DB1B9E0E441C73006F63F5 /* Console.cpp */; };
 		34F1FD090E5D26B20065CD22 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DB1BA00E441C73006F63F5 /* GameManager.cpp */; };
@@ -472,6 +457,8 @@
 /* Begin PBXFileReference section */
 		340CCB830EA8495C00448120 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = IntroGame/Resources; sourceTree = "<group>"; };
 		340CCB9C0EA8496A00448120 /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Config; path = IntroGame/Config; sourceTree = "<group>"; };
+		340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenPathfinding.h; path = IntroGame/DemoScreenPathfinding.h; sourceTree = "<group>"; };
+		340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPathfinding.cpp; path = IntroGame/DemoScreenPathfinding.cpp; sourceTree = "<group>"; };
 		3411DFE90E5FDD83009D734D /* actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = actor.i; path = Angel/Scripting/Interfaces/actor.i; sourceTree = "<group>"; };
 		3411E0B20E5FF1C2009D734D /* vector2.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = vector2.i; path = Angel/Scripting/Interfaces/vector2.i; sourceTree = "<group>"; };
 		3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Name_Lookup.c; path = "Angel/Libraries/HID Utilities/HID_Name_Lookup.c"; sourceTree = "<group>"; };
@@ -551,8 +538,9 @@
 		34344A470E3035A000FC041D /* b2RevoluteJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2RevoluteJoint.cpp; sourceTree = "<group>"; };
 		34344A480E3035A000FC041D /* b2RevoluteJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2RevoluteJoint.h; sourceTree = "<group>"; };
 		34344A4B0E3035A000FC041D /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
-		3434AD710E68FE1800034207 /* DeveloperConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeveloperConsole.cpp; sourceTree = "<group>"; };
-		3434AD720E68FE1800034207 /* DeveloperConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeveloperConsole.h; sourceTree = "<group>"; };
+		34368DC70F3CDA9500DE94CD /* BoundingShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingShapes.cpp; sourceTree = "<group>"; };
+		34368DC80F3CDA9500DE94CD /* BoundingShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingShapes.h; sourceTree = "<group>"; };
+		34368E030F3CDC8900DE94CD /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
 		343F41870E31C1460097B760 /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		343F41880E31C1460097B760 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		343F41890E31C1460097B760 /* Switchboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Switchboard.cpp; sourceTree = "<group>"; };
@@ -640,8 +628,6 @@
 		349C19E30E8C88AC009D94FC /* AngelPythonWrapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelPythonWrapping.cpp; path = Angel/Scripting/Interfaces/AngelPythonWrapping.cpp; sourceTree = "<group>"; };
 		34A1815B0E283FE0001C79A5 /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
 		34A1815C0E283FE0001C79A5 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
-		34A1815D0E283FE0001C79A5 /* ActorFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActorFactory.cpp; sourceTree = "<group>"; };
-		34A1815E0E283FE0001C79A5 /* ActorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorFactory.h; sourceTree = "<group>"; };
 		34A1815F0E283FE0001C79A5 /* FullScreenActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FullScreenActor.cpp; sourceTree = "<group>"; };
 		34A181600E283FE0001C79A5 /* FullScreenActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenActor.h; sourceTree = "<group>"; };
 		34A181610E283FE0001C79A5 /* GridActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridActor.cpp; sourceTree = "<group>"; };
@@ -650,8 +636,6 @@
 		34A181640E283FE0001C79A5 /* ParticleActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleActor.h; sourceTree = "<group>"; };
 		34A181650E283FE0001C79A5 /* TextActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextActor.cpp; sourceTree = "<group>"; };
 		34A181660E283FE0001C79A5 /* TextActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextActor.h; sourceTree = "<group>"; };
-		34A181740E283FF1001C79A5 /* CVarChangedAIEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVarChangedAIEvent.cpp; sourceTree = "<group>"; };
-		34A181750E283FF1001C79A5 /* CVarChangedAIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVarChangedAIEvent.h; sourceTree = "<group>"; };
 		34A181760E283FF1001C79A5 /* GotoAIEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GotoAIEvent.cpp; sourceTree = "<group>"; };
 		34A181770E283FF1001C79A5 /* GotoAIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotoAIEvent.h; sourceTree = "<group>"; };
 		34A181780E283FF1001C79A5 /* GotoTargetAIEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GotoTargetAIEvent.cpp; sourceTree = "<group>"; };
@@ -662,23 +646,10 @@
 		34A1817D0E283FF1001C79A5 /* TimerAIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerAIEvent.h; sourceTree = "<group>"; };
 		34A1817E0E283FF1001C79A5 /* TraversalAIEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TraversalAIEvent.cpp; sourceTree = "<group>"; };
 		34A1817F0E283FF1001C79A5 /* TraversalAIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraversalAIEvent.h; sourceTree = "<group>"; };
-		34A181810E283FF1001C79A5 /* CollisionResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionResponse.cpp; sourceTree = "<group>"; };
-		34A181820E283FF1001C79A5 /* CollisionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionResponse.h; sourceTree = "<group>"; };
-		34A181830E283FF1001C79A5 /* CollisionResponseRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionResponseRegistry.h; sourceTree = "<group>"; };
-		34A181840E283FF1001C79A5 /* CollisionResponseRegistry.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = CollisionResponseRegistry.inc; sourceTree = "<group>"; };
-		34A181850E283FF1001C79A5 /* DestroyCollisionResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DestroyCollisionResponse.cpp; sourceTree = "<group>"; };
-		34A181860E283FF1001C79A5 /* DestroyCollisionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestroyCollisionResponse.h; sourceTree = "<group>"; };
-		34A181870E283FF1001C79A5 /* PlaySoundCollisionResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlaySoundCollisionResponse.cpp; sourceTree = "<group>"; };
-		34A181880E283FF1001C79A5 /* PlaySoundCollisionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaySoundCollisionResponse.h; sourceTree = "<group>"; };
-		34A181890E283FF1001C79A5 /* StunCollisionResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StunCollisionResponse.cpp; sourceTree = "<group>"; };
-		34A1818A0E283FF1001C79A5 /* StunCollisionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StunCollisionResponse.h; sourceTree = "<group>"; };
 		34A181AB0E283FF1001C79A5 /* PhysicsActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsActor.cpp; sourceTree = "<group>"; };
 		34A181AC0E283FF1001C79A5 /* PhysicsActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsActor.h; sourceTree = "<group>"; };
 		34A181AD0E283FF1001C79A5 /* PhysicsDebugDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsDebugDraw.cpp; sourceTree = "<group>"; };
 		34A181AE0E283FF1001C79A5 /* PhysicsDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsDebugDraw.h; sourceTree = "<group>"; };
-		34A181AF0E283FF1001C79A5 /* PhysicsEventActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsEventActor.cpp; sourceTree = "<group>"; };
-		34A181B00E283FF1001C79A5 /* PhysicsEventActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsEventActor.h; sourceTree = "<group>"; };
-		34A181B10E283FF1001C79A5 /* PhysicsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsUtil.h; sourceTree = "<group>"; };
 		34A181B30E283FF1001C79A5 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
 		34A181B40E283FF1001C79A5 /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
 		34A181B50E283FF1001C79A5 /* InputKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputKeys.h; sourceTree = "<group>"; };
@@ -736,8 +707,10 @@
 		34A18C9B0E284445001C79A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		34AA6C3A0E61CB2F00033685 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		34AA6C3B0E61CB2F00033685 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		34AF113C0F3D237D00A17276 /* sound.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = sound.i; path = Angel/Scripting/Interfaces/sound.i; sourceTree = "<group>"; };
 		34C203CA0EB18C44007D94A6 /* HUDActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDActor.h; sourceTree = "<group>"; };
 		34C203CB0EB18C44007D94A6 /* HUDActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUDActor.cpp; sourceTree = "<group>"; };
+		34C6709D0F37889100AED82D /* camera.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = camera.i; path = Angel/Scripting/Interfaces/camera.i; sourceTree = "<group>"; };
 		34CC01C30E621094003772E0 /* renderable.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = renderable.i; path = Angel/Scripting/Interfaces/renderable.i; sourceTree = "<group>"; };
 		34CC01E80E6211CC003772E0 /* physics_actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = physics_actor.i; path = Angel/Scripting/Interfaces/physics_actor.i; sourceTree = "<group>"; };
 		34CCFF3F0E61E40F003772E0 /* color.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = color.i; path = Angel/Scripting/Interfaces/color.i; sourceTree = "<group>"; };
@@ -783,8 +756,6 @@
 		34D34E4C0E2C38480053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Attributions.txt; sourceTree = "<group>"; };
 		34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/ClientGameInfo.plist; sourceTree = "<group>"; };
 		34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/IntroGameInfo.plist; sourceTree = "<group>"; };
-		34DB1B990E441C73006F63F5 /* BoundingShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingShapes.cpp; sourceTree = "<group>"; };
-		34DB1B9A0E441C73006F63F5 /* BoundingShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingShapes.h; sourceTree = "<group>"; };
 		34DB1B9B0E441C73006F63F5 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		34DB1B9C0E441C73006F63F5 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		34DB1B9D0E441C73006F63F5 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -803,7 +774,6 @@
 		34DB1BAC0E441C73006F63F5 /* TextRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextRendering.h; sourceTree = "<group>"; };
 		34DB1BAD0E441C73006F63F5 /* Textures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Textures.cpp; sourceTree = "<group>"; };
 		34DB1BAE0E441C73006F63F5 /* Textures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Textures.h; sourceTree = "<group>"; };
-		34DB1BAF0E441C73006F63F5 /* ValueCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCache.h; sourceTree = "<group>"; };
 		34DB1BB00E441C73006F63F5 /* VecStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VecStructs.h; sourceTree = "<group>"; };
 		34DB1BB10E441C73006F63F5 /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2.cpp; sourceTree = "<group>"; };
 		34DB1BB20E441C73006F63F5 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
@@ -1226,7 +1196,6 @@
 				34A1815A0E283FE0001C79A5 /* Actors */,
 				34A187BE0E283FF3001C79A5 /* AI */,
 				34A181730E283FF1001C79A5 /* AIEvents */,
-				34A181800E283FF1001C79A5 /* CollisionResponse */,
 				34DB1B980E441C73006F63F5 /* Infrastructure */,
 				343F41860E31C1460097B760 /* Messaging */,
 				34A181AA0E283FF1001C79A5 /* Physics */,
@@ -1242,8 +1211,6 @@
 			children = (
 				34A1815B0E283FE0001C79A5 /* Actor.cpp */,
 				34A1815C0E283FE0001C79A5 /* Actor.h */,
-				34A1815D0E283FE0001C79A5 /* ActorFactory.cpp */,
-				34A1815E0E283FE0001C79A5 /* ActorFactory.h */,
 				34A1815F0E283FE0001C79A5 /* FullScreenActor.cpp */,
 				34A181600E283FE0001C79A5 /* FullScreenActor.h */,
 				34A181610E283FE0001C79A5 /* GridActor.cpp */,
@@ -1262,8 +1229,6 @@
 		34A181730E283FF1001C79A5 /* AIEvents */ = {
 			isa = PBXGroup;
 			children = (
-				34A181740E283FF1001C79A5 /* CVarChangedAIEvent.cpp */,
-				34A181750E283FF1001C79A5 /* CVarChangedAIEvent.h */,
 				34A181760E283FF1001C79A5 /* GotoAIEvent.cpp */,
 				34A181770E283FF1001C79A5 /* GotoAIEvent.h */,
 				34A181780E283FF1001C79A5 /* GotoTargetAIEvent.cpp */,
@@ -1279,24 +1244,6 @@
 			path = Angel/AIEvents;
 			sourceTree = "<group>";
 		};
-		34A181800E283FF1001C79A5 /* CollisionResponse */ = {
-			isa = PBXGroup;
-			children = (
-				34A181810E283FF1001C79A5 /* CollisionResponse.cpp */,
-				34A181820E283FF1001C79A5 /* CollisionResponse.h */,
-				34A181830E283FF1001C79A5 /* CollisionResponseRegistry.h */,
-				34A181840E283FF1001C79A5 /* CollisionResponseRegistry.inc */,
-				34A181850E283FF1001C79A5 /* DestroyCollisionResponse.cpp */,
-				34A181860E283FF1001C79A5 /* DestroyCollisionResponse.h */,
-				34A181870E283FF1001C79A5 /* PlaySoundCollisionResponse.cpp */,
-				34A181880E283FF1001C79A5 /* PlaySoundCollisionResponse.h */,
-				34A181890E283FF1001C79A5 /* StunCollisionResponse.cpp */,
-				34A1818A0E283FF1001C79A5 /* StunCollisionResponse.h */,
-			);
-			name = CollisionResponse;
-			path = Angel/CollisionResponse;
-			sourceTree = "<group>";
-		};
 		34A181AA0E283FF1001C79A5 /* Physics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,9 +1251,6 @@
 				34A181AC0E283FF1001C79A5 /* PhysicsActor.h */,
 				34A181AD0E283FF1001C79A5 /* PhysicsDebugDraw.cpp */,
 				34A181AE0E283FF1001C79A5 /* PhysicsDebugDraw.h */,
-				34A181AF0E283FF1001C79A5 /* PhysicsEventActor.cpp */,
-				34A181B00E283FF1001C79A5 /* PhysicsEventActor.h */,
-				34A181B10E283FF1001C79A5 /* PhysicsUtil.h */,
 			);
 			name = Physics;
 			path = Angel/Physics;
@@ -1348,6 +1292,8 @@
 		34A187BE0E283FF3001C79A5 /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				34368DC70F3CDA9500DE94CD /* BoundingShapes.cpp */,
+				34368DC80F3CDA9500DE94CD /* BoundingShapes.h */,
 				34A187BF0E283FF3001C79A5 /* Brain.cpp */,
 				34A187C00E283FF3001C79A5 /* Brain.h */,
 				34A187C10E283FF3001C79A5 /* PathFinder.cpp */,
@@ -1514,6 +1460,8 @@
 				34D34DF80E2C375A0053994C /* DemoScreenSimpleActor.h */,
 				34D34DF70E2C375A0053994C /* DemoScreenStart.cpp */,
 				34D34DF50E2C375A0053994C /* DemoScreenStart.h */,
+				340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */,
+				340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */,
 			);
 			name = DemoScreens;
 			sourceTree = "<group>";
@@ -1530,8 +1478,7 @@
 		34DB1B980E441C73006F63F5 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				34DB1B990E441C73006F63F5 /* BoundingShapes.cpp */,
-				34DB1B9A0E441C73006F63F5 /* BoundingShapes.h */,
+				34368E030F3CDC8900DE94CD /* Callback.h */,
 				34DB1B9B0E441C73006F63F5 /* Camera.cpp */,
 				34DB1B9C0E441C73006F63F5 /* Camera.h */,
 				34AA6C3A0E61CB2F00033685 /* Color.h */,
@@ -1539,8 +1486,6 @@
 				34DB1B9D0E441C73006F63F5 /* Common.h */,
 				34DB1B9E0E441C73006F63F5 /* Console.cpp */,
 				34DB1B9F0E441C73006F63F5 /* Console.h */,
-				3434AD710E68FE1800034207 /* DeveloperConsole.cpp */,
-				3434AD720E68FE1800034207 /* DeveloperConsole.h */,
 				34DB1BA00E441C73006F63F5 /* GameManager.cpp */,
 				34DB1BA10E441C73006F63F5 /* GameManager.h */,
 				34DB1BDC0E44BF59006F63F5 /* Interval.h */,
@@ -1557,7 +1502,6 @@
 				34DB1BAC0E441C73006F63F5 /* TextRendering.h */,
 				34DB1BAD0E441C73006F63F5 /* Textures.cpp */,
 				34DB1BAE0E441C73006F63F5 /* Textures.h */,
-				34DB1BAF0E441C73006F63F5 /* ValueCache.h */,
 				34DB1BB00E441C73006F63F5 /* VecStructs.h */,
 				34DB1BB10E441C73006F63F5 /* Vector2.cpp */,
 				34DB1BB20E441C73006F63F5 /* Vector2.h */,
@@ -1594,7 +1538,9 @@
 				34F1FFD80E5D3F910065CD22 /* world.i */,
 				34CCFFC30E61EA03003772E0 /* messaging.i */,
 				34713D740EA6D65C00AF58CA /* particles.i */,
+				34C6709D0F37889100AED82D /* camera.i */,
 				34713DF40EA6E3CF00AF58CA /* text_actor.i */,
+				34AF113C0F3D237D00A17276 /* sound.i */,
 				34CCFF3F0E61E40F003772E0 /* color.i */,
 				3411E0B20E5FF1C2009D734D /* vector2.i */,
 				345A8C310E8DD0CF00B36FD9 /* inheritance.i */,
@@ -1728,6 +1674,7 @@
 				34D34E4F0E2C386F0053994C /* DemoGameManager.h in Headers */,
 				343F41990E31C19F0097B760 /* DemoScreenMessagePassing.h in Headers */,
 				346E5EA80F30122000258B84 /* DemoScreenIntervals.h in Headers */,
+				340F35180F36BA4600650DF7 /* DemoScreenPathfinding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1736,26 +1683,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F1FCA90E5D26970065CD22 /* Actor.h in Headers */,
-				34F1FCAA0E5D26970065CD22 /* ActorFactory.h in Headers */,
 				34F1FCAB0E5D26970065CD22 /* FullScreenActor.h in Headers */,
 				34F1FCAC0E5D26970065CD22 /* GridActor.h in Headers */,
 				34F1FCAD0E5D26970065CD22 /* ParticleActor.h in Headers */,
 				34F1FCAE0E5D26970065CD22 /* TextActor.h in Headers */,
-				34F1FCAF0E5D26970065CD22 /* CVarChangedAIEvent.h in Headers */,
 				34F1FCB00E5D26970065CD22 /* GotoAIEvent.h in Headers */,
 				34F1FCB10E5D26970065CD22 /* GotoTargetAIEvent.h in Headers */,
 				34F1FCB20E5D26970065CD22 /* NamedEventAIEvent.h in Headers */,
 				34F1FCB30E5D26970065CD22 /* TimerAIEvent.h in Headers */,
 				34F1FCB40E5D26970065CD22 /* TraversalAIEvent.h in Headers */,
-				34F1FCB50E5D26970065CD22 /* CollisionResponse.h in Headers */,
-				34F1FCB60E5D26970065CD22 /* CollisionResponseRegistry.h in Headers */,
-				34F1FCB70E5D26970065CD22 /* DestroyCollisionResponse.h in Headers */,
-				34F1FCB80E5D26970065CD22 /* PlaySoundCollisionResponse.h in Headers */,
-				34F1FCB90E5D26970065CD22 /* StunCollisionResponse.h in Headers */,
 				34F1FCBA0E5D26970065CD22 /* PhysicsActor.h in Headers */,
 				34F1FCBB0E5D26970065CD22 /* PhysicsDebugDraw.h in Headers */,
-				34F1FCBC0E5D26970065CD22 /* PhysicsEventActor.h in Headers */,
-				34F1FCBD0E5D26970065CD22 /* PhysicsUtil.h in Headers */,
 				34F1FCBE0E5D26970065CD22 /* Input.h in Headers */,
 				34F1FCBF0E5D26970065CD22 /* InputKeys.h in Headers */,
 				34F1FCC00E5D26970065CD22 /* InputManager.h in Headers */,
@@ -1776,7 +1714,6 @@
 				34F1FCCF0E5D26970065CD22 /* Controller.h in Headers */,
 				34F1FCD00E5D26970065CD22 /* Message.h in Headers */,
 				34F1FCD10E5D26970065CD22 /* Switchboard.h in Headers */,
-				34F1FCD20E5D26970065CD22 /* BoundingShapes.h in Headers */,
 				34F1FCD30E5D26970065CD22 /* Camera.h in Headers */,
 				34F1FCD40E5D26970065CD22 /* Common.h in Headers */,
 				34F1FCD50E5D26970065CD22 /* Console.h in Headers */,
@@ -1787,7 +1724,6 @@
 				34F1FCDA0E5D26970065CD22 /* TagCollection.h in Headers */,
 				34F1FCDB0E5D26970065CD22 /* TextRendering.h in Headers */,
 				34F1FCDC0E5D26970065CD22 /* Textures.h in Headers */,
-				34F1FCDD0E5D26970065CD22 /* ValueCache.h in Headers */,
 				34F1FCDE0E5D26970065CD22 /* VecStructs.h in Headers */,
 				34F1FCDF0E5D26970065CD22 /* Vector2.h in Headers */,
 				34F1FCE00E5D26970065CD22 /* Vector3.h in Headers */,
@@ -1796,9 +1732,10 @@
 				34F1FCE30E5D26970065CD22 /* PythonModule.h in Headers */,
 				34AA6C3C0E61CB2F00033685 /* Color.h in Headers */,
 				348109F00E679CCA00246544 /* SoundDevice.h in Headers */,
-				3434AD740E68FE1800034207 /* DeveloperConsole.h in Headers */,
 				349C19E40E8C88AD009D94FC /* AngelPythonWrapping.h in Headers */,
 				34C203CC0EB18C44007D94A6 /* HUDActor.h in Headers */,
+				34368DCA0F3CDA9500DE94CD /* BoundingShapes.h in Headers */,
+				34368E040F3CDC8900DE94CD /* Callback.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2190,6 +2127,7 @@
 				34D34E4E0E2C386B0053994C /* Main.cpp in Sources */,
 				343F41980E31C19F0097B760 /* DemoScreenMessagePassing.cpp in Sources */,
 				346E5EA70F30122000258B84 /* DemoScreenIntervals.cpp in Sources */,
+				340F35190F36BA4600650DF7 /* DemoScreenPathfinding.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2212,11 +2150,6 @@
 				34F1FCF00E5D26B20065CD22 /* MouseInput.cpp in Sources */,
 				34F1FCF10E5D26B20065CD22 /* PhysicsActor.cpp in Sources */,
 				34F1FCF20E5D26B20065CD22 /* PhysicsDebugDraw.cpp in Sources */,
-				34F1FCF30E5D26B20065CD22 /* PhysicsEventActor.cpp in Sources */,
-				34F1FCF40E5D26B20065CD22 /* CollisionResponse.cpp in Sources */,
-				34F1FCF50E5D26B20065CD22 /* DestroyCollisionResponse.cpp in Sources */,
-				34F1FCF60E5D26B20065CD22 /* StunCollisionResponse.cpp in Sources */,
-				34F1FCF70E5D26B20065CD22 /* CVarChangedAIEvent.cpp in Sources */,
 				34F1FCF80E5D26B20065CD22 /* GotoAIEvent.cpp in Sources */,
 				34F1FCF90E5D26B20065CD22 /* GotoTargetAIEvent.cpp in Sources */,
 				34F1FCFA0E5D26B20065CD22 /* NamedEventAIEvent.cpp in Sources */,
@@ -2227,11 +2160,9 @@
 				34F1FCFF0E5D26B20065CD22 /* GridActor.cpp in Sources */,
 				34F1FD000E5D26B20065CD22 /* ParticleActor.cpp in Sources */,
 				34F1FD010E5D26B20065CD22 /* TextActor.cpp in Sources */,
-				34F1FD020E5D26B20065CD22 /* ActorFactory.cpp in Sources */,
 				34F1FD030E5D26B20065CD22 /* Controller.cpp in Sources */,
 				34F1FD040E5D26B20065CD22 /* Message.cpp in Sources */,
 				34F1FD050E5D26B20065CD22 /* Switchboard.cpp in Sources */,
-				34F1FD060E5D26B20065CD22 /* BoundingShapes.cpp in Sources */,
 				34F1FD070E5D26B20065CD22 /* Camera.cpp in Sources */,
 				34F1FD080E5D26B20065CD22 /* Console.cpp in Sources */,
 				34F1FD090E5D26B20065CD22 /* GameManager.cpp in Sources */,
@@ -2246,9 +2177,9 @@
 				34F1FD120E5D26B20065CD22 /* PythonModule.cpp in Sources */,
 				34AA6C3D0E61CB2F00033685 /* Color.cpp in Sources */,
 				348109F10E679CCA00246544 /* SoundDevice.cpp in Sources */,
-				3434AD730E68FE1800034207 /* DeveloperConsole.cpp in Sources */,
 				349C19E50E8C88AD009D94FC /* AngelPythonWrapping.cpp in Sources */,
 				34C203CD0EB18C44007D94A6 /* HUDActor.cpp in Sources */,
+				34368DC90F3CDA9500DE94CD /* BoundingShapes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

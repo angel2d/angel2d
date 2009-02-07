@@ -102,7 +102,7 @@
  *      - \c Fonts: hopefully this is self-explanatory
  *      - \c Images: hopefully this is self-explanatory
  *      - \c Sounds: hopefully this is self-explanatory
- *      - \c Scripts: Any Python that you want to do for your game should get put in here. 
+ *      - \c Scripts: Any Python that you want to use in your game should get put in here. 
  *        The included \c client_start.py gets imported directly into the console namespace, 
  *        so any functions you define here will be available in the console. If you want
  *        to create your own classes or do any game setup from Python, \c client_start.py is 
@@ -126,6 +126,7 @@
  * @subsection input Handling Input
  * 
  * @section physics Physics
+ * @subsection side_blockers Side-Blockers
  * 
  * @section sound Sound
  * 
@@ -137,6 +138,7 @@
  * 
  * @section python Python
  * @subsection console In-Game Console
+ * @subsection python_subclasses Python Sublasses
  * 
  * @section bugs Bug Reports
  * 
@@ -145,13 +147,13 @@
 
 
 #include "Actors/Actor.h"
-#include "Actors/ActorFactory.h"
 #include "Actors/FullScreenActor.h"
 #include "Actors/GridActor.h"
 #include "Actors/HUDActor.h"
 #include "Actors/ParticleActor.h"
 #include "Actors/TextActor.h"
 
+#include "AI/BoundingShapes.h"
 #include "AI/Brain.h"
 #include "AI/Pathfinder.h"
 #include "AI/Ray2.h"
@@ -159,24 +161,15 @@
 #include "AI/SpatialGraph.h"
 #include "AI/Traversal.h"
 
-#include "AIEvents/CVarChangedAIEvent.h"
 #include "AIEvents/GotoAIEvent.h"
 #include "AIEvents/GotoTargetAIEvent.h"
 #include "AIEvents/NamedEventAIEvent.h"
 #include "AIEvents/TimerAIEvent.h"
 #include "AIEvents/TraversalAIEvent.h"
 
-#include "CollisionResponse/CollisionResponse.h"
-#include "CollisionResponse/CollisionResponseRegistry.h"
-#include "CollisionResponse/DestroyCollisionResponse.h"
-//#include "CollisionResponse/PlaySoundCollisionResponse.h"
-#include "CollisionResponse/StunCollisionResponse.h"
-
-#include "Infrastructure/BoundingShapes.h"
 #include "Infrastructure/Camera.h"
 #include "Infrastructure/Color.h"
 #include "Infrastructure/Common.h"
-#include "Infrastructure/DeveloperConsole.h"
 #include "Infrastructure/GameManager.h"
 #include "Infrastructure/Interval.h"
 #include "Infrastructure/Log.h"
@@ -201,8 +194,6 @@
 
 #include "Physics/PhysicsActor.h"
 #include "Physics/PhysicsDebugDraw.h"
-#include "Physics/PhysicsEventActor.h"
-#include "Physics/PhysicsUtil.h"
 
 #include "Util/DrawUtil.h"
 #include "Util/FileUtil.h"

@@ -15,6 +15,14 @@ http://creativecommons.org/licenses/by-nc/2.0/deed.en
 "Drop" © Ashtar Command, 2005
 All Rights Reserved
 -----------------
+This game uses the following sound files from The Freesound Project:
+
+"mouse_click" from THE_bizniss
+"jaw harp 6" from stomachache
+
+(freesound.org)
+http://creativecommons.org/licenses/sampling+/1.0/
+-----------------
 Inconsolata
 http://www.levien.com/type/myfonts/inconsolata.html
 Copyright © 2006-2007 Raph Levien with Reserved Font Name Inconsolata.

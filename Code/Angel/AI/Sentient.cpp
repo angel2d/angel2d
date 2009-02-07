@@ -13,19 +13,14 @@ Sentient::Sentient()
 void Sentient::Update(float dt)
 {
 	_brain.Update( dt );
-	PhysicsEventActor::Update(dt);
+	PhysicsActor::Update(dt);
 }
 
 void Sentient::Render()
 {
-	PhysicsEventActor::Render();
+	PhysicsActor::Render();
 	_pathFinder.Render();
 	_brain.Render();
 }
 
-void SentientFactoryDelegate::InitializeDelegate()
-{
-	PhysicsEventActorFactoryDelegate::InitializeDelegate();
-	_shapeType = PhysicsActor::SHAPETYPE_CIRCLE;
-}
 

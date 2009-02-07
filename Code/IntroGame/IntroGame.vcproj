@@ -363,6 +363,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DemoScreenPathfinding.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreenPathfinding.h"
+				>
+			</File>
+			<File
 				RelativePath=".\DemoScreenParticleActors.cpp"
 				>
 			</File>

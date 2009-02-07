@@ -2,10 +2,7 @@
 
 #include "../Infrastructure/Camera.h"
 #include "../Infrastructure/Console.h"
-#include "../Infrastructure/DeveloperConsole.h"
-#include "../Actors/ActorFactory.h"
 #include "../AI/SpatialGraph.h"
-#include "../CollisionResponse/CollisionResponse.h"
 #include "../Input/Input.h"
 #include "../Input/MouseInput.h"
 #include "../Input/Controller.h"
@@ -49,7 +46,7 @@ World& World::GetInstance()
 void ReloadLevel( const String& levelName )
 {
 	theWorld.UnloadAll();
-	AF_LoadLevel( levelName );
+	theWorld.LoadLevel( levelName );
 }
 
 
@@ -133,18 +130,11 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	//initialize singletons
 	theInput;
 	theSound;
-	theActorFactory;
 	theSpatialGraph;
-
-	theDevConsole.ExecConfigFile( "autoexec" );
-
-	CONSOLE_DECLARECMDSTATIC( UnloadAll, UnloadAllStatic );
-	CONSOLE_DECLARECMDSTATIC( ReloadLevel, ReloadLevel );
 	
 	RegisterConsole(new TestConsole());
 
 	PythonScriptingModule::Initialize();
-	//RegisterConsole(&theDevConsole);
 	
 	return _initialized = true;
 }
@@ -169,25 +159,14 @@ bool World::SetupPhysics(Vector2 gravity, Vector2 maxVertex, Vector2 minVertex)
 	_physicsDebugDraw = new /*Physics*/DebugDraw();
 	_physicsWorld->SetDebugDraw(_physicsDebugDraw);
 
-	CONSOLE_DECLAREVAR( phys_gravity );
-	if( phys_gravity->HasVal() )
-	{
-		Vector2 grav = phys_gravity->GetVector2Val();
-		_physicsWorld->SetGravity(b2Vec2( grav.X, grav.Y ));
-	}
-
 	return _physicsSetUp = true;
 }
 
 
 void World::Destroy()
 {
-	//theSound.Destroy();
+	theSound.Shutdown();
 	theInput.Destroy();
-	//theConsole.Destroy();
-	theActorFactory.Destroy();
-	//rb - Why is this commented out?
-	//theSpatialGraph.Destroy();
 	
 	PythonScriptingModule::Finalize();
 
@@ -268,14 +247,6 @@ void World::Simulate(bool simRunning)
 
 		//Clear out the collision contact points
 		_contactPointCount = 0;
-
-		//Update gravity
-		CONSOLE_ONCVARCHANGED( phys_gravity, Vector2, 
-		{
-			GetPhysicsWorld().SetGravity(b2Vec2( _cvarNewVal.X, _cvarNewVal.Y ));
-			if( _cvarOldVal == Vector2(0) )
-				WakeAllPhysics();
-		})
 		
 		//rb - Flag that the _elements array is locked so we don't try to add any
 		// new actors during the update.
@@ -326,9 +297,6 @@ void World::RunPhysics(float frame_dt)
 			physActor->_syncPosRot(vec.x, vec.y, MathUtil::ToDegrees(b->GetAngle()));
 		}
 	}
-
-	// TODO: This doesn't currently do anything -- redo it via messages
-	theCollisionResponseFactory.ProcessCollisions();
 }
 
 void World::bufferContactPoint(const b2ContactPoint* point)
@@ -355,8 +323,7 @@ void World::bufferContactPoint(const b2ContactPoint* point)
 	{
 		if (_currentTouches[pa1].find(pa2) != _currentTouches[pa1].end())
 		{
-			Message* coll = new Message("CollisionWith" + pa1->GetName(), pa2);
-			coll->SetPayload(cp);
+			TypedMessage<b2ContactPoint*>* coll = new TypedMessage<b2ContactPoint*>("CollisionWith" + pa1->GetName(), cp, pa2);
 			theSwitchboard.Broadcast(coll);
 		}
 		_currentTouches[pa1].insert(pa2);
@@ -365,8 +332,7 @@ void World::bufferContactPoint(const b2ContactPoint* point)
 	{
 		if (_currentTouches[pa2].find(pa1) != _currentTouches[pa2].end())
 		{
-			Message* coll = new Message("CollisionWith" + pa2->GetName(), pa1);
-			coll->SetPayload(cp);
+			TypedMessage<b2ContactPoint*>* coll = new TypedMessage<b2ContactPoint*>("CollisionWith" + pa2->GetName(), cp, pa1);
 			theSwitchboard.Broadcast(coll);
 		}
 		_currentTouches[pa2].insert(pa1);
@@ -423,6 +389,7 @@ void World::CleanupRenderables()
 	{
 		if ((*it)->IsDestroyed())
 		{
+			//delete *it; 
 			it = it.erase(it);
 		}
 		else
@@ -476,11 +443,6 @@ const bool World::StartSimulation()
 const bool World::StopSimulation()
 {
 	return _simulateOn = false;
-}
-
-void World::IdleCallback()
-{
-	//glutPostRedisplay();
 }
 
 void World::ResetWorld()
@@ -610,16 +572,6 @@ const int World::GetLayerByName(String name)
 	{
 		return 0;
 	}
-}
-
-void World::AddCollisionListener(CollisionListener* listener)
-{
-	_collisionListeners.insert(listener);
-}
-
-void World::RemoveCollisionListener(CollisionListener* listener)
-{
-	_collisionListeners.erase(listener);
 }
 
 void World::WakeAllPhysics()

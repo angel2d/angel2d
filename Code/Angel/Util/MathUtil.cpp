@@ -174,25 +174,10 @@ Vector2 MathUtil::ScreenToWorld(Vec2i screenCoordinates)
 
 Vector2 MathUtil::ScreenToWorld(int x, int y)
 {
-	float worldWidth, worldHeight;
-	int screenWidth = theCamera.GetWindowWidth();
-	int screenHeight = theCamera.GetWindowHeight();
-	float aspect = (float)screenWidth / (float)screenHeight;
-	if (screenWidth > screenHeight)
-	{
-		//window is wider than it is tall; radius goes with height
-		worldHeight = theCamera.GetViewRadius() * 2.0f;
-		worldWidth = worldHeight * aspect;
-	}
-	else
-	{
-		//window is taller than it is wide; radius goes with width
-		worldWidth = theCamera.GetViewRadius() * 2.0f;
-		worldHeight = worldWidth / aspect;
-	}
+	Vector2 worldDimensions = GetWorldDimensions();
 
-	float worldX = ( ((float)x / (float)screenWidth) - 0.5f ) * worldWidth;
-	float worldY = ( 0.5f - ((float)y / (float)screenHeight) ) * worldHeight;
+	float worldX = ( ((float)x / (float)theCamera.GetWindowWidth()) - 0.5f ) * worldDimensions.X;
+	float worldY = ( 0.5f - ((float)y / (float)theCamera.GetWindowHeight()) ) * worldDimensions.Y;
 	
 	Vector2 camPos = theCamera.GetPosition();
 	return Vector2(worldX + camPos.X, worldY + camPos.Y);
@@ -209,6 +194,16 @@ Vector2 MathUtil::WorldToScreen(float x, float y)
 	x -= camPos.X;
 	y -= camPos.Y;
 
+	Vector2 worldDimensions = GetWorldDimensions();
+
+	float screenX = theCamera.GetWindowWidth() * ( (x / worldDimensions.X) + 0.5f );
+	float screenY = theCamera.GetWindowHeight() - (theCamera.GetWindowHeight() * ( 0.5f + (y / worldDimensions.Y) ));
+
+	return Vector2(screenX, screenY);
+}
+
+Vector2 MathUtil::GetWorldDimensions()
+{
 	float worldWidth, worldHeight;
 	int screenWidth = theCamera.GetWindowWidth();
 	int screenHeight = theCamera.GetWindowHeight();
@@ -225,11 +220,22 @@ Vector2 MathUtil::WorldToScreen(float x, float y)
 		worldWidth = theCamera.GetViewRadius() * 2.0f;
 		worldHeight = worldWidth / aspect;
 	}
+	
+	return Vector2(worldWidth, worldHeight); 
+}
 
-	float screenX = screenWidth * ( (x / worldWidth) + 0.5f );
-	float screenY = screenHeight - (screenHeight * ( 0.5f + (y / worldHeight) ));
+float MathUtil::PixelsToWorldUnits(float pixels)
+{
+	float ratio = theCamera.GetWindowWidth() / GetWorldDimensions().X; 
+	
+	return pixels / ratio; 
+}
 
-	return Vector2(screenX, screenY);
+float MathUtil::WorldUnitsToPixels(float worldUnits)
+{
+	float ratio = theCamera.GetWindowWidth() / GetWorldDimensions().X; 
+	
+	return worldUnits * ratio; 
 }
 
 MathUtil::AABBSplittingAxis MathUtil::GetMajorAxis(const BoundingBox& source)

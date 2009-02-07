@@ -74,28 +74,3 @@ private:
 	void _syncPosRot(float x, float y, float rotation);
 };
 
-class PhysicsActorFactoryDelegate : public ActorFactoryDelegate
-{
-public:
-	virtual void RegisterOriginalConsoleCommands();
-	virtual Actor* CreateInstance(); 
-	virtual void FinishInstance(Actor* pActor );
-
-	virtual void SetDensity( float density );
-	virtual void SetFriction(float friction);
-	virtual void SetRestitution(float restitution);
-	virtual void SetShapeType(PhysicsActor::eShapeType shapeType);
-	virtual void SetIsSensor(bool isSensor);
-	virtual void AddCollisionFlag( int flagVal );
-	virtual void SetGroupIndex(int groupIndex);
-
-protected:
-	virtual void InitializeDelegate();
-	float						_density;
-	float						_friction;
-	float						_restitution;
-	PhysicsActor::eShapeType	_shapeType;
-	int							_collisionFlags;
-	bool						_isSensor;
-	int							_groupIndex;
-};

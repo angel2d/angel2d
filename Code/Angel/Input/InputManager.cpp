@@ -1,7 +1,6 @@
 #include "../Input/InputManager.h"
 
 #include "../Input/Controller.h"
-#include "../Infrastructure/DeveloperConsole.h"
 #include "../Messaging/Switchboard.h"
 #include "../Util/StringUtil.h"
 #include "../Util/FileUtil.h"
@@ -65,11 +64,6 @@ void InputManager::Initialize()
 	_keyNameTable[ToUpper(text)] = e;
 #include "InputKeys.h"
 #undef USEINPUTKEY
-
-	CONSOLE_DECLARECMDMETHOD( Bind, this, InputManager, BindKeyCommand );
-	CONSOLE_DECLARECMDMETHOD( UnBind, this, InputManager, UnbindKeyCommand );
-
-	CONSOLE_DECLARECMDSTATIC( TestBinding, TestBinding );
 
 	//Clear Xbox Button States
 	ClearXboxButtonStates();
@@ -223,11 +217,6 @@ XboxButtonBindRecord sBindRecords[] =
 
 void InputManager::HandleControl( Controller& controller )
 {
-	//Ignore XBOX input when the console is live if you want
-	CONSOLE_DECLAREVAR(in_disableControllerWithConsoleDown);
-	if( in_disableControllerWithConsoleDown->GetIntVal() == 1 && theDevConsole.IsEnabled() )
-		return;
-
 	int numXboxButtons = sizeof( sBindRecords ) / sizeof(sBindRecords[0] );
 
 	for( int i = 0; i < numXboxButtons; i++ )

@@ -38,7 +38,10 @@ FMOD_RESULT F_CALLBACK SoundDevice::FMOD_SoundCallback(FMOD_CHANNEL *channel, FM
 	//FMOD_CHECKED( soundChannel->getUserData(&userData) )
 	//assert(userData);
 
-	theSound.soundCallback.Execute( reinterpret_cast<SOUND_HANDLE>(soundChannel) );
+	if (theSound.soundCallback.GetInstance() && theSound.soundCallback.GetFunction())
+	{
+		theSound.soundCallback.Execute( reinterpret_cast<SOUND_HANDLE>(soundChannel) );		
+	}
 
 	return FMOD_OK;
 }

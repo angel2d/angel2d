@@ -2,12 +2,12 @@
 
 #include "../AI/Sentient.h"
 #include "../Infrastructure/TextRendering.h"
-#include "../Infrastructure/DeveloperConsole.h"
 #include "../Util/MathUtil.h"
 
 AIBrain::AIBrain()
 {
 	_current = _brainStateTable.end();
+	_drawMe = false;
 }
 
 AIBrain::~AIBrain()
@@ -74,8 +74,7 @@ void AIBrain::GotoState( const String& id )
 
 void AIBrain::Render()
 {
-	CONSOLE_DECLAREVAR( ai_drawbrain );
-	if( ai_drawbrain->GetIntVal() == 0 )
+	if( !_drawMe )
 		return;
 
 	if( _current != _brainStateTable.end() )
@@ -95,6 +94,12 @@ void AIBrain::GotoNullState()
 
 	_current = _brainStateTable.end();
 }
+
+void AIBrain::EnableDrawing(bool enable)
+{
+	_drawMe = enable;
+}
+
 
 void AIBrainState::Update(float dt)
 {
@@ -153,4 +158,3 @@ void AIBrainState::StopEvent( AIEvent* pEvent )
 	pEvent->Stop();
 	delete pEvent;
 }
-

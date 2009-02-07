@@ -5,33 +5,174 @@
 
 #define theCamera Camera::GetInstance()
 
-//Camera is an actor so we can add weight and movement to it as easily as
-//  we do with actors
+///The class that handles displaying the appropriate viewport.
+/** 
+ * The Camera class is how you control what your players see at any time. 
+ *  It uses the singleton pattern; you can't actually declare a new instance
+ *  of a Camera. To access the Camera in your world, use "theCamera" to retrieve
+ *  the singleton object. "theCamera" is defined in both C++ and Python. 
+ * 
+ * If you're not familiar with the singleton pattern, this paper is a good 
+ *  starting point. (Don't be afraid that it's written by Microsoft.)
+ * 
+ * http://msdn.microsoft.com/en-us/library/ms954629.aspx
+ * 
+ * Camera is an Actor so that you can apply motion to it the same way you would
+ *  any other Actor in your world. 
+ * 
+ * By default the camera is positioned 10 units away from the origin, looking
+ *  down the Z-axis (0.0, 0.0, 10.0). The visible world stretches from 
+ *  (-13.3, -10) to (13.3, 10).
+ * 
+ * Whenever the Camera updates its position or the viewport, it broadcasts a 
+ *  "CameraChange" Message that you can subscribe to if you need notifications. 
+ */
 class Camera : public Actor 
 {
 public:
+	/**
+	 * Used to access the singleton instance of this class. As a shortcut, 
+	 *  you can just use "theCamera". 
+	 * 
+	 * @return The singleton
+	 */
 	static Camera &GetInstance();
+	
+	/**
+	 * The callback used by GLFW to alert us when the user changes the size
+	 *  of the window. You shouldn't need to mess with this. 
+	 * 
+	 * @param w New width in pixels
+	 * @param h New height in pixels
+	 */
 	static void ResizeCallback(int w, int h);
-
+	
+	/**
+	 * Deletes and NULLs out the singleton -- should only get called at World
+	 *  destruction when the program is exiting. 
+	 */
 	void Destroy();
-
+	
+	/**
+	 * Makes sure the view matrix is properly set up on every frame. Called 
+	 *  by the world before rendering anything else. 
+	 */
 	void Render();
-
+	
+	/**
+	 * Resets the viewport to its default. 
+	 */
 	void Reset();
-
+	
+	/**
+	 * Get the window's current height. 
+	 * 
+	 * @return Height in pixels. 
+	 */
 	const int GetWindowHeight();
+	
+	/**
+	 * Get the window's current width. 
+	 * 
+	 * @return Width in pixels.
+	 */
 	const int GetWindowWidth();
+	
+	/**
+	 * If you were to draw a circle inscribed in the viewport, this function
+	 *  will let you know the size of its radius. This is useful for determining
+	 *  how much of the world is currently being displayed. 
+	 * 
+	 * Note that if you have a non-square viewport, the circle is bounded by
+	 *  the \b smaller dimension.
+	 * 
+	 * @return The radius size in GL units. 
+	 */
 	const double GetViewRadius();
+	
+	/**
+	 * Get the world coordinate of the top-right point of the window. 
+	 * 
+	 * @return The world coordinate (GL units).
+	 */
 	const Vector2 GetWorldMaxVertex();
+	
+	/**
+	 * Get the world coordinate of the bottom-left point of the window. 
+	 * 
+	 * @return The world cooredinate (GL units).
+	 */
 	const Vector2 GetWorldMinVertex();
 
+	/**
+	 * Set the position of the camera. Note that the camera is the only
+	 *  Actor that can take a Z coordinate for its position -- you can zoom
+	 *  in and out. 
+	 * 
+	 * @param x The new X position for the camera
+	 * @param y The new Y position for the camera
+	 * @param z The new Z position for the camera
+	 */
 	virtual void SetPosition(float x, float y, float z);
+	
+	/**
+	 * Set the position of the camera. Using this two-dimensional function,
+	 *  the position on the Z-axis stays fixed. 
+	 * 
+	 * @param x The new X position for the camera 
+	 * @param y The new Y position for the camera
+	 */
 	virtual void SetPosition(float x, float y);
-	virtual void SetPosition(Vector2 v2);
+	
+	/**
+	 * Set the position of the camera. Note that the camera is the only
+	 *  Actor that can take a Z coordinate for its position -- you can zoom
+	 *  in and out. 
+	 *
+	 * @param v3 The new position for the camera. 
+	 */
 	virtual void SetPosition(Vector3 v3);
+	
+	/**
+	 * Set the position of the camera. Using this two-dimensional function, 
+	 *  the position on the Z-axis stays fixed. 
+	 * 
+	 * @param v2 The new position for the Camera
+	 */
+	virtual void SetPosition(Vector2 v2);
+	
+	/**
+	 * Gets the position of the Camera. Only returns the X and Y position so
+	 *  as to fit with the other GetPosition functions in the engine. To get
+	 *  the Z coordinate, see below. 
+	 * 
+	 * @return The (X, Y) position of the camera. 
+	 */
 	virtual Vector2 GetPosition();
+	
+	/**
+	 * Get the position of the camera on the Z-axis. 
+	 * 
+	 * @return The camera's Z coordinate. 
+	 */
 	virtual float GetZ();
+	
+	/**
+	 * Set the point towards which the camera should aim. Since Angel is a 
+	 *  predominantly 2D world, be very careful setting this too far off of
+	 *  perpendicular. 
+	 * 
+	 * @param x The X coordinate at which the Camera will wim. 
+	 * @param y The Y coordinate at which the Camera will wim. 
+	 * @param z The Z coordinate at which the Camera will wim. 
+	 */
 	virtual void SetViewCenter(float x, float y, float z);
+	
+	/**
+	 * Get the current look-at target of the camera. 
+	 * 
+	 * @return The point where the Camera is currently looking. 
+	 */
 	virtual Vector3 GetViewCenter();
 
 protected:

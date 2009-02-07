@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../Physics/PhysicsEventActor.h"
 #include "../AI/PathFinder.h"
 #include "../AI/Brain.h"
 #include "../Util/StringUtil.h"
+#include "../Physics/PhysicsActor.h"
 
-class Sentient : public PhysicsEventActor
+class Sentient : public PhysicsActor
 {
 public:
 	Sentient();
@@ -24,14 +24,5 @@ protected:
 	AIBrain			_brain;
 };
 
-class SentientFactoryDelegate : public PhysicsEventActorFactoryDelegate
-{
-public:
-	virtual void RegisterOriginalConsoleCommands() {}
-	virtual Actor* CreateInstance() {return new Sentient(); }
 
-protected:
-	virtual void InitializeDelegate();
-
-};
 

@@ -21,9 +21,11 @@ void DemoScreenParticleActors::Start()
 	pa->SetMaxParticles(500); //The maximum number of particles this system will ever handle. 
 	pa->SetParticlesPerSecond(10.0f); //Emission Rate
 	pa->SetParticleLifetime(1.5f); //How long each particles lasts before disappearing
-	pa->SetSpread(3.14159f); //How far the particles can travel over their lifetime
+	pa->SetSpread(MathUtil::Pi); //The angle in radians at which particles will be emitted. 
 	pa->SetEndScale(1.0f); //If you want the particles to change size over their lifetimes
-	pa->SetEndAlpha(0.0f); //Our particles disappear over time
+	Color endColor(1.0f, 1.0f, 1.0f, 0.0f);
+	pa->SetEndColor(endColor); //Our particles disappear over time
+	pa->SetEndScale(2.0f);	
 	pa->SetSpeedRange(3.0f, 4.0f); //The minimum and maximum range of speeds (so you can have
 								   // some variation).
 	pa->SetGravity(Vector2::Zero); //You can pull the particles in a particular direction (default is

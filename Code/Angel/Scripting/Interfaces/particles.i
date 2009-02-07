@@ -13,7 +13,7 @@ public:
 	void SetSystemLifetime(float lifetime);
 	void SetParticleLifetime(float lifetime);
 	void SetSpread(float radians);
-	void SetEndAlpha(float alpha);
+	//void SetEndAlpha(float alpha);
 	void SetEndScale(float scale);
 	void SetEndColor(Color color);
 	void SetSpeedRange(float minSpeed, float maxSpeed);

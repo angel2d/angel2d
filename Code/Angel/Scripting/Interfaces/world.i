@@ -12,9 +12,6 @@ public:
 	void ResetWorld();
 	
 	void StopGame();
-//	
-//	const bool StartSimulation();
-//	const bool StopSimulation();
 	
 	float GetCurrentTimeSeconds();
 	

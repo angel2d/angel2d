@@ -4,7 +4,7 @@
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"
 #include "../Messaging/Switchboard.h"
-
+#include "../Util/DrawUtil.h"
 
 TextActor::TextActor(String fontNickname, String displayString, TextAlignment align, int lineSpacing)
 {
@@ -13,6 +13,8 @@ TextActor::TextActor(String fontNickname, String displayString, TextAlignment al
 	_alignment = align;
 	_lineSpacing = lineSpacing;
 	_screenPosition = Vector2::Zero;
+	_extents.Min = Vector2::Zero;
+	_extents.Max = Vector2::Zero;
 
 	SetDisplayString(displayString);
 	
@@ -103,6 +105,11 @@ void TextActor::ReceiveMessage(Message* m)
 	}
 }
 
+const BoundingBox TextActor::GetBoundingBox()
+{
+	return _extents; 
+}
+
 void TextActor::CalculatePosition()
 {
 	Vector2 largest = Vector2::Zero;
@@ -146,5 +153,35 @@ void TextActor::CalculatePosition()
 		
 		currentY += largest.Y + _lineSpacing;
 		it++;
+	}
+	
+	//recalculate extents
+	float minX, minY, maxX, maxY; 
+	switch(_alignment)
+	{
+		case TXT_Left:
+			minX = _position.X; 
+			minY = _position.Y - (MathUtil::PixelsToWorldUnits(largest.Y + _lineSpacing) * (_displayStrings.size() - 1));
+			maxX = _position.X + MathUtil::PixelsToWorldUnits(largest.X);
+			maxY = _position.Y + MathUtil::PixelsToWorldUnits(largest.Y);
+			_extents.Min = Vector2(minX, minY); 
+			_extents.Max = Vector2(maxX, maxY); 
+			break;
+		case TXT_Center:
+			minX = _position.X - (MathUtil::PixelsToWorldUnits(largest.X) * 0.5f); 
+			minY = _position.Y - (MathUtil::PixelsToWorldUnits(largest.Y + _lineSpacing) * (_displayStrings.size() - 1));
+			maxX = _position.X + (MathUtil::PixelsToWorldUnits(largest.X) * 0.5f);
+			maxY = _position.Y + MathUtil::PixelsToWorldUnits(largest.Y);
+			_extents.Min = Vector2(minX, minY); 
+			_extents.Max = Vector2(maxX, maxY); 
+			break;
+		case TXT_Right:
+			minX = _position.X - MathUtil::PixelsToWorldUnits(largest.X); 
+			minY = _position.Y - (MathUtil::PixelsToWorldUnits(largest.Y + _lineSpacing) * (_displayStrings.size() - 1));
+			maxX = _position.X;
+			maxY = _position.Y + MathUtil::PixelsToWorldUnits(largest.Y);
+			_extents.Min = Vector2(minX, minY); 
+			_extents.Max = Vector2(maxX, maxY); 
+			break;
 	}
 }

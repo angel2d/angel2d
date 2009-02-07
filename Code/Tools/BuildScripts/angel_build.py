@@ -210,6 +210,7 @@ def generate_typemaps(files, interface_directory):
     
     need_to_generate = False
     out_file_path = os.path.join(os.getcwd(), "build_cache", "typemaps.txt")
+    print out_file_path
     if not os.path.exists(out_file_path):
         if not os.path.exists(os.path.dirname(out_file_path)):
             os.makedirs(os.path.dirname(out_file_path))
@@ -227,5 +228,9 @@ def generate_typemaps(files, interface_directory):
             out_file.close()
             need_to_generate = True
     
+    interface_file = os.path.join(interface_directory, "inheritance.i")
+    if not os.path.exists(interface_file):
+        need_to_generate = True
+    
     if need_to_generate:
-        _write_typemaps(os.path.join(interface_directory, "inheritance.i"), chains)
+        _write_typemaps(interface_file, chains)

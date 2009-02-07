@@ -35,6 +35,8 @@ public:
 	};
 
 	void Render();
+	static void EnableDrawPaths(bool enable);
+	
 private:
 	void InitializeStates();
 
@@ -51,6 +53,8 @@ private:
 	FindNextMoveState* _states[PFMS_COUNT];
 
 	friend class FindNextMoveState;
+	
+	static bool _drawPaths;
 
 };
 

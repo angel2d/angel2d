@@ -1,6 +1,5 @@
 #include "../Infrastructure/Log.h"
 
-#include "../Infrastructure/DeveloperConsole.h"
 #include "../Util/MathUtil.h"
 #include "../Util/FileUtil.h"
 
@@ -30,41 +29,14 @@ void CompoundLog::Log( const String& val )
 
 void ConsoleLog::Log( const String& val)
 {
-	//Split by lines
-	StringList splitByLines = SplitString(val, "\n" );
-	for( unsigned int i = 0; i < splitByLines.size(); i++ )
-	{
-		_logLines.push_back( splitByLines[i] );
-	}
-}
-
-const String& ConsoleLog::GetLogLine( int lineIndex )
-{
-	static String emptyLine;
-	if( _logLines.size() == 0 )
-		return emptyLine;
-
-	lineIndex = MathUtil::Clamp( lineIndex, 0, (int)(_logLines.size() - 1) );
-	return _logLines[lineIndex];
-}
-
-int ConsoleLog::NumLogLines()
-{
-	return _logLines.size();
+	theWorld.GetConsole()->WriteToOutput(val);
 }
 
 String FileLog::MakeLogFileName( const String& fileName )
 {
-	CONSOLE_DECLAREVAR( g_logDirectory );
-
 	String logDir = "Logs//";
-	if( g_logDirectory->HasVal() )
-	{
-		//overwrite log dir
-		logDir = g_logDirectory->GetStringVal();
-	}
 
-	return "";//logDir + fileName + ".log";
+	return logDir + fileName + ".log";
 }
 
 
