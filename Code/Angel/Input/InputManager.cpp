@@ -89,32 +89,6 @@ void InputManager::Initialize()
 	}
 }
 
-void InputManager::BindKeyCommand( const String& input )
-{
-	if( input.length() == 0 )
-		return;
-
-	StringList bindInput = SplitString( input );
-	if( bindInput.size() < 2 )
-		return;
-
-	String car, cdr;
-	GetCarCdr( bindInput, car, cdr );
-
-	BindKey( car, cdr );
-}
-
-void InputManager::UnbindKeyCommand( const String& input )
-{
-	if( input.length() == 0 )
-		return;
-
-	StringList bindInput = SplitString( input );
-
-	UnbindKey( bindInput[0] );
-}
-
-
 InputManager::~InputManager()
 {
 	for( BindingTable::iterator itr = _bindingTable.begin(); itr != _bindingTable.end(); itr++ )

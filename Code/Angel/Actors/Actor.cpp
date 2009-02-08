@@ -187,33 +187,33 @@ const actorDrawShape Actor::GetDrawShape()
 	return _drawShape;
 }
 
-void Actor::MoveTo(Vector2 newPosition, float duration, String onCompletionMessage)
+void Actor::MoveTo(Vector2 newPosition, float duration, bool smooth, String onCompletionMessage)
 {
-	_positionInterval = Interval<Vector2>(_position, newPosition, duration);
+	_positionInterval = Interval<Vector2>(_position, newPosition, duration, smooth);
 	_positionIntervalMessage = onCompletionMessage;
 }
 
-void Actor::RotateTo(float newRotation, float duration, String onCompletionMessage)
+void Actor::RotateTo(float newRotation, float duration, bool smooth, String onCompletionMessage)
 {
-	_rotationInterval = Interval<float>(_rotation, newRotation, duration);
+	_rotationInterval = Interval<float>(_rotation, newRotation, duration, smooth);
 	_rotationIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeColorTo(Color newColor, float duration, String onCompletionMessage)
+void Actor::ChangeColorTo(Color newColor, float duration, bool smooth, String onCompletionMessage)
 {
-	_colorInterval = Interval<Color>(_color, newColor, duration);
+	_colorInterval = Interval<Color>(_color, newColor, duration, smooth);
 	_colorIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeSizeTo(Vector2 newSize, float duration, String onCompletionMessage)
+void Actor::ChangeSizeTo(Vector2 newSize, float duration, bool smooth, String onCompletionMessage)
 {
-	_sizeInterval = Interval<Vector2>(_size, newSize, duration);
+	_sizeInterval = Interval<Vector2>(_size, newSize, duration, smooth);
 	_sizeIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeSizeTo(float newSize, float duration, String onCompletionMessage)
+void Actor::ChangeSizeTo(float newSize, float duration, bool smooth, String onCompletionMessage)
 {
-	ChangeSizeTo(Vector2(newSize, newSize), duration, onCompletionMessage);
+	ChangeSizeTo(Vector2(newSize, newSize), duration, smooth, onCompletionMessage);
 }
 
 void Actor::Render()

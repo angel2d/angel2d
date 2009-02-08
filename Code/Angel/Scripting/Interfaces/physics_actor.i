@@ -21,7 +21,6 @@ public:
 	void SetShapeType(eShapeType shapeType);
 	void SetIsSensor(bool isSensor);
 	void SetGroupIndex(int groupIndex);
-	void SetCollisionFlags(int collisionFlags);
 	void SetFixedRotation(bool fixedRotation);
 	
 	virtual void InitPhysics();

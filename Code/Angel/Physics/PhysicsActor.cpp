@@ -14,7 +14,6 @@ _restitution(0.0f),
 _shapeType(SHAPETYPE_BOX),
 _isSensor(false),
 _groupIndex(0), 
-_collisionFlags(-1), 
 _fixedRotation(false)
 {
 }
@@ -76,14 +75,6 @@ void PhysicsActor::SetGroupIndex(int groupIndex)
 		printf("WARNING: SetGroupIndex() had no effect - don't change this actor after physics have been initialized.");
 }
 
-void PhysicsActor::SetCollisionFlags(int collisionFlags)
-{
-	if (_physBody == NULL)
-		_collisionFlags = collisionFlags;
-	else
-		printf("WARNING: SetCollisionFlags() had no effect - don't change this actor after physics have been initialized.");
-}
-
 void PhysicsActor::SetFixedRotation(bool fixedRotation)
 {
 	if (_physBody == NULL)
@@ -100,7 +91,7 @@ void PhysicsActor::InitPhysics()
 		std::cout << "ERROR: World physics must be initialized before Actor's." << std::endl;
 		return;
 	}
-
+	
 	b2CircleDef circle;
 	b2PolygonDef box;
 	b2ShapeDef* shape = 0;
@@ -122,26 +113,21 @@ void PhysicsActor::InitPhysics()
 		std::cout << "ERROR: Invalid shape type given." << std::endl;
 		return;
 	}
-
+	
 	shape->density = _density;
 	shape->friction = _friction;
 	shape->restitution = _restitution;
-	//shape->groupIndex = groupIndex;
+	shape->filter.groupIndex = _groupIndex;
 	shape->isSensor = _isSensor;
-	if( _collisionFlags != -1 )
-	{
-		//shape->maskBits = (short)collisionFlags;
-		//shape->categoryBits = (short)collisionFlags;
-	}
-
+	
 	InitShape( shape );
-
+	
 	b2BodyDef bd;
 	bd.userData = this;
 	bd.position.Set(_position.X, _position.Y);
 	bd.angle = MathUtil::ToRadians(_rotation);
 	bd.fixedRotation = _fixedRotation;
-
+	
 	_physBody = theWorld.GetPhysicsWorld().CreateBody(&bd);
 	_physBody->CreateShape(shape);
 	_physBody->SetMassFromShapes();

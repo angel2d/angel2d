@@ -31,11 +31,11 @@ public:
 	const float GetAlpha();
 //    void SetDrawShape( actorDrawShape DrawShape );
 	
-	void MoveTo(Vector2 newPosition, float duration, String onCompletionMessage="");
-	void RotateTo(float newRotation, float duration, String onCompletionMessage="");
-	void ChangeColorTo(Color newColor, float duration, String onCompletionMessage="");
-	void ChangeSizeTo(Vector2 newSize, float duration, String onCompletionMessage="");
-	void ChangeSizeTo(float newSize, float duration, String onCompletionMessage="");
+	void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeColorTo(Color newColor, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeSizeTo(Vector2 newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	
 //	const int GetSpriteTexture(int frame = 0);
 	

@@ -6,24 +6,123 @@
 
 #include <queue>
 
+//Singleton shortcut
 #define theSwitchboard Switchboard::GetInstance()
 
+///The central class which handles delivery of Messages
+/** 
+ * This class is where all Messages pass through to get to their subscribers.
+ *  It manages subscribers lists, delivery, and broadcast of messages. 
+ * 
+ * Like the World, it uses the singleton pattern; you can't actually declare 
+ *  a new instance of a Switchboard. To access messaging in your world, use 
+ *  "theSwitchboard" to retrieve the singleton object. "theSwitchboard" is 
+ *  defined in both C++ and Python. 
+ * 
+ * If you're not familiar with the singleton pattern, this paper is a good 
+ *  starting point. (Don't be afraid that it's written by Microsoft.)
+ * 
+ * http://msdn.microsoft.com/en-us/library/ms954629.aspx
+ */
 class Switchboard
 {
 public:
+	/**
+	 * Used to access the singleton instance of this class. As a shortcut, 
+	 *  you can just use "theSwitchboard". 
+	 * 
+	 * @return The singleton
+	 */
 	static Switchboard& GetInstance();
 	
+	/**
+	 * Send a Message to all the MessageListeners who have subscribed to 
+	 *  Messages of that particular name. All Messages are sent at the end
+	 *  of the current frame, outside the Update loop. (Which means you can
+	 *  safely remove objects from the World in response to a Message.)
+	 * 
+	 * @param message The message to send
+	 */
 	void Broadcast(Message* message);
+	
+	/**
+	 * Lets you send a Message after a designated delay. Oftentimes you want
+	 *  something to happen a little while *after* an event, and it can be
+	 *  be easier to simply defer the sending of the Message rather than
+	 *  make the MessageListener responsible for implementing the delay. 
+	 * 
+	 * @param message The message to send
+	 * @param delay Amount of time (in seconds) to wait before sending
+	 */
 	void DeferredBroadcast(Message* message, float delay);
 	
+	/**
+	 * Takes the same form as the Renderable::Update function, but Switchboard
+	 *  is not a Renderable. This function gets called by the World to let
+	 *  the Switchboard know about the passage of time so it can manage 
+	 *  deferred broadcasts. 
+	 * 
+	 * @param dt The amount of time elapsed since the last frame
+	 */
 	void Update(float dt);
 	
+	/**
+	 * Sign a MessageListener up to receive notifications when Messages of
+	 *  a specific class are broadcast through the Switchboard. 
+	 * 
+	 * @param subscriber The MessageListener to sign up
+	 * @param messageType The name of the Message it's interested in
+	 * @return True if the MessageListener was successfully subscribed -- 
+	 *   could be false if the subscription was attempted while messages were
+	 *   being delivered (in which case the subscription will start when this
+	 *   round of delivery is done) or if the MessageListener was already 
+	 *   subscribed to Messages of that name. 
+	 */
 	const bool SubscribeTo(MessageListener* subscriber, String messageType);
+	
+	/**
+	 * Lets a MessageListener stop receiving notifications of specific 
+	 *  name. Actors, GameManagers, and classes derived from them will 
+	 *  automatically unsubscribe from all their Messages when their
+	 *  destructors are called, but if you're implementing MessageListener on
+	 *  another class, make sure to have it Unsubscribe from all its Messages
+	 *  when it gets deleted. Otherwise, you'll get a crash when the
+	 *  Switchboard tries to send a Message to some deallocated memory. 
+	 * 
+	 * @param subscriber The MessageListener that doesn't want to get these
+	 *   Messages anymore
+	 * @param messageType The name of the Message they're tired of hearing 
+	 *   about
+	 * @return True if the MessageListener was successfully unsubscribed --
+	 *   could be false if the unsubscription was attempted while messages 
+	 *   were being delivered (in which case the subscription will be removed
+	 *   when this round of delivery is done) or if the MessageListener was
+	 *   not subscribed to Messages of that name. 
+	 */
 	const bool UnsubscribeFrom(MessageListener* subscriber, String messageType);
 	
-	const std::set<MessageListener*> GetSubscribersTo(String messageType);
+	/**
+	 * Get a list of all MessageListeners subscribed to Messages with a 
+	 *  given name. 
+	 * 
+	 * @param messageName The Message you care about
+	 * @return A std::set of objects subscribed
+	 */
+	const std::set<MessageListener*> GetSubscribersTo(String messageName);
+	
+	/**
+	 * Get a list of all Message subscriptions for a certain MessageListener
+	 * 
+	 * @param subscriber The MessageListener you care about
+	 * @return A StringSet of all their subscriptions
+	 */
 	const StringSet GetSubscriptionsFor(MessageListener* subscriber);
 	
+	/**
+	 * Immediately sends all Messages to the appropriate subscribers. Called
+	 *  by the World at the end of each frame; you shouldn't call this 
+	 *  directly in your game code. 
+	 */
 	void SendAllMessages();
 	
 protected:

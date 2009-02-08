@@ -116,14 +116,14 @@ void MazeFinder::GoTo(Vector2 newDestination)
 
 void MazeFinder::ReceiveMessage(Message *message)
 {
-	if (message->GetMessageType() == "MazeFinderPathPointReached")
+	if (message->GetMessageName() == "MazeFinderPathPointReached")
 	{
 		if (_pathIndex < _pathPoints.size() - 1)
 		{
 			GetToNextPoint();
 		}
 	}
-	else if (message->GetMessageType() == "MouseDown")
+	else if (message->GetMessageName() == "MouseDown")
 	{
 		TypedMessage<Vec2i> *m = (TypedMessage<Vec2i>*)message;
 		Vec2i screenCoordinates = m->GetValue();

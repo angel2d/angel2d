@@ -3,27 +3,22 @@
 
 Message::Message()
 {
-	_messageType = "GenericMessage";
+	_messageName = "GenericMessage";
 	_sender = NULL;
 }
 
-Message::Message(String messageType, MessageListener* sender)
+Message::Message(String messageName, MessageListener* sender)
 {
-	_messageType = messageType;
+	_messageName = messageName;
 	_sender = sender;
 }
 
-const String Message::GetMessageType()
+const String Message::GetMessageName()
 {
-	return _messageType;
+	return _messageName;
 }
 
 const MessageListener* Message::GetSender()
 {
 	return _sender;
-}
-
-void Message::SetSender(MessageListener* sender)
-{
-	_sender = sender;
 }

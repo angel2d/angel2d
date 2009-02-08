@@ -39,8 +39,8 @@ class Controller;
  *  "controllerOne" and "controllerTwo" shortcuts. 
  * 
  * Like the World, it uses the singleton pattern; you can't actually declare 
- *  a new instance of a ControllerManager. To access sound in your world, use 
- *  "theControllerManager" to retrieve the singleton object. 
+ *  a new instance of a ControllerManager. To access controllers in your 
+ *  world, use "theControllerManager" to retrieve the singleton object. 
  *  "theControllerManager" is defined in both C++ and Python. 
  * 
  * If you're not familiar with the singleton pattern, this paper is a good 

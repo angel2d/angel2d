@@ -17,12 +17,6 @@ const float MathUtil::MinFloat = -3.402823E+38f;
 const float MathUtil::Epsilon = 0.000001f;
 
 
-float MathUtil::SmoothStep(float value1, float value2, float amount)
-{
-	float num = Clamp(amount, 0.0f, 1.0f);
-	return Lerp(value1, value2, (num * num) * (3.0f - (2.0f * num)));
-}
-
 float MathUtil::ToDegrees(float radians)
 {
 	return (radians * 57.29578f);
@@ -31,16 +25,6 @@ float MathUtil::ToDegrees(float radians)
 float MathUtil::ToRadians(float degrees)
 {
 	return (degrees * 0.01745329f);
-}
-
-double MathUtil::DistanceSquared(double x1, double y1, double x2, double y2) 
-{
-	return ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
-}
-
-double MathUtil::Distance(double x1, double y1, double x2, double y2) 
-{
-	return sqrt(DistanceSquared(x1,y1,x2,y2));
 }
 
 Vector2 MathUtil::VectorFromAngle(float angle_in_degrees)
@@ -130,9 +114,9 @@ Vector2 MathUtil::RandomVector(Vector2 minValues, Vector2 maxValues)
 	return Vector2(RandomFloatInRange(minValues.X, maxValues.X), RandomFloatInRange(minValues.Y, maxValues.Y));
 }
 
-bool MathUtil::FuzzyEquals(float x, float y, float epsilon)
+bool MathUtil::FuzzyEquals(float value1, float value2, float epsilon)
 {
-	float a = x - y;
+	float a = value1 - value2;
 	if (fabs(a) < epsilon)
 	{
 		return true;

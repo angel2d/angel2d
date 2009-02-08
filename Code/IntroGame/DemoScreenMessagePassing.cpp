@@ -89,7 +89,7 @@ void DemoScreenMessagePassing::Start()
 void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 {
 	//Respond to the ScreenStarted message that we sent when the screen started. 
-	if (message->GetMessageType() == "ScreenStarted")
+	if (message->GetMessageName() == "ScreenStarted")
 	{
 		p1->SetDensity(0.8f);
 		p1->SetFriction(0.5f);
@@ -98,7 +98,7 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 	}
 	
 	//When the first actor collides, we kick off the physics for the second actor. 
-	if (message->GetMessageType() == "CollisionWith" + p1->GetName())
+	if (message->GetMessageName() == "CollisionWith" + p1->GetName())
 	{
 		// Only init the physics if it isn't initialized.
 		if (!p2->GetBody())
@@ -121,12 +121,11 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 		// 
 		//You can get these from GetSender() and GetPayload(), which are generic functions on
 		// every message.
-
 		b2Vec2 vel = p1->GetBody()->GetLinearVelocity();
 		if (bounceSample && fabsf(vel.y) > 5.0f)
 			theSound.PlaySound(bounceSample, 1.0f, false/*no loop*/, 0);
 	}
-	else if (message->GetMessageType() == "CollisionWith" + p2->GetName())
+	else if (message->GetMessageName() == "CollisionWith" + p2->GetName())
 	{
 		b2Vec2 vel = p2->GetBody()->GetLinearVelocity();
 		if (bounceSample && fabsf(vel.y) > 5.0f)

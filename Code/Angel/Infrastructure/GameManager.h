@@ -30,9 +30,10 @@ public:
 	GameManager(){}
 	
 	/**
-	 * The destructor is also empty. 
+	 * The destructor makes sure that the GameManager unsubscribes from all
+	 *   Message notifications. 
 	 */
-	~GameManager(){}
+	~GameManager();
 
 	/**
 	 * Override of the Renderable::Render function. Doesn't do anything in 

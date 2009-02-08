@@ -33,43 +33,48 @@ enum actorDrawShape
 
 ///Basic simulation element for Angel.
 /**
- * Actor is the basic unit of simulation in Angel. It's not just an abstract base class -- 
- *  you can actually do a good deal of your game just using plain Actors, depending on how 
- *  you want to structure your logic. 
+ * Actor is the basic unit of simulation in Angel. It's not just an abstract 
+ *  base class -- you can actually do a good deal of your game just using 
+ *  plain Actors, depending on how you want to structure your logic. 
  *
- * Note that you have to add the Actor to the World if you want to see it on screen. 
+ * Note that you have to add the Actor to the World if you want to see it on 
+ *  screen. 
  * 
- * If you want to subclass Actor, the two most important functions are #Render and Update,
- *  which will get called on each Actor in the World every frame. 
+ * If you want to subclass Actor, the two most important functions are #Render 
+ *  and Update, which will get called on each Actor in the World every frame. 
  */
 class Actor : public Renderable, public MessageListener
 {
 public:
 	/**
-	 * The constructor doesn't do anything special. It defaults to a square Actor with a 
-	 *  side-length of 1.0f, no texture, white, and at the origin. 
+	 * The constructor doesn't do anything special. It defaults to a square 
+	 *  Actor with a side-length of 1.0f, no texture, white, and at the 
+	 *  origin. 
 	 */
 	Actor();
 	
 	/**
-	 * The destructor ensures that the Actor has been unsubscribed from all messages, 
-	 *  removed from all tag lists, and purged from the list of unique names. 
+	 * The destructor ensures that the Actor has been unsubscribed from all 
+	 *  Messages, removed from all tag lists, and purged from the list of 
+	 *  unique names. 
 	 */
 	virtual ~Actor();
 	
 	/**
 	 * Set the size of this Actor. 
 	 * 
-	 * @param x Horizontal size in OpenGL units -- negative numbers treated as zero
-	 * @param y Vertical size in OpenGL units -- if less than or equal to zero, assumed to be equal to x
+	 * @param x Horizontal size in OpenGL units -- negative numbers treated as 
+	 *   zero
+	 * @param y Vertical size in OpenGL units -- if less than or equal to 
+	 *   zero, assumed to be equal to x
 	 */
 	void SetSize(float x, float y = -1.f); 	// equal dimensions by default
 	
 	/**
 	 * Set the size of this Actor. 
 	 * 
-	 * @param newSize Desired size of Actor in OpenGL units. If either dimension is negative, it's 
-	 *  clamped to zero. 
+	 * @param newSize Desired size of Actor in OpenGL units. If either 
+	 *  dimension is negative, it's clamped to zero. 
 	 */
 	void SetSize(Vector2 newSize);
 	
@@ -103,7 +108,8 @@ public:
 	const Vector2 GetPosition();
 	
 	/**
-	 * Sets the rotation of the Actor. Positive rotations are counter-clockwise.
+	 * Sets the rotation of the Actor. Positive rotations are 
+	 *  counter-clockwise.
 	 * 
 	 * @param rotation Desired rotation in degrees
 	 */
@@ -141,9 +147,11 @@ public:
 	const Color GetColor();
 	
 	/**
-	 * Set the transparency of the Actor, independent of the other color components.
+	 * Set the transparency of the Actor, independent of the other color 
+	 *  components.
 	 * 
-	 * @param newAlpha Desired transparency (1.0f is opaque, 0.0f is invisible)
+	 * @param newAlpha Desired transparency (1.0f is opaque, 0.0f is 
+	 *  invisible)
 	 */
 	void SetAlpha(float newAlpha);
 	
@@ -170,66 +178,76 @@ public:
 	const actorDrawShape GetDrawShape();
 	
 	/**
-	 * A "fire and forget" function that moves an Actor to a new position over a 
-	 *  designated amount of time. This lets you handle movements without having 
-	 *  to set up your own timers and keep track of them yourself. At the moment,
-	 *  it's limited to purely linear movement. 
+	 * A "fire and forget" function that moves an Actor to a new position over 
+	 *  a designated amount of time. This lets you handle movements without 
+	 *  having to set up your own timers and keep track of them yourself. At 
+	 *  the moment, it's limited to purely linear movement. 
 	 * 
 	 * @see RotateTo
 	 * @see ChangeColorTo
 	 * @see ChangeSizeTo
 	 * @param newPosition The target position for the movement
 	 * @param duration How long it should take to get there
-	 * @param onCompletionMessage If specified, a Message of this type will be sent 
-	 *  when the movement is complete, letting you know when it's done. You will
-	 *  have to manually subscribe to this Message, though. 
+	 * @param smooth Whether the function should use MathUtil::SmoothStep 
+	 *  instead of MathUtil::Lerp
+	 * @param onCompletionMessage If specified, a Message of this type will be 
+	 *  sent when the movement is complete, letting you know when it's done. 
+	 *  You will have to manually subscribe to this Message, though. 
 	 */
-	void MoveTo(Vector2 newPosition, float duration, String onCompletionMessage="");
+	void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
-	 * A "fire and forget" function that rotates an Actor over a designated amount
-	 *  of time. 
+	 * A "fire and forget" function that rotates an Actor over a designated 
+	 *  amount of time. 
 	 * 
 	 * @see MoveTo
 	 * @param newRotation The target rotation
 	 * @param duration How long it should take
+	 * @param smooth Whether the function should use MathUtil::SmoothStep 
+	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void RotateTo(float newRotation, float duration, String onCompletionMessage="");
+	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
-	 * A "fire and forget" function that changes an Actor's color over a designated 
-	 *  amount of time. 
+	 * A "fire and forget" function that changes an Actor's color over a 
+	 *  designated amount of time. 
 	 * 
 	 * @see MoveTo
 	 * @param newColor The target color
 	 * @param duration How long it should take
+	 * @param smooth Whether the function should use MathUtil::SmoothStep 
+	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeColorTo(Color newColor, float duration, String onCompletionMessage="");
+	void ChangeColorTo(Color newColor, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
-	 * A "fire and forget" function that changes an Actor's size over a designated 
-	 *  amount of time. This version uses a Vector2 if you want to set a non-uniform
-	 *  target size.
+	 * A "fire and forget" function that changes an Actor's size over a 
+	 *  designated amount of time. This version uses a Vector2 if you want to 
+	 *  set a non-uniform target size.
 	 * 
 	 * @see MoveTo
 	 * @param newSize The target size
 	 * @param duration How long it should take
+	 * @param smooth Whether the function should use MathUtil::SmoothStep 
+	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(Vector2 newSize, float duration, String onCompletionMessage="");
+	void ChangeSizeTo(Vector2 newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
-	 * A "fire and forget" function that changes an Actor's size over a designated 
-	 *  amount of time.
+	 * A "fire and forget" function that changes an Actor's size over a 
+	 *  designated amount of time.
 	 * 
 	 * @see MoveTo
 	 * @param newSize The target size
 	 * @param duration How long it should take
+	 * @param smooth Whether the function should use MathUtil::SmoothStep 
+	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(float newSize, float duration, String onCompletionMessage="");
+	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 		
 	const int GetSpriteTexture(int frame = 0);
 	
@@ -256,7 +274,8 @@ public:
 	const bool IsTagged(String tag);
 	
 	/**
-	 * Adds a tag to an Actor. If the Actor already has this tag, no action is taken.
+	 * Adds a tag to an Actor. If the Actor already has this tag, no action is 
+	 *  taken.
 	 * 
 	 * @see TagCollection
 	 * @param newTag The tag to add
@@ -264,7 +283,8 @@ public:
 	void Tag(String newTag);
 	
 	/**
-	 * Removes a tag from an Actor. If the Actor doesn't have this tag, no action is taken.
+	 * Removes a tag from an Actor. If the Actor doesn't have this tag, no 
+	 *  action is taken.
 	 * 
 	 * @see TagCollection
 	 * @param oldTag The tag to remove
@@ -280,9 +300,10 @@ public:
 	const StringSet GetTags();
 	
 	/**
-	 * Give this Actor a name that can later be used as a unique identifier. The 
-	 *  the actual name given may differ from what is passed in, but is guaranteed
-	 *  to be unique. (Numbers will be appended until the name is distinct.)
+	 * Give this Actor a name that can later be used as a unique identifier. 
+	 *  The the actual name given may differ from what is passed in, but is 
+	 *  guaranteed to be unique. (Numbers will be appended until the name is 
+	 *  distinct.)
 	 * 
 	 * @param newName The desired name
 	 * @return The actual name that was given
@@ -297,7 +318,8 @@ public:
 	const String GetName();
 	
 	/**
-	 * A static function of the Actor class which returns an Actor from a name.
+	 * A static function of the Actor class which returns an Actor from a 
+	 *  name.
 	 * 
 	 * @param nameLookup The name index to look for
 	 * @return The Actor with the given name. Will be NULL if there's no match
@@ -305,11 +327,11 @@ public:
 	static const Actor* GetNamed(String nameLookup);
 	
 	/**
-	 * An implementation of the MessageListener interface, which will be called
-	 *  when a message gets delivered. 
+	 * An implementation of the MessageListener interface, which will be 
+	 *  called when a message gets delivered. 
 	 * 
-	 * There is no actual implementation in the base class, but you can override
-	 *  in the subclass. 
+	 * There is no actual implementation in the base class, but you can 
+	 *  override in the subclass. 
 	 * 
 	 * @see MessageListener
 	 * @param message The message getting delivered. 
@@ -321,8 +343,9 @@ public:
 	/**
 	 * Set a new rendering layer for this Actor. 
 	 * 
-	 * Layers are ordered from bottom to top by index. No space is wasted by leaving
-	 *  empty layers in between, so feel free to pad out your indices if you want. 
+	 * Layers are ordered from bottom to top by index. No space is wasted by 
+	 *  leaving empty layers in between, so feel free to pad out your indices 
+	 *  if you want. 
 	 * 
 	 * @param layerIndex the index of the render layer you want to assign
 	 */
@@ -331,8 +354,9 @@ public:
 	/**
 	 * Set a new rendering layer for this Actor by the name of the layer. 
 	 * 
-	 * The name of the layer has to be set up first by calling World::NameLayer. 
-	 *  If you pass an invalid layer name, this Actor will be put on layer 0. 
+	 * The name of the layer has to be set up first by calling 
+	 *  World::NameLayer. If you pass an invalid layer name, this Actor will 
+	 *  be put on layer 0. 
 	 * 
 	 * @see SetLayer
 	 * @param layerName the name of the render layer you want to assign
@@ -340,20 +364,21 @@ public:
 	void SetLayer(String layerName);
 	
 	/**
-	 * A function which makes the necessary updates to the Actor. The base implementation
-	 *  just updates the animations and intervals, but a subclass override can perform
-	 *  whatever extra magic is necessary. Make sure to call the base class's Update
-	 *  if you subclass. 
+	 * A function which makes the necessary updates to the Actor. The base 
+	 *  implementation just updates the animations and intervals, but a 
+	 *  subclass override can perform whatever extra magic is necessary. Make 
+	 *  sure to call the base class's Update if you subclass. 
 	 * 
-	 * @param dt The amount of time that's elapsed since the beginning of the last frame. 
+	 * @param dt The amount of time that's elapsed since the beginning of the 
+	 *   last frame. 
 	 */
 	virtual void Update(float dt);
 	
 	/**
-	 * A function to draw the Actor to the screen. By default, this does the basice
-	 *  drawing based on the texture, color, shape, size, position, and rotation 
-	 *  that have been applied to the Actor. Can be overridden in a subclass if 
-	 *  necessary. 
+	 * A function to draw the Actor to the screen. By default, this does the 
+	 *  basic drawing based on the texture, color, shape, size, position, and 
+	 *  rotation that have been applied to the Actor. Can be overridden in a 
+	 *  subclass if necessary. 
 	 * 
 	 * This will get called on every Actor once per frame, after the #Update. 
 	 */
@@ -375,8 +400,9 @@ public:
 	 * In most instances, an Actor* getting thrown to the script layer will be
 	 *  wrapped correctly as a PhysicsActor, TextActor, etc. BUT, if it's
 	 *  coming from an STL container, then it won't. Rather than trying to 
-	 *  fiddle with the SWIG typemaps which wrap the STL, this solution is more
-	 *  robust. It does require an extra call in the script, but c'est la vie.
+	 *  fiddle with the SWIG typemaps which wrap the STL, this solution is 
+	 *  more robust. It does require an extra call in the script, but c'est la 
+	 *  vie.
 	 * 
 	 * @return the Actor's "this" pointer
 	 */
@@ -389,13 +415,13 @@ public:
 	 * Create an Actor from an archetype defined in an .ini file in 
 	 *  Config/ActorDef. Automatically adds the Actor to the World. 
 	 * 
-	 * The section titles in the .ini files designate the name of the archetype,
-	 *  while the values in each section specify the properties for that 
-	 *  archetype. Any function that can be called on an Actor can be used
-	 *  as a property -- things like SetSize can be called simply "size." 
+	 * The section titles in the .ini files designate the name of the 
+	 *  archetype, while the values in each section specify the properties for 
+	 *  that archetype. Any function that can be called on an Actor can be 
+	 *  used as a property -- things like SetSize can be called simply "size." 
 	 * 
-	 * Colors and Vectors can be defined as arrays, so the following definition
-	 *  is valid. 
+	 * Colors and Vectors can be defined as arrays, so the following 
+	 *  definition is valid. 
 	 * 
 	 * \code
 	 * [my_actor]
@@ -404,7 +430,8 @@ public:
 	 * size=5
 	 * \endcode
 	 * 
-	 * @param the name of the Actor archetype (the section header from the .ini)
+	 * @param the name of the Actor archetype (the section header from the 
+	 *   .ini)
 	 */
 	static Actor* Create(String archetype);
 

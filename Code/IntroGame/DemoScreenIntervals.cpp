@@ -49,28 +49,33 @@ void DemoScreenIntervals::Start()
 
 void DemoScreenIntervals::ReceiveMessage(Message *message)
 {
-	if (message->GetMessageType() == "IntervalScreenStarted")
+	if (message->GetMessageName() == "LeftMoveDone")
 	{
 		a->MoveTo( // Change an Actor's position over an interval
 				  Vector2(5.0f, 0.0f),  //the new position
 				  3.0f,					//how long it should take to get there
+				  true,					//whether or not the interval should use MathUtil::SmoothStep
 				  "RightMoveDone"		//the (optional) message to send when the transition is done
 		);
 		
-		a->RotateTo(45.0f, 3.0f);
-		a->ChangeColorTo(Color(1.0f, 0.0f, 1.0f, 1.0f), 3.0f);		
+		a->RotateTo(45.0f, 3.0f, true);
+		a->ChangeColorTo(Color(1.0f, 0.0f, 1.0f, 1.0f), 3.0f, true);
+		a->ChangeSizeTo(1.0f, 3.0f); //Note that the size change is not using the smooth step
 	}
-	else if (message->GetMessageType() == "RightMoveDone")
+	else if (message->GetMessageName() == "RightMoveDone")
 	{
-		a->MoveTo(Vector2(-5.0f, 0.0f), 3.0f, "LeftMoveDone");
-		a->RotateTo(0.0f, 3.0f);
-		a->ChangeColorTo(Color(1.0f, 1.0f, 0.0f, 0.5f), 3.0f);	
+		a->MoveTo(Vector2(-5.0f, 0.0f), 3.0f, true, "LeftMoveDone");
+		a->RotateTo(0.0f, 3.0f, true);
+		a->ChangeColorTo(Color(1.0f, 1.0f, 0.0f, 0.5f), 3.0f, true);
+		a->ChangeSizeTo(3.0f, 3.0f);
 	}
-	else if (message->GetMessageType() == "LeftMoveDone")
+	else if (message->GetMessageName() == "IntervalScreenStarted")
 	{
-		a->MoveTo(Vector2(5.0f, 0.0f), 3.0f, "RightMoveDone");
-		a->RotateTo(45.0f, 3.0f);
-		a->ChangeColorTo(Color(1.0f, 0.0f, 1.0f, 1.0f), 3.0f);	
+		//Essentially mapping one message to another so we don't have to
+		// repeat the first set of logic down here. 
+		//In general, this works, but it means the logic happens one frame
+		// later than it otherwise would. 
+		theSwitchboard.Broadcast(new Message("LeftMoveDone"));
 	}
 }
 

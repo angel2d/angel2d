@@ -26,7 +26,7 @@ const bool FullScreenActor::IsLocked()
 
 void FullScreenActor::ReceiveMessage(Message *message)
 {
-	if (!_locked && message->GetMessageType() == "CameraChange")
+	if (!_locked && message->GetMessageName() == "CameraChange")
 	{
 		_resize();
 	}

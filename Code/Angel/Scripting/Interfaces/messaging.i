@@ -7,12 +7,11 @@
 class Message
 {
 public:
-	Message(String messageType, MessageListener* sender = NULL);
+	Message(String messageName, MessageListener* sender = NULL);
 	
-	virtual const String GetMessageType();
+	virtual const String GetMessageName();
 	
 	const MessageListener* GetSender();
-	void SetSender(MessageListener* sender);
 };
 
 

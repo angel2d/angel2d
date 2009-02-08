@@ -129,7 +129,6 @@ class PythonPackage:
 def _create_descendant_mapping(class_children):
     """Take a dict of classes mapped to lists of children and return a dict of
     classes mapped to lists of all listed descendants."""
-    
     class_descendants = dict((name, []) for name in class_children.iterkeys())
     for class_name in class_children.iterkeys():
         if not class_descendants[class_name]:

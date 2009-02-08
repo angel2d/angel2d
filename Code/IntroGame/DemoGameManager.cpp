@@ -99,11 +99,11 @@ DemoGameManager& DemoGameManager::GetInstance()
 
 void DemoGameManager::ReceiveMessage(Message* message)
 {
-	if (message->GetMessageType() == "MoveForwards")
+	if (message->GetMessageName() == "MoveForwards")
 	{
 		MoveForwards();
 	}
-	else if (message->GetMessageType() == "MoveBackwards")
+	else if (message->GetMessageName() == "MoveBackwards")
 	{
 		MoveBackwards();
 	}

@@ -31,13 +31,14 @@ public:
 	 * @param end The ending value
 	 * @param duration Length of the transition in seconds
 	 */
-	Interval(T start, T end, float duration) :
+	Interval(T start, T end, float duration, bool smooth=false) :
 		_start(start),
 		_end(end),
 		_current(start),
 		_duration(duration),
 		_timer(0.0f),
-		_shouldStep(true)
+		_shouldStep(true),
+		_smoothStep(smooth)
 	{
 	}
 	
@@ -75,9 +76,17 @@ public:
 		}
 		else
 		{
-			//simple lerp
 			float stepRatio = _timer / _duration;
-			_current = MathUtil::Lerp(_start, _end, stepRatio);
+			if (_smoothStep)
+			{
+				//smooth step
+				_current = MathUtil::SmoothStep(_start, _end, stepRatio);
+			}
+			else
+			{
+				//simple lerp
+				_current = MathUtil::Lerp(_start, _end, stepRatio);
+			}
 		}
 
 		return _current;
@@ -113,4 +122,5 @@ private:
 	float _timer;
 	
 	bool _shouldStep;
+	bool _smoothStep;
 };

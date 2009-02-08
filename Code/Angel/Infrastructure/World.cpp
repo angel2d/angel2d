@@ -171,6 +171,14 @@ void World::Destroy()
 	PythonScriptingModule::Finalize();
 
 	delete _physicsDebugDraw;
+	
+	StringSet subs = theSwitchboard.GetSubscriptionsFor(this);
+	StringSet::iterator it = subs.begin();
+	while (it != subs.end())
+	{
+		theSwitchboard.UnsubscribeFrom(this, *it);
+		++it;
+	}
 }
 
 void World::StartGame()
@@ -681,7 +689,7 @@ void World::SetSideBlockers(bool turnOn, float restitution)
 
 void World::ReceiveMessage(Message* m)
 {
-	if (m->GetMessageType() == "CameraChange")
+	if (m->GetMessageName() == "CameraChange")
 	{
 		if (_blockersOn)
 		{

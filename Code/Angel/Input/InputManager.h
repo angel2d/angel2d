@@ -68,8 +68,6 @@ protected:
 private:
 	InputBinding* GetBinding( int hashVal );
 	int GetHashFromKeyName( const String& keyId );
-	void BindKeyCommand( const String& input );
-	void UnbindKeyCommand( const String& input );
 	void ClearXboxButtonStates();
 
 private:

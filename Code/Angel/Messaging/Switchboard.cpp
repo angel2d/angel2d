@@ -117,10 +117,10 @@ void Switchboard::SendAllMessages()
 	_messagesLocked = true;
 	while (!_messages.empty())
 	{
-		if (_subscribers.find(_messages.front()->GetMessageType()) != _subscribers.end())
+		if (_subscribers.find(_messages.front()->GetMessageName()) != _subscribers.end())
 		{
-			std::set<MessageListener*>::iterator listenIt = _subscribers[_messages.front()->GetMessageType()].begin();
-			while (listenIt != _subscribers[_messages.front()->GetMessageType()].end())
+			std::set<MessageListener*>::iterator listenIt = _subscribers[_messages.front()->GetMessageName()].begin();
+			while (listenIt != _subscribers[_messages.front()->GetMessageName()].end())
 			{
 				(*listenIt)->ReceiveMessage(_messages.front());
 				listenIt++;

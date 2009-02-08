@@ -25,9 +25,9 @@ class Console;
  *  Update/Render loop, processes events, etc. 
  * 
  * Like the Camera, it uses the singleton pattern; you can't actually declare 
- *  a new instance of a TagCollection. To access sound in your world, use 
- *  "theWorld" to retrieve the singleton object. "theWorld" is defined in 
- *  both C++ and Python. 
+ *  a new instance of a TagCollection. To access the World, use "theWorld" to 
+ *  retrieve the singleton object. "theWorld" is defined in both C++ and 
+ *  Python. 
  * 
  * If you're not familiar with the singleton pattern, this paper is a good 
  *  starting point. (Don't be afraid that it's written by Microsoft.)

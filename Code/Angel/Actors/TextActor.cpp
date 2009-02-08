@@ -99,7 +99,7 @@ void TextActor::SetPosition(Vector2 position)
 
 void TextActor::ReceiveMessage(Message* m)
 {
-	if (m->GetMessageType() == "CameraChange")
+	if (m->GetMessageName() == "CameraChange")
 	{
 		CalculatePosition();
 	}
