@@ -195,7 +195,7 @@ struct XboxButtonBindRecord
 	const bool (Controller::*CheckFunc)();
 };
 
-XboxButtonBindRecord sBindRecords[] =
+XboxButtonBindRecord sBindRecordsOne[] =
 {
 	{ P1BUTTON_A, &Controller::IsAButtonDown },
 	{ P1BUTTON_B, &Controller::IsBButtonDown },
@@ -215,46 +215,112 @@ XboxButtonBindRecord sBindRecords[] =
 	{ P1BUTTON_RIGHTBUMPER, &Controller::IsRightBumperDown },
 };
 
+XboxButtonBindRecord sBindRecordsTwo[] =
+{
+	{ P2BUTTON_A, &Controller::IsAButtonDown },
+	{ P2BUTTON_B, &Controller::IsBButtonDown },
+	{ P2BUTTON_X, &Controller::IsXButtonDown },
+	{ P2BUTTON_Y, &Controller::IsYButtonDown },
+
+	{ P2BUTTON_START, &Controller::IsStartButtonDown },
+	{ P2BUTTON_BACK, &Controller::IsBackButtonDown },
+
+	{ P2BUTTON_LEFTTHUMB, &Controller::IsLeftThumbstickButtonDown },
+	{ P2BUTTON_RIGHTTHUMB, &Controller::IsRightThumbstickButtonDown },
+
+	{ P2BUTTON_LEFTTRIGGER, &Controller::IsLeftTriggerPressed },
+	{ P2BUTTON_RIGHTTRIGGER, &Controller::IsRightTriggerPressed },
+
+	{ P2BUTTON_LEFTBUMPER, &Controller::IsLeftBumperDown },
+	{ P2BUTTON_RIGHTBUMPER, &Controller::IsRightBumperDown },
+};
+
 void InputManager::HandleControl( Controller& controller )
 {
-	int numXboxButtons = sizeof( sBindRecords ) / sizeof(sBindRecords[0] );
+	//TODO: make this so it's not just cut-and-pasted code iterating over two enums
 
-	for( int i = 0; i < numXboxButtons; i++ )
+	if (controller.GetControllerID() == 0)
 	{
-		XboxButtonBindRecord& rec = sBindRecords[i];
-
-		//Is button currently down
-		bool bIsDown = (controller.*rec.CheckFunc)();
-		bool bWasDown = _xBoxButtonStates[rec.HashKey];
-
-		//Update key value
-		_xBoxButtonStates[rec.HashKey] = bIsDown;
-
-		InputBinding* pBinding = GetBinding( rec.HashKey );
-		if( pBinding == NULL )
-			continue;
-
-		if( !bWasDown && bIsDown )
+		int numXboxButtons = sizeof( sBindRecordsOne ) / sizeof(sBindRecordsOne[0] );
+		for( int i = 0; i < numXboxButtons; i++ )
 		{
-			//BUTTON DOWN
-			pBinding->OnKeyDown();
-		}
-		else if( bWasDown && !bIsDown )
-		{
-			//BUTTON UP
-			pBinding->OnKeyUp();
+			XboxButtonBindRecord& rec = sBindRecordsOne[i];
+			
+			//Is button currently down
+			bool bIsDown = (controller.*rec.CheckFunc)();
+			bool bWasDown = _xBoxButtonStates[controller.GetControllerID()][rec.HashKey];
+			
+			//Update key value
+			_xBoxButtonStates[controller.GetControllerID()][rec.HashKey] = bIsDown;
+			
+			InputBinding* pBinding = GetBinding( rec.HashKey );
+			if( pBinding == NULL )
+				continue;
+			
+			if( !bWasDown && bIsDown )
+			{
+				//BUTTON DOWN
+				pBinding->OnKeyDown();
+			}
+			else if( bWasDown && !bIsDown )
+			{
+				//BUTTON UP
+				pBinding->OnKeyUp();
+			}
 		}
 	}
+	else if (controller.GetControllerID() == 1)
+	{
+		int numXboxButtons = sizeof( sBindRecordsTwo ) / sizeof(sBindRecordsTwo[0] );
+		for( int i = 0; i < numXboxButtons; i++ )
+		{
+			XboxButtonBindRecord& rec = sBindRecordsTwo[i];
+			
+			//Is button currently down
+			bool bIsDown = (controller.*rec.CheckFunc)();
+			bool bWasDown = _xBoxButtonStates[controller.GetControllerID()][rec.HashKey];
+			
+			//Update key value
+			_xBoxButtonStates[controller.GetControllerID()][rec.HashKey] = bIsDown;
+			
+			InputBinding* pBinding = GetBinding( rec.HashKey );
+			if( pBinding == NULL )
+				continue;
+			
+			if( !bWasDown && bIsDown )
+			{
+				//BUTTON DOWN
+				pBinding->OnKeyDown();
+			}
+			else if( bWasDown && !bIsDown )
+			{
+				//BUTTON UP
+				pBinding->OnKeyUp();
+			}
+		}
+	}
+	else
+	{
+		std::cout << "Bad controller ID." << std::endl;
+		return;
+	}
+
 }
 
 void InputManager::ClearXboxButtonStates()
 {
-	int numXboxButtons = sizeof( sBindRecords ) / sizeof(sBindRecords[0] );
-
+	int numXboxButtons = sizeof( sBindRecordsOne ) / sizeof(sBindRecordsOne[0] );
 	for( int i = 0; i < numXboxButtons; i++ )
 	{
-		XboxButtonBindRecord& rec = sBindRecords[i];
-		_xBoxButtonStates[rec.HashKey] = false;
+		XboxButtonBindRecord& rec = sBindRecordsOne[i];
+		_xBoxButtonStates[0][rec.HashKey] = false;	
+	}
+	
+	numXboxButtons = sizeof( sBindRecordsTwo ) / sizeof(sBindRecordsTwo[0] );
+	for( int i = 0; i < numXboxButtons; i++ )
+	{
+		XboxButtonBindRecord& rec = sBindRecordsTwo[i];
+		_xBoxButtonStates[1][rec.HashKey] = false;	
 	}
 }
 

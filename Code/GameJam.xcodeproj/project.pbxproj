@@ -191,6 +191,8 @@
 		34974B2F0E2926FB0018A032 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
 		34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34974B390E2927E00018A032 /* AGL.framework */; };
 		34974B3D0E2927E80018A032 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34974B390E2927E00018A032 /* AGL.framework */; };
+		3497CD0A0F3E34AE00CDE04B /* DemoScreenMultipleControllers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */; };
+		3497CD0B0F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */; };
 		349C19E40E8C88AD009D94FC /* AngelPythonWrapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 349C19E20E8C88AC009D94FC /* AngelPythonWrapping.h */; };
 		349C19E50E8C88AD009D94FC /* AngelPythonWrapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349C19E30E8C88AC009D94FC /* AngelPythonWrapping.cpp */; };
 		34A18C760E2843B4001C79A5 /* enable.c in Sources */ = {isa = PBXBuildFile; fileRef = 34A18C5B0E2843B4001C79A5 /* enable.c */; };
@@ -606,6 +608,8 @@
 		34713D900EA6D6F800AF58CA /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Config; path = ClientGame/Config; sourceTree = "<group>"; };
 		34713D990EA6D71100AF58CA /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = ClientGame/Resources; sourceTree = "<group>"; };
 		34713DF40EA6E3CF00AF58CA /* text_actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = text_actor.i; path = Angel/Scripting/Interfaces/text_actor.i; sourceTree = "<group>"; };
+		3472777C0F3E95E100F947AE /* mouse.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = mouse.i; path = Angel/Scripting/Interfaces/mouse.i; sourceTree = "<group>"; };
+		3472777D0F3E95E100F947AE /* controller.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = controller.i; path = Angel/Scripting/Interfaces/controller.i; sourceTree = "<group>"; };
 		3479A03D0E28856300768932 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = Angel/Libraries/FreeImage/Dist/FreeImage.h; sourceTree = "<group>"; };
 		3479A03F0E28857900768932 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = Angel/Libraries/FreeImage/Dist/mac/libfreeimage.a; sourceTree = "<group>"; };
 		347AA0ED0E2F21CB006A896F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Angel/Libraries/freetype-2.3.7/built/libfreetype.a"; sourceTree = "<group>"; };
@@ -624,6 +628,8 @@
 		34974B390E2927E00018A032 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		34974BB40E292E240018A032 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		34974BB50E292E240018A032 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMultipleControllers.h; path = IntroGame/DemoScreenMultipleControllers.h; sourceTree = "<group>"; };
+		3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMultipleControllers.cpp; path = IntroGame/DemoScreenMultipleControllers.cpp; sourceTree = "<group>"; };
 		349C19E20E8C88AC009D94FC /* AngelPythonWrapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AngelPythonWrapping.h; path = Angel/Scripting/Interfaces/AngelPythonWrapping.h; sourceTree = "<group>"; };
 		349C19E30E8C88AC009D94FC /* AngelPythonWrapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelPythonWrapping.cpp; path = Angel/Scripting/Interfaces/AngelPythonWrapping.cpp; sourceTree = "<group>"; };
 		34A1815B0E283FE0001C79A5 /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
@@ -1462,6 +1468,8 @@
 				34D34DF50E2C375A0053994C /* DemoScreenStart.h */,
 				340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */,
 				340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */,
+				3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */,
+				3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */,
 			);
 			name = DemoScreens;
 			sourceTree = "<group>";
@@ -1542,6 +1550,8 @@
 				34713DF40EA6E3CF00AF58CA /* text_actor.i */,
 				34AF113C0F3D237D00A17276 /* sound.i */,
 				34CCFF3F0E61E40F003772E0 /* color.i */,
+				3472777C0F3E95E100F947AE /* mouse.i */,
+				3472777D0F3E95E100F947AE /* controller.i */,
 				3411E0B20E5FF1C2009D734D /* vector2.i */,
 				345A8C310E8DD0CF00B36FD9 /* inheritance.i */,
 			);
@@ -1675,6 +1685,7 @@
 				343F41990E31C19F0097B760 /* DemoScreenMessagePassing.h in Headers */,
 				346E5EA80F30122000258B84 /* DemoScreenIntervals.h in Headers */,
 				340F35180F36BA4600650DF7 /* DemoScreenPathfinding.h in Headers */,
+				3497CD0A0F3E34AE00CDE04B /* DemoScreenMultipleControllers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2128,6 +2139,7 @@
 				343F41980E31C19F0097B760 /* DemoScreenMessagePassing.cpp in Sources */,
 				346E5EA70F30122000258B84 /* DemoScreenIntervals.cpp in Sources */,
 				340F35190F36BA4600650DF7 /* DemoScreenPathfinding.cpp in Sources */,
+				3497CD0B0F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

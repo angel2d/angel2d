@@ -597,11 +597,19 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Scripting\Interfaces\controller.i"
+					>
+				</File>
+				<File
 					RelativePath=".\Scripting\Interfaces\inheritance.i"
 					>
 				</File>
 				<File
 					RelativePath=".\Scripting\Interfaces\messaging.i"
+					>
+				</File>
+				<File
+					RelativePath=".\Scripting\Interfaces\mouse.i"
 					>
 				</File>
 				<File

@@ -18,9 +18,6 @@ public:
 	static const float MinFloat;
 	static const float Epsilon;
 
-	static void UnitTest();
-
-
 	template<typename T>
 	static T Abs(T val )
 	{

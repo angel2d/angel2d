@@ -1,4 +1,4 @@
-Copyright © 2008-2009, Shane Liesegang
+Copyright © 2008-2009, Shane J. M. Liesegang
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without 

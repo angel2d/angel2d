@@ -2,7 +2,13 @@
 
 #include "../Infrastructure/Common.h"
 #include "../Util/StringUtil.h"
+#include "../Input/Controller.h"
 
+///(Internal) Handles the binding of keypresses to Messages
+/** 
+ * An internal class used by the InputManager, mapping keydown and keyup 
+ *  events to the appropriate Messages. 
+ */
 class InputBinding
 {
 public:
@@ -28,11 +34,20 @@ enum InputKeys
 
 #define theInput InputManager::GetInstance()
 
+///(Internal) Handles keyboard input, and mapping controller input to messages
+/** 
+ * This internal class is used by the engine to take the settings from 
+ *  input_bindings.ini and process all keyboard and controller data. 
+ * 
+ * Unless you're working on the engine itself, there's really no reason for
+ *  you to worry about this class. 
+ */
 class InputManager
 {
 	typedef hashmap_ns::hash_map<int, InputBinding*>		BindingTable;
-	typedef hashmap_ns::hash_map<String, int>					KeyNameTable;
+	typedef hashmap_ns::hash_map<String, int>				KeyNameTable;
 	typedef hashmap_ns::hash_map<int, bool>					XboxButtonState;
+
 public:
 	static InputManager &GetInstance();
 	static void Destroy();
@@ -62,5 +77,5 @@ private:
 
 	KeyNameTable		_keyNameTable;
 	BindingTable		_bindingTable;
-	XboxButtonState		_xBoxButtonStates;
+	XboxButtonState		_xBoxButtonStates[MAX_CONTROLLERS];
 };

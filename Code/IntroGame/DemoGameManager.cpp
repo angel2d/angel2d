@@ -19,6 +19,7 @@
 #include "DemoScreenParticleActors.h"
 #include "DemoScreenMessagePassing.h"
 #include "DemoScreenPathfinding.h"
+#include "DemoScreenMultipleControllers.h"
 
 DemoScreen::DemoScreen() {}
 
@@ -29,7 +30,8 @@ void DemoScreen::Stop()
 	std::vector<Renderable*>::iterator it = _objects.begin();
 	while(_objects.end() != it)
 	{
-		(*it)->Destroy();
+		theWorld.Remove(*it);
+		delete *it;
 		it++;
 	}
 	_objects.clear();
@@ -53,18 +55,19 @@ DemoGameManager::DemoGameManager()
 	_screens.push_back(new DemoScreenSimpleActor());					// 2
 	_screens.push_back(new DemoScreenRenderLayers());					// 3
 	_screens.push_back(new DemoScreenMovingActor());					// 4
-	_screens.push_back(new DemoScreenDefFile());						// 5
-	_screens.push_back(new DemoScreenLevelFile());						// 6
-	_screens.push_back(new DemoScreenBindingInstructions());			// 7
-	_screens.push_back(new DemoScreenParticleActors());					// 8
-	_screens.push_back(new DemoScreenPhysicsActor());					// 9
-	_screens.push_back(new DemoScreenMessagePassing());					//10
-	_screens.push_back(new DemoScreenIntervals());						//11
-	_screens.push_back(new DemoScreenCollisionLevelFile());				//12
-	_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//13
-	_screens.push_back(new DemoScreenConsole());						//14
-	_screens.push_back(new DemoScreenPathfinding());					//15
-	_screens.push_back(new DemoScreenByeBye());							//16
+	_screens.push_back(new DemoScreenMultipleControllers());			// 5
+	_screens.push_back(new DemoScreenDefFile());						// 6
+	_screens.push_back(new DemoScreenLevelFile());						// 7
+	_screens.push_back(new DemoScreenBindingInstructions());			// 8
+	_screens.push_back(new DemoScreenParticleActors());					// 9
+	_screens.push_back(new DemoScreenPhysicsActor());					//10
+	_screens.push_back(new DemoScreenMessagePassing());					//11
+	_screens.push_back(new DemoScreenIntervals());						//12
+	_screens.push_back(new DemoScreenCollisionLevelFile());				//13
+	_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//14
+	_screens.push_back(new DemoScreenConsole());						//15
+	_screens.push_back(new DemoScreenPathfinding());					//16
+	_screens.push_back(new DemoScreenByeBye());							//17
 
 	unsigned int startingIndex = 0;
 	if (_screens.size() > startingIndex)

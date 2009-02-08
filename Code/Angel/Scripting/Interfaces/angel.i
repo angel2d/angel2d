@@ -32,6 +32,8 @@ typedef std::vector<String>	StringList;
 %include world.i
 %include console.i
 %include sound.i
+%include controller.i
+%include mouse.i
 %include actor.i
 %include camera.i
 %include physics_actor.i

@@ -363,11 +363,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenPathfinding.cpp"
+				RelativePath=".\DemoScreenMultipleControllers.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenPathfinding.h"
+				RelativePath=".\DemoScreenMultipleControllers.h"
 				>
 			</File>
 			<File
@@ -376,6 +376,14 @@
 			</File>
 			<File
 				RelativePath=".\DemoScreenParticleActors.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreenPathfinding.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreenPathfinding.h"
 				>
 			</File>
 			<File

@@ -17,23 +17,6 @@ const float MathUtil::MinFloat = -3.402823E+38f;
 const float MathUtil::Epsilon = 0.000001f;
 
 
-#include <iostream>
-using std::cout;
-using std::endl;
-void MathUtil::UnitTest()
-{
-	cout << "Max: " << Max(10, 200) << " " << Max(0.0f, -192.0f) << endl;
-	cout << "Min: " << Min(10, 200) << " " << Min(0.0f, -192.0f) << endl;
-	cout << "Clamp: " << Clamp(10, 200, 1000) << " " << Clamp(0.0f, -192.0f, -1.0f) << endl;
-
-	for ( int i = 0; i <= 10; i++ )
-	{
-		float val = (float)i * 0.1f;
-		cout << SmoothStep(2, 12, val ) << endl; 
-	}
-
-}
-
 float MathUtil::SmoothStep(float value1, float value2, float amount)
 {
 	float num = Clamp(amount, 0.0f, 1.0f);

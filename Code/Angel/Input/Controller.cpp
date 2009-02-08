@@ -100,15 +100,10 @@ Controller::Controller()
 	_connected = false;
 	_currentLeftVibration = 0;
 	_currentRightVibration = 0;
-}
-
-Controller& Controller::GetInstance()
-{
-	if (s_Controller == NULL)
-	{
-		s_Controller = new Controller();
-	}
-	return *s_Controller;
+	
+	#if defined(__APPLE__)
+		_device = NULL;
+	#endif
 }
 
 void Controller::Setup()
@@ -128,7 +123,7 @@ void Controller::Setup()
 			std::cout << "No Controller present...\n";
 			_connected = false;
 		}
-
+	
 	#elif defined(__APPLE__)
 		unsigned long usagePage = 0;
 		unsigned long usage = 0;
@@ -139,7 +134,26 @@ void Controller::Setup()
 		
 		_device = HIDGetFirstDevice();
 		while (_device != NULL)
-		{		
+		{
+			//is this device already taken by another controller? 
+			bool breakIt = false;
+			for (int i=0; i < MAX_CONTROLLERS; i++)
+			{
+				Controller* check = &theControllerManager.GetController(i);
+				if ((check != this) && (check->_device == _device))
+				{
+					_device = HIDGetNextDevice(_device);
+					if (_device == NULL)
+					{
+						breakIt = true;
+					}
+				}
+			}
+			if (breakIt)
+			{
+				break;
+			}
+			
 			std::string manufacturer = _device->manufacturer;
 			std::string product = _device->product;
 			manufacturer = manufacturer.substr(1, manufacturer.length()-1).c_str(); //trimming off the initial copyright symbol so matching won't be dumb

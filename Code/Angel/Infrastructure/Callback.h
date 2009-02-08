@@ -1,10 +1,10 @@
 #pragma once 
 
-///A callback template to simplify storage/retrieval of method pointers
+/// (Internal) A callback template to simplify storage/retrieval of method pointers
 /** 
  * Storing pointers to member functions (as opposed to just loose functions)
- *  can be complicated and error-prone. This template class is designed to make
- *  such things simpler. An example usage is in the SoundDevice class. 
+ *  can be complicated and error-prone. This template class is designed to 
+ *  make such things simpler. An example usage is in the SoundDevice class. 
  * 
  * Note that this template only lets you store callbacks that take a single
  *  parameter. 
