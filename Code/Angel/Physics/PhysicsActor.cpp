@@ -1,6 +1,36 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in the 
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any 
+//       contributors may be used to endorse or promote products derived from 
+//       this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
+
 #include "../Physics/PhysicsActor.h"
 
 #include "../Infrastructure/World.h"
+#include "../Infrastructure/Log.h"
 #include "../Util/MathUtil.h"
 
 #include "Box2D.h"
@@ -32,7 +62,7 @@ void PhysicsActor::SetDensity(float density)
 	if (_physBody == NULL)
 		_density = density;
 	else
-		printf("WARNING: SetDensity() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetDensity() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetFriction(float friction)
@@ -40,7 +70,7 @@ void PhysicsActor::SetFriction(float friction)
 	if (_physBody == NULL)
 		_friction = friction;
 	else
-		printf("WARNING: SetFriction() had no effect - don't change this actor after physics have been initialized.");	
+		sysLog.Log("WARNING: SetFriction() had no effect - don't change this actor after physics have been initialized.");	
 }
 
 void PhysicsActor::SetRestitution(float restitution)
@@ -48,7 +78,7 @@ void PhysicsActor::SetRestitution(float restitution)
 	if (_physBody == NULL)
 		_restitution = restitution;
 	else
-		printf("WARNING: SetRestitution() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetRestitution() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetShapeType(eShapeType shapeType)
@@ -56,7 +86,7 @@ void PhysicsActor::SetShapeType(eShapeType shapeType)
 	if (_physBody == NULL)
 		_shapeType = shapeType;
 	else
-		printf("WARNING: SetShapeType() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetShapeType() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetIsSensor(bool isSensor)
@@ -64,7 +94,7 @@ void PhysicsActor::SetIsSensor(bool isSensor)
 	if (_physBody == NULL)
 		_isSensor = isSensor;
 	else
-		printf("WARNING: SetIsSensor() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetIsSensor() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetGroupIndex(int groupIndex)
@@ -72,7 +102,7 @@ void PhysicsActor::SetGroupIndex(int groupIndex)
 	if (_physBody == NULL)
 		_groupIndex = groupIndex;
 	else
-		printf("WARNING: SetGroupIndex() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetGroupIndex() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetFixedRotation(bool fixedRotation)
@@ -80,7 +110,7 @@ void PhysicsActor::SetFixedRotation(bool fixedRotation)
 	if (_physBody == NULL)
 		_fixedRotation = fixedRotation;
 	else
-		printf("WARNING: SetFixedRotation() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetFixedRotation() had no effect - don't change this actor after physics have been initialized.");
 }
 
 
@@ -88,7 +118,7 @@ void PhysicsActor::InitPhysics()
 {
 	if (!theWorld.IsPhysicsSetUp())
 	{
-		std::cout << "ERROR: World physics must be initialized before Actor's." << std::endl;
+		sysLog.Log("ERROR: World physics must be initialized before Actor's.");
 		return;
 	}
 	
@@ -110,7 +140,7 @@ void PhysicsActor::InitPhysics()
 	}
 	else
 	{
-		std::cout << "ERROR: Invalid shape type given." << std::endl;
+		sysLog.Log("ERROR: Invalid shape type given.");
 		return;
 	}
 	
@@ -172,7 +202,7 @@ void PhysicsActor::SetSize(float x, float y)
 	if (_physBody == NULL)
 		Actor::SetSize(x, y);
 	else
-		printf("WARNING: SetSize() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetSize() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetDrawSize(float x, float y)
@@ -185,7 +215,7 @@ void PhysicsActor::SetPosition(float x, float y)
 	if (_physBody == NULL)
 		Actor::SetPosition(x, y);
 	else
-		printf("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetPosition(Vector2 pos)
@@ -193,7 +223,7 @@ void PhysicsActor::SetPosition(Vector2 pos)
 	if (_physBody == NULL)
 		Actor::SetPosition(pos);
 	else
-		printf("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::SetRotation(float rotation)
@@ -201,7 +231,7 @@ void PhysicsActor::SetRotation(float rotation)
 	if (_physBody == NULL)
 		Actor::SetRotation(rotation);
 	else
-		printf("WARNING: SetRotation() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Log("WARNING: SetRotation() had no effect - don't change this actor after physics have been initialized.");
 }
 
 void PhysicsActor::_syncPosRot(float x, float y, float rotation)

@@ -13,10 +13,10 @@ int main(int argc, char* argv[])
 	
 	//adds the default grid so you can more easily place Actors
 	theWorld.Add(new GridActor(), -1);
-
+	
 	//YOUR GAME SETUP CODE HERE
 	
-
+	
 	
 	// do all your setup first, because this function won't return until you're exiting
 	theWorld.StartGame();

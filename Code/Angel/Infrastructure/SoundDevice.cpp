@@ -1,15 +1,43 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in the 
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any 
+//       contributors may be used to endorse or promote products derived from 
+//       this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
 
-//rb ? #include <stdafx.h>
 #include <assert.h>
 
-#include "SoundDevice.h"
+#include "../Infrastructure/SoundDevice.h"
+#include "../Infrastructure/Log.h"
 
 // Helper function for FMOD errors.
 void ERRCHECK(FMOD_RESULT result)
 {
 	if (result != FMOD_OK)
 	{
-		printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
+		sysLog.Printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
 		assert(0);
 	}
 }
@@ -58,7 +86,7 @@ void SoundDevice::Initialize()
 
 	if (version < FMOD_VERSION)
 	{
-		printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
+		sysLog.Printf("Error! You are using an old version of FMOD %08x. This program requires %08x\n", version, FMOD_VERSION);
 		return;
 	}
 
@@ -143,7 +171,7 @@ SOUND_HANDLE SoundDevice::PlaySound(SAMPLE_HANDLE sample, float volume, bool loo
 	//rb - TODO - Allow for flags.  Translate from wrapper flags to FMOD flags.
 	// Currently, we don't use flags, but this way the interface is intact.
 	if (flags)
-		printf("WARNING: PlaySound doesn't use the passed in flags yet.");
+		sysLog.Log("WARNING: PlaySound doesn't use the passed in flags yet.");
 
 	//int numChannelsActive;
 	//_system->getChannelsPlaying(&numChannelsActive);
@@ -171,10 +199,6 @@ SOUND_HANDLE SoundDevice::PlaySound(SAMPLE_HANDLE sample, float volume, bool loo
 	
 	//rb - Here's how we can set user data if we need it.
 	//FMOD_Channel->setUserData(FMOD_Channel);
-
-	//int channelIndex;
-	//FMOD_Channel->getIndex(&channelIndex);
-	//printf("Using FMOD Channel:%x  id:%d \n", (int)FMOD_Channel, channelIndex);
 	
 	//rb - Should we always call the callback?
 	FMOD_Channel->setCallback(FMOD_CHANNEL_CALLBACKTYPE_END, &SoundDevice::FMOD_SoundCallback, 0);

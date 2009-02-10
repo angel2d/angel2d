@@ -1,3 +1,32 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in the 
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any 
+//       contributors may be used to endorse or promote products derived from 
+//       this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 #include "DemoScreenMessagePassing.h"
 
@@ -100,7 +129,8 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 	//When the first actor collides, we kick off the physics for the second actor. 
 	if (message->GetMessageName() == "CollisionWith" + p1->GetName())
 	{
-		// Only init the physics if it isn't initialized.
+		// Only init the physics if it isn't already initialized.
+		//   *weird* things happen if you initialize it a second time.
 		if (!p2->GetBody())
 		{
 			p2->SetDensity(0.8f);
@@ -108,22 +138,22 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 			p2->SetRestitution(0.7f);
 			p2->InitPhysics();
 		}
-		
-		//In this case we want to unsubscribe from this message, since initializing the
-		// physics for that actor more than once can cause "issues." Comment this line
-		// out if you're curious. 
-		theSwitchboard.UnsubscribeFrom(this, "CollisionWith" + p1->GetName());
 
 		//If you need more data about the collision, collision messages always come *from*
 		// the actor colliding with the one you care about, and carry a pointer to the 
 		// relevant Box2D contact point, which contains more information like the normal force,
 		// position, tangent, etc. 
 		// 
-		//You can get these from GetSender() and GetPayload(), which are generic functions on
-		// every message.
+		//You can get these from GetSender() and the GetValue() function, since the 
+		// message getting delivered is really a templated TypedMessage<b2ContactPoint*>
 		b2Vec2 vel = p1->GetBody()->GetLinearVelocity();
 		if (bounceSample && fabsf(vel.y) > 5.0f)
-			theSound.PlaySound(bounceSample, 1.0f, false/*no loop*/, 0);
+		{
+			//We do the check on the actor's speed so that it only makes a sound when dropping
+			// at a certain rate. Otherwise, the bounce noise will play every time it "makes 
+			// contact" with the ground as it settles. This leads to the bad kind of cacophany. 
+			theSound.PlaySound(bounceSample, 1.0f, false/*no loop*/, 0);			
+		}
 	}
 	else if (message->GetMessageName() == "CollisionWith" + p2->GetName())
 	{

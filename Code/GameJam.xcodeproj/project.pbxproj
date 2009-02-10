@@ -1939,7 +1939,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\ncp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\n";
+			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\ncp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]\n    then /usr/bin/python Tools/BuildScripts/publish_mac.py -i ${PROJECT_DIR}/ClientGame -o ${BUILD_DIR}/Published -g ClientGame.app\nfi";
 		};
 		347AA0B10E2F1275006A896F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2004,7 +2004,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\ncp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\n";
+			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\ncp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]\n    then /usr/bin/python Tools/BuildScripts/publish_mac.py -i ${PROJECT_DIR}/IntroGame -o ${BUILD_DIR}/Published -g IntroGame.app\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

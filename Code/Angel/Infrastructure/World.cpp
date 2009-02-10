@@ -1,3 +1,32 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in the 
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any 
+//       contributors may be used to endorse or promote products derived from 
+//       this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
+
 #include "../Infrastructure/World.h"
 
 #include "../Infrastructure/Camera.h"
@@ -117,7 +146,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		char path[PATH_MAX];
 		if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
 		{
-			std::cout << "Problem setting up working directory!" << std::endl;
+			sysLog.Log("Problem setting up working directory!");
 		}
 		CFRelease(resourcesURL);
 		chdir(path);
@@ -468,7 +497,7 @@ void World::Add(Renderable *newElement, int layer)
 {
 	if (newElement == NULL)
 	{
-		std::cout << "WARNING: Can't add a null element to the World." << std::endl;
+		sysLog.Log("WARNING: Can't add a null element to the World.");
 		return;
 	}
 	
@@ -739,7 +768,7 @@ void World::SetGameManager(GameManager* gameManager)
 {
 	if ( (_gameManager != NULL) || (gameManager == NULL) )
 	{
-		std::cout << "ERROR: Can only have one game manager!" << std::endl;
+		sysLog.Log("ERROR: Can only have one game manager!");
 		return;
 	}
 

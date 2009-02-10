@@ -1,3 +1,32 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in the 
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any 
+//       contributors may be used to endorse or promote products derived from 
+//       this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 #include "DemoScreenPathfinding.h"
 
@@ -37,24 +66,17 @@ void DemoScreenPathfinding::Start()
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-	Actor* box = new Actor();
-	box->SetColor(0.0f, 0.0f, 0.0f, 0.6f);
-	box->SetSize(16.0f, 4.0f);
-	box->SetPosition(0.0f, -1.2f);
-	theWorld.Add(box);
 	String description = "This little dude is pathfinding through the area.";
 	description += "\n\nClick the mouse to give him a new target.";
 	description += "\n\nPress [B] to see the pathfinding graph.";
 	TextActor *t = new TextActor("Console", description);
 	t->SetAlignment(TXT_Center);
-	t->SetColor(1.0f, 1.0f, 1.0f);
 	theWorld.Add(t);
 	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenPathfinding.cpp");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);
 	_objects.push_back(fileLoc);
-	_objects.push_back(box);
 	_objects.push_back(t);
 	_objects.push_back(mf);
 	ActorSet walls = theTagList.GetObjectsTagged("maze_wall");
@@ -138,6 +160,6 @@ void MazeFinder::GetToNextPoint()
 	float distance = Vector2::Distance(_position, next);
 	//Want this guy to move at a constant rate of 8.0 units per second
 	float time = distance / 8.0f;
-	MoveTo(next, time, "MazeFinderPathPointReached");
+	MoveTo(next, time, false, "MazeFinderPathPointReached");
 }
 

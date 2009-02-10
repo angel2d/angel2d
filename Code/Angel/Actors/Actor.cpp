@@ -1,8 +1,38 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without 
+// modification, are permitted provided that the following conditions are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in the 
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any 
+//       contributors may be used to endorse or promote products derived from 
+//       this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
+
 #include "../Actors/Actor.h"
 
 #include "../Infrastructure/TagCollection.h"
 #include "../Infrastructure/Textures.h"
 #include "../Infrastructure/TextRendering.h"
+#include "../Infrastructure/Log.h"
 
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"
@@ -395,7 +425,7 @@ void Actor::SetSpriteFrame(int frame)
 
 	if (_spriteTextureReferences[frame] == -1)
 	{
-		std::cout << "setSpriteFrame() - Warning: frame(" << frame << ") has an invalid texture reference." << std::endl;
+		sysLog.Log("setSpriteFrame() - Warning: frame(" + IntToString(frame) + ") has an invalid texture reference.");
 	}
 
 	_spriteCurrentFrame = frame;
@@ -455,8 +485,8 @@ void Actor::LoadSpriteFrames(String firstFilename, GLint clampmode, GLint filter
 	// If these aren't valid, the format is incorrect.
 	if (numberSeparator == (int)String::npos || numDigits <= 0 || !bValidNumber)
 	{
-		std::cout << "LoadSpriteFrames() - Bad Format - Expecting somename_###.ext" << std::endl;
-		std::cout << "Attempting to load single texture: " << firstFilename << std::endl;
+		sysLog.Log("LoadSpriteFrames() - Bad Format - Expecting somename_###.ext");
+		sysLog.Log("Attempting to load single texture: " + firstFilename);
 
 		if (!SetSprite(firstFilename, 0, clampmode, filtermode))
 			return;
@@ -493,8 +523,8 @@ void Actor::LoadSpriteFrames(String firstFilename, GLint clampmode, GLint filter
 		// Verify we don't go out of range on our hard-coded frame limit per sprite.
 		if (_spriteNumFrames >= MAX_SPRITE_FRAMES)
 		{
-			std::cout << "Maximum number of frames reached (" << MAX_SPRITE_FRAMES << ").  Bailing out...  \n";
-			std::cout << "Increment MAX_SPRITE_FRAMES if you need more.\n\n";
+			sysLog.Log("Maximum number of frames reached (" + IntToString(MAX_SPRITE_FRAMES) + "). Bailing out...");
+			sysLog.Log("Increment MAX_SPRITE_FRAMES if you need more.");
 			break;
 		}
 
@@ -630,12 +660,11 @@ Actor* Actor::Create(String archetype)
 	ActorSet tagged = theTagList.GetObjectsTagged(markerTag);
 	if (tagged.size() > 1)
 	{
-		std::cout << "WARNING: more than one Actor tagged with '" + markerTag + "'. (" 
-						+ archetype + ")" << std::endl;
+		sysLog.Log("WARNING: more than one Actor tagged with '" + markerTag + "'. (" + archetype + ")");
 	}
 	if (tagged.size() < 1)
 	{
-		std::cout << "ERROR: Script failed to create Actor with archetype " + archetype + ". " << std::endl;
+		sysLog.Log("ERROR: Script failed to create Actor with archetype " + archetype + ". ");
 		return NULL;
 	}
 	ActorSet::iterator it = tagged.begin();
