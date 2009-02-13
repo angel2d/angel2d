@@ -74,26 +74,21 @@ void DemoScreenSimpleActor::Start()
 
 void DemoScreenSimpleActor::Update(float dt)
 {
-	if (!theController.IsConnected())
-	{
-		return;
-	}
-
 	//Here we're doing some input processing and altering the Actor based on it. 
-	if (theController.IsBButtonDown())
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || theDemoGame.IsBDown())
 	{
 		a->SetColor(1.0f, 0.0f, 1.0f, .5f); //R, G, B, A (there is also a Color class you can use)
 		a->ClearSpriteInfo(); //removes any texture that might have been assigned
 		t->SetDisplayString("Now it's purple and translucent. Press [Y] to give it a texture.");
 	}
-	if (theController.IsYButtonDown())
+	if ((theController.IsConnected() && theController.IsYButtonDown()) || theDemoGame.IsYDown())
 	{
 		a->SetColor(1,1,1,1); //(white and opaque so the texture comes through fully)
 		a->ClearSpriteInfo();
 		a->SetSprite("Resources/Images/angel.png"); //Loads any image supported by FreeImage (see docs)
 		t->SetDisplayString("Pretty easy. You can do animations as well. Press [X] to check it out.");
 	}
-	if (theController.IsXButtonDown())
+	if ((theController.IsConnected() && theController.IsXButtonDown()) || theDemoGame.IsXDown())
 	{
 		a->SetColor(1,1,1,1);
 		a->LoadSpriteFrames("Resources/Images/numbers/angel_01.png");
@@ -104,6 +99,6 @@ void DemoScreenSimpleActor::Update(float dt)
 			4,				//ending frame
 			"AngelNumbers"	//name of the animation so you can get the event when it finishes
 		);
-		t->SetDisplayString("You can also change the speed and looping behavior if you want. ([A] to move on.)");
+		t->SetDisplayString("You can also change the speed and looping behavior if you want. \n([A] or space to move on.)");
 	}
 }

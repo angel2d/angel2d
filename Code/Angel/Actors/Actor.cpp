@@ -135,10 +135,6 @@ void Actor::Update(float dt)
 	}
 }
 
-void Actor::OnCollision(Actor* /*other*/)
-{
-}
-
 void Actor::UpdateSpriteAnimation(float dt)
 {
 	if (_spriteFrameDelay > 0.0f)
@@ -446,17 +442,6 @@ void Actor::PlaySpriteAnimation(float delay, spriteAnimationType animType, int s
 		_currentAnimName = _animName;
 }
 
-/*-----------------------------------------------------------------------------
-
-	Actor::LoadSpriteFrames()
-
-	How this works:
-		We expect the name of the first image to end in _###. 
-		The number of digits doesn't matter, but internally, we are limited 
-		to 64 frames.  To change that limit, just change MAX_SPRITE_FRAMES 
-		in Actor.h.
-
------------------------------------------------------------------------------*/
 void Actor::LoadSpriteFrames(String firstFilename, GLint clampmode, GLint filtermode)
 {
 	int extensionLocation = firstFilename.rfind(".");

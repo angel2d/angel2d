@@ -68,7 +68,7 @@ void DemoScreenConsole::Start()
 	t->SetPosition(0, -3.5f);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenConsole.cpp, simple_actor.adf, client_start.py");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenConsole.cpp, demo_actors.ini, client_start.py");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

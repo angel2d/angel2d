@@ -52,7 +52,7 @@ void DemoScreenDefFile::Start()
 
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-	t = new TextActor("Console", "This Actor was placed using an ActorDef file.");
+	t = new TextActor("Console", "This Actor was placed using an archetype from an INI file.");
 	t->SetPosition(0, 4.5);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
@@ -60,7 +60,7 @@ void DemoScreenDefFile::Start()
 	t2->SetPosition(0, 3.5);
 	t2->SetAlignment(TXT_Center);
 	theWorld.Add(t2);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenDefFile.cpp, simple_actor.adf");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenDefFile.cpp, demo_actors.ini");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

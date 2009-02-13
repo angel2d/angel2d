@@ -71,6 +71,7 @@ void DemoScreenPathfinding::Start()
 	description += "\n\nPress [B] to see the pathfinding graph.";
 	TextActor *t = new TextActor("Console", description);
 	t->SetAlignment(TXT_Center);
+	t->SetPosition(0.0f, -5.0f);
 	theWorld.Add(t);
 	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenPathfinding.cpp");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
@@ -91,7 +92,7 @@ void DemoScreenPathfinding::Start()
 
 void DemoScreenPathfinding::Update(float dt)
 {
-	if (theController.IsConnected() && theController.IsBButtonDown())
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || theDemoGame.IsBDown())
 	{
 		theSpatialGraph.EnableDrawGraph(true);
 	}

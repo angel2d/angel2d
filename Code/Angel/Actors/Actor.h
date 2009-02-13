@@ -278,19 +278,120 @@ public:
 	 */
 	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 		
+	/**
+	 * Gets the OpenGL texture reference that the Actor is currently using
+	 *  when it draws itself. 
+	 * 
+	 * @param frame If the Actor has an animation, you can retrieve the 
+	 *   reference for a specific frame
+	 * @return The OpenGL texture reference
+	 */
 	const int GetSpriteTexture(int frame = 0);
 	
-	bool SetSprite(String filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=0);
+	/**
+	 * Apply texture information to an Actor. The file can be any image format
+	 *  supported by FreeImage, and transparency in the image will be used
+	 *  when drawing the Actor. 
+	 * 
+	 * @param filename The path to an image file
+	 * @param frame If you're building an animation for this Actor, you can
+	 *   specify the frame to which this texture should be assigned. 
+	 * @param clampmode The OpenGL clamp mode to use when drawing this sprite.
+	 *   can be either GL_CLAMP or GL_REPEAT. 
+	 * @param filtermode The OpenGL filter mode to use when drawing this 
+	 *   sprite. One of GL_NEAREST, GL_LINEAR, GL_NEAREST_MIPMAP_NEAREST,
+	 *   GL_LINEAR_MIPMAP_NEAREST, GL_NEAREST_MIPMAP_LINEAR, or 
+	 *   GL_LINEAR_MIPMAP_LINEAR
+	 * @param optional If set to true, the engine won't complain if it can't
+	 *   load this texture. 
+	 * @return True if the sprite was successfully set, false otherwise
+	 */
+	bool SetSprite(String filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=false);
+	
+	/**
+	 * Remove all sprite information from an Actor
+	 */
 	void ClearSpriteInfo();
+
+	/**
+	 * A convenience function for loading up a directory of image files as an
+	 *  animation. We expect the name of the first image to end in _###, where
+	 *  ### represents a number. The number of digits you put at the end 
+	 *  doesn't matter, but we are internally limited to 64 frames. If you 
+	 *  want more, just change MAX_SPRITE_FRAMES in Actor.h. 
+	 * 
+	 * From the first file that you pass the function, it will iterate through
+	 *  the file's directory and sequentially load up any images that follow
+	 *  the same naming pattern. So if you had a directory with \c 
+	 *  anim_001.png, \c anim_002.png, and \c anim_003.png, you could load
+	 *  the three-frame animation by passing "anim_001.png" to this function. 
+	 * 
+	 * @param firstFilename The starting file for the animation
+	 * @param clampmode The clamp mode to be used by the #SetSprite function
+	 * @param filtermode The filter mode to be used by the #SetSprite function
+	 */
 	void LoadSpriteFrames(String firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
-	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* _animName = NULL); //rb - TODO - Add a way to associate anim type, and frame indices to a name.
+	
+	//rb - TODO - Add a way to associate anim type, and frame indices to a name.
+	/**
+	 * Actually triggers the loaded animation to start playing. 
+	 * 
+	 * @param delay The amount of time between frames
+	 * @param animType How the animation should behave when it's finished. 
+	 *   Options are SAT_Loop, SAT_PingPong, and SAT_OneShot. 
+	 * @param startFrame The starting frame of the animation to play
+	 * @param endFrame The ending frame of the animation to play
+	 * @param animName The name of the animation so you can get the event
+	 *   when it finishes. 
+	 */
+	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* animName = NULL); 
+	
+	/**
+	 * Manually set the frame to draw. This way you can have an "animation" of
+	 *  frames that just represent states of your actor and swap between them
+	 *  without having to reload the textures all the time. 
+	 * 
+	 * @param frame The frame to switch to
+	 */
 	void SetSpriteFrame(int frame);
-	void UpdateSpriteAnimation(float dt);
+	
+	/**
+	 * Lets you find out if an animation is currently playing on this Actor.
+	 * 
+	 * @return True if there's an animation playing, false if there isn't. 
+	 */
 	bool IsSpriteAnimPlaying()
 	{
 		return (_spriteFrameDelay > 0);
 	}
+	
+	/**
+	 * A function you can override in the subclass if you you want your Actor
+	 *  to do certain things when an animation finishes. This function will
+	 *  get called by the animation system and pass in the string you assigned
+	 *  when calling #PlaySpriteAnimation. 
+	 * 
+	 * @param animName The animation's name
+	 */
+	virtual void AnimCallback(String animName) {}
+	
+	/**
+	 * If you're doing fancy things with moving textures, this function lets
+	 *  you alter the UV (texture coordinates) of the actor. 
+	 * 
+	 * @param upright The desired upper right UV
+	 * @param lowleft The desired lower left UV
+	 */
 	void SetUVs(const Vector2 upright, const Vector2 lowleft);
+	
+	/**
+	 * Get the current UV coordinates being used by the Actor to draw. 
+	 * 
+	 * @param upright An out parameter that will be set to the current upper 
+	 *   right UV
+	 * @param lowleft An out parameter that will be set to the current lower
+	 *   left UV
+	 */
 	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
 	
 	/**
@@ -366,9 +467,7 @@ public:
 	 * @param message The message getting delivered. 
 	 */
 	virtual void ReceiveMessage(Message* message) {}
-	
-	virtual void OnCollision(Actor* other);
-	
+		
 	/**
 	 * Set a new rendering layer for this Actor. 
 	 * 
@@ -412,8 +511,6 @@ public:
 	 * This will get called on every Actor once per frame, after the #Update. 
 	 */
 	virtual void Render();
-	
-	virtual void AnimCallback(String /*animName*/) {}
 	
 	/** 
 	 * Called for every actor that doesn't get unloaded in World::UnloadAll().
@@ -494,6 +591,7 @@ protected:
 
 private:
 	void SetSpriteTexture(int texRef, int frame = 0);
+	void UpdateSpriteAnimation(float dt);
 	
 	Interval<Vector2> _positionInterval; String _positionIntervalMessage;
 	Interval<float> _rotationInterval; String _rotationIntervalMessage;

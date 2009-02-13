@@ -31,17 +31,10 @@
 
 #include "DemoGameManager.h"
 
-
-class DemoScreenCollisionLevelFile : public DemoScreen
+class DemoScreenControllerInstructions : public DemoScreen
 {
 public:
-	DemoScreenCollisionLevelFile();
+	DemoScreenControllerInstructions();
 
 	virtual void Start();
-
-private:
-	TextActor *t;
-	TextActor *t2;
-	//TextActor *t3;
-	//TextActor *t4;
 };

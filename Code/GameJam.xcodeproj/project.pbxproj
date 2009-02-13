@@ -193,6 +193,8 @@
 		34974B3D0E2927E80018A032 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34974B390E2927E00018A032 /* AGL.framework */; };
 		3497CD0A0F3E34AE00CDE04B /* DemoScreenMultipleControllers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */; };
 		3497CD0B0F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */; };
+		349BDCB00F43A9A60089AEC9 /* DemoScreenControllerInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 349BDCAE0F43A9A60089AEC9 /* DemoScreenControllerInstructions.h */; };
+		349BDCB10F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349BDCAF0F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp */; };
 		349C19E40E8C88AD009D94FC /* AngelPythonWrapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 349C19E20E8C88AC009D94FC /* AngelPythonWrapping.h */; };
 		349C19E50E8C88AD009D94FC /* AngelPythonWrapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349C19E30E8C88AC009D94FC /* AngelPythonWrapping.cpp */; };
 		34A18C760E2843B4001C79A5 /* enable.c in Sources */ = {isa = PBXBuildFile; fileRef = 34A18C5B0E2843B4001C79A5 /* enable.c */; };
@@ -231,7 +233,6 @@
 		34D34E4E0E2C386B0053994C /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DDE0E2C375A0053994C /* Main.cpp */; };
 		34D34E4F0E2C386F0053994C /* DemoGameManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DDD0E2C375A0053994C /* DemoGameManager.h */; };
 		34D34E500E2C388A0053994C /* DemoScreenBindingInstructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DD50E2C375A0053994C /* DemoScreenBindingInstructions.cpp */; };
-		34D34E520E2C388A0053994C /* DemoScreenCollisionLevelFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DD90E2C375A0053994C /* DemoScreenCollisionLevelFile.cpp */; };
 		34D34E530E2C388A0053994C /* DemoScreenRenderLayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DE00E2C375A0053994C /* DemoScreenRenderLayers.cpp */; };
 		34D34E540E2C388A0053994C /* DemoScreenConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DE10E2C375A0053994C /* DemoScreenConsole.cpp */; };
 		34D34E550E2C388A0053994C /* DemoScreenByeBye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DE40E2C375A0053994C /* DemoScreenByeBye.cpp */; };
@@ -245,7 +246,6 @@
 		34D34E5E0E2C388A0053994C /* DemoScreenLevelFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DF40E2C375A0053994C /* DemoScreenLevelFile.cpp */; };
 		34D34E5F0E2C388A0053994C /* DemoScreenStart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D34DF70E2C375A0053994C /* DemoScreenStart.cpp */; };
 		34D34E600E2C38A20053994C /* DemoScreenPhysicsActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DD60E2C375A0053994C /* DemoScreenPhysicsActor.h */; };
-		34D34E610E2C38A20053994C /* DemoScreenCollisionLevelFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DDA0E2C375A0053994C /* DemoScreenCollisionLevelFile.h */; };
 		34D34E620E2C38A20053994C /* DemoScreenParticleActors.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DDB0E2C375A0053994C /* DemoScreenParticleActors.h */; };
 		34D34E640E2C38A20053994C /* DemoScreenInstructions.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DE20E2C375A0053994C /* DemoScreenInstructions.h */; };
 		34D34E650E2C38A20053994C /* DemoScreenConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DE30E2C375A0053994C /* DemoScreenConsole.h */; };
@@ -630,6 +630,8 @@
 		34974BB50E292E240018A032 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMultipleControllers.h; path = IntroGame/DemoScreenMultipleControllers.h; sourceTree = "<group>"; };
 		3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMultipleControllers.cpp; path = IntroGame/DemoScreenMultipleControllers.cpp; sourceTree = "<group>"; };
+		349BDCAE0F43A9A60089AEC9 /* DemoScreenControllerInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenControllerInstructions.h; path = IntroGame/DemoScreenControllerInstructions.h; sourceTree = "<group>"; };
+		349BDCAF0F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenControllerInstructions.cpp; path = IntroGame/DemoScreenControllerInstructions.cpp; sourceTree = "<group>"; };
 		349C19E20E8C88AC009D94FC /* AngelPythonWrapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AngelPythonWrapping.h; path = Angel/Scripting/Interfaces/AngelPythonWrapping.h; sourceTree = "<group>"; };
 		349C19E30E8C88AC009D94FC /* AngelPythonWrapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelPythonWrapping.cpp; path = Angel/Scripting/Interfaces/AngelPythonWrapping.cpp; sourceTree = "<group>"; };
 		34A1815B0E283FE0001C79A5 /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
@@ -726,8 +728,6 @@
 		34D34DD50E2C375A0053994C /* DemoScreenBindingInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenBindingInstructions.cpp; path = IntroGame/DemoScreenBindingInstructions.cpp; sourceTree = "<group>"; };
 		34D34DD60E2C375A0053994C /* DemoScreenPhysicsActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenPhysicsActor.h; path = IntroGame/DemoScreenPhysicsActor.h; sourceTree = "<group>"; };
 		34D34DD70E2C375A0053994C /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = IntroGame/stdafx.h; sourceTree = "<group>"; };
-		34D34DD90E2C375A0053994C /* DemoScreenCollisionLevelFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenCollisionLevelFile.cpp; path = IntroGame/DemoScreenCollisionLevelFile.cpp; sourceTree = "<group>"; };
-		34D34DDA0E2C375A0053994C /* DemoScreenCollisionLevelFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenCollisionLevelFile.h; path = IntroGame/DemoScreenCollisionLevelFile.h; sourceTree = "<group>"; };
 		34D34DDB0E2C375A0053994C /* DemoScreenParticleActors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenParticleActors.h; path = IntroGame/DemoScreenParticleActors.h; sourceTree = "<group>"; };
 		34D34DDD0E2C375A0053994C /* DemoGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoGameManager.h; path = IntroGame/DemoGameManager.h; sourceTree = "<group>"; };
 		34D34DDE0E2C375A0053994C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = IntroGame/Main.cpp; sourceTree = "<group>"; };
@@ -1434,14 +1434,14 @@
 		34D34E400E2C37D20053994C /* DemoScreens */ = {
 			isa = PBXGroup;
 			children = (
+				349BDCAE0F43A9A60089AEC9 /* DemoScreenControllerInstructions.h */,
+				349BDCAF0F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp */,
 				343F41960E31C19F0097B760 /* DemoScreenMessagePassing.cpp */,
 				343F41970E31C19F0097B760 /* DemoScreenMessagePassing.h */,
 				34D34DD50E2C375A0053994C /* DemoScreenBindingInstructions.cpp */,
 				34D34DEC0E2C375A0053994C /* DemoScreenBindingInstructions.h */,
 				34D34DF10E2C375A0053994C /* DemoScreenPhysicsActor.cpp */,
 				34D34DD60E2C375A0053994C /* DemoScreenPhysicsActor.h */,
-				34D34DD90E2C375A0053994C /* DemoScreenCollisionLevelFile.cpp */,
-				34D34DDA0E2C375A0053994C /* DemoScreenCollisionLevelFile.h */,
 				34D34DED0E2C375A0053994C /* DemoScreenParticleActors.cpp */,
 				34D34DDB0E2C375A0053994C /* DemoScreenParticleActors.h */,
 				34D34DE00E2C375A0053994C /* DemoScreenRenderLayers.cpp */,
@@ -1668,7 +1668,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34D34E600E2C38A20053994C /* DemoScreenPhysicsActor.h in Headers */,
-				34D34E610E2C38A20053994C /* DemoScreenCollisionLevelFile.h in Headers */,
 				34D34E620E2C38A20053994C /* DemoScreenParticleActors.h in Headers */,
 				34D34E640E2C38A20053994C /* DemoScreenInstructions.h in Headers */,
 				34D34E650E2C38A20053994C /* DemoScreenConsole.h in Headers */,
@@ -1686,6 +1685,7 @@
 				346E5EA80F30122000258B84 /* DemoScreenIntervals.h in Headers */,
 				340F35180F36BA4600650DF7 /* DemoScreenPathfinding.h in Headers */,
 				3497CD0A0F3E34AE00CDE04B /* DemoScreenMultipleControllers.h in Headers */,
+				349BDCB00F43A9A60089AEC9 /* DemoScreenControllerInstructions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2121,7 +2121,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34D34E500E2C388A0053994C /* DemoScreenBindingInstructions.cpp in Sources */,
-				34D34E520E2C388A0053994C /* DemoScreenCollisionLevelFile.cpp in Sources */,
 				34D34E530E2C388A0053994C /* DemoScreenRenderLayers.cpp in Sources */,
 				34D34E540E2C388A0053994C /* DemoScreenConsole.cpp in Sources */,
 				34D34E550E2C388A0053994C /* DemoScreenByeBye.cpp in Sources */,
@@ -2140,6 +2139,7 @@
 				346E5EA70F30122000258B84 /* DemoScreenIntervals.cpp in Sources */,
 				340F35190F36BA4600650DF7 /* DemoScreenPathfinding.cpp in Sources */,
 				3497CD0B0F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp in Sources */,
+				349BDCB10F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

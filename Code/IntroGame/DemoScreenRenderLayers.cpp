@@ -65,7 +65,7 @@ void DemoScreenRenderLayers::Start()
 	t1->SetPosition(0, 5.5);
 	t1->SetAlignment(TXT_Center);
 	theWorld.Add(t1);
-	t2 = new TextActor("Console", "Use the controller's bumper buttons to change their layer ordering.");
+	t2 = new TextActor("Console", "Use the controller's bumper buttons or \nthe right and left arrow keys to change their layer ordering.");
 	t2->SetPosition(0, 4.5);
 	t2->SetAlignment(TXT_Center);
 	theWorld.Add(t2);
@@ -83,16 +83,12 @@ void DemoScreenRenderLayers::Start()
 
 void DemoScreenRenderLayers::Update(float dt)
 {
-	if (!theController.IsConnected())
-	{
-		return;
-	}
 	//NOTE: a2 has been added to layer one, so this function moves a1 around it.
-	if (theController.IsLeftBumperDown())
+	if ((theController.IsConnected() && theController.IsLeftBumperDown()) || theDemoGame.IsLeftDown())
 	{
 		theWorld.UpdateLayer(a1, 0); //moves the actor to the requested layer
 	}
-	else if (theController.IsRightBumperDown())
+	else if ((theController.IsConnected() && theController.IsRightBumperDown()) || theDemoGame.IsRightDown())
 	{
 		theWorld.UpdateLayer(a1, 2);
 	}

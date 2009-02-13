@@ -90,7 +90,7 @@ void DemoScreenPhysicsActor::Start()
 
 void DemoScreenPhysicsActor::Update(float dt)
 {
-	if (theController.IsConnected() && theController.IsBButtonDown())
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || (theDemoGame.IsBDown()))
 	{
 		//punch it upwards
 		p1->ApplyForce(Vector2(0, 20.0f), Vector2());

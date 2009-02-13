@@ -291,19 +291,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenCollisionLevelFile.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\DemoScreenCollisionLevelFile.h"
-				>
-			</File>
-			<File
 				RelativePath=".\DemoScreenConsole.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\DemoScreenConsole.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreenControllerInstructions.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreenControllerInstructions.h"
 				>
 			</File>
 			<File

@@ -66,12 +66,7 @@ def main(input_d, output_d, game_name):
     
     script = os.path.join(app_path, "Contents", "Resources", "Scripts", "start.py")
     py_version = ".".join(platform.python_version_tuple()[0:2])
-    remotePy = os.path.join(
-                    app_path, 
-                    "Contents", 
-                    "Frameworks", 
-                    "Python.framework"
-                )
+    remotePy = os.path.join(app_path, "Contents", "Frameworks", "Python.framework")
     remotePyCurrent = os.path.join(remotePy, "Versions", py_version)
     remoteLib = os.path.join(remotePyCurrent, "lib", "python" + py_version)
     p = PythonPackage(script, remoteLib)

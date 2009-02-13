@@ -9,6 +9,20 @@ typedef std::vector<Actor*>	ActorList;
 %template(ActorSet)			std::set<Actor*>;
 %template(ActorList)		std::vector<Actor*>;
 
+enum spriteAnimationType
+{
+	SAT_None,
+	SAT_Loop,
+	SAT_PingPong,
+	SAT_OneShot
+};
+
+enum actorDrawShape
+{
+    ADS_Square,
+    ADS_Circle
+};
+
 %feature("director") Actor;
 class Actor : public Renderable, public MessageListener 
 {
@@ -29,7 +43,7 @@ public:
 	Color GetColor();
 	void SetAlpha(float newAlpha);
 	const float GetAlpha();
-//    void SetDrawShape( actorDrawShape DrawShape );
+	void SetDrawShape( actorDrawShape DrawShape );
 	
 	void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
@@ -37,20 +51,19 @@ public:
 	void ChangeSizeTo(Vector2 newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	
-//	const int GetSpriteTexture(int frame = 0);
+	const int GetSpriteTexture(int frame = 0);
 	
 	bool SetSprite(String filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=0);
 	void ClearSpriteInfo();
 	void LoadSpriteFrames(String firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
 	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* _animName = NULL); //rb - TODO - Add a way to associate anim type, and frame indices to a name.
 	void SetSpriteFrame(int frame);
-//	void UpdateSpriteAnimation(float dt);
 	bool IsSpriteAnimPlaying()
 	{
 		return (_spriteFrameDelay > 0);
 	}
-//	void SetUVs(const Vector2 upright, const Vector2 lowleft);
-//	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
+	void SetUVs(const Vector2 upright, const Vector2 lowleft);
+	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
 	
 	const bool IsTagged(String tag);
 	void Tag(String newTag);

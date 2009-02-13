@@ -55,6 +55,14 @@ public:
 	 */
 	virtual void Log( const String& val ) = 0;
 	
+	/**
+	 * Log a formatted string using printf syntax. 
+	 * 
+	 * http://www.cplusplus.com/reference/clibrary/cstdio/printf.html
+	 * 
+	 * @param format The format string
+	 * @param ... The parameters to substitute into the format string
+	 */
 	void Printf(const String& format, ...);
 };
 

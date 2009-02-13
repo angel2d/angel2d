@@ -37,12 +37,12 @@ DemoScreenLayeredCollisionLevelFile::DemoScreenLayeredCollisionLevelFile()
 
 void DemoScreenLayeredCollisionLevelFile::Start()
 {
-	//
+	//Give names to some layers so we can reference them more easily
 	theWorld.NameLayer("background", 0);
 	theWorld.NameLayer("foreground", 1);
 	theWorld.NameLayer("hud", 2);
 	
-	//Loads the file from Config\ActorDef\layeredcollisionlevel_demo.lvl
+	//Loads the file from Config\ActorDef\layeredcollisionlevel_demo.ini
 	theWorld.LoadLevel("layeredcollisionlevel_demo");
 
 	//All the magic happens in the level file!
@@ -53,7 +53,7 @@ void DemoScreenLayeredCollisionLevelFile::Start()
 
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-	t2 = new TextActor("Console", "These new Actors were assigned layers in the level file.");
+	t2 = new TextActor("Console", "These new Actors were assigned layers in their level file.");
 	t2->SetPosition(0, 5.5);
 	t2->SetAlignment(TXT_Center);
 	theWorld.Add(t2, 10);
@@ -65,7 +65,7 @@ void DemoScreenLayeredCollisionLevelFile::Start()
 	t4->SetPosition(0, 3.5);
 	t4->SetAlignment(TXT_Center);
 	theWorld.Add(t4, 10);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenLayeredCollisionLevelFile.cpp, layeredcollisionlevel_demo.lvl");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenLayeredCollisionLevelFile.cpp, layeredcollisionlevel_demo.ini");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc, 10);

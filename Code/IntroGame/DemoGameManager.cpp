@@ -39,7 +39,6 @@
 #include "DemoScreenPhysicsActor.h"
 #include "DemoScreenDefFile.h"
 #include "DemoScreenLevelFile.h"
-#include "DemoScreenCollisionLevelFile.h"
 #include "DemoScreenConsole.h"
 #include "DemoScreenByeBye.h"
 #include "DemoScreenRenderLayers.h"
@@ -49,6 +48,7 @@
 #include "DemoScreenMessagePassing.h"
 #include "DemoScreenPathfinding.h"
 #include "DemoScreenMultipleControllers.h"
+#include "DemoScreenControllerInstructions.h"
 
 DemoScreen::DemoScreen() {}
 
@@ -75,24 +75,42 @@ DemoGameManager* DemoGameManager::s_DemoGameManager = NULL;
 
 DemoGameManager::DemoGameManager()
 {
+	_bDown = _xDown = _yDown = _leftDown = _rightDown = _upDown = _downDown = _shiftDown = false;
+	
 	//subscribe to messages
 	theSwitchboard.SubscribeTo(this, "MoveForwards");
 	theSwitchboard.SubscribeTo(this, "MoveBackwards");
+	theSwitchboard.SubscribeTo(this, "BDown");
+	theSwitchboard.SubscribeTo(this, "BUp");
+	theSwitchboard.SubscribeTo(this, "XDown");
+	theSwitchboard.SubscribeTo(this, "XUp");
+	theSwitchboard.SubscribeTo(this, "YDown");
+	theSwitchboard.SubscribeTo(this, "YUp");
+	theSwitchboard.SubscribeTo(this, "LeftDown");
+	theSwitchboard.SubscribeTo(this, "LeftUp");
+	theSwitchboard.SubscribeTo(this, "RightDown");
+	theSwitchboard.SubscribeTo(this, "RightUp");
+	theSwitchboard.SubscribeTo(this, "DownDown");
+	theSwitchboard.SubscribeTo(this, "DownUp");
+	theSwitchboard.SubscribeTo(this, "UpDown");
+	theSwitchboard.SubscribeTo(this, "UpUp");
+	theSwitchboard.SubscribeTo(this, "ShiftDown");
+	theSwitchboard.SubscribeTo(this, "ShiftUp");
 
 	_screens.push_back(new DemoScreenStart());							// 0
 	_screens.push_back(new DemoScreenInstructions());					// 1
 	_screens.push_back(new DemoScreenSimpleActor());					// 2
 	_screens.push_back(new DemoScreenRenderLayers());					// 3
-	_screens.push_back(new DemoScreenMovingActor());					// 4
-	_screens.push_back(new DemoScreenMultipleControllers());			// 5
-	_screens.push_back(new DemoScreenDefFile());						// 6
-	_screens.push_back(new DemoScreenLevelFile());						// 7
-	_screens.push_back(new DemoScreenBindingInstructions());			// 8
-	_screens.push_back(new DemoScreenParticleActors());					// 9
-	_screens.push_back(new DemoScreenPhysicsActor());					//10
-	_screens.push_back(new DemoScreenMessagePassing());					//11
-	_screens.push_back(new DemoScreenIntervals());						//12
-	_screens.push_back(new DemoScreenCollisionLevelFile());				//13
+	_screens.push_back(new DemoScreenControllerInstructions());			// 4
+	_screens.push_back(new DemoScreenMovingActor());					// 5
+	_screens.push_back(new DemoScreenMultipleControllers());			// 6
+	_screens.push_back(new DemoScreenDefFile());						// 7
+	_screens.push_back(new DemoScreenLevelFile());						// 8
+	_screens.push_back(new DemoScreenBindingInstructions());			// 9
+	_screens.push_back(new DemoScreenParticleActors());					//10
+	_screens.push_back(new DemoScreenPhysicsActor());					//11
+	_screens.push_back(new DemoScreenMessagePassing());					//12
+	_screens.push_back(new DemoScreenIntervals());						//13
 	_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//14
 	_screens.push_back(new DemoScreenConsole());						//15
 	_screens.push_back(new DemoScreenPathfinding());					//16
@@ -135,6 +153,62 @@ void DemoGameManager::ReceiveMessage(Message* message)
 	else if (message->GetMessageName() == "MoveBackwards")
 	{
 		MoveBackwards();
+	}
+	else if (message->GetMessageName() == "BDown")
+	{
+		_bDown = true;
+	}
+	else if (message->GetMessageName() == "BUp")
+	{
+		_bDown = false;
+	}
+	else if (message->GetMessageName() == "XDown")
+	{
+		_xDown = true;
+	}
+	else if (message->GetMessageName() == "XUp")
+	{
+		_xDown = false;
+	}
+	else if (message->GetMessageName() == "YDown")
+	{
+		_yDown = true;
+	}
+	else if (message->GetMessageName() == "YUp")
+	{
+		_yDown = false;
+	}
+	else if (message->GetMessageName() == "LeftDown")
+	{
+		_leftDown = true;
+	}
+	else if (message->GetMessageName() == "LeftUp")
+	{
+		_leftDown = false;
+	}
+	else if (message->GetMessageName() == "RightDown")
+	{
+		_rightDown = true;
+	}
+	else if (message->GetMessageName() == "RightUp")
+	{
+		_rightDown = false;
+	}
+	else if (message->GetMessageName() == "DownDown")
+	{
+		_downDown = true;
+	}
+	else if (message->GetMessageName() == "DownUp")
+	{
+		_downDown = false;
+	}
+	else if (message->GetMessageName() == "UpDown")
+	{
+		_upDown = true;
+	}
+	else if (message->GetMessageName() == "UpUp")
+	{
+		_upDown = false;
 	}
 }
 

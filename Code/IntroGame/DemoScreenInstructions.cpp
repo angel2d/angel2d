@@ -47,7 +47,7 @@ void DemoScreenInstructions::Start()
 	TextActor *t3 = new TextActor("Console", "The files are pretty thoroughly commented, so check them out to see how we do things.");
 	t3->SetPosition(0, 0.5);
 	t3->SetAlignment(TXT_Center);
-	TextActor *t4 = new TextActor("Console", "Press [A] on the 360 Controller to go to the next example, and Back to go back.");
+	TextActor *t4 = new TextActor("Console", "Press [A] on the 360 controller or the space bar to go to the next example, \nand Back on the controller or the minus button to go back.");
 	t4->SetPosition(0, -3.5);
 	t4->SetAlignment(TXT_Center);
 

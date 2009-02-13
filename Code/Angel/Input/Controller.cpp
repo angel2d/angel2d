@@ -150,6 +150,7 @@ void Controller::Setup()
 		else
 		{
 			sysLog.Printf("Controller %d not present...", _controllerID+1);
+			ZeroMemory( &_currentControllerRawState, sizeof(XINPUT_STATE));
 			_connected = false;
 		}
 	

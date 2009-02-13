@@ -173,7 +173,7 @@ void InputManager::UnbindKey( const String& keyId )
 
 bool InputManager::OnKeyDown( int keyVal )
 {
-	InputBinding* pBinding = GetBinding( keyVal );
+	InputBinding* pBinding = GetBinding( tolower(keyVal) );
 	if( pBinding == NULL )
 		return false;
 
@@ -184,7 +184,7 @@ bool InputManager::OnKeyDown( int keyVal )
 
 bool InputManager::OnKeyUp( int keyVal )
 {
-	InputBinding* pBinding = GetBinding( keyVal );
+	InputBinding* pBinding = GetBinding( tolower(keyVal) );
 	if( pBinding == NULL )
 		return false;
 

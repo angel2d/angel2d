@@ -88,12 +88,7 @@ void DemoScreenParticleActors::Update(float dt)
 {
 	//This is the same kind of input processing we did in DemoScreenSimpleActor.cpp,
 	//  but here we're playing with various properties of the particles. 
-	if (!theController.IsConnected())
-	{
-		return;
-	}
-
-	if (theController.IsBButtonDown())
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || theDemoGame.IsBDown())
 	{
 		pa->SetColor(1.0f, 0.0f, 0.0f, .25f);
 		pa->SetSize(0.5f, 0.5f);
@@ -102,7 +97,7 @@ void DemoScreenParticleActors::Update(float dt)
 		t->SetDisplayString("Now it's red and translucent. Press [Y].");
 		t2->SetDisplayString("");
 	}
-	if (theController.IsYButtonDown())
+	if ((theController.IsConnected() && theController.IsYButtonDown()) || theDemoGame.IsYDown())
 	{
 		pa->SetColor(0,0,1,1); 		
 		pa->SetSize(0.5f, 0.5f);
@@ -112,7 +107,7 @@ void DemoScreenParticleActors::Update(float dt)
 		t->SetDisplayString("Now it's blue and has density. Press [X] for the coolest thing ever.");
 		t2->SetDisplayString("");
 	}
-	if (theController.IsXButtonDown())
+	if ((theController.IsConnected() && theController.IsXButtonDown()) || theDemoGame.IsXDown())
 	{
 		pa->SetSize(4.0f, 4.0f);
 		pa->SetColor(1,1,1,1);
