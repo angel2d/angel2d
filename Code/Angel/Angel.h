@@ -31,9 +31,9 @@
  * @mainpage The Angel Engine 
  * @section ReadMe
  * Make sure to first read the overview information at 
- *  http://angel-engine.googlecode.com -- it contains a good rundown of 
- *  what Angel is and, more importantly, what it is not. Calibrating your 
- *  expectations can save a lot of heartache later. :-)
+ *  http://angel2d.com -- it contains a good rundown of what Angel is and, 
+ *  more importantly, what it is not. Calibrating your expectations can save a 
+ *  lot of heartache later. :-)
  * 
  * @section intro Introduction
  * This documentation is meant as an introduction to Angel, but also serves
@@ -225,7 +225,7 @@
  *  loop can affect how things should be drawn in the Render part. 
  * 
  * You can also pause and unpause your game by calling World::StopSimulation
- *  or World::StartSimulation. While the sim is paused, ertain things will 
+ *  or World::StartSimulation. While the sim is paused, certain things will 
  *  still go on (like sound and input), but normal objects won't get their
  *  update calls. (Note that they'll still be drawn!)
  * 
@@ -242,11 +242,12 @@
  * There are a few types of logs. All of them are derived classes of 
  *  DeveloperLog, and implement DeveloperLog::Log and DeveloperLog::Printf. 
  *  When you call DeveloperLog::Log, you just pass it a string and it gets
- *  written in the log of your choice. When you call Printf, you can pass it
- *  a format string and list of parameters, just like you would do with the
- *  normal \c printf function: http://www.cplusplus.com/reference/clibrary/cstdio/printf.html
- *  For all cases where you write to a log, the system will automatically 
- *  put a newline character at the end. 
+ *  written in the log of your choice. When you call DeveloperLog::Printf, 
+ *  you can pass it a format string and list of parameters, just like you 
+ *  would do with the <a href="
+ *  http://www.cplusplus.com/reference/clibrary/cstdio/printf.html">normal \c 
+ *  printf function</a>. For all cases where you write to a log, the system 
+ *  will automatically put a newline character at the end. 
  * 
  * The first type of log we care about is a SystemLog. This log just spews
  *  right to the OS's console. You may ask why not use the normal \c std::cout
@@ -257,8 +258,8 @@
  *  easier to review messages. 
  * 
  * Then there's a ConsoleLog, which writes its output to the in-game Console
- *  (invoked with '~'; see #console, below). This can be handy for getting
- *  debug values without having to even leave your game. 
+ *  (invoked with '~'; see below). This can be handy for getting debug values 
+ *  without having to even leave your game. 
  * 
  * We also have FileLog, which writes its output to a file of your choosing. 
  *  The class provides a static function FileLog::MakeLogFileName, which 
@@ -392,7 +393,7 @@
  *  series of images, call: 
  * 
  * \code
- * LoadSpriteFrames("Resources/Images/superdude_001.png");
+ * a->LoadSpriteFrames("Resources/Images/superdude_001.png");
  * \endcode
  * 
  * This will load up the \c superdude_001.png file, and all other files that
@@ -409,7 +410,7 @@
  * Or play a series of them:
  *
  * \code
- * PlaySpriteAnimation(0.1f, SAT_OneShot, 0, 10, "JumpingAnim"); 
+ * a->PlaySpriteAnimation(0.1f, SAT_OneShot, 0, 10, "JumpingAnim"); 
  * \endcode
  * 
  * That call will play frames 0-10, waiting 0.1 seconds between each frame,
@@ -447,7 +448,7 @@
  * \endcode
  * 
  * The Actor::GetNamed function will return \c NULL if there's no Actor with
- *  the given name, so be sure to check your values before dereferencing. 
+ *  the given name, so be sure to check your pointers before dereferencing. 
  * 
  * Oftentimes, though, you want to keep track of a group of Actors with 
  *  similar properties. That's where tags come in. You can throw a set of 
@@ -531,9 +532,9 @@
  * By default, a GridActor is the first thing you see when you start up 
  *  Angel. Not too surprisingly, it draws a grid of lines to the screen. Our
  *  default grid matches the OpenGL coordinate system, so it's useful for 
- *  placing objects in your world. You can change the color of the lines, 
- *  spacing, draw extents, etc. of the grid. See the GridActor class 
- *  documentation for more information. 
+ *  placing objects in your world or setting up your camera positioning. You 
+ *  can change the color of the lines, spacing, draw extents, etc. of the 
+ *  grid. See the GridActor class documentation for more information. 
  * 
  * @subsection fullscreen_actors FullScreenActors
  * A FullScreenActor is useful for splash screens or backdrops. No matter 
@@ -611,7 +612,7 @@
  * This code does a few things. First of all, it subscribes \c a to any 
  *  Messages named "MeteorHit." So when someone broadcasts a MeteorHit 
  *  message, the MessageListener::ReceiveMessage function will be called on \c 
- *  a. Then it unsubscribes \a from the "GameStarted" Message, so it won't 
+ *  a. Then it unsubscribes \c a from the "GameStarted" Message, so it won't 
  *  receive notifications anymore. Finally, it creates a new TypedMessage that
  *  carries a bit of position data, and broadcasts it to anyone who cares
  *  about Messages with the name "StartingSpot." (TypedMessages are a 
@@ -619,7 +620,7 @@
  * 
  * \b NB: When you pass a Message pointer to the Switchboard::Broadcast 
  *  function, that's it, you're done with it. The Switchboard will delete the
- *  memory once its delivered the Message to all subscribers, so don't expect
+ *  memory once it's delivered the Message to all subscribers, so don't expect
  *  to do anything with it afterwards. It's not a good idea to hang on to 
  *  Message pointers for this reason. 
  * 
@@ -753,15 +754,17 @@
  *  http://www.fmod.org">FMOD</a>. It can play most sound formats, including 
  *  WAV, MP3, and Ogg Vorbis. We recommend Ogg for your sound distribution
  *  needs because of the following properties: 
- *   - It's free to distribute Ogg files (unlike MP3s, which require a 
- *     license)
+ *   - It's free to distribute Ogg files, unlike MP3s, which require a 
+ *     license. (We're just talking about the file formats themselves here; 
+ *     copyrighted content is still legally thorny to distribute.)
  *   - They have good compression to save you space (unlike WAVs)
  *   - They have more precise timing than MP3s, which can be important if 
  *     you're trying to sync up events in your game with a music track. 
  * 
- * If you don't have a sound program capable of dealing with Ogg, there's 
- *  <a href="http://audacity.sourceforge.net/">Audacity</a>, which is free, 
- *  and <a href="http://reaper.fm/">Reaper</a>, which has a free trial period.
+ * If you don't currently have a sound program capable of dealing with Ogg, 
+ *  there's <a href="http://audacity.sourceforge.net/">Audacity</a>, which is 
+ *  free, and <a href="http://reaper.fm/">Reaper</a>, which has a free trial 
+ *  period.
  * 
  * There are two steps to playing sound in your game. 
  * 
@@ -951,8 +954,8 @@
  *  could potentially do some fancy stuff in here like set up a web server 
  *  that lets you debug your game remotely. Or not. 
  * 
- * If you're not familiar with Python, Mark Pilgrim's <cite><a 
- *  href="http://diveintopython.org/">Dive Into Python</a></cite> is a good 
+ * If you're not familiar with Python, Mark Pilgrim's <i><a 
+ *  href="http://diveintopython.org/">Dive Into Python</a></i> is a good 
  *  start. 
  * 
  * @subsection console In-Game Console
