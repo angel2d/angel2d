@@ -28,9 +28,30 @@
 ##############################################################################
 
 import os
+import shutil
 
-os.chdir(os.path.join(os.environ['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7"))
+BASEDIR = os.path.join(os.environ['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7")
+FILES = ['libfreetype.6.dylib', 'libfreetype.a']
+BUILT_DIR = os.path.join(BASEDIR, "built")
+LIB_DIR = os.path.join(BUILT_DIR, "lib")
 
-if not os.path.exists('objs/ftmodule.h'):
-    os.system('env CFLAGS="-O -g -isysroot /Developer/SDKs/MacOSX10.5.sdk -arch i386 -arch ppc" LDFLAGS="-arch i386 -arch ppc" ./configure --prefix=')
-    os.system('make')
+os.chdir(BASEDIR)
+
+
+def build():
+    conf_string = 'env CFLAGS='
+    conf_string +=   '"-O -g -isysroot /Developer/SDKs/MacOSX10.5.sdk -arch i386 -arch ppc" '
+    conf_string += 'LDFLAGS='
+    conf_string +=   '"-arch i386 -arch ppc" '
+    conf_string += './configure --prefix='
+    conf_string +=   BUILT_DIR
+    os.system(conf_string)
+    os.system('make install 2> /dev/null')
+
+for fileName in FILES:
+    src = os.path.join(LIB_DIR, fileName)
+    if not os.path.exists(src):
+        build()
+        if not os.path.exists(src):
+            print "Building FreeType didn't produce %s." % fileName
+            exit(1)

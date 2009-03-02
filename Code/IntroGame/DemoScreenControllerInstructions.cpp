@@ -53,7 +53,7 @@ void DemoScreenControllerInstructions::Start()
 
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenBindingInstructions.cpp");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenControllerInstructions.cpp");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

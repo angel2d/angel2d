@@ -84,11 +84,11 @@ void DemoScreenRenderLayers::Start()
 void DemoScreenRenderLayers::Update(float dt)
 {
 	//NOTE: a2 has been added to layer one, so this function moves a1 around it.
-	if ((theController.IsConnected() && theController.IsLeftBumperDown()) || theDemoGame.IsLeftDown())
+	if ((theController.IsConnected() && theController.IsLeftBumperDown()) || theInput.IsKeyDown(GLFW_KEY_LEFT))
 	{
 		theWorld.UpdateLayer(a1, 0); //moves the actor to the requested layer
 	}
-	else if ((theController.IsConnected() && theController.IsRightBumperDown()) || theDemoGame.IsRightDown())
+	else if ((theController.IsConnected() && theController.IsRightBumperDown()) || theInput.IsKeyDown(GLFW_KEY_RIGHT))
 	{
 		theWorld.UpdateLayer(a1, 2);
 	}

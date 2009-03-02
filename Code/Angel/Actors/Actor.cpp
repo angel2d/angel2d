@@ -51,7 +51,7 @@ Actor::Actor()
 	SetRotation(0.0f);
 	SetPosition(0.0f, 0.0f);
 	SetUVs(Vector2(0.f, 0.f), Vector2(1.f, 1.f));
-	SetName("");
+	_name = "";
 
 	_spriteNumFrames = 0;
 	_spriteCurrentFrame = 0;
@@ -256,29 +256,29 @@ void Actor::Render()
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, textureReference);
 	}
-
-    switch( _drawShape )
-    {
-        default:
-        case ADS_Square:
-	        glBegin(GL_QUADS);
-		        //glNormal3f(0.0f, 0.0f, 1.0f);
-		        glTexCoord2f(UV_rightup.X, UV_rightup.Y); glVertex2f( 0.5f,  0.5f);
-		        glTexCoord2f(UV_leftlow.X, UV_rightup.Y); glVertex2f(-0.5f,  0.5f);
-		        glTexCoord2f(UV_leftlow.X, UV_leftlow.Y); glVertex2f(-0.5f, -0.5f);
-		        glTexCoord2f(UV_rightup.X, UV_leftlow.Y); glVertex2f( 0.5f, -0.5f);
-	        glEnd();
-        break;
-
-        case ADS_Circle:
-            const int NUM_SECTIONS = 32;
-            glBegin(GL_TRIANGLE_FAN);
-            glVertex2f(0, 0);
-            for (float i = 0; i <= NUM_SECTIONS; i++)
-                glVertex2f(0.5f*cos((float) MathUtil::TwoPi * i / NUM_SECTIONS), 0.5f*sin((float) MathUtil::TwoPi * i / NUM_SECTIONS));
-            glEnd();
-        break;
-    }
+	
+	switch( _drawShape )
+	{
+		default:
+		case ADS_Square:
+			glBegin(GL_QUADS);
+				//glNormal3f(0.0f, 0.0f, 1.0f);
+				glTexCoord2f(UV_rightup.X, UV_rightup.Y); glVertex2f( 0.5f,  0.5f);
+				glTexCoord2f(UV_leftlow.X, UV_rightup.Y); glVertex2f(-0.5f,  0.5f);
+				glTexCoord2f(UV_leftlow.X, UV_leftlow.Y); glVertex2f(-0.5f, -0.5f);
+				glTexCoord2f(UV_rightup.X, UV_leftlow.Y); glVertex2f( 0.5f, -0.5f);
+			glEnd();
+		break;
+		
+		case ADS_Circle:
+			const int NUM_SECTIONS = 32;
+			glBegin(GL_TRIANGLE_FAN);
+			glVertex2f(0, 0);
+			for (float i = 0; i <= NUM_SECTIONS; i++)
+				glVertex2f(0.5f*cos((float) MathUtil::TwoPi * i / NUM_SECTIONS), 0.5f*sin((float) MathUtil::TwoPi * i / NUM_SECTIONS));
+			glEnd();
+		break;
+	}
 
 	if (textureReference >= 0)
 	{
@@ -587,7 +587,7 @@ const String Actor::SetName(String newName)
 {
 	if(newName.length() == 0)
 	{
-		newName = "Actor";
+		newName = GetClassName();
 	}
 
 	newName[0] = toupper(newName[0]);

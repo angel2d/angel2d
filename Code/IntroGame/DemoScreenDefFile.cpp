@@ -39,7 +39,7 @@ void DemoScreenDefFile::Start()
 
 	//CreateActor loads up an Actor Definition file and makes the actor from it
 	a = Actor::Create("simple_actor"); //string is the file to load from -- 
-									   // must be located in Config/ActorDef and end with ".adf"
+									   // must be located in Config/ActorDef and end with ".ini"
 	
 	//You still need to add it to the world after it's been created
 	theWorld.Add(a);

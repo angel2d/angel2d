@@ -55,5 +55,13 @@ public:
 	/**
 	 * Override of the Renderable::Render function to handle drawing in screen-space.
 	 */
-	virtual void Render();	
+	virtual void Render();
+	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden from Actor::GetClassName.
+	 * 
+	 * @return The string "HUDActor"
+	 */
+	virtual const String GetClassName() { return "HUDActor"; }
 };

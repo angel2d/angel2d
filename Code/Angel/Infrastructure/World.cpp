@@ -501,6 +501,14 @@ void World::Add(Renderable *newElement, int layer)
 		return;
 	}
 	
+	//Check to see if it's an Actor; give it a name if it doesn't have one
+	Actor *a = dynamic_cast<Actor*> (newElement);
+	if (a != NULL)
+	{
+		// Ensures that the actor has a unique, non-empty name. 
+		a->SetName(a->GetName());
+	}
+	
 	// If we're not locked, add directly to _elements.
 	if (!_elementsLocked)
 	{

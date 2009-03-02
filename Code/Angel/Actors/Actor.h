@@ -356,6 +356,13 @@ public:
 	void SetSpriteFrame(int frame);
 	
 	/**
+	 * Get the current animation frame, ranging from 0 to MAX_SPRITE_FRAMES.
+	 * 
+	 * @return The current animation frame.
+	 */
+	const int GetSpriteFrame() { return _spriteCurrentFrame; }
+	
+	/**
 	 * Lets you find out if an animation is currently playing on this Actor.
 	 * 
 	 * @return True if there's an animation playing, false if there isn't. 
@@ -560,6 +567,14 @@ public:
 	 *   .ini)
 	 */
 	static Actor* Create(String archetype);
+	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden in derived classes.
+	 * 
+	 * @return The string "Actor"
+	 */
+	virtual const String GetClassName() { return "Actor"; }
 
 protected:
 	Vector2 _size;

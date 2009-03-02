@@ -29,18 +29,6 @@
 			name = "FreeType Check";
 			productName = "FreeType Config";
 		};
-		347AA0DB0E2F1F90006A896F /* FreeType Copy */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 347AA0E70E2F1FD1006A896F /* Build configuration list for PBXAggregateTarget "FreeType Copy" */;
-			buildPhases = (
-				347AA0DF0E2F1FBE006A896F /* ShellScript */,
-			);
-			dependencies = (
-				345C218F0E5F1685003AAB77 /* PBXTargetDependency */,
-			);
-			name = "FreeType Copy";
-			productName = "FreeType Copy";
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -366,19 +354,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		345C218E0E5F1685003AAB77 /* PBXContainerItemProxy */ = {
+		34882C370F47D8A400ADBBC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 347AA0B20E2F1275006A896F;
 			remoteInfo = "FreeType Check";
-		};
-		347AA0EF0E2F21E1006A896F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 347AA0DB0E2F1F90006A896F;
-			remoteInfo = "FreeType Copy";
 		};
 		349C1A430E8C8B2C009D94FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -599,7 +580,6 @@
 		346E3B780E285ECF00E6C79E /* FTSize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTSize.cpp; sourceTree = "<group>"; };
 		346E3B790E285ECF00E6C79E /* FTTextureGlyph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTTextureGlyph.cpp; sourceTree = "<group>"; };
 		346E3B7A0E285ECF00E6C79E /* FTVectoriser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTVectoriser.cpp; sourceTree = "<group>"; };
-		346E3BB00E2862B600E6C79E /* libfreetype.6.3.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.3.16.dylib; path = usr/X11/lib/libfreetype.6.3.16.dylib; sourceTree = SDKROOT; };
 		346E3BB90E28637A00E6C79E /* libFTGL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFTGL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		346E5EA50F30122000258B84 /* DemoScreenIntervals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenIntervals.cpp; path = IntroGame/DemoScreenIntervals.cpp; sourceTree = "<group>"; };
 		346E5EA60F30122000258B84 /* DemoScreenIntervals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenIntervals.h; path = IntroGame/DemoScreenIntervals.h; sourceTree = "<group>"; };
@@ -612,7 +592,7 @@
 		3472777D0F3E95E100F947AE /* controller.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = controller.i; path = Angel/Scripting/Interfaces/controller.i; sourceTree = "<group>"; };
 		3479A03D0E28856300768932 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = Angel/Libraries/FreeImage/Dist/FreeImage.h; sourceTree = "<group>"; };
 		3479A03F0E28857900768932 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = Angel/Libraries/FreeImage/Dist/mac/libfreeimage.a; sourceTree = "<group>"; };
-		347AA0ED0E2F21CB006A896F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Angel/Libraries/freetype-2.3.7/built/libfreetype.a"; sourceTree = "<group>"; };
+		347AA0ED0E2F21CB006A896F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Angel/Libraries/freetype-2.3.7/built/lib/libfreetype.a"; sourceTree = "<group>"; };
 		348109EE0E679CCA00246544 /* SoundDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundDevice.h; sourceTree = "<group>"; };
 		348109EF0E679CCA00246544 /* SoundDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundDevice.cpp; sourceTree = "<group>"; };
 		34810A030E679FE500246544 /* libfmodexp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodexp.dylib; path = Angel/Libraries/FMOD/libfmodexp.dylib; sourceTree = "<group>"; };
@@ -788,6 +768,7 @@
 		34DB1BB50E441C73006F63F5 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		34DB1BB60E441C73006F63F5 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		34DB1BDC0E44BF59006F63F5 /* Interval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interval.h; sourceTree = "<group>"; };
+		34DE070B0F4C9AD900EE8EE2 /* build.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = build.ini; path = ClientGame/build.ini; sourceTree = "<group>"; };
 		34F1FC130E5D1DD30065CD22 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = /System/Library/Frameworks/Python.framework; sourceTree = "<absolute>"; };
 		34F1FC170E5D1E4C0065CD22 /* PythonModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonModule.h; path = Angel/Scripting/PythonModule.h; sourceTree = "<group>"; };
 		34F1FC180E5D1E4C0065CD22 /* PythonModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PythonModule.cpp; path = Angel/Scripting/PythonModule.cpp; sourceTree = "<group>"; };
@@ -1177,6 +1158,7 @@
 			children = (
 				34713D990EA6D71100AF58CA /* Resources */,
 				34713D900EA6D6F800AF58CA /* Config */,
+				34DE070B0F4C9AD900EE8EE2 /* build.ini */,
 				34974A2F0E2925BE0018A032 /* stdafx.h */,
 				34974A300E2925BE0018A032 /* stdafx.cpp */,
 				34974A310E2925BE0018A032 /* Main.cpp */,
@@ -1393,7 +1375,6 @@
 				34810A030E679FE500246544 /* libfmodexp.dylib */,
 				34810A040E679FE500246544 /* libfmodexL.dylib */,
 				34810A050E679FE500246544 /* libfmodex.dylib */,
-				346E3BB00E2862B600E6C79E /* libfreetype.6.3.16.dylib */,
 				3479A03F0E28857900768932 /* libfreeimage.a */,
 				3433A9330E2AB0E000A02B4E /* CoreFoundation.framework */,
 				3433A92B0E2AB09B00A02B4E /* IOKit.framework */,
@@ -1781,7 +1762,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				347AA0F00E2F21E1006A896F /* PBXTargetDependency */,
+				34882C380F47D8A400ADBBC9 /* PBXTargetDependency */,
 			);
 			name = FTGL;
 			productName = FTGL;
@@ -1907,7 +1888,6 @@
 				34A18C500E284362001C79A5 /* GLFW */,
 				346E3BB80E28637A00E6C79E /* FTGL */,
 				3433A8D00E2AADDE00A02B4E /* HIDUtilities */,
-				347AA0DB0E2F1F90006A896F /* FreeType Copy */,
 				347AA0B20E2F1275006A896F /* FreeType Check */,
 				3411E0B40E5FF234009D734D /* PreBuild */,
 			);
@@ -1953,19 +1933,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/bin/python Tools/BuildScripts/mac-specific/CheckFreeType.py\n";
-		};
-		347AA0DF0E2F1FBE006A896F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/bin/python Tools/BuildScripts/mac-specific/CopyFreeType.py\n";
 		};
 		34810A460E67AA5700246544 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2207,15 +2174,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		345C218F0E5F1685003AAB77 /* PBXTargetDependency */ = {
+		34882C380F47D8A400ADBBC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 347AA0B20E2F1275006A896F /* FreeType Check */;
-			targetProxy = 345C218E0E5F1685003AAB77 /* PBXContainerItemProxy */;
-		};
-		347AA0F00E2F21E1006A896F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 347AA0DB0E2F1F90006A896F /* FreeType Copy */;
-			targetProxy = 347AA0EF0E2F21E1006A896F /* PBXContainerItemProxy */;
+			targetProxy = 34882C370F47D8A400ADBBC9 /* PBXContainerItemProxy */;
 		};
 		349C1A440E8C8B2C009D94FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2375,27 +2337,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = "FreeType Config";
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		347AA0DC0E2F1F90006A896F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "FreeType Copy";
-			};
-			name = Debug;
-		};
-		347AA0DD0E2F1F90006A896F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = "FreeType Copy";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2709,15 +2650,6 @@
 			buildConfigurations = (
 				347AA0BE0E2F1275006A896F /* Debug */,
 				347AA0BF0E2F1275006A896F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		347AA0E70E2F1FD1006A896F /* Build configuration list for PBXAggregateTarget "FreeType Copy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				347AA0DC0E2F1F90006A896F /* Debug */,
-				347AA0DD0E2F1F90006A896F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

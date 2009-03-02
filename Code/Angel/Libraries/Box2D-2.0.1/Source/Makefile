@@ -4,6 +4,8 @@ ifdef DEVKITPRO
 TARGETS += Gen/nds-float/lib/libbox2d.a Gen/nds-fixed/lib/libbox2d.a
 endif
 
+CPP=		g++-4.2
+CC=		gcc-4.2
 CXXFLAGS=	-g -O2
 
 SOURCES = \
@@ -65,7 +67,7 @@ endif
 
 Gen/float/%.o:		%.cpp
 	@mkdir -p $(dir $@)
-	c++ $(CXXFLAGS) -c -o $@ $<
+	$(CPP) $(CXXFLAGS) -c -o $@ $<
 
 
 Gen/float/libbox2d.a:	$(addprefix Gen/float/,$(SOURCES:.cpp=.o))
@@ -74,12 +76,12 @@ Gen/float/libbox2d.a:	$(addprefix Gen/float/,$(SOURCES:.cpp=.o))
 
 Gen/float/%.d:		%.cpp
 	@mkdir -p $(dir $@)
-	c++ -MM -MT $(@:.d=.o) $(CXXFLAGS) -o $@ $<
+	$(CPP) -MM -MT $(@:.d=.o) $(CXXFLAGS) -o $@ $<
 
 
 Gen/fixed/%.o:		%.cpp
 	@mkdir -p $(dir $@)
-	c++ $(CXXFLAGS) -DTARGET_FLOAT32_IS_FIXED -c -o $@ $<
+	$(CPP) $(CXXFLAGS) -DTARGET_FLOAT32_IS_FIXED -c -o $@ $<
 
 
 Gen/fixed/libbox2d.a:	$(addprefix Gen/fixed/,$(SOURCES:.cpp=.o)) 
@@ -89,7 +91,7 @@ Gen/fixed/libbox2d.a:	$(addprefix Gen/fixed/,$(SOURCES:.cpp=.o))
 
 Gen/fixed/%.d:		%.cpp
 	@mkdir -p $(dir $@)
-	c++ -MM -MT $(@:.d=.o) $(CXXFLAGS) -DTARGET_FLOAT32_IS_FIXED -o $@ $<
+	$(CPP) -MM -MT $(@:.d=.o) $(CXXFLAGS) -DTARGET_FLOAT32_IS_FIXED -o $@ $<
 
 
 

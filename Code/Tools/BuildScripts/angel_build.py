@@ -139,7 +139,8 @@ class PythonPackage:
     
     
     def makeItSnappy(self, script, remoteLib):
-        compileall.compile_dir(self.remoteLib)
+        compileall.compile_dir(remoteLib)
+        compileall.compile_dir(os.path.dirname(script))
     
     
     def makeItTrim(self, remoteLib):

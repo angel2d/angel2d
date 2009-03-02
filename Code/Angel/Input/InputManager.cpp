@@ -328,6 +328,17 @@ void InputManager::ClearXboxButtonStates()
 	}
 }
 
+bool InputManager::IsKeyDown(int keyVal)
+{
+	if (glfwGetKey(toupper(keyVal)) == GLFW_PRESS)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 InputBinding* InputManager::GetBinding( int hashVal )
 {

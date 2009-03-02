@@ -102,6 +102,10 @@
  *        directory -- the \c Published directory should contain everything 
  *        your game needs to run on any system and is suitable for zipping up 
  *        and sharing. 
+ *      - \c publish_mac.py: The publish script for the Mac build. It produces
+ *        a new directory in your \build directory. The application there is
+ *        renamed to what you've defined in \c build.ini, and there's a mini
+ *        version of Python.framework included. 
  *      - \c swig_wrap.py: part of the build process to determine if the SWIG 
  *        scripting bridge needs to be regenerated. It can be time consuming 
  *        to regenerate and recompile, so it's worth checking first. (See 
@@ -434,12 +438,18 @@
  * \code
  * a->SetName("hank"); 
  * b->SetName("hank");
+ * theWorld.Add(a);
+ * theWorld.Add(b);
  * \endcode
  *
  * Actor names are always upper-cased, so after this code runs, \c a will 
  *  have the name "Hank." Since Actor names are also guaranteed unique, \c b
  *  will have the name "Hank1." (The Actor::SetName function returns the
  *  \b actual name that was assigned to the Actor, so you know what it is.)
+ * 
+ * \b NB: Names are only guaranteed unique when the Actor has been added to
+ *  the World. Until then, if you haven't assigned a name, the Actor::GetName
+ *  function will return an empty string. 
  * 
  * Later, if you want to access one of these objects, you can call:
  * 
@@ -730,6 +740,14 @@
  * 
  * Once you have your input bindings set up, you just need to set up objects
  *  in your world to listen for those Messages and respond appropriately. 
+ * 
+ * For a more immediate check without having to set up Messages and bindings,
+ *  you can call InputManater::IsKeyDown, passing it either a plain \c char or
+ *  any of the defined values from \c GL/glfw.h. 
+ * 
+ * \code
+ * bool d = theInput.IsKeyDown('d'); // Will return true if the D button is pressed
+ * \endcode
  * 
  * @subsection controller Controller
  * Angel supports getting input from an Xbox 360 controller connected over 

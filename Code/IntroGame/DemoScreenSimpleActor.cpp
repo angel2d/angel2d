@@ -75,20 +75,20 @@ void DemoScreenSimpleActor::Start()
 void DemoScreenSimpleActor::Update(float dt)
 {
 	//Here we're doing some input processing and altering the Actor based on it. 
-	if ((theController.IsConnected() && theController.IsBButtonDown()) || theDemoGame.IsBDown())
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || theInput.IsKeyDown('b'))
 	{
 		a->SetColor(1.0f, 0.0f, 1.0f, .5f); //R, G, B, A (there is also a Color class you can use)
 		a->ClearSpriteInfo(); //removes any texture that might have been assigned
 		t->SetDisplayString("Now it's purple and translucent. Press [Y] to give it a texture.");
 	}
-	if ((theController.IsConnected() && theController.IsYButtonDown()) || theDemoGame.IsYDown())
+	if ((theController.IsConnected() && theController.IsYButtonDown()) || theInput.IsKeyDown('y'))
 	{
 		a->SetColor(1,1,1,1); //(white and opaque so the texture comes through fully)
 		a->ClearSpriteInfo();
 		a->SetSprite("Resources/Images/angel.png"); //Loads any image supported by FreeImage (see docs)
 		t->SetDisplayString("Pretty easy. You can do animations as well. Press [X] to check it out.");
 	}
-	if ((theController.IsConnected() && theController.IsXButtonDown()) || theDemoGame.IsXDown())
+	if ((theController.IsConnected() && theController.IsXButtonDown()) || theInput.IsKeyDown('x'))
 	{
 		a->SetColor(1,1,1,1);
 		a->LoadSpriteFrames("Resources/Images/numbers/angel_01.png");

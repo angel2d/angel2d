@@ -38,7 +38,7 @@ from angel_build import recursive_copy, PythonPackage
 def main(input_d, output_d, game_name):
     try:
         os.chdir(input_d)
-    except (OSError, WindowsError), msg:
+    except (OSError), msg:
         print msg
         exit(1)
     

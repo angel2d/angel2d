@@ -172,6 +172,14 @@ public:
 	 *   GL units (not pixels). 
 	 */
 	const BoundingBox GetBoundingBox();
+	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden from Actor::GetClassName.
+	 * 
+	 * @return The string "TextActor"
+	 */
+	virtual const String GetClassName() { return "TextActor"; }
 
 private:
 	struct TextNugget

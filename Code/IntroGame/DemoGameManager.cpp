@@ -74,28 +74,10 @@ void DemoScreen::Render() {}
 DemoGameManager* DemoGameManager::s_DemoGameManager = NULL;
 
 DemoGameManager::DemoGameManager()
-{
-	_bDown = _xDown = _yDown = _leftDown = _rightDown = _upDown = _downDown = _shiftDown = false;
-	
+{	
 	//subscribe to messages
 	theSwitchboard.SubscribeTo(this, "MoveForwards");
 	theSwitchboard.SubscribeTo(this, "MoveBackwards");
-	theSwitchboard.SubscribeTo(this, "BDown");
-	theSwitchboard.SubscribeTo(this, "BUp");
-	theSwitchboard.SubscribeTo(this, "XDown");
-	theSwitchboard.SubscribeTo(this, "XUp");
-	theSwitchboard.SubscribeTo(this, "YDown");
-	theSwitchboard.SubscribeTo(this, "YUp");
-	theSwitchboard.SubscribeTo(this, "LeftDown");
-	theSwitchboard.SubscribeTo(this, "LeftUp");
-	theSwitchboard.SubscribeTo(this, "RightDown");
-	theSwitchboard.SubscribeTo(this, "RightUp");
-	theSwitchboard.SubscribeTo(this, "DownDown");
-	theSwitchboard.SubscribeTo(this, "DownUp");
-	theSwitchboard.SubscribeTo(this, "UpDown");
-	theSwitchboard.SubscribeTo(this, "UpUp");
-	theSwitchboard.SubscribeTo(this, "ShiftDown");
-	theSwitchboard.SubscribeTo(this, "ShiftUp");
 
 	_screens.push_back(new DemoScreenStart());							// 0
 	_screens.push_back(new DemoScreenInstructions());					// 1
@@ -154,62 +136,6 @@ void DemoGameManager::ReceiveMessage(Message* message)
 	{
 		MoveBackwards();
 	}
-	else if (message->GetMessageName() == "BDown")
-	{
-		_bDown = true;
-	}
-	else if (message->GetMessageName() == "BUp")
-	{
-		_bDown = false;
-	}
-	else if (message->GetMessageName() == "XDown")
-	{
-		_xDown = true;
-	}
-	else if (message->GetMessageName() == "XUp")
-	{
-		_xDown = false;
-	}
-	else if (message->GetMessageName() == "YDown")
-	{
-		_yDown = true;
-	}
-	else if (message->GetMessageName() == "YUp")
-	{
-		_yDown = false;
-	}
-	else if (message->GetMessageName() == "LeftDown")
-	{
-		_leftDown = true;
-	}
-	else if (message->GetMessageName() == "LeftUp")
-	{
-		_leftDown = false;
-	}
-	else if (message->GetMessageName() == "RightDown")
-	{
-		_rightDown = true;
-	}
-	else if (message->GetMessageName() == "RightUp")
-	{
-		_rightDown = false;
-	}
-	else if (message->GetMessageName() == "DownDown")
-	{
-		_downDown = true;
-	}
-	else if (message->GetMessageName() == "DownUp")
-	{
-		_downDown = false;
-	}
-	else if (message->GetMessageName() == "UpDown")
-	{
-		_upDown = true;
-	}
-	else if (message->GetMessageName() == "UpUp")
-	{
-		_upDown = false;
-	}
 }
 
 void DemoGameManager::MoveForwards()
@@ -247,18 +173,18 @@ void DemoGameManager::Render()
 	int xOffset = 0;
 	if (_current == 0)
 	{
-		infoString = "[A]: Next ";
-		xOffset = 925;
+		infoString = "[A/Space]: Next";
+		xOffset = 887;
 	}
 	else if (_current == _screens.size() - 1)
 	{
-		infoString = "[Back]: Previous";
-		xOffset = 870;
+		infoString = "[Back/Minus]: Previous";
+		xOffset = 824;
 	}
 	else
 	{
-		infoString = "[A]: Next [Back]: Previous";
-		xOffset = 785;
+		infoString = "[A/Space]: Next [Back/Minus]: Previous";
+		xOffset = 680;
 	}
 	DrawGameText(infoString, "ConsoleSmall", xOffset, 763);
 }

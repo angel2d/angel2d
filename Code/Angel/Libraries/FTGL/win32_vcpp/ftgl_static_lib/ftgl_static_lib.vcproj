@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="FTGL"
+	Name="_FTGL"
 	ProjectGUID="{21CCDF71-9702-4596-860C-ECC082E63F5E}"
 	RootNamespace="declspec"
 	>

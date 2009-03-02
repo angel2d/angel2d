@@ -66,9 +66,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="FreeImage.lib opengl32.lib glu32.lib fmodex_vc.lib"
+				LinkLibraryDependencies="false"
+				AdditionalDependencies="FreeImage.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT_d.lib freetype237_D.lib box2d_d.lib Angel.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\..\Tools\Python25&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\..\Tools\Python25&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMTD.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -98,7 +99,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs..."
-				CommandLine="xcopy ..\Angel\Libraries\FreeImage\Dist\FreeImage.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25_d.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\FreeImage\Dist\FreeImage.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25_d.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\msvcr71.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -150,9 +151,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="FreeImage.lib opengl32.lib glu32.lib fmodex_vc.lib"
+				LinkLibraryDependencies="false"
+				AdditionalDependencies="FreeImage.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT.lib freetype237.lib box2d.lib Angel.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\..\Tools\Python25&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\..\Tools\Python25&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -184,7 +186,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs and publishing..."
-				CommandLine="xcopy ..\Angel\Libraries\FreeImage\Dist\FreeImage.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;&#x0D;&#x0A;..\Tools\Python25\python.exe ..\Tools\BuildScripts\publish.py -i $(ProjectDir) -o $(ProjectDir)Published -g IntroGame.exe&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\FreeImage\Dist\FreeImage.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25_d.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\msvcr71.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;..\Tools\Python25\python.exe ..\Tools\BuildScripts\publish.py -i $(ProjectDir) -o $(ProjectDir)Published -g IntroGame.exe&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -227,10 +229,6 @@
 			Name="Config"
 			>
 			<File
-				RelativePath=".\Config\autoexec.cfg"
-				>
-			</File>
-			<File
 				RelativePath=".\Config\input_bindings.ini"
 				>
 			</File>
@@ -238,7 +236,7 @@
 				Name="Level"
 				>
 				<File
-					RelativePath=".\Config\Level\collisionlevel_demo.lvl"
+					RelativePath=".\Config\Level\collisionlevel_demo.ini"
 					>
 				</File>
 				<File
@@ -249,24 +247,16 @@
 					RelativePath=".\Config\Level\level_demo.ini"
 					>
 				</File>
+				<File
+					RelativePath=".\Config\Level\maze.ini"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="ActorDef"
 				>
 				<File
-					RelativePath=".\Config\ActorDef\ground_actor.adf"
-					>
-				</File>
-				<File
-					RelativePath=".\Config\ActorDef\particle_demo.adf"
-					>
-				</File>
-				<File
-					RelativePath=".\Config\ActorDef\physics_event_actor.adf"
-					>
-				</File>
-				<File
-					RelativePath=".\Config\ActorDef\simple_actor.adf"
+					RelativePath=".\Config\ActorDef\demo_actors.ini"
 					>
 				</File>
 			</Filter>

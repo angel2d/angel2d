@@ -71,6 +71,14 @@ public:
 	 */
 	virtual void ReceiveMessage(Message *message);
 	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden from Actor::GetClassName.
+	 * 
+	 * @return The string "FullScreenActor"
+	 */
+	virtual const String GetClassName() { return "FullScreenActor"; }
+	
 private:
 	bool _locked;
 	void _resize();

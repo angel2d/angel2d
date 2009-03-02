@@ -290,6 +290,14 @@ public:
 	 *  interval to be applied to PhysicsActors.
 	 */
 	void ChangeSizeTo(float newSize, float duration, String onCompletionMessage="") {}
+	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden from Actor::GetClassName.
+	 * 
+	 * @return The string "PhysicsActor"
+	 */
+	virtual const String GetClassName() { return "PhysicsActor"; }
 
 protected:
 	virtual void InitShape(b2ShapeDef* /*shapeDef*/ ) {}

@@ -164,6 +164,14 @@ public:
 	 * @param maxParticles The maximum number of particles for this system. 
 	 */
 	void SetMaxParticles(int maxParticles);
+	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden from Actor::GetClassName.
+	 * 
+	 * @return The string "ParticleActor"
+	 */
+	virtual const String GetClassName() { return "ParticleActor"; }
 
 protected:
 	Particle* _particles;

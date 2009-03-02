@@ -92,7 +92,7 @@ void DemoScreenPathfinding::Start()
 
 void DemoScreenPathfinding::Update(float dt)
 {
-	if ((theController.IsConnected() && theController.IsBButtonDown()) || theDemoGame.IsBDown())
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || theInput.IsKeyDown('b'))
 	{
 		theSpatialGraph.EnableDrawGraph(true);
 	}

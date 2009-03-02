@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="freetype"
+	Name="_freetype"
 	ProjectGUID="{78B079BD-9FC7-4B9E-B4A6-96DA0F00248B}"
 	>
 	<Platforms>

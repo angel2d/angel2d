@@ -57,7 +57,7 @@ void DemoScreenIntervals::Start()
 	t = new TextActor("Console", "This Actor is using Intervals to change its properties. ");
 	t->SetPosition(0, 3.5);
 	t->SetAlignment(TXT_Center);
-	String explanation = "Intervals are a kind of \"fire and forget\" function that let you";
+	String explanation = "Intervals are kind of \"fire and forget\" functions that let you";
 	explanation += "\ngive a goal state and a duration, then the Actor itself";
 	explanation += "\ndoes the interpolation for you.";
 	t2 = new TextActor("Console", explanation);

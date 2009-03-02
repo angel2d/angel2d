@@ -67,14 +67,6 @@ public:
 
 	virtual void ReceiveMessage(Message* message);
 	
-	const bool IsBDown() { return _bDown; }
-	const bool IsXDown() { return _xDown; }
-	const bool IsYDown() { return _yDown; }
-	const bool IsLeftDown() { return _leftDown; }
-	const bool IsRightDown() { return _rightDown; }
-	const bool IsUpDown() { return _upDown; }
-	const bool IsDownDown() { return _downDown; }
-	
 protected:
 	DemoGameManager();
 	static DemoGameManager *s_DemoGameManager;
@@ -83,6 +75,4 @@ private:
 	std::vector<DemoScreen*> _screens;
 	int _current;
 	SAMPLE_HANDLE sample;
-	
-	bool _bDown, _xDown, _yDown, _leftDown, _rightDown, _upDown, _downDown, _shiftDown; 
 };

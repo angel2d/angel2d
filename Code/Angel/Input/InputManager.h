@@ -68,8 +68,8 @@ enum InputKeys
  * This internal class is used by the engine to take the settings from 
  *  input_bindings.ini and process all keyboard and controller data. 
  * 
- * Unless you're working on the engine itself, there's really no reason for
- *  you to worry about this class. 
+ * Unless you're working on the engine itself, the only function in here that
+ *  matters to you would be InputManager::IsKeyDown. 
  */
 class InputManager
 {
@@ -86,6 +86,15 @@ public:
 
 	bool OnKeyDown( int keyVal );
 	bool OnKeyUp( int keyVal );
+	
+	/**
+	 * Find out whether a key is currently pressed. Can either be passed an
+	 *  individual char or any of the defined values in GL/glfw.h.
+	 * 
+	 * @param keyVal The key value to test for (usually a char)
+	 * @return Whether the user is currently pressing that key. 
+	 */
+	bool IsKeyDown(int keyVal);
 
 	void HandleControl( class Controller& controller );
 

@@ -191,9 +191,9 @@ public:
 	 *  predominantly 2D world, be very careful setting this too far off of
 	 *  perpendicular. 
 	 * 
-	 * @param x The X coordinate at which the Camera will wim. 
-	 * @param y The Y coordinate at which the Camera will wim. 
-	 * @param z The Z coordinate at which the Camera will wim. 
+	 * @param x The X coordinate at which the Camera will aim. 
+	 * @param y The Y coordinate at which the Camera will aim. 
+	 * @param z The Z coordinate at which the Camera will aim. 
 	 */
 	virtual void SetViewCenter(float x, float y, float z);
 	
@@ -203,6 +203,14 @@ public:
 	 * @return The point where the Camera is currently looking. 
 	 */
 	virtual Vector3 GetViewCenter();
+	
+	/**
+	 * Used by the SetName function to create a basename for this class. 
+	 *  Overridden from Actor::GetClassName.
+	 * 
+	 * @return The string "Camera"
+	 */
+	virtual const String GetClassName() { return "Camera"; }
 
 protected:
 	Camera();

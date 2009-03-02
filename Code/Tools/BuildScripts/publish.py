@@ -53,7 +53,7 @@ def main(input_d, output_d, game_name):
     if not os.path.exists(bits_path):
         os.makedirs(bits_path)
     
-    files_ex = ["FreeImage.dll", "python25.dll", "fmodex.dll"]
+    files_ex = ["FreeImage.dll", "python25.dll", "msvcr71.dll", "fmodex.dll"]
     files_base = ["GameInfo.txt", "Attributions.txt"]
     directories = ["Resources", "Config", "Logs"]
     
