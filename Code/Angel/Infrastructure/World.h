@@ -32,6 +32,7 @@
 #include "../Infrastructure/Renderable.h"
 #include "../Infrastructure/RenderableIterator.h"
 #include "../Infrastructure/GameManager.h"
+#include "../Infrastructure/DebugDraw.h"
 #include "../Messaging/Message.h"
 
 #include "Box2D.h"
@@ -334,6 +335,37 @@ public:
 	float GetTimeSinceSeconds( float lastTime ) {return GetCurrentTimeSeconds() - lastTime;}
 	
 	/**
+	* Draw a line for a specified length of time.
+	* 
+	* @param a The starting point of the line
+	* @param b The ending point of the line
+	* @param time The length of time the line will be drawn (less than 0 will draw it permanently)
+	* @param color The color of the line
+	*/
+	void DrawDebugLine( Vector2 a, Vector2 b, float time = 5.f, Color color = Color(1.f, 0.f, 0.f) );
+
+	/**
+	* Purge all debug drawing.
+	* 
+	*/
+	void PurgeDebugDrawing();
+
+	/**
+	* Specify which debug flags to use for rendering physics debug information.  This is simply a 
+	* wrapper function for Box2D.  See b2DebugDraw class in b2WorldCallbacks.h for more info.
+	* 
+	* @param flags The flags to pass down to Box2D, such as b2DebugDraw::e_shapeBit.
+	*/
+	void SetPhysicsDebugFlags(uint32 flags); // control rendering of debug physics drawing
+
+	/**
+	* Check whether the simulation is running.  See also StartSimulation() and StopSimulation().
+	* 
+	* @return Whether the simulation is running
+	*/
+	const bool IsSimulationOn();
+
+	/**
 	 * Set a GameManager object to be your high-level coordinator. 
 	 * 
 	 * @param gameManager The new manager
@@ -404,6 +436,8 @@ protected:
 	void ProcessDeferredLayerChanges();
 	void ProcessDeferredRemoves();
 	void RunPhysics(float frame_dt);
+	void UpdateDebugItems(float frame_dt);
+	void DrawDebugItems();
 
 private:
 	struct RenderableLayerPair
@@ -444,6 +478,8 @@ private:
 	bool _blockersOn;
 	float _blockerRestitution;
 	PhysicsActor* _blockers[4];
+
+	std::vector< DebugDrawBase* > _debugDrawItems;
 
 	GameManager* _gameManager;
 

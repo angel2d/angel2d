@@ -57,6 +57,7 @@ Actor::Actor()
 	_spriteCurrentFrame = 0;
 	_spriteTextureReferences[0] = -1; 
 	_spriteFrameDelay = 0.0f;
+    _displayListIndex = -1;
 
 	_layer = 0;
 
@@ -257,6 +258,7 @@ void Actor::Render()
 		glBindTexture(GL_TEXTURE_2D, textureReference);
 	}
 	
+	const int NUM_SECTIONS = 32;
 	switch( _drawShape )
 	{
 		default:
@@ -271,12 +273,16 @@ void Actor::Render()
 		break;
 		
 		case ADS_Circle:
-			const int NUM_SECTIONS = 32;
 			glBegin(GL_TRIANGLE_FAN);
 			glVertex2f(0, 0);
 			for (float i = 0; i <= NUM_SECTIONS; i++)
 				glVertex2f(0.5f*cos((float) MathUtil::TwoPi * i / NUM_SECTIONS), 0.5f*sin((float) MathUtil::TwoPi * i / NUM_SECTIONS));
 			glEnd();
+		break;
+
+		case ADS_CustomList:
+			assert(_displayListIndex > 0);
+			glCallList(_displayListIndex);
 		break;
 	}
 

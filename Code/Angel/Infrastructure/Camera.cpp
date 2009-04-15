@@ -70,6 +70,8 @@ void Camera::Reset()
 	_position = Vector3(0.0f, 0.0f, 10.0f);
 	_view = Vector3(0.0f, 0.0f, -10.0f);
 	_up = Vector3(0.0f, 1.0f, 0.0);
+	_zNearClip = 0.001f;
+	_zFarClip = 200.f;
 }
 
 void Camera::Resize(int width, int height)
@@ -84,7 +86,7 @@ void Camera::Resize(int width, int height)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(_aperture, (float)_windowWidth/(float)_windowHeight, 0.001f, 200.0f);
+	gluPerspective(_aperture, (float)_windowWidth/(float)_windowHeight, _zNearClip, _zFarClip);
 	glMatrixMode(GL_MODELVIEW);
 
 	theSwitchboard.Broadcast(new Message("CameraChange"));
@@ -164,6 +166,40 @@ Vector2 Camera::GetPosition()
 float Camera::GetZ()
 {
 	return _position.Z;
+}
+
+float Camera::GetZForViewRadius(float radius)
+{
+	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
+	return radius / tan(sideAngle);
+}
+
+float Camera::GetNearClipDist()
+{
+	return _zNearClip;
+}
+
+float Camera::GetFarClipDist()
+{
+	return _zFarClip;
+}
+
+void Camera::SetZByViewRadius(float newRadius)
+{
+	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
+	_position.Z = newRadius / tan(sideAngle);
+}
+
+void Camera::SetNearClipDist(float dist)
+{
+	_zNearClip = dist;
+	Resize(_windowWidth, _windowHeight);
+}
+
+void Camera::SetFarClipDist(float dist)
+{
+	_zFarClip = dist;
+	Resize(_windowWidth, _windowHeight);
 }
 
 void Camera::SetViewCenter(float x, float y, float z)

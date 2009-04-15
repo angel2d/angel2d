@@ -458,6 +458,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Infrastructure\DebugDraw.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Infrastructure\GameManager.cpp"
 				>
 			</File>

@@ -57,7 +57,8 @@ enum spriteAnimationType
 enum actorDrawShape
 {
     ADS_Square,
-    ADS_Circle
+    ADS_Circle,
+    ADS_CustomList
 };
 
 ///Basic simulation element for Angel.
@@ -205,6 +206,17 @@ public:
 	 * @return Actor's shape
 	 */
 	const actorDrawShape GetDrawShape();
+
+    /**
+    * Use a display list index for drawing rather than a built-in shape.
+    *
+    * @param listIndex The index to use (generate using glGenLists()) 
+    */
+	void UseDisplayList(int listIndex)
+	{
+		_displayListIndex = listIndex;
+        SetDrawShape(ADS_CustomList);
+	}
 	
 	/**
 	 * A "fire and forget" function that moves an Actor to a new position over 
@@ -596,6 +608,7 @@ protected:
 	int					_spriteAnimStartFrame;
 	int					_spriteAnimEndFrame;
 	int					_spriteAnimDirection;
+	int					_displayListIndex;
 
 	StringSet _tags;
 

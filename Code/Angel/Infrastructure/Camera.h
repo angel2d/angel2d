@@ -187,6 +187,51 @@ public:
 	virtual float GetZ();
 	
 	/**
+	* Get the Z value necessary to achieve the requested view radius. 
+	* 
+	* @param radius The desired view radius.
+	* @return The Z value. 
+	*/
+	virtual float GetZForViewRadius(float radius);
+
+	/**
+	* Get the near clip distance.
+	* 
+	* @return The near clip distance. 
+	*/
+	virtual float GetNearClipDist();
+
+	/**
+	* Get the far clip distance.
+	* 
+	* @return The far clip distance. 
+	*/
+	virtual float GetFarClipDist();
+
+	/**
+	* Set the Z value necessary to achieve the requested view radius. 
+	* 
+	* @param newRadius The desired view radius.
+	*/
+	virtual void SetZByViewRadius(float newRadius);
+
+	/**
+	* Set the near clip distance.
+	*  Note this will cause a Resize() to properly update the clipping planes
+	* 
+	* @param dist The near clip distance. 
+	*/
+	virtual void SetNearClipDist(float dist);
+
+	/**
+	* Set the far clip distance.
+	*  Note this will cause a Resize() to properly update the clipping planes
+	* 
+	* @param dist The far clip distance. 
+	*/
+	virtual void SetFarClipDist(float dist);
+
+	/**
 	 * Set the point towards which the camera should aim. Since Angel is a 
 	 *  predominantly 2D world, be very careful setting this too far off of
 	 *  perpendicular. 
@@ -225,5 +270,8 @@ private:
 	Vector3 _position;
 	Vector3 _view;
 	Vector3 _up;
+
+	float _zNearClip;
+	float _zFarClip;
 };
 

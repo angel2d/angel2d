@@ -25,6 +25,12 @@ public:
 	virtual void SetPosition(Vector3 v3);
 	virtual Vector2 GetPosition();
 	virtual float GetZ();
+	virtual float GetZForViewRadius(float radius);
+	virtual float GetNearClipDist();
+	virtual float GetFarClipDist();
+	virtual void SetZByViewRadius(float newRadius);
+	virtual void SetNearClipDist(float dist);
+	virtual void SetFarClipDist(float dist);	
 	virtual void SetViewCenter(float x, float y, float z);
 	virtual Vector3 GetViewCenter();
 };

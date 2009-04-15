@@ -300,6 +300,8 @@ void World::Simulate(bool simRunning)
 		RunPhysics(frame_dt);
 		
 		theSwitchboard.Update(frame_dt);
+
+		UpdateDebugItems(frame_dt);
 		//if there are any system updates that still need to be run, put them here
 	}
 }
@@ -415,6 +417,8 @@ void World::TickAndRender()
 	//Render debug information
 	theSpatialGraph.Render();
 
+	DrawDebugItems();
+
 	//Draw developer console
 	_console->Render();
 }
@@ -480,6 +484,11 @@ const bool World::StartSimulation()
 const bool World::StopSimulation()
 {
 	return _simulateOn = false;
+}
+
+const bool World::IsSimulationOn()
+{
+	return _simulateOn;
 }
 
 void World::ResetWorld()
@@ -619,6 +628,17 @@ const int World::GetLayerByName(String name)
 	}
 }
 
+void World::DrawDebugLine( Vector2 a, Vector2 b, float time, Color color )
+{
+	DebugLine* line = new DebugLine();
+	line->_start = a;
+	line->_end = b;
+	line->_color = color;
+	line->_timeRemaining = time;
+	line->_bPermanent = (time < 0);
+	_debugDrawItems.push_back(line);
+}
+
 void World::WakeAllPhysics()
 {
 	for (b2Body* b = GetPhysicsWorld().GetBodyList(); b; b = b->GetNext())
@@ -630,6 +650,11 @@ void World::WakeAllPhysics()
 b2World& World::GetPhysicsWorld()
 {
 	return *_physicsWorld;
+}
+
+void World::SetPhysicsDebugFlags(uint32 flags)
+{
+	if (_physicsDebugDraw) _physicsDebugDraw->SetFlags(flags);
 }
 
 void World::SetSideBlockers(bool turnOn, float restitution)
@@ -771,6 +796,50 @@ void World::ProcessDeferredRemoves()
 	_deferredRemoves.clear();
 }
 
+void World::UpdateDebugItems(float frame_dt)
+{
+	DebugDrawIterator itdd = _debugDrawItems.begin();
+	while (itdd != _debugDrawItems.end())
+	{
+		if ( !(*itdd)->_bPermanent )
+		{
+			(*itdd)->_timeRemaining -= _dt;
+			if ((*itdd)->_timeRemaining <= 0.f)
+			{
+				DebugDrawBase* pDD = (*itdd);
+				_debugDrawItems.erase(itdd);
+				delete pDD;
+			}
+			else
+			{
+				itdd++;
+			}
+		}
+	}
+}
+
+void World::PurgeDebugDrawing()
+{
+	DebugDrawIterator itdd = _debugDrawItems.begin();
+	while (itdd != _debugDrawItems.end())
+	{
+		DebugDrawBase* pDD = (*itdd);
+		_debugDrawItems.erase(itdd);
+		delete pDD;
+	}
+}
+
+void World::DrawDebugItems()
+{
+	DebugDrawIterator itdd = _debugDrawItems.begin();
+	while (itdd != _debugDrawItems.end())
+	{
+		(*itdd)->SetupDraw();
+		(*itdd)->Draw();
+		itdd++;
+	}
+}
+
 // This should only be done once. (at least for now)
 void World::SetGameManager(GameManager* gameManager)
 {
@@ -803,6 +872,8 @@ void World::UnloadAll()
 		renderable->Destroy();
 		delete renderable;
 	}
+
+	PurgeDebugDrawing();
 }
 
 void World::RegisterConsole(Console* console)
