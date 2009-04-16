@@ -80,7 +80,7 @@ public:
 	 * 
 	 * @param dt
 	 */
-	void Update( float /*dt*/ ) {}
+	void Update( float /*dt*/ );
 
 	/**
 	 * Turns the console on (or off), which makes it get drawn in the render loop and 
@@ -191,6 +191,10 @@ private:
 	String _unsplitBuffer;
 	float _lineHeight;
 	StringList _autoCompleteList;
+
+    int _cursorPos;
+    float _cursorDispTime;
+    bool _bCursorDisp;
 
 	bool _enabled;
 };

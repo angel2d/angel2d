@@ -41,7 +41,10 @@
 Console::Console()
 : _enabled(false),
 _currentInput(""),
-_inputHistoryPos(0)
+_inputHistoryPos(0),
+_cursorPos(0),
+_cursorDispTime(0.0f),
+_bCursorDisp(true)
 {
 	RegisterFont("Resources/Fonts/Inconsolata.otf", 24, "Console");
 	RegisterFont("Resources/Fonts/Inconsolata.otf", 18, "ConsoleSmall");
@@ -119,7 +122,17 @@ bool Console::GetInput( int key )
 	}
 	else if( IsTextKey(key) )
 	{
-		_currentInput += key;
+        String oldInput = _currentInput;
+        _currentInput = oldInput.substr(0, _cursorPos);
+        _currentInput += key;
+
+        if (_cursorPos < oldInput.length())
+        {
+            _currentInput += oldInput.substr(_cursorPos, oldInput.length());
+        }
+
+        ++_cursorPos;
+
 		if (_currentInput.size() > 2)
 		{
 			_autoCompleteList = GetCompletions(_currentInput);
@@ -147,12 +160,34 @@ bool Console::GetSpecialInputDown( int key )
 	{
 		AcceptAutocomplete();
 	}
+    else if( key == GLFW_KEY_DEL )
+    {
+        if (_cursorPos < _currentInput.length())
+        {
+            String oldInput = _currentInput;
+
+            _currentInput = oldInput.substr( 0, _cursorPos );
+            _currentInput += oldInput.substr(_cursorPos+1, oldInput.length());
+
+            _autoCompleteList = GetCompletions(_currentInput);
+        }
+
+    }
 	else if( key == GLFW_KEY_BACKSPACE )
 	{
-		int size = _currentInput.size();
-		if( size > 0 )
+		if( _cursorPos > 0 )
 		{
-			_currentInput =  _currentInput.substr( 0, size-1 );
+            String oldInput = _currentInput;
+
+			_currentInput = oldInput.substr( 0, _cursorPos-1 );
+
+            if (_cursorPos < oldInput.length())
+            {
+                _currentInput += oldInput.substr(_cursorPos, oldInput.length());
+            }
+
+            --_cursorPos;
+
 			_autoCompleteList = GetCompletions(_currentInput);
 		}
 	}
@@ -164,6 +199,28 @@ bool Console::GetSpecialInputDown( int key )
 	{
 		AdvanceInputHistory( 1 );
 	}
+    else if( key == GLFW_KEY_RIGHT ) 
+    {
+        if (_cursorPos < _currentInput.length())
+        {
+            ++_cursorPos;
+        }
+    }
+    else if( key == GLFW_KEY_LEFT )
+    {
+        if (_cursorPos > 0)
+        {
+            --_cursorPos;
+        }
+    }
+    else if( key == GLFW_KEY_END )
+    {
+        _cursorPos = _currentInput.length();
+    }
+    else if( key == GLFW_KEY_HOME )
+    {
+        _cursorPos = 0;
+    }
 	//TODO: Restore
 	//else if( key == GLFW_KEY_PAGEUP )
 	//{
@@ -216,6 +273,7 @@ void Console::AcceptCurrentInput()
 		_inputHistoryPos = _inputHistory.size();
 	}
 	_currentInput = "";
+    _cursorPos = 0;
 }
 
 void Console::AcceptAutocomplete()
@@ -225,6 +283,7 @@ void Console::AcceptAutocomplete()
 	
 	//TODO: allow user to select autocomplete
 	_currentInput = _autoCompleteList[0];
+    _cursorPos = _currentInput.length();
 }
 
 void Console::AdvanceInputHistory(int byVal)
@@ -238,6 +297,7 @@ void Console::AdvanceInputHistory(int byVal)
 	if( byVal >= 0 && (_inputHistoryPos + byVal) >= lastInputIndex )
 	{
 		_currentInput = "";
+        _cursorPos = 0;
 		_inputHistoryPos = lastInputIndex;
 		return;
 	}
@@ -251,6 +311,7 @@ void Console::AdvanceInputHistory(int byVal)
 	
 	//otherwise, write over our current input
 	_currentInput = _inputHistory[_inputHistoryPos];
+    _cursorPos = _currentInput.length();
 }
 
 void Console::ToggleConsole()
@@ -261,6 +322,19 @@ void Console::ToggleConsole()
 void Console::SetPrompt(String prompt)
 {
 	_prompt = prompt;
+}
+
+void Console::Update( float dt )
+{
+    static const float CURSOR_DISPLAY_TIME = 0.15f;
+
+    _cursorDispTime += dt;
+
+    if (_cursorDispTime > CURSOR_DISPLAY_TIME)
+    {
+        _cursorDispTime = 0.0f;
+        _bCursorDisp = !_bCursorDisp;
+    }
 }
 
 void Console::Render()
@@ -321,7 +395,22 @@ void Console::Render()
 
 	glColor4f(0.0f,1.0f,0.0f,1.0f);
 	String printInput = _prompt;
-	printInput += _currentInput + "_";
+	printInput += _currentInput.substr(0, _cursorPos);
+
+    if(_bCursorDisp)
+    {
+        printInput += "|";
+    }
+    else
+    {
+        printInput += " ";
+    }
+
+    if (_cursorPos < _currentInput.length())
+    {
+        printInput += _currentInput.substr(_cursorPos, _currentInput.length());
+    }
+
 	DrawGameText(printInput.c_str(), "ConsoleSmall", textBoxXPos, textBoxYPos);
 
 	//Draw autocomplete
