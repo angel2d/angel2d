@@ -37,6 +37,7 @@
 #pragma once
 
 #include "../Util/StringUtil.h"
+#include "Color.h"
 
 /**
  * Goes through all loaded textures and marks them as dirty, so the next time
@@ -75,3 +76,21 @@ const int GetTextureReference(String name, bool optional = false);
  *   is negative, that means the texture couldn't be loaded or found. 
  */
 const int GetTextureReference(String filename, GLint clampmode, GLint filtermode, bool optional = false);
+
+/**
+* Use this function to process an image into positional data, in other words,
+* use an image as map or level data.  For every pixel within the tolerance
+* range of the specified color, a Vector2 is added to positions.  Resulting
+* positions will be in range imageSizeX * gridSize, imageSizeY * gridSize, and
+* be centered on 0,0. 
+* 
+* @param name The path to the file to load. Must be readable by FreeImage.
+*   (http://freeimage.sourceforge.net/)
+* @param positions The vector of Vector2s to populate
+* @param gridSize The size of the grid, i.e. how much space one pixel occupies.
+* @param pixelColor The color to search the image for (channels in 0.0-1.0 range).  
+*   NOTE: Alpha component is unused.
+* @param tolerance The amount RGB channels can deviate from pixelColor.
+* @return Whether the image was found and processed.
+*/
+bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance=0.1f);

@@ -177,3 +177,76 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 		return -1;
 	}
 }
+
+bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance)
+{
+	const char *texFile = filename.c_str();
+
+	// get the image file type from FreeImage
+	FREE_IMAGE_FORMAT fifmt = FreeImage_GetFileType(texFile, 0);
+
+	if (fifmt == FIF_UNKNOWN)
+	{
+		fifmt = FreeImage_GetFIFFromFilename(texFile);
+	}
+
+	//actually load the image file
+	FIBITMAP *dib = FreeImage_Load(fifmt, texFile, 0);
+
+	if (dib != NULL)
+	{
+		GLenum format;
+		int numComponents;
+
+		if (FreeImage_IsTransparent(dib))
+		{
+			numComponents = 4;
+			//NOTE: FreeImage loads in BGR[A] on little-endian and RGB[A] on big-endian
+			//  doesn't matter since we're only using x86/Windows, but this would need to be
+			//  ifdeffed if we wanted to support cross-platform stuffs. -- SJML
+			format = GL_BGRA_EXT;
+		}
+		else
+		{
+			numComponents = 3;
+			//NOTE: see above
+			format = GL_BGR_EXT;
+			dib = FreeImage_ConvertTo24Bits(dib); //want to ensure we don't have an alpha
+		}
+
+		BYTE* pixels = (BYTE*)FreeImage_GetBits(dib);
+
+		int width = FreeImage_GetWidth(dib);
+		int height = FreeImage_GetHeight(dib);
+		int widthCount = 0;
+		int count = 0;
+		Vector2 offset(-width*gridSize/2.f, -height*gridSize/2.f);
+		RGBQUAD targetRGB;
+		targetRGB.rgbBlue = BYTE(255.f * pixelColor.B);
+		targetRGB.rgbGreen = BYTE(255.f * pixelColor.G);
+		targetRGB.rgbRed = BYTE(255.f * pixelColor.R);
+		BYTE tol = BYTE(255.f * tolerance);
+		RGBQUAD* rgb = new RGBQUAD();
+		for (int y=0; y < height; y++)
+		{
+			for (int x=0; x < width; x++)
+			{
+				FreeImage_GetPixelColor(dib, x, y, rgb);
+				if (abs((int)rgb->rgbBlue - (int)targetRGB.rgbBlue) <= tol
+					&& abs((int)rgb->rgbGreen - (int)targetRGB.rgbGreen) <= tol
+					&& abs((int)rgb->rgbRed - (int)targetRGB.rgbRed) <= tol 
+					)
+				{
+					positions.push_back(offset + Vector2(x * gridSize, y * gridSize));
+				}
+			}
+		}
+		FreeImage_Unload(dib);
+		return true; 
+	}
+	else
+	{
+		sysLog.Log("Failed to find - " + String(texFile));
+		return false;
+	}
+}
