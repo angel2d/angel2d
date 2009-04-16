@@ -174,6 +174,38 @@ Vector3 Vector3::operator*(float scaleFactor) const
 	return Vector3(X * scaleFactor, Y * scaleFactor, Z * scaleFactor);
 }
 
+Vector3& Vector3::operator+=(const Vector3 &v)
+{
+    X += v.X;
+    Y += v.Y;
+    Z += v.Z;
+    return *this;
+}
+
+Vector3& Vector3::operator-=(const Vector3 &v)
+{
+    X -= v.X;
+    Y -= v.Y;
+    Z -= v.Z;
+    return *this;
+}
+
+Vector3& Vector3::operator*=(float scaleFactor)
+{
+    X *= scaleFactor;
+    Y *= scaleFactor;
+    Z *= scaleFactor;
+    return *this;
+}
+
+Vector3& Vector3::operator/=(float scaleFactor)
+{
+    X /= scaleFactor;
+    Y /= scaleFactor;
+    Z /= scaleFactor;
+    return *this;
+}
+
 
 #include <iostream>
 using namespace std;
@@ -224,3 +256,5 @@ ostream& operator<<(ostream& stream, const Vector3& out)
 // 	cout << (Vector3(10) + Vector3(9, 0, 9)) << endl;
 // 
 // }
+
+

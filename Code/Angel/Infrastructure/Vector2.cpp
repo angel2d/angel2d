@@ -175,6 +175,34 @@ Vector2 Vector2::operator*(float scaleFactor) const
 	return Vector2(X * scaleFactor, Y * scaleFactor);
 }
 
+Vector2& Vector2::operator+=(const Vector2 &v)
+{
+    X += v.X;
+    Y += v.Y;
+    return *this;
+}
+
+Vector2& Vector2::operator-=(const Vector2 &v)
+{
+    X -= v.X;
+    Y -= v.Y;
+    return *this;
+}
+
+Vector2& Vector2::operator*=(float scaleFactor)
+{
+    X *= scaleFactor;
+    Y *= scaleFactor;
+    return *this;
+}
+
+Vector2& Vector2::operator/=(float scaleFactor)
+{
+    X /= scaleFactor;
+    Y /= scaleFactor;
+    return *this;
+}
+
 
 #include <iostream>
 using namespace std;
