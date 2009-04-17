@@ -75,10 +75,13 @@ class AngelConsole(angel.Console, InteractiveConsole):
             self.resetbuffer()
     
     def GetCompletions(self, input):
-        if "." in input:
-            return self._instance_matches(input)
-        else:
-            return self._global_matches(input)
+        try:
+            if "." in input:
+                return self._instance_matches(input)
+            else:
+                return self._global_matches(input)
+        except NameError:
+            return []
     
     def _instance_matches(self, input):
         m = re.match(r"(\w+(\.\w+)*)\.(\w*)", input)

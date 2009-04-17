@@ -118,7 +118,7 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 		if (FreeImage_IsTransparent(dib))
 		{
 			numComponents = 4;
-			#if defined(WIN32)
+			#if defined(WIN32) || defined(__linux__)
 				format = GL_BGRA_EXT;
 			#else
 				format = GL_RGBA;
@@ -127,7 +127,7 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 		else
 		{
 			numComponents = 3;
-			#if defined(WIN32)
+			#if defined(WIN32) || defined(__linux__)
 				format = GL_BGR_EXT;
 			#else
 				format = GL_RGB;

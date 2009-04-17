@@ -19,6 +19,7 @@
 #include "BroadPhaseTest.h"
 
 #include <cstdio>
+#include <cstring>
 const float32 k_width = 1.0f;
 
 inline void GetRandomAABB(b2AABB* aabb)

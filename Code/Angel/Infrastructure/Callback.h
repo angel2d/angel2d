@@ -28,6 +28,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once 
+#include <cstdio>
 
 /// (Internal) A callback template to simplify storage/retrieval of method pointers
 /** 

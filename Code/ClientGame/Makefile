@@ -1,0 +1,44 @@
+CXX = g++
+TARGET = ClientGame
+ARCH := $(shell uname -m)
+LIBANGEL = ../Angel/libangel.so
+
+INCLUDE = 							\
+	-I../Angel						\
+	-I../Angel/Libraries/glfw/include			\
+	-I../Angel/Libraries/Box2D-2.0.1/Include		\
+	-I../Angel/Libraries/FMOD/inc 				\
+	-I../Angel/Libraries/FTGL/include			\
+	-I/usr/include/freetype2				\
+	-I/usr/include/python2.5
+
+LIBS = $(LIBANGEL)
+ifeq ($(ARCH),x86_64)
+	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex64.so
+else
+	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex.so
+endif
+
+SHLIBS = -lGL -lGLU -lpython2.5 -lfreetype -lXrandr -lfreeimage
+
+SRCS =								\
+	stdafx.cpp						\
+	Main.cpp
+
+OBJS = $(patsubst %.cpp,%.o,$(SRCS))
+
+%.o: %.cpp
+	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
+
+$(TARGET): $(LIBANGEL) $(OBJS)
+	$(CXX) -o $@ $(OBJS) $(LIBS) $(SHLIBS)
+	cp -p ../Angel/Scripting/EngineScripts/*.py Resources/Scripts
+	cp -p ../Angel/Scripting/Interfaces/angel.py Resources/Scripts
+
+all: $(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+$(LIBANGEL):
+	cd ../Angel && make

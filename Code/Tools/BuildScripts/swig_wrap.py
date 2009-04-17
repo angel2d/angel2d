@@ -50,6 +50,11 @@ def main(proj_dir):
         SWIG_PATH = os.path.join(proj_dir, "Tools", "swigwin-1.3.36", "swig.exe")
     elif (sys.platform == 'darwin'):
         SWIG_PATH = "/opt/local/bin/swig"
+    else:
+        if (os.system("which swig") != 0):
+            sys.stderr.write("ERROR: swig not found.\n")
+            exit(1)
+        SWIG_PATH = "swig"
     SWIG_OPTIONS = " -c++ -python -Werror -o " + WRAPPER_SOURCE + " " + AGGREGATE_INTERFACE
     
     

@@ -87,6 +87,10 @@ xLinux)
   CFLAGS="$CFLAGS -Dlinux"
   LDFLAGS="-shared"
   echo " Linux" 1>&6
+  ARCH=`uname -m`
+  if [ "$ARCH" = "x86_64" ]; then
+      CFLAGS="$CFLAGS -fPIC"
+  fi
   ;;
 xDarwin)
   CFLAGS="$CFLAGS"

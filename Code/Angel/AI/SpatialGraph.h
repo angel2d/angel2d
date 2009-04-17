@@ -68,7 +68,7 @@ public:
 	BoolList					NeighborLOS;
 	
 };
-#if defined(__APPLE__)
+#if defined(__APPLE__) || defined(__linux__)
 //have to give a hashing function for specific pointers
 namespace hashmap_ns {
 	template<> struct hash< SpatialGraphKDNode* >

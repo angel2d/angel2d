@@ -34,6 +34,8 @@ import modulefinder
 import compileall
 import re
 import inspect
+import zipfile
+import shutil
 
 def recursive_copy(source, dest):
     if (os.path.basename(source)[0] == '.'):
@@ -144,7 +146,11 @@ class PythonPackage:
     
     
     def makeItTrim(self, remoteLib):
-        # delete all the *.py files in remoteLib and zip it up?
+        pyZip = os.path.join(remoteLib, "..", "python25.zip")
+        pyz = zipfile.PyZipFile(pyZip, 'w')
+        pyz.writepy(remoteLib)
+        pyz.close()
+        shutil.rmtree(remoteLib)
         pass
     
     def run(self):

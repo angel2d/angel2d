@@ -742,6 +742,7 @@
 		34D34E4C0E2C38480053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Attributions.txt; sourceTree = "<group>"; };
 		34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/ClientGameInfo.plist; sourceTree = "<group>"; };
 		34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/IntroGameInfo.plist; sourceTree = "<group>"; };
+		34D6C2710F96C0EC00430618 /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
 		34DB1B9B0E441C73006F63F5 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		34DB1B9C0E441C73006F63F5 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		34DB1B9D0E441C73006F63F5 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -1475,6 +1476,7 @@
 				34DB1B9D0E441C73006F63F5 /* Common.h */,
 				34DB1B9E0E441C73006F63F5 /* Console.cpp */,
 				34DB1B9F0E441C73006F63F5 /* Console.h */,
+				34D6C2710F96C0EC00430618 /* DebugDraw.h */,
 				34DB1BA00E441C73006F63F5 /* GameManager.cpp */,
 				34DB1BA10E441C73006F63F5 /* GameManager.h */,
 				34DB1BDC0E44BF59006F63F5 /* Interval.h */,

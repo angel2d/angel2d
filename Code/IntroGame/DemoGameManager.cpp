@@ -27,7 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "DemoGameManager.h"
 
 

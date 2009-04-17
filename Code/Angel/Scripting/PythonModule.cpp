@@ -48,16 +48,11 @@ bool PythonScriptingModule::isInitialized = false;
 
 void PythonScriptingModule::Initialize()
 {
+	//We set paths to use our local Python distribution.
 	#if defined(WIN32)
-		//We set paths to use our local Python distribution.
-		// If you want to use a version of Python that's installed
-		// on your machine, you'll want to comment this out. 
-		// (You'll also want to kill the build steps that copy over
-		// the Python DLLs.)
-		_putenv( "PYTHONPATH=pylib;..\\Tools\\Python25\\Lib");
-
-		//Note on the Mac we just use the built-in system Python
-		// by linking against Python.framework. 
+		_putenv("PYTHONPATH=python25.zip;..\\Tools\\Python25\\Lib");
+	#elif defined(__APPLE__)
+		putenv("PYTHONPATH=Frameworks/Python.framework/Versions/Current/lib/python25.zip:/usr/lib/python2.5");
 	#endif
 
 
@@ -75,6 +70,7 @@ void PythonScriptingModule::Initialize()
 		PyRun_SimpleFile(PyFile_AsFile(PyFileObject), startFileName);
 		isInitialized = true;
 		sysLog.Log("Python initialized.");
+		fclose(startFile);
 	}
 	else
 	{
@@ -82,7 +78,6 @@ void PythonScriptingModule::Initialize()
 		isInitialized = false;
 		sysLog.Log("Error initializing Python: couldn't find startup file.");
 	}
-	fclose(startFile);
 }
 
 void PythonScriptingModule::Finalize()

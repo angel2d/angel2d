@@ -56,12 +56,10 @@ public:
 	bool SetSprite(String filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=0);
 	void ClearSpriteInfo();
 	void LoadSpriteFrames(String firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
-	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* _animName = NULL); //rb - TODO - Add a way to associate anim type, and frame indices to a name.
+	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* _animName = NULL); 
 	void SetSpriteFrame(int frame);
-	bool IsSpriteAnimPlaying()
-	{
-		return (_spriteFrameDelay > 0);
-	}
+	const int GetSpriteFrame();
+	bool IsSpriteAnimPlaying();
 	void SetUVs(const Vector2 upright, const Vector2 lowleft);
 	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
 	
@@ -82,6 +80,7 @@ public:
 	virtual void Update(float dt);
 	
 	Actor* GetSelf();
+	virtual const String GetClassName();
 };
 
 

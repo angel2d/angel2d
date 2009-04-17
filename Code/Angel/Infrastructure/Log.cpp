@@ -34,6 +34,7 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <cstdarg>
 
 
 CompoundLog* CompoundLog::_sysLog = NULL;
@@ -94,7 +95,7 @@ String FileLog::MakeLogFileName( const String& fileName )
 {
 	#if defined(WIN32)
 		String logDir = "Logs/";
-	#elif defined(__APPLE__)
+	#elif defined(__APPLE__) || defined(__linux__)
 		String logDir = getenv("HOME");
 		logDir += "/Library/Application Support/Angel Games/Logs/";
 		MakeDirectories(logDir);
@@ -118,7 +119,7 @@ FileLog::FileLog( const String& fileName )
 		const unsigned int timeWidth = 26; 
 		char timeString[timeWidth]; //ctime_s fills a string of exactly 26 characters
 		ctime_s(timeString, timeWidth, &rawtime);
-	#elif defined(__APPLE__)
+	#elif defined(__APPLE__) || defined(__linux__)
 		char *timeString = ctime(&rawtime);
 	#endif
 		logHeader.push_back( String("On: ") + timeString );

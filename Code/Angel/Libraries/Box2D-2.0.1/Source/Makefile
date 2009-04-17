@@ -4,9 +4,13 @@ ifdef DEVKITPRO
 TARGETS += Gen/nds-float/lib/libbox2d.a Gen/nds-fixed/lib/libbox2d.a
 endif
 
-CPP=		g++-4.2
-CC=		gcc-4.2
+CPP=		g++
+CC=		gcc
 CXXFLAGS=	-g -O2
+ARCH := $(shell uname -m)
+ifeq ($(ARCH),x86_64)
+	CXXFLAGS += -fPIC
+endif
 
 SOURCES = \
 	./Dynamics/b2Body.cpp \

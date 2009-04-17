@@ -23,6 +23,7 @@
 
 #include <memory>
 #include <new>
+#include <cstring>
 
 b2Contact* b2PolygonContact::Create(b2Shape* shape1, b2Shape* shape2, b2BlockAllocator* allocator)
 {

@@ -181,7 +181,7 @@ public:
 	virtual StringList GetCompletions(String input) = 0;
 
 private:
-	bool Console::IsTextKey(unsigned char key);
+	bool IsTextKey(unsigned char key);
 	void AcceptCurrentInput();
 	String _currentInput;
 	StringList _inputHistory;

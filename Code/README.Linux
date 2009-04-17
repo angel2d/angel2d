@@ -1,0 +1,51 @@
+Building Angel on Linux
+------------------------------------------------------------------------------
+Angel has been tested on Ubuntu 8.10 and Fedora Core 10. It should 
+probably build on other recent distributions as long as all of the 
+dependencies are installed.
+
+Dependencies:
+-------------
+For Ubuntu 8.10, the following command will install the appropriate 
+dependencies:
+sudo apt-get -y install build-essential swig libglu1-mesa-dev \
+	libfreeimage-dev python2.5-dev libxrandr-dev libfreetype6-dev
+
+For Fedora Code 10, the following command will install the appropriate 
+dependencies:
+yum install gcc-c++ swig mesa-libGLU-devel freeimage-devel \
+	python-devel libXrandr-devel freetype-devel
+
+Compiling:
+----------
+ 1. To compile the Angel library, cd into the "Angel" directory and 
+    simply type "make".
+ 2. After the Angel library is successfully built, the ClientGame and 
+    IntroGame applications can be built. To do so, cd into the appropriate 
+    directory (ClientGame or IntroGame) and type "make".
+
+Notes:
+------
+While we believe all functionality should be present on Linux, it has not
+been thoroughly tested. If you find anything that works differently than
+on the Windows or Mac builds, please file bugs at:
+
+  http://code.google.com/p/angel-engine/issues/list
+
+Known Differences:
+------------------
+The following list represents the current known differences in the Linux
+build.
+
+ * Xbox 360 controller input is not currently supported. Mouse and keyboard
+   should work identically to the other builds. 
+ * No publish script. Due to the massive number of configuration 
+   possibilities, we don't currently have a script that bundles all the data
+   and code files together for simple one-directory distribution. The 
+   publish.py and publish-mac.py scripts in the Tools/BuildScripts directory
+   represent reasonable templates from which someone could start that work.
+ * Rather than using the version of FreeType included with the distribution,
+   the Linux build relies on the developer and user already having FreeType
+   on their systems. Since this is a very stable API and practically all 
+   Linux distributions include it, we believe this is safe. 
+

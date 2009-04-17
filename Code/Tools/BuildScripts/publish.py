@@ -67,7 +67,7 @@ def main(input_d, output_d, game_name):
     shutil.copyfile(os.path.join(input_d, "Release", game_name), os.path.join(bits_path, title + ".exe"))
     
     script = os.path.join("Resources", "Scripts", "start.py")
-    remoteLib = os.path.join(bits_path, "pylib")
+    remoteLib = os.path.join(bits_path, "lib")
     p = PythonPackage(script, remoteLib)
     p.run()
     

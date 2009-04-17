@@ -35,6 +35,9 @@
 	#include <shlobj.h>
 #elif defined(__APPLE__)
 	#include <sys/stat.h>
+#elif defined(__linux__)
+	#include <sys/stat.h>
+	#include <linux/limits.h>
 #endif
 #include <fstream>
 

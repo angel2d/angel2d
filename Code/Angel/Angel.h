@@ -1061,7 +1061,7 @@
 
 #include "AI/BoundingShapes.h"
 #include "AI/Brain.h"
-#include "AI/Pathfinder.h"
+#include "AI/PathFinder.h"
 #include "AI/Ray2.h"
 #include "AI/Sentient.h"
 #include "AI/SpatialGraph.h"

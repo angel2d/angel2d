@@ -36,8 +36,9 @@
 #ifdef WIN32
 	#define ci_strcmp _stricmp
 #endif
-#if defined(__APPLE__)
+#if defined(__APPLE__) || defined(__linux__)
 	#define ci_strcmp strcasecmp
+	#include <strings.h>
 #endif
 
 const char StringUtil_WhiteSpaceChars[] = " \t\n\r";

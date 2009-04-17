@@ -27,7 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
-#include "../InfraStructure/Console.h"
+#include "../Infrastructure/Console.h"
 
 #include "../Infrastructure/Common.h"
 #include "../Infrastructure/Camera.h"

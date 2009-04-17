@@ -44,6 +44,8 @@
 #elif defined(__APPLE__)
 	#include <OpenGL/gl.h>
 	#include <OpenGL/glu.h>
+#endif
+#if defined(__APPLE__) || defined(__linux__)	
 	#include <ext/hash_map>
 	
 	//GCC is picky about what types are allowed to be used as indices to hashes. 

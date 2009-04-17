@@ -126,7 +126,7 @@ protected:
 	static ControllerManager *s_ControllerManager;
 	
 private:
-	ControllerManager::ControllerManager();
+	ControllerManager();
 	Controller* _controllers[MAX_CONTROLLERS];
 };
 
