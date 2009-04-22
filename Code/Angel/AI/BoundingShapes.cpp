@@ -45,13 +45,18 @@ BoundingBox::BoundingBox(const Vector2& min, const Vector2& max)
 
 }
 
-Vector2 BoundingBox::Centroid()
+Vector2 BoundingBox::Centroid() const
 {
 	return Min + (Max-Min)/2.f;
 }
 
+Vector2 BoundingBox::HalfLength() const
+{
+    return (Max-Min)/2.f;
+}
 
-void BoundingBox::GetCorners(Vector2 corners[])
+
+void BoundingBox::GetCorners(Vector2 corners[]) const
 {
 	corners[0] = Vector2(Min.X, Min.Y);
 	corners[1] = Vector2(Min.X, Max.Y);
@@ -74,7 +79,7 @@ void BoundingBox::GetCorners(Vector2 corners[])
 	return retVal;
 }
 
-bool BoundingBox::Intersects(const BoundingBox& box)
+bool BoundingBox::Intersects(const BoundingBox& box) const
 {
 	if ((Max.X < box.Min.X) || (Min.X > box.Max.X))
 	{
@@ -88,8 +93,11 @@ bool BoundingBox::Intersects(const BoundingBox& box)
 	return true;
 }
 
-bool BoundingBox::Intersects(const Ray2& ray, float& distanceAlongRay )
+bool BoundingBox::Intersects(const Ray2& ray, float& distanceAlongRay) const
 {
+    float distNear = MathUtil::MinFloat;
+    float distFar = MathUtil::MaxFloat;
+
 	distanceAlongRay = 0.f;
 	float maxValue = MathUtil::MaxFloat;
 	if (MathUtil::Abs(ray.Direction.X) < MathUtil::Epsilon)
@@ -110,12 +118,21 @@ bool BoundingBox::Intersects(const Ray2& ray, float& distanceAlongRay )
 			minProj = maxProj;
 			maxProj = temp;
 		}
-		distanceAlongRay = MathUtil::Max(minProj, distanceAlongRay);
-		maxValue = MathUtil::Min(maxProj, maxValue);
-		if (distanceAlongRay > maxValue)
-		{
-			return false;
-		}
+
+        if (minProj > distNear)
+        {
+            distNear = minProj;
+        }
+
+        if (maxProj < distFar)
+        {
+            distFar = maxProj;
+        }
+
+        if (distNear > distFar || distFar < 0.0)
+        {
+            return false;	// ray missed 
+        }
 	}
 
 	if (MathUtil::Abs(ray.Direction.Y) < MathUtil::Epsilon)
@@ -136,19 +153,101 @@ bool BoundingBox::Intersects(const Ray2& ray, float& distanceAlongRay )
 			minProj = maxProj;
 			maxProj = temp;
 		}
-		distanceAlongRay = MathUtil::Max(minProj, distanceAlongRay);
-		maxValue = MathUtil::Min(maxProj, maxValue);
-		if (distanceAlongRay > maxValue)
-		{
-			return false;
-		}
+
+        if (minProj > distNear)
+        {
+            distNear = minProj;
+        }
+
+        if (maxProj < distFar)
+        {
+            distFar = maxProj;
+        }
+
+        if (distNear > distFar || distFar < 0.0)
+        {
+            return false;	// ray missed 
+        }
 	}
+
+    if (distNear > 0.0f)
+    {
+        distanceAlongRay = distNear;
+    }
+    else
+    {
+        distanceAlongRay = distFar;
+    }
 
 	return true;
 }
 
+bool BoundingBox::Intersects(const Vector2& point, float radius) const
+{
+    int xZone = point.X < ( Min.X ) ? 0 : ( point.X > ( Max.X ) ? 2 : 1 );
+    int yZone = point.Y < ( Min.Y ) ? 0 : ( point.Y > ( Max.Y ) ? 2 : 1 );
 
-ContainmentType BoundingBox::Contains(const BoundingBox& box)
+    int zone = xZone + 3*yZone;
+
+    Vector2 halfLen(HalfLength());
+    Vector2 center(halfLen+Min);
+
+    bool bIntersects = false;
+    switch ( zone ) 
+    {
+        // top and bottom side zones
+        // check vertical distance between centers
+        case 1:
+        case 7:
+            {
+                float distY = fabs( point.Y - center.Y );
+                if ( distY <= ( radius + halfLen.Y ) )
+                {
+                    bIntersects = true;
+                }
+            }
+            break;
+        // left and right side zones. check distance between centers
+        // check horizontal distance between centers
+        case 3:
+        case 5:
+            {
+                float distX = fabs( point.X - center.X );
+                if ( distX <= ( radius + halfLen.X ) )
+                {
+                    bIntersects = true;
+                }
+            }
+            break;
+        // inside zone. collision for sure
+        case 4:
+            bIntersects = true;
+            break;
+        // corner zone. 
+        // get the corner and check if inside the circle
+        default:
+            {
+                float cornerX = ( zone == 0 || zone == 6 ) ? Min.X : Max.X;
+                float cornerY = ( zone == 0 || zone == 2 ) ? Min.Y : Max.Y;
+
+                float distX = cornerX - point.X;
+                float distY = cornerY - point.Y;
+                float squaredist = distX*distX + distY*distY;
+
+                if (squaredist <= radius* radius )
+                {
+                    // corner is inside circle
+                    bIntersects = true;
+                }
+            }
+            break;
+    }
+
+    return bIntersects;
+}
+
+
+ContainmentType BoundingBox::Contains(const BoundingBox& box) const
 {
 	if ((Max.X < box.Min.X) || (Min.X > box.Max.X))
 	{
@@ -165,7 +264,7 @@ ContainmentType BoundingBox::Contains(const BoundingBox& box)
 	return ::Intersects;
 }
 
-bool BoundingBox::Contains(const Vector2& point)
+bool BoundingBox::Contains(const Vector2& point) const
 {
 	if ((((Min.X <= point.X) && (point.X <= Max.X)) && ((Min.Y <= point.Y) && (point.Y <= Max.Y))))
 	{
@@ -174,7 +273,7 @@ bool BoundingBox::Contains(const Vector2& point)
 	return false;
 }
 
-void BoundingBox::RenderOutline()
+void BoundingBox::RenderOutline() const
 {
 	glBegin(GL_LINES);
 	{
@@ -193,11 +292,10 @@ void BoundingBox::RenderOutline()
 	glEnd();
 }
 
-void BoundingBox::RenderBox()
+void BoundingBox::RenderBox() const
 {
 	glBegin(GL_QUADS);
 	{
-
 		glVertex2f(Max.X, Max.Y);
 		glVertex2f(Min.X, Max.Y);
 		glVertex2f(Min.X, Min.Y);

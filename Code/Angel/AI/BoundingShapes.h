@@ -48,21 +48,23 @@ struct BoundingBox
 	BoundingBox(const Vector2& min, const Vector2& max);
 	BoundingBox() {}
 
-	Vector2 Centroid();
+	Vector2 Centroid() const;
+    Vector2 HalfLength() const;
 
 	static BoundingBox CreateMerged(const BoundingBox& original, const BoundingBox& additional);
 
-	void GetCorners(Vector2 corners[]);
+	void GetCorners(Vector2 corners[]) const;
 	static BoundingBox CreateFromPoints(Vector2 points[], int count);
 
-	bool Intersects(const BoundingBox& box);
-	bool Intersects(const Ray2& ray, float& distanceAlongRay);
+	bool Intersects(const BoundingBox& box) const;
+	bool Intersects(const Ray2& ray, float& distanceAlongRay) const;
+    bool Intersects(const Vector2& point, float radius) const;
 
-	ContainmentType Contains(const BoundingBox& box);
-	bool Contains(const Vector2& point);
+	ContainmentType Contains(const BoundingBox& box) const;
+	bool Contains(const Vector2& point) const;
 
-	void RenderOutline();
-	void RenderBox();
+	void RenderOutline() const;
+	void RenderBox() const;
 };
 
 
