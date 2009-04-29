@@ -233,12 +233,13 @@ void World::StartGame()
 		glPopMatrix();
 		glfwSwapBuffers();
 	}
+	
+	glfwTerminate();
 }
 
 void World::StopGame()
 {
 	_running = false;
-	glfwTerminate();
 }
 
 void World::ScriptExec(String code)
