@@ -66,7 +66,7 @@ float MathUtil::AngleFromVector(const Vector2& v1)
 	Vector2 localVector = v1;
 
 	localVector.Normalize();
-	return atan( localVector.Y / localVector.X );	
+	return atan2( localVector.Y, localVector.X );	
 }
 
 float MathUtil::AngleFromVectors(const Vector2& v1, const Vector2& v2)

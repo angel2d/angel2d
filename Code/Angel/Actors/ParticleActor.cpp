@@ -111,7 +111,11 @@ void ParticleActor::Update(float dt)
 
 	// Systems with 0.0f lifetime live forever.
 	if (_systemLifetime > 0.0f)
+	{
 		_systemLifetime -= dt;
+		if (_systemLifetime <= 0.f)
+			_systemLifetime = -1.f;
+	}
 
 	// We're dead, but we're waiting for our particle to finish.
 	if (_systemLifetime < 0.0f)

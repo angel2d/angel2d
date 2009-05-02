@@ -398,10 +398,10 @@ public:
 	 * If you're doing fancy things with moving textures, this function lets
 	 *  you alter the UV (texture coordinates) of the actor. 
 	 * 
-	 * @param upright The desired upper right UV
 	 * @param lowleft The desired lower left UV
+	 * @param upright The desired upper right UV
 	 */
-	void SetUVs(const Vector2 upright, const Vector2 lowleft);
+	void SetUVs(const Vector2 lowleft, const Vector2 upright);
 	
 	/**
 	 * Get the current UV coordinates being used by the Actor to draw. 
