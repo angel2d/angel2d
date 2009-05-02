@@ -524,6 +524,7 @@
 		34368DC70F3CDA9500DE94CD /* BoundingShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingShapes.cpp; sourceTree = "<group>"; };
 		34368DC80F3CDA9500DE94CD /* BoundingShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingShapes.h; sourceTree = "<group>"; };
 		34368E030F3CDC8900DE94CD /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
+		3436A5290FABED7900659D50 /* log.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = log.i; path = Angel/Scripting/Interfaces/log.i; sourceTree = "<group>"; };
 		343F41870E31C1460097B760 /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		343F41880E31C1460097B760 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		343F41890E31C1460097B760 /* Switchboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Switchboard.cpp; sourceTree = "<group>"; };
@@ -1530,6 +1531,7 @@
 				34CCFFC30E61EA03003772E0 /* messaging.i */,
 				34713D740EA6D65C00AF58CA /* particles.i */,
 				34C6709D0F37889100AED82D /* camera.i */,
+				3436A5290FABED7900659D50 /* log.i */,
 				34713DF40EA6E3CF00AF58CA /* text_actor.i */,
 				34AF113C0F3D237D00A17276 /* sound.i */,
 				34CCFF3F0E61E40F003772E0 /* color.i */,

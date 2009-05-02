@@ -40,17 +40,17 @@ import conf_load
 from conf_load import LoadLevel
 
 
+# Something about the Debug build of Python on Windows makes
+#  it run into the call stack limit much earlier. We'll want
+#  to figure this out at some point. In the meanwhile, if
+#  this is causing a problem for you, call
+#  sys.setrecursionlimit(<number>) in your client_start and
+#  rebuild the engine in Release mode. 
+#  (Note that the default recursion limit for Python is 1000.)
+#  
+# TODO: Find out why the Python Debug build on Win32 kills the
+#  call stack so early.
 if (sys.platform[:3] == 'win'):
-    # Something about the Debug build of Python on Windows makes
-    #  it run into the call stack limit much earlier. We'll want
-    #  to figure this out at some point. In the meanwhile, if
-    #  this is causing a problem for you, call
-    #  sys.setrecursionlimit(<number>) in your client_start and
-    #  rebuild the engine in Release mode. 
-    #  (Note that the default recursion limit for Python is 1000.)
-    #  
-    # TODO: Find out why the Python Debug build on Win32 kills the
-    #  call stack so early. 
     sys.setrecursionlimit(250)
 
 
@@ -58,9 +58,20 @@ if (sys.platform[:3] == 'win'):
 ac = AngelConsole(locals())
 World.GetInstance().RegisterConsole(ac)
 
+
+# Set up exception catching so they don't make their way back
+#  into the engine proper. 
+def sys_exc_replacement(_type, value, traceback):
+    outString = "%s %s %s" % (_type, value, traceback)
+    ac.write(outString)
+    sysLog.Log(outString)
+sys.excepthook = sys_exc_replacement
+
+
 # Load the definitions from the Config directory
 conf_load.ReloadLevelDefs()
 conf_load.ReloadActorDefs()
+
 
 # If you have your own initialization code that you need to run,
 #  create a client_start.py file and do it there. This file

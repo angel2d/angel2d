@@ -28,7 +28,7 @@
 ##############################################################################
 
 import angel
-from angel import World, TagCollection, Actor, Switchboard, Camera, SoundDevice, ControllerManager
+from angel import World, TagCollection, Actor, Switchboard, Camera, SoundDevice, ControllerManager, CompoundLog
 
 # Singleton shortcuts
 theWorld = World.GetInstance()
@@ -37,6 +37,7 @@ theSwitchboard = Switchboard.GetInstance()
 theCamera = Camera.GetInstance()
 theSound = SoundDevice.GetInstance()
 theControllerManager = ControllerManager.GetInstance()
+sysLog = CompoundLog.GetSystemLog()
 
 # Input accessors
 theController = ControllerManager.GetInstance().GetController()

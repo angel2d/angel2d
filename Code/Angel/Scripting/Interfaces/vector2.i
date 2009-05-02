@@ -1,7 +1,15 @@
 %module angel
 %{
 #include "../../Infrastructure/Vector2.h"
+#include "../../Infrastructure/VecStructs.h"
 %}
+
+struct Vec2i
+{
+	int X, Y;
+	Vec2i(int x, int y) : X(x), Y(y) {}
+	Vec2i() : X(0), Y(0) {}
+};
 
 #ifdef SWIGPYTHON
 //all this junk just lets us treat lists as Vectors

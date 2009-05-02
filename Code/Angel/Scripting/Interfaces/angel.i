@@ -30,6 +30,7 @@ typedef std::vector<String>	StringList;
 %include renderable.i
 
 %include world.i
+%include log.i
 %include console.i
 %include sound.i
 %include controller.i
@@ -39,5 +40,3 @@ typedef std::vector<String>	StringList;
 %include physics_actor.i
 %include particles.i
 %include text_actor.i
-
-//%include ../../../ClientGame/ScriptInterfaces/client_classes.i

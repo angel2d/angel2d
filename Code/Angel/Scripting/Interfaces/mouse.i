@@ -1,4 +1,4 @@
-%module angel
+%module(directors="1") angel
 %{
 #include "../../Input/MouseInput.h"
 %}
@@ -9,6 +9,8 @@ enum MouseButtonInput
 	MOUSE_MIDDLE,
 	MOUSE_RIGHT
 };
+
+%feature("director") MouseListener;
 class MouseListener
 {
 public:
