@@ -99,7 +99,7 @@ bool BoundingBox::Intersects(const Ray2& ray, float& distanceAlongRay) const
     float distFar = MathUtil::MaxFloat;
 
 	distanceAlongRay = 0.f;
-	float maxValue = MathUtil::MaxFloat;
+
 	if (MathUtil::Abs(ray.Direction.X) < MathUtil::Epsilon)
 	{
 		if ((ray.Position.X < Min.X) || (ray.Position.X > Max.X))

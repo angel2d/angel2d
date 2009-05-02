@@ -180,6 +180,9 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 
 bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance)
 {
+	//TODO: Pull the repeated image loading code from this and 
+	//  GetTextureReference into its own function. 
+	
 	const char *texFile = filename.c_str();
 
 	// get the image file type from FreeImage
@@ -201,25 +204,25 @@ bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, fl
 		if (FreeImage_IsTransparent(dib))
 		{
 			numComponents = 4;
-			//NOTE: FreeImage loads in BGR[A] on little-endian and RGB[A] on big-endian
-			//  doesn't matter since we're only using x86/Windows, but this would need to be
-			//  ifdeffed if we wanted to support cross-platform stuffs. -- SJML
-			format = GL_BGRA_EXT;
+			#if defined(WIN32) || defined(__linux__)
+				format = GL_BGRA_EXT;
+			#else
+				format = GL_RGBA;
+			#endif
 		}
 		else
 		{
 			numComponents = 3;
-			//NOTE: see above
-			format = GL_BGR_EXT;
+			#if defined(WIN32) || defined(__linux__)
+				format = GL_BGR_EXT;
+			#else
+				format = GL_RGB;
+			#endif
 			dib = FreeImage_ConvertTo24Bits(dib); //want to ensure we don't have an alpha
 		}
-
-		BYTE* pixels = (BYTE*)FreeImage_GetBits(dib);
-
+		
 		int width = FreeImage_GetWidth(dib);
 		int height = FreeImage_GetHeight(dib);
-		int widthCount = 0;
-		int count = 0;
 		Vector2 offset(-width*gridSize/2.f, -height*gridSize/2.f);
 		RGBQUAD targetRGB;
 		targetRGB.rgbBlue = BYTE(255.f * pixelColor.B);
