@@ -28,6 +28,7 @@
 ##############################################################################
 
 import sys
+import traceback
 
 sys.path.append('./Resources/Scripts')
 
@@ -61,8 +62,8 @@ World.GetInstance().RegisterConsole(ac)
 
 # Set up exception catching so they don't make their way back
 #  into the engine proper. 
-def sys_exc_replacement(_type, value, traceback):
-    outString = "%s %s %s" % (_type, value, traceback)
+def sys_exc_replacement(_type, value, tb):
+    outString = "".join(traceback.format_exception(_type, value, tb))
     ac.write(outString)
     sysLog.Log(outString)
 sys.excepthook = sys_exc_replacement
