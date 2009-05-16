@@ -28,6 +28,7 @@
 ##############################################################################
 
 import sys
+sys.argv = ["AngelPython"] # some modules expect this, but we don't have it when we're embedded
 import traceback
 
 sys.path.append('./Resources/Scripts')
