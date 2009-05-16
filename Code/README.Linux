@@ -13,7 +13,7 @@ sudo apt-get -y install build-essential swig libglu1-mesa-dev \
 
 For Fedora Code 10, the following command will install the appropriate 
 dependencies:
-yum install gcc-c++ swig mesa-libGLU-devel freeimage-devel \
+sudo yum -y install gcc-c++ swig mesa-libGLU-devel freeimage-devel \
 	python-devel libXrandr-devel freetype-devel
 
 Compiling:
