@@ -1,17 +1,17 @@
 Building Angel on Linux
 ------------------------------------------------------------------------------
-Angel has been tested on Ubuntu 8.10 and Fedora Core 10. It should 
+Angel has been tested on Ubuntu 9.04 and Fedora Core 10. It should 
 probably build on other recent distributions as long as all of the 
 dependencies are installed.
 
 Dependencies:
 -------------
-For Ubuntu 8.10, the following command will install the appropriate 
+For Ubuntu 9.04, the following command will install the appropriate 
 dependencies:
 sudo apt-get -y install build-essential swig libglu1-mesa-dev \
-	libfreeimage-dev python2.5-dev libxrandr-dev libfreetype6-dev
+	libfreeimage-dev python2.5-dev libxrandr-dev libfreetype6-dev joystick
 
-For Fedora Code 10, the following command will install the appropriate 
+For Fedora Core 10, the following command will install the appropriate 
 dependencies:
 sudo yum -y install gcc-c++ swig mesa-libGLU-devel freeimage-devel \
 	python-devel libXrandr-devel freetype-devel
@@ -37,8 +37,6 @@ Known Differences:
 The following list represents the current known differences in the Linux
 build.
 
- * Xbox 360 controller input is not currently supported. Mouse and keyboard
-   should work identically to the other builds. 
  * No publish script. Due to the massive number of configuration 
    possibilities, we don't currently have a script that bundles all the data
    and code files together for simple one-directory distribution. The 

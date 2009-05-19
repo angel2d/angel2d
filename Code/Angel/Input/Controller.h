@@ -41,6 +41,15 @@
 	#include <Carbon/Carbon.h>
 	#include <IOKit/HID/IOHIDKeys.h>
 	#include "HID_Utilities_External.h"
+#elif defined(__linux__)
+	#include <fcntl.h>
+	#include <linux/joystick.h>
+	#include <string.h>
+	#include <sstream>
+	#define LINUX_CONTROLLER_1_PATH "/dev/input/js0"
+	#define LINUX_CONTROLLER_2_PATH "/dev/input/js1"
+	#define LINUX_EVENT_INTERFACE "/dev/input/event"
+	#define MAX_LINUX_EVENT_INTERFACES 32
 #endif
 
 ///A struct that wraps all controller input values into one unit
@@ -434,5 +443,10 @@ private:
 	{
 		return HIDGetElementValue(_device, _elements[cookie]);
 	}
+#elif defined(__linux__)
+	int _deviceFD;
+	int _ffFD;
+	struct ff_effect _ffEffect;
+	struct input_event _ffPlay;
 #endif
 };

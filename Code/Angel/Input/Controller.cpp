@@ -211,6 +211,80 @@ void Controller::Setup()
 				current_element = HIDGetNextDeviceElement(current_element, kHIDElementTypeIO);
 			}
 		}
+	#elif defined(__linux__)
+		char* devicePath;
+		if (_controllerID == 0)
+			devicePath = LINUX_CONTROLLER_1_PATH;
+		else
+			devicePath = LINUX_CONTROLLER_2_PATH;
+
+		_deviceFD = open(devicePath, O_RDONLY | O_NONBLOCK);
+		if (_deviceFD < 0)
+		{
+			sysLog.Printf("Controller %d not present...", _controllerID+1);
+			_connected = false;
+		}
+		else
+		{
+			sysLog.Printf("Controller %d connected!", _controllerID+1);
+			_connected = true;
+		}
+
+		// Discover the force feedback device.
+		bool foundFirstController = false;
+		_ffFD = -1;
+		for (int i = 0; i < MAX_LINUX_EVENT_INTERFACES; i++)
+		{
+			std::stringstream ss;
+			ss << i;
+			String eventDev = LINUX_EVENT_INTERFACE + ss.str();
+			int fd = open(eventDev.c_str(), O_RDWR);
+			if (fd >= 0)
+		 	{
+				char name[256] = "Unknown";
+				ioctl(fd, EVIOCGNAME(sizeof(name)), name);
+				if (strcmp(name, "Microsoft X-Box 360 pad") == 0)
+				{
+					if (_controllerID == 0)
+			      		{
+						_ffFD = fd;
+						break;
+			      		}
+			    		else
+			      		{
+						if (foundFirstController)
+				  		{
+				    			_ffFD = fd;
+				    			break;
+				  		}
+						else
+				  		{
+				    			foundFirstController = true;
+				    			close(fd);
+				  		}
+			      		}
+			  	}
+				else
+			  	{
+			    		close(fd);
+			  	}
+		      	}
+		}
+		if (_ffFD < 0)
+		{
+			sysLog.Printf("Error opening Force Feedback device for controller %d!", _controllerID+1);
+		}
+		else
+		{
+		  	_ffEffect.type = FF_RUMBLE;
+		  	_ffEffect.id = -1;
+		  	_ffEffect.u.rumble.strong_magnitude = 0;
+		  	_ffEffect.u.rumble.weak_magnitude = 0;
+		  	_ffEffect.replay.length = 0x7fff;
+		  	_ffEffect.replay.delay = 0;
+			_ffPlay.type = EV_FF;
+			_ffPlay.value = 1;
+		}
 	#endif
 }
 
@@ -292,7 +366,105 @@ void Controller::UpdateState()
 			_currentControllerInput.Buttons |= XINPUT_GAMEPAD_X;
 		if (_getValueForCookie(0x18))
 			_currentControllerInput.Buttons |= XINPUT_GAMEPAD_Y;
-		
+
+	#elif defined(__linux__)
+		struct js_event js;
+		while (read(_deviceFD, &js, sizeof(struct js_event)) == sizeof(struct js_event))
+		{
+			switch (js.type)
+			{
+		      		case JS_EVENT_BUTTON:
+					unsigned int currButton;
+					switch (js.number)
+			  		{
+			  			case 0:
+			    				currButton = XINPUT_GAMEPAD_A;
+			    				break;
+			  			case 1:
+			    				currButton = XINPUT_GAMEPAD_B;
+			    				break;
+			  			case 2:
+			    				currButton = XINPUT_GAMEPAD_X;
+			    				break;
+			  			case 3:
+			    				currButton = XINPUT_GAMEPAD_Y;
+			    				break;
+			  			case 4:
+			    				currButton = XINPUT_GAMEPAD_LEFT_SHOULDER;
+			    				break;
+			  			case 5:
+			    				currButton = XINPUT_GAMEPAD_RIGHT_SHOULDER;
+			    				break;
+			  			case 6:
+			    				currButton = XINPUT_GAMEPAD_START;
+			    				break;
+						case 7:
+			  				// Big 'X' button - not used.
+							continue;
+			  			case 8:
+							currButton = XINPUT_GAMEPAD_LEFT_THUMB;
+							break;
+						case 9:
+			    				currButton = XINPUT_GAMEPAD_RIGHT_THUMB;
+			    				break;
+			  			case 10:
+			    				currButton = XINPUT_GAMEPAD_BACK;
+			    				break;
+			  			default:
+			    				sysLog.Printf("Error! Unknown button press event received!\n");
+			    				continue;
+			  		}
+					if (js.value) // button pressed
+			  			_currentControllerInput.Buttons |= currButton;
+					else // button released
+			  			_currentControllerInput.Buttons &= ~currButton;
+					break;
+		      		case JS_EVENT_AXIS:
+					switch (js.number)
+			  		{
+			  			case 0:
+			    				_currentControllerInput.LeftThumbstickX = js.value;
+			    				break;
+			  			case 1:
+			    				_currentControllerInput.LeftThumbstickY = -js.value;
+			    				break;
+			  			case 2:
+			    				_currentControllerInput.LeftTriggerValue = js.value;
+			    				break;
+			  			case 3:
+			    				_currentControllerInput.RightThumbstickX = js.value;
+			    				break;
+			  			case 4:
+			    				_currentControllerInput.RightThumbstickY = -js.value;
+			    				break;
+			  			case 5:
+			    				_currentControllerInput.RightTriggerValue = js.value;
+			    				break;
+			  			case 6:
+			    				if (js.value == 0)
+			      					_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_LEFT & XINPUT_GAMEPAD_DPAD_RIGHT);
+			    				else if (js.value < 0)
+			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_LEFT;
+			    				else
+			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_RIGHT;
+			    				break;
+			  			case 7:
+			    				if (js.value == 0)
+			      					_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_UP & XINPUT_GAMEPAD_DPAD_DOWN);
+			    				else if (js.value < 0)
+			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_UP;
+			    				else
+			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_DOWN;
+			    				break;
+			  			default:
+			    				sysLog.Printf("Error! Unknown axis event received!\n");
+			    				break;
+			  		}
+					break;
+		      		default:
+					break;
+			}
+		}
 	#endif
 	
 	//Using the built-in deadzone -- comment out if you don't like it
@@ -532,6 +704,19 @@ void Controller::SetLeftVibrationRaw(unsigned int newVibration)
 	XInputSetState(0, &vibration);
 #elif defined(__APPLE__)
 	newVibration = 0;
+#elif defined(__linux__)
+	_ffEffect.u.rumble.strong_magnitude = _currentLeftVibration = newVibration;
+	_ffEffect.u.rumble.weak_magnitude = _currentRightVibration;
+	if (ioctl(_ffFD, EVIOCSFF, &_ffEffect) == -1)
+	{
+		sysLog.Printf("Error writing force feedback effect!");
+		return;
+	}
+	_ffPlay.code = _ffEffect.id;
+	if (write(_ffFD, &_ffPlay, sizeof(_ffPlay)) == -1)
+	{
+		sysLog.Printf("Error playing force feedback effect!");
+	}
 #endif
 }
 
@@ -545,6 +730,19 @@ void Controller::SetRightVibrationRaw(unsigned int newVibration)
 	XInputSetState(0, &vibration);
 #elif defined(__APPLE__)
 	newVibration = 0;
+#elif defined(__linux__)
+	_ffEffect.u.rumble.strong_magnitude = _currentLeftVibration;
+	_ffEffect.u.rumble.weak_magnitude = _currentRightVibration = newVibration;
+	if (ioctl(_ffFD, EVIOCSFF, &_ffEffect) == -1)
+	{
+		sysLog.Printf("Error writing force feedback effect!");
+		return;
+	}
+	_ffPlay.code = _ffEffect.id;
+	if (write(_ffFD, &_ffPlay, sizeof(_ffPlay)) == -1)
+	{
+		sysLog.Printf("Error playing force feedback effect!");
+	}
 #endif
 }
 
