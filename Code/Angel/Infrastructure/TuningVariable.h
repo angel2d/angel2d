@@ -41,7 +41,7 @@
  *  manually change at runtime to affect the way your game plays. A good 
  *  example is the height a character can jump -- you might declare this as
  *  a tuning variable in the \c Config/tuning.ini, change it from the console
- *  using the \g tune() function, and then call SaveTuningVariables() from
+ *  using the \c tune() function, and then call SaveTuningVariables() from
  *  the console to save the new value back into the file. 
  * 
  * Some people find it helpful to bind certain tuning functions to keypresses
@@ -155,7 +155,7 @@ public:
 	/**
 	 * For internal usage -- lets the engine keep track of what variables have
 	 *  been tuned at runtime so they don't get stomped by the auto-reloading
-	 *  of the \g tuning.ini file. 
+	 *  of the \c tuning.ini file. 
 	 * 
 	 * @param varName The name of the variable to add to the list. 
 	 */
@@ -163,7 +163,7 @@ public:
 	
 	/**
 	 * For internal usage -- lets the engine keep check if a variable has
-	 *  been tuned at runtime so it doesn't get stomped when \g tuning.ini 
+	 *  been tuned at runtime so it doesn't get stomped when \c tuning.ini 
 	 *  gets reloaded. 
 	 * 
 	 * @param varName The name of the variable to check
