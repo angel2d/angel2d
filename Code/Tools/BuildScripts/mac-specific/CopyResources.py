@@ -35,6 +35,34 @@ import sys
 sys.path.append('Tools/BuildScripts')
 from angel_build import recursive_copy
 
+os.chdir(os.path.join(os.environ['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'))
+if (os.environ['CONFIGURATION'] == 'Debug'):
+    dest = os.path.join(
+            os.environ['PROJECT_DIR'],
+            os.environ['EXECUTABLE_NAME'],
+            'Resources',
+            'Scripts'
+        )
+else:
+    dest = os.path.join(
+            os.environ['PROJECT_DIR'],
+            'build',
+            os.environ['CONFIGURATION'],
+            os.environ['EXECUTABLE_NAME'] + '.app',
+            'Contents',
+            'Resources',
+            'Scripts'
+        )
+for fileName in glob.glob('*.py'):
+    dstname = os.path.join(dest, fileName)
+    shutil.copyfile(fileName, dstname)
+# just grabbing this manually for now; if we want to have more libraries,
+#  we'll have to find a more scalable way of doing this
+source = "iniparse"
+recursive_copy(source, os.path.join(dest, "iniparse"))
+
+if (os.environ['CONFIGURATION'] == 'Debug'):
+    exit(0)
 
 source = os.path.join(os.environ['PROJECT_DIR'], os.environ['EXECUTABLE_NAME'], 'Resources')
 dest = os.path.join(
@@ -57,20 +85,6 @@ dest = os.path.join(
         'Config'
     )
 recursive_copy(source, dest)
-
-os.chdir(os.path.join(os.environ['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'))
-dest = os.path.join(
-        os.environ['PROJECT_DIR'],
-        'build',
-        os.environ['CONFIGURATION'],
-        os.environ['EXECUTABLE_NAME'] + '.app',
-        'Contents',
-        'Resources',
-        'Scripts'
-    )
-for fileName in glob.glob('*.py'):
-    dstname = os.path.join(dest, fileName)
-    shutil.copyfile(fileName, dstname)
 
 log_path = os.path.join(
             os.environ['PROJECT_DIR'],

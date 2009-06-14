@@ -31,12 +31,97 @@ import sys
 import os
 import re
 import glob
-import ConfigParser
+from iniparse import ConfigParser, INIConfig
 
 import angel
 from angel import *
-from sugar import theWorld
+from sugar import theWorld, theTuning, theSwitchboard
 
+TUNING_FILE_CHECK_DELAY = 1.0
+TUNING_MESSAGE_NAME = "TuningCheckTick"
+
+
+class ConfigUpdater(MessageListener):
+    """
+    A class which just sits and checks the .ini file periodically to see 
+    if it should be reloaded. 
+    """
+    def __init__(self):
+        super(ConfigUpdater, self).__init__()
+        theSwitchboard.SubscribeTo(self, TUNING_MESSAGE_NAME)
+        theSwitchboard.DeferredBroadcast(Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY)
+    
+    def ReceiveMessage(self, message):
+        LoadTuningVariables()
+        theSwitchboard.DeferredBroadcast(Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY)
+
+def LoadTuningVariables():
+    """Load tuning variable definitions from Config/tuning.ini."""
+    path_try = os.path.join("Config", "tuning.ini")
+    if not (os.path.exists(path_try)):
+        raise IOError, "Couldn't find " + path_try
+    tuning_file = open(path_try, "r")
+    config = INIConfig(tuning_file)
+    tuning_file.close()
+    for var_name in config._sections.keys():
+        # Don't load this from the file if we've been tuning it
+        #  from the console. 
+        if theTuning.IsRuntimeTuned(var_name):
+            continue
+        
+        # Turn strings into proper Python values
+        try:
+            val = eval(config[var_name].value)
+        except:
+            val = config[var_name].value
+        
+        if config[var_name].type == "float":
+            theTuning.SetFloat(var_name, val)
+        elif config[var_name].type == "int":
+            theTuning.SetInt(var_name, val)
+        elif config[var_name].type == "string":
+            theTuning.SetString(var_name, val)
+        elif config[var_name].type == "vector":
+            theTuning.SetVector(var_name, val)
+        else:
+            print "WARNING: %s of unknown variable type %s." % (var_name, config[var_name].type)
+
+def SaveTuningVariables():
+    """Saves the current tuning variables back to their .ini file."""
+    path_try = os.path.join("Config", "tuning.ini")
+    if not (os.path.exists(path_try)):
+        raise IOError, "Couldn't find " + path_try
+    tuning_file = open(path_try, "r")
+    config = INIConfig(tuning_file)
+    tuning_file.close()
+    for var_name in theTuning.GetVariables():
+        if var_name not in config:
+            # add the variable (this syntax is a workaround for a bug in
+            #  the iniparse library)
+            config._new_namespace(var_name)
+            # Turn strings into proper Python values
+            var = theTuning.GetString(var_name)
+            try:
+                val = eval(var)
+            except:
+                val = var
+            if isinstance(val, list):
+                config[var_name].type = "vector"
+            elif isinstance(val, float):
+                config[var_name].type = "float"
+            elif isinstance(val, int):
+                config[var_name].type = "int"
+            else:
+                config[var_name].type = "string"
+            config[var_name].value = val
+        else:
+            truth = ["true", "1", "one", "yes", "on", "t"]
+            if str(config[var_name].readonly.split()[0]).lower() in truth:
+                continue
+            config[var_name].value = theTuning.GetString(var_name)
+    tuning_file = open(path_try, "w")
+    print >>tuning_file, config
+    tuning_file.close()
 
 def _LoadActorDefs(filename):
     """Load actor definitions from Config/ActorDef/<filename>.ini.
@@ -52,7 +137,7 @@ def _LoadActorDefs(filename):
         raise IOError, "Couldn't find " + path_try
     if not hasattr(Actor, "_defs"):
         Actor._defs = {}
-    config = ConfigParser.ConfigParser()
+    config = ConfigParser()
     config.read(path_try)
     for section in config.sections():
         definition = {}
@@ -149,7 +234,7 @@ def _LoadLevelDef(filename):
     if not hasattr(angel, "_levels"):
         angel._levels = {}
     angel._levels[filename] = {}
-    config = ConfigParser.ConfigParser()
+    config = ConfigParser()
     config.read(path_try)
     for section in config.sections():
         actor = {}
@@ -215,3 +300,5 @@ def ReloadActorDefs():
 
 Actor.Create = staticmethod(_Create)
 
+confUp = ConfigUpdater()
+confUp.__disown__() # make sure Python doesn't garbage collect the config updater

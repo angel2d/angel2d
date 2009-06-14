@@ -1085,6 +1085,7 @@
 #include "Infrastructure/TagCollection.h"
 #include "Infrastructure/TextRendering.h"
 #include "Infrastructure/Textures.h"
+#include "Infrastructure/TuningVariable.h"
 #include "Infrastructure/VecStructs.h"
 #include "Infrastructure/Vector2.h"
 #include "Infrastructure/Vector3.h"

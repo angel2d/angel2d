@@ -58,12 +58,10 @@ public:
 	 *  should be done in this function, since it provides you with a dt for
 	 *  controlling rate of movement, animation, etc. 
 	 * 
-	 * Pure virtual function; must be implemented in the subclass. 
-	 * 
 	 * @param dt The amount of time (in seconds) that has elapsed since the 
 	 *  last frame. 
 	 */
-	virtual void Update(float dt) = 0;
+	virtual void Update(float dt) {}
 	
 	/**
 	 * This function also gets called once per frame, \b after the 
@@ -71,7 +69,7 @@ public:
 	 *  strictly related to drawing something on the screen. Moving it, 
 	 *  changing its appearance/properties/etc. should happen in Update. 
 	 */
-	virtual void Render() = 0;
+	virtual void Render() {}
 	
 	/**
 	 * A safe way to kill off a Renderable -- it will be removed from the 

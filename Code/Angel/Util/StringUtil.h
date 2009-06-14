@@ -93,7 +93,7 @@ String IntToString( int val );
  * @param val The float to convert
  * @return The string representation of the float
  */
-String FloatToStr( float val );
+String FloatToString( float val );
 
 
 /**
@@ -102,7 +102,7 @@ String FloatToStr( float val );
  * @param val The bool to convert
  * @return The string representation of the bool (in numeric form)
  */
-String BoolToStr( bool val );
+String BoolToString( bool val );
 
 /**
  * Converts a Vector2 to a string.

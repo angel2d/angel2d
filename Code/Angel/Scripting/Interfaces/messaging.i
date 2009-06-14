@@ -1,4 +1,4 @@
-%module angel
+%module(directors="1") angel
 %{
 #include "../../Messaging/Switchboard.h"
 #include "../../Messaging/Message.h"
@@ -14,10 +14,11 @@ public:
 	const MessageListener* GetSender();
 };
 
-
+%feature("director") MessageListener;
 class MessageListener
 {
 public:
+	virtual ~MessageListener();
 	virtual void ReceiveMessage(Message* m) = 0;
 };
 
@@ -27,8 +28,10 @@ class Switchboard
 public:
 	static Switchboard& GetInstance();
 	
+	%apply SWIGTYPE *ANGEL_DISOWN {Message* message};
 	void Broadcast(Message* message);
 	void DeferredBroadcast(Message* message, float delay);
+	%clear Message* message;
 	
 	const bool SubscribeTo(MessageListener* subscriber, String messageType);
 	const bool UnsubscribeFrom(MessageListener* subscriber, String messageType);

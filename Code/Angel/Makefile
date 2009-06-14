@@ -50,6 +50,7 @@ SRCS =								\
 	Infrastructure/TagCollection.cpp			\
 	Infrastructure/TextRendering.cpp			\
 	Infrastructure/Textures.cpp				\
+	Infrastructure/TuningVariable.cpp			\
 	Infrastructure/Vector2.cpp				\
 	Infrastructure/Vector3.cpp				\
 	Infrastructure/World.cpp				\

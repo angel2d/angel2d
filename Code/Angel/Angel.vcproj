@@ -526,6 +526,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Infrastructure\TuningVariable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Infrastructure\TuningVariable.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Infrastructure\ValueCache.h"
 				>
 			</File>

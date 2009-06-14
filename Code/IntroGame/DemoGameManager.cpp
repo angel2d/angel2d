@@ -49,6 +49,7 @@
 #include "DemoScreenPathfinding.h"
 #include "DemoScreenMultipleControllers.h"
 #include "DemoScreenControllerInstructions.h"
+#include "DemoScreenTuningVariables.h"
 
 DemoScreen::DemoScreen() {}
 
@@ -78,7 +79,7 @@ DemoGameManager::DemoGameManager()
 	//subscribe to messages
 	theSwitchboard.SubscribeTo(this, "MoveForwards");
 	theSwitchboard.SubscribeTo(this, "MoveBackwards");
-
+	
 	_screens.push_back(new DemoScreenStart());							// 0
 	_screens.push_back(new DemoScreenInstructions());					// 1
 	_screens.push_back(new DemoScreenSimpleActor());					// 2
@@ -95,8 +96,9 @@ DemoGameManager::DemoGameManager()
 	_screens.push_back(new DemoScreenIntervals());						//13
 	_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//14
 	_screens.push_back(new DemoScreenConsole());						//15
-	_screens.push_back(new DemoScreenPathfinding());					//16
-	_screens.push_back(new DemoScreenByeBye());							//17
+	_screens.push_back(new DemoScreenTuningVariables());				//16
+	_screens.push_back(new DemoScreenPathfinding());					//17
+	_screens.push_back(new DemoScreenByeBye());							//18
 
 	unsigned int startingIndex = 0;
 	if (_screens.size() > startingIndex)
@@ -109,11 +111,11 @@ DemoGameManager::DemoGameManager()
 	{
 		_current = -1;
 	}
-
+	
 	// We must set the sound callback method.  Although, I'm wondering if we should 
 	// allow them to not specify it if they don't need the functionality.
 	theSound.SetSoundCallback(this, &GameManager::SoundEnded);
-
+	
 	sample = theSound.LoadSample("Resources/Sounds/click.ogg", false /*no stream*/);
 }
 
@@ -146,7 +148,7 @@ void DemoGameManager::MoveForwards()
 		theWorld.Remove(_screens[_current]);
 		_screens[++_current]->Start();
 		theWorld.Add(_screens[_current]);
-
+		
 		if (sample)
 			theSound.PlaySound(sample, 1.0f, false/*no loop*/, 0);
 	}
@@ -160,7 +162,7 @@ void DemoGameManager::MoveBackwards()
 		theWorld.Remove(_screens[_current]);
 		_screens[--_current]->Start();
 		theWorld.Add(_screens[_current]);
-
+		
 		if (sample)
 			theSound.PlaySound(sample, 1.0f, false/*no loop*/, 0);
 	}
@@ -191,5 +193,5 @@ void DemoGameManager::Render()
 
 void DemoGameManager::SoundEnded(SOUND_HANDLE sound)
 {	
-	// Detect sounds that have ended here.	
+	// Detect sounds that have ended here.
 }

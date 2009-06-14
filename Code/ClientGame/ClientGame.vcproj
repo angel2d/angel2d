@@ -25,7 +25,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Copying Python module import script..."
-				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -113,7 +113,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Copying Python module import script and DLL..."
-				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -230,6 +230,10 @@
 			>
 			<File
 				RelativePath=".\Config\input_bindings.ini"
+				>
+			</File>
+			<File
+				RelativePath=".\Config\tuning.ini"
 				>
 			</File>
 			<Filter

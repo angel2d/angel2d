@@ -105,19 +105,19 @@ String IntToString( int val )
 	return to_string( val, std::dec );
 }
 
-String FloatToStr( float val )
+String FloatToString( float val )
 {
 	return to_string( val, std::dec );
 }
 
-String BoolToStr( bool val )
+String BoolToString( bool val )
 {
 	return IntToString( val );
 }
 
 String Vector2ToString( const Vector2& val )
 {
-	return FloatToStr( val.X ) + " " + FloatToStr( val.Y );
+	return FloatToString( val.X ) + " " + FloatToString( val.Y );
 }
 
 

@@ -151,6 +151,19 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		CFRelease(resourcesURL);
 		chdir(path);
 		chdir("..");
+		#if DEBUG
+			CFURLRef exeURL = CFBundleCopyExecutableURL(mainBundle);
+			char exePath[PATH_MAX];
+			if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
+			{
+				sysLog.Log("Problem setting up working directory!");
+			}
+			CFRelease(exeURL);
+			chdir(".."); //for some reason this skips over the *.app directory
+			StringList pathElements = SplitString(exePath, "/");
+			String exeName = pathElements[pathElements.size()-1];
+			chdir(exeName.c_str());
+		#endif
 	#endif
 	
 	//Subscribe to camera changes

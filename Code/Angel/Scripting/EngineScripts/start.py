@@ -39,7 +39,7 @@ from angel import *
 from sugar import *
 from angel_console import AngelConsole
 import conf_load
-from conf_load import LoadLevel
+from conf_load import LoadLevel, LoadTuningVariables, SaveTuningVariables
 
 
 # Something about the Debug build of Python on Windows makes
@@ -71,6 +71,7 @@ sys.excepthook = sys_exc_replacement
 
 
 # Load the definitions from the Config directory
+conf_load.LoadTuningVariables()
 conf_load.ReloadLevelDefs()
 conf_load.ReloadActorDefs()
 

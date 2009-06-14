@@ -28,7 +28,7 @@
 ##############################################################################
 
 import angel
-from angel import World, TagCollection, Actor, Switchboard, Camera, SoundDevice, ControllerManager, CompoundLog
+from angel import World, TagCollection, Actor, Switchboard, Camera, SoundDevice, ControllerManager, CompoundLog, Tuning
 
 # Singleton shortcuts
 theWorld = World.GetInstance()
@@ -38,6 +38,7 @@ theCamera = Camera.GetInstance()
 theSound = SoundDevice.GetInstance()
 theControllerManager = ControllerManager.GetInstance()
 sysLog = CompoundLog.GetSystemLog()
+theTuning = Tuning.GetInstance()
 
 # Input accessors
 theController = ControllerManager.GetInstance().GetController()
@@ -46,6 +47,23 @@ controllerTwo = ControllerManager.GetInstance().GetController(1)
 
 def reset():
     theWorld.ResetWorld()
+
+def tune(varName, newVal):
+    # Turn strings into proper Python values
+    try:
+        val = eval(newVal)
+    except:
+        val = newVal
+    if isinstance(val, list):
+        theTuning.SetVector(varName, val)
+    elif isinstance(val, float):
+        theTuning.SetFloat(varName, val)
+    elif isinstance(val, int):
+        theTuning.SetInt(varName, val)
+    else:
+        theTuning.SetString(varName, val)
+    
+    theTuning.AddToRuntimeTuningList(varName)
 
 COLOR_MAP = {
     'white'     : [1.0, 1.0, 1.0],
