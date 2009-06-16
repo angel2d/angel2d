@@ -39,7 +39,7 @@ from angel import *
 from sugar import *
 from angel_console import AngelConsole
 import conf_load
-from conf_load import LoadLevel, LoadTuningVariables, SaveTuningVariables
+from conf_load import LoadLevel, SaveTuningVariables
 
 
 # Something about the Debug build of Python on Windows makes
@@ -71,9 +71,12 @@ sys.excepthook = sys_exc_replacement
 
 
 # Load the definitions from the Config directory
-conf_load.LoadTuningVariables()
 conf_load.ReloadLevelDefs()
 conf_load.ReloadActorDefs()
+
+# Set up the auto-updater
+confUp = conf_load.ConfigUpdater()
+confUp.__disown__() # make sure Python doesn't garbage collect the config updater
 
 
 # If you have your own initialization code that you need to run,

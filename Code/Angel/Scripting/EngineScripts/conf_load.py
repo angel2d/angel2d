@@ -39,7 +39,7 @@ from sugar import theWorld, theTuning, theSwitchboard
 
 TUNING_FILE_CHECK_DELAY = 1.0
 TUNING_MESSAGE_NAME = "TuningCheckTick"
-
+TUNING_FILE_PATH = os.path.join("Config", "tuning.ini")
 
 class ConfigUpdater(MessageListener):
     """
@@ -48,19 +48,23 @@ class ConfigUpdater(MessageListener):
     """
     def __init__(self):
         super(ConfigUpdater, self).__init__()
+        LoadTuningVariables()
+        self.fileModTime = os.path.getmtime(TUNING_FILE_PATH)
         theSwitchboard.SubscribeTo(self, TUNING_MESSAGE_NAME)
         theSwitchboard.DeferredBroadcast(Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY)
     
     def ReceiveMessage(self, message):
-        LoadTuningVariables()
+        modTime = os.path.getmtime(TUNING_FILE_PATH)
+        if self.fileModTime != modTime:
+            LoadTuningVariables()
+            self.fileModTime = modTime
         theSwitchboard.DeferredBroadcast(Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY)
 
 def LoadTuningVariables():
     """Load tuning variable definitions from Config/tuning.ini."""
-    path_try = os.path.join("Config", "tuning.ini")
-    if not (os.path.exists(path_try)):
-        raise IOError, "Couldn't find " + path_try
-    tuning_file = open(path_try, "r")
+    if not (os.path.exists(TUNING_FILE_PATH)):
+        raise IOError, "Couldn't find " + TUNING_FILE_PATH
+    tuning_file = open(TUNING_FILE_PATH, "r")
     config = INIConfig(tuning_file)
     tuning_file.close()
     for var_name in config._sections.keys():
@@ -88,10 +92,9 @@ def LoadTuningVariables():
 
 def SaveTuningVariables():
     """Saves the current tuning variables back to their .ini file."""
-    path_try = os.path.join("Config", "tuning.ini")
-    if not (os.path.exists(path_try)):
-        raise IOError, "Couldn't find " + path_try
-    tuning_file = open(path_try, "r")
+    if not (os.path.exists(TUNING_FILE_PATH)):
+        raise IOError, "Couldn't find " + TUNING_FILE_PATH
+    tuning_file = open(TUNING_FILE_PATH, "r")
     config = INIConfig(tuning_file)
     tuning_file.close()
     for var_name in theTuning.GetVariables():
@@ -119,7 +122,7 @@ def SaveTuningVariables():
             if str(config[var_name].readonly.split()[0]).lower() in truth:
                 continue
             config[var_name].value = theTuning.GetString(var_name)
-    tuning_file = open(path_try, "w")
+    tuning_file = open(TUNING_FILE_PATH, "w")
     print >>tuning_file, config
     tuning_file.close()
 
@@ -300,5 +303,3 @@ def ReloadActorDefs():
 
 Actor.Create = staticmethod(_Create)
 
-confUp = ConfigUpdater()
-confUp.__disown__() # make sure Python doesn't garbage collect the config updater

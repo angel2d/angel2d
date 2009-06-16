@@ -63,7 +63,7 @@
  *  subdirectories [not an exhaustive list, these are just the ones that are
  *  interesting or may warrant explanation]: 
  *  - \b GameJam.sln: The Visual Studio 2005 solution file (Windows)
- *  - \b GameJam.xcodeproj: The Xcode 3 build and projet information (Mac OS 
+ *  - \b GameJam.xcodeproj: The Xcode 3 build and project information (Mac OS 
  *       X)
  *  - \b Angel: where the core prototyping framework gets built. Doesn't do 
  *       anything by itself, but requires client code to load it up and get 
@@ -161,7 +161,7 @@
  *      - \c input_bindings.ini: maps keyboard and controller button presses 
  *        to Messages that will be sent in the game (see below)
  *      - \c ActorDef: definition files for your actor archetypes (see below)
- *      - \c Level: defintions files for your levels (see below)
+ *      - \c Level: definitions files for your levels (see below)
  *    - \e Logs: Where any logs you generate in your game will be stored for 
  *      later viewing. (Assuming you use the Angel built-in logging. Obviously 
  *      you could write your own files wherever the heck you want.) Gets 
@@ -278,7 +278,7 @@
  *  is the static "sysLog," which Angel uses internally to write all its 
  *  messages and errors. By default, it just contains a SystemLog, but you 
  *  can add a FileLog to it if you want to record the Angel messages in a 
- *  more persistant fashion. 
+ *  more persistent fashion. 
  * 
  * That's pretty much it for logging -- the system is simple, but really 
  *  flexible. You could create a separate log for warnings or errors, put 
@@ -607,7 +607,7 @@
  *  subscribe to Messages. 
  * 
  * Each Message has a name that it's given, which should tell what event it's
- *  signalling or what type of Message it is. MessageListeners who wish to 
+ *  signaling or what type of Message it is. MessageListeners who wish to 
  *  subscribe to that Message pass it to the Switchboard to receive newly
  *  broadcast Messages every frame.
  * 
@@ -654,7 +654,7 @@
  *  and wiki for details. 
  * 
  * If all you want to do is play with some simple physics, though, we've 
- *  wrapped up a lot of the Box2D into a very \e angelic interface. :-) 
+ *  wrapped up a lot of Box2D into a very \e angelic interface. :-) 
  * 
  * The first thing you need to do if you want to use physics is call 
  *  World::SetupPhysics. By default, this function sets up physics with
@@ -742,7 +742,7 @@
  *  in your world to listen for those Messages and respond appropriately. 
  * 
  * For a more immediate check without having to set up Messages and bindings,
- *  you can call InputManater::IsKeyDown, passing it either a plain \c char or
+ *  you can call InputManager::IsKeyDown, passing it either a plain \c char or
  *  any of the defined values from \c GL/glfw.h. 
  * 
  * \code
@@ -983,13 +983,61 @@
  * 
  * It even has auto-complete. Pretty snazzy. 
  * 
- * @subsection python_subclasses Python Sublasses
+ * @subsection python_subclasses Python Subclasses
  * For those who wish to get \b really fancy, we have some (not thoroughly
  *  tested) support for subclassing Angel within Python. This means you could,
  *  in your Python script, declare a class which derives from PhysicsActor, 
  *  add it to the World, and respond to Messages in Python. 
  * 
  * The possibilities boggle the mind. 
+ * 
+ * @section tuning Tuning
+ * Very frequently while developing a game, you'll want the ability to change
+ *  values at runtime and watch their results. We provide a few methods of 
+ *  doing this; hopefully one of them is a good fit to your workflow. 
+ * 
+ * If you look in your \c Config directory, you'll see a file called 
+ *  \c tuning.ini. You can declare variables in here that will be available 
+ *  for easy tuning when the game runs. 
+ * 
+ * As an example, if you wanted to tune how high a character jumped, you 
+ *  could put this in your tuning file: 
+ * 
+ * \code
+ * [JumpHeight]
+ * type=float
+ * value=10.0
+ * \endcode
+ * 
+ * Then, in your C++ code, in the function that handles jumping, you get 
+ *  access to it like so: 
+ * 
+ * \code
+ * float jumpHeight = theTuning.GetFloat("JumpHeight");
+ * \endcode
+ * 
+ * (Python usage would look identical but without the type declaration and
+ *  the semi-colon. :-) )
+ * 
+ * Now this doesn't seem like much of a win, since you could have just 
+ *  \c #defined it at the top of your source file. But, if you edit this 
+ *  \c tuning.ini file while the game is running, Angel will detect the 
+ *  changes and alter the variable's value. 
+ * 
+ * If you prefer to stay in one program while tuning, we also provide some
+ *  easy console handles for playing with variables. Pull up the console with
+ *  (~), and run: 
+ * 
+ * \code
+ * tune("JumpHeight", 3)
+ * \endcode
+ * 
+ * And you'll see the effects immediately in-game. 
+ * 
+ * Once you have the values where you want them, you can call 
+ *  \c SaveTuningVariables() from the console and the values you've set will
+ *  be written back out into the file so you don't have to try and remember
+ *  them. 
  * 
  * @section util Niceties and Handy Doodads
  * Finally, we provide a number of utility classes and functions to handle 
