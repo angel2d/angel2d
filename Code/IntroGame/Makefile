@@ -52,7 +52,9 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 $(TARGET): $(LIBANGEL) $(OBJS)
 	$(CXX) -o $@ $(OBJS) $(LIBS) $(SHLIBS)
-	cp -Rp ../Angel/Scripting/EngineScripts/* Resources/Scripts
+	cp -p ../Angel/Scripting/EngineScripts/*.py Resources/Scripts
+	mkdir -p Resources/Scripts/iniparse
+	cp -p ../Angel/Scripting/EngineScripts/iniparse/* Resources/Scripts/iniparse
 	cp -p ../Angel/Scripting/Interfaces/angel.py Resources/Scripts
 
 all: $(TARGET)
