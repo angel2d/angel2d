@@ -30,6 +30,7 @@
 #include "../Infrastructure/Color.h"
 
 #include "../Util/MathUtil.h"
+#include <cstdio>
 
 Color::Color()
 {
