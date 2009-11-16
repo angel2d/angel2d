@@ -88,7 +88,7 @@ int windowClosed(void)
 {
 	theWorld.StopGame();
 
-	return GL_TRUE; //returning GL_FALSE will stop the window from closing
+	return GL_FALSE; //returning GL_FALSE will stop the window from closing
 }
 
 bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing)
