@@ -50,9 +50,9 @@ void PythonScriptingModule::Initialize()
 {
 	//We set paths to use our local Python distribution.
 	#if defined(WIN32)
-		_putenv("PYTHONPATH=python25.zip;..\\Tools\\Python25\\Lib");
+		_putenv("PYTHONPATH=python26.zip;..\\Tools\\Python26\\Lib");
 	#elif defined(__APPLE__)
-		putenv("PYTHONPATH=Frameworks/Python.framework/Versions/Current/lib/python25.zip:/usr/lib/python2.5");
+		putenv("PYTHONPATH=Frameworks/Python.framework/Versions/Current/lib/python26.zip:/usr/lib/python2.6");
 	#endif
 
 

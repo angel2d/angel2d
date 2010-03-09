@@ -6,10 +6,10 @@ dependencies are installed.
 
 Dependencies:
 -------------
-For Ubuntu 9.04, the following command will install the appropriate 
+For Ubuntu 9.10, the following command will install the appropriate 
 dependencies:
 sudo apt-get -y install build-essential swig libglu1-mesa-dev \
-	libfreeimage-dev python2.5-dev libxrandr-dev libfreetype6-dev joystick
+	libfreeimage-dev python-dev libxrandr-dev libfreetype6-dev joystick
 
 For Fedora Core 10, the following command will install the appropriate 
 dependencies:
