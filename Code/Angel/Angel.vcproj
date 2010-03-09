@@ -27,7 +27,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Generating Python Wrappers"
-				CommandLine="..\Tools\Python26\python.exe ..\Tools\BuildScripts\swig_wrap.py -p $(SolutionDir)&#x0D;&#x0A;"
+				CommandLine="..\Tools\Python25\python.exe ..\Tools\BuildScripts\swig_wrap.py -p $(SolutionDir)&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -47,7 +47,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Tools\Python26\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Tools\Python25\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;FREEGLUT_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -98,7 +98,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Generating Python Wrappers"
-				CommandLine="..\Tools\Python26\python.exe ..\Tools\BuildScripts\swig_wrap.py -p $(SolutionDir)&#x0D;&#x0A;"
+				CommandLine="..\Tools\Python25\python.exe ..\Tools\BuildScripts\swig_wrap.py -p $(SolutionDir)&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -117,7 +117,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Tools\Python26\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Tools\Python25\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;FREEGLUT_STATIC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"

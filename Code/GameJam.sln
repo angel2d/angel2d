@@ -1,10 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+# Visual C++ Express 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntroGame", "IntroGame\IntroGame.vcproj", "{CA407A30-2127-4368-BAAE-111123F000CB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Angel", "Angel\Angel.vcproj", "{D9A0401F-5FAF-483D-81EB-1066CD52F9D4}"
 	ProjectSection(ProjectDependencies) = postProject
+		{987306EC-6BAD-4440-B4FB-A699A1EE6A28} = {987306EC-6BAD-4440-B4FB-A699A1EE6A28}
 		{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9} = {BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}
 		{7A2DFC3D-516A-471D-A215-BD40E5E5AD9A} = {7A2DFC3D-516A-471D-A215-BD40E5E5AD9A}
 	EndProjectSection
@@ -19,11 +20,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientGame", "ClientGame\Cl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_GLFW", "Angel\Libraries\glfw\support\msvc80\GLFW.vcproj", "{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_pythoncore", "Angel\Libraries\Python-2.6.4\PC\VS8.0\pythoncore.vcproj", "{CF7AC3D1-E2DF-41D2-BEA6-1E2556CDEA26}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_pythoncore", "Angel\Libraries\Python-2.5.2\PCbuild8\pythoncore\pythoncore.vcproj", "{987306EC-6BAD-4440-B4FB-A699A1EE6A28}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2AB2AC43-1B73-40B1-8964-95B3FC3F15ED} = {2AB2AC43-1B73-40B1-8964-95B3FC3F15ED}
+		{87AB87DB-B665-4621-A67B-878C15B93FF0} = {87AB87DB-B665-4621-A67B-878C15B93FF0}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_make_versioninfo", "Angel\Libraries\Python-2.6.4\PC\VS8.0\make_versioninfo.vcproj", "{F0E0541E-F17D-430B-97C4-93ADF0DD284E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_make_buildinfo", "Angel\Libraries\Python-2.5.2\PCbuild8\make_buildinfo\make_buildinfo.vcproj", "{87AB87DB-B665-4621-A67B-878C15B93FF0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_make_buildinfo", "Angel\Libraries\Python-2.6.4\PC\VS8.0\make_buildinfo.vcproj", "{C73F0EC1-358B-4177-940F-0846AC8B04CD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_make_versioninfo", "Angel\Libraries\Python-2.5.2\PCbuild8\make_versioninfo\make_versioninfo.vcproj", "{2AB2AC43-1B73-40B1-8964-95B3FC3F15ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,15 +64,15 @@ Global
 		{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}.Debug|Win32.Build.0 = Debug|Win32
 		{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}.Release|Win32.ActiveCfg = Release|Win32
 		{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}.Release|Win32.Build.0 = Release|Win32
-		{CF7AC3D1-E2DF-41D2-BEA6-1E2556CDEA26}.Debug|Win32.ActiveCfg = Debug|Win32
-		{CF7AC3D1-E2DF-41D2-BEA6-1E2556CDEA26}.Debug|Win32.Build.0 = Debug|Win32
-		{CF7AC3D1-E2DF-41D2-BEA6-1E2556CDEA26}.Release|Win32.ActiveCfg = Release|Win32
-		{F0E0541E-F17D-430B-97C4-93ADF0DD284E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F0E0541E-F17D-430B-97C4-93ADF0DD284E}.Debug|Win32.Build.0 = Debug|Win32
-		{F0E0541E-F17D-430B-97C4-93ADF0DD284E}.Release|Win32.ActiveCfg = Debug|Win32
-		{C73F0EC1-358B-4177-940F-0846AC8B04CD}.Debug|Win32.ActiveCfg = Release|Win32
-		{C73F0EC1-358B-4177-940F-0846AC8B04CD}.Debug|Win32.Build.0 = Release|Win32
-		{C73F0EC1-358B-4177-940F-0846AC8B04CD}.Release|Win32.ActiveCfg = Release|Win32
+		{987306EC-6BAD-4440-B4FB-A699A1EE6A28}.Debug|Win32.ActiveCfg = Debug|Win32
+		{987306EC-6BAD-4440-B4FB-A699A1EE6A28}.Debug|Win32.Build.0 = Debug|Win32
+		{987306EC-6BAD-4440-B4FB-A699A1EE6A28}.Release|Win32.ActiveCfg = Release|Win32
+		{87AB87DB-B665-4621-A67B-878C15B93FF0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{87AB87DB-B665-4621-A67B-878C15B93FF0}.Debug|Win32.Build.0 = Debug|Win32
+		{87AB87DB-B665-4621-A67B-878C15B93FF0}.Release|Win32.ActiveCfg = Debug|Win32
+		{2AB2AC43-1B73-40B1-8964-95B3FC3F15ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AB2AC43-1B73-40B1-8964-95B3FC3F15ED}.Debug|Win32.Build.0 = Debug|Win32
+		{2AB2AC43-1B73-40B1-8964-95B3FC3F15ED}.Release|Win32.ActiveCfg = Debug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
