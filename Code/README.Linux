@@ -1,19 +1,19 @@
 Building Angel on Linux
 ------------------------------------------------------------------------------
-Angel has been tested on Ubuntu 9.04 and Fedora Core 10. It should 
+Angel has been tested on Ubuntu 10.04 LTS and Fedora Core 12. It should 
 probably build on other recent distributions as long as all of the 
 dependencies are installed.
 
 Dependencies:
 -------------
-For Ubuntu 9.04, the following command will install the appropriate 
+For Ubuntu 10.04 LTS, the following command will install the appropriate 
 dependencies:
 sudo apt-get -y install build-essential swig libglu1-mesa-dev \
-	libfreeimage-dev python2.5-dev libxrandr-dev libfreetype6-dev joystick
+	libdevil-dev python-dev libxrandr-dev libfreetype6-dev joystick
 
-For Fedora Core 10, the following command will install the appropriate 
-dependencies:
-sudo yum -y install gcc-c++ swig mesa-libGLU-devel freeimage-devel \
+For Fedora Core 12, the following command will install the appropriate 
+dependencies (must be run as root):
+yum -y install gcc-c++ make swig mesa-libGLU-devel DevIL-ILUT-devel \
 	python-devel libXrandr-devel freetype-devel
 
 Compiling:
@@ -42,6 +42,7 @@ build.
    and code files together for simple one-directory distribution. The 
    publish.py and publish-mac.py scripts in the Tools/BuildScripts directory
    represent reasonable templates from which someone could start that work.
+
  * Rather than using the version of FreeType included with the distribution,
    the Linux build relies on the developer and user already having FreeType
    on their systems. Since this is a very stable API and practically all 
@@ -61,7 +62,20 @@ Known Problems and Work-arounds:
 
    This is likely due to FMOD failing to autodetect your audio subsystem.
    The automatic sound subsystem detection can be overriden by setting an
-   environment variable, FMOD_OUTPUTTYPE.  The possible override choices are:
-   ALSA, OSS, ESD, and NOSOUND.  For example, to set the environment variable
+   environment variable, FMOD_OUTPUTTYPE. The possible override choices are:
+   ALSA, OSS, ESD, and NOSOUND. For example, to set the environment variable
    (if using the bash shell), use the following command:
-       export FMOD_OUTPUTTYPE="ALSA"  
+       export FMOD_OUTPUTTYPE="ALSA"
+
+ * On certain processors, Angel applications may crash with "Illegal 
+   instruction" errors. This is likely due to the fact that the DevIL 
+   library in most distributions is compiled to use SSE1, SSE2, and SSE3 
+   instructions. Some processors do not support these instructions and the 
+   program will crash. If you see this error, the recommended work-around is 
+   to download and compile your own version of DevIL from 
+   http://openil.sourceforge.net/. To disable all SSE instructions, add 
+   "--disable-asm" when using the configure script.
+
+ * On Fedora systems, Angel and SELinux do not get along. Be prepared to create
+   exceptions for your Angel programs or disable SELinux altogether.
+

@@ -45,8 +45,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(InputDir)\..\Angel&quot;;&quot;$(InputDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(InputDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FMOD\inc&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;FREEGLUT_STATIC"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\DemoScreens&quot;;&quot;$(ProjectDir)&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -67,9 +67,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="FreeImage.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT_d.lib freetype237_D.lib box2d_d.lib Angel.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT_d.lib freetype237_D.lib box2d_d.lib Angel.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\..\Tools\Python25&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Tools\Python26\libs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMTD.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -99,7 +99,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs..."
-				CommandLine="xcopy ..\Angel\Libraries\FreeImage\Dist\FreeImage.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25_d.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\msvcr71.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python26\libs\python26_d.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -113,7 +113,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Copying Python module import script..."
-				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Tools\Python26\python26.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -132,8 +132,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(InputDir)\..\Angel&quot;;&quot;$(InputDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(InputDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FMOD\inc&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;FREEGLUT_STATIC"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\DemoScreens&quot;;&quot;$(ProjectDir)&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -152,9 +152,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="FreeImage.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT.lib freetype237.lib box2d.lib Angel.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT.lib freetype237.lib box2d.lib Angel.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FreeImage\Dist&quot;;&quot;$(ProjectDir)\..\Tools\Python25&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Tools\Python26\libs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -186,7 +186,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs and publishing..."
-				CommandLine="xcopy ..\Angel\Libraries\FreeImage\Dist\FreeImage.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\python25_d.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python25\msvcr71.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;..\Tools\Python25\python.exe ..\Tools\BuildScripts\publish.py -i $(ProjectDir) -o $(ProjectDir)Published -g IntroGame.exe&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python26\python26.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;..\Tools\Python26\python.exe ..\Tools\BuildScripts\publish.py -i $(ProjectDir) -o $(ProjectDir)Published -g IntroGame.exe&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -266,158 +266,158 @@
 			</Filter>
 		</Filter>
 		<Filter
-			Name="Screens"
+			Name="DemoScreens"
 			>
 			<File
-				RelativePath=".\DemoScreenBindingInstructions.cpp"
+				RelativePath=".\DemoScreens\DemoScreenBindingInstructions.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenBindingInstructions.h"
+				RelativePath=".\DemoScreens\DemoScreenBindingInstructions.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenByeBye.cpp"
+				RelativePath=".\DemoScreens\DemoScreenByeBye.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenByeBye.h"
+				RelativePath=".\DemoScreens\DemoScreenByeBye.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenConsole.cpp"
+				RelativePath=".\DemoScreens\DemoScreenConsole.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenConsole.h"
+				RelativePath=".\DemoScreens\DemoScreenConsole.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenControllerInstructions.cpp"
+				RelativePath=".\DemoScreens\DemoScreenControllerInstructions.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenControllerInstructions.h"
+				RelativePath=".\DemoScreens\DemoScreenControllerInstructions.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenDefFile.cpp"
+				RelativePath=".\DemoScreens\DemoScreenDefFile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenDefFile.h"
+				RelativePath=".\DemoScreens\DemoScreenDefFile.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenInstructions.cpp"
+				RelativePath=".\DemoScreens\DemoScreenInstructions.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenInstructions.h"
+				RelativePath=".\DemoScreens\DemoScreenInstructions.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenIntervals.cpp"
+				RelativePath=".\DemoScreens\DemoScreenIntervals.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenIntervals.h"
+				RelativePath=".\DemoScreens\DemoScreenIntervals.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenLayeredCollisionLevelFile.cpp"
+				RelativePath=".\DemoScreens\DemoScreenLayeredCollisionLevelFile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenLayeredCollisionLevelFile.h"
+				RelativePath=".\DemoScreens\DemoScreenLayeredCollisionLevelFile.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenLevelFile.cpp"
+				RelativePath=".\DemoScreens\DemoScreenLevelFile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenLevelFile.h"
+				RelativePath=".\DemoScreens\DemoScreenLevelFile.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenMessagePassing.cpp"
+				RelativePath=".\DemoScreens\DemoScreenMessagePassing.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenMessagePassing.h"
+				RelativePath=".\DemoScreens\DemoScreenMessagePassing.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenMovingActor.cpp"
+				RelativePath=".\DemoScreens\DemoScreenMovingActor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenMovingActor.h"
+				RelativePath=".\DemoScreens\DemoScreenMovingActor.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenMultipleControllers.cpp"
+				RelativePath=".\DemoScreens\DemoScreenMultipleControllers.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenMultipleControllers.h"
+				RelativePath=".\DemoScreens\DemoScreenMultipleControllers.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenParticleActors.cpp"
+				RelativePath=".\DemoScreens\DemoScreenParticleActors.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenParticleActors.h"
+				RelativePath=".\DemoScreens\DemoScreenParticleActors.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenPathfinding.cpp"
+				RelativePath=".\DemoScreens\DemoScreenPathfinding.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenPathfinding.h"
+				RelativePath=".\DemoScreens\DemoScreenPathfinding.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenPhysicsActor.cpp"
+				RelativePath=".\DemoScreens\DemoScreenPhysicsActor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenPhysicsActor.h"
+				RelativePath=".\DemoScreens\DemoScreenPhysicsActor.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenRenderLayers.cpp"
+				RelativePath=".\DemoScreens\DemoScreenRenderLayers.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenRenderLayers.h"
+				RelativePath=".\DemoScreens\DemoScreenRenderLayers.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenSimpleActor.cpp"
+				RelativePath=".\DemoScreens\DemoScreenSimpleActor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenSimpleActor.h"
+				RelativePath=".\DemoScreens\DemoScreenSimpleActor.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenStart.cpp"
+				RelativePath=".\DemoScreens\DemoScreenStart.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenStart.h"
+				RelativePath=".\DemoScreens\DemoScreenStart.h"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenTuningVariables.cpp"
+				RelativePath=".\DemoScreens\DemoScreenTuningVariables.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DemoScreenTuningVariables.h"
+				RelativePath=".\DemoScreens\DemoScreenTuningVariables.h"
 				>
 			</File>
 		</Filter>

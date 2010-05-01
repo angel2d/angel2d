@@ -1,5 +1,5 @@
 #############################################################################
-## Copyright (C) 2008-2009, Shane J. M. Liesegang
+## Copyright (C) 2008-2010, Shane J. M. Liesegang
 ## All rights reserved.
 ## 
 ## Redistribution and use in source and binary forms, with or without 
@@ -53,6 +53,8 @@ else:
             'Resources',
             'Scripts'
         )
+if not os.path.exists(dest):
+    os.makedirs(dest)
 for fileName in glob.glob('*.py'):
     dstname = os.path.join(dest, fileName)
     shutil.copyfile(fileName, dstname)

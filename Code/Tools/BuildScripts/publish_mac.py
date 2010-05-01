@@ -1,5 +1,5 @@
 #############################################################################
-## Copyright (C) 2008-2009, Shane J. M. Liesegang
+## Copyright (C) 2008-2010, Shane J. M. Liesegang
 ## All rights reserved.
 ## 
 ## Redistribution and use in source and binary forms, with or without 
@@ -65,7 +65,7 @@ def main(input_d, output_d, game_name):
     shutil.copytree(os.path.join(output_d, "..", "..", "Release", game_name), app_path)
     
     script = os.path.join(app_path, "Contents", "Resources", "Scripts", "start.py")
-    py_version = ".".join(platform.python_version_tuple()[0:2])
+    py_version = ".".join(map(str, platform.python_version_tuple()[0:2]))
     remotePy = os.path.join(app_path, "Contents", "Frameworks", "Python.framework")
     remotePyCurrent = os.path.join(remotePy, "Versions", py_version)
     remoteLib = os.path.join(remotePyCurrent, "lib", "python" + py_version)

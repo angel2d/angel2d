@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// Copyright (C) 2008-2010, Shane J. M. Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -31,7 +31,29 @@
 
 #include "../Infrastructure/Log.h"
 
-#include "FreeImage.h"
+#define ILUT_USE_OPENGL
+#undef  _UNICODE
+#include "IL/il.h"
+#include "IL/ilu.h"
+#include "IL/ilut.h"
+
+void InitializeTextureLoading()
+{
+	ilInit();
+	iluInit();
+	ilutInit();
+	glDisable(GL_TEXTURE_2D);
+	
+	// Convert any paletted images
+	ilEnable(IL_CONV_PAL);
+	// Allegedly gets rid of dithering on some nvidia cards. 
+	ilutEnable(ILUT_OPENGL_CONV);
+}
+
+void FinalizeTextureLoading()
+{
+	//nothing right now
+}
 
 struct TextureCacheEntry
 {
@@ -59,14 +81,55 @@ const int GetTextureReference(String filename, bool bOptional)
 	return GetTextureReference(filename, GL_CLAMP, GL_LINEAR, bOptional);
 }
 
+void HandleDevILErrors(String errorPrefix="")
+{
+	ILenum error = ilGetError();
+	if (error != IL_NO_ERROR)
+	{
+		sysLog.Log("DevIL errors loading: " + errorPrefix);
+		do 
+		{
+			sysLog.Log(iluErrorString(error));
+		} while ((error = ilGetError()));
+	}
+}
+
+// Modified from the ilut source file for GLBind
+GLuint BindTexImageWithClampAndFilter(GLint ClampMode, GLint FilterMode)
+{
+	GLuint	TexID = 0;
+
+	glGenTextures(1, &TexID);
+	glBindTexture(GL_TEXTURE_2D, TexID);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, ClampMode);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, ClampMode);
+
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, FilterMode);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, FilterMode);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	glPixelStorei(GL_UNPACK_SWAP_BYTES, IL_FALSE);
+
+	if (!ilutGLTexImage(0)) {
+		glDeleteTextures(1, &TexID);
+		return 0;
+	}
+
+	return TexID;
+}
+
 const int GetTextureReference(String filename, GLint clampmode, GLint filtermode, bool optional)
 {
 	bool cached = false;
 	TextureCacheEntry* currentCacheEntry = NULL;
-
+	
 	//check cache to see if it's loaded already
 	std::map<String,TextureCacheEntry>::iterator it = theTextureCache.find(filename);
-
+	
 	// See if we already have it in the cache.
 	if (it != theTextureCache.end())
 	{
@@ -75,181 +138,105 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 		{
 			return it->second.textureIndex;
 		}
-
+		
 		// We found it, but it's dirty.  We'll reload the texture below.
 		cached = true;
 		currentCacheEntry = &(it->second);
 	}
+	
+	ILuint imgRef;
+	GLuint texRef;
 
-	const char *texFile = filename.c_str();
+	ilGenImages(1, &imgRef);
+	ilBindImage(imgRef);
 
-	// get the image file type from FreeImage
-	FREE_IMAGE_FORMAT fifmt = FreeImage_GetFileType(texFile, 0);
-
-	if (fifmt == FIF_UNKNOWN)
-	{
-		fifmt = FreeImage_GetFIFFromFilename(texFile);
-	}
-
-	//actually load the image file
-	FIBITMAP *dib = FreeImage_Load(fifmt, texFile, 0);
-
-	if (dib != NULL)
-	{
-		GLuint texRef = 0;
-
-		// Only generate an index if it's not cached.
-		if (cached)
-			texRef = currentCacheEntry->textureIndex;
-		else
-			glGenTextures(1, &texRef);
-
-		glBindTexture(GL_TEXTURE_2D, texRef);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampmode);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampmode);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filtermode);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filtermode);
-
-		GLenum format;
-		int numComponents;
-
-		if (FreeImage_IsTransparent(dib))
-		{
-			numComponents = 4;
-			#if defined(WIN32) || defined(__linux__)
-				format = GL_BGRA_EXT;
-			#else
-				format = GL_RGBA;
-			#endif
-		}
-		else
-		{
-			numComponents = 3;
-			#if defined(WIN32) || defined(__linux__)
-				format = GL_BGR_EXT;
-			#else
-				format = GL_RGB;
-			#endif
-			dib = FreeImage_ConvertTo24Bits(dib); //want to ensure we don't have an alpha
-		}
-
-		BYTE* pixels = (BYTE*)FreeImage_GetBits(dib);
-
-		gluBuild2DMipmaps(
-			GL_TEXTURE_2D,
-			numComponents,
-			FreeImage_GetWidth(dib),
-			FreeImage_GetHeight(dib),
-			format,
-			GL_UNSIGNED_BYTE,
-			pixels
-			);
-		
-		FreeImage_Unload(dib);
-		
-		// If it was cached, clear the dirty flag so we don't try and load it again.
-		if (cached)
-		{
-			currentCacheEntry->dirty = false;
-		}
-		// If we're not cached, add a new entry.
-		else 
-		{
-			TextureCacheEntry newEntry;
-			newEntry.filename = filename;
-			newEntry.clampMode = clampmode;
-			newEntry.filterMode = filtermode;
-			newEntry.textureIndex = texRef;
-			newEntry.dirty = false;
-			theTextureCache[filename] = newEntry;
-		}
-
-		return texRef;
-	}
-	else
+	// Load it up, log any errors
+	if (!ilLoadImage(filename.c_str()))
 	{
 		if (!optional)
 		{
-			sysLog.Log("Failed to find - " + String(texFile));
+			HandleDevILErrors(filename);
 		}
 		return -1;
 	}
+
+	// Send it to GL
+	texRef = BindTexImageWithClampAndFilter(clampmode, filtermode);
+
+	// Clear it out
+	ilDeleteImages(1, &imgRef);
+	
+	// output any errors that happened during the binding/deleting
+	HandleDevILErrors(filename);
+	
+	// If it was cached, clear the dirty flag so we don't try and load it again.
+	if (cached)
+	{
+		currentCacheEntry->dirty = false;
+	}
+	// If we're not cached, add a new entry.
+	else 
+	{
+		TextureCacheEntry newEntry;
+		newEntry.filename = filename;
+		newEntry.clampMode = clampmode;
+		newEntry.filterMode = filtermode;
+		newEntry.textureIndex = texRef;
+		newEntry.dirty = false;
+		theTextureCache[filename] = newEntry;
+	}
+	
+	return texRef;
+
 }
 
 bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance)
 {
-	//TODO: Pull the repeated image loading code from this and 
-	//  GetTextureReference into its own function. 
+	ILuint imgRef;
+
+	ilGenImages(1, &imgRef);
+	ilBindImage(imgRef);
 	
-	const char *texFile = filename.c_str();
-
-	// get the image file type from FreeImage
-	FREE_IMAGE_FORMAT fifmt = FreeImage_GetFileType(texFile, 0);
-
-	if (fifmt == FIF_UNKNOWN)
+	// load image into DevIL
+	if (!ilLoadImage(filename.c_str()))
 	{
-		fifmt = FreeImage_GetFIFFromFilename(texFile);
-	}
-
-	//actually load the image file
-	FIBITMAP *dib = FreeImage_Load(fifmt, texFile, 0);
-
-	if (dib != NULL)
-	{
-		GLenum format;
-		int numComponents;
-
-		if (FreeImage_IsTransparent(dib))
-		{
-			numComponents = 4;
-			#if defined(WIN32) || defined(__linux__)
-				format = GL_BGRA_EXT;
-			#else
-				format = GL_RGBA;
-			#endif
-		}
-		else
-		{
-			numComponents = 3;
-			#if defined(WIN32) || defined(__linux__)
-				format = GL_BGR_EXT;
-			#else
-				format = GL_RGB;
-			#endif
-			dib = FreeImage_ConvertTo24Bits(dib); //want to ensure we don't have an alpha
-		}
-		
-		int width = FreeImage_GetWidth(dib);
-		int height = FreeImage_GetHeight(dib);
-		Vector2 offset(-width*gridSize/2.f, -height*gridSize/2.f);
-		RGBQUAD targetRGB;
-		targetRGB.rgbBlue = BYTE(255.f * pixelColor.B);
-		targetRGB.rgbGreen = BYTE(255.f * pixelColor.G);
-		targetRGB.rgbRed = BYTE(255.f * pixelColor.R);
-		BYTE tol = BYTE(255.f * tolerance);
-		RGBQUAD* rgb = new RGBQUAD();
-		for (int y=0; y < height; y++)
-		{
-			for (int x=0; x < width; x++)
-			{
-				FreeImage_GetPixelColor(dib, x, y, rgb);
-				if (abs((int)rgb->rgbBlue - (int)targetRGB.rgbBlue) <= tol
-					&& abs((int)rgb->rgbGreen - (int)targetRGB.rgbGreen) <= tol
-					&& abs((int)rgb->rgbRed - (int)targetRGB.rgbRed) <= tol 
-					)
-				{
-					positions.push_back(offset + Vector2(x * gridSize, y * gridSize));
-				}
-			}
-		}
-		FreeImage_Unload(dib);
-		return true; 
-	}
-	else
-	{
-		sysLog.Log("Failed to find - " + String(texFile));
+		HandleDevILErrors(filename);
 		return false;
 	}
+	
+	// get image datums
+	int width = ilGetInteger(IL_IMAGE_WIDTH);
+	int height = ilGetInteger(IL_IMAGE_HEIGHT);
+	Vector2 offset(-width*gridSize/2.f, -height*gridSize/2.f);
+	
+	// convert it to RGB floats
+	ilConvertImage(IL_RGB, IL_FLOAT);
+	
+	// grab the raw data
+	ILfloat* rawData = (ILfloat*)ilGetData(); 
+	
+	// check every pixel, see if it's within the tolerance of the target
+	ILfloat pixR, pixG, pixB;
+	unsigned int pixOffset = 0;
+	for (int y=0; y < height; y++)
+	{
+		for (int x=0; x < width; x++)
+		{
+			pixOffset = (y * width * 3) + (x * 3);
+			pixR = rawData[pixOffset];
+			pixG = rawData[pixOffset + 1];
+			pixB = rawData[pixOffset + 2];
+			if (   fabs(pixR - pixelColor.R) <= tolerance
+				&& fabs(pixG - pixelColor.G) <= tolerance
+				&& fabs(pixB - pixelColor.B) <= tolerance
+				)
+			{
+				positions.push_back(offset + Vector2(x * gridSize, y * gridSize));
+			}
+		}
+	}
+	
+	// cleanup and return
+	ilDeleteImages(1, &imgRef);
+	return true;
 }

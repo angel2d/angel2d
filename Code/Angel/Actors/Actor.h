@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// Copyright (C) 2008-2010, Shane J. M. Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -302,7 +302,7 @@ public:
 	
 	/**
 	 * Apply texture information to an Actor. The file can be any image format
-	 *  supported by FreeImage, and transparency in the image will be used
+	 *  supported by DevIL, and transparency in the image will be used
 	 *  when drawing the Actor. 
 	 * 
 	 * @param filename The path to an image file

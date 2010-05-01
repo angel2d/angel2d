@@ -1,5 +1,5 @@
 #############################################################################
-## Copyright (C) 2008-2009, Shane J. M. Liesegang
+## Copyright (C) 2008-2010, Shane J. M. Liesegang
 ## All rights reserved.
 ## 
 ## Redistribution and use in source and binary forms, with or without 
@@ -53,7 +53,7 @@ def main(input_d, output_d, game_name):
     if not os.path.exists(bits_path):
         os.makedirs(bits_path)
     
-    files_ex = ["FreeImage.dll", "python25.dll", "msvcr71.dll", "fmodex.dll"]
+    files_ex = ["DevIL.dll", "ILU.dll", "ILUT.dll", "python26.dll", "fmodex.dll"]
     files_base = ["GameInfo.txt", "Attributions.txt"]
     directories = ["Resources", "Config", "Logs"]
     

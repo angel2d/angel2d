@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// Copyright (C) 2008-2010, Shane J. M. Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -65,6 +65,9 @@
  *  - \b GameJam.sln: The Visual Studio 2005 solution file (Windows)
  *  - \b GameJam.xcodeproj: The Xcode 3 build and project information (Mac OS 
  *       X)
+ *  - \b README.Linux: Information about how to get Angel up and running on
+ *       Linux, along with data about what should and shouldn't work at 
+ *       present.
  *  - \b Angel: where the core prototyping framework gets built. Doesn't do 
  *       anything by itself, but requires client code to load it up and get 
  *       things going. 
@@ -79,8 +82,8 @@
  *        (http://www.box2d.com)
  *      - FMOD: Sound \n
  *        (http://www.fmod.org)
- *      - FreeImage: Image loading \n
- *        (http://freeimage.sourceforge.net)
+ *      - DevIL: Image loading \n
+ *        (http://openil.sourceforge.net)
  *      - FreeType: Font rasterization \n
  *        (http://www.freetype.org)
  *      - FTGL: Makes it easy to use FreeType in OpenGL \n
@@ -389,7 +392,7 @@
  * \endcode
  * 
  * Images can be in any format supported by <a href="
- *  http://freeimage.sourceforge.net/features.html">FreeImage</a>, and any
+ *  http://openil.sourceforge.net/features.html">DevIL</a>, and any
  *  transparency on the image will show up in Angel. 
  * 
  * You can also assign multiple sprites to an Actor, either for use in an

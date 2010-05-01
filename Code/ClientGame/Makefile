@@ -1,6 +1,7 @@
 CXX = g++
 TARGET = ClientGame
 ARCH := $(shell uname -m)
+ALLEGRO_LIBS := $(shell allegro-config --libs 2>/dev/null)
 LIBANGEL = ../Angel/libangel.so
 
 INCLUDE = 							\
@@ -10,7 +11,7 @@ INCLUDE = 							\
 	-I../Angel/Libraries/FMOD/inc 				\
 	-I../Angel/Libraries/FTGL/include			\
 	-I/usr/include/freetype2				\
-	-I/usr/include/python2.5
+	-I/usr/include/python2.6
 
 LIBS = $(LIBANGEL)
 ifeq ($(ARCH),x86_64)
@@ -19,7 +20,8 @@ else
 	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex.so
 endif
 
-SHLIBS = -lGL -lGLU -lpython2.5 -lfreetype -lXrandr -lfreeimage
+SHLIBS = -lGL -lGLU -lpython2.6 -lfreetype -lXrandr -lIL -lILU -lILUT
+SHLIBS += $(ALLEGRO_LIBS)
 
 SRCS =								\
 	stdafx.cpp						\

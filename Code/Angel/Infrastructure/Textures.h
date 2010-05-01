@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// Copyright (C) 2008-2010, Shane J. M. Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -40,6 +40,16 @@
 #include "Color.h"
 
 /**
+ * Do whatever setup needs to be done at program start. 
+ */
+void InitializeTextureLoading();
+
+/**
+ * Do whatever cleanup needs to be done at program end. 
+ */
+void FinalizeTextureLoading();
+
+/**
  * Goes through all loaded textures and marks them as dirty, so the next time
  *  they're referenced the file will be loaded up fresh from the disk. The
  *  effect of this is that you can update your texture files and see them 
@@ -53,8 +63,8 @@ void FlushTextureCache();
  *  appropriately for OpenGL. Thus you use this function to both load your
  *  textures initially and to reference them afterwards. 
  * 
- * @param name The path to the file to load. Must be readable by FreeImage.
- *   (http://freeimage.sourceforge.net/)
+ * @param name The path to the file to load. Must be readable by DevIL.
+ *   (http://openil.sourceforge.net/)
  * @param optional If true, the engine won't complain if it can't load it. 
  * @return The GLuint that OpenGL uses to reference the texture. If the number
  *   is negative, that means the texture couldn't be loaded or found. 
@@ -66,8 +76,8 @@ const int GetTextureReference(String name, bool optional = false);
  *  you want control over how to display this texture. See OpenGL docs for
  *  further explanation of how these parameters work. 
  * 
- * @param name The path to the file to load. Must be readable by FreeImage.
- *   (http://freeimage.sourceforge.net/)
+ * @param name The path to the file to load. Must be readable by DevIL.
+ *   (http://openil.sourceforge.net/)
  * @param clampmode Either GL_CLAMP or GL_REPEAT. 
  * @param filtermode One of: GL_NEAREST, GL_LINEAR, GL_NEAREST_MIPMAP_NEAREST,
  *   GL_LINEAR_MIPMAP_NEAREST, GL_NEAREST_MIPMAP_LINEAR, or GL_LINEAR_MIPMAP_LINEAR
@@ -84,8 +94,8 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 * positions will be in range imageSizeX * gridSize, imageSizeY * gridSize, and
 * be centered on 0,0. 
 * 
-* @param name The path to the file to load. Must be readable by FreeImage.
-*   (http://freeimage.sourceforge.net/)
+* @param name The path to the file to load. Must be readable by DevIL.
+*   (http://openil.sourceforge.net/)
 * @param positions The vector of Vector2s to populate
 * @param gridSize The size of the grid, i.e. how much space one pixel occupies.
 * @param pixelColor The color to search the image for (channels in 0.0-1.0 range).  

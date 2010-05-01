@@ -1,5 +1,5 @@
 #############################################################################
-## Copyright (C) 2008-2009, Shane J. M. Liesegang
+## Copyright (C) 2008-2010, Shane J. M. Liesegang
 ## All rights reserved.
 ## 
 ## Redistribution and use in source and binary forms, with or without 
@@ -49,7 +49,7 @@ def main(proj_dir):
     if (sys.platform[:3] == 'win'):
         SWIG_PATH = os.path.join(proj_dir, "Tools", "swigwin-1.3.36", "swig.exe")
     elif (sys.platform == 'darwin'):
-        SWIG_PATH = "/opt/local/bin/swig"
+        SWIG_PATH = "swig"
     else:
         if (os.system("which swig") != 0):
             sys.stderr.write("ERROR: swig not found.\n")

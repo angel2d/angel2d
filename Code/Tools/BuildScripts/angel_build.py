@@ -1,5 +1,5 @@
 #############################################################################
-## Copyright (C) 2008-2009, Shane J. M. Liesegang
+## Copyright (C) 2008-2010, Shane J. M. Liesegang
 ## All rights reserved.
 ## 
 ## Redistribution and use in source and binary forms, with or without 
@@ -146,7 +146,7 @@ class PythonPackage:
     
     
     def makeItTrim(self, remoteLib):
-        pyZip = os.path.join(remoteLib, "..", "python25.zip")
+        pyZip = os.path.join(remoteLib, "..", "python26.zip")
         pyz = zipfile.PyZipFile(pyZip, 'w')
         pyz.writepy(remoteLib)
         pyz.close()

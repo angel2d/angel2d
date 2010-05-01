@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2009, Shane J. M. Liesegang
+// Copyright (C) 2008-2010, Shane J. M. Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -35,6 +35,7 @@
 #include "../Input/Input.h"
 #include "../Input/MouseInput.h"
 #include "../Input/Controller.h"
+#include "../Infrastructure/Textures.h"
 #include "../Input/InputManager.h"
 #include "../Physics/PhysicsActor.h"
 #include "../Physics/PhysicsDebugDraw.h"
@@ -97,8 +98,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	{
 		return false;
 	}
-
-	//standard initialization
+	
 	_running = true;
 	glfwInit();
 	if (antiAliasing)
@@ -137,7 +137,9 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 
 	theCamera.ResizeCallback(windowWidth, windowHeight);
 	theControllerManager.Setup();
-
+	
+	InitializeTextureLoading();
+	
 	#if defined(__APPLE__)
 		// Set up paths correctly in the .app bundle
 		// TODO: Centralize a declaration/initialization of paths
@@ -210,6 +212,7 @@ void World::Destroy()
 	theSound.Shutdown();
 	theInput.Destroy();
 	
+	FinalizeTextureLoading();
 	PythonScriptingModule::Finalize();
 
 	delete _physicsDebugDraw;

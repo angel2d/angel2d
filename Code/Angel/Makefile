@@ -14,7 +14,7 @@ INCLUDE = 							\
 	-ILibraries/FMOD/inc 					\
 	-ILibraries/FTGL/include				\
 	-I/usr/include/freetype2				\
-	-I/usr/include/python2.5
+	-I/usr/include/python2.6
 
 LIBS = 								\
 	Libraries/glfw/lib/x11/libglfw.a			\

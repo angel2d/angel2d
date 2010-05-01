@@ -38,6 +38,9 @@
 		340F35190F36BA4600650DF7 /* DemoScreenPathfinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */; };
 		342C29370E2AF9C50061D881 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9A0E284445001C79A5 /* Carbon.framework */; };
 		342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433A92B0E2AB09B00A02B4E /* IOKit.framework */; };
+		342EDF9111813C8800D1F237 /* angel.i in Sources */ = {isa = PBXBuildFile; fileRef = 34F1FF300E5D31DB0065CD22 /* angel.i */; };
+		342EDFED118146A300D1F237 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F1FC130E5D1DD30065CD22 /* Python.framework */; };
+		342EDFF1118146D500D1F237 /* libAngel.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F1FC9D0E5D26650065CD22 /* libAngel.dylib */; };
 		3433A8D60E2AADEF00A02B4E /* PID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CA0E2AADAE00A02B4E /* PID.h */; };
 		3433A8D70E2AADEF00A02B4E /* HID_Utilities_External.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CB0E2AADAE00A02B4E /* HID_Utilities_External.h */; };
 		3433A8D80E2AADEF00A02B4E /* IOHIDPowerUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CC0E2AADAE00A02B4E /* IOHIDPowerUsage.h */; };
@@ -117,6 +120,16 @@
 		34368E040F3CDC8900DE94CD /* Callback.h in Headers */ = {isa = PBXBuildFile; fileRef = 34368E030F3CDC8900DE94CD /* Callback.h */; };
 		343F41980E31C19F0097B760 /* DemoScreenMessagePassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343F41960E31C19F0097B760 /* DemoScreenMessagePassing.cpp */; };
 		343F41990E31C19F0097B760 /* DemoScreenMessagePassing.h in Headers */ = {isa = PBXBuildFile; fileRef = 343F41970E31C19F0097B760 /* DemoScreenMessagePassing.h */; };
+		3454867011487B89008F1155 /* libIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454866D11487B89008F1155 /* libIL.a */; };
+		3454867111487B89008F1155 /* libILU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454866E11487B89008F1155 /* libILU.a */; };
+		3454867211487B89008F1155 /* libILUT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454866F11487B89008F1155 /* libILUT.a */; };
+		3454868111487BE2008F1155 /* libjasper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867A11487BE2008F1155 /* libjasper.a */; };
+		3454868211487BE2008F1155 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867B11487BE2008F1155 /* libjpeg.a */; };
+		3454868311487BE2008F1155 /* liblcms.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867C11487BE2008F1155 /* liblcms.a */; };
+		3454868411487BE2008F1155 /* libmng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867D11487BE2008F1155 /* libmng.a */; };
+		3454868511487BE2008F1155 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867E11487BE2008F1155 /* libpng.a */; };
+		3454868611487BE2008F1155 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867F11487BE2008F1155 /* libtiff.a */; };
+		3454868711487BE2008F1155 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454868011487BE2008F1155 /* libz.a */; };
 		346E3BBF0E28642400E6C79E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
 		346E3BC10E28644000E6C79E /* FTBitmapGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346E3B650E285ECF00E6C79E /* FTBitmapGlyph.cpp */; };
 		346E3BC20E28644000E6C79E /* FTCharmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346E3B660E285ECF00E6C79E /* FTCharmap.cpp */; };
@@ -280,7 +293,6 @@
 		34F1FCCB0E5D26970065CD22 /* SpatialGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A187C80E283FF3001C79A5 /* SpatialGraph.h */; };
 		34F1FCCC0E5D26970065CD22 /* stlastar.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A187C90E283FF3001C79A5 /* stlastar.h */; };
 		34F1FCCD0E5D26970065CD22 /* Traversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A187CB0E283FF3001C79A5 /* Traversal.h */; };
-		34F1FCCE0E5D26970065CD22 /* FreeImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3479A03D0E28856300768932 /* FreeImage.h */; };
 		34F1FCCF0E5D26970065CD22 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 34974BB50E292E240018A032 /* Controller.h */; };
 		34F1FCD00E5D26970065CD22 /* Message.h in Headers */ = {isa = PBXBuildFile; fileRef = 343F41880E31C1460097B760 /* Message.h */; };
 		34F1FCD10E5D26970065CD22 /* Switchboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 343F418A0E31C1460097B760 /* Switchboard.h */; };
@@ -344,7 +356,6 @@
 		34F1FD240E5D26C80065CD22 /* libBox2D.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18BA70E284044001C79A5 /* libBox2D.a */; };
 		34F1FD250E5D26C80065CD22 /* libGLFW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C510E284362001C79A5 /* libGLFW.a */; };
 		34F1FD260E5D26C80065CD22 /* libFTGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 346E3BB90E28637A00E6C79E /* libFTGL.a */; };
-		34F1FD270E5D26C80065CD22 /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3479A03F0E28857900768932 /* libfreeimage.a */; };
 		34F1FD280E5D26C80065CD22 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
 		34F1FD290E5D26C80065CD22 /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D34D980E2C34430053994C /* ForceFeedback.framework */; };
 		34F1FD2A0E5D26C80065CD22 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F1FC130E5D1DD30065CD22 /* Python.framework */; };
@@ -357,7 +368,28 @@
 		34F1FF010E5D2FD20065CD22 /* libAngel.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34F1FC9D0E5D26650065CD22 /* libAngel.dylib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		342EDF9411813CE900D1F237 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.i";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(PROJECT_DIR)/Angel/Scripting/Interfaces/$(INPUT_FILE_BASE).cpp",
+			);
+			script = "/usr/bin/swig -c++ -python -o Angel/Scripting/Interfaces/${INPUT_FILE_BASE}.cpp ${INPUT_FILE_PATH}";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
+		342EDFF2118146DB00D1F237 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34F1FC9C0E5D26650065CD22;
+			remoteInfo = Angel;
+		};
 		34882C370F47D8A400ADBBC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -442,14 +474,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		34066B760FC4F3DB00508B4D /* DemoScreenTuningVariables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenTuningVariables.cpp; path = IntroGame/DemoScreenTuningVariables.cpp; sourceTree = "<group>"; };
-		34066B770FC4F3DB00508B4D /* DemoScreenTuningVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenTuningVariables.h; path = IntroGame/DemoScreenTuningVariables.h; sourceTree = "<group>"; };
+		34066B760FC4F3DB00508B4D /* DemoScreenTuningVariables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenTuningVariables.cpp; path = IntroGame/DemoScreens/DemoScreenTuningVariables.cpp; sourceTree = "<group>"; };
+		34066B770FC4F3DB00508B4D /* DemoScreenTuningVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenTuningVariables.h; path = IntroGame/DemoScreens/DemoScreenTuningVariables.h; sourceTree = "<group>"; };
 		340CCB830EA8495C00448120 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = IntroGame/Resources; sourceTree = "<group>"; };
 		340CCB9C0EA8496A00448120 /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Config; path = IntroGame/Config; sourceTree = "<group>"; };
-		340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenPathfinding.h; path = IntroGame/DemoScreenPathfinding.h; sourceTree = "<group>"; };
-		340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPathfinding.cpp; path = IntroGame/DemoScreenPathfinding.cpp; sourceTree = "<group>"; };
-		3411DFE90E5FDD83009D734D /* actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = actor.i; path = Angel/Scripting/Interfaces/actor.i; sourceTree = "<group>"; };
-		3411E0B20E5FF1C2009D734D /* vector2.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = vector2.i; path = Angel/Scripting/Interfaces/vector2.i; sourceTree = "<group>"; };
+		340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenPathfinding.h; path = IntroGame/DemoScreens/DemoScreenPathfinding.h; sourceTree = "<group>"; };
+		340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPathfinding.cpp; path = IntroGame/DemoScreens/DemoScreenPathfinding.cpp; sourceTree = "<group>"; };
+		3411DFE90E5FDD83009D734D /* actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = actor.i; path = Angel/Scripting/Interfaces/actor.i; sourceTree = "<group>"; };
+		3411E0B20E5FF1C2009D734D /* vector2.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = vector2.i; path = Angel/Scripting/Interfaces/vector2.i; sourceTree = "<group>"; };
+		342EDF8C11813C4B00D1F237 /* libScriptingLayer.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libScriptingLayer.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Name_Lookup.c; path = "Angel/Libraries/HID Utilities/HID_Name_Lookup.c"; sourceTree = "<group>"; };
 		3433A8C00E2AADAE00A02B4E /* HID_Error_Handler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Error_Handler.c; path = "Angel/Libraries/HID Utilities/HID_Error_Handler.c"; sourceTree = "<group>"; };
 		3433A8C10E2AADAE00A02B4E /* HID_Transaction_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Transaction_Utilities.c; path = "Angel/Libraries/HID Utilities/HID_Transaction_Utilities.c"; sourceTree = "<group>"; };
@@ -530,14 +563,24 @@
 		34368DC70F3CDA9500DE94CD /* BoundingShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingShapes.cpp; sourceTree = "<group>"; };
 		34368DC80F3CDA9500DE94CD /* BoundingShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingShapes.h; sourceTree = "<group>"; };
 		34368E030F3CDC8900DE94CD /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
-		3436A5290FABED7900659D50 /* log.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = log.i; path = Angel/Scripting/Interfaces/log.i; sourceTree = "<group>"; };
+		3436A5290FABED7900659D50 /* log.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = log.i; path = Angel/Scripting/Interfaces/log.i; sourceTree = "<group>"; };
 		343F41870E31C1460097B760 /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		343F41880E31C1460097B760 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		343F41890E31C1460097B760 /* Switchboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Switchboard.cpp; sourceTree = "<group>"; };
 		343F418A0E31C1460097B760 /* Switchboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Switchboard.h; sourceTree = "<group>"; };
-		343F41960E31C19F0097B760 /* DemoScreenMessagePassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMessagePassing.cpp; path = IntroGame/DemoScreenMessagePassing.cpp; sourceTree = "<group>"; };
-		343F41970E31C19F0097B760 /* DemoScreenMessagePassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMessagePassing.h; path = IntroGame/DemoScreenMessagePassing.h; sourceTree = "<group>"; };
-		345A8C310E8DD0CF00B36FD9 /* inheritance.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = inheritance.i; path = Angel/Scripting/Interfaces/inheritance.i; sourceTree = "<group>"; };
+		343F41960E31C19F0097B760 /* DemoScreenMessagePassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMessagePassing.cpp; path = IntroGame/DemoScreens/DemoScreenMessagePassing.cpp; sourceTree = "<group>"; };
+		343F41970E31C19F0097B760 /* DemoScreenMessagePassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMessagePassing.h; path = IntroGame/DemoScreens/DemoScreenMessagePassing.h; sourceTree = "<group>"; };
+		3454866D11487B89008F1155 /* libIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIL.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libIL.a"; sourceTree = "<group>"; };
+		3454866E11487B89008F1155 /* libILU.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libILU.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libILU.a"; sourceTree = "<group>"; };
+		3454866F11487B89008F1155 /* libILUT.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libILUT.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libILUT.a"; sourceTree = "<group>"; };
+		3454867A11487BE2008F1155 /* libjasper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjasper.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libjasper.a"; sourceTree = "<group>"; };
+		3454867B11487BE2008F1155 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libjpeg.a"; sourceTree = "<group>"; };
+		3454867C11487BE2008F1155 /* liblcms.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblcms.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/liblcms.a"; sourceTree = "<group>"; };
+		3454867D11487BE2008F1155 /* libmng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmng.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libmng.a"; sourceTree = "<group>"; };
+		3454867E11487BE2008F1155 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libpng.a"; sourceTree = "<group>"; };
+		3454867F11487BE2008F1155 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libtiff.a"; sourceTree = "<group>"; };
+		3454868011487BE2008F1155 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = "Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libz.a"; sourceTree = "<group>"; };
+		345A8C310E8DD0CF00B36FD9 /* inheritance.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = inheritance.i; path = Angel/Scripting/Interfaces/inheritance.i; sourceTree = "<group>"; };
 		346E3B2E0E285EC200E6C79E /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		346E3B2F0E285EC200E6C79E /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		346E3B300E285EC200E6C79E /* FTCharmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCharmap.h; sourceTree = "<group>"; };
@@ -588,25 +631,23 @@
 		346E3B790E285ECF00E6C79E /* FTTextureGlyph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTTextureGlyph.cpp; sourceTree = "<group>"; };
 		346E3B7A0E285ECF00E6C79E /* FTVectoriser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FTVectoriser.cpp; sourceTree = "<group>"; };
 		346E3BB90E28637A00E6C79E /* libFTGL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFTGL.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		346E5EA50F30122000258B84 /* DemoScreenIntervals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenIntervals.cpp; path = IntroGame/DemoScreenIntervals.cpp; sourceTree = "<group>"; };
-		346E5EA60F30122000258B84 /* DemoScreenIntervals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenIntervals.h; path = IntroGame/DemoScreenIntervals.h; sourceTree = "<group>"; };
-		346EFC170FE4464E00BC2C5C /* tuning.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = tuning.i; path = Angel/Scripting/Interfaces/tuning.i; sourceTree = "<group>"; };
+		346E5EA50F30122000258B84 /* DemoScreenIntervals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenIntervals.cpp; path = IntroGame/DemoScreens/DemoScreenIntervals.cpp; sourceTree = "<group>"; };
+		346E5EA60F30122000258B84 /* DemoScreenIntervals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenIntervals.h; path = IntroGame/DemoScreens/DemoScreenIntervals.h; sourceTree = "<group>"; };
+		346EFC170FE4464E00BC2C5C /* tuning.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = tuning.i; path = Angel/Scripting/Interfaces/tuning.i; sourceTree = "<group>"; };
 		34713D6F0EA6CDD000AF58CA /* conf_load.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = conf_load.py; sourceTree = "<group>"; };
-		34713D740EA6D65C00AF58CA /* particles.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = particles.i; path = Angel/Scripting/Interfaces/particles.i; sourceTree = "<group>"; };
+		34713D740EA6D65C00AF58CA /* particles.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = particles.i; path = Angel/Scripting/Interfaces/particles.i; sourceTree = "<group>"; };
 		34713D900EA6D6F800AF58CA /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Config; path = ClientGame/Config; sourceTree = "<group>"; };
 		34713D990EA6D71100AF58CA /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = ClientGame/Resources; sourceTree = "<group>"; };
-		34713DF40EA6E3CF00AF58CA /* text_actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = text_actor.i; path = Angel/Scripting/Interfaces/text_actor.i; sourceTree = "<group>"; };
-		3472777C0F3E95E100F947AE /* mouse.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = mouse.i; path = Angel/Scripting/Interfaces/mouse.i; sourceTree = "<group>"; };
-		3472777D0F3E95E100F947AE /* controller.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = controller.i; path = Angel/Scripting/Interfaces/controller.i; sourceTree = "<group>"; };
-		3479A03D0E28856300768932 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = Angel/Libraries/FreeImage/Dist/FreeImage.h; sourceTree = "<group>"; };
-		3479A03F0E28857900768932 /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = Angel/Libraries/FreeImage/Dist/mac/libfreeimage.a; sourceTree = "<group>"; };
+		34713DF40EA6E3CF00AF58CA /* text_actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = text_actor.i; path = Angel/Scripting/Interfaces/text_actor.i; sourceTree = "<group>"; };
+		3472777C0F3E95E100F947AE /* mouse.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = mouse.i; path = Angel/Scripting/Interfaces/mouse.i; sourceTree = "<group>"; };
+		3472777D0F3E95E100F947AE /* controller.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = controller.i; path = Angel/Scripting/Interfaces/controller.i; sourceTree = "<group>"; };
 		347AA0ED0E2F21CB006A896F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Angel/Libraries/freetype-2.3.7/built/lib/libfreetype.a"; sourceTree = "<group>"; };
 		348109EE0E679CCA00246544 /* SoundDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundDevice.h; sourceTree = "<group>"; };
 		348109EF0E679CCA00246544 /* SoundDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundDevice.cpp; sourceTree = "<group>"; };
 		34810A030E679FE500246544 /* libfmodexp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodexp.dylib; path = Angel/Libraries/FMOD/libfmodexp.dylib; sourceTree = "<group>"; };
 		34810A040E679FE500246544 /* libfmodexL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodexL.dylib; path = Angel/Libraries/FMOD/libfmodexL.dylib; sourceTree = "<group>"; };
 		34810A050E679FE500246544 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = Angel/Libraries/FMOD/libfmodex.dylib; sourceTree = "<group>"; };
-		34810A510E67B08A00246544 /* console.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = console.i; path = Angel/Scripting/Interfaces/console.i; sourceTree = "<group>"; };
+		34810A510E67B08A00246544 /* console.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = console.i; path = Angel/Scripting/Interfaces/console.i; sourceTree = "<group>"; };
 		34810A560E67B39200246544 /* angel_console.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = angel_console.py; sourceTree = "<group>"; };
 		34810A570E67B39200246544 /* start.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = start.py; sourceTree = "<group>"; };
 		34810A580E67B39200246544 /* sugar.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = sugar.py; sourceTree = "<group>"; };
@@ -618,10 +659,10 @@
 		34974B390E2927E00018A032 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		34974BB40E292E240018A032 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		34974BB50E292E240018A032 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMultipleControllers.h; path = IntroGame/DemoScreenMultipleControllers.h; sourceTree = "<group>"; };
-		3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMultipleControllers.cpp; path = IntroGame/DemoScreenMultipleControllers.cpp; sourceTree = "<group>"; };
-		349BDCAE0F43A9A60089AEC9 /* DemoScreenControllerInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenControllerInstructions.h; path = IntroGame/DemoScreenControllerInstructions.h; sourceTree = "<group>"; };
-		349BDCAF0F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenControllerInstructions.cpp; path = IntroGame/DemoScreenControllerInstructions.cpp; sourceTree = "<group>"; };
+		3497CD080F3E34AE00CDE04B /* DemoScreenMultipleControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMultipleControllers.h; path = IntroGame/DemoScreens/DemoScreenMultipleControllers.h; sourceTree = "<group>"; };
+		3497CD090F3E34AE00CDE04B /* DemoScreenMultipleControllers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMultipleControllers.cpp; path = IntroGame/DemoScreens/DemoScreenMultipleControllers.cpp; sourceTree = "<group>"; };
+		349BDCAE0F43A9A60089AEC9 /* DemoScreenControllerInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenControllerInstructions.h; path = IntroGame/DemoScreens/DemoScreenControllerInstructions.h; sourceTree = "<group>"; };
+		349BDCAF0F43A9A60089AEC9 /* DemoScreenControllerInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenControllerInstructions.cpp; path = IntroGame/DemoScreens/DemoScreenControllerInstructions.cpp; sourceTree = "<group>"; };
 		349C19E20E8C88AC009D94FC /* AngelPythonWrapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AngelPythonWrapping.h; path = Angel/Scripting/Interfaces/AngelPythonWrapping.h; sourceTree = "<group>"; };
 		349C19E30E8C88AC009D94FC /* AngelPythonWrapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelPythonWrapping.cpp; path = Angel/Scripting/Interfaces/AngelPythonWrapping.cpp; sourceTree = "<group>"; };
 		34A1815B0E283FE0001C79A5 /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
@@ -705,47 +746,47 @@
 		34A18C9B0E284445001C79A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		34AA6C3A0E61CB2F00033685 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		34AA6C3B0E61CB2F00033685 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
-		34AF113C0F3D237D00A17276 /* sound.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = sound.i; path = Angel/Scripting/Interfaces/sound.i; sourceTree = "<group>"; };
+		34AF113C0F3D237D00A17276 /* sound.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = sound.i; path = Angel/Scripting/Interfaces/sound.i; sourceTree = "<group>"; };
 		34C203CA0EB18C44007D94A6 /* HUDActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDActor.h; sourceTree = "<group>"; };
 		34C203CB0EB18C44007D94A6 /* HUDActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUDActor.cpp; sourceTree = "<group>"; };
-		34C6709D0F37889100AED82D /* camera.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = camera.i; path = Angel/Scripting/Interfaces/camera.i; sourceTree = "<group>"; };
-		34CC01C30E621094003772E0 /* renderable.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = renderable.i; path = Angel/Scripting/Interfaces/renderable.i; sourceTree = "<group>"; };
-		34CC01E80E6211CC003772E0 /* physics_actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = physics_actor.i; path = Angel/Scripting/Interfaces/physics_actor.i; sourceTree = "<group>"; };
-		34CCFF3F0E61E40F003772E0 /* color.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = color.i; path = Angel/Scripting/Interfaces/color.i; sourceTree = "<group>"; };
-		34CCFFC30E61EA03003772E0 /* messaging.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = messaging.i; path = Angel/Scripting/Interfaces/messaging.i; sourceTree = "<group>"; };
+		34C6709D0F37889100AED82D /* camera.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = camera.i; path = Angel/Scripting/Interfaces/camera.i; sourceTree = "<group>"; };
+		34CC01C30E621094003772E0 /* renderable.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = renderable.i; path = Angel/Scripting/Interfaces/renderable.i; sourceTree = "<group>"; };
+		34CC01E80E6211CC003772E0 /* physics_actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = physics_actor.i; path = Angel/Scripting/Interfaces/physics_actor.i; sourceTree = "<group>"; };
+		34CCFF3F0E61E40F003772E0 /* color.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = color.i; path = Angel/Scripting/Interfaces/color.i; sourceTree = "<group>"; };
+		34CCFFC30E61EA03003772E0 /* messaging.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = messaging.i; path = Angel/Scripting/Interfaces/messaging.i; sourceTree = "<group>"; };
 		34D34D980E2C34430053994C /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = /System/Library/Frameworks/ForceFeedback.framework; sourceTree = "<absolute>"; };
 		34D34DD40E2C375A0053994C /* DemoGameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoGameManager.cpp; path = IntroGame/DemoGameManager.cpp; sourceTree = "<group>"; };
-		34D34DD50E2C375A0053994C /* DemoScreenBindingInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenBindingInstructions.cpp; path = IntroGame/DemoScreenBindingInstructions.cpp; sourceTree = "<group>"; };
-		34D34DD60E2C375A0053994C /* DemoScreenPhysicsActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenPhysicsActor.h; path = IntroGame/DemoScreenPhysicsActor.h; sourceTree = "<group>"; };
+		34D34DD50E2C375A0053994C /* DemoScreenBindingInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenBindingInstructions.cpp; path = IntroGame/DemoScreens/DemoScreenBindingInstructions.cpp; sourceTree = "<group>"; };
+		34D34DD60E2C375A0053994C /* DemoScreenPhysicsActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenPhysicsActor.h; path = IntroGame/DemoScreens/DemoScreenPhysicsActor.h; sourceTree = "<group>"; };
 		34D34DD70E2C375A0053994C /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = IntroGame/stdafx.h; sourceTree = "<group>"; };
-		34D34DDB0E2C375A0053994C /* DemoScreenParticleActors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenParticleActors.h; path = IntroGame/DemoScreenParticleActors.h; sourceTree = "<group>"; };
+		34D34DDB0E2C375A0053994C /* DemoScreenParticleActors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenParticleActors.h; path = IntroGame/DemoScreens/DemoScreenParticleActors.h; sourceTree = "<group>"; };
 		34D34DDD0E2C375A0053994C /* DemoGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoGameManager.h; path = IntroGame/DemoGameManager.h; sourceTree = "<group>"; };
 		34D34DDE0E2C375A0053994C /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = IntroGame/Main.cpp; sourceTree = "<group>"; };
 		34D34DDF0E2C375A0053994C /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = IntroGame/stdafx.cpp; sourceTree = "<group>"; };
-		34D34DE00E2C375A0053994C /* DemoScreenRenderLayers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenRenderLayers.cpp; path = IntroGame/DemoScreenRenderLayers.cpp; sourceTree = "<group>"; };
-		34D34DE10E2C375A0053994C /* DemoScreenConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenConsole.cpp; path = IntroGame/DemoScreenConsole.cpp; sourceTree = "<group>"; };
-		34D34DE20E2C375A0053994C /* DemoScreenInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenInstructions.h; path = IntroGame/DemoScreenInstructions.h; sourceTree = "<group>"; };
-		34D34DE30E2C375A0053994C /* DemoScreenConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenConsole.h; path = IntroGame/DemoScreenConsole.h; sourceTree = "<group>"; };
-		34D34DE40E2C375A0053994C /* DemoScreenByeBye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenByeBye.cpp; path = IntroGame/DemoScreenByeBye.cpp; sourceTree = "<group>"; };
-		34D34DE50E2C375A0053994C /* DemoScreenLayeredCollisionLevelFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenLayeredCollisionLevelFile.cpp; path = IntroGame/DemoScreenLayeredCollisionLevelFile.cpp; sourceTree = "<group>"; };
-		34D34DE60E2C375A0053994C /* DemoScreenDefFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenDefFile.cpp; path = IntroGame/DemoScreenDefFile.cpp; sourceTree = "<group>"; };
-		34D34DE70E2C375A0053994C /* DemoScreenDefFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenDefFile.h; path = IntroGame/DemoScreenDefFile.h; sourceTree = "<group>"; };
-		34D34DE80E2C375A0053994C /* DemoScreenLayeredCollisionLevelFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenLayeredCollisionLevelFile.h; path = IntroGame/DemoScreenLayeredCollisionLevelFile.h; sourceTree = "<group>"; };
-		34D34DE90E2C375A0053994C /* DemoScreenLevelFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenLevelFile.h; path = IntroGame/DemoScreenLevelFile.h; sourceTree = "<group>"; };
-		34D34DEB0E2C375A0053994C /* DemoScreenInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenInstructions.cpp; path = IntroGame/DemoScreenInstructions.cpp; sourceTree = "<group>"; };
-		34D34DEC0E2C375A0053994C /* DemoScreenBindingInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenBindingInstructions.h; path = IntroGame/DemoScreenBindingInstructions.h; sourceTree = "<group>"; };
-		34D34DED0E2C375A0053994C /* DemoScreenParticleActors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenParticleActors.cpp; path = IntroGame/DemoScreenParticleActors.cpp; sourceTree = "<group>"; };
-		34D34DEE0E2C375A0053994C /* DemoScreenMovingActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMovingActor.h; path = IntroGame/DemoScreenMovingActor.h; sourceTree = "<group>"; };
-		34D34DEF0E2C375A0053994C /* DemoScreenMovingActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMovingActor.cpp; path = IntroGame/DemoScreenMovingActor.cpp; sourceTree = "<group>"; };
-		34D34DF00E2C375A0053994C /* DemoScreenRenderLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenRenderLayers.h; path = IntroGame/DemoScreenRenderLayers.h; sourceTree = "<group>"; };
-		34D34DF10E2C375A0053994C /* DemoScreenPhysicsActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPhysicsActor.cpp; path = IntroGame/DemoScreenPhysicsActor.cpp; sourceTree = "<group>"; };
+		34D34DE00E2C375A0053994C /* DemoScreenRenderLayers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenRenderLayers.cpp; path = IntroGame/DemoScreens/DemoScreenRenderLayers.cpp; sourceTree = "<group>"; };
+		34D34DE10E2C375A0053994C /* DemoScreenConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenConsole.cpp; path = IntroGame/DemoScreens/DemoScreenConsole.cpp; sourceTree = "<group>"; };
+		34D34DE20E2C375A0053994C /* DemoScreenInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenInstructions.h; path = IntroGame/DemoScreens/DemoScreenInstructions.h; sourceTree = "<group>"; };
+		34D34DE30E2C375A0053994C /* DemoScreenConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenConsole.h; path = IntroGame/DemoScreens/DemoScreenConsole.h; sourceTree = "<group>"; };
+		34D34DE40E2C375A0053994C /* DemoScreenByeBye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenByeBye.cpp; path = IntroGame/DemoScreens/DemoScreenByeBye.cpp; sourceTree = "<group>"; };
+		34D34DE50E2C375A0053994C /* DemoScreenLayeredCollisionLevelFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenLayeredCollisionLevelFile.cpp; path = IntroGame/DemoScreens/DemoScreenLayeredCollisionLevelFile.cpp; sourceTree = "<group>"; };
+		34D34DE60E2C375A0053994C /* DemoScreenDefFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenDefFile.cpp; path = IntroGame/DemoScreens/DemoScreenDefFile.cpp; sourceTree = "<group>"; };
+		34D34DE70E2C375A0053994C /* DemoScreenDefFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenDefFile.h; path = IntroGame/DemoScreens/DemoScreenDefFile.h; sourceTree = "<group>"; };
+		34D34DE80E2C375A0053994C /* DemoScreenLayeredCollisionLevelFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenLayeredCollisionLevelFile.h; path = IntroGame/DemoScreens/DemoScreenLayeredCollisionLevelFile.h; sourceTree = "<group>"; };
+		34D34DE90E2C375A0053994C /* DemoScreenLevelFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenLevelFile.h; path = IntroGame/DemoScreens/DemoScreenLevelFile.h; sourceTree = "<group>"; };
+		34D34DEB0E2C375A0053994C /* DemoScreenInstructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenInstructions.cpp; path = IntroGame/DemoScreens/DemoScreenInstructions.cpp; sourceTree = "<group>"; };
+		34D34DEC0E2C375A0053994C /* DemoScreenBindingInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenBindingInstructions.h; path = IntroGame/DemoScreens/DemoScreenBindingInstructions.h; sourceTree = "<group>"; };
+		34D34DED0E2C375A0053994C /* DemoScreenParticleActors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenParticleActors.cpp; path = IntroGame/DemoScreens/DemoScreenParticleActors.cpp; sourceTree = "<group>"; };
+		34D34DEE0E2C375A0053994C /* DemoScreenMovingActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMovingActor.h; path = IntroGame/DemoScreens/DemoScreenMovingActor.h; sourceTree = "<group>"; };
+		34D34DEF0E2C375A0053994C /* DemoScreenMovingActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMovingActor.cpp; path = IntroGame/DemoScreens/DemoScreenMovingActor.cpp; sourceTree = "<group>"; };
+		34D34DF00E2C375A0053994C /* DemoScreenRenderLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenRenderLayers.h; path = IntroGame/DemoScreens/DemoScreenRenderLayers.h; sourceTree = "<group>"; };
+		34D34DF10E2C375A0053994C /* DemoScreenPhysicsActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPhysicsActor.cpp; path = IntroGame/DemoScreens/DemoScreenPhysicsActor.cpp; sourceTree = "<group>"; };
 		34D34DF20E2C375A0053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = IntroGame/GameInfo.txt; sourceTree = "<group>"; };
-		34D34DF30E2C375A0053994C /* DemoScreenSimpleActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenSimpleActor.cpp; path = IntroGame/DemoScreenSimpleActor.cpp; sourceTree = "<group>"; };
-		34D34DF40E2C375A0053994C /* DemoScreenLevelFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenLevelFile.cpp; path = IntroGame/DemoScreenLevelFile.cpp; sourceTree = "<group>"; };
-		34D34DF50E2C375A0053994C /* DemoScreenStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenStart.h; path = IntroGame/DemoScreenStart.h; sourceTree = "<group>"; };
-		34D34DF60E2C375A0053994C /* DemoScreenByeBye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenByeBye.h; path = IntroGame/DemoScreenByeBye.h; sourceTree = "<group>"; };
-		34D34DF70E2C375A0053994C /* DemoScreenStart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenStart.cpp; path = IntroGame/DemoScreenStart.cpp; sourceTree = "<group>"; };
-		34D34DF80E2C375A0053994C /* DemoScreenSimpleActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenSimpleActor.h; path = IntroGame/DemoScreenSimpleActor.h; sourceTree = "<group>"; };
+		34D34DF30E2C375A0053994C /* DemoScreenSimpleActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenSimpleActor.cpp; path = IntroGame/DemoScreens/DemoScreenSimpleActor.cpp; sourceTree = "<group>"; };
+		34D34DF40E2C375A0053994C /* DemoScreenLevelFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenLevelFile.cpp; path = IntroGame/DemoScreens/DemoScreenLevelFile.cpp; sourceTree = "<group>"; };
+		34D34DF50E2C375A0053994C /* DemoScreenStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenStart.h; path = IntroGame/DemoScreens/DemoScreenStart.h; sourceTree = "<group>"; };
+		34D34DF60E2C375A0053994C /* DemoScreenByeBye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenByeBye.h; path = IntroGame/DemoScreens/DemoScreenByeBye.h; sourceTree = "<group>"; };
+		34D34DF70E2C375A0053994C /* DemoScreenStart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenStart.cpp; path = IntroGame/DemoScreens/DemoScreenStart.cpp; sourceTree = "<group>"; };
+		34D34DF80E2C375A0053994C /* DemoScreenSimpleActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenSimpleActor.h; path = IntroGame/DemoScreens/DemoScreenSimpleActor.h; sourceTree = "<group>"; };
 		34D34E390E2C376A0053994C /* IntroGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D34E4A0E2C38250053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = IntroGame/Attributions.txt; sourceTree = "<group>"; };
 		34D34E4B0E2C38480053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = ClientGame/GameInfo.txt; sourceTree = "<group>"; };
@@ -784,12 +825,21 @@
 		34F1FC170E5D1E4C0065CD22 /* PythonModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonModule.h; path = Angel/Scripting/PythonModule.h; sourceTree = "<group>"; };
 		34F1FC180E5D1E4C0065CD22 /* PythonModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PythonModule.cpp; path = Angel/Scripting/PythonModule.cpp; sourceTree = "<group>"; };
 		34F1FC9D0E5D26650065CD22 /* libAngel.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libAngel.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		34F1FF300E5D31DB0065CD22 /* angel.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = angel.i; path = Angel/Scripting/Interfaces/angel.i; sourceTree = "<group>"; };
-		34F1FFD80E5D3F910065CD22 /* world.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.interfacer; name = world.i; path = Angel/Scripting/Interfaces/world.i; sourceTree = "<group>"; };
+		34F1FF300E5D31DB0065CD22 /* angel.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = angel.i; path = Angel/Scripting/Interfaces/angel.i; sourceTree = "<group>"; };
+		34F1FFD80E5D3F910065CD22 /* world.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = world.i; path = Angel/Scripting/Interfaces/world.i; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ClientGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		342EDF8A11813C4B00D1F237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				342EDFF1118146D500D1F237 /* libAngel.dylib in Frameworks */,
+				342EDFED118146A300D1F237 /* Python.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3433A8CF0E2AADDE00A02B4E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -840,11 +890,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3454867011487B89008F1155 /* libIL.a in Frameworks */,
+				3454867111487B89008F1155 /* libILU.a in Frameworks */,
+				3454867211487B89008F1155 /* libILUT.a in Frameworks */,
+				3454868111487BE2008F1155 /* libjasper.a in Frameworks */,
+				3454868211487BE2008F1155 /* libjpeg.a in Frameworks */,
+				3454868311487BE2008F1155 /* liblcms.a in Frameworks */,
+				3454868411487BE2008F1155 /* libmng.a in Frameworks */,
+				3454868511487BE2008F1155 /* libpng.a in Frameworks */,
+				3454868611487BE2008F1155 /* libtiff.a in Frameworks */,
+				3454868711487BE2008F1155 /* libz.a in Frameworks */,
 				34F1FD230E5D26C80065CD22 /* libHIDUtilities.a in Frameworks */,
 				34F1FD240E5D26C80065CD22 /* libBox2D.a in Frameworks */,
 				34F1FD250E5D26C80065CD22 /* libGLFW.a in Frameworks */,
 				34F1FD260E5D26C80065CD22 /* libFTGL.a in Frameworks */,
-				34F1FD270E5D26C80065CD22 /* libfreeimage.a in Frameworks */,
 				34810A080E679FE500246544 /* libfmodex.dylib in Frameworks */,
 				34F1FDFF0E5D28970065CD22 /* AGL.framework in Frameworks */,
 				34F1FE0B0E5D28AE0065CD22 /* IOKit.framework in Frameworks */,
@@ -882,6 +941,7 @@
 				3433A8D10E2AADDE00A02B4E /* libHIDUtilities.a */,
 				347AA0ED0E2F21CB006A896F /* libfreetype.a */,
 				34F1FC9D0E5D26650065CD22 /* libAngel.dylib */,
+				342EDF8C11813C4B00D1F237 /* libScriptingLayer.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1144,14 +1204,6 @@
 			path = Angel/Libraries/FTGL/src;
 			sourceTree = "<group>";
 		};
-		3479A0360E28854000768932 /* FreeImage */ = {
-			isa = PBXGroup;
-			children = (
-				3479A03D0E28856300768932 /* FreeImage.h */,
-			);
-			name = FreeImage;
-			sourceTree = "<group>";
-		};
 		34810A550E67B39200246544 /* EngineScripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1325,7 +1377,6 @@
 			isa = PBXGroup;
 			children = (
 				3433A8B70E2AAD8900A02B4E /* HID Utilities */,
-				3479A0360E28854000768932 /* FreeImage */,
 				34A18BAF0E2841E8001C79A5 /* Box2D */,
 				34A18C560E284375001C79A5 /* GLFW */,
 				34A18CD00E284E60001C79A5 /* FTGL */,
@@ -1383,10 +1434,19 @@
 		34A18C990E284421001C79A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3454866D11487B89008F1155 /* libIL.a */,
+				3454866E11487B89008F1155 /* libILU.a */,
+				3454866F11487B89008F1155 /* libILUT.a */,
 				34810A030E679FE500246544 /* libfmodexp.dylib */,
+				3454867A11487BE2008F1155 /* libjasper.a */,
+				3454867B11487BE2008F1155 /* libjpeg.a */,
+				3454867C11487BE2008F1155 /* liblcms.a */,
+				3454867D11487BE2008F1155 /* libmng.a */,
+				3454867E11487BE2008F1155 /* libpng.a */,
+				3454867F11487BE2008F1155 /* libtiff.a */,
+				3454868011487BE2008F1155 /* libz.a */,
 				34810A040E679FE500246544 /* libfmodexL.dylib */,
 				34810A050E679FE500246544 /* libfmodex.dylib */,
-				3479A03F0E28857900768932 /* libfreeimage.a */,
 				3433A9330E2AB0E000A02B4E /* CoreFoundation.framework */,
 				3433A92B0E2AB09B00A02B4E /* IOKit.framework */,
 				34974B390E2927E00018A032 /* AGL.framework */,
@@ -1505,6 +1565,8 @@
 				34DB1BAC0E441C73006F63F5 /* TextRendering.h */,
 				34DB1BAD0E441C73006F63F5 /* Textures.cpp */,
 				34DB1BAE0E441C73006F63F5 /* Textures.h */,
+				348D1E1D0FC1066700A64A55 /* TuningVariable.h */,
+				348D1E1E0FC1066700A64A55 /* TuningVariable.cpp */,
 				34DB1BB00E441C73006F63F5 /* VecStructs.h */,
 				34DB1BB10E441C73006F63F5 /* Vector2.cpp */,
 				34DB1BB20E441C73006F63F5 /* Vector2.h */,
@@ -1512,8 +1574,6 @@
 				34DB1BB40E441C73006F63F5 /* Vector3.h */,
 				34DB1BB50E441C73006F63F5 /* World.cpp */,
 				34DB1BB60E441C73006F63F5 /* World.h */,
-				348D1E1D0FC1066700A64A55 /* TuningVariable.h */,
-				348D1E1E0FC1066700A64A55 /* TuningVariable.cpp */,
 			);
 			name = Infrastructure;
 			path = Angel/Infrastructure;
@@ -1560,6 +1620,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		342EDF8811813C4B00D1F237 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3433A8CD0E2AADDE00A02B4E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1721,7 +1788,6 @@
 				34F1FCCB0E5D26970065CD22 /* SpatialGraph.h in Headers */,
 				34F1FCCC0E5D26970065CD22 /* stlastar.h in Headers */,
 				34F1FCCD0E5D26970065CD22 /* Traversal.h in Headers */,
-				34F1FCCE0E5D26970065CD22 /* FreeImage.h in Headers */,
 				34F1FCCF0E5D26970065CD22 /* Controller.h in Headers */,
 				34F1FCD00E5D26970065CD22 /* Message.h in Headers */,
 				34F1FCD10E5D26970065CD22 /* Switchboard.h in Headers */,
@@ -1754,6 +1820,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		342EDF8B11813C4B00D1F237 /* ScriptingLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 342EDF9511813CE900D1F237 /* Build configuration list for PBXNativeTarget "ScriptingLayer" */;
+			buildPhases = (
+				342EDF8811813C4B00D1F237 /* Headers */,
+				342EDF8911813C4B00D1F237 /* Sources */,
+				342EDF8A11813C4B00D1F237 /* Frameworks */,
+				342EDFF7118147EA00D1F237 /* ShellScript */,
+			);
+			buildRules = (
+				342EDF9411813CE900D1F237 /* PBXBuildRule */,
+			);
+			dependencies = (
+				342EDFF3118146DB00D1F237 /* PBXTargetDependency */,
+			);
+			name = ScriptingLayer;
+			productName = ScriptingLayer;
+			productReference = 342EDF8C11813C4B00D1F237 /* libScriptingLayer.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		3433A8D00E2AADDE00A02B4E /* HIDUtilities */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3433A8EC0E2AAE2000A02B4E /* Build configuration list for PBXNativeTarget "HIDUtilities" */;
@@ -1903,6 +1989,7 @@
 			targets = (
 				34D34E200E2C376A0053994C /* IntroGame */,
 				8D1107260486CEB800E47090 /* ClientGame */,
+				342EDF8B11813C4B00D1F237 /* ScriptingLayer */,
 				34F1FC9C0E5D26650065CD22 /* Angel */,
 				34A18BA60E284044001C79A5 /* Box2D */,
 				34A18C500E284362001C79A5 /* GLFW */,
@@ -1939,7 +2026,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\nif [ ${CONFIGURATION} == \"Release\" ]; then \n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\nelse\n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${PROJECT_DIR}/ClientGame/Resources/Scripts/angel.py\nfi\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    /usr/bin/python Tools/BuildScripts/publish_mac.py -i ${PROJECT_DIR}/ClientGame -o ${BUILD_DIR}/Published -g ClientGame.app\nfi";
+			shellScript = "# Fix the Python linking\n/usr/bin/install_name_tool -change /System/Library/Frameworks/Python.framework/Versions/2.5/Python /System/Library/Frameworks/Python.framework/Versions/2.6/Python ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\n\n# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\nif [ ${CONFIGURATION} == \"Release\" ]; then \n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\nelse\n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${PROJECT_DIR}/ClientGame/Resources/Scripts/angel.py\nfi\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    /usr/bin/python Tools/BuildScripts/publish_mac.py -i ${PROJECT_DIR}/ClientGame -o ${BUILD_DIR}/Published -g ClientGame.app\nfi";
+		};
+		342EDFF7118147EA00D1F237 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Fix the Python linking\n/usr/bin/install_name_tool -change /System/Library/Frameworks/Python.framework/Versions/2.5/Python /System/Library/Frameworks/Python.framework/Versions/2.6/Python ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}";
 		};
 		347AA0B10E2F1275006A896F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1965,7 +2065,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}\n";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}\ninstall_name_tool -change /System/Library/Frameworks/Python.framework/Versions/2.5/Python /System/Library/Frameworks/Python.framework/Versions/2.6/Python ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}";
 		};
 		34A18CAF0E284910001C79A5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1991,11 +2091,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\nif [ ${CONFIGURATION} == \"Release\" ]; then\n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\nelse\n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${PROJECT_DIR}/IntroGame/Resources/Scripts/angel.py\nfi\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then \n\t/usr/bin/python Tools/BuildScripts/publish_mac.py -i ${PROJECT_DIR}/IntroGame -o ${BUILD_DIR}/Published -g IntroGame.app\nfi";
+			shellScript = "# Fix the Python linking\n/usr/bin/install_name_tool -change /System/Library/Frameworks/Python.framework/Versions/2.5/Python /System/Library/Frameworks/Python.framework/Versions/2.6/Python ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\n\n# Copy over all the images, sounds, fonts, and scripts\n/usr/bin/python Tools/BuildScripts/mac-specific/CopyResources.py\n\n# Get the SWIG-generated angel.py file to import the module\nif [ ${CONFIGURATION} == \"Release\" ]; then\n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${BUILT_PRODUCTS_DIR}/${SCRIPTS_FOLDER_PATH}/angel.py\nelse\n\tcp ${PROJECT_DIR}/Angel/Scripting/Interfaces/angel.py ${PROJECT_DIR}/IntroGame/Resources/Scripts/angel.py\nfi\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then \n\t/usr/bin/python Tools/BuildScripts/publish_mac.py -i ${PROJECT_DIR}/IntroGame -o ${BUILD_DIR}/Published -g IntroGame.app\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		342EDF8911813C4B00D1F237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				342EDF9111813C8800D1F237 /* angel.i in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3433A8CE0E2AADDE00A02B4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2196,6 +2304,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		342EDFF3118146DB00D1F237 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34F1FC9C0E5D26650065CD22 /* Angel */;
+			targetProxy = 342EDFF2118146DB00D1F237 /* PBXContainerItemProxy */;
+		};
 		34882C380F47D8A400ADBBC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 347AA0B20E2F1275006A896F /* FreeType Check */;
@@ -2256,6 +2369,54 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = PreBuild;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		342EDF8D11813C4C00D1F237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6,
+					"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include",
+					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
+					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
+					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
+				);
+				INSTALL_PATH = "@executable_path/../Frameworks/";
+				PREBINDING = NO;
+				PRODUCT_NAME = ScriptingLayer;
+			};
+			name = Debug;
+		};
+		342EDF8E11813C4C00D1F237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = (
+					/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6,
+					"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include",
+					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
+					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
+					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
+				);
+				INSTALL_PATH = "@executable_path/../Frameworks/";
+				PREBINDING = NO;
+				PRODUCT_NAME = ScriptingLayer;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2443,6 +2604,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/IntroGame/stdafx.h";
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
 					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
 					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
 				);
@@ -2451,7 +2613,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SDKROOT)/usr/X11/lib\\\"",
-					"\\\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist/mac\\\"",
 				);
 				PRODUCT_NAME = IntroGame;
 			};
@@ -2466,6 +2627,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/IntroGame/stdafx.h";
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
 					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
 					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
 				);
@@ -2474,7 +2636,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SDKROOT)/usr/X11/lib\\\"",
-					"\\\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist/mac\\\"",
 				);
 				PRODUCT_NAME = IntroGame;
 			};
@@ -2491,29 +2652,30 @@
 				GCC_ENABLE_SYMBOL_SEPARATION = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
 				HEADER_SEARCH_PATHS = (
-					/System/Library/Frameworks/Python.framework/Versions/2.5/include/python2.5,
+					/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6,
+					"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include",
 					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
 					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
 					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/libAngel.dylib";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist\"",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Wrapper/FreeImagePlus/dist\"",
 					"\"$(SRCROOT)/Angel/Libraries/glfw/support/masm/lib\"",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist/mac\"",
 					"\"$(SRCROOT)/build/Debug\"",
 					"\"$(SRCROOT)/Angel/Libraries/freetype-2.3.7/objs/.libs\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
+					"\"$(SRCROOT)/Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Angel;
 				SEPARATE_STRIP = YES;
 				USER_HEADER_SEARCH_PATHS = "";
-				WARNING_CFLAGS = "";
+				WARNING_CFLAGS = "-Wno-write-strings";
 			};
 			name = Debug;
 		};
@@ -2527,29 +2689,30 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_SYMBOL_SEPARATION = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
 				HEADER_SEARCH_PATHS = (
-					/System/Library/Frameworks/Python.framework/Versions/2.5/include/python2.5,
+					/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6,
+					"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include",
 					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
 					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
 					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				LD_DYLIB_INSTALL_NAME = "@executable_path/../Frameworks/libAngel.dylib";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist\"",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Wrapper/FreeImagePlus/dist\"",
 					"\"$(SRCROOT)/Angel/Libraries/glfw/support/masm/lib\"",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist/mac\"",
 					"\"$(SRCROOT)/build/Debug\"",
 					"\"$(SRCROOT)/Angel/Libraries/freetype-2.3.7/objs/.libs\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
+					"\"$(SRCROOT)/Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Angel;
 				SEPARATE_STRIP = YES;
 				USER_HEADER_SEARCH_PATHS = "";
-				WARNING_CFLAGS = "";
+				WARNING_CFLAGS = "-Wno-write-strings";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2566,6 +2729,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ClientGame/stdafx.h";
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
 					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
 					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
 				);
@@ -2574,7 +2738,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/X11/lib\"",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist/mac\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
 				);
 				PRODUCT_NAME = ClientGame;
@@ -2590,6 +2753,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ClientGame/stdafx.h";
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
 					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
 					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
 				);
@@ -2598,7 +2762,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/X11/lib\"",
-					"\"$(SRCROOT)/Angel/Libraries/FreeImage/Dist/mac\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
 				);
 				PRODUCT_NAME = ClientGame;
@@ -2619,10 +2782,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Angel/Libraries/glfw/include";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
-				WARNING_CFLAGS = "";
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = i386;
+				WARNING_CFLAGS = "-Wno-write-strings";
 			};
 			name = Debug;
 		};
@@ -2639,9 +2803,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Angel/Libraries/glfw/include";
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
-				WARNING_CFLAGS = "";
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = i386;
+				WARNING_CFLAGS = "-Wno-write-strings";
 			};
 			name = Release;
 		};
@@ -2653,6 +2819,15 @@
 			buildConfigurations = (
 				3411E0B50E5FF234009D734D /* Debug */,
 				3411E0B60E5FF234009D734D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		342EDF9511813CE900D1F237 /* Build configuration list for PBXNativeTarget "ScriptingLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				342EDF8D11813C4C00D1F237 /* Debug */,
+				342EDF8E11813C4C00D1F237 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
