@@ -30,8 +30,6 @@
 import os
 import shutil
 
-os.environ['PROJECT_DIR'] = "/Users/shane/Projects/angel-trunk/Code"
-
 BASEDIR = os.path.join(os.environ['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7")
 FILES = ['libfreetype.6.dylib', 'libfreetype.a']
 BUILT_DIR = os.path.join(BASEDIR, "built")
