@@ -30,6 +30,8 @@
 import os
 import shutil
 
+os.environ['PROJECT_DIR'] = "/Users/shane/Projects/angel-trunk/Code"
+
 BASEDIR = os.path.join(os.environ['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7")
 FILES = ['libfreetype.6.dylib', 'libfreetype.a']
 BUILT_DIR = os.path.join(BASEDIR, "built")
@@ -40,9 +42,9 @@ os.chdir(BASEDIR)
 
 def build():
     conf_string = 'env CFLAGS='
-    conf_string +=   '"-O -g -isysroot /Developer/SDKs/MacOSX10.5.sdk -arch i386 -arch ppc" '
+    conf_string +=   '"-O -g -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" '
     conf_string += 'LDFLAGS='
-    conf_string +=   '"-arch i386 -arch ppc" '
+    conf_string +=   '"-arch i386" '
     conf_string += './configure --prefix='
     conf_string +=   BUILT_DIR
     os.system(conf_string)
