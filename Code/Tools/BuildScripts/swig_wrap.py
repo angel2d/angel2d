@@ -39,7 +39,7 @@ from stat import *
 from angel_build import generate_typemaps
 
 
-def main(proj_dir):
+def main(proj_dir, force_regeneration):
     INTERFACE_DIRECTORY = os.path.join(proj_dir, "Angel", "Scripting", "Interfaces")
     MASTER_FILE = "angel.i"
     WRAPPER_FILE = "AngelPythonWrapping.cpp"
@@ -78,7 +78,7 @@ def main(proj_dir):
     
     generate_typemaps(files, INTERFACE_DIRECTORY)
     
-    if os.path.exists(WRAPPER_SOURCE):
+    if (os.path.exists(WRAPPER_SOURCE) and not force_regeneration):
         wrapper_modification = os.stat(WRAPPER_SOURCE)[ST_MTIME]
         interface_modification = os.stat(AGGREGATE_INTERFACE)[ST_MTIME]
         
@@ -99,26 +99,32 @@ def main(proj_dir):
             os.system(SWIG_PATH + SWIG_OPTIONS)
         
     else:
-        print "No existing wrapper file; generating", WRAPPER_FILE
+        if (force_regeneration):
+            print "Forcing regeneration of", WRAPPER_FILE
+	else:
+            print "No existing wrapper file; generating", WRAPPER_FILE
         os.system(SWIG_PATH + SWIG_OPTIONS)
     
 
 
 if (__name__ == '__main__'):
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'p:')
+        opts, args = getopt.getopt(sys.argv[1:], 'fp:')
     except getopt.error, msg:
         print msg
         exit(1)
     
     proj_dir = ''
+    force_regeneration = False
     for o, a in opts:
         if o == '-p':
             proj_dir = a
+        elif o == '-f':
+	    force_regeneration = True
     
     if (proj_dir == ''):
         print "Need to provide a project directory."
         exit(1)
     else:
-        main(proj_dir)
+        main(proj_dir, force_regeneration)
 
