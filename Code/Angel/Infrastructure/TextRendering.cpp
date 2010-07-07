@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Infrastructure/TextRendering.h"
 
 #include "../Infrastructure/Camera.h"

@@ -62,13 +62,13 @@ void DemoScreenConsole::Start()
 	String explanation = "This demo shows off the console.";
 	explanation += "\n\nPress ~ to open it up. Execute \"add_texture()\", enjoying the tab-completion.";
 	explanation += "\nThen try executing \"change_size(3.14)\" or whatever number suits your fancy.";
-	explanation += "\n\nThe console is a (nearly) fully functional Python interpreter.";
-	explanation += "\nThe sample functions are defined in \"Resources/Scripts/client_start.py\".";
+	explanation += "\n\nThe console is a (nearly) fully functional Lua interpreter.";
+	explanation += "\nThe sample functions are defined in \"Resources/Scripts/client_start.lua\".";
 	t = new TextActor("Console", explanation);
 	t->SetPosition(0, -3.5f);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenConsole.cpp, demo_actors.ini, client_start.py");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenConsole.cpp, demo_actors.lua, client_start.lua");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

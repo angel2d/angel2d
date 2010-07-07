@@ -3,127 +3,65 @@
 #include "../../Infrastructure/Color.h"
 %}
 
-#ifdef SWIGPYTHON
-//all this junk just lets us treat lists as Colors
+#ifdef SWIGLUA
 %typemap(in) Color
 {
-	bool error = false;
-	if (PyList_Check($input))
+	// convert table parameters to floats
+	lua_pushinteger(L, 1);
+	lua_gettable(L, $input);
+	float r = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	lua_pushinteger(L, 2);
+	lua_gettable(L, $input);
+	float g = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	lua_pushinteger(L, 3);
+	lua_gettable(L, $input);
+	float b = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	
+	float a = 1.0f;
+	if (luaL_getn(L, $input) >= 4)
 	{
-		int arrLength = PyList_Size($input);
-		if (arrLength < 3)
-		{
-			error = true;
-		}
-		else
-		{
-			PyObject* pr = PyList_GetItem($input, 0);
-			PyObject* pg = PyList_GetItem($input, 1);
-			PyObject* pb = PyList_GetItem($input, 2);
-			
-			float r, g, b, a;
-			if (PyFloat_Check(pr))
-			{
-				r = PyFloat_AsDouble(pr);
-			}
-			else if (PyInt_Check(pr))
-			{
-				r = (float)PyInt_AsLong(pr);
-			}
-			else
-			{
-				error = true;
-			}
-			
-			if (PyFloat_Check(pg))
-			{
-				g = PyFloat_AsDouble(pg);
-			}
-			else if (PyInt_Check(pg))
-			{
-				g = (float)PyInt_AsLong(pg);
-			}
-			else
-			{
-				error = true;
-			}
-			
-			if (PyFloat_Check(pb))
-			{
-				b = PyFloat_AsDouble(pb);
-			}
-			else if (PyInt_Check(pg))
-			{
-				b = (float)PyInt_AsLong(pb);
-			}
-			else
-			{
-				error = true;
-			}
-			if (arrLength < 4)
-			{
-				a = 1.0f;
-			}
-			else
-			{
-				PyObject* pa = PyList_GetItem($input, 3);
-				
-				if (PyFloat_Check(pa))
-				{
-					a = PyFloat_AsDouble(pa);
-				}
-				else if (PyInt_Check(pa))
-				{
-					a = (float)PyInt_AsLong(pa);
-				}
-				else
-				{
-					error = true;
-				}
-			}
-			
-			if (!error)
-			{
-				$1 = Color(r, g, b, a);
-			}
-		}
-	}
-	else
-	{
-		error = true;
+		lua_pushinteger(L, 4);
+		lua_gettable(L, $input);
+		a = lua_tonumber(L, -1);
+		lua_pop(L, 1);
 	}
 	
-	if (error)
-	{
-		int result;
-		void* arg_pointer;
-		result = SWIG_ConvertPtr($input, &arg_pointer, SWIGTYPE_p_Vector2,  0 );
-		if (!SWIG_IsOK(result)) {
-			%argument_fail(result,"$type", $symname, $argnum);
-		}  
-		if (!arg_pointer) {
-			%argument_nullref("$type", $symname, $argnum);
-		} else {
-			$1 = *(reinterpret_cast< Color * >(arg_pointer));
-		}
-	}
+	// build the color
+	$1 = Color(r, g, b, a);
 }
 
 %typecheck(SWIG_TYPECHECK_POINTER) Color
 {
-	if (PyList_Check($input))
+	bool naturalColor = false;
+	void *ptr;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&ptr,SWIGTYPE_p_Color,0))) 
 	{
 		$1 = 1;
+		naturalColor = true;
 	}
-	else
+	
+	
+	if (!naturalColor)
 	{
-		PyObject* classType = PyObject_GetAttrString($input, "__class__");
-		PyObject* pythonName = PyObject_GetAttrString(classType, "__name__");
-		const char* className = PyString_AsString(pythonName);
-		int length = PyString_Size(pythonName);
-		if (strncmp("Color", className, length) == 0)
+		if (lua_istable(L, $input) && (luaL_getn(L, $input) >= 3))
 		{
-			$1 = 1;
+			// verify that at least the first three elements of the table contain numbers
+			lua_pushinteger(L, 1);
+			lua_gettable(L, $input);
+			int v1 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			lua_pushinteger(L, 2);
+			lua_gettable(L, $input);
+			int v2 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			lua_pushinteger(L, 3);
+			lua_gettable(L, $input);
+			int v3 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			$1 = (v1 && v2 && v3);
 		}
 		else
 		{
@@ -140,7 +78,6 @@ public:
 	
 	Color();
 	Color(float r, float g, float b, float a=1.0f);
-	Color(int r, int g, int b, int a=255);
 	Color(String hexString);
 	
 	bool operator==(const Color &c) const;

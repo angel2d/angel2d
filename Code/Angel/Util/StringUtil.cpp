@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Util/StringUtil.h"
 
 #include <sstream>

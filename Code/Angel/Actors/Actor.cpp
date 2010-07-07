@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Actors/Actor.h"
 
 #include "../Infrastructure/TagCollection.h"
@@ -75,14 +76,6 @@ Actor::~Actor()
 	}
 
 	Actor::_nameList.erase(_name);
-	
-	StringSet subs = theSwitchboard.GetSubscriptionsFor(this);
-	it = subs.begin();
-	while (it != subs.end())
-	{
-		theSwitchboard.UnsubscribeFrom(this, *it);
-		++it;
-	}
 }
 
 void Actor::Update(float dt)
@@ -598,7 +591,8 @@ const String Actor::SetName(String newName)
 
 	newName[0] = toupper(newName[0]);
 
-	if (Actor::GetNamed(newName) == NULL)
+	const Actor* preNamed = Actor::GetNamed(newName);
+	if ((preNamed == NULL) || (preNamed == this))
 	{
 		_name = newName;
 	}
@@ -640,13 +634,10 @@ const Actor* Actor::GetNamed(String nameLookup)
 
 Actor* Actor::Create(String archetype)
 {
-	//TODO: this is kind of a fragile way to get the Actor the script created.
-	//  Let's figure out a smarter way to get the object directly from Python, 
-	//  hopefully without introducing a bunch of Python API code into Angel proper. 
-	
+	//TODO: this is kind of a fragile way to get the Actor the script created.	
 	String markerTag = "last-spawned-actor-from-code";
-	String toExec = "Actor._lastSpawnedActor = Actor.Create('" + archetype + "')\n";
-	toExec += "Actor._lastSpawnedActor.Tag('" + markerTag + "')\n";
+	String toExec = "_lastSpawnedActor = Actor_Create('" + archetype + "')\n";
+	toExec += "if (_lastSpawnedActor ~= nil) then _lastSpawnedActor:Tag('" + markerTag + "') end\n";
 	theWorld.ScriptExec(toExec);
 	ActorSet tagged = theTagList.GetObjectsTagged(markerTag);
 	if (tagged.size() > 1)
@@ -660,8 +651,8 @@ Actor* Actor::Create(String archetype)
 	}
 	ActorSet::iterator it = tagged.begin();
 	Actor* forReturn = *it;
-	toExec = "Actor._lastSpawnedActor.__disown__()\n";
-	toExec += "Actor._lastSpawnedActor = None\n";
+	toExec =  "_lastSpawnedActor:__disown()\n";
+	toExec += "_lastSpawnedActor = nil\n";
 	theWorld.ScriptExec(toExec);
 	if (forReturn != NULL)
 	{

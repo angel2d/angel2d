@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Actors/ParticleActor.h"
 
 #include "../Util/MathUtil.h"
@@ -263,6 +264,16 @@ void ParticleActor::SetEndColor(Color& color)
 void ParticleActor::SetSpeedRange(float minSpeed, float maxSpeed)
 {
 	_minSpeed = minSpeed;
+	_maxSpeed = maxSpeed;
+}
+
+void ParticleActor::SetMinSpeed(float minSpeed)
+{
+	_minSpeed = minSpeed;
+}
+
+void ParticleActor::SetMaxSpeed(float maxSpeed)
+{
 	_maxSpeed = maxSpeed;
 }
 

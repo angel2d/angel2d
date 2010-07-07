@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Infrastructure/Vector3.h"
 
 #include "../Util/MathUtil.h"

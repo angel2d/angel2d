@@ -8,13 +8,13 @@ Dependencies:
 -------------
 For Ubuntu 10.04 LTS, the following command will install the appropriate 
 dependencies:
-sudo apt-get -y install build-essential swig libglu1-mesa-dev \
-	libdevil-dev python-dev libxrandr-dev libfreetype6-dev joystick
+sudo apt-get -y install build-essential swig libglu1-mesa-dev libreadline-dev\
+	libdevil-dev libxrandr-dev libfreetype6-dev joystick
 
 For Fedora Core 12, the following command will install the appropriate 
 dependencies (must be run as root):
 yum -y install gcc-c++ make swig mesa-libGLU-devel DevIL-ILUT-devel \
-	python-devel libXrandr-devel freetype-devel
+	readline-devel libXrandr-devel freetype-devel
 
 Compiling:
 ----------
@@ -40,8 +40,12 @@ build.
  * No publish script. Due to the massive number of configuration 
    possibilities, we don't currently have a script that bundles all the data
    and code files together for simple one-directory distribution. The 
-   publish.py and publish-mac.py scripts in the Tools/BuildScripts directory
-   represent reasonable templates from which someone could start that work.
+   publish.lua and publish-mac.lua scripts in the Tools/BuildScripts directory
+   represent reasonable templates from which someone could start that work. 
+   There's also a decent exploration of the issues involved and various 
+   workarounds here: 
+
+   http://www.gamedev.net/reference/programming/features/linuxprogramming2/
 
  * Rather than using the version of FreeType included with the distribution,
    the Linux build relies on the developer and user already having FreeType

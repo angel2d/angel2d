@@ -52,8 +52,9 @@ void DemoScreenRenderLayers::Start()
 	theWorld.Add(a2, 1); //Adding this actor to layer 1
 
 	//For your game, you may want to use an enum
-	//  for these values so you don't have to keep
-	//  the integers straight. 
+	//  or name the layers (see World.cpp or the later
+	//  DemoScreenLayeredCollisionLevelFile.cpp for more
+	//  information).
 
 
 

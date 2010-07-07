@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="ClientGame"
 	ProjectGUID="{5B267A7F-D9DF-4B2E-B3E7-73A4EF0F1A36}"
 	RootNamespace="ClientGame"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -24,8 +25,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Copying Python module import script..."
-				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e&#x0D;&#x0A;"
+				Description="Scripting setup..."
+				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -p $(SolutionDir)&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -45,15 +46,16 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(InputDir)\..\Angel&quot;;&quot;$(InputDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FMOD\inc&quot;"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4244"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -67,12 +69,14 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT_d.lib freetype237_D.lib box2d_d.lib Angel.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT_d.lib freetype237_D.lib box2d_d.lib Angel.lib Lua.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Tools\Python26\libs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMTD.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -94,12 +98,9 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs..."
-				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python26\libs\python26_d.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -112,8 +113,8 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Copying Python module import script and DLL..."
-				CommandLine="xcopy ..\Angel\Scripting\Interfaces\angel.py Resources\Scripts /y&#x0D;&#x0A;xcopy ..\Tools\Python26\python26.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e&#x0D;&#x0A;"
+				Description="Scripting setup..."
+				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -p $(SolutionDir)&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -132,13 +133,14 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(InputDir)\..\Angel&quot;;&quot;$(InputDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(InputDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(InputDir)\..\Angel\Libraries\FMOD\inc&quot;"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4244"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -152,14 +154,16 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT.lib freetype237.lib box2d.lib Angel.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MT.lib freetype237.lib box2d.lib Angel.lib Lua.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Tools\Python26\libs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -181,12 +185,9 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs and publishing..."
-				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y&#x0D;&#x0A;xcopy ..\Tools\Python26\python26.dll . /y&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y&#x0D;&#x0A;&#x0D;&#x0A;..\Tools\Python26\python.exe ..\Tools\BuildScripts\publish.py -i $(ProjectDir) -o $(ProjectDir)Published&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts\&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe publish.lua -i $(ProjectDir) -o $(ProjectDir)Published&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -198,8 +199,28 @@
 	</References>
 	<Files>
 		<Filter
-			Name="PCH"
+			Name="sys"
 			>
+			<File
+				RelativePath="..\Angel\Scripting\Interfaces\AngelLuaWrapping.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
 			<File
 				RelativePath=".\stdafx.cpp"
 				>
@@ -245,20 +266,32 @@
 				>
 			</Filter>
 		</Filter>
+		<Filter
+			Name="Docs"
+			>
+			<File
+				RelativePath=".\Attributions.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\GameInfo.txt"
+				>
+			</File>
+		</Filter>
 		<File
-			RelativePath=".\Attributions.txt"
+			RelativePath=".\build.lua"
 			>
 		</File>
 		<File
-			RelativePath=".\build.ini"
-			>
-		</File>
-		<File
-			RelativePath=".\GameInfo.txt"
+			RelativePath=".\Resources\Scripts\client_start.lua"
 			>
 		</File>
 		<File
 			RelativePath=".\Main.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\script_interface.i"
 			>
 		</File>
 	</Files>

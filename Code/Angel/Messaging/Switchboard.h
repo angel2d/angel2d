@@ -46,7 +46,7 @@
  * Like the World, it uses the singleton pattern; you can't actually declare 
  *  a new instance of a Switchboard. To access messaging in your world, use 
  *  "theSwitchboard" to retrieve the singleton object. "theSwitchboard" is 
- *  defined in both C++ and Python. 
+ *  defined in both C++ and Lua. 
  * 
  * If you're not familiar with the singleton pattern, this paper is a good 
  *  starting point. (Don't be afraid that it's written by Microsoft.)

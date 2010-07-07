@@ -45,9 +45,8 @@
  *  GetCompletions function, which returns a StringList of potential 
  *  auto-complete values. 
  * 
- * Most of this is academic, as you'll probably use the Python console, which
- *  has already implemented all of this for you. You can use it as a sample
- *  implementation; it's in \c Scripting/EngineScripts/angel_console.py. 
+ * Most of this is academic, as you'll probably use the Lua console, which
+ *  has already implemented all of this for you.
  * 
  * There's also a TestConsole implementation that does nothing but echo your
  *  commands back at you. It's the default console, so if you ever see its 
@@ -146,6 +145,18 @@ public:
 	 * @param prompt The new prompt string
 	 */
 	void SetPrompt(String prompt);
+
+	/**
+	 * Get the width of tabs when output to this console.
+	 */
+	const unsigned int GetTabWidth();
+
+	/**
+	 * Get the width of tabs when output to this console. Defaults to 8.
+	 * 
+	 * @param newTabWidth The desired tab width in spaces
+	 */
+	void SetTabWidth(unsigned int newTabWidth);
 	
 	/**
 	 * Replaces the current input string with a value from the input history. 
@@ -180,7 +191,7 @@ public:
 	 */
 	virtual StringList GetCompletions(String input) = 0;
 
-private:
+protected:
 	bool IsTextKey(unsigned char key);
 	void AcceptCurrentInput();
 	String _currentInput;
@@ -191,11 +202,14 @@ private:
 	String _unsplitBuffer;
 	float _lineHeight;
 	StringList _autoCompleteList;
-
-    int _cursorPos;
-    float _cursorDispTime;
-    bool _bCursorDisp;
-
+	int _cursorPos;
+	unsigned int _tabWidth;
+	
+private:
+	void RefreshAutoCompletes();
+	float _cursorDispTime;
+	bool _bCursorDisp;
+	
 	bool _enabled;
 };
 

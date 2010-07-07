@@ -19,6 +19,7 @@
 */
 
 
+#include "stdafx.h"
 #include "../Physics/PhysicsDebugDraw.h"
 
 #include "../Infrastructure/Common.h"

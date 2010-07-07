@@ -1,4 +1,4 @@
-%module(directors="1") angel
+%module angel
 %{
 #include "../../Physics/PhysicsActor.h"
 %}
@@ -31,10 +31,6 @@ public:
 	void ApplyTorque(float torque);
 	void ApplyImpulse(const Vector2& impulse, const Vector2& point);
 	
-	void SetSize(float x, float y = -1.f);
 	void SetDrawSize(float x, float y = -1.f);
-	void SetPosition(float x, float y);
-	void SetPosition(Vector2 pos);
-	void SetRotation(float rotation);
 };
 

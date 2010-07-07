@@ -148,6 +148,20 @@ public:
 	void SetSpeedRange(float minSpeed, float maxSpeed);
 	
 	/**
+	 * Set the lower range of potential initial speeds for the particles.
+	 * 
+	 * @param minSpeed The speed (in GL units per second) of the slowest particle
+	 */
+	void SetMinSpeed(float minSpeed);
+	
+	/**
+	 * Set the lower range of potential initial speeds for the particles.
+	 * 
+	 * @param maxSpeed The speed (in GL units per second) of the fastest particle
+	 */
+	void SetMaxSpeed(float maxSpeed);
+	
+	/**
 	 * Set the vector which will pull the particles in a specific direction 
 	 *  at a specified magnitude. The default is (0.0, -4.0).
 	 * 

@@ -1,4 +1,4 @@
-%module(directors="1") angel
+%module angel
 %{
 #include "../../Input/MouseInput.h"
 %}

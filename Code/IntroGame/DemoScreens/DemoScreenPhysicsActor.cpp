@@ -47,7 +47,9 @@ void DemoScreenPhysicsActor::Start()
 	p1->SetFriction(0.5f);
 	p1->SetRestitution(0.7f);
 	p1->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
-	p1->InitPhysics();
+	p1->InitPhysics(); // Note that none of the actor's physics are being 
+	                   //  simulated until this call.
+
 	//That's the basics of what we've exposed from Box2d. There's lots
 	//  more to it, though, and we encourage you to check out their
 	//  documentation. http://box2d.org

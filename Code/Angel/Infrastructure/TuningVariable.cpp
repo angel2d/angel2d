@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Infrastructure/TuningVariable.h"
 
 Tuning* Tuning::s_Tuning = NULL;

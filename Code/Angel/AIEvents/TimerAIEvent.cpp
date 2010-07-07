@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../AIEvents/TimerAIEvent.h"
 
 TimerAIEvent* TimerAIEvent::Initialize( float duration )

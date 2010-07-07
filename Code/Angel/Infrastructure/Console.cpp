@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Infrastructure/Console.h"
 
 #include "../Infrastructure/Common.h"
@@ -37,6 +38,8 @@
 #include "../Util/StringUtil.h"
 
 
+#define MAX_AUTO_COMPLETE 7
+
 
 Console::Console()
 : _enabled(false),
@@ -44,7 +47,8 @@ _currentInput(""),
 _inputHistoryPos(0),
 _cursorPos(0),
 _cursorDispTime(0.0f),
-_bCursorDisp(true)
+_bCursorDisp(true),
+_tabWidth(8)
 {
 	RegisterFont("Resources/Fonts/Inconsolata.otf", 24, "Console");
 	RegisterFont("Resources/Fonts/Inconsolata.otf", 18, "ConsoleSmall");
@@ -122,21 +126,18 @@ bool Console::GetInput( int key )
 	}
 	else if( IsTextKey(key) )
 	{
-        String oldInput = _currentInput;
-        _currentInput = oldInput.substr(0, _cursorPos);
-        _currentInput += key;
-
-        if (_cursorPos < oldInput.length())
-        {
-            _currentInput += oldInput.substr(_cursorPos, oldInput.length());
-        }
-
-        ++_cursorPos;
-
-		if (_currentInput.size() > 2)
+		String oldInput = _currentInput;
+		_currentInput = oldInput.substr(0, _cursorPos);
+		_currentInput += key;
+		
+		if (_cursorPos < oldInput.length())
 		{
-			_autoCompleteList = GetCompletions(_currentInput);
+		    _currentInput += oldInput.substr(_cursorPos, oldInput.length());
 		}
+		
+		++_cursorPos;
+		
+		RefreshAutoCompletes();
 	}
 
 	return true;
@@ -160,35 +161,35 @@ bool Console::GetSpecialInputDown( int key )
 	{
 		AcceptAutocomplete();
 	}
-    else if( key == GLFW_KEY_DEL )
-    {
-        if (_cursorPos < _currentInput.length())
-        {
-            String oldInput = _currentInput;
-
-            _currentInput = oldInput.substr( 0, _cursorPos );
-            _currentInput += oldInput.substr(_cursorPos+1, oldInput.length());
-
-            _autoCompleteList = GetCompletions(_currentInput);
-        }
-
-    }
+	else if( key == GLFW_KEY_DEL )
+	{
+		if (_cursorPos < _currentInput.length())
+		{
+			String oldInput = _currentInput;
+			
+			_currentInput = oldInput.substr( 0, _cursorPos );
+			_currentInput += oldInput.substr(_cursorPos+1, oldInput.length());
+			
+			RefreshAutoCompletes();
+		}
+		
+	}
 	else if( key == GLFW_KEY_BACKSPACE )
 	{
 		if( _cursorPos > 0 )
 		{
-            String oldInput = _currentInput;
-
+			String oldInput = _currentInput;
+			
 			_currentInput = oldInput.substr( 0, _cursorPos-1 );
-
-            if (_cursorPos < oldInput.length())
-            {
-                _currentInput += oldInput.substr(_cursorPos, oldInput.length());
-            }
-
-            --_cursorPos;
-
-			_autoCompleteList = GetCompletions(_currentInput);
+			
+			if (_cursorPos < oldInput.length())
+			{
+				_currentInput += oldInput.substr(_cursorPos, oldInput.length());
+			}
+			
+			--_cursorPos;
+			
+			RefreshAutoCompletes();
 		}
 	}
 	else if( key == GLFW_KEY_UP ) 
@@ -199,28 +200,28 @@ bool Console::GetSpecialInputDown( int key )
 	{
 		AdvanceInputHistory( 1 );
 	}
-    else if( key == GLFW_KEY_RIGHT ) 
-    {
-        if (_cursorPos < _currentInput.length())
-        {
-            ++_cursorPos;
-        }
-    }
-    else if( key == GLFW_KEY_LEFT )
-    {
-        if (_cursorPos > 0)
-        {
-            --_cursorPos;
-        }
-    }
-    else if( key == GLFW_KEY_END )
-    {
-        _cursorPos = _currentInput.length();
-    }
-    else if( key == GLFW_KEY_HOME )
-    {
-        _cursorPos = 0;
-    }
+	else if( key == GLFW_KEY_RIGHT ) 
+	{
+		if (_cursorPos < _currentInput.length())
+		{
+			++_cursorPos;
+		}
+	}
+	else if( key == GLFW_KEY_LEFT )
+	{
+		if (_cursorPos > 0)
+		{
+			--_cursorPos;
+		}
+	}
+	else if( key == GLFW_KEY_END )
+	{
+	    _cursorPos = _currentInput.length();
+	}
+	else if( key == GLFW_KEY_HOME )
+	{
+	    _cursorPos = 0;
+	}
 	//TODO: Restore
 	//else if( key == GLFW_KEY_PAGEUP )
 	//{
@@ -235,8 +236,35 @@ bool Console::GetSpecialInputDown( int key )
 
 }
 
+void Console::RefreshAutoCompletes()
+{
+	if (_currentInput.size() > 2)
+	{
+		_autoCompleteList = GetCompletions(_currentInput);
+	}
+	else
+	{
+		_autoCompleteList.clear();
+	}
+}
+
 void Console::WriteToOutput(String output)
 {
+	// convert tabs first
+	size_t tabIndex = output.find_first_of('\t');
+	while (tabIndex != std::string::npos)
+	{
+		int numSpaces = _tabWidth - (tabIndex % _tabWidth);
+		String replacement = "";
+		for(int i=0; i < numSpaces; i++)
+		{
+			replacement += " ";
+		}
+		output = output.substr(0, tabIndex) + replacement + output.substr(tabIndex + 1, output.size() - 1);
+		tabIndex = output.find_first_of('\t');
+	}
+
+	
 	_unsplitBuffer += output;
 	_buffer = SplitString(_unsplitBuffer, "\n", false);
 	
@@ -281,8 +309,34 @@ void Console::AcceptAutocomplete()
 	if( _autoCompleteList.size() == 0 )
 		return;
 	
-	//TODO: allow user to select autocomplete
-	_currentInput = _autoCompleteList[0];
+	//cycle through the available completions with tab
+	int found = -1;
+	for (int i=0; i < _autoCompleteList.size(); i++)
+	{
+		if (i > MAX_AUTO_COMPLETE)
+		{
+			break;
+		}
+		if (_currentInput == _autoCompleteList[i])
+		{
+			//found our existing match, try to cycle to the next one
+			if ( (i == _autoCompleteList.size() - 1) || (i == MAX_AUTO_COMPLETE - 2) )
+			{
+				//found it, but at the end of the list, so cycle to top
+				break;
+			}
+			//set the found index to the next line
+			found = i+1;
+			break;
+		}
+	}
+	
+	if (-1 == found)
+	{
+		found = 0;
+	}
+
+	_currentInput = _autoCompleteList[found];
     _cursorPos = _currentInput.length();
 }
 
@@ -297,7 +351,7 @@ void Console::AdvanceInputHistory(int byVal)
 	if( byVal >= 0 && (_inputHistoryPos + byVal) >= lastInputIndex )
 	{
 		_currentInput = "";
-        _cursorPos = 0;
+		_cursorPos = 0;
 		_inputHistoryPos = lastInputIndex;
 		return;
 	}
@@ -311,7 +365,7 @@ void Console::AdvanceInputHistory(int byVal)
 	
 	//otherwise, write over our current input
 	_currentInput = _inputHistory[_inputHistoryPos];
-    _cursorPos = _currentInput.length();
+	_cursorPos = _currentInput.length();
 }
 
 void Console::ToggleConsole()
@@ -324,17 +378,27 @@ void Console::SetPrompt(String prompt)
 	_prompt = prompt;
 }
 
+void Console::SetTabWidth(unsigned int newTabWidth)
+{
+	_tabWidth = newTabWidth;
+}
+
+const unsigned int Console::GetTabWidth()
+{
+	return _tabWidth;
+}
+
 void Console::Update( float dt )
 {
-    static const float CURSOR_DISPLAY_TIME = 0.15f;
-
-    _cursorDispTime += dt;
-
-    if (_cursorDispTime > CURSOR_DISPLAY_TIME)
-    {
-        _cursorDispTime = 0.0f;
-        _bCursorDisp = !_bCursorDisp;
-    }
+	static const float CURSOR_DISPLAY_TIME = 0.5f;
+	
+	_cursorDispTime += dt;
+	
+	if (_cursorDispTime > CURSOR_DISPLAY_TIME)
+	{
+		_cursorDispTime = 0.0f;
+		_bCursorDisp = !_bCursorDisp;
+	}
 }
 
 void Console::Render()
@@ -396,25 +460,25 @@ void Console::Render()
 	glColor4f(0.0f,1.0f,0.0f,1.0f);
 	String printInput = _prompt;
 	printInput += _currentInput.substr(0, _cursorPos);
-
-    if(_bCursorDisp)
-    {
-        printInput += "|";
-    }
-    else
-    {
-        printInput += " ";
-    }
-
-    if (_cursorPos < _currentInput.length())
-    {
-        printInput += _currentInput.substr(_cursorPos, _currentInput.length());
-    }
-
+	
+	if(_bCursorDisp)
+	{
+		printInput += "|";
+	}
+	else
+	{
+		printInput += " ";
+	}
+	
+	if (_cursorPos < _currentInput.length())
+	{
+		printInput += _currentInput.substr(_cursorPos, _currentInput.length());
+	}
+	
 	DrawGameText(printInput.c_str(), "ConsoleSmall", textBoxXPos, textBoxYPos);
 
 	//Draw autocomplete
-	static int sMaxAutoCompleteLines = 7;
+	static int sMaxAutoCompleteLines = MAX_AUTO_COMPLETE;
 	int numAutoCompleteLines = MathUtil::Min(sMaxAutoCompleteLines, (int)_autoCompleteList.size() );
 	int autoCompleteBottomY = textBoxBottomY + (numAutoCompleteLines * sTextBoxHeight);
 	int autoCompleteStartY = textBoxBottomY + 2*sTextBoxHeight/3;

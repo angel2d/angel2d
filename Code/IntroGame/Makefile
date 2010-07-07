@@ -2,7 +2,11 @@ CXX = g++
 TARGET = IntroGame
 ARCH := $(shell uname -m)
 ALLEGRO_LIBS := $(shell allegro-config --libs 2>/dev/null)
-LIBANGEL = ../Angel/libangel.so
+CWD := $(shell pwd)
+CODE_DIR := $(shell dirname $(CWD))
+LIBANGEL = ../Angel/libangel.a
+LUA = ../Angel/Libraries/angel-lua-build/lua
+WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrappingIntroGame.cpp
 
 INCLUDE = 							\
 	-I.							\
@@ -12,18 +16,27 @@ INCLUDE = 							\
 	-I../Angel/Libraries/Box2D-2.0.1/Include		\
 	-I../Angel/Libraries/FMOD/inc 				\
 	-I../Angel/Libraries/FTGL/include			\
-	-I/usr/include/freetype2				\
-	-I/usr/include/python2.6
+	-I../Angel/Libraries/lua-5.1.4/src			\
+	-I/usr/include/freetype2
+	
+LIBS = 									\
+	$(LIBANGEL)							\
+	../Angel/Libraries/glfw/lib/x11/libglfw.a			\
+	../Angel/Libraries/Box2D-2.0.1/Source/Gen/float/libbox2d.a	\
+	../Angel/Libraries/FTGL/unix/src/.libs/libftgl.a		\
+	../Angel/Libraries/angel-lua-build/liblua.a
 
-LIBS = $(LIBANGEL)
 ifeq ($(ARCH),x86_64)
 	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex64.so
 else
 	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex.so
 endif
 
-SHLIBS = -lGL -lGLU -lpython2.6 -lfreetype -lXrandr -lIL -lILU -lILUT
+SHLIBS = -lGL -lGLU -ldl -lfreetype -lXrandr -lX11 -lIL -lILU -lILUT
 SHLIBS += $(ALLEGRO_LIBS)
+
+SYSSRCS = 							\
+	$(WRAPPER)
 
 SRCS =								\
 	DemoGameManager.cpp					\
@@ -49,22 +62,23 @@ SRCS =								\
 	stdafx.cpp						\
 	Main.cpp
 
+SYSOBJS = $(patsubst %.cpp,%.o,$(SYSSRCS))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 %.o: %.cpp
 	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
 
-$(TARGET): $(LIBANGEL) $(OBJS)
-	$(CXX) -o $@ $(OBJS) $(LIBS) $(SHLIBS)
-	cp -p ../Angel/Scripting/EngineScripts/*.py Resources/Scripts
-	mkdir -p Resources/Scripts/iniparse
-	cp -p ../Angel/Scripting/EngineScripts/iniparse/* Resources/Scripts/iniparse
-	cp -p ../Angel/Scripting/Interfaces/angel.py Resources/Scripts
-
 all: $(TARGET)
 
+$(WRAPPER):
+	$(LUA) ../Tools/BuildScripts/swig_wrap.lua -p $(CODE_DIR) -D INTROGAME
+
+$(TARGET): $(LIBANGEL) $(OBJS) $(SYSOBJS) $(WRAPPER)
+	$(CXX) -o $@ $(OBJS) $(SYSOBJS) $(LIBS) $(SHLIBS)
+	cp -p ../Angel/Scripting/EngineScripts/*.lua Resources/Scripts
+
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(SYSOBJS) $(TARGET) $(WRAPPER)
 
 $(LIBANGEL):
 	cd ../Angel && make

@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Infrastructure/World.h"
 
 #include "../Infrastructure/Camera.h"
@@ -40,7 +41,7 @@
 #include "../Physics/PhysicsActor.h"
 #include "../Physics/PhysicsDebugDraw.h"
 #include "../Messaging/Switchboard.h"
-#include "../Scripting/PythonModule.h"
+#include "../Scripting/LuaModule.h"
 #include "../Infrastructure/SoundDevice.h"
 
 #include <algorithm>
@@ -92,7 +93,7 @@ int windowClosed(void)
 	return GL_FALSE; //returning GL_FALSE will stop the window from closing
 }
 
-bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing)
+bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen)
 {
 	if (_initialized)
 	{
@@ -105,7 +106,12 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	{
 		glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
 	}
-	glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, GLFW_WINDOW);
+	int windowMode = GLFW_WINDOW;
+	if (fullScreen)
+	{
+		windowMode = GLFW_FULLSCREEN;
+	}
+	glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, windowMode);
 	glfwSetWindowPos(50, 50);
 	
 	glfwSetWindowTitle(windowName.c_str());
@@ -178,7 +184,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	
 	RegisterConsole(new TestConsole());
 
-	PythonScriptingModule::Initialize();
+	LuaScriptingModule::Initialize();
 	
 	return _initialized = true;
 }
@@ -213,17 +219,9 @@ void World::Destroy()
 	theInput.Destroy();
 	
 	FinalizeTextureLoading();
-	PythonScriptingModule::Finalize();
-
-	delete _physicsDebugDraw;
+	LuaScriptingModule::Finalize();
 	
-	StringSet subs = theSwitchboard.GetSubscriptionsFor(this);
-	StringSet::iterator it = subs.begin();
-	while (it != subs.end())
-	{
-		theSwitchboard.UnsubscribeFrom(this, *it);
-		++it;
-	}
+	delete _physicsDebugDraw;
 }
 
 void World::StartGame()
@@ -260,7 +258,7 @@ void World::StopGame()
 
 void World::ScriptExec(String code)
 {
-	PythonScriptingModule::ExecuteInScript(code);
+	LuaScriptingModule::ExecuteInScript(code);
 }
 
 void World::LoadLevel(String levelName)
@@ -447,8 +445,9 @@ void World::CleanupRenderables()
 	{
 		if ((*it)->IsDestroyed())
 		{
-			//delete *it; 
+			Renderable* deadManWalking = *it;
 			it = it.erase(it);
+			delete deadManWalking;
 		}
 		else
 		{

@@ -74,7 +74,7 @@ void DemoScreenMessagePassing::Setup()
 	theSwitchboard.SubscribeTo(this, "CollisionWith" + p1->GetName());
 	theSwitchboard.SubscribeTo(this, "CollisionWith" + p2->GetName());
 
-	bounceSample = theSound.LoadSample("Resources/Sounds/sprong.wav", false /*no stream*/);
+	bounceSample = theSound.LoadSample("Resources/Sounds/sprong.wav", false);
 }
 
 void DemoScreenMessagePassing::Start()
@@ -152,7 +152,7 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 			//We do the check on the actor's speed so that it only makes a sound when dropping
 			// at a certain rate. Otherwise, the bounce noise will play every time it "makes 
 			// contact" with the ground as it settles. This leads to the bad kind of cacophany. 
-			theSound.PlaySound(bounceSample, 1.0f, false/*no loop*/, 0);			
+			theSound.PlaySound(bounceSample, 1.0f, false, 0);			
 		}
 	}
 	else if (message->GetMessageName() == "CollisionWith" + p2->GetName())

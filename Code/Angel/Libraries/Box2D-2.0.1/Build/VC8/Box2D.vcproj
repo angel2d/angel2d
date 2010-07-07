@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="_Box2D"
 	ProjectGUID="{7A2DFC3D-516A-471D-A215-BD40E5E5AD9A}"
 	RootNamespace="Engine"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -52,7 +53,7 @@
 				ProgramDataBaseFileName="$(OutDir)\box2d_d.pdb"
 				WarningLevel="4"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -119,7 +120,7 @@
 				ProgramDataBaseFileName="$(OutDir)\box2d.pdb"
 				WarningLevel="3"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool

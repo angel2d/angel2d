@@ -1,4 +1,4 @@
-%module(directors="1") angel
+%module angel
 %{
 #include "../../Actors/ParticleActor.h"
 %}
@@ -17,6 +17,8 @@ public:
 	void SetEndScale(float scale);
 	void SetEndColor(Color color);
 	void SetSpeedRange(float minSpeed, float maxSpeed);
+	void SetMinSpeed(float minSpeed);
+	void SetMaxSpeed(float maxSpeed);
 	void SetGravity(Vector2 gravity);
 	void SetMaxParticles(int maxParticles);
 };

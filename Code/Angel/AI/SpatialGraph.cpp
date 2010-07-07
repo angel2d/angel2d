@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../AI/SpatialGraph.h"
 
 #include "../Infrastructure/TextRendering.h"

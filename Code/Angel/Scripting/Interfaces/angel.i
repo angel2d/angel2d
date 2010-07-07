@@ -1,28 +1,58 @@
 %module angel
 
-%include <attribute.i>
-%include <std_set.i>
-%include <std_vector.i>
+#ifndef INTROGAME
+%include inheritance.i
+#else
+%include inheritance_intro.i
+#endif
+
 %include <std_string.i>
 
-%include inheritance.i
-
-%typemap(in, noblock=1) SWIGTYPE *ANGEL_DISOWN (int res = 0) {
-	res = SWIG_ConvertPtr($input, %as_voidptrptr(&$1), $descriptor, SWIG_POINTER_DISOWN | %convertptr_flags);
-	if (!SWIG_IsOK(res)) {
-		%argument_fail(res,"$type", $symname, $argnum);
-	}
-	{
-		Swig::Director *director = dynamic_cast<Swig::Director *>($1);
-		if (director) director->swig_disown();		
-	}
-}
-
 typedef std::string			String;
+
+#ifdef SWIGLUA
+%typemap(out) std::vector<String>
+%{
+	{
+		lua_newtable(L);
+		
+		if ($1.size() > 0)
+		{
+			for (unsigned int i=0; i <= $1.size(); i++)
+			{
+				lua_pushnumber(L, i);
+				lua_pushstring(L, $1.at(i-1).c_str()); 
+				lua_settable(L, -3);
+			}
+		}
+	
+		SWIG_arg += 1; 
+	}
+%}
+
+%typemap(out) std::set<String>
+%{
+	{
+		lua_newtable(L);
+	
+		std::set<String>::iterator it = $1.begin();
+		int setCounter = 1;
+		while (it != $1.end())
+		{
+			lua_pushnumber(L, setCounter++);
+			lua_pushstring(L, (*it).c_str()); 
+			lua_settable(L, -3);
+		
+			it++;
+		}
+	
+		SWIG_arg += 1; 
+	}
+%}
+#endif
+
 typedef std::set<String>	StringSet;
 typedef std::vector<String>	StringList;
-%template(StringSet)		std::set<std::string>;
-%template(StringList)		std::vector<std::string>;
 
 %include vector2.i
 %include color.i
@@ -41,3 +71,9 @@ typedef std::vector<String>	StringList;
 %include physics_actor.i
 %include particles.i
 %include text_actor.i
+
+#ifndef INTROGAME
+%include ../../../ClientGame/script_interface.i
+#else
+%include ../../../IntroGame/script_interface.i
+#endif

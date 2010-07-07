@@ -57,7 +57,7 @@ class Console;
  * Like the Camera, it uses the singleton pattern; you can't actually declare 
  *  a new instance of a TagCollection. To access the World, use "theWorld" to 
  *  retrieve the singleton object. "theWorld" is defined in both C++ and 
- *  Python. 
+ *  Lua. 
  * 
  * If you're not familiar with the singleton pattern, this paper is a good 
  *  starting point. (Don't be afraid that it's written by Microsoft.)
@@ -84,10 +84,15 @@ public:
 	 * @param windowName The string that should appear in the window's title bar
 	 * @param antiAliasing Whether or not the window should be initialized with
 	 *   anti-aliasing
+	 * @param fullScreen Whether the game should be started in fullscreen mode. 
+	 *   Note that the resolution is determined from windowWidth and windowHeight,
+	 *   and that Angel will attempt to change the system's video mode 
+	 *   accordingly. We don't do any detection of what modes are valid, so
+	 *   make sure you're feeding this a legitimate resolution.
 	 * @return Returns true if initialization worked (i.e. if world was not
 	 *   already initialized)
 	 */
-	bool Initialize(unsigned int windowWidth=1024, unsigned int windowHeight=768, String windowName="Angel Engine", bool antiAliasing=false);
+	bool Initialize(unsigned int windowWidth=1024, unsigned int windowHeight=768, String windowName="Angel Engine", bool antiAliasing=false, bool fullScreen=false);
 	
 	/**
 	 * Intialize physics. If you're not using our built-in physics, you don't
@@ -130,14 +135,14 @@ public:
 	void StopGame();
 	
 	/**
-	 * Execute a string of Python code. 
+	 * Execute a string of Lua code. 
 	 * 
 	 * @param code The string to execute
 	 */
 	void ScriptExec(String code);
 	
 	/**
-	 * Loads a level from Config/Level/[levelName].ini. 
+	 * Loads a level from Config/Level/[levelName].lua. 
 	 * 
 	 * Each section of a level file specifies an Actor to be added to the world. 
 	 *  The name of the section will be the name of the Actor, and the values
@@ -290,6 +295,7 @@ public:
 	 *  manage collision notifications. 
 	 */
 	virtual void Add(const b2ContactPoint* point);
+	
 	/**
 	 * Implementation of the b2ContactListener::Persist function. We use it to
 	 *  manage collision notifications. 

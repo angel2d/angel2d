@@ -214,7 +214,7 @@ private:
 		{
 			_int = 0;
 			_float = 0.0f;
-			_string = "[" + FloatToString(val.X) + ", " + FloatToString(val.Y) + "]";
+			_string = "{" + FloatToString(val.X) + ", " + FloatToString(val.Y) + "}";
 			_vector = val;
 		}
 	};

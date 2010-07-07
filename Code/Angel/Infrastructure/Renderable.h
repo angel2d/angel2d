@@ -73,7 +73,7 @@ public:
 	
 	/**
 	 * A safe way to kill off a Renderable -- it will be removed from the 
-	 *  world and delete from memory at the end of the current Update loop. 
+	 *  world and deleted from memory at the end of the current Update loop. 
 	 * 
 	 * The protected Renderable::PreDestroy function is guaranteed to be 
 	 *  called exactly once by this function, even if you call it many times. 

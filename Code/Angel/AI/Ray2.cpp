@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../AI/Ray2.h"
 
 bool operator ==(const Ray2& a, const Ray2& b)

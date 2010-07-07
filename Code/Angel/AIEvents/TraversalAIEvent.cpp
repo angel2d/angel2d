@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../AIEvents/TraversalAIEvent.h"
 
 #include "../AI/Traversal.h"

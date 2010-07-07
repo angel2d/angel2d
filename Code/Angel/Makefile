@@ -1,9 +1,11 @@
 CXX = g++
 CXXFLAGS =
-TARGET = libangel.so
+TARGET = libangel.a
 CWD := $(shell pwd)
 CODE_DIR := $(shell dirname $(CWD))
 ARCH := $(shell uname -m)
+AR = ar rcu
+RANLIB = ranlib
 ifeq ($(ARCH),x86_64)
 	CXXFLAGS += -fPIC
 endif
@@ -13,8 +15,9 @@ INCLUDE = 							\
 	-ILibraries/Box2D-2.0.1/Include				\
 	-ILibraries/FMOD/inc 					\
 	-ILibraries/FTGL/include				\
-	-I/usr/include/freetype2				\
-	-I/usr/include/python2.6
+	-ILibraries/lua-5.1.4/src				\
+	-IInfrastructure					\
+	-I/usr/include/freetype2				
 
 LIBS = 								\
 	Libraries/glfw/lib/x11/libglfw.a			\
@@ -60,24 +63,16 @@ SRCS =								\
 	Input/MouseInput.cpp					\
 	Messaging/Message.cpp					\
 	Messaging/Switchboard.cpp				\
+	Scripting/LuaConsole.cpp				\
+	Scripting/LuaModule.cpp					\
 	Physics/PhysicsActor.cpp				\
 	Physics/PhysicsDebugDraw.cpp				\
-	Scripting/Interfaces/AngelPythonWrapping.cpp		\
-	Scripting/PythonModule.cpp				\
 	Util/DrawUtil.cpp					\
 	Util/FileUtil.cpp					\
 	Util/MathUtil.cpp					\
 	Util/StringUtil.cpp
 
 all: $(TARGET)
-
-SWIG_Wrappers:
-	python ../Tools/BuildScripts/swig_wrap.py -p $(CODE_DIR)
-
-SWIG_Wrappers-clean:
-	rm -f Scripting/Interfaces/AngelPythonWrapping.h
-	rm -f Scripting/Interfaces/AngelPythonWrapping.cpp
-	rm -f Scripting/Interfaces/angel.py
 
 FTGL:
 ifeq ($(ARCH),x86_64)
@@ -105,15 +100,22 @@ Box2D:
 Box2D-clean:
 	cd Libraries/Box2D-2.0.1/Source && make clean
 
-libraries: SWIG_Wrappers FTGL GLFW Box2D
+Lua:
+	cd Libraries/angel-lua-build && make
+
+Lua-clean:
+	cd Libraries/angel-lua-build && make clean
+
+libraries: FTGL GLFW Box2D
 
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 %.o: %.cpp
 	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated $(CXXFLAGS) -o $@ $^
 
-$(TARGET): libraries $(OBJS)
-	$(CXX) -shared -o $@ $(OBJS) $(LIBS)
+$(TARGET): libraries $(OBJS) Lua
+	$(AR) $@ $(OBJS) $(LIBS)
+	$(RANLIB) $@
 
-clean: SWIG_Wrappers-clean FTGL-clean GLFW-clean Box2D-clean
+clean: FTGL-clean GLFW-clean Box2D-clean Lua-clean
 	rm -f $(OBJS) $(TARGET)

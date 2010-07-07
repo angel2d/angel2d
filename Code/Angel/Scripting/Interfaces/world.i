@@ -17,7 +17,7 @@ public:
 	
 	void SetBackgroundColor(Color bgColor);
 	
-	%apply SWIGTYPE *ANGEL_DISOWN {Actor *newElement};
+	%apply SWIGTYPE *DISOWN {Actor *newElement};
 	void Add(Actor *newElement, int layer = 0);
 	void Add(Actor *newElement, String layer);
 	%clear Actor *newElement;

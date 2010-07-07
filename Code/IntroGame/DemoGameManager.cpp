@@ -60,8 +60,7 @@ void DemoScreen::Stop()
 	std::vector<Renderable*>::iterator it = _objects.begin();
 	while(_objects.end() != it)
 	{
-		theWorld.Remove(*it);
-		delete *it;
+		(*it)->Destroy();
 		it++;
 	}
 	_objects.clear();

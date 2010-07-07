@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../AIEvents/GotoTargetAIEvent.h"
 
 #include "../AI/Sentient.h"

@@ -37,7 +37,7 @@ DemoScreenLevelFile::DemoScreenLevelFile()
 
 void DemoScreenLevelFile::Start()
 {
-	//Loads the file from Config\ActorDef\level_demo.lvl
+	//Loads the file from Config\ActorDef\level_demo.lua
 	// Level files automatically add their actors to the world. 
 	theWorld.LoadLevel("level_demo");
 
@@ -75,7 +75,7 @@ void DemoScreenLevelFile::Start()
 	t->SetPosition(0, 5.5);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
-	t2 = new TextActor("Console", "and \"right-tilted\") using a level INI file.");
+	t2 = new TextActor("Console", "and \"right-tilted\") using a level definition file.");
 	t2->SetPosition(0, 4.5);
 	t2->SetAlignment(TXT_Center);
 	theWorld.Add(t2);
@@ -83,7 +83,7 @@ void DemoScreenLevelFile::Start()
 	t3->SetPosition(0, -4.5);
 	t3->SetAlignment(TXT_Center);
 	theWorld.Add(t3);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenLevelFile.cpp, level_demo.ini");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenLevelFile.cpp, level_demo.lua");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

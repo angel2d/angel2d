@@ -1,3 +1,4 @@
+#ifdef SWIGPYTHON
 %module(directors="1") angel
 %{
 #include "../../Infrastructure/Console.h"
@@ -15,3 +16,14 @@ public:
 	virtual void Execute(String input) = 0;
 	virtual StringList GetCompletions(String input) = 0;
 };
+#endif
+
+#ifdef SWIGLUA
+%module angel
+%{
+#include "../../Scripting/LuaConsole.h"
+%}
+
+void LuaWrite(String output);
+
+#endif

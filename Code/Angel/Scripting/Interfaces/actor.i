@@ -1,4 +1,4 @@
-%module(directors="1") angel
+%module angel
 %{
 #include "../../Actors/Actor.h"
 #include "../../Infrastructure/TagCollection.h"
@@ -6,8 +6,45 @@
 
 typedef std::set<Actor*>	ActorSet;
 typedef std::vector<Actor*>	ActorList;
-%template(ActorSet)			std::set<Actor*>;
-%template(ActorList)		std::vector<Actor*>;
+
+#ifdef SWIGLUA
+%typemap(out) std::vector<Actor*>
+%{
+	{
+		lua_newtable(L);
+		if ($1.size() > 0)
+		{
+			for (unsigned int i=0; i <= ($1).size(); i++)
+			{
+				lua_pushnumber(L, i);
+				SWIG_NewPointerObj(L, $i.at(i-1), SWIGTYPE_p_Actor, 0);
+				lua_settable(L, -3);
+			}
+		}
+	
+		SWIG_arg += 1; 
+	}
+%}
+
+%typemap(out) std::set<Actor*>
+%{
+	{
+		lua_newtable(L);
+		std::set<Actor*>::iterator it = $1.begin();
+		int setCounter = 1;
+		while (it != $1.end())
+		{
+			lua_pushnumber(L, setCounter++);
+			SWIG_NewPointerObj(L, (*it), SWIGTYPE_p_Actor, 0);
+			lua_settable(L, -3);
+		
+			it++;
+		}
+	
+		SWIG_arg += 1;
+	}
+%}
+#endif
 
 enum spriteAnimationType
 {
@@ -23,7 +60,6 @@ enum actorDrawShape
     ADS_Circle
 };
 
-%feature("director") Actor;
 class Actor : public Renderable, public MessageListener 
 {
 public:

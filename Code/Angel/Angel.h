@@ -62,7 +62,7 @@
  * If you open the Code directory, you should see the following files and 
  *  subdirectories [not an exhaustive list, these are just the ones that are
  *  interesting or may warrant explanation]: 
- *  - \b GameJam.sln: The Visual Studio 2005 solution file (Windows)
+ *  - \b GameJam.sln: The Visual Studio 2008 solution file (Windows)
  *  - \b GameJam.xcodeproj: The Xcode 3 build and project information (Mac OS 
  *       X)
  *  - \b README.Linux: Information about how to get Angel up and running on
@@ -80,36 +80,37 @@
  *      website links.
  *      - Box2D: Physics \n
  *        (http://www.box2d.com)
- *      - FMOD: Sound \n
- *        (http://www.fmod.org)
  *      - DevIL: Image loading \n
  *        (http://openil.sourceforge.net)
+ *      - FMOD: Sound \n
+ *        (http://www.fmod.org)
  *      - FreeType: Font rasterization \n
  *        (http://www.freetype.org)
  *      - FTGL: Makes it easy to use FreeType in OpenGL \n
  *        (http://homepages.paradise.net.nz/henryj/code/#FTGL)
  *      - GLFW: A cross-platform framework to handle basic windowing and input 
  *        events \n
- *        (http://glfw.sourceforge.net/)
+ *        (http://www.glfw.org/)
  *      - HID Utilities: USB Controller support for Mac OS X \n
  *        (http://developer.apple.com/samplecode/HID_Utilities_Source/index.html)
+ *      - Lua: Scripting \n
+ *        (http://www.lua.org)
  *  - \b Tools: a collection of scripts and tools that are used as part of the 
  *       build process or may be useful to developers.
- *    - \e BuildScripts: the Python files which get called during the build 
+ *    - \e BuildScripts: the Lua files which get called during the build 
  *      process
- *      - \c angel_build.py: utility functions and classes for the 
+ *      - \c angel_build.lua: utility functions and classes for the 
  *        build/publish
- *      - \c publish.py: On Windows, this gets called whenever you make a 
+ *      - \c publish.lua: On Windows, this gets called whenever you make a 
  *        release build. \n
  *        It produces a new directory called \c Published within your project 
  *        directory -- the \c Published directory should contain everything 
- *        your game needs to run on any system and is suitable for zipping up 
- *        and sharing. 
- *      - \c publish_mac.py: The publish script for the Mac build. It produces
+ *        your game needs to run on any (Windows) system and is suitable for 
+ *        zipping up and sharing. 
+ *      - \c publish_mac.lua: The publish script for the Mac build. It produces
  *        a new directory in your \build directory. The application there is
- *        renamed to what you've defined in \c build.ini, and there's a mini
- *        version of Python.framework included. 
- *      - \c swig_wrap.py: part of the build process to determine if the SWIG 
+ *        renamed to what you've defined in \c build.lua.
+ *      - \c swig_wrap.lua: part of the build process to determine if the SWIG 
  *        scripting bridge needs to be regenerated. It can be time consuming 
  *        to regenerate and recompile, so it's worth checking first. (See 
  *        SWIG, below.)
@@ -117,15 +118,8 @@
  *      extension that makes it possible for Angel to interface with the Xbox 
  *      360 controller. You may have trouble compiling if this isn't 
  *      installed. (A pain, but thems the breaks.)
- *    - \e Python25: The official Python distribution for Windows. All our 
- *      build scripts run using this Python, and the publish script will 
- *      package up the appropriate modules from here, so if you ever need to  
- *      install more Python goodies for your game, make sure to do it in this 
- *      directory as opposed to whatever local installation you may have of 
- *      Python. Note that the Mac build just uses the local OS X built-in
- *      Python, and will package the modules from it. 
  *    - \e swigwin: The Windows distribution of SWIG -- a tool for generating 
- *      script interfaces to C and C++ code. The \c swig_wrap.py build script 
+ *      script interfaces to C and C++ code. The \c swig_wrap.lua build script 
  *      calls this executable (on Windows) and processes \c 
  *      Angel/Scripting/Interfaces/angel.i to generate all the script hooks 
  *      into the engine. For the most part, this should just work, but please 
@@ -153,7 +147,7 @@
  *      This is also a good place to throw in asset acknowledgements if you 
  *      didn't create them yourself -- though make sure you're ok 
  *      copyright-wise! 
- *    - \e build.ini: a set of values used by the build and publish scripts to 
+ *    - \e build.lua: a set of values used by the build and publish scripts to 
  *      customize your game. At the moment, it only contains a value for 
  *      giving your game a name -- we strongly recommend naming your game here 
  *      as opposed to renaming the project itself so merging will be easier 
@@ -174,16 +168,16 @@
  *      - \c Fonts: hopefully this is self-explanatory
  *      - \c Images: hopefully this is self-explanatory
  *      - \c Sounds: hopefully this is self-explanatory
- *      - \c Scripts: Any Python that you want to use in your game should get 
- *        put in here. The included \c client_start.py gets imported directly 
+ *      - \c Scripts: Any Lua that you want to use in your game should get 
+ *        put in here. The included \c client_start.lua gets imported directly 
  *        into the console namespace, so any functions you define here will be 
- *        available in the console. If you want to create your own classes or 
- *        do any game setup from Python, \c client_start.py is where it should 
- *        go. As you build you'll notice other files get copied to this 
- *        directory -- the scripts that help make Angel run. These files will 
- *        be frequently updated from the \c Angel/Scripts/EngineScripts 
- *        directory every time you build, so making changes to them here will 
- *        leave you disappointed when they get overwritten. 
+ *        available in the console. If you want to do any game setup from Lua,
+ *        \c client_start.lua is where it should go. As you build you'll 
+ *        notice other files get copied to this directory -- the scripts that 
+ *        help make Angel run. These files will be frequently updated from the 
+ *        \c Angel/Scripts/EngineScripts directory every time you build, so 
+ *        making changes to them here will leave you disappointed when they 
+ *        get overwritten. 
  * 
  * @section world The World
  * Angel's entire simulation is based around the World class. It represents, 
@@ -880,33 +874,34 @@
  *  set of text files. 
  * 
  * In the \c Config directory of your game, you'll find another directory 
- *  called \c ActorDef. Any \c .ini file you throw in here will be assumed to
+ *  called \c ActorDef. Any \c .lua file you throw in here will be assumed to
  *  be describing a set of Actor archetypes. The format is fairly 
  *  straightforward. 
  * 
  * \code
- * [simple_actor]
- * color=[1, 0, 1]
- * position=[-3, -2]
- * alpha=0.5
- * size=5
- * tag=simple, small, purple
- * name=SimpleActor
+ * simple_actor = {
+ *   color = {1, 0, 1},
+ *   position = {-3, -2},
+ *   alpha = 0.5,
+ *   size = 5,
+ *   tag = "simple, small, purple",
+ *   name = "SimpleActor"
+ * }
  * \endcode
  * 
- * The file follows typical INI file formatting. The section names (in 
- *  braces) represent the name of the archetype -- what you'll use to 
- *  actually instantiate it. 
+ * If you're familiar with Lua, you may notice that this is a straight-up 
+ *  table declaration. The name of the table represents the name of the 
+ *  archetype -- what you'll use to actually instantiate it. 
  * 
  * The properties that follow will directly affect the Actor after it's been
  *  created. Any Actor function that takes the form "SetX" can be used here
  *  as simply "x," and other functions can simply be lowercased to be invoked 
  *  (see how Actor::Tag became simply "tag"). Vectors and colors are enclosed 
- *  in braces. The properties in an INI file will only work for functions that
- *  take one parameter -- if you try and call something with multiple 
- *  parameters, you'll get scripting errors. 
+ *  in braces. The properties in an Actor defintion file will only work for 
+ *  functions that take one parameter -- if you try and call something with 
+ *  multiple parameters, you'll get scripting errors. 
  * 
- * Once we've defined \c simple_actor in our INI file, we can create one in
+ * Once we've defined \c simple_actor in our file, we can create one in
  *  code very simply. 
  *
  * \code
@@ -918,23 +913,25 @@
  * 
  * @subsection levels Level Files
  * Once we've made our actor definitions, we may want to iterate on their 
- *  placement in the world. To do that, we create another \c .ini file in 
+ *  placement in the world. To do that, we create another \c .lua file in 
  *  \c Config/Level. 
  * 
  * \code
- * [LeftActor]
- * type=simple_actor
- * size=3
- * position=[-5,0]
- * tag=spawned
+ * LeftActor = {
+ *   type = "simple_actor",
+ *   size = 3,
+ *   position = {-5, 0},
+ *   tag = "spawned"
+ * }
  * 
- * [RightActor]
- * type=simple_actor
- * size=5
- * position=[5, 0]
- * color=[1, 0, 0]
- * alpha=0.8
- * tag=spawned
+ * RightActor = {
+ *   type = "simple_actor",
+ *   size = 5,
+ *   position = {5, 0},
+ *   color = {1, 0, 0},
+ *   alpha = 0.8,
+ *   tag = "spawned"
+ * } 
  * \endcode
  * 
  * Each section in a level file describes an Actor to be placed in the world. 
@@ -949,50 +946,45 @@
  * theWorld.LoadLevel("my_level");
  * \endcode
  *
- * This example will process \c Config/Level/my_level.ini, create all the 
+ * This example will process \c Config/Level/my_level.lua, create all the 
  *  Actors from designated archetypes, apply the additional properties, and 
  *  add them to the world. 
  * 
- * @section python Python
- * Angel includes Python scripting, for those who prefer to work in something
+ * @section lua Lua
+ * Angel includes Lua scripting, for those who prefer to work in something
  *  other than C++. Internal functions are exposed to the scripting layer  
- *  using <a href="http://www.swig.org/">SWIG</a>. 
+ *  using <a href="http://www.swig.org/">SWIG</a>. Within Angal, Lua is 
+ *  intended less as a full runtime (though you can receive messages, create 
+ *  Actors, and call almost all engine functions from Lua), but more as a 
+ *  configuration language for use in ActorDefs and Level files.
  * 
  * In the \c Resources/Scripts directory, you'll find a file called \c 
- *  client_start.py. This will get executed at startup, so any Python setup
+ *  client_start.lua. This will get executed at startup, so any Lua setup
  *  you want to do can go in here. 
  * 
- * Most internal functionality is exposed in Python. So, for example, you 
- *  could have this in your \c client_start.py.
+ * Most internal functionality is exposed in Lua. So, for example, you 
+ *  could have this in your \c client_start.lua.
  * 
  * \code
- * a = Actor.Create("simple_actor")
- * theWorld.Add(a)
+ * a = Actor_Create("simple_actor")
+ * theWorld:Add(a)
  * \endcode
  * 
  * Yeah, it's not too exciting, but you don't have to recompile the engine 
- *  when you change it! Because Python has so many third-party libraries, you
- *  could potentially do some fancy stuff in here like set up a web server 
- *  that lets you debug your game remotely. Or not. 
+ *  when you change it! 
  * 
- * If you're not familiar with Python, Mark Pilgrim's <i><a 
- *  href="http://diveintopython.org/">Dive Into Python</a></i> is a good 
- *  start. 
+ * If you're not familiar with Lua, Roberto Ierusalimschy's <i><a 
+ *  href="http://www.lua.org/pil/">Programming in Lua</a></i> is a good 
+ *  start. (The online edition is for version 5.0, whereas we ship with 5.1. 
+ *  Most functionality is the same, but there are some differences, so if 
+ *  you want to dive into Lua further, be sure to track down a print copy.)
  * 
  * @subsection console In-Game Console
  * When you press the "~" button, the in-game console appears. This is, for
- *  most intents and purposes, a functional Python console. From here you 
+ *  most intents and purposes, a functional Lua console. From here you 
  *  can manipulate your world, create new Actors, modify existing ones, etc. 
  * 
  * It even has auto-complete. Pretty snazzy. 
- * 
- * @subsection python_subclasses Python Subclasses
- * For those who wish to get \b really fancy, we have some (not thoroughly
- *  tested) support for subclassing Angel within Python. This means you could,
- *  in your Python script, declare a class which derives from PhysicsActor, 
- *  add it to the World, and respond to Messages in Python. 
- * 
- * The possibilities boggle the mind. 
  * 
  * @section tuning Tuning
  * Very frequently while developing a game, you'll want the ability to change
@@ -1000,16 +992,17 @@
  *  doing this; hopefully one of them is a good fit to your workflow. 
  * 
  * If you look in your \c Config directory, you'll see a file called 
- *  \c tuning.ini. You can declare variables in here that will be available 
+ *  \c tuning.lua. You can declare variables in here that will be available 
  *  for easy tuning when the game runs. 
  * 
  * As an example, if you wanted to tune how high a character jumped, you 
  *  could put this in your tuning file: 
  * 
  * \code
- * [JumpHeight]
- * type=float
- * value=10.0
+ * JumpHeight = {
+ *   type = "float",
+ *   value = 10.0
+ * }
  * \endcode
  * 
  * Then, in your C++ code, in the function that handles jumping, you get 
@@ -1019,12 +1012,15 @@
  * float jumpHeight = theTuning.GetFloat("JumpHeight");
  * \endcode
  * 
- * (Python usage would look identical but without the type declaration and
- *  the semi-colon. :-) )
+ * Lua usage would looks nearly identical:
+ * 
+ * \code
+ * jumpHeight = theTuning:GetFloat("JumpHeight")
+ * \endcode
  * 
  * Now this doesn't seem like much of a win, since you could have just 
  *  \c #defined it at the top of your source file. But, if you edit this 
- *  \c tuning.ini file while the game is running, Angel will detect the 
+ *  \c tuning.lua file while the game is running, Angel will detect the 
  *  changes and alter the variable's value. 
  * 
  * If you prefer to stay in one program while tuning, we also provide some
@@ -1061,17 +1057,15 @@
  *  -> Post-Build Event and editing the command line there. Make sure you're 
  *  editing the Release configuration.) After the script runs you'll find a \c 
  *  Published directory sitting in your \c Release directory. It should 
- *  contain everything you need to run your game, including the Python 
- *  libraries you used (and \b only the Python libraries you used, to keep the 
- *  file size small). Let us know if you find that something is missing from 
- *  the \c Published directory so the publish script can be updated. 
+ *  contain everything you need to run your game. Let us know if you find 
+ *  that something is missing from the \c Published directory so the publish 
+ *  script can be updated. 
  * 
  * On the Mac, the publish script also runs when you build in Release, which
  *  you can disable by commenting out the appropriate lines in the "Run 
  *  Script" phase of your game's target. It produces a \c Published directory 
  *  in your \c build directory that should also contain everything you need
- *  to distribute your game. It even packages up a little miniature version 
- *  of your system's Python.framework containing only the stuff you need. 
+ *  to distribute your game. 
  * 
  * Both publish scripts also put the \c Attributions.txt and \c GameInfo.txt 
  *  alongside the executable for your game. The attributions file is important

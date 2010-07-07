@@ -50,17 +50,25 @@ void DemoScreenPathfinding::Start()
 	theSpatialGraph.CreateGraph(
 		0.75f, //The size of the entity you want to pathfind (so the generator
 		       //  can know how small a space can be and still have it fit.)
+			   // IMPORTANT NOTE: If this number is made smaller, the resuling 
+			   //  graph will be tighter, but take longer to generate. This
+			   //  difference is magnified in debug mode and, within reasonable
+			   //  sizes, is negligible when building for release. When creating
+			   //  your own games, this may be a variable worth tuning. 
 		bounds //The search area
 	);
 	
-	//Create a MazeFinder (class definition below), and put him in the bottom
-	//  left corner of the maze
-	MazeFinder *mf = new MazeFinder();
-	mf->SetPosition(-11.5, -8);
-	theWorld.Add(mf);
-	
-	//Send him to the upper right, watch him scurry
-	mf->GoTo(Vector2(11.5, 8));
+	//MazeFinder is a class that we've defined in IntroGame (as opposed to the
+	// Angel library itself). In order to use it as an actor definition (and 
+	// subsequently a level file), we have to let the scripting layer know about it.
+	// The file scripting_interface.i will get pulled in by SWIG when it creates the
+	// wrappings for Lua. Take a look there for instructions on how to get your own
+	// classes into the scripts. 
+	MazeFinder* mf = (MazeFinder*)Actor::GetNamed("RedRunner");
+	if (mf != NULL)
+	{
+		mf->GoTo(Vector2(11.5, 8));
+	}
 	
 	
 	
@@ -68,18 +76,18 @@ void DemoScreenPathfinding::Start()
 	#pragma region Demo housekeeping
 	String description = "This little dude is pathfinding through the area.";
 	description += "\n\nClick the mouse to give him a new target.";
-	description += "\n\nPress [B] to see the pathfinding graph.";
+	description += "\n\nPress [B] to see the pathfinding graph";
+	description += "\nor [Y] to see the current planned path.";
 	TextActor *t = new TextActor("Console", description);
 	t->SetAlignment(TXT_Center);
 	t->SetPosition(0.0f, -5.0f);
 	theWorld.Add(t);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenPathfinding.cpp");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenPathfinding.cpp, script_interface.i");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);
 	_objects.push_back(fileLoc);
 	_objects.push_back(t);
-	_objects.push_back(mf);
 	ActorSet walls = theTagList.GetObjectsTagged("maze_wall");
 	ActorSet::iterator it = walls.begin();
 	while (it != walls.end())
@@ -87,6 +95,7 @@ void DemoScreenPathfinding::Start()
 		_objects.push_back(*it);
 		it++;
 	}
+	_objects.push_back(mf);
 	#pragma endregion
 }
 
@@ -99,6 +108,19 @@ void DemoScreenPathfinding::Update(float dt)
 	else
 	{
 		theSpatialGraph.EnableDrawGraph(false);
+	}
+	
+	MazeFinder* mf = (MazeFinder*)Actor::GetNamed("MazeFinder");
+	if (mf != NULL)
+	{
+		if ((theController.IsConnected() && theController.IsYButtonDown()) || theInput.IsKeyDown('y'))
+		{	
+			mf->ToggleDrawPath(true);
+		}
+		else
+		{
+			mf->ToggleDrawPath(false);
+		}
 	}
 }
 
@@ -114,6 +136,9 @@ void DemoScreenPathfinding::MouseDownEvent(Vec2i screenCoordinates, MouseButtonI
 	theSwitchboard.Broadcast(m);
 }
 
+
+
+//Implementation of our AI to move through the maze towards specified points using A*.
 MazeFinder::MazeFinder()
 {
 	SetColor(1, 0, 0);
@@ -122,11 +147,16 @@ MazeFinder::MazeFinder()
 	theSwitchboard.SubscribeTo(this, "MazeFinderPathPointReached");
 	theSwitchboard.SubscribeTo(this, "MouseDown");
 	_pathIndex = 0;
+	_drawPath = false;
 }
 
 void MazeFinder::GoTo(Vector2 newDestination)
 {
 	Vector2List pathTest;
+
+	//GetPath() fills the pathTest variable with a sequence of valid points
+	// which make up the path from start to end. 
+	// All that's left for us to do is follow them. 
 	theSpatialGraph.GetPath(GetPosition(), newDestination, pathTest);
 	
 	if (pathTest.size() > 0)
@@ -137,24 +167,8 @@ void MazeFinder::GoTo(Vector2 newDestination)
 	}
 }
 
-void MazeFinder::ReceiveMessage(Message *message)
-{
-	if (message->GetMessageName() == "MazeFinderPathPointReached")
-	{
-		if (_pathIndex < _pathPoints.size() - 1)
-		{
-			GetToNextPoint();
-		}
-	}
-	else if (message->GetMessageName() == "MouseDown")
-	{
-		TypedMessage<Vec2i> *m = (TypedMessage<Vec2i>*)message;
-		Vec2i screenCoordinates = m->GetValue();
-		Vector2 worldCoordinates = MathUtil::ScreenToWorld(screenCoordinates);
-		GoTo(worldCoordinates);
-	}
-}
-
+//Called at the start and every point in between to set up the movement to our
+// next point in the path.
 void MazeFinder::GetToNextPoint()
 {
 	Vector2 next = _pathPoints[++_pathIndex];
@@ -164,3 +178,56 @@ void MazeFinder::GetToNextPoint()
 	MoveTo(next, time, false, "MazeFinderPathPointReached");
 }
 
+void MazeFinder::ReceiveMessage(Message *message)
+{
+	// Well get this PointReached message every time we hit a waypoint in the path.
+	//  Just sets us up to go the next point if there is one. 
+	if (message->GetMessageName() == "MazeFinderPathPointReached")
+	{
+		if (_pathIndex < _pathPoints.size() - 1)
+		{
+			GetToNextPoint();
+		}
+		else 
+		{
+			_pathPoints.clear();
+			_pathIndex = 0;
+		}
+
+	}
+
+	// When the player clicks, start a new path. 
+	else if (message->GetMessageName() == "MouseDown")
+	{
+		TypedMessage<Vec2i> *m = (TypedMessage<Vec2i>*)message;
+		Vec2i screenCoordinates = m->GetValue();
+		Vector2 worldCoordinates = MathUtil::ScreenToWorld(screenCoordinates);
+		GoTo(worldCoordinates);
+	}
+}
+
+void MazeFinder::ToggleDrawPath(bool draw)
+{
+	_drawPath = draw;
+}
+
+void MazeFinder::Render()
+{
+	if (_drawPath && _pathPoints.size() > 0)
+	{
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glLineWidth(10.0f);
+		for (unsigned int i=0; i < _pathPoints.size()-1; i++)
+		{
+			DrawLine(_pathPoints[i], _pathPoints[i+1]);
+		}
+		glLineWidth(5.0f);
+		glColor3f(0.0f, 0.0f, 0.0f);
+		for (unsigned int i=0; i < _pathPoints.size(); i++)
+		{
+			DrawCross(_pathPoints[i], 0.5f);
+		}
+		glLineWidth(1.0f);
+	}
+	Actor::Render();
+}

@@ -11,92 +11,66 @@ struct Vec2i
 	Vec2i() : X(0), Y(0) {}
 };
 
-#ifdef SWIGPYTHON
-//all this junk just lets us treat lists as Vectors
+#ifdef SWIGLUA
+%typemap(out) std::vector<Vector2>
+%{
+	{
+		lua_newtable(L);
+		if ($1.size() > 0)
+		{
+			for (unsigned int i=0; i <= $1.size(); i++)
+			{
+				lua_pushnumber(L, i);
+				SWIG_NewPointerObj(L, $i.at(i-1), SWIGTYPE_p_Vector2, 1);
+				lua_settable(L, -3);
+			}
+		}
+	
+		SWIG_arg += 1; 
+	}
+%}
+
 %typemap(in) Vector2
 {
-	bool error = false;
-	if (PyList_Check($input))
-	{
-		int arrLength = PyList_Size($input);
-		if (arrLength < 2)
-		{
-			error = true;
-		}
-		else
-		{
-			PyObject* px = PyList_GetItem($input, 0);
-			PyObject* py = PyList_GetItem($input, 1);
-			
-			float x, y;
-			if (PyFloat_Check(px))
-			{
-				x = PyFloat_AsDouble(px);
-			}
-			else if (PyInt_Check(px))
-			{
-				x = (float)PyInt_AsLong(px);
-			}
-			else
-			{
-				error = true;
-			}
-			
-			if (PyFloat_Check(py))
-			{
-				y = PyFloat_AsDouble(py);
-			}
-			else if (PyInt_Check(py))
-			{
-				y = (float)PyInt_AsLong(py);
-			}
-			else
-			{
-				error = true;
-			}
-			
-			if (!error)
-			{
-				$1 = Vector2(x, y);
-			}
-		}
-	}
-	else
-	{
-		error = true;
-	}
+	// convert table parameters to floats
+	lua_pushinteger(L, 1);
+	lua_gettable(L, $input);
+	float x = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	lua_pushinteger(L, 2);
+	lua_gettable(L, $input);
+	float y = lua_tonumber(L, -1);
+	lua_pop(L, 1);
 	
-	if (error)
-	{
-		int result;
-		void* arg_pointer;
-		result = SWIG_ConvertPtr($input, &arg_pointer, SWIGTYPE_p_Vector2,  0 );
-		if (!SWIG_IsOK(result)) {
-			%argument_fail(result,"$type", $symname, $argnum);
-		}  
-		if (!arg_pointer) {
-			%argument_nullref("$type", $symname, $argnum);
-		} else {
-			$1 = *(reinterpret_cast< Vector2 * >(arg_pointer));
-		}
-	}
+	// build the color
+	$1 = Vector2(x, y);
 }
 
 %typecheck(SWIG_TYPECHECK_POINTER) Vector2
 {
-	if (PyList_Check($input))
+	bool naturalVector = false;
+	void *ptr;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&ptr,SWIGTYPE_p_Vector2,0))) 
 	{
 		$1 = 1;
+		naturalVector = true;
 	}
-	else
+	
+	
+	if (!naturalVector)
 	{
-		PyObject* classType = PyObject_GetAttrString($input, "__class__");
-		PyObject* pythonName = PyObject_GetAttrString(classType, "__name__");
-		const char* className = PyString_AsString(pythonName);
-		int length = PyString_Size(pythonName);
-		if (strncmp("Vector2", className, length) == 0)
+		if (lua_istable(L, $input) && (luaL_getn(L, $input) >= 2))
 		{
-			$1 = 1;
+			// verify that at least the first two elements of the table contain numbers
+			lua_pushinteger(L, 1);
+			lua_gettable(L, $input);
+			int v1 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			lua_pushinteger(L, 2);
+			lua_gettable(L, $input);
+			int v2 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			$1 = (v1 && v2);
 		}
 		else
 		{
@@ -105,9 +79,6 @@ struct Vec2i
 	}
 }
 #endif
-
-typedef std::vector<Vector2>	VectorList;
-%template(VectorList)			std::vector<Vector2>;
 
 struct Vector2
 {

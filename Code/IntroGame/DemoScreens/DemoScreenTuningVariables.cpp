@@ -36,7 +36,7 @@ DemoScreenTuningVariables::DemoScreenTuningVariables()
 
 void DemoScreenTuningVariables::Update(float dt)
 {
-	// Tuning Variables are defined in the Config/tuning.ini file. We can
+	// Tuning Variables are defined in the Config/tuning.lua file. We can
 	//  access them at runtime by passing their name to theTuning singleton.
 	//  If you pass the name for a non-existant tuning variable, you'll get 
 	//  a reasonable default (0 for ints, 0.0f for floats, an empty string, and
@@ -48,12 +48,18 @@ void DemoScreenTuningVariables::Update(float dt)
 	
 	a->SetSize(0.5f + MathUtil::Abs(theTuning.GetFloat("BounceSize") * sin(0.5f*t))); // halve t since we are using abs
 	a->SetPosition(theTuning.GetFloat("BounceDist") * cos(0.5f*t), 0.f);
+
+	// You can also manually edit the tuning.lua file and the engine will attempt
+	//  to reload it roughly every second or so. (NOTE: if you've tuned a
+	//  variable from the console, its value in the file will be ignored. This is
+	//  almost certainly the behavior you want 99% of the time [think about it], 
+	//  but just so you don't think it's broken that other 1%.)
 }
 
 void DemoScreenTuningVariables::Start()
 {
 	// You can declare tuning variables at runtime as well. When you save
-	//  out the values by called SaveTuningVariables() from the console, they
+	//  out the values by calling SaveTuningVariables() from the console, they
 	//  will be written to the file. 
 	theTuning.SetFloat("BounceSize", 5.3f);
 	theTuning.SetFloat("BounceDist", 5.2f);
@@ -68,18 +74,17 @@ void DemoScreenTuningVariables::Start()
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-	String explanation = "This demo shows off tuning variables.";
-	explanation += "\nTuning variables can be edited in the console, written/read";
-	explanation += "\nvia ini files, and are accessible to C++ as well as Python.";
-	explanation += "\nOpen the console (~) and enter \"tune('BounceSize', 14.0)\".";
-	explanation += "\nThis screen also uses variables \"BouncePeriod\" and \"BounceDist\".";
-	explanation += "\nTry changing them!";
-	explanation += "\n\nTake a gander at the C++ source and the tuning.ini\nfile to see how they are defined and used.";
+	String explanation = "This demo shows off tuning variables.\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+	explanation += "Tuning variables can be edited in the console or via config files.";
+	explanation += "\n\nYou can edit the tuning.lua file during runtime and the engine";
+	explanation += "\nwill attempt to reload it.";
+	explanation += "\n\nOpen the console (~) and enter \"tune('BounceSize', 14.0)\".";
+	explanation += "\n(\"BouncePeriod\" and \"BounceDist\" are valid too.)";
 	t = new TextActor("Console", explanation);
-	t->SetPosition(0, -3.5f);
+	t->SetPosition(0, 6.5f);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenTuningVariables.cpp, tuning.ini, demo_actors.ini");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenTuningVariables.cpp, tuning.lua, demo_actors.lua");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

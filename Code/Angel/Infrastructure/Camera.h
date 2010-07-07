@@ -39,7 +39,7 @@
  * The Camera class is how you control what your players see at any time. 
  *  It uses the singleton pattern; you can't actually declare a new instance
  *  of a Camera. To access the Camera in your world, use "theCamera" to retrieve
- *  the singleton object. "theCamera" is defined in both C++ and Python. 
+ *  the singleton object. "theCamera" is defined in both C++ and Lua. 
  * 
  * If you're not familiar with the singleton pattern, this paper is a good 
  *  starting point. (Don't be afraid that it's written by Microsoft.)

@@ -133,6 +133,7 @@ void DemoScreenParticleActors::MouseDownEvent(Vec2i screenCoordinates, MouseButt
 	if (_isActive)
 	{
 		ParticleActor *oneOff = (ParticleActor*)Actor::Create("particle_demo");
+		if (oneOff){
 		oneOff->SetColor(0, 0, 1);
 		oneOff->SetSprite("Resources/Images/triangle.png");
 		//We can set the position to where the mouse click happened.
@@ -144,6 +145,7 @@ void DemoScreenParticleActors::MouseDownEvent(Vec2i screenCoordinates, MouseButt
 		
 		//Make sure to add it to the world!
 		theWorld.Add(oneOff);
+		}
 	}
 }
 

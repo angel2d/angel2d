@@ -28,7 +28,7 @@ class Switchboard
 public:
 	static Switchboard& GetInstance();
 	
-	%apply SWIGTYPE *ANGEL_DISOWN {Message* message};
+	%apply SWIGTYPE *DISOWN {Message* message};
 	void Broadcast(Message* message);
 	void DeferredBroadcast(Message* message, float delay);
 	%clear Message* message;

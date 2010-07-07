@@ -50,11 +50,15 @@ class MazeFinder : public Actor
 public:
 	MazeFinder();
 	void GoTo(Vector2 newDestination);
+	virtual void Render();
 	virtual void ReceiveMessage(Message *message);
+
+	void ToggleDrawPath(bool draw);
 	
 private:
 	Vector2List _pathPoints;
 	unsigned int _pathIndex;
+	bool _drawPath;
 	
 	void GetToNextPoint();
 };

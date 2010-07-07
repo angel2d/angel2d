@@ -43,7 +43,7 @@
  * Like the Camera and the World, it uses the singleton pattern; you can't 
  *  actually declare a new instance of a TagCollection. To access tags in 
  *  your world, use "theTagList" to retrieve the singleton object.  
- *  "theTagList" is defined in both C++ and Python. 
+ *  "theTagList" is defined in both C++ and Lua. 
  * 
  * If you're not familiar with the singleton pattern, this paper is a good 
  *  starting point. (Don't be afraid that it's written by Microsoft.)

@@ -39,7 +39,7 @@ void DemoScreenDefFile::Start()
 
 	//CreateActor loads up an Actor Definition file and makes the actor from it
 	a = Actor::Create("simple_actor"); //string is the file to load from -- 
-									   // must be located in Config/ActorDef and end with ".ini"
+									   // must be located in Config/ActorDef and end with ".lua"
 	
 	//You still need to add it to the world after it's been created
 	theWorld.Add(a);
@@ -52,7 +52,7 @@ void DemoScreenDefFile::Start()
 
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-	t = new TextActor("Console", "This Actor was placed using an archetype from an INI file.");
+	t = new TextActor("Console", "This Actor was placed using an archetype from an actor definition file.");
 	t->SetPosition(0, 4.5);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
@@ -60,7 +60,7 @@ void DemoScreenDefFile::Start()
 	t2->SetPosition(0, 3.5);
 	t2->SetAlignment(TXT_Center);
 	theWorld.Add(t2);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenDefFile.cpp, demo_actors.ini");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenDefFile.cpp, demo_actors.lua");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);

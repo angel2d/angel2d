@@ -42,7 +42,7 @@ void DemoScreenLayeredCollisionLevelFile::Start()
 	theWorld.NameLayer("foreground", 1);
 	theWorld.NameLayer("hud", 2);
 	
-	//Loads the file from Config\ActorDef\layeredcollisionlevel_demo.ini
+	//Loads the file from Config\ActorDef\layeredcollisionlevel_demo.lua
 	theWorld.LoadLevel("layeredcollisionlevel_demo");
 
 	//All the magic happens in the level file!
@@ -65,7 +65,7 @@ void DemoScreenLayeredCollisionLevelFile::Start()
 	t4->SetPosition(0, 3.5);
 	t4->SetAlignment(TXT_Center);
 	theWorld.Add(t4, 10);
-	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenLayeredCollisionLevelFile.cpp, layeredcollisionlevel_demo.ini");
+	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenLayeredCollisionLevelFile.cpp, layeredcollisionlevel_demo.lua");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc, 10);

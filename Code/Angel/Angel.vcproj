@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="Angel"
 	ProjectGUID="{D9A0401F-5FAF-483D-81EB-1066CD52F9D4}"
 	RootNamespace="Angel"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -17,7 +18,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(InputDir)$(ConfigurationName)"
+			OutputDirectory="$(ProjectDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
@@ -25,8 +26,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Generating Python Wrappers"
-				CommandLine="..\Tools\Python26\python.exe ..\Tools\BuildScripts\swig_wrap.py -p $(SolutionDir)"
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -46,14 +46,15 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Tools\Python26\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\Libraries\lua-5.1.4\src&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderThrough="stdafx.h"
 				WarningLevel="2"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 				DisableSpecificWarnings="4244"
 			/>
@@ -88,7 +89,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(InputDir)$(ConfigurationName)"
+			OutputDirectory="$(ProjectDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="1"
@@ -97,8 +98,7 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Generating Python Wrappers"
-				CommandLine="..\Tools\Python26\python.exe ..\Tools\BuildScripts\swig_wrap.py -p $(SolutionDir)"
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -117,12 +117,13 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Tools\Python26\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\Libraries\lua-5.1.4\src&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				RuntimeLibrary="2"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderThrough="stdafx.h"
 				WarningLevel="2"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				DisableSpecificWarnings="4244"
 			/>
@@ -503,6 +504,32 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Infrastructure\stdafx.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderFile="$(OutDir)\$(TargetName).pch"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderFile="$(OutDir)\$(TargetName).pch"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Infrastructure\stdafx.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Infrastructure\TagCollection.cpp"
 				>
 			</File>
@@ -568,14 +595,42 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Scripting"
+			Name="Messaging"
 			>
 			<File
-				RelativePath=".\Scripting\PythonModule.cpp"
+				RelativePath=".\Messaging\Message.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Scripting\PythonModule.h"
+				RelativePath=".\Messaging\Message.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Messaging\Switchboard.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Messaging\Switchboard.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Scripting"
+			>
+			<File
+				RelativePath=".\Scripting\LuaConsole.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Scripting\LuaConsole.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Scripting\LuaModule.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Scripting\LuaModule.h"
 				>
 			</File>
 			<Filter
@@ -587,14 +642,6 @@
 				</File>
 				<File
 					RelativePath=".\Scripting\Interfaces\angel.i"
-					>
-				</File>
-				<File
-					RelativePath=".\Scripting\Interfaces\AngelPythonWrapping.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Scripting\Interfaces\AngelPythonWrapping.h"
 					>
 				</File>
 				<File
@@ -658,42 +705,18 @@
 				Name="EngineScripts"
 				>
 				<File
-					RelativePath=".\Scripting\EngineScripts\angel_console.py"
+					RelativePath=".\Scripting\EngineScripts\conf_load.lua"
 					>
 				</File>
 				<File
-					RelativePath=".\Scripting\EngineScripts\conf_load.py"
+					RelativePath=".\Scripting\EngineScripts\start.lua"
 					>
 				</File>
 				<File
-					RelativePath=".\Scripting\EngineScripts\start.py"
-					>
-				</File>
-				<File
-					RelativePath=".\Scripting\EngineScripts\sugar.py"
+					RelativePath=".\Scripting\EngineScripts\sugar.lua"
 					>
 				</File>
 			</Filter>
-		</Filter>
-		<Filter
-			Name="Messaging"
-			>
-			<File
-				RelativePath=".\Messaging\Message.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Messaging\Message.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Messaging\Switchboard.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Messaging\Switchboard.h"
-				>
-			</File>
 		</Filter>
 		<File
 			RelativePath=".\Angel.h"

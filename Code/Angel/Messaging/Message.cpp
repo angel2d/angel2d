@@ -27,8 +27,9 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../Messaging/Message.h"
-
+#include "../Messaging/Switchboard.h"
 
 Message::Message()
 {
@@ -50,4 +51,15 @@ const String Message::GetMessageName()
 const MessageListener* Message::GetSender()
 {
 	return _sender;
+}
+
+MessageListener::~MessageListener()
+{
+	StringSet subs = theSwitchboard.GetSubscriptionsFor(this);
+	StringSet::iterator it = subs.begin();
+	while (it != subs.end())
+	{
+		theSwitchboard.UnsubscribeFrom(this, *it);
+		++it;
+	}
 }

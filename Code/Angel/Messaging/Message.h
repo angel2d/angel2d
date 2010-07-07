@@ -144,7 +144,7 @@ protected:
 class MessageListener
 {
 public:
-	virtual ~MessageListener() {}
+	virtual ~MessageListener();
 	
 	/**
 	 * The Switchboard class will call this function for every Message to 

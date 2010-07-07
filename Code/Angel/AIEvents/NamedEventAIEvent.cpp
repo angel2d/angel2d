@@ -27,6 +27,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
+#include "stdafx.h"
 #include "../AIEvents/NamedEventAIEvent.h"
 
 NamedEventAIEvent* NamedEventAIEvent::Initialize( const String& eventId, StringList* eventIdList )
