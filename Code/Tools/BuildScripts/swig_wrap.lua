@@ -100,9 +100,9 @@ if (pl.path.exists(WRAPPER_SOURCE) and not args.force_regeneration) then
   local update = false
   for _, f in pairs(files) do
     -- oh, hardcoded nonsense, how i love you
-    if     (args.define == "INTROGAME" and f == "inheritance_intro.i") then
+    if     (args.define == "INTROGAME" and f == "inheritance.i") then
       -- print("Skipping " .. f)
-    elseif (args.define ~= "INTROGAME" and f == "inheritance.i") then
+    elseif (args.define ~= "INTROGAME" and f == "inheritance_intro.i") then
       -- print("Skipping " .. f)
     else
       if (pl.path.exists(pl.path.join(INTERFACE_DIRECTORY, f))) then
