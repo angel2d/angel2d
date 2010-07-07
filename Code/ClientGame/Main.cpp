@@ -16,8 +16,6 @@ int main(int argc, char* argv[])
 	theWorld.Add(new GridActor(), -1);
 	
 	//YOUR GAME SETUP CODE HERE
-	const char* verStr = (const char*)glGetString(GL_VERSION);
-	std::cout << verStr << std::endl;
 	
 	
 	
