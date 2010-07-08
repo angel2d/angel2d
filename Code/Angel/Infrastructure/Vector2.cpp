@@ -136,9 +136,9 @@ void Vector2::Normalize()
 
 /*static*/ Vector2 Vector2::Rotate(const Vector2& value, const float radians)
 {
-    float c = cos(radians);
-    float s = sin(radians);
-    return Vector2(value.X*c-value.Y*s,value.Y*c+value.X*s);
+	float c = cos(radians);
+	float s = sin(radians);
+	return Vector2(value.X*c-value.Y*s,value.Y*c+value.X*s);
 }
 
 bool Vector2::operator==(const Vector2 &v) const
@@ -178,30 +178,30 @@ Vector2 Vector2::operator*(float scaleFactor) const
 
 Vector2& Vector2::operator+=(const Vector2 &v)
 {
-    X += v.X;
-    Y += v.Y;
-    return *this;
+	X += v.X;
+	Y += v.Y;
+	return *this;
 }
 
 Vector2& Vector2::operator-=(const Vector2 &v)
 {
-    X -= v.X;
-    Y -= v.Y;
-    return *this;
+	X -= v.X;
+	Y -= v.Y;
+	return *this;
 }
 
 Vector2& Vector2::operator*=(float scaleFactor)
 {
-    X *= scaleFactor;
-    Y *= scaleFactor;
-    return *this;
+	X *= scaleFactor;
+	Y *= scaleFactor;
+	return *this;
 }
 
 Vector2& Vector2::operator/=(float scaleFactor)
 {
-    X /= scaleFactor;
-    Y /= scaleFactor;
-    return *this;
+	X /= scaleFactor;
+	Y /= scaleFactor;
+	return *this;
 }
 
 

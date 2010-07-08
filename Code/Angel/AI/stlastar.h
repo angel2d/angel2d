@@ -249,7 +249,7 @@ public: // methods
 			if( !ret )
 			{
 
-			    typename vector< Node * >::iterator successor;
+				typename vector< Node * >::iterator successor;
 
 				// free the nodes that may previously have been added 
 				for( successor = m_Successors.begin(); successor != m_Successors.end(); successor ++ )

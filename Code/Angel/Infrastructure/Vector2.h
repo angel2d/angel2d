@@ -237,8 +237,8 @@ struct Vector2
 	Vector2 operator/(float divider) const;
 	Vector2 operator*(float scaleFactor) const;
 
-    Vector2& operator+=(const Vector2 &v);
-    Vector2& operator-=(const Vector2 &v);
-    Vector2& operator*=(float f);
-    Vector2& operator/=(float f);
+	Vector2& operator+=(const Vector2 &v);
+	Vector2& operator-=(const Vector2 &v);
+	Vector2& operator*=(float f);
+	Vector2& operator/=(float f);
 };

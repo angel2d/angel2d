@@ -58,7 +58,7 @@ Actor::Actor()
 	_spriteCurrentFrame = 0;
 	_spriteTextureReferences[0] = -1; 
 	_spriteFrameDelay = 0.0f;
-    _displayListIndex = -1;
+	_displayListIndex = -1;
 
 	_layer = 0;
 

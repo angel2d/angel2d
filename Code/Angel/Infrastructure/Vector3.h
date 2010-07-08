@@ -245,8 +245,8 @@ struct Vector3
 	Vector3 operator/(float divider) const;
 	Vector3 operator*(float scaleFactor) const;
 
-    Vector3& operator+=(const Vector3 &v);
-    Vector3& operator-=(const Vector3 &v);
-    Vector3& operator*=(float f);
-    Vector3& operator/=(float f);
+	Vector3& operator+=(const Vector3 &v);
+	Vector3& operator-=(const Vector3 &v);
+	Vector3& operator*=(float f);
+	Vector3& operator/=(float f);
 };

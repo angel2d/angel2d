@@ -247,29 +247,29 @@ void Controller::Setup()
 				if (strcmp(name, "Microsoft X-Box 360 pad") == 0)
 				{
 					if (_controllerID == 0)
-			      		{
+					{
 						_ffFD = fd;
 						break;
-			      		}
-			    		else
-			      		{
+					}
+					else
+					{
 						if (foundFirstController)
-				  		{
-				    			_ffFD = fd;
-				    			break;
-				  		}
+						{
+							_ffFD = fd;
+							break;
+						}
 						else
-				  		{
-				    			foundFirstController = true;
-				    			close(fd);
-				  		}
-			      		}
-			  	}
+						{
+							foundFirstController = true;
+							close(fd);
+						}
+					}
+				}
 				else
-			  	{
-			    		close(fd);
-			  	}
-		      	}
+				{
+					close(fd);
+				}
+			}
 		}
 		if (_ffFD < 0)
 		{
@@ -277,12 +277,12 @@ void Controller::Setup()
 		}
 		else
 		{
-		  	_ffEffect.type = FF_RUMBLE;
-		  	_ffEffect.id = -1;
-		  	_ffEffect.u.rumble.strong_magnitude = 0;
-		  	_ffEffect.u.rumble.weak_magnitude = 0;
-		  	_ffEffect.replay.length = 0x7fff;
-		  	_ffEffect.replay.delay = 0;
+			_ffEffect.type = FF_RUMBLE;
+			_ffEffect.id = -1;
+			_ffEffect.u.rumble.strong_magnitude = 0;
+			_ffEffect.u.rumble.weak_magnitude = 0;
+			_ffEffect.replay.length = 0x7fff;
+			_ffEffect.replay.delay = 0;
 			_ffPlay.type = EV_FF;
 			_ffPlay.value = 1;
 		}
@@ -374,95 +374,95 @@ void Controller::UpdateState()
 		{
 			switch (js.type)
 			{
-		      		case JS_EVENT_BUTTON:
+				case JS_EVENT_BUTTON:
 					unsigned int currButton;
 					switch (js.number)
-			  		{
-			  			case 0:
-			    				currButton = XINPUT_GAMEPAD_A;
-			    				break;
-			  			case 1:
-			    				currButton = XINPUT_GAMEPAD_B;
-			    				break;
-			  			case 2:
-			    				currButton = XINPUT_GAMEPAD_X;
-			    				break;
-			  			case 3:
-			    				currButton = XINPUT_GAMEPAD_Y;
-			    				break;
-			  			case 4:
-			    				currButton = XINPUT_GAMEPAD_LEFT_SHOULDER;
-			    				break;
-			  			case 5:
-			    				currButton = XINPUT_GAMEPAD_RIGHT_SHOULDER;
-			    				break;
-			  			case 6:
-			    				currButton = XINPUT_GAMEPAD_START;
-			    				break;
+					{
+						case 0:
+							currButton = XINPUT_GAMEPAD_A;
+							break;
+						case 1:
+							currButton = XINPUT_GAMEPAD_B;
+							break;
+						case 2:
+							currButton = XINPUT_GAMEPAD_X;
+							break;
+						case 3:
+							currButton = XINPUT_GAMEPAD_Y;
+							break;
+						case 4:
+							currButton = XINPUT_GAMEPAD_LEFT_SHOULDER;
+							break;
+						case 5:
+							currButton = XINPUT_GAMEPAD_RIGHT_SHOULDER;
+							break;
+						case 6:
+							currButton = XINPUT_GAMEPAD_START;
+							break;
 						case 7:
-			  				// Big 'X' button - not used.
+							// Big 'X' button - not used.
 							continue;
-			  			case 8:
+						case 8:
 							currButton = XINPUT_GAMEPAD_LEFT_THUMB;
 							break;
 						case 9:
-			    				currButton = XINPUT_GAMEPAD_RIGHT_THUMB;
-			    				break;
-			  			case 10:
-			    				currButton = XINPUT_GAMEPAD_BACK;
-			    				break;
-			  			default:
-			    				sysLog.Printf("Error! Unknown button press event received!\n");
-			    				continue;
-			  		}
+							currButton = XINPUT_GAMEPAD_RIGHT_THUMB;
+							break;
+						case 10:
+							currButton = XINPUT_GAMEPAD_BACK;
+							break;
+						default:
+							sysLog.Printf("Error! Unknown button press event received!\n");
+							continue;
+					}
 					if (js.value) // button pressed
-			  			_currentControllerInput.Buttons |= currButton;
+						_currentControllerInput.Buttons |= currButton;
 					else // button released
-			  			_currentControllerInput.Buttons &= ~currButton;
+						_currentControllerInput.Buttons &= ~currButton;
 					break;
-		      		case JS_EVENT_AXIS:
+					case JS_EVENT_AXIS:
 					switch (js.number)
-			  		{
-			  			case 0:
-			    				_currentControllerInput.LeftThumbstickX = js.value;
-			    				break;
-			  			case 1:
-			    				_currentControllerInput.LeftThumbstickY = -js.value;
-			    				break;
-			  			case 2:
-			    				_currentControllerInput.LeftTriggerValue = js.value;
-			    				break;
-			  			case 3:
-			    				_currentControllerInput.RightThumbstickX = js.value;
-			    				break;
-			  			case 4:
-			    				_currentControllerInput.RightThumbstickY = -js.value;
-			    				break;
-			  			case 5:
-			    				_currentControllerInput.RightTriggerValue = js.value;
-			    				break;
-			  			case 6:
-			    				if (js.value == 0)
-			      					_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_LEFT & XINPUT_GAMEPAD_DPAD_RIGHT);
-			    				else if (js.value < 0)
-			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_LEFT;
-			    				else
-			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_RIGHT;
-			    				break;
-			  			case 7:
-			    				if (js.value == 0)
-			      					_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_UP & XINPUT_GAMEPAD_DPAD_DOWN);
-			    				else if (js.value < 0)
-			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_UP;
-			    				else
-			      					_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_DOWN;
-			    				break;
-			  			default:
-			    				sysLog.Printf("Error! Unknown axis event received!\n");
-			    				break;
-			  		}
+					{
+						case 0:
+							_currentControllerInput.LeftThumbstickX = js.value;
+							break;
+						case 1:
+							_currentControllerInput.LeftThumbstickY = -js.value;
+							break;
+						case 2:
+							_currentControllerInput.LeftTriggerValue = js.value;
+							break;
+						case 3:
+							_currentControllerInput.RightThumbstickX = js.value;
+							break;
+						case 4:
+							_currentControllerInput.RightThumbstickY = -js.value;
+							break;
+						case 5:
+							_currentControllerInput.RightTriggerValue = js.value;
+							break;
+						case 6:
+							if (js.value == 0)
+								_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_LEFT & XINPUT_GAMEPAD_DPAD_RIGHT);
+							else if (js.value < 0)
+								_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_LEFT;
+							else
+								_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_RIGHT;
+							break;
+						case 7:
+							if (js.value == 0)
+								_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_UP & XINPUT_GAMEPAD_DPAD_DOWN);
+							else if (js.value < 0)
+								_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_UP;
+							else
+								_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_DOWN;
+							break;
+						default:
+							sysLog.Printf("Error! Unknown axis event received!\n");
+							break;
+					}
 					break;
-		      		default:
+					default:
 					break;
 			}
 		}

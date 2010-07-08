@@ -56,8 +56,8 @@ enum spriteAnimationType
 
 enum actorDrawShape
 {
-    ADS_Square,
-    ADS_Circle
+	ADS_Square,
+	ADS_Circle
 };
 
 class Actor : public Renderable, public MessageListener 

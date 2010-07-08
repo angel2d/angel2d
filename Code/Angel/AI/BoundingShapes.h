@@ -49,7 +49,7 @@ struct BoundingBox
 	BoundingBox() {}
 
 	Vector2 Centroid() const;
-    Vector2 HalfLength() const;
+	Vector2 HalfLength() const;
 
 	static BoundingBox CreateMerged(const BoundingBox& original, const BoundingBox& additional);
 
@@ -58,7 +58,7 @@ struct BoundingBox
 
 	bool Intersects(const BoundingBox& box) const;
 	bool Intersects(const Ray2& ray, float& distanceAlongRay) const;
-    bool Intersects(const Vector2& point, float radius) const;
+	bool Intersects(const Vector2& point, float radius) const;
 
 	ContainmentType Contains(const BoundingBox& box) const;
 	bool Contains(const Vector2& point) const;

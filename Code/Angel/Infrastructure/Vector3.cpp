@@ -177,34 +177,34 @@ Vector3 Vector3::operator*(float scaleFactor) const
 
 Vector3& Vector3::operator+=(const Vector3 &v)
 {
-    X += v.X;
-    Y += v.Y;
-    Z += v.Z;
-    return *this;
+	X += v.X;
+	Y += v.Y;
+	Z += v.Z;
+	return *this;
 }
 
 Vector3& Vector3::operator-=(const Vector3 &v)
 {
-    X -= v.X;
-    Y -= v.Y;
-    Z -= v.Z;
-    return *this;
+	X -= v.X;
+	Y -= v.Y;
+	Z -= v.Z;
+	return *this;
 }
 
 Vector3& Vector3::operator*=(float scaleFactor)
 {
-    X *= scaleFactor;
-    Y *= scaleFactor;
-    Z *= scaleFactor;
-    return *this;
+	X *= scaleFactor;
+	Y *= scaleFactor;
+	Z *= scaleFactor;
+	return *this;
 }
 
 Vector3& Vector3::operator/=(float scaleFactor)
 {
-    X /= scaleFactor;
-    Y /= scaleFactor;
-    Z /= scaleFactor;
-    return *this;
+	X /= scaleFactor;
+	Y /= scaleFactor;
+	Z /= scaleFactor;
+	return *this;
 }
 
 
