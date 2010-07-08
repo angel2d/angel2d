@@ -95,6 +95,15 @@ void HandleDevILErrors(String errorPrefix="")
 	}
 }
 
+void ClearDevILErrors()
+{
+	ILenum error = ilGetError();
+	while (error != IL_NO_ERROR)
+	{
+		error = ilGetError();
+	}
+}
+
 // Modified from the ilut source file for GLBind
 GLuint BindTexImageWithClampAndFilter(GLint ClampMode, GLint FilterMode)
 {
@@ -115,7 +124,8 @@ GLuint BindTexImageWithClampAndFilter(GLint ClampMode, GLint FilterMode)
 	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 	glPixelStorei(GL_UNPACK_SWAP_BYTES, IL_FALSE);
 
-	if (!ilutGLTexImage(0)) {
+	if (!ilutGLTexImage(0)) 
+	{
 		glDeleteTextures(1, &TexID);
 		return 0;
 	}
@@ -151,13 +161,19 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 	ilGenImages(1, &imgRef);
 	ilBindImage(imgRef);
 
-	// Load it up, log any errors
+	// Load it up, log any errors if we need to
 	if (!ilLoadImage(filename.c_str()))
 	{
 		if (!optional)
 		{
 			HandleDevILErrors(filename);
 		}
+		else 
+		{
+			ClearDevILErrors();
+		}
+
+		ilDeleteImages(1, &imgRef);
 		return -1;
 	}
 
@@ -188,7 +204,6 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 	}
 	
 	return texRef;
-
 }
 
 bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance)
