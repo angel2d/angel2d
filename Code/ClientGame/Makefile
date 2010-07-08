@@ -15,7 +15,7 @@ INCLUDE = 							\
 	-I../Angel/Libraries/FMOD/inc 				\
 	-I../Angel/Libraries/FTGL/include			\
 	-I../Angel/Libraries/lua-5.1.4/src			\
-	-I/usr/include/freetype2				\
+	-I/usr/include/freetype2
 
 LIBS = 									\
 	$(LIBANGEL)							\

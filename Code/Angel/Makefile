@@ -17,7 +17,7 @@ INCLUDE = 							\
 	-ILibraries/FTGL/include				\
 	-ILibraries/lua-5.1.4/src				\
 	-IInfrastructure					\
-	-I/usr/include/freetype2				
+	-I/usr/include/freetype2
 
 LIBS = 								\
 	Libraries/glfw/lib/x11/libglfw.a			\
