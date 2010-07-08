@@ -38,7 +38,6 @@ DemoScreenParticleActors::DemoScreenParticleActors()
 
 void DemoScreenParticleActors::Start()
 {
-	// Create the particle actor via the Actor Definition system (.adf files)
 	pa = new ParticleActor();
 	pa->SetColor(1.0f, 1.0f, 1.0f);  //Sets the initial color of the particles. 
 									 // Since the image file we'll be using already
@@ -132,19 +131,22 @@ void DemoScreenParticleActors::MouseDownEvent(Vec2i screenCoordinates, MouseButt
 {
 	if (_isActive)
 	{
+		// Create the particle actor via the Actor Definition system
 		ParticleActor *oneOff = (ParticleActor*)Actor::Create("particle_demo");
-		if (oneOff){
-		oneOff->SetColor(0, 0, 1);
-		oneOff->SetSprite("Resources/Images/triangle.png");
-		//We can set the position to where the mouse click happened.
-		oneOff->SetPosition(MathUtil::ScreenToWorld(screenCoordinates.X, screenCoordinates.Y));
+		if (oneOff)
+		{
+			// Note we can still change properties of actors loaded as definitions
+			oneOff->SetColor(0, 0, 1);
+			oneOff->SetSprite("Resources/Images/triangle.png");
+			//We can set the position to where the mouse click happened.
+			oneOff->SetPosition(MathUtil::ScreenToWorld(screenCoordinates.X, screenCoordinates.Y));
 
-		//The system will remove itself from the world and deallocate its memory
-		//  when the lifetime ends. (If it's 0.0, it's assumed to be infinite.)
-		oneOff->SetSystemLifetime(1.0f);
-		
-		//Make sure to add it to the world!
-		theWorld.Add(oneOff);
+			//The system will remove itself from the world and deallocate its memory
+			//  when the lifetime ends. (If it's 0.0, it's assumed to be infinite.)
+			oneOff->SetSystemLifetime(1.0f);
+			
+			//Make sure to add it to the world!
+			theWorld.Add(oneOff);
 		}
 	}
 }
