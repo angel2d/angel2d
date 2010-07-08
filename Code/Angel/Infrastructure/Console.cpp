@@ -132,7 +132,7 @@ bool Console::GetInput( int key )
 		
 		if (_cursorPos < oldInput.length())
 		{
-		    _currentInput += oldInput.substr(_cursorPos, oldInput.length());
+			_currentInput += oldInput.substr(_cursorPos, oldInput.length());
 		}
 		
 		++_cursorPos;
@@ -216,11 +216,11 @@ bool Console::GetSpecialInputDown( int key )
 	}
 	else if( key == GLFW_KEY_END )
 	{
-	    _cursorPos = _currentInput.length();
+		_cursorPos = _currentInput.length();
 	}
 	else if( key == GLFW_KEY_HOME )
 	{
-	    _cursorPos = 0;
+		_cursorPos = 0;
 	}
 	//TODO: Restore
 	//else if( key == GLFW_KEY_PAGEUP )
@@ -301,7 +301,7 @@ void Console::AcceptCurrentInput()
 		_inputHistoryPos = _inputHistory.size();
 	}
 	_currentInput = "";
-    _cursorPos = 0;
+	_cursorPos = 0;
 }
 
 void Console::AcceptAutocomplete()
@@ -337,7 +337,7 @@ void Console::AcceptAutocomplete()
 	}
 
 	_currentInput = _autoCompleteList[found];
-    _cursorPos = _currentInput.length();
+	_cursorPos = _currentInput.length();
 }
 
 void Console::AdvanceInputHistory(int byVal)

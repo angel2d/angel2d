@@ -80,8 +80,10 @@ void HUDActor::Render()
 			glBegin(GL_TRIANGLE_FAN);
 			glVertex2f(0, 0);
 			for (float i = 0; i <= NUM_SECTIONS; i++)
+			{
 				glVertex2f(0.5f*cos((float) MathUtil::TwoPi * i / NUM_SECTIONS), 0.5f*sin((float) MathUtil::TwoPi * i / NUM_SECTIONS));
-            glEnd();
+			}
+			glEnd();
 			break;
 	}
 	

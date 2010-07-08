@@ -62,7 +62,7 @@ Actor::Actor()
 
 	_layer = 0;
 
-    _drawShape = ADS_Square;
+	_drawShape = ADS_Square;
 }
 
 Actor::~Actor()
