@@ -41,7 +41,7 @@ RenderableIterator& RenderableIterator::begin()
 	_layerIterator = theWorld.GetLayers().begin();
 	while ((_layerIterator->second.size() == 0))
 	{
-		if (_layerIterator != theWorld.GetLayers().end())
+		if (_layerIterator == theWorld.GetLayers().end())
 		{
 			return end();
 		}
