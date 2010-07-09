@@ -109,8 +109,8 @@ function recursive_copy(src, dst)
   for _, name in pairs(names) do
     if (not _isdotfile(name)) then
       name = pl.path.basename(name)
-      local srcname = pl.path.join(src, name)
-      local dstname = pl.path.join(dst, name)
+      local srcname = fulljoin(src, name)
+      local dstname = fulljoin(dst, name)
       copyfile(srcname, dstname)
     end
   end
@@ -118,8 +118,8 @@ function recursive_copy(src, dst)
   local dirs = pl.dir.getdirectories(src, "")
   for _, dirname in pairs(dirs) do
     dirname = pl.path.basename(dirname)
-    local srcname = pl.path.join(src, dirname)
-    local dstname = pl.path.join(dst, dirname)
+    local srcname = fulljoin(src, dirname)
+    local dstname = fulljoin(dst, dirname)
     recursive_copy(srcname, dstname)
   end
 end
@@ -133,10 +133,24 @@ function string:split(sep)
 end
 
 -- <sigh> the penlight library only joins paths one at a time. :-(
+--  (this also corrects for its inability to deal with quoted paths)
 function fulljoin(...)
+  local isQuoted = false
+  -- check to see if any of the paths have quotes in them
+  for i, v in ipairs(arg) do
+    if (v:find('"')) then
+      isQuoted = true
+      arg[i] = v:gsub('"', '')
+    end
+  end
+
   local for_return = ""
   for i, v in ipairs(arg) do
     for_return = pl.path.join(for_return, v)
+  end
+
+  if (isQuoted) then
+    for_return = '"' .. for_return .. '"'
   end
   return for_return
 end
@@ -167,7 +181,7 @@ end
 function get_swig_path()
   if (pl.path.is_windows) then
     -- we're on windows, use the distributed swig
-    return fulljoin(pl.path.dirname(get_file_location()), "..", "swigwin-1.3.36", "swig.exe")
+    return "..\\swigwin-1.3.36\\swig.exe" 
   end
   
   local ports_path = "/opt/local/bin/swig"
@@ -193,22 +207,24 @@ function generate_typemaps(interface_directory, additional_define)
   local junkfile = fulljoin(interface_directory, "..", "..", "..", "Tools", "BuildScripts", "build_cache", "swigout.txt")
   local inheritance_file = ""
   if (additional_define == "INTROGAME") then
-    inheritance_file = pl.path.join(interface_directory, "inheritance_intro.i")
+    inheritance_file = fulljoin(interface_directory, "inheritance_intro.i")
   else
-    inheritance_file = pl.path.join(interface_directory, "inheritance.i")
+    inheritance_file = fulljoin(interface_directory, "inheritance.i")
   end
   if (not pl.path.exists(inheritance_file)) then
     -- need to make sure we have at least a blank file for swig to include 
     --  when it runs to get the type data
-    local inheritance_handle = assert(io.open(inheritance_file, "w"))
+    local inheritance_handle = assert(io.open(inheritance_file:gsub('"', ''), "w"))
     inheritance_handle:close()
   end
   local swig_options = ""
   if (additional_define ~= nil) then
     swig_options = swig_options .. " -D" .. additional_define
   end
-  swig_options = swig_options .. " -c++ -lua -Werror -debug-typedef -I" .. interface_directory .. " -o " .. junkfile .. " " .. pl.path.join(interface_directory, "angel.i")
-  local f = assert(io.popen(swig .. swig_options, 'r'))
+  swig_options = swig_options .. " -c++ -lua -Werror -debug-typedef -I" .. interface_directory .. " -o " .. junkfile .. " " .. fulljoin(interface_directory, "angel.i")
+  
+  local exe_string = swig .. swig_options
+  local f = assert(io.popen(exe_string, 'r'))
   local s = assert(f:read('*a'))
   f:close()
   
@@ -265,11 +281,11 @@ function generate_typemaps(interface_directory, additional_define)
   
   local out_string = "%include <factory.i>\n\n" .. table.concat(out_strings, "\n")
   
-  local out_file = io.open(inheritance_file, "r")
+  local out_file = io.open(inheritance_file:gsub('"', ''), "r")
   local current_file = out_file:read("*a")
   out_file:close()
   if (current_file ~= out_string) then
-    out_file = io.open(inheritance_file, "w")
+    out_file = io.open(inheritance_file:gsub('"', ''), "w")
     out_file:write(out_string)
     out_file:close()
   end

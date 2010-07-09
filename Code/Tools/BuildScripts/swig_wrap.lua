@@ -50,6 +50,11 @@ local args = pl.lapp [[
     -f,--force_regeneration Whether or not to just force a reneration of the wrappings.
   ]]
 
+-- add the quotes if we'll need them later
+if (args.project_directory:find(' ')) then
+  args.project_directory = '"' .. args.project_directory .. '"'
+end
+
 local INTERFACE_DIRECTORY = fulljoin(args.project_directory, "Angel", "Scripting", "Interfaces")
 local MASTER_FILE = "angel.i"
 local WRAPPER_FILE = ""
@@ -58,8 +63,8 @@ if (args.define == "INTROGAME") then
 else
   WRAPPER_FILE = "AngelLuaWrapping.cpp"
 end
-local AGGREGATE_INTERFACE = pl.path.join(INTERFACE_DIRECTORY, MASTER_FILE)
-local WRAPPER_SOURCE = pl.path.join(INTERFACE_DIRECTORY, WRAPPER_FILE)
+local AGGREGATE_INTERFACE = fulljoin(INTERFACE_DIRECTORY, MASTER_FILE)
+local WRAPPER_SOURCE = fulljoin(INTERFACE_DIRECTORY, WRAPPER_FILE)
 
 local SWIG_PATH = get_swig_path()
 local SWIG_OPTIONS = ""
@@ -70,7 +75,7 @@ local SWIG_OPTIONS = SWIG_OPTIONS .. " -c++ -lua -Werror -I" .. INTERFACE_DIRECT
 
 lfs.chdir(fulljoin(args.project_directory, "Tools", "BuildScripts"))
 
-if (not pl.path.exists(AGGREGATE_INTERFACE)) then
+if (not pl.path.exists(AGGREGATE_INTERFACE:gsub('"', ''))) then
   io.stderr:write("ERROR: Couldn't find " .. AGGREGATE_INTERFACE .. ".\n")
   os.exit(1)
 end
@@ -83,7 +88,7 @@ end
 
 local should_regenerate = false
 
-local interface_file = io.open(AGGREGATE_INTERFACE, 'r')
+local interface_file = io.open(AGGREGATE_INTERFACE:gsub('"', ''), 'r')
 
 local files = {}
 for line in interface_file:lines() do
@@ -105,8 +110,8 @@ if (pl.path.exists(WRAPPER_SOURCE) and not args.force_regeneration) then
     elseif (args.define ~= "INTROGAME" and f == "inheritance_intro.i") then
       -- print("Skipping " .. f)
     else
-      if (pl.path.exists(pl.path.join(INTERFACE_DIRECTORY, f))) then
-        if (wrapper_modification < lfs.attributes(pl.path.join(INTERFACE_DIRECTORY, f), "modification")) then
+      if (pl.path.exists(fulljoin(INTERFACE_DIRECTORY, f))) then
+        if (wrapper_modification < lfs.attributes(fulljoin(INTERFACE_DIRECTORY, f), "modification")) then
           update = true
           print("At least " .. f .. " was newer than " .. WRAPPER_FILE .. " -- touching " .. MASTER_FILE .. " and regenerating " .. WRAPPER_FILE)
           lfs.touch(AGGREGATE_INTERFACE)

@@ -26,7 +26,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Scripting setup..."
-				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -p $(SolutionDir) -D INTROGAME&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -D INTROGAME -p &quot;$(SolutionDir)&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -114,7 +114,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Scripting setup..."
-				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -p $(SolutionDir) -D INTROGAME&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -D INTROGAME -p &quot;$(SolutionDir)&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
