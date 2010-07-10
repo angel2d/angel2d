@@ -3,7 +3,7 @@ TARGET = IntroGame
 ARCH := $(shell uname -m)
 ALLEGRO_LIBS := $(shell allegro-config --libs 2>/dev/null)
 CWD := $(shell pwd)
-CODE_DIR := $(shell dirname $(CWD))
+CODE_DIR := $(shell dirname "$(CWD)")
 LIBANGEL = ../Angel/libangel.a
 LUA = ../Angel/Libraries/angel-lua-build/lua
 WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrappingIntroGame.cpp
@@ -71,7 +71,7 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 all: $(TARGET)
 
 $(WRAPPER):
-	$(LUA) ../Tools/BuildScripts/swig_wrap.lua -p $(CODE_DIR) -D INTROGAME
+	$(LUA) ../Tools/BuildScripts/swig_wrap.lua -p "$(CODE_DIR)" -D INTROGAME
 
 $(TARGET): $(LIBANGEL) $(OBJS) $(SYSOBJS) $(WRAPPER)
 	$(CXX) -o $@ $(OBJS) $(SYSOBJS) $(LIBS) $(SHLIBS)

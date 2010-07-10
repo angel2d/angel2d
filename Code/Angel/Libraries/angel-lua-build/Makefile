@@ -5,16 +5,14 @@ AR = ar rcu
 RANLIB = ranlib
 LIBNAME = liblua.a
 EXENAME = lua
-CWD := $(shell pwd)
-BASE_DIR   := $(shell dirname $(CWD))
-LUA_DIR    := $(BASE_DIR)/lua-5.1.4/src
-LUA_EX_DIR := $(BASE_DIR)/lua-libs/lua-ex/posix
-LUA_FS_DIR := $(BASE_DIR)/lua-libs/luafilesystem-1.5.0/src
+LUA_DIR    := ../lua-5.1.4/src
+LUA_EX_DIR := ../lua-libs/lua-ex/posix
+LUA_FS_DIR := ../lua-libs/luafilesystem-1.5.0/src
 
-INCLUDE = 					\
-	-I$(LUA_DIR)				\
-	-I$(LUA_EX_DIR)				\
-	-I$(LUA_FS_DIR)				\
+INCLUDE = 				\
+	-I$(LUA_DIR)			\
+	-I$(LUA_EX_DIR)			\
+	-I$(LUA_FS_DIR)			\
 
 EXESRCS = 				\
 	$(LUA_DIR)/lua.c
