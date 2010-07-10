@@ -187,7 +187,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs and publishing..."
-				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts\&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe publish.lua -i $(ProjectDir) -o $(ProjectDir)Published&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts\&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe publish.lua  -o &quot;$(ProjectDir)Published&quot; -i &quot;$(ProjectDir)&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>

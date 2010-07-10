@@ -47,7 +47,7 @@ local args = pl.lapp [[
   Packages a game for easy distribution. 
     -i,--input_directory (string)  Project directory
     -o,--output_directory  (string)  Where the packaged game should go
-    -g,--gamename (default ClientGame.exe)  Number to be scaled
+    -g,--gamename (default ClientGame.exe)  Name of the final game
   ]]
 
 lfs.chdir(args.input_directory)
