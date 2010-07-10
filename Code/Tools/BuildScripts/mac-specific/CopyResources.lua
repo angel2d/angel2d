@@ -43,15 +43,7 @@ require "angel_build"
 require "lfs"
 require "pl.path"
 
-local used_env_values = {'PROJECT_DIR', 'CONFIGURATION', 'EXECUTABLE_NAME'}
 local env = os.environ()
-for _, val in pairs(used_env_values) do
-  if (env[val] ~= nil) then
-    if (env[val]:find(' ')) then
-      env[val] = '"' .. env[val] .. '"'
-    end
-  end
-end
 
 lfs.chdir(fulljoin(env['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
 
