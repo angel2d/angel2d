@@ -45,27 +45,21 @@ require "pl.path"
 
 local env = os.environ()
 
-local BASEDIR = fulljoin(env['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7")
-local FILES = {'libfreetype.6.dylib', 'libfreetype.a'}
-local BUILT_DIR = fulljoin(BASEDIR, "built")
-local LIB_DIR = fulljoin(BUILT_DIR, "lib")
-
-lfs.chdir(BASEDIR)
-
-for _, filename in pairs(FILES) do
-  local src = fulljoin(LIB_DIR, filename)
-  if (not pl.path.exists(src)) then
-    local conf_string = 'env CFLAGS='
-    conf_string = conf_string .. '"-O -g -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" '
-    conf_string = conf_string .. 'LDFLAGS='
-    conf_string = conf_string .. '"-arch i386" '
-    conf_string = conf_string .. './configure --prefix='
-    conf_string = conf_string .. BUILT_DIR
-    os.execute(conf_string)
-    os.execute('make install 2> /dev/null')
-    if (not pl.path.exists(src)) then
-      io.stderr:write("ERROR: Building FreeType didn't produce " .. filename .. "\n")
-      os.exit(1)
-    end
-  end
+if (env['PROJECT_DIR']:find(' ')) then
+  env['PROJECT_DIR'] = '"' .. env['PROJECT_DIR'] .. '"'
 end
+
+local BASEDIR = fulljoin(env['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7")
+local CHECKFILE = fulljoin(BASEDIR, "builds", "unix", "ftconfig.h")
+
+lfs.chdir(BASEDIR:gsub('"', ''))
+
+if (not pl.path.exists(CHECKFILE:gsub('"', ''))) then
+  local conf_string = 'env CFLAGS='
+  conf_string = conf_string .. '"-O -g -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" '
+  conf_string = conf_string .. 'LDFLAGS='
+  conf_string = conf_string .. '"-arch i386" '
+  conf_string = conf_string .. './configure'
+  os.execute(conf_string)
+end
+

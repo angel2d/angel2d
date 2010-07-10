@@ -43,9 +43,18 @@ require "angel_build"
 require "lfs"
 require "pl.path"
 
+local used_env_values = {'PROJECT_DIR', 'CONFIGURATION', 'EXECUTABLE_NAME'}
 local env = os.environ()
+for _, val in pairs(used_env_values) do
+  if (env[val] ~= nil) then
+    if (env[val]:find(' ')) then
+      env[val] = '"' .. env[val] .. '"'
+    end
+  end
+end
 
-lfs.chdir(fulljoin(env['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'))
+lfs.chdir(fulljoin(env['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
+
 local dest = ""
 if (env['CONFIGURATION'] == 'Debug') then
   dest = fulljoin(
@@ -66,14 +75,14 @@ else
     )
 end
 
-if (not pl.path.exists(dest)) then
-  makedirs(dest)
+if (not pl.path.exists(dest:gsub('"', ''))) then
+  makedirs(dest:gsub('"', ''))
 end
 
 for _, filename in pairs(pl.dir.getfiles(lfs.currentdir(), ".lua")) do
   if (not _isdotfile(filename)) then
-    local dstname = pl.path.join(dest, pl.path.basename(filename))
-    pl.dir.copyfile(filename, dstname)
+    local dstname = fulljoin(dest, pl.path.basename(filename))
+    pl.dir.copyfile(filename, dstname:gsub('"', ''))
   end
 end
 

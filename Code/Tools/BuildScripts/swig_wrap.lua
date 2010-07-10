@@ -100,8 +100,8 @@ for line in interface_file:lines() do
 end
 interface_file:close()
 
-if (pl.path.exists(WRAPPER_SOURCE) and not args.force_regeneration) then
-  local wrapper_modification = lfs.attributes(WRAPPER_SOURCE, "modification")
+if (pl.path.exists(WRAPPER_SOURCE:gsub('"', '')) and not args.force_regeneration) then
+  local wrapper_modification = lfs.attributes(WRAPPER_SOURCE:gsub('"', ''), "modification")
   local update = false
   for _, f in pairs(files) do
     -- oh, hardcoded nonsense, how i love you
@@ -110,12 +110,13 @@ if (pl.path.exists(WRAPPER_SOURCE) and not args.force_regeneration) then
     elseif (args.define ~= "INTROGAME" and f == "inheritance_intro.i") then
       -- print("Skipping " .. f)
     else
-      if (pl.path.exists(fulljoin(INTERFACE_DIRECTORY, f))) then
-        if (wrapper_modification < lfs.attributes(fulljoin(INTERFACE_DIRECTORY, f), "modification")) then
+      local fp = fulljoin(INTERFACE_DIRECTORY, f):gsub('"', '')
+      if (pl.path.exists(fp)) then
+        if (wrapper_modification < lfs.attributes(fp, "modification")) then
           update = true
           print("At least " .. f .. " was newer than " .. WRAPPER_FILE .. " -- touching " .. MASTER_FILE .. " and regenerating " .. WRAPPER_FILE)
-          lfs.touch(AGGREGATE_INTERFACE)
-          os.remove(WRAPPER_SOURCE)
+          lfs.touch(AGGREGATE_INTERFACE:gsub('"', ''))
+          os.remove(WRAPPER_SOURCE:gsub('"', ''))
           break
         end
       else

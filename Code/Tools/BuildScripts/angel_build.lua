@@ -211,7 +211,7 @@ function generate_typemaps(interface_directory, additional_define)
   else
     inheritance_file = fulljoin(interface_directory, "inheritance.i")
   end
-  if (not pl.path.exists(inheritance_file)) then
+  if (not pl.path.exists(inheritance_file:gsub('"', ''))) then
     -- need to make sure we have at least a blank file for swig to include 
     --  when it runs to get the type data
     local inheritance_handle = assert(io.open(inheritance_file:gsub('"', ''), "w"))
@@ -281,11 +281,11 @@ function generate_typemaps(interface_directory, additional_define)
   
   local out_string = "%include <factory.i>\n\n" .. table.concat(out_strings, "\n")
   
-  local out_file = io.open(inheritance_file:gsub('"', ''), "r")
+  local out_file = assert(io.open(inheritance_file:gsub('"', ''), "r"))
   local current_file = out_file:read("*a")
   out_file:close()
   if (current_file ~= out_string) then
-    out_file = io.open(inheritance_file:gsub('"', ''), "w")
+    out_file = assert(io.open(inheritance_file:gsub('"', ''), "w"))
     out_file:write(out_string)
     out_file:close()
   end

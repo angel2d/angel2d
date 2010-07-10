@@ -6,22 +6,49 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		347AA0B20E2F1275006A896F /* FreeType Check */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 347AA0C20E2F12A2006A896F /* Build configuration list for PBXAggregateTarget "FreeType Check" */;
-			buildPhases = (
-				347AA0B10E2F1275006A896F /* ShellScript */,
-			);
-			dependencies = (
-				34970C6211D9778100C61D13 /* PBXTargetDependency */,
-			);
-			name = "FreeType Check";
-			productName = "FreeType Config";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
+		3406448711E7DF9000033B1D /* autofit.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406448611E7DF9000033B1D /* autofit.c */; };
+		3406448911E7DFA000033B1D /* bdf.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406448811E7DFA000033B1D /* bdf.c */; };
+		3406448B11E7DFB100033B1D /* cff.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406448A11E7DFB100033B1D /* cff.c */; };
+		3406448D11E7DFC600033B1D /* ftbase.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406448C11E7DFC600033B1D /* ftbase.c */; };
+		3406448F11E7DFD800033B1D /* ftbitmap.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406448E11E7DFD800033B1D /* ftbitmap.c */; };
+		3406449111E7DFE400033B1D /* ftcache.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449011E7DFE400033B1D /* ftcache.c */; };
+		3406449311E7E01400033B1D /* ftdebug.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449211E7E01400033B1D /* ftdebug.c */; };
+		3406449611E7E03300033B1D /* ftgasp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449411E7E03300033B1D /* ftgasp.c */; };
+		3406449711E7E03300033B1D /* ftglyph.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449511E7E03300033B1D /* ftglyph.c */; };
+		3406449911E7E04C00033B1D /* ftgzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449811E7E04C00033B1D /* ftgzip.c */; };
+		3406449B11E7E05C00033B1D /* ftinit.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449A11E7E05C00033B1D /* ftinit.c */; };
+		3406449D11E7E06C00033B1D /* ftlzw.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449C11E7E06C00033B1D /* ftlzw.c */; };
+		340644A011E7E07F00033B1D /* ftstroke.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449E11E7E07F00033B1D /* ftstroke.c */; };
+		340644A111E7E07F00033B1D /* ftsystem.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406449F11E7E07F00033B1D /* ftsystem.c */; };
+		340644A611E7E0A400033B1D /* ftmm.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644A411E7E0A400033B1D /* ftmm.c */; };
+		340644A711E7E0A400033B1D /* ftbbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644A511E7E0A400033B1D /* ftbbox.c */; };
+		340644AC11E7E0CE00033B1D /* ftpfr.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644A811E7E0CE00033B1D /* ftpfr.c */; };
+		340644AD11E7E0CE00033B1D /* ftsynth.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644A911E7E0CE00033B1D /* ftsynth.c */; };
+		340644AE11E7E0CE00033B1D /* fttype1.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644AA11E7E0CE00033B1D /* fttype1.c */; };
+		340644AF11E7E0CE00033B1D /* ftwinfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644AB11E7E0CE00033B1D /* ftwinfnt.c */; };
+		340644B111E7E0FB00033B1D /* pcf.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644B011E7E0FB00033B1D /* pcf.c */; };
+		340644B311E7E10C00033B1D /* pfr.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644B211E7E10C00033B1D /* pfr.c */; };
+		340644B511E7E11900033B1D /* psaux.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644B411E7E11900033B1D /* psaux.c */; };
+		340644B711E7E13600033B1D /* pshinter.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644B611E7E13600033B1D /* pshinter.c */; };
+		340644B911E7E14200033B1D /* psmodule.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644B811E7E14200033B1D /* psmodule.c */; };
+		340644BB11E7E15E00033B1D /* raster.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644BA11E7E15E00033B1D /* raster.c */; };
+		340644BD11E7E17700033B1D /* sfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644BC11E7E17700033B1D /* sfnt.c */; };
+		340644BF11E7E18600033B1D /* truetype.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644BE11E7E18600033B1D /* truetype.c */; };
+		340644C111E7E19B00033B1D /* type1.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644C011E7E19B00033B1D /* type1.c */; };
+		340644C311E7E1AB00033B1D /* type1cid.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644C211E7E1AB00033B1D /* type1cid.c */; };
+		340644C511E7E1BE00033B1D /* type42.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644C411E7E1BE00033B1D /* type42.c */; };
+		340644C711E7E1D100033B1D /* winfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = 340644C611E7E1D100033B1D /* winfnt.c */; };
+		340644CD11E7E1F800033B1D /* ftconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644C811E7E1F800033B1D /* ftconfig.h */; };
+		340644CE11E7E1F800033B1D /* ftheader.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644C911E7E1F800033B1D /* ftheader.h */; };
+		340644CF11E7E1F800033B1D /* ftmodule.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644CA11E7E1F800033B1D /* ftmodule.h */; };
+		340644D011E7E1F800033B1D /* ftoption.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644CB11E7E1F800033B1D /* ftoption.h */; };
+		340644D111E7E1F800033B1D /* ftstdlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644CC11E7E1F800033B1D /* ftstdlib.h */; };
+		340644D311E7E20100033B1D /* ft2build.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644D211E7E20100033B1D /* ft2build.h */; };
+		3406451311E7E3E700033B1D /* libFreeType.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3406447911E7DE4200033B1D /* libFreeType.a */; };
+		3406454011E7E77B00033B1D /* smooth.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406453F11E7E77B00033B1D /* smooth.c */; };
+		3406454F11E7E9AA00033B1D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3406454E11E7E9AA00033B1D /* libz.dylib */; };
+		3406455011E7E9AA00033B1D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3406454E11E7E9AA00033B1D /* libz.dylib */; };
 		34066B780FC4F3DB00508B4D /* DemoScreenTuningVariables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34066B760FC4F3DB00508B4D /* DemoScreenTuningVariables.cpp */; };
 		34066B790FC4F3DB00508B4D /* DemoScreenTuningVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = 34066B770FC4F3DB00508B4D /* DemoScreenTuningVariables.h */; };
 		340AB9C311D45C5D0011B405 /* environ.h in Headers */ = {isa = PBXBuildFile; fileRef = 340AB9BC11D45C5D0011B405 /* environ.h */; };
@@ -216,7 +243,6 @@
 		345AAF2811CB38D0002B4471 /* libGLFW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C510E284362001C79A5 /* libGLFW.a */; };
 		345AAF2911CB38D0002B4471 /* libFTGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 346E3BB90E28637A00E6C79E /* libFTGL.a */; };
 		345AAF2A11CB38D0002B4471 /* libHIDUtilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433A8D10E2AADDE00A02B4E /* libHIDUtilities.a */; };
-		345AAF2B11CB38D0002B4471 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 347AA0ED0E2F21CB006A896F /* libfreetype.a */; };
 		345AAF3211CB38E3002B4471 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 345AAD0811CB3710002B4471 /* libAngel.a */; };
 		345AAF3C11CB3975002B4471 /* libIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454866D11487B89008F1155 /* libIL.a */; };
 		345AAF3D11CB3975002B4471 /* libILU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454866E11487B89008F1155 /* libILU.a */; };
@@ -285,7 +311,6 @@
 		346E5EA80F30122000258B84 /* DemoScreenIntervals.h in Headers */ = {isa = PBXBuildFile; fileRef = 346E5EA60F30122000258B84 /* DemoScreenIntervals.h */; };
 		3473839C11D062BD00088BB9 /* lfs.c in Sources */ = {isa = PBXBuildFile; fileRef = 3473839A11D062BD00088BB9 /* lfs.c */; };
 		3473839D11D062BD00088BB9 /* lfs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3473839B11D062BD00088BB9 /* lfs.h */; };
-		347AA0EE0E2F21CB006A896F /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 347AA0ED0E2F21CB006A896F /* libfreetype.a */; };
 		34810A150E67A38B00246544 /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
 		34810B240E68450000246544 /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
 		34974A320E2925BE0018A032 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A300E2925BE0018A032 /* stdafx.cpp */; };
@@ -415,6 +440,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3406447E11E7DE7800033B1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34D6B4B511CC3CCA00D72FE6;
+			remoteInfo = LuaExe;
+		};
+		3406451111E7E3DC00033B1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3406447811E7DE4200033B1D;
+			remoteInfo = FreeType;
+		};
 		34388F4511E3F034002A79B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -478,21 +517,7 @@
 			remoteGlobalIDString = 345AAD0711CB3710002B4471;
 			remoteInfo = Angel;
 		};
-		34882C370F47D8A400ADBBC9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 347AA0B20E2F1275006A896F;
-			remoteInfo = "FreeType Check";
-		};
 		34970BBD11D96EFF00C61D13 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 34D6B4B511CC3CCA00D72FE6;
-			remoteInfo = LuaExe;
-		};
-		34970C6111D9778100C61D13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
@@ -532,6 +557,47 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3406447911E7DE4200033B1D /* libFreeType.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFreeType.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3406448611E7DF9000033B1D /* autofit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = autofit.c; path = "Angel/Libraries/freetype-2.3.7/src/autofit/autofit.c"; sourceTree = "<group>"; };
+		3406448811E7DFA000033B1D /* bdf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bdf.c; path = "Angel/Libraries/freetype-2.3.7/src/bdf/bdf.c"; sourceTree = "<group>"; };
+		3406448A11E7DFB100033B1D /* cff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cff.c; path = "Angel/Libraries/freetype-2.3.7/src/cff/cff.c"; sourceTree = "<group>"; };
+		3406448C11E7DFC600033B1D /* ftbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbase.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftbase.c"; sourceTree = "<group>"; };
+		3406448E11E7DFD800033B1D /* ftbitmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbitmap.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftbitmap.c"; sourceTree = "<group>"; };
+		3406449011E7DFE400033B1D /* ftcache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftcache.c; path = "Angel/Libraries/freetype-2.3.7/src/cache/ftcache.c"; sourceTree = "<group>"; };
+		3406449211E7E01400033B1D /* ftdebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftdebug.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftdebug.c"; sourceTree = "<group>"; };
+		3406449411E7E03300033B1D /* ftgasp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftgasp.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftgasp.c"; sourceTree = "<group>"; };
+		3406449511E7E03300033B1D /* ftglyph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftglyph.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftglyph.c"; sourceTree = "<group>"; };
+		3406449811E7E04C00033B1D /* ftgzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftgzip.c; path = "Angel/Libraries/freetype-2.3.7/src/gzip/ftgzip.c"; sourceTree = "<group>"; };
+		3406449A11E7E05C00033B1D /* ftinit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftinit.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftinit.c"; sourceTree = "<group>"; };
+		3406449C11E7E06C00033B1D /* ftlzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftlzw.c; path = "Angel/Libraries/freetype-2.3.7/src/lzw/ftlzw.c"; sourceTree = "<group>"; };
+		3406449E11E7E07F00033B1D /* ftstroke.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftstroke.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftstroke.c"; sourceTree = "<group>"; };
+		3406449F11E7E07F00033B1D /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftsystem.c"; sourceTree = "<group>"; };
+		340644A411E7E0A400033B1D /* ftmm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftmm.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftmm.c"; sourceTree = "<group>"; };
+		340644A511E7E0A400033B1D /* ftbbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbbox.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftbbox.c"; sourceTree = "<group>"; };
+		340644A811E7E0CE00033B1D /* ftpfr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpfr.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftpfr.c"; sourceTree = "<group>"; };
+		340644A911E7E0CE00033B1D /* ftsynth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsynth.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftsynth.c"; sourceTree = "<group>"; };
+		340644AA11E7E0CE00033B1D /* fttype1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fttype1.c; path = "Angel/Libraries/freetype-2.3.7/src/base/fttype1.c"; sourceTree = "<group>"; };
+		340644AB11E7E0CE00033B1D /* ftwinfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftwinfnt.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftwinfnt.c"; sourceTree = "<group>"; };
+		340644B011E7E0FB00033B1D /* pcf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pcf.c; path = "Angel/Libraries/freetype-2.3.7/src/pcf/pcf.c"; sourceTree = "<group>"; };
+		340644B211E7E10C00033B1D /* pfr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pfr.c; path = "Angel/Libraries/freetype-2.3.7/src/pfr/pfr.c"; sourceTree = "<group>"; };
+		340644B411E7E11900033B1D /* psaux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psaux.c; path = "Angel/Libraries/freetype-2.3.7/src/psaux/psaux.c"; sourceTree = "<group>"; };
+		340644B611E7E13600033B1D /* pshinter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pshinter.c; path = "Angel/Libraries/freetype-2.3.7/src/pshinter/pshinter.c"; sourceTree = "<group>"; };
+		340644B811E7E14200033B1D /* psmodule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psmodule.c; path = "Angel/Libraries/freetype-2.3.7/src/psnames/psmodule.c"; sourceTree = "<group>"; };
+		340644BA11E7E15E00033B1D /* raster.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = raster.c; path = "Angel/Libraries/freetype-2.3.7/src/raster/raster.c"; sourceTree = "<group>"; };
+		340644BC11E7E17700033B1D /* sfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sfnt.c; path = "Angel/Libraries/freetype-2.3.7/src/sfnt/sfnt.c"; sourceTree = "<group>"; };
+		340644BE11E7E18600033B1D /* truetype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = truetype.c; path = "Angel/Libraries/freetype-2.3.7/src/truetype/truetype.c"; sourceTree = "<group>"; };
+		340644C011E7E19B00033B1D /* type1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1.c; path = "Angel/Libraries/freetype-2.3.7/src/type1/type1.c"; sourceTree = "<group>"; };
+		340644C211E7E1AB00033B1D /* type1cid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1cid.c; path = "Angel/Libraries/freetype-2.3.7/src/cid/type1cid.c"; sourceTree = "<group>"; };
+		340644C411E7E1BE00033B1D /* type42.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type42.c; path = "Angel/Libraries/freetype-2.3.7/src/type42/type42.c"; sourceTree = "<group>"; };
+		340644C611E7E1D100033B1D /* winfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = winfnt.c; path = "Angel/Libraries/freetype-2.3.7/src/winfonts/winfnt.c"; sourceTree = "<group>"; };
+		340644C811E7E1F800033B1D /* ftconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftconfig.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftconfig.h"; sourceTree = "<group>"; };
+		340644C911E7E1F800033B1D /* ftheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftheader.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftheader.h"; sourceTree = "<group>"; };
+		340644CA11E7E1F800033B1D /* ftmodule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftmodule.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftmodule.h"; sourceTree = "<group>"; };
+		340644CB11E7E1F800033B1D /* ftoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftoption.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftoption.h"; sourceTree = "<group>"; };
+		340644CC11E7E1F800033B1D /* ftstdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftstdlib.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftstdlib.h"; sourceTree = "<group>"; };
+		340644D211E7E20100033B1D /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ft2build.h; path = "Angel/Libraries/freetype-2.3.7/include/ft2build.h"; sourceTree = "<group>"; };
+		3406453F11E7E77B00033B1D /* smooth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smooth.c; path = "Angel/Libraries/freetype-2.3.7/src/smooth/smooth.c"; sourceTree = "<group>"; };
+		3406454E11E7E9AA00033B1D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = "<absolute>"; };
 		34066B760FC4F3DB00508B4D /* DemoScreenTuningVariables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenTuningVariables.cpp; path = IntroGame/DemoScreens/DemoScreenTuningVariables.cpp; sourceTree = "<group>"; };
 		34066B770FC4F3DB00508B4D /* DemoScreenTuningVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenTuningVariables.h; path = IntroGame/DemoScreens/DemoScreenTuningVariables.h; sourceTree = "<group>"; };
 		340AB9BC11D45C5D0011B405 /* environ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = environ.h; path = "Angel/Libraries/lua-libs/lua-ex/posix/environ.h"; sourceTree = "<group>"; };
@@ -706,7 +772,6 @@
 		3473838511D061A500088BB9 /* LuaConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaConsole.h; path = Angel/Scripting/LuaConsole.h; sourceTree = "<group>"; };
 		3473839A11D062BD00088BB9 /* lfs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfs.c; path = "Angel/Libraries/lua-libs/luafilesystem-1.5.0/src/lfs.c"; sourceTree = "<group>"; };
 		3473839B11D062BD00088BB9 /* lfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfs.h; path = "Angel/Libraries/lua-libs/luafilesystem-1.5.0/src/lfs.h"; sourceTree = "<group>"; };
-		347AA0ED0E2F21CB006A896F /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = "Angel/Libraries/freetype-2.3.7/built/lib/libfreetype.a"; sourceTree = "<group>"; };
 		347C79F511D457DE0034DAD9 /* conf_load.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conf_load.lua; sourceTree = "<group>"; };
 		347C79F611D457DE0034DAD9 /* util.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = util.lua; sourceTree = "<group>"; };
 		347CFFE411DC239200761E0E /* script_interface.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = script_interface.i; path = ClientGame/script_interface.i; sourceTree = "<group>"; };
@@ -980,7 +1045,6 @@
 				345AAF2811CB38D0002B4471 /* libGLFW.a in Frameworks */,
 				345AAF2911CB38D0002B4471 /* libFTGL.a in Frameworks */,
 				345AAF2A11CB38D0002B4471 /* libHIDUtilities.a in Frameworks */,
-				345AAF2B11CB38D0002B4471 /* libfreetype.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,9 +1052,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3406451311E7E3E700033B1D /* libFreeType.a in Frameworks */,
 				34974B3D0E2927E80018A032 /* AGL.framework in Frameworks */,
 				346E3BBF0E28642400E6C79E /* OpenGL.framework in Frameworks */,
-				347AA0EE0E2F21CB006A896F /* libfreetype.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,6 +1085,7 @@
 				34D34E320E2C376A0053994C /* Carbon.framework in Frameworks */,
 				34D34E330E2C376A0053994C /* AGL.framework in Frameworks */,
 				34D34E340E2C376A0053994C /* IOKit.framework in Frameworks */,
+				3406455011E7E9AA00033B1D /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1115,7 @@
 				342C29370E2AF9C50061D881 /* Carbon.framework in Frameworks */,
 				34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */,
 				342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */,
+				3406454F11E7E9AA00033B1D /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,10 +1131,10 @@
 				34A18C510E284362001C79A5 /* libGLFW.a */,
 				346E3BB90E28637A00E6C79E /* libFTGL.a */,
 				3433A8D10E2AADDE00A02B4E /* libHIDUtilities.a */,
-				347AA0ED0E2F21CB006A896F /* libfreetype.a */,
 				345AAD0811CB3710002B4471 /* libAngel.a */,
 				34EECBDC11CB922100667B26 /* libLua.a */,
 				34D6B4B611CC3CCA00D72FE6 /* Lua */,
+				3406447911E7DE4200033B1D /* libFreeType.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1083,6 +1149,68 @@
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = GameJam;
+			sourceTree = "<group>";
+		};
+		3406448411E7DF7300033B1D /* FreeType */ = {
+			isa = PBXGroup;
+			children = (
+				340644D511E7E21000033B1D /* headers */,
+				340644D411E7E20400033B1D /* src */,
+			);
+			name = FreeType;
+			sourceTree = "<group>";
+		};
+		340644D411E7E20400033B1D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3406448811E7DFA000033B1D /* bdf.c */,
+				3406448611E7DF9000033B1D /* autofit.c */,
+				3406448A11E7DFB100033B1D /* cff.c */,
+				3406448C11E7DFC600033B1D /* ftbase.c */,
+				3406448E11E7DFD800033B1D /* ftbitmap.c */,
+				3406449011E7DFE400033B1D /* ftcache.c */,
+				3406449211E7E01400033B1D /* ftdebug.c */,
+				3406449411E7E03300033B1D /* ftgasp.c */,
+				3406449511E7E03300033B1D /* ftglyph.c */,
+				3406449811E7E04C00033B1D /* ftgzip.c */,
+				3406449A11E7E05C00033B1D /* ftinit.c */,
+				3406449C11E7E06C00033B1D /* ftlzw.c */,
+				3406449E11E7E07F00033B1D /* ftstroke.c */,
+				3406453F11E7E77B00033B1D /* smooth.c */,
+				3406449F11E7E07F00033B1D /* ftsystem.c */,
+				340644A411E7E0A400033B1D /* ftmm.c */,
+				340644A511E7E0A400033B1D /* ftbbox.c */,
+				340644A811E7E0CE00033B1D /* ftpfr.c */,
+				340644A911E7E0CE00033B1D /* ftsynth.c */,
+				340644AA11E7E0CE00033B1D /* fttype1.c */,
+				340644AB11E7E0CE00033B1D /* ftwinfnt.c */,
+				340644B011E7E0FB00033B1D /* pcf.c */,
+				340644B211E7E10C00033B1D /* pfr.c */,
+				340644B411E7E11900033B1D /* psaux.c */,
+				340644B611E7E13600033B1D /* pshinter.c */,
+				340644B811E7E14200033B1D /* psmodule.c */,
+				340644BA11E7E15E00033B1D /* raster.c */,
+				340644BC11E7E17700033B1D /* sfnt.c */,
+				340644BE11E7E18600033B1D /* truetype.c */,
+				340644C011E7E19B00033B1D /* type1.c */,
+				340644C211E7E1AB00033B1D /* type1cid.c */,
+				340644C411E7E1BE00033B1D /* type42.c */,
+				340644C611E7E1D100033B1D /* winfnt.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		340644D511E7E21000033B1D /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				340644D211E7E20100033B1D /* ft2build.h */,
+				340644C811E7E1F800033B1D /* ftconfig.h */,
+				340644C911E7E1F800033B1D /* ftheader.h */,
+				340644CA11E7E1F800033B1D /* ftmodule.h */,
+				340644CB11E7E1F800033B1D /* ftoption.h */,
+				340644CC11E7E1F800033B1D /* ftstdlib.h */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 		340AB9B411D45BE80011B405 /* lfs */ = {
@@ -1544,6 +1672,7 @@
 		34A18BAE0E2841D3001C79A5 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3406448411E7DF7300033B1D /* FreeType */,
 				34EECBE111CB92D300667B26 /* Lua */,
 				3433A8B70E2AAD8900A02B4E /* HID Utilities */,
 				34A18BAF0E2841E8001C79A5 /* Box2D */,
@@ -1603,6 +1732,7 @@
 		34A18C990E284421001C79A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3406454E11E7E9AA00033B1D /* libz.dylib */,
 				3454866D11487B89008F1155 /* libIL.a */,
 				3454866E11487B89008F1155 /* libILU.a */,
 				3454866F11487B89008F1155 /* libILUT.a */,
@@ -1868,6 +1998,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3406447511E7DE4200033B1D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				340644CD11E7E1F800033B1D /* ftconfig.h in Headers */,
+				340644CE11E7E1F800033B1D /* ftheader.h in Headers */,
+				340644CF11E7E1F800033B1D /* ftmodule.h in Headers */,
+				340644D011E7E1F800033B1D /* ftoption.h in Headers */,
+				340644D111E7E1F800033B1D /* ftstdlib.h in Headers */,
+				340644D311E7E20100033B1D /* ft2build.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3433A8CD0E2AADDE00A02B4E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2095,6 +2238,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3406447811E7DE4200033B1D /* FreeType */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3406448311E7DE9300033B1D /* Build configuration list for PBXNativeTarget "FreeType" */;
+			buildPhases = (
+				3406447D11E7DE6A00033B1D /* Configure */,
+				3406447511E7DE4200033B1D /* Headers */,
+				3406447611E7DE4200033B1D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3406447F11E7DE7800033B1D /* PBXTargetDependency */,
+			);
+			name = FreeType;
+			productName = FreeType;
+			productReference = 3406447911E7DE4200033B1D /* libFreeType.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		3433A8D00E2AADDE00A02B4E /* HIDUtilities */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3433A8EC0E2AAE2000A02B4E /* Build configuration list for PBXNativeTarget "HIDUtilities" */;
@@ -2144,7 +2305,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				34882C380F47D8A400ADBBC9 /* PBXTargetDependency */,
+				3406451211E7E3DC00033B1D /* PBXTargetDependency */,
 			);
 			name = FTGL;
 			productName = FTGL;
@@ -2286,8 +2447,8 @@
 				34A18BA60E284044001C79A5 /* Box2D */,
 				34A18C500E284362001C79A5 /* GLFW */,
 				346E3BB80E28637A00E6C79E /* FTGL */,
+				3406447811E7DE4200033B1D /* FreeType */,
 				3433A8D00E2AADDE00A02B4E /* HIDUtilities */,
-				347AA0B20E2F1275006A896F /* FreeType Check */,
 				34D6B4B511CC3CCA00D72FE6 /* LuaExe */,
 				34EECBDB11CB922100667B26 /* Lua */,
 			);
@@ -2295,6 +2456,21 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3406447D11E7DE6A00033B1D /* Configure */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Configure;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CheckFreeType.lua";
+			showEnvVarsInLog = 0;
+		};
 		341822660E2B176D003EC89B /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2307,7 +2483,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\n\n# Copy over all the images, sounds, fonts, and scripts\n${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    ${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/publish_mac.lua -i ${PROJECT_DIR}/ClientGame -o ${BUILD_DIR}/Published -g ClientGame.app\nfi";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/ClientGame\" -o \"${BUILD_DIR}/Published\" -g ClientGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 		34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */ = {
@@ -2322,7 +2498,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/swig_wrap.lua -p ${PROJECT_DIR}";
+			shellScript = "\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/swig_wrap.lua -p \"${PROJECT_DIR}\"";
+			showEnvVarsInLog = 0;
 		};
 		34388F4311E3EFE6002A79B1 /* Generate Lua Wrapping */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2336,21 +2513,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/swig_wrap.lua -p ${PROJECT_DIR} -D INTROGAME";
+			shellScript = "\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/swig_wrap.lua -p \"${PROJECT_DIR}\" -D INTROGAME";
 			showEnvVarsInLog = 0;
-		};
-		347AA0B10E2F1275006A896F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/mac-specific/CheckFreeType.lua";
 		};
 		34A18CAF0E284910001C79A5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2377,12 +2541,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib ${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\n\n# Copy over all the images, sounds, fonts, and scripts\n${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then \n\t${CONFIGURATION_BUILD_DIR}/Lua Tools/BuildScripts/publish_mac.lua -i ${PROJECT_DIR}/IntroGame -o ${BUILD_DIR}/Published -g IntroGame.app\nfi\n";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/IntroGame\" -o \"${BUILD_DIR}/Published\" -g IntroGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3406447611E7DE4200033B1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3406448711E7DF9000033B1D /* autofit.c in Sources */,
+				3406448911E7DFA000033B1D /* bdf.c in Sources */,
+				3406448B11E7DFB100033B1D /* cff.c in Sources */,
+				3406448D11E7DFC600033B1D /* ftbase.c in Sources */,
+				3406448F11E7DFD800033B1D /* ftbitmap.c in Sources */,
+				3406449111E7DFE400033B1D /* ftcache.c in Sources */,
+				3406449311E7E01400033B1D /* ftdebug.c in Sources */,
+				3406449611E7E03300033B1D /* ftgasp.c in Sources */,
+				3406449711E7E03300033B1D /* ftglyph.c in Sources */,
+				3406449911E7E04C00033B1D /* ftgzip.c in Sources */,
+				3406449B11E7E05C00033B1D /* ftinit.c in Sources */,
+				3406449D11E7E06C00033B1D /* ftlzw.c in Sources */,
+				340644A011E7E07F00033B1D /* ftstroke.c in Sources */,
+				340644A111E7E07F00033B1D /* ftsystem.c in Sources */,
+				340644A611E7E0A400033B1D /* ftmm.c in Sources */,
+				340644A711E7E0A400033B1D /* ftbbox.c in Sources */,
+				340644AC11E7E0CE00033B1D /* ftpfr.c in Sources */,
+				340644AD11E7E0CE00033B1D /* ftsynth.c in Sources */,
+				340644AE11E7E0CE00033B1D /* fttype1.c in Sources */,
+				340644AF11E7E0CE00033B1D /* ftwinfnt.c in Sources */,
+				340644B111E7E0FB00033B1D /* pcf.c in Sources */,
+				340644B311E7E10C00033B1D /* pfr.c in Sources */,
+				340644B511E7E11900033B1D /* psaux.c in Sources */,
+				340644B711E7E13600033B1D /* pshinter.c in Sources */,
+				340644B911E7E14200033B1D /* psmodule.c in Sources */,
+				340644BB11E7E15E00033B1D /* raster.c in Sources */,
+				340644BD11E7E17700033B1D /* sfnt.c in Sources */,
+				340644BF11E7E18600033B1D /* truetype.c in Sources */,
+				340644C111E7E19B00033B1D /* type1.c in Sources */,
+				340644C311E7E1AB00033B1D /* type1cid.c in Sources */,
+				340644C511E7E1BE00033B1D /* type42.c in Sources */,
+				340644C711E7E1D100033B1D /* winfnt.c in Sources */,
+				3406454011E7E77B00033B1D /* smooth.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3433A8CE0E2AADDE00A02B4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2634,6 +2838,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3406447F11E7DE7800033B1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34D6B4B511CC3CCA00D72FE6 /* LuaExe */;
+			targetProxy = 3406447E11E7DE7800033B1D /* PBXContainerItemProxy */;
+		};
+		3406451211E7E3DC00033B1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3406447811E7DE4200033B1D /* FreeType */;
+			targetProxy = 3406451111E7E3DC00033B1D /* PBXContainerItemProxy */;
+		};
 		34388F4611E3F034002A79B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 34EECBDB11CB922100667B26 /* Lua */;
@@ -2679,20 +2893,10 @@
 			target = 345AAD0711CB3710002B4471 /* Angel */;
 			targetProxy = 345AAF6B11CB3AC8002B4471 /* PBXContainerItemProxy */;
 		};
-		34882C380F47D8A400ADBBC9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 347AA0B20E2F1275006A896F /* FreeType Check */;
-			targetProxy = 34882C370F47D8A400ADBBC9 /* PBXContainerItemProxy */;
-		};
 		34970BBE11D96EFF00C61D13 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 34D6B4B511CC3CCA00D72FE6 /* LuaExe */;
 			targetProxy = 34970BBD11D96EFF00C61D13 /* PBXContainerItemProxy */;
-		};
-		34970C6211D9778100C61D13 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 34D6B4B511CC3CCA00D72FE6 /* LuaExe */;
-			targetProxy = 34970C6111D9778100C61D13 /* PBXContainerItemProxy */;
 		};
 		34D6B4BB11CC3CF100D72FE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2702,6 +2906,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3406447A11E7DE4300033B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RELEASE=1",
+					_LIB,
+					FT2_BUILD_LIBRARY,
+					FT_CONFIG_OPTION_SYSTEM_ZLIB,
+					DARWIN_NO_CARBON,
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/builds/unix\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = FreeType;
+			};
+			name = Debug;
+		};
+		3406447B11E7DE4300033B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RELEASE=1",
+					_LIB,
+					FT2_BUILD_LIBRARY,
+					FT_CONFIG_OPTION_SYSTEM_ZLIB,
+					DARWIN_NO_CARBON,
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/builds/unix\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = FreeType;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		3433A8D20E2AADDE00A02B4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2746,11 +3002,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Angel/Infrastructure/stdafx.h;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include",
-					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
-					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
-					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
+					"\"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
@@ -2775,11 +3031,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Angel/Infrastructure/stdafx.h;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include",
-					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
-					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
-					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
+					"\"$(PROJECT_DIR)/Angel/Libraries/DevIL-SDK-1.7.8/mac/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
@@ -2803,10 +3059,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
-				);
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"";
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2827,10 +3080,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
-				);
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"";
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2840,27 +3090,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = FTGL;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		347AA0BE0E2F1275006A896F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "FreeType Config";
-			};
-			name = Debug;
-		};
-		347AA0BF0E2F1275006A896F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = "FreeType Config";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2947,9 +3176,9 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/IntroGame/stdafx.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
-					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
+					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
 				);
 				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2973,9 +3202,9 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/IntroGame/stdafx.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
-					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
+					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
 				);
 				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3088,9 +3317,9 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ClientGame/stdafx.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
-					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
+					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
 				);
 				INFOPLIST_FILE = ClientGame/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3117,9 +3346,9 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ClientGame/stdafx.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include",
-					"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc",
-					"$(PROJECT_DIR)/Angel/Libraries/glfw/include",
+					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
 				);
 				INFOPLIST_FILE = ClientGame/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3148,7 +3377,7 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Angel/Libraries/glfw/include";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"";
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
@@ -3169,7 +3398,7 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Angel/Libraries/glfw/include";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"";
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
@@ -3181,6 +3410,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3406448311E7DE9300033B1D /* Build configuration list for PBXNativeTarget "FreeType" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3406447A11E7DE4300033B1D /* Debug */,
+				3406447B11E7DE4300033B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3433A8EC0E2AAE2000A02B4E /* Build configuration list for PBXNativeTarget "HIDUtilities" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3204,15 +3442,6 @@
 			buildConfigurations = (
 				346E3BBA0E28637B00E6C79E /* Debug */,
 				346E3BBB0E28637B00E6C79E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		347AA0C20E2F12A2006A896F /* Build configuration list for PBXAggregateTarget "FreeType Check" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				347AA0BE0E2F1275006A896F /* Debug */,
-				347AA0BF0E2F1275006A896F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

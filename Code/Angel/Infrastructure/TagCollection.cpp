@@ -31,6 +31,7 @@
 #include "../Infrastructure/TagCollection.h"
 
 #include <algorithm>
+#include <iterator>
 
 
 TagCollection* TagCollection::s_TagCollection = NULL;
