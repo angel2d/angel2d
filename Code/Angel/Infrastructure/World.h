@@ -464,6 +464,7 @@ private:
 
 	RenderLayers _layers;
 
+	bool _processingDeferredAdds;
 	std::vector<RenderableLayerPair> _deferredAdds;	
 	std::vector<RenderableLayerPair> _deferredLayerChanges;
 	std::vector<Renderable*> _deferredRemoves;

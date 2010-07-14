@@ -63,6 +63,8 @@ World::World()
 	_physicsDebugDraw = NULL;
 	_gameManager = NULL;
 	_elementsLocked = false;
+	
+	_processingDeferredAdds = false;
 }
 
 World& World::GetInstance()
@@ -90,7 +92,7 @@ int windowClosed(void)
 {
 	theWorld.StopGame();
 
-	return GL_FALSE; //returning GL_FALSE will stop the window from closing
+	return GL_FALSE;
 }
 
 bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen)
@@ -528,7 +530,7 @@ void World::Add(Renderable *newElement, int layer)
 	
 	//Check to see if it's an Actor; give it a name if it doesn't have one
 	Actor *a = dynamic_cast<Actor*> (newElement);
-	if (a != NULL)
+	if (a != NULL && !_processingDeferredAdds)
 	{
 		// Ensures that the actor has a unique, non-empty name. 
 		a->SetName(a->GetName());
@@ -778,6 +780,7 @@ void World::ReceiveMessage(Message* m)
 
 void World::ProcessDeferredAdds()
 {
+	_processingDeferredAdds = true;
 	std::vector<RenderableLayerPair>::iterator it = _deferredAdds.begin();
 	while(it != _deferredAdds.end())
 	{
@@ -786,6 +789,7 @@ void World::ProcessDeferredAdds()
 	}
 
 	_deferredAdds.clear();
+	_processingDeferredAdds = false;
 }
 
 void World::ProcessDeferredLayerChanges()
