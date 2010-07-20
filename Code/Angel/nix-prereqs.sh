@@ -45,6 +45,6 @@ elif [ "$DIST" == 'Darwin' ] ; then
 		echo "You should restart your machine to get access to the 360 Controller."
 	fi
 else
-  echo "This is not a recognized Linux or UNIX distribution. Currently we support Fedora, Ubuntu, and OS X."
+	echo "This is not a recognized Linux or UNIX distribution. Currently we support Fedora, Ubuntu, and OS X."
 fi
 
