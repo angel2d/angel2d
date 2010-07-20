@@ -7,8 +7,8 @@
 # On all systems, it should be run with sudo or root privileges. 
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script requires root privileges to run."
-   exit 1
+	echo "This script requires root privileges to run."
+	exit 1
 fi
 
 if   [ -f /etc/fedora-release ] ; then
