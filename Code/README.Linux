@@ -6,15 +6,20 @@ dependencies are installed.
 
 Dependencies:
 -------------
-For Ubuntu 10.04 LTS, the following command will install the appropriate 
-dependencies:
-sudo apt-get -y install build-essential swig libglu1-mesa-dev libreadline-dev\
-	libdevil-dev libxrandr-dev libfreetype6-dev joystick
+For Ubuntu and Fedora, run Code/Angel/nix-prereqs.sh to automatically install
+all the necessary dependencies. Note that the script must be run as root or 
+at least with appropriate sudo privileges. 
 
-For Fedora Core 12, the following command will install the appropriate 
-dependencies (must be run as root):
-yum -y install gcc-c++ make swig mesa-libGLU-devel DevIL-ILUT-devel \
-	readline-devel libXrandr-devel freetype-devel
+For reference purposes (and for anyone trying to get Angel running on another
+distribution), the script installs:
+ * GCC, G++, and the associated build commands like make
+ * SWIG
+ * OpenGL development headers (plus the GLU library and its headers)
+ * readline development headers
+ * DevIL and its development headers
+ * X RandR development headers (required by GLFW)
+ * freetype development headers
+ * joystick library (on Ubuntu)
 
 Compiling:
 ----------
@@ -40,10 +45,10 @@ build.
  * No publish script. Due to the massive number of configuration 
    possibilities, we don't currently have a script that bundles all the data
    and code files together for simple one-directory distribution. The 
-   publish.lua and publish-mac.lua scripts in the Tools/BuildScripts directory
-   represent reasonable templates from which someone could start that work. 
-   There's also a decent exploration of the issues involved and various 
-   workarounds here: 
+   publish.lua and publish-mac.lua scripts in the Tools/BuildScripts 
+   directory represent reasonable templates from which someone could start 
+   that work. There's also a decent exploration of the issues involved and 
+   various workarounds here: 
 
    http://www.gamedev.net/reference/programming/features/linuxprogramming2/
 
