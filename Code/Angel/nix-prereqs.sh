@@ -19,7 +19,7 @@ elif [ -f /etc/lsb-release ] ; then
 		DIST='Ubuntu'
 	fi
 elif [ "`uname`" == 'Darwin' ] ; then
-  DIST='Darwin'
+	DIST='Darwin'
 fi
 
 if   [ "$DIST" == 'Fedora' ] ; then
