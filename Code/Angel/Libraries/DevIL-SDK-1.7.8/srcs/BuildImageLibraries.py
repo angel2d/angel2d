@@ -73,8 +73,6 @@ config_string = "./configure --prefix=%s " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 
-exit(1)
-
 #####################################
 # build libpng                      #
 #####################################
