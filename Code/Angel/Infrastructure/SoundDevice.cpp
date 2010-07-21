@@ -92,10 +92,11 @@ void SoundDevice::Initialize()
 	}
 
 	// On Linux, sometimes autodetection fails.  Let the user override with an environment variable.
+	// If no environment variable is provided, default to ALSA.
 	#ifdef __linux__
+	FMOD_OUTPUTTYPE outtype = FMOD_OUTPUTTYPE_ALSA;
 	if (getenv("FMOD_OUTPUTTYPE"))
 	{
-		FMOD_OUTPUTTYPE outtype = FMOD_OUTPUTTYPE_AUTODETECT;
 		String FMOD_OUTPUTTYPE_VAR = getenv("FMOD_OUTPUTTYPE");
 		if (FMOD_OUTPUTTYPE_VAR == "ALSA")
 			outtype = FMOD_OUTPUTTYPE_ALSA;
@@ -105,10 +106,12 @@ void SoundDevice::Initialize()
 			outtype = FMOD_OUTPUTTYPE_ESD;
 		else if (FMOD_OUTPUTTYPE_VAR == "NOSOUND")
 			outtype = FMOD_OUTPUTTYPE_NOSOUND;
+		else if (FMOD_OUTPUTTYPE_VAR == "AUTODETECT")
+			outtype = FMOD_OUTPUTTYPE_AUTODETECT;
 		else
-			sysLog.Printf("Error! Unknown FMOD Output Type...falling back to autodetection.\n");
-		FMOD_CHECKED( _system->setOutput(outtype) );
+			sysLog.Printf("Error! Unknown FMOD Output Type...defaulting to ALSA.\n");
 	}
+	FMOD_CHECKED( _system->setOutput(outtype) );
 	#endif	
 
 	FMOD_CHECKED( _system->getDriverCaps(0, &caps, 0, 0, &speakermode) )

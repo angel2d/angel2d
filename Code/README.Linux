@@ -59,22 +59,14 @@ build.
 
 Known Problems and Work-arounds:
 --------------------------------
- * You may see the following error message when starting an Angel
-   application:
-
-   FMOD error! (77) This command failed because System::init or 
-   System::setDriver was not called. 
-
-   IntroGame: Infrastructure/SoundDevice.cpp:41: void 
-   ERRCHECK(FMOD_RESULT): Assertion `0' failed. 
-   Aborted
-
-   This is likely due to FMOD failing to autodetect your audio subsystem.
-   The automatic sound subsystem detection can be overriden by setting an
-   environment variable, FMOD_OUTPUTTYPE. The possible override choices are:
+ * FMOD (the sound library used by Angel) sometimes has difficulties with
+   autodetecting your audio subsystem.  Because of this, by default we
+   configure FMOD to use ALSA.  If you do not wish to use ALSA, you can
+   override the audio subsystem selection using an environment variable:
+   FMOD_OUTPUTTYPE. The possible override choices are: AUTODETECT,
    ALSA, OSS, ESD, and NOSOUND. For example, to set the environment variable
    (if using the bash shell), use the following command:
-       export FMOD_OUTPUTTYPE="ALSA"
+       export FMOD_OUTPUTTYPE="OSS"
 
  * On certain processors, Angel applications may crash with "Illegal 
    instruction" errors. This is likely due to the fact that the DevIL 
