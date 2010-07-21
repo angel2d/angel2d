@@ -9,11 +9,11 @@ ROOT_DIR = os.path.dirname(FILE_PATH)
 INST_DIR = ROOT_DIR + "/install/"
 
 BASE_CFLAGS = "-I%sinclude -L%sinclude -m32" % (INST_DIR, INST_DIR)
-BASE_CFLAGS += " -O -g -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5"
+BASE_CFLAGS += " -O -g -isysroot /Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.6"
 BASE_CPPFLAGS = BASE_CFLAGS
 BASE_LDFLAGS = "-L%slib -m32 -arch i386" % (INST_DIR)
 BASE_ARCHFLAGS = "-arch i386"
-CLEAN = False
+CLEAN = True
 
 LIBLIST = {
     "DevIL-1.7.8.tar.gz" : "devil-1.7.8",
@@ -72,6 +72,8 @@ os.chdir("zlib-1.2.3")
 config_string = "./configure --prefix=%s " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
+
+exit(1)
 
 #####################################
 # build libpng                      #
