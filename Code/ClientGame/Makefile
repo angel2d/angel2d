@@ -43,13 +43,17 @@ SRCS =								\
 SYSOBJS = $(patsubst %.cpp,%.o,$(SYSSRCS))
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
+.PHONY: clean all SWIG-Wrapper
+
 %.o: %.cpp
 	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
 
 all: $(TARGET)
 
-$(WRAPPER):
+SWIG-Wrapper:
 	$(LUA) ../Tools/BuildScripts/swig_wrap.lua -p "$(CODE_DIR)"
+
+$(WRAPPER): SWIG-Wrapper
 
 $(TARGET): $(LIBANGEL) $(OBJS) $(SYSOBJS) $(WRAPPER)
 	$(CXX) -o $@ $(OBJS) $(SYSOBJS) $(LIBS) $(SHLIBS)
