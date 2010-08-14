@@ -3356,7 +3356,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Angel/Libraries/glfw/support/masm/lib\"",
 					"\"$(SRCROOT)/build/Debug\"",
-					"\"$(SRCROOT)/Angel/Libraries/freetype-2.3.7/objs/.libs\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
 					"\"$(SRCROOT)/Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
 				);
