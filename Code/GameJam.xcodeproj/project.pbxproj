@@ -3210,7 +3210,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SDKROOT)/usr/X11/lib\\\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
 				);
 				PRODUCT_NAME = IntroGame;
@@ -3354,10 +3353,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Angel/Libraries/glfw/support/masm/lib\"",
-					"\"$(SRCROOT)/build/Debug\"",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD\"",
-					"\"$(SRCROOT)/Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
 				);
 				PRODUCT_NAME = ClientGame;
 			};
