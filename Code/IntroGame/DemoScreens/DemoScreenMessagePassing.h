@@ -49,5 +49,5 @@ private:
 	PhysicsActor *p2;
 	PhysicsActor *p3;
 
-	SAMPLE_HANDLE bounceSample;
+	AngelSampleHandle bounceSample;
 };

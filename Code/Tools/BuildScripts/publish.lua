@@ -70,9 +70,22 @@ if (not pl.path.exists(bits_path)) then
   makedirs(bits_path)
 end
 
-local files_ex = {"DevIL.dll", "ILU.dll", "ILUT.dll", "fmodex.dll"}
+conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
+t = io.open(conf_path, "r")
+tr = t:read("*all")
+
+disable_fmod = tonumber(tr:match("%s?#define%s+ANGEL_DISABLE_FMOD%s+([^\n]+)"))
+disable_devil = tonumber(tr:match("%s?#define%s+ANGEL_DISABLE_DEVIL%s+([^\n]+)"))
+
+local files_ex = {"DevIL.dll", "ILU.dll", "ILUT.dll"}
 local files_base = {"GameInfo.txt", "Attributions.txt"}
 local directories = {"Resources", "Config", "Logs"}
+
+if (disable_fmod == 1) then
+  table.insert(files_ex, "OpenAL32.dll")
+else
+  table.insert(files_ex, "fmodex.dll")
+end
 
 for _, file_ex in pairs(files_ex) do
   copyfile(pl.path.join(args.input_directory, file_ex), pl.path.join(bits_path, file_ex))

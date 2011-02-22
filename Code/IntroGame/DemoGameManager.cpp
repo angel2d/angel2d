@@ -190,7 +190,7 @@ void DemoGameManager::Render()
 	DrawGameText(infoString, "ConsoleSmall", xOffset, 763);
 }
 
-void DemoGameManager::SoundEnded(SOUND_HANDLE sound)
+void DemoGameManager::SoundEnded(AngelSoundHandle sound)
 {	
 	// Detect sounds that have ended here.
 }

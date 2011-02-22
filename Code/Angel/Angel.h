@@ -1097,6 +1097,8 @@
 
 #pragma once
 
+#include "AngelConfig.h"
+
 #include "Actors/Actor.h"
 #include "Actors/FullScreenActor.h"
 #include "Actors/GridActor.h"

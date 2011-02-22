@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\Libraries\lua-5.1.4\src&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\Libraries\libvorbis-1.3.1\include&quot;;&quot;$(ProjectDir)\Libraries\openal-soft-1.13-bin\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -117,7 +117,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\Libraries\lua-5.1.4\src&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\Libraries\libvorbis-1.3.1\include&quot;;&quot;$(ProjectDir)\Libraries\openal-soft-1.13-bin\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
@@ -665,6 +665,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Scripting\Interfaces\log.i"
+					>
+				</File>
+				<File
 					RelativePath=".\Scripting\Interfaces\messaging.i"
 					>
 				</File>
@@ -690,6 +694,10 @@
 				</File>
 				<File
 					RelativePath=".\Scripting\Interfaces\text_actor.i"
+					>
+				</File>
+				<File
+					RelativePath=".\Scripting\Interfaces\tuning.i"
 					>
 				</File>
 				<File
@@ -720,6 +728,10 @@
 		</Filter>
 		<File
 			RelativePath=".\Angel.h"
+			>
+		</File>
+		<File
+			RelativePath=".\AngelConfig.h"
 			>
 		</File>
 	</Files>

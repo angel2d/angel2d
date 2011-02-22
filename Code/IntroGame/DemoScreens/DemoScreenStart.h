@@ -39,5 +39,5 @@ public:
 	virtual void Start();
 
 private:
-	SAMPLE_HANDLE music;
+	AngelSampleHandle music;
 };

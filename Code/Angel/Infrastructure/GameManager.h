@@ -106,5 +106,5 @@ public:
 	 * 
 	 * @param sound The handle to the sound that has just completed. 
 	 */
-	virtual void SoundEnded(SOUND_HANDLE sound){}
+	virtual void SoundEnded(AngelSoundHandle sound){}
 };

@@ -64,7 +64,7 @@ public:
 	static DemoGameManager &GetInstance();
 	virtual void Render();
 
-	virtual void SoundEnded(SOUND_HANDLE sound);
+	virtual void SoundEnded(AngelSoundHandle sound);
 
 	virtual void ReceiveMessage(Message* message);
 	
@@ -75,5 +75,5 @@ protected:
 private:
 	std::vector<DemoScreen*> _screens;
 	int _current;
-	SAMPLE_HANDLE sample;
+	AngelSampleHandle sample;
 };

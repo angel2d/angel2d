@@ -1,6 +1,7 @@
 
 #include "stdafx.h"
 
+
 int main(int argc, char* argv[])
 {
 	// get things going
@@ -16,8 +17,6 @@ int main(int argc, char* argv[])
 	theWorld.Add(new GridActor(), -1);
 	
 	//YOUR GAME SETUP CODE HERE
-	
-	
 	
 	
 	

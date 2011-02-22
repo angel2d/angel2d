@@ -42,12 +42,12 @@ CompoundLog* CompoundLog::_sysLog = NULL;
 
 #define MAX_LOG_STRING 1024
 
-void DeveloperLog::Printf(const String& format, ...)
+void DeveloperLog::Printf(const char* format, ...)
 {
 	char buff[MAX_LOG_STRING];
 	va_list args;
 	va_start(args, format);
-	vsprintf(buff, format.c_str(), args);
+	vsprintf(buff, format, args);
 	va_end(args);
 	
 	this->Log(String(buff));

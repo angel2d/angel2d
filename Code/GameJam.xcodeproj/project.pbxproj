@@ -59,8 +59,12 @@
 		340ABA6911D462670011B405 /* spawn.h in Headers */ = {isa = PBXBuildFile; fileRef = 340ABA6811D462670011B405 /* spawn.h */; };
 		340F35180F36BA4600650DF7 /* DemoScreenPathfinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 340F35160F36BA4600650DF7 /* DemoScreenPathfinding.h */; };
 		340F35190F36BA4600650DF7 /* DemoScreenPathfinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */; };
+		3421225C13102A8000CF4E5C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342E6DCA130E9ED900325F79 /* OpenAL.framework */; };
 		342C29370E2AF9C50061D881 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9A0E284445001C79A5 /* Carbon.framework */; };
 		342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433A92B0E2AB09B00A02B4E /* IOKit.framework */; };
+		342E6DCB130E9ED900325F79 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342E6DCA130E9ED900325F79 /* OpenAL.framework */; };
+		342E6DD2130E9F0600325F79 /* libOgg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433E82811F5284D00A058EF /* libOgg.a */; };
+		342E6DD3130E9F0600325F79 /* libVorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433E85A11F5292600A058EF /* libVorbis.a */; };
 		3433A8D60E2AADEF00A02B4E /* PID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CA0E2AADAE00A02B4E /* PID.h */; };
 		3433A8D70E2AADEF00A02B4E /* HID_Utilities_External.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CB0E2AADAE00A02B4E /* HID_Utilities_External.h */; };
 		3433A8D80E2AADEF00A02B4E /* IOHIDPowerUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CC0E2AADAE00A02B4E /* IOHIDPowerUsage.h */; };
@@ -73,6 +77,30 @@
 		3433A8DF0E2AADFD00A02B4E /* HID_Config_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C20E2AADAE00A02B4E /* HID_Config_Utilities.c */; };
 		3433A8E00E2AADFD00A02B4E /* HID_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C30E2AADAE00A02B4E /* HID_Utilities.c */; };
 		3433A8E10E2AADFD00A02B4E /* HID_Queue_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C40E2AADAE00A02B4E /* HID_Queue_Utilities.c */; };
+		3433E84511F528B000A058EF /* bitwise.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E84311F528B000A058EF /* bitwise.c */; };
+		3433E84611F528B000A058EF /* framing.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E84411F528B000A058EF /* framing.c */; };
+		3433E87511F5295E00A058EF /* mdct.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86111F5295E00A058EF /* mdct.c */; };
+		3433E87611F5295E00A058EF /* smallft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86211F5295E00A058EF /* smallft.c */; };
+		3433E87711F5295E00A058EF /* block.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86311F5295E00A058EF /* block.c */; };
+		3433E87811F5295E00A058EF /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86411F5295E00A058EF /* envelope.c */; };
+		3433E87911F5295E00A058EF /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86511F5295E00A058EF /* window.c */; };
+		3433E87A11F5295E00A058EF /* lsp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86611F5295E00A058EF /* lsp.c */; };
+		3433E87B11F5295E00A058EF /* lpc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86711F5295E00A058EF /* lpc.c */; };
+		3433E87C11F5295E00A058EF /* analysis.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86811F5295E00A058EF /* analysis.c */; };
+		3433E87D11F5295E00A058EF /* synthesis.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86911F5295E00A058EF /* synthesis.c */; };
+		3433E87E11F5295E00A058EF /* psy.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86A11F5295E00A058EF /* psy.c */; };
+		3433E87F11F5295E00A058EF /* info.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86B11F5295E00A058EF /* info.c */; };
+		3433E88011F5295E00A058EF /* floor1.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86C11F5295E00A058EF /* floor1.c */; };
+		3433E88111F5295E00A058EF /* floor0.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86D11F5295E00A058EF /* floor0.c */; };
+		3433E88211F5295E00A058EF /* res0.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86E11F5295E00A058EF /* res0.c */; };
+		3433E88311F5295E00A058EF /* mapping0.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E86F11F5295E00A058EF /* mapping0.c */; };
+		3433E88411F5295E00A058EF /* registry.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E87011F5295E00A058EF /* registry.c */; };
+		3433E88511F5295E00A058EF /* codebook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E87111F5295E00A058EF /* codebook.c */; };
+		3433E88611F5295E00A058EF /* sharedbook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E87211F5295E00A058EF /* sharedbook.c */; };
+		3433E88711F5295E00A058EF /* lookup.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E87311F5295E00A058EF /* lookup.c */; };
+		3433E88811F5295E00A058EF /* bitrate.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E87411F5295E00A058EF /* bitrate.c */; };
+		3433E89C11F52A3100A058EF /* vorbisfile.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E89B11F52A3100A058EF /* vorbisfile.c */; };
+		3433E89E11F52A3B00A058EF /* vorbisenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433E89D11F52A3B00A058EF /* vorbisenc.c */; };
 		34344A4C0E3035A000FC041D /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34344A070E3035A000FC041D /* b2BroadPhase.cpp */; };
 		34344A4D0E3035A000FC041D /* b2BroadPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 34344A080E3035A000FC041D /* b2BroadPhase.h */; };
 		34344A4E0E3035A000FC041D /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34344A090E3035A000FC041D /* b2CollideCircle.cpp */; };
@@ -254,8 +282,7 @@
 		345AAF4311CB3975002B4471 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867E11487BE2008F1155 /* libpng.a */; };
 		345AAF4411CB3975002B4471 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454867F11487BE2008F1155 /* libtiff.a */; };
 		345AAF4511CB3975002B4471 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3454868011487BE2008F1155 /* libz.a */; };
-		345AAF4A11CB39A3002B4471 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
-		345AAF6811CB3AB2002B4471 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
+		345AAF6811CB3AB2002B4471 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		345AAF6911CB3AB2002B4471 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 345AAD0811CB3710002B4471 /* libAngel.a */; };
 		346E3BBF0E28642400E6C79E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
 		346E3BC10E28644000E6C79E /* FTBitmapGlyph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346E3B650E285ECF00E6C79E /* FTBitmapGlyph.cpp */; };
@@ -311,7 +338,6 @@
 		346E5EA80F30122000258B84 /* DemoScreenIntervals.h in Headers */ = {isa = PBXBuildFile; fileRef = 346E5EA60F30122000258B84 /* DemoScreenIntervals.h */; };
 		3473839C11D062BD00088BB9 /* lfs.c in Sources */ = {isa = PBXBuildFile; fileRef = 3473839A11D062BD00088BB9 /* lfs.c */; };
 		3473839D11D062BD00088BB9 /* lfs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3473839B11D062BD00088BB9 /* lfs.h */; };
-		34810A150E67A38B00246544 /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
 		34810B240E68450000246544 /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
 		34974A320E2925BE0018A032 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A300E2925BE0018A032 /* stdafx.cpp */; };
 		34974A330E2925BE0018A032 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A310E2925BE0018A032 /* Main.cpp */; };
@@ -384,6 +410,8 @@
 		34D34E6E0E2C38A20053994C /* DemoScreenSimpleActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DF80E2C375A0053994C /* DemoScreenSimpleActor.h */; };
 		34D6B4BC11CC3CF700D72FE6 /* libLua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EECBDC11CB922100667B26 /* libLua.a */; };
 		34D6B4C511CC3D1F00D72FE6 /* lua.c in Sources */ = {isa = PBXBuildFile; fileRef = 34D6B4C411CC3D1F00D72FE6 /* lua.c */; };
+		34DD073513114ACB00DF6386 /* AngelConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 34DD073413114ACB00DF6386 /* AngelConfig.h */; };
+		34E787D913137249008655E1 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34EECC0C11CB936D00667B26 /* lapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EECBF511CB936D00667B26 /* lapi.h */; };
 		34EECC0D11CB936D00667B26 /* lauxlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EECBF611CB936D00667B26 /* lauxlib.h */; };
 		34EECC0E11CB936D00667B26 /* lcode.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EECBF711CB936D00667B26 /* lcode.h */; };
@@ -453,6 +481,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3406447811E7DE4200033B1D;
 			remoteInfo = FreeType;
+		};
+		3433E88911F5296900A058EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3433E82711F5284D00A058EF;
+			remoteInfo = Ogg;
 		};
 		34388F4511E3F034002A79B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -531,6 +566,13 @@
 			remoteGlobalIDString = 34EECBDB11CB922100667B26;
 			remoteInfo = Lua;
 		};
+		34DD073613114B5900DF6386 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3433E85911F5292600A058EF;
+			remoteInfo = Vorbis;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -540,7 +582,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				34810A150E67A38B00246544 /* libfmodex.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +653,7 @@
 		340F35170F36BA4600650DF7 /* DemoScreenPathfinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPathfinding.cpp; path = IntroGame/DemoScreens/DemoScreenPathfinding.cpp; sourceTree = "<group>"; };
 		3411DFE90E5FDD83009D734D /* actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = actor.i; path = Angel/Scripting/Interfaces/actor.i; sourceTree = "<group>"; };
 		3411E0B20E5FF1C2009D734D /* vector2.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = vector2.i; path = Angel/Scripting/Interfaces/vector2.i; sourceTree = "<group>"; };
+		342E6DCA130E9ED900325F79 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Name_Lookup.c; path = "Angel/Libraries/HID Utilities/HID_Name_Lookup.c"; sourceTree = "<group>"; };
 		3433A8C00E2AADAE00A02B4E /* HID_Error_Handler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Error_Handler.c; path = "Angel/Libraries/HID Utilities/HID_Error_Handler.c"; sourceTree = "<group>"; };
 		3433A8C10E2AADAE00A02B4E /* HID_Transaction_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Transaction_Utilities.c; path = "Angel/Libraries/HID Utilities/HID_Transaction_Utilities.c"; sourceTree = "<group>"; };
@@ -627,6 +669,32 @@
 		3433A8D10E2AADDE00A02B4E /* libHIDUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHIDUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3433A92B0E2AB09B00A02B4E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		3433A9330E2AB0E000A02B4E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		3433E82811F5284D00A058EF /* libOgg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOgg.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3433E84311F528B000A058EF /* bitwise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitwise.c; path = "Angel/Libraries/libogg-1.2.0/src/bitwise.c"; sourceTree = "<group>"; };
+		3433E84411F528B000A058EF /* framing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = framing.c; path = "Angel/Libraries/libogg-1.2.0/src/framing.c"; sourceTree = "<group>"; };
+		3433E85A11F5292600A058EF /* libVorbis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVorbis.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3433E86111F5295E00A058EF /* mdct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mdct.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/mdct.c"; sourceTree = "<group>"; };
+		3433E86211F5295E00A058EF /* smallft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smallft.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/smallft.c"; sourceTree = "<group>"; };
+		3433E86311F5295E00A058EF /* block.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = block.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/block.c"; sourceTree = "<group>"; };
+		3433E86411F5295E00A058EF /* envelope.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = envelope.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/envelope.c"; sourceTree = "<group>"; };
+		3433E86511F5295E00A058EF /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/window.c"; sourceTree = "<group>"; };
+		3433E86611F5295E00A058EF /* lsp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lsp.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/lsp.c"; sourceTree = "<group>"; };
+		3433E86711F5295E00A058EF /* lpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lpc.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/lpc.c"; sourceTree = "<group>"; };
+		3433E86811F5295E00A058EF /* analysis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = analysis.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/analysis.c"; sourceTree = "<group>"; };
+		3433E86911F5295E00A058EF /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/synthesis.c"; sourceTree = "<group>"; };
+		3433E86A11F5295E00A058EF /* psy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psy.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/psy.c"; sourceTree = "<group>"; };
+		3433E86B11F5295E00A058EF /* info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = info.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/info.c"; sourceTree = "<group>"; };
+		3433E86C11F5295E00A058EF /* floor1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = floor1.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/floor1.c"; sourceTree = "<group>"; };
+		3433E86D11F5295E00A058EF /* floor0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = floor0.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/floor0.c"; sourceTree = "<group>"; };
+		3433E86E11F5295E00A058EF /* res0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = res0.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/res0.c"; sourceTree = "<group>"; };
+		3433E86F11F5295E00A058EF /* mapping0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mapping0.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/mapping0.c"; sourceTree = "<group>"; };
+		3433E87011F5295E00A058EF /* registry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = registry.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/registry.c"; sourceTree = "<group>"; };
+		3433E87111F5295E00A058EF /* codebook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = codebook.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/codebook.c"; sourceTree = "<group>"; };
+		3433E87211F5295E00A058EF /* sharedbook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sharedbook.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/sharedbook.c"; sourceTree = "<group>"; };
+		3433E87311F5295E00A058EF /* lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lookup.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/lookup.c"; sourceTree = "<group>"; };
+		3433E87411F5295E00A058EF /* bitrate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitrate.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/bitrate.c"; sourceTree = "<group>"; };
+		3433E89B11F52A3100A058EF /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/vorbisfile.c"; sourceTree = "<group>"; };
+		3433E89D11F52A3B00A058EF /* vorbisenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisenc.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/vorbisenc.c"; sourceTree = "<group>"; };
 		34344A070E3035A000FC041D /* b2BroadPhase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2BroadPhase.cpp; sourceTree = "<group>"; };
 		34344A080E3035A000FC041D /* b2BroadPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2BroadPhase.h; sourceTree = "<group>"; };
 		34344A090E3035A000FC041D /* b2CollideCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2CollideCircle.cpp; sourceTree = "<group>"; };
@@ -959,6 +1027,7 @@
 		34DB1BB50E441C73006F63F5 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		34DB1BB60E441C73006F63F5 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		34DB1BDC0E44BF59006F63F5 /* Interval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interval.h; sourceTree = "<group>"; };
+		34DD073413114ACB00DF6386 /* AngelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AngelConfig.h; path = Angel/AngelConfig.h; sourceTree = "<group>"; };
 		34EECBDC11CB922100667B26 /* libLua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLua.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EECBF511CB936D00667B26 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lapi.h; path = "Angel/Libraries/lua-5.1.4/src/lapi.h"; sourceTree = "<group>"; };
 		34EECBF611CB936D00667B26 /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lauxlib.h; path = "Angel/Libraries/lua-5.1.4/src/lauxlib.h"; sourceTree = "<group>"; };
@@ -1027,6 +1096,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3433E82611F5284D00A058EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3433E85811F5292600A058EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		345AAD0611CB3710002B4471 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1045,6 +1128,8 @@
 				345AAF2811CB38D0002B4471 /* libGLFW.a in Frameworks */,
 				345AAF2911CB38D0002B4471 /* libFTGL.a in Frameworks */,
 				345AAF2A11CB38D0002B4471 /* libHIDUtilities.a in Frameworks */,
+				342E6DD2130E9F0600325F79 /* libOgg.a in Frameworks */,
+				342E6DD3130E9F0600325F79 /* libVorbis.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3421225C13102A8000CF4E5C /* OpenAL.framework in Frameworks */,
 				34AFC65011CC86C0000330F9 /* libLua.a in Frameworks */,
 				345AAF6811CB3AB2002B4471 /* libfmodex.dylib in Frameworks */,
 				345AAF6911CB3AB2002B4471 /* libAngel.a in Frameworks */,
@@ -1109,13 +1195,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				34AFC64F11CC86B5000330F9 /* libLua.a in Frameworks */,
-				345AAF4A11CB39A3002B4471 /* libfmodex.dylib in Frameworks */,
+				34E787D913137249008655E1 /* libfmodex.dylib in Frameworks */,
 				345AAF3211CB38E3002B4471 /* libAngel.a in Frameworks */,
 				34974B2F0E2926FB0018A032 /* OpenGL.framework in Frameworks */,
 				342C29370E2AF9C50061D881 /* Carbon.framework in Frameworks */,
 				34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */,
 				342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */,
 				3406454F11E7E9AA00033B1D /* libz.dylib in Frameworks */,
+				342E6DCB130E9ED900325F79 /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1135,6 +1222,8 @@
 				34EECBDC11CB922100667B26 /* libLua.a */,
 				34D6B4B611CC3CCA00D72FE6 /* Lua */,
 				3406447911E7DE4200033B1D /* libFreeType.a */,
+				3433E82811F5284D00A058EF /* libOgg.a */,
+				3433E85A11F5292600A058EF /* libVorbis.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1276,6 +1365,44 @@
 				3433A8CC0E2AADAE00A02B4E /* IOHIDPowerUsage.h */,
 			);
 			name = "External Headers";
+			sourceTree = "<group>";
+		};
+		3433E82B11F5286700A058EF /* Ogg */ = {
+			isa = PBXGroup;
+			children = (
+				3433E84311F528B000A058EF /* bitwise.c */,
+				3433E84411F528B000A058EF /* framing.c */,
+			);
+			name = Ogg;
+			sourceTree = "<group>";
+		};
+		3433E85F11F5294700A058EF /* Vorbis */ = {
+			isa = PBXGroup;
+			children = (
+				3433E89D11F52A3B00A058EF /* vorbisenc.c */,
+				3433E89B11F52A3100A058EF /* vorbisfile.c */,
+				3433E86111F5295E00A058EF /* mdct.c */,
+				3433E86211F5295E00A058EF /* smallft.c */,
+				3433E86311F5295E00A058EF /* block.c */,
+				3433E86411F5295E00A058EF /* envelope.c */,
+				3433E86511F5295E00A058EF /* window.c */,
+				3433E86611F5295E00A058EF /* lsp.c */,
+				3433E86711F5295E00A058EF /* lpc.c */,
+				3433E86811F5295E00A058EF /* analysis.c */,
+				3433E86911F5295E00A058EF /* synthesis.c */,
+				3433E86A11F5295E00A058EF /* psy.c */,
+				3433E86B11F5295E00A058EF /* info.c */,
+				3433E86C11F5295E00A058EF /* floor1.c */,
+				3433E86D11F5295E00A058EF /* floor0.c */,
+				3433E86E11F5295E00A058EF /* res0.c */,
+				3433E86F11F5295E00A058EF /* mapping0.c */,
+				3433E87011F5295E00A058EF /* registry.c */,
+				3433E87111F5295E00A058EF /* codebook.c */,
+				3433E87211F5295E00A058EF /* sharedbook.c */,
+				3433E87311F5295E00A058EF /* lookup.c */,
+				3433E87411F5295E00A058EF /* bitrate.c */,
+			);
+			name = Vorbis;
 			sourceTree = "<group>";
 		};
 		34344A050E3035A000FC041D /* Source */ = {
@@ -1539,6 +1666,7 @@
 		34A181570E283FC3001C79A5 /* Angel */ = {
 			isa = PBXGroup;
 			children = (
+				34DD073413114ACB00DF6386 /* AngelConfig.h */,
 				34A181BC0E283FF1001C79A5 /* Angel.h */,
 				34A1815A0E283FE0001C79A5 /* Actors */,
 				34A187BE0E283FF3001C79A5 /* AI */,
@@ -1672,6 +1800,8 @@
 		34A18BAE0E2841D3001C79A5 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3433E82B11F5286700A058EF /* Ogg */,
+				3433E85F11F5294700A058EF /* Vorbis */,
 				3406448411E7DF7300033B1D /* FreeType */,
 				34EECBE111CB92D300667B26 /* Lua */,
 				3433A8B70E2AAD8900A02B4E /* HID Utilities */,
@@ -1752,6 +1882,7 @@
 				34A18C9A0E284445001C79A5 /* Carbon.framework */,
 				34A18C9B0E284445001C79A5 /* OpenGL.framework */,
 				34D34D980E2C34430053994C /* ForceFeedback.framework */,
+				342E6DCA130E9ED900325F79 /* OpenAL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2024,6 +2155,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3433E82411F5284D00A058EF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3433E85611F5292600A058EF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		345AAD0411CB3710002B4471 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2082,6 +2227,7 @@
 				345AAD3F11CB3759002B4471 /* Vector2.h in Headers */,
 				345AAD4011CB3759002B4471 /* Vector3.h in Headers */,
 				345AAD4111CB3759002B4471 /* World.h in Headers */,
+				34DD073513114ACB00DF6386 /* AngelConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2273,6 +2419,41 @@
 			productReference = 3433A8D10E2AADDE00A02B4E /* libHIDUtilities.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		3433E82711F5284D00A058EF /* Ogg */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3433E82C11F5286700A058EF /* Build configuration list for PBXNativeTarget "Ogg" */;
+			buildPhases = (
+				3433E82411F5284D00A058EF /* Headers */,
+				3433E82511F5284D00A058EF /* Sources */,
+				3433E82611F5284D00A058EF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ogg;
+			productName = Ogg;
+			productReference = 3433E82811F5284D00A058EF /* libOgg.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3433E85911F5292600A058EF /* Vorbis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3433E86011F5294700A058EF /* Build configuration list for PBXNativeTarget "Vorbis" */;
+			buildPhases = (
+				3433E85611F5292600A058EF /* Headers */,
+				3433E85711F5292600A058EF /* Sources */,
+				3433E85811F5292600A058EF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3433E88A11F5296900A058EF /* PBXTargetDependency */,
+			);
+			name = Vorbis;
+			productName = Vorbis;
+			productReference = 3433E85A11F5292600A058EF /* libVorbis.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		345AAD0711CB3710002B4471 /* Angel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 345AAF1211CB37B5002B4471 /* Build configuration list for PBXNativeTarget "Angel" */;
@@ -2288,6 +2469,7 @@
 				345AAD1011CB3746002B4471 /* PBXTargetDependency */,
 				345AAD1211CB3748002B4471 /* PBXTargetDependency */,
 				345AAD1411CB374C002B4471 /* PBXTargetDependency */,
+				34DD073713114B5900DF6386 /* PBXTargetDependency */,
 			);
 			name = Angel;
 			productName = AngelStatic;
@@ -2445,6 +2627,8 @@
 				8D1107260486CEB800E47090 /* ClientGame */,
 				345AAD0711CB3710002B4471 /* Angel */,
 				34A18BA60E284044001C79A5 /* Box2D */,
+				3433E85911F5292600A058EF /* Vorbis */,
+				3433E82711F5284D00A058EF /* Ogg */,
 				34A18C500E284362001C79A5 /* GLFW */,
 				346E3BB80E28637A00E6C79E /* FTGL */,
 				3406447811E7DE4200033B1D /* FreeType */,
@@ -2483,7 +2667,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/ClientGame\" -o \"${BUILD_DIR}/Published\" -g ClientGame.app\nfi";
+			shellScript = "echo YESSS\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/ClientGame\" -o \"${BUILD_DIR}/Published\" -g ClientGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 		34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */ = {
@@ -2541,7 +2725,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/IntroGame\" -o \"${BUILD_DIR}/Published\" -g IntroGame.app\nfi";
+			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/IntroGame\" -o \"${BUILD_DIR}/Published\" -g IntroGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2597,6 +2781,44 @@
 				3433A8DF0E2AADFD00A02B4E /* HID_Config_Utilities.c in Sources */,
 				3433A8E00E2AADFD00A02B4E /* HID_Utilities.c in Sources */,
 				3433A8E10E2AADFD00A02B4E /* HID_Queue_Utilities.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3433E82511F5284D00A058EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3433E84511F528B000A058EF /* bitwise.c in Sources */,
+				3433E84611F528B000A058EF /* framing.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3433E85711F5292600A058EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3433E87511F5295E00A058EF /* mdct.c in Sources */,
+				3433E87611F5295E00A058EF /* smallft.c in Sources */,
+				3433E87711F5295E00A058EF /* block.c in Sources */,
+				3433E87811F5295E00A058EF /* envelope.c in Sources */,
+				3433E87911F5295E00A058EF /* window.c in Sources */,
+				3433E87A11F5295E00A058EF /* lsp.c in Sources */,
+				3433E87B11F5295E00A058EF /* lpc.c in Sources */,
+				3433E87C11F5295E00A058EF /* analysis.c in Sources */,
+				3433E87D11F5295E00A058EF /* synthesis.c in Sources */,
+				3433E87E11F5295E00A058EF /* psy.c in Sources */,
+				3433E87F11F5295E00A058EF /* info.c in Sources */,
+				3433E88011F5295E00A058EF /* floor1.c in Sources */,
+				3433E88111F5295E00A058EF /* floor0.c in Sources */,
+				3433E88211F5295E00A058EF /* res0.c in Sources */,
+				3433E88311F5295E00A058EF /* mapping0.c in Sources */,
+				3433E88411F5295E00A058EF /* registry.c in Sources */,
+				3433E88511F5295E00A058EF /* codebook.c in Sources */,
+				3433E88611F5295E00A058EF /* sharedbook.c in Sources */,
+				3433E88711F5295E00A058EF /* lookup.c in Sources */,
+				3433E88811F5295E00A058EF /* bitrate.c in Sources */,
+				3433E89C11F52A3100A058EF /* vorbisfile.c in Sources */,
+				3433E89E11F52A3B00A058EF /* vorbisenc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2848,6 +3070,11 @@
 			target = 3406447811E7DE4200033B1D /* FreeType */;
 			targetProxy = 3406451111E7E3DC00033B1D /* PBXContainerItemProxy */;
 		};
+		3433E88A11F5296900A058EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3433E82711F5284D00A058EF /* Ogg */;
+			targetProxy = 3433E88911F5296900A058EF /* PBXContainerItemProxy */;
+		};
 		34388F4611E3F034002A79B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 34EECBDB11CB922100667B26 /* Lua */;
@@ -2902,6 +3129,11 @@
 			isa = PBXTargetDependency;
 			target = 34EECBDB11CB922100667B26 /* Lua */;
 			targetProxy = 34D6B4BA11CC3CF100D72FE6 /* PBXContainerItemProxy */;
+		};
+		34DD073713114B5900DF6386 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3433E85911F5292600A058EF /* Vorbis */;
+			targetProxy = 34DD073613114B5900DF6386 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2990,6 +3222,86 @@
 			};
 			name = Release;
 		};
+		3433E82911F5284E00A058EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = Ogg;
+			};
+			name = Debug;
+		};
+		3433E82A11F5284E00A058EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = Ogg;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		3433E85B11F5292700A058EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/lib\"",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = Vorbis;
+			};
+			name = Debug;
+		};
+		3433E85C11F5292700A058EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/lib\"",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = Vorbis;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		345AAD0911CB3711002B4471 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3007,6 +3319,9 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freealut-1.1.0/include\"",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
@@ -3036,6 +3351,9 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freealut-1.1.0/include\"",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
@@ -3179,6 +3497,9 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freealut-1.1.0/include\"",
 				);
 				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3201,6 +3522,9 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freealut-1.1.0/include\"",
 				);
 				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3312,6 +3636,9 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freealut-1.1.0/include\"",
 				);
 				INFOPLIST_FILE = ClientGame/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3334,6 +3661,9 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.0.1/Include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/glfw/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freealut-1.1.0/include\"",
 				);
 				INFOPLIST_FILE = ClientGame/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3347,7 +3677,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=0",
@@ -3368,7 +3697,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=0",
 					"RELEASE=1",
@@ -3400,6 +3728,24 @@
 			buildConfigurations = (
 				3433A8D20E2AADDE00A02B4E /* Debug */,
 				3433A8D30E2AADDE00A02B4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3433E82C11F5286700A058EF /* Build configuration list for PBXNativeTarget "Ogg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3433E82911F5284E00A058EF /* Debug */,
+				3433E82A11F5284E00A058EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3433E86011F5294700A058EF /* Build configuration list for PBXNativeTarget "Vorbis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3433E85B11F5292700A058EF /* Debug */,
+				3433E85C11F5292700A058EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

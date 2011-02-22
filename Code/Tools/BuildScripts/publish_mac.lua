@@ -47,7 +47,7 @@ local args = pl.lapp [[
   Packages a game for easy distribution. 
     -i,--input_directory (string)  Project directory
     -o,--output_directory  (string)  Where the packaged game should go
-    -g,--gamename (default ClientGame.app)  Number to be scaled
+    -g,--gamename (default ClientGame.app)  Name of the final game
   ]]
 
 lfs.chdir(args.input_directory)
@@ -81,3 +81,19 @@ if pl.path.exists(app_path) then
   pl.dir.rmtree(app_path)
 end
 recursive_copy(fulljoin(output_d, "..", "..", "Release", args.gamename), app_path)
+
+conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
+t = io.open(conf_path, "r")
+tr = t:read("*all")
+
+disable_fmod = tonumber(tr:match("%s?#define%s+ANGEL_DISABLE_FMOD%s+([^\n]+)"))
+disable_devil = tonumber(tr:match("%s?#define%s+ANGEL_DISABLE_DEVIL%s+([^\n]+)"))
+
+if (disable_fmod == 1) then
+  local lib = fulljoin(app_path, "Contents", "Frameworks", "libfmodex.dylib")
+  os.remove(lib)
+end
+
+if (disable_devil) then
+  -- remove devil library
+end

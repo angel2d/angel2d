@@ -8,7 +8,7 @@ class DeveloperLog
 public:
 	virtual ~DeveloperLog() {}
 	virtual void Log( const String& val ) = 0;
-	void Printf(const String& format, ...);
+	void Printf(const char* format, ...);
 };
 
 class ConsoleLog : public DeveloperLog

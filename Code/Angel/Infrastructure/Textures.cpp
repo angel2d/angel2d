@@ -30,6 +30,7 @@
 #include "stdafx.h"
 #include "../Infrastructure/Textures.h"
 
+#include "../AngelConfig.h"
 #include "../Infrastructure/Log.h"
 
 #define ILUT_USE_OPENGL

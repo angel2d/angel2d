@@ -37,7 +37,7 @@
 #pragma once
 
 #include "../Util/StringUtil.h"
-#include "Color.h"
+#include "../Infrastructure/Color.h"
 
 /**
  * Do whatever setup needs to be done at program start. 

@@ -29,14 +29,29 @@
 
 #pragma once
 
-#include <map>
-#include <vector>
-#include <assert.h>
-
+#include "../AngelConfig.h"
 #include "../Infrastructure/Callback.h"
 
-#include "fmod.hpp"
-#include "fmod_errors.h"
+#if TARGET_OS_IPHONE
+	#define ANGEL_DISABLE_FMOD 1
+#endif
+
+#if !ANGEL_DISABLE_FMOD
+	#include <map>
+	#include <assert.h>
+
+	#include "fmod.hpp"
+	#include "fmod_errors.h"
+#else
+	#if defined(WIN32)
+		#include <AL/al.h>
+		#include <AL/alc.h>
+	#else
+		#include <OpenAL/al.h>
+		#include <OpenAL/alc.h>
+	#endif
+	#include <vorbis/vorbisfile.h>
+#endif
 
 /* ----------------------------------------------------------------------------
 
@@ -54,17 +69,14 @@ NOTES:
  
 -----------------------------------------------------------------------------*/
 
-void ERRCHECK(FMOD_RESULT result);
-
-#define FMOD_CHECKED( call ) \
-{ \
-	FMOD_RESULT result = call; \
-	ERRCHECK(result); \
-} 
-
 //typedefs so our declarations can look more sensible
-typedef void* SOUND_HANDLE;
-typedef void* SAMPLE_HANDLE;
+#if !ANGEL_DISABLE_FMOD
+	typedef void* AngelSoundHandle;
+	typedef void* AngelSampleHandle;
+#else
+	typedef ALuint AngelSoundHandle;
+	typedef ALuint AngelSampleHandle;
+#endif
 
 //singleton shortcut
 #define theSound SoundDevice::GetInstance()
@@ -109,41 +121,41 @@ public:
 	 * @param filename The path to the file you want to load
 	 * @param isStream Whether or not the sound should stream or get loaded
 	 *   all at once
-	 * @return The SAMPLE_HANDLE that you should hold on to for when you actually
+	 * @return The AngelSampleHandle that you should hold on to for when you actually
 	 *   want to play the sound. You'll pass this to SoundDevice::PlaySound. 
 	 */
-	SAMPLE_HANDLE LoadSample(const char* filename, bool isStream);
+	AngelSampleHandle LoadSample(const char* filename, bool isStream);
 	
 	/**
 	 * Plays a sound that has been previously loaded. 
 	 * 
-	 * @param sample The SAMPLE_HANDLE that you got from the 
+	 * @param sample The AngelSampleHandle that you got from the 
 	 *   SoundDevice::LoadSample function
 	 * @param volume The desired loudness of the sound, as a multiplier of its
 	 *   normal volume. (1.0 is maximum volume.)
 	 * @param looping Whether you want the sound to repeat when it's done
 	 * @param flags Currently unused; this will eventually let you pass in
 	 *   flags to the underlying sound system (FMOD)
-	 * @return The SOUND_HANDLE that you can use to monitor or affect playback
+	 * @return The AngelSoundHandle that you can use to monitor or affect playback
 	 */
-	SOUND_HANDLE PlaySound(SAMPLE_HANDLE sample, float volume=1.0f, bool looping=false, int flags=0);
+	AngelSoundHandle PlaySound(AngelSampleHandle sample, float volume=1.0f, bool looping=false, int flags=0);
 	
 	/**
 	 * Stops a sound that is currently playing. 
 	 * 
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 */
-	void StopSound(SOUND_HANDLE sound);
+	void StopSound(AngelSoundHandle sound);
 	
 	/**
-	 * Pauses a sound that is currently playing. It's playback can be resumed
+	 * Pauses a sound that is currently playing. Its playback can be resumed
 	 *  from the same point later. 
 	 * 
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 * @param paused If true, the sound will be paused. If false, it will
 	 *   be unpaused. 
 	 */
-	void PauseSound(SOUND_HANDLE sound, bool paused);
+	void PauseSound(AngelSoundHandle sound, bool paused);
 	
 	/**
 	 * Find out whether or not a sound is still playing
@@ -151,7 +163,7 @@ public:
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 * @return True if the sound is still playing, false if it's not
 	 */
-	bool IsPlaying(SOUND_HANDLE sound);
+	bool IsPlaying(AngelSoundHandle sound);
 	
 	/**
 	 * Find out whether a sound is paused
@@ -159,16 +171,19 @@ public:
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 * @return True if the sound is paused, false if it's playing or stopped
 	 */
-	bool IsPaused(SOUND_HANDLE sound);
+	bool IsPaused(AngelSoundHandle sound);
 	
 	/**
-	 * Change the stereo positioning of a sound while it's playing. 
+	 * Change the stereo positioning of a sound while it's playing.
+	 * 
+	 * NB: If you've disabled FMOD (and are thus using the OpenAL backend), \b only
+	 *   \b mono \b sounds will pan properly.  
 	 * 
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 * @param newPan The new pan value. Should range from -1.0 (full left) to
 	 *   1.0 (full right)
 	 */
-	void SetPan(SOUND_HANDLE sound, float newPan);
+	void SetPan(AngelSoundHandle sound, float newPan);
 	
 	/**
 	 * Change the volume of a sound while it's playing
@@ -177,7 +192,7 @@ public:
 	 * @param newVolume The new volume level. Should range from 0.0 (silent) to
 	 *   1.0 (full volume)
 	 */
-	void SetVolume(SOUND_HANDLE sound, float newVolume);
+	void SetVolume(AngelSoundHandle sound, float newVolume);
 	
 	/**
 	 * If you set a callback here, it will be executed whenever a sound finishes
@@ -188,9 +203,9 @@ public:
 	 *  GameManager. 
 	 * 
 	 * @param instance The GameManager instance on which to execute the function
-	 * @param void The function to execute, which will be passed the SOUND_HANDLE
+	 * @param void The function to execute, which will be passed the AngelSoundHandle
 	 */
-	void SetSoundCallback(GameManager* instance, void (GameManager::*function)(SOUND_HANDLE param))
+	void SetSoundCallback(GameManager* instance, void (GameManager::*function)(AngelSoundHandle param))
 	{
 		soundCallback.SetCallback(instance, function);
 	}
@@ -206,27 +221,46 @@ public:
 	void Update();
 	
 	/**
-	 * Releases all sounds (invalidating your leftover SOUND_HANDLE and 
-	 *  SAMPLE_HANDLE pointers) and shuts down FMOD. Should really only be
+	 * Releases all sounds (invalidating your leftover AngelSoundHandle and 
+	 *  AngelSampleHandle pointers) and shuts down FMOD. Should really only be
 	 *  called at the end of the game, which the World handles for you by
 	 *  default. 
 	 */
 	void Shutdown();
 	
 private:
-	static FMOD_RESULT F_CALLBACK FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, int command, unsigned int commanddata1, unsigned int commanddata2);
 	static SoundDevice* s_soundDevice;
 	
 	SoundDevice() : _system(NULL)
 	{
-		assert(_system == NULL);
 		Initialize();
 	}
 	
 	void Initialize();
+
+	TGenericCallback<GameManager, AngelSoundHandle> soundCallback;
 	
-	TGenericCallback<GameManager, SOUND_HANDLE> soundCallback;
-	
-	FMOD::System*				_system;	
-	std::vector<FMOD::Sound*>	_samples;
+	#if !ANGEL_DISABLE_FMOD
+		FMOD::System*				_system;	
+		std::vector<FMOD::Sound*>	_samples;
+		static FMOD_RESULT F_CALLBACK FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, int command, unsigned int commanddata1, unsigned int commanddata2);
+	#else
+		struct StreamingAudio
+		{
+			ALuint source;
+			ALuint buffers[2];
+			OggVorbis_File file;
+			vorbis_info* vorbisInfo;
+			bool looped;
+			ALenum format;
+		};
+		ALCcontext * _system;
+		std::map<ALuint, StreamingAudio> _streams;
+		std::vector<ALuint> _buffers;
+		std::vector<ALuint> _sources;
+
+		bool _isSampleStreamed(AngelSampleHandle sample);
+		bool _streamAudio(ALuint buffer, StreamingAudio &sa);
+	#endif
+
 };

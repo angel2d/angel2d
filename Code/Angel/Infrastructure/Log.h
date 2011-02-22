@@ -63,7 +63,7 @@ public:
 	 * @param format The format string
 	 * @param ... The parameters to substitute into the format string
 	 */
-	void Printf(const String& format, ...);
+	void Printf(const char* format, ...);
 };
 
 ///A log that writes to the current Console
