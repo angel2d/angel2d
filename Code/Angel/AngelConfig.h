@@ -9,4 +9,4 @@
 //  for textures, and will *only* be able to display PNG images. 
 //  
 //  Note that this is set to 1 automatically when building for iOS. 
-#define ANGEL_DISABLE_DEVIL 0
+#define ANGEL_DISABLE_DEVIL 0 // NOT YET IMPLEMENTED
