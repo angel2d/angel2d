@@ -465,6 +465,7 @@
 		34EECC5C11CB93C100667B26 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = 34EECC3E11CB93C100667B26 /* lundump.c */; };
 		34EECC5D11CB93C100667B26 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 34EECC3F11CB93C100667B26 /* lvm.c */; };
 		34EECC5E11CB93C100667B26 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 34EECC4011CB93C100667B26 /* lzio.c */; };
+		34FF68221313E0F20005A9FC /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -582,6 +583,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				34FF68221313E0F20005A9FC /* libfmodex.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2667,7 +2669,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo YESSS\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/ClientGame\" -o \"${BUILD_DIR}/Published\" -g ClientGame.app\nfi";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/ClientGame\" -o \"${BUILD_DIR}/Published\" -g ClientGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 		34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */ = {
@@ -2725,7 +2727,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/IntroGame\" -o \"${BUILD_DIR}/Published\" -g IntroGame.app\nfi";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}/IntroGame\" -o \"${BUILD_DIR}/Published\" -g IntroGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

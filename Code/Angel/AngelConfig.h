@@ -2,7 +2,7 @@
 
 
 // Swap this to 1 to disable FMOD. Angel will fall back to using OpenAL
-//  for audio, and will *only* be able to play Ogg Vorbis files and WAVs. 
+//  for audio, and will *only* be able to play Ogg Vorbis files. 
 #define ANGEL_DISABLE_FMOD  0
 
 // Swap this to 1 to disable DevIL. Angel will fall back to using libpng
