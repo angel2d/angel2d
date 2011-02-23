@@ -74,8 +74,8 @@ conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
 t = io.open(conf_path, "r")
 tr = t:read("*all")
 
-disable_fmod = tonumber(tr:match("%s?#define%s+ANGEL_DISABLE_FMOD%s+([^\n]+)"))
-disable_devil = tonumber(tr:match("%s?#define%s+ANGEL_DISABLE_DEVIL%s+([^\n]+)"))
+disable_fmod = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_FMOD%s+([0-9]+)"))
+disable_devil = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_DEVIL%s+([0-9]+)"))
 
 local files_ex = {"DevIL.dll", "ILU.dll", "ILUT.dll"}
 local files_base = {"GameInfo.txt", "Attributions.txt"}
