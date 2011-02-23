@@ -20,6 +20,8 @@ distribution), the script installs:
  * X RandR development headers (required by GLFW)
  * freetype development headers
  * joystick library (on Ubuntu)
+ * OpenAL development headers
+ * Vorbis & Ogg development headers
 
 Compiling:
 ----------

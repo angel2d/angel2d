@@ -1,3 +1,4 @@
+ANGEL_DISABLE_FMOD = 0
 CXX = g++
 CXXFLAGS =
 TARGET = libangel.a
@@ -9,15 +10,20 @@ RANLIB = ranlib
 ifeq ($(ARCH),x86_64)
 	CXXFLAGS += -fPIC
 endif
+ifeq ($(ANGEL_DISABLE_FMOD), 1))
+	CXXFLAGS += -DANGEL_DISABLE_FMOD
+endif
 
 INCLUDE = 							\
 	-ILibraries/glfw/include				\
 	-ILibraries/Box2D-2.0.1/Include				\
-	-ILibraries/FMOD/inc 					\
 	-ILibraries/FTGL/include				\
 	-ILibraries/lua-5.1.4/src				\
 	-IInfrastructure					\
 	-I/usr/include/freetype2
+ifneq ($(ANGEL_DISABLE_FMOD), 1))
+	INCLUDE += -ILibraries/FMOD/inc
+endif
 
 LIBS = 								\
 	Libraries/glfw/lib/x11/libglfw.a			\

@@ -1,4 +1,6 @@
+ANGEL_DISABLE_FMOD = 0
 CXX = g++
+CXXFLAGS =
 TARGET = IntroGame
 ARCH := $(shell uname -m)
 ALLEGRO_LIBS := $(shell allegro-config --libs 2>/dev/null)
@@ -7,6 +9,9 @@ CODE_DIR := $(shell dirname "$(CWD)")
 LIBANGEL = ../Angel/libangel.a
 LUA = ../Angel/Libraries/angel-lua-build/lua
 WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrappingIntroGame.cpp
+ifeq ($(ANGEL_DISABLE_FMOD),1)
+	CXXFLAGS += -DANGEL_DISABLE_FMOD
+endif
 
 INCLUDE = 							\
 	-I.							\
@@ -14,10 +19,12 @@ INCLUDE = 							\
 	-I../Angel						\
 	-I../Angel/Libraries/glfw/include			\
 	-I../Angel/Libraries/Box2D-2.0.1/Include		\
-	-I../Angel/Libraries/FMOD/inc 				\
 	-I../Angel/Libraries/FTGL/include			\
 	-I../Angel/Libraries/lua-5.1.4/src			\
 	-I/usr/include/freetype2
+ifneq ($(ANGEL_DISABLE_FMOD),1)
+	INCLUDE += -I../Angel/Libraries/FMOD/inc
+endif
 	
 LIBS = 									\
 	$(LIBANGEL)							\
@@ -26,14 +33,19 @@ LIBS = 									\
 	../Angel/Libraries/FTGL/unix/src/.libs/libftgl.a		\
 	../Angel/Libraries/angel-lua-build/liblua.a
 
-ifeq ($(ARCH),x86_64)
-	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex64.so
-else
-	LIBS += ../Angel/Libraries/FMOD/lib/libfmodex.so
+ifneq ($(ANGEL_DISABLE_FMOD),1)
+	ifeq ($(ARCH),x86_64)
+		LIBS += ../Angel/Libraries/FMOD/lib/libfmodex64.so
+	else
+		LIBS += ../Angel/Libraries/FMOD/lib/libfmodex.so
+	endif
 endif
 
 SHLIBS = -lGL -lGLU -ldl -lfreetype -lXrandr -lX11 -lIL -lILU -lILUT
 SHLIBS += $(ALLEGRO_LIBS)
+ifeq ($(ANGEL_DISABLE_FMOD),1)
+	SHLIBS += -lopenal -lvorbisfile
+endif
 
 SYSSRCS = 							\
 	$(WRAPPER)
@@ -68,7 +80,7 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 .PHONY: clean all SWIG-Wrapper
 
 %.o: %.cpp
-	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
+	$(CXX) $(CXXFLAGS) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
 
 all: $(TARGET)
 

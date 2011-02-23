@@ -43,7 +43,7 @@
 	#include "fmod.hpp"
 	#include "fmod_errors.h"
 #else
-	#if defined(WIN32)
+	#if defined(WIN32) || defined(__linux__)
 		#include <AL/al.h>
 		#include <AL/alc.h>
 	#else
