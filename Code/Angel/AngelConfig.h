@@ -3,10 +3,7 @@
 
 // Swap this to 1 to disable FMOD. Angel will fall back to using OpenAL
 //  for audio, and will *only* be able to play Ogg Vorbis files. 
-//  On Linux, this is configured in the Makefile.
-#ifndef __linux__
 #define ANGEL_DISABLE_FMOD  0
-#endif
 
 // Swap this to 1 to disable DevIL. Angel will fall back to using libpng
 //  for textures, and will *only* be able to display PNG images. 

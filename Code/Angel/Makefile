@@ -1,4 +1,4 @@
-ANGEL_DISABLE_FMOD = 0
+ANGEL_DISABLE_FMOD := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL_DISABLE_FMOD[[:space:]]+([[:digit:]])[[:space:]]*$$/\1/p' AngelConfig.h)
 CXX = g++
 CXXFLAGS =
 TARGET = libangel.a
@@ -10,9 +10,6 @@ RANLIB = ranlib
 ifeq ($(ARCH),x86_64)
 	CXXFLAGS += -fPIC
 endif
-ifeq ($(ANGEL_DISABLE_FMOD), 1))
-	CXXFLAGS += -DANGEL_DISABLE_FMOD
-endif
 
 INCLUDE = 							\
 	-ILibraries/glfw/include				\
@@ -21,7 +18,7 @@ INCLUDE = 							\
 	-ILibraries/lua-5.1.4/src				\
 	-IInfrastructure					\
 	-I/usr/include/freetype2
-ifneq ($(ANGEL_DISABLE_FMOD), 1))
+ifneq ($(ANGEL_DISABLE_FMOD), 1)
 	INCLUDE += -ILibraries/FMOD/inc
 endif
 

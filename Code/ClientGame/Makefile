@@ -1,6 +1,5 @@
-ANGEL_DISABLE_FMOD = 0
+ANGEL_DISABLE_FMOD := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL_DISABLE_FMOD[[:space:]]+([[:digit:]])[[:space:]]*$$/\1/p' ../Angel/AngelConfig.h)
 CXX = g++
-CXXFLAGS =
 TARGET = ClientGame
 ARCH := $(shell uname -m)
 ALLEGRO_LIBS := $(shell allegro-config --libs 2>/dev/null)
@@ -9,9 +8,6 @@ CODE_DIR := $(shell dirname "$(CWD)")
 LIBANGEL = ../Angel/libangel.a
 LUA = ../Angel/Libraries/angel-lua-build/lua
 WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrapping.cpp
-ifeq ($(ANGEL_DISABLE_FMOD), 1)
-	CXXFLAGS += -DANGEL_DISABLE_FMOD
-endif
 
 INCLUDE = 							\
 	-I../Angel						\
@@ -58,7 +54,7 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 .PHONY: clean all SWIG-Wrapper
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
+	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated -o $@ $^
 
 all: $(TARGET)
 
