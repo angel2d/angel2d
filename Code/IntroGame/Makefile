@@ -1,4 +1,5 @@
 ANGEL_DISABLE_FMOD := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL_DISABLE_FMOD[[:space:]]+([[:digit:]])[[:space:]]*$$/\1/p' ../Angel/AngelConfig.h)
+ANGEL_DISABLE_DEVIL := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL_DISABLE_DEVIL[[:space:]]+([[:digit:]])[[:space:]]*$$/\1/p' ../Angel/AngelConfig.h)
 CXX = g++
 TARGET = IntroGame
 ARCH := $(shell uname -m)
@@ -21,7 +22,7 @@ INCLUDE = 							\
 ifneq ($(ANGEL_DISABLE_FMOD),1)
 	INCLUDE += -I../Angel/Libraries/FMOD/inc
 endif
-	
+
 LIBS = 									\
 	$(LIBANGEL)							\
 	../Angel/Libraries/glfw/lib/x11/libglfw.a			\
@@ -37,10 +38,13 @@ ifneq ($(ANGEL_DISABLE_FMOD),1)
 	endif
 endif
 
-SHLIBS = -lGL -lGLU -ldl -lfreetype -lXrandr -lX11 -lIL -lILU -lILUT
+SHLIBS = -lGL -lGLU -ldl -lfreetype -lXrandr -lX11
 SHLIBS += $(ALLEGRO_LIBS)
 ifeq ($(ANGEL_DISABLE_FMOD),1)
 	SHLIBS += -lopenal -lvorbisfile
+endif
+ifneq ($(ANGEL_DISABLE_DEVIL),1)
+	SHLIBS += -lIL -lILU -lILUT
 endif
 
 SYSSRCS = 							\
