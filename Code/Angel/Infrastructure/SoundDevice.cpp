@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -35,7 +35,6 @@
 #include "../Infrastructure/Log.h"
 
 #if ANGEL_DISABLE_FMOD
-	//#include <AL/alut.h>
 	#include <vorbis/vorbisfile.h>
 	#include <cstdio>
 	#include <iostream>
@@ -66,7 +65,7 @@
 
 	const char * OpenAL_ErrorString(ALenum errCode)
 	{
-		char * retVal;
+		String retVal;
 		switch (errCode)
 		{
 			case AL_NO_ERROR:
@@ -90,7 +89,7 @@
 			default:
 				retVal = "Unknown error.";
 		}
-		return retVal;
+		return retVal.c_str();
 	}
 
 	void ERRCHECK(int lineNumber)
@@ -124,8 +123,7 @@ SoundDevice& SoundDevice::GetInstance()
 
 #if !ANGEL_DISABLE_FMOD
 /* static */
-	FMOD_RESULT F_CALLBACK SoundDevice::FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, int command, unsigned int commanddata1, unsigned int commanddata2)
-	{
+	FMOD_RESULT F_CALLBACK SoundDevice::FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, void *commanddata1, void *commanddata2)	{
 		FMOD::Channel *soundChannel = (FMOD::Channel *)channel;
 
 		//rb - Here's how we can get at user data if we need it.
@@ -476,7 +474,7 @@ AngelSoundHandle SoundDevice::PlaySound(AngelSampleHandle sample, float volume, 
 		//FMOD_Channel->setUserData(FMOD_Channel);
 		
 		//rb - Should we always call the callback?
-		FMOD_Channel->setCallback(FMOD_CHANNEL_CALLBACKTYPE_END, &SoundDevice::FMOD_SoundCallback, 0);
+		FMOD_Channel->setCallback(&SoundDevice::FMOD_SoundCallback);
 
 		return FMOD_Channel;
 	#else
@@ -571,6 +569,10 @@ void SoundDevice::Update()
 				}
 				else
 				{
+					if (theSound.soundCallback.GetInstance() && theSound.soundCallback.GetFunction())
+					{
+						theSound.soundCallback.Execute(it->second.source);
+					}
 					_streams.erase(it->second.source);
 				}
 			}

@@ -21,6 +21,9 @@ int main(int argc, char* argv[])
 	
 	
 	
+	
+	
+	
 	// do all your setup first, because this function won't return until you're exiting
 	theWorld.StartGame();
 	

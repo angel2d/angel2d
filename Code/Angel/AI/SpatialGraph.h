@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -31,6 +31,8 @@
 
 #include "../Infrastructure/Common.h"
 #include "../AI/BoundingShapes.h"
+
+#include <Box2D/Box2D.h>
 
 class SpatialGraph;
 class SpatialGraphKDNode;
@@ -86,7 +88,7 @@ class SpatialGraph
 public:
 	SpatialGraph(float entityWidth, const BoundingBox& startBox );
 	~SpatialGraph();
-
+	
 	SpatialGraphKDNode* FindNode(SpatialGraphKDNode* node, const BoundingBox& bbox);
 	SpatialGraphKDNode* FindNode(SpatialGraphKDNode* node, const Vector2& point);
 	SpatialGraphKDNode* FindNode(const BoundingBox& bbox);
@@ -118,11 +120,13 @@ private:
 
 #define theSpatialGraph SpatialGraphManager::GetInstance()
 
-class SpatialGraphManager
+class SpatialGraphManager : public b2QueryCallback
 {
 public:
 	static SpatialGraphManager &GetInstance();
 
+	bool ReportFixture(b2Fixture* fixture);
+	
 	SpatialGraph* GetGraph() {return _spatialGraph;}
 	void CreateGraph( float entityWidth, const BoundingBox& bounds );
 

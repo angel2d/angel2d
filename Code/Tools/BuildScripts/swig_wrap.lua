@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -47,6 +47,7 @@ local args = pl.lapp [[
   Checks the included files in the aggregate scripting interface and touches it if any of them are newer than the generated wrapper.
     -p,--project_directory (string)  Project directory
     -D,--define (default SWIGLUA) An optional string to define when invoking swig 
+    -M,--mobile  Set if this is getting combiled for a mobile device, in which case SWIG should omit certain wrappings.
     -f,--force_regeneration Whether or not to just force a reneration of the wrappings.
   ]]
 
@@ -59,9 +60,17 @@ local INTERFACE_DIRECTORY = fulljoin(args.project_directory, "Angel", "Scripting
 local MASTER_FILE = "angel.i"
 local WRAPPER_FILE = ""
 if (args.define == "INTROGAME") then
-  WRAPPER_FILE = "AngelLuaWrappingIntroGame.cpp"
+  if args.mobile then
+    WRAPPER_FILE = "AngelLuaWrappingMobileIntroGame.cpp"
+  else
+    WRAPPER_FILE = "AngelLuaWrappingIntroGame.cpp"
+  end
 else
-  WRAPPER_FILE = "AngelLuaWrapping.cpp"
+  if args.mobile then
+    WRAPPER_FILE = "AngelLuaWrappingMobile.cpp"
+  else
+    WRAPPER_FILE = "AngelLuaWrapping.cpp"
+  end
 end
 local AGGREGATE_INTERFACE = fulljoin(INTERFACE_DIRECTORY, MASTER_FILE)
 local WRAPPER_SOURCE = fulljoin(INTERFACE_DIRECTORY, WRAPPER_FILE)
@@ -70,6 +79,9 @@ local SWIG_PATH = get_swig_path()
 local SWIG_OPTIONS = ""
 if (args.define ~= nil and args.define ~= "SWIGLUA") then
   SWIG_OPTIONS = SWIG_OPTIONS .. " -D" .. args.define
+end
+if (args.mobile) then
+  SWIG_OPTIONS = SWIG_OPTIONS .. " -DANGEL_MOBILE"
 end
 local SWIG_OPTIONS = SWIG_OPTIONS .. " -c++ -lua -Werror -I" .. INTERFACE_DIRECTORY .. " -o " .. WRAPPER_SOURCE .. " " .. AGGREGATE_INTERFACE
 
@@ -80,17 +92,21 @@ if (not pl.path.exists(AGGREGATE_INTERFACE:gsub('"', ''))) then
   os.exit(1)
 end
 
+local extra_defines = {}
 if (args.define ~= nil and args.define ~= "SWIGLUA") then
-  generate_typemaps(INTERFACE_DIRECTORY, args.define)
-else
-  generate_typemaps(INTERFACE_DIRECTORY)
+  table.insert(extra_defines, args.define)
 end
+if (args.mobile) then
+  table.insert(extra_defines, "ANGEL_MOBILE")
+end
+
+generate_typemaps(INTERFACE_DIRECTORY, extra_defines)
 
 local should_regenerate = false
 
 local interface_file = io.open(AGGREGATE_INTERFACE:gsub('"', ''), 'r')
 
-local files = {}
+local files = {'angel.i'}
 for line in interface_file:lines() do
   local include_pattern = "^%%include (.+%.i)"
   local _, _, f = line:find(include_pattern)

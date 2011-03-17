@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -201,14 +201,24 @@ void ParticleActor::Render()
 					currentParticle._color.G, 
 					currentParticle._color.B, 
 					currentParticle._color.A);
-
-		glBegin(GL_QUADS);
-			//glNormal3f(0.0f, 0.0f, 1.0f);
-			glTexCoord2f(1.0f, 1.0f); glVertex2f( 0.5f,  0.5f);
-			glTexCoord2f(0.0f, 1.0f); glVertex2f(-0.5f,  0.5f);
-			glTexCoord2f(0.0f, 0.0f); glVertex2f(-0.5f, -0.5f);
-			glTexCoord2f(1.0f, 0.0f); glVertex2f( 0.5f, -0.5f);
-		glEnd();
+		
+		const static float vertices[] = {
+			-0.5f,  0.5f,
+			-0.5f, -0.5f,
+			 0.5f,  0.5f,
+			 0.5f, -0.5f,
+		};
+		const static float texCoords[] = {
+			0.0f, 1.0f,
+			0.0f, 0.0f,
+			1.0f, 1.0f,
+			1.0f, 0.0f,
+		};
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		glVertexPointer(2, GL_FLOAT, 0, vertices);
+		glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
 		glPopMatrix();
 	}

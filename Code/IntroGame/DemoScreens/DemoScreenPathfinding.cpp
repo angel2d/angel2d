@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -71,7 +71,6 @@ void DemoScreenPathfinding::Start()
 	}
 	
 	
-	
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
 	String description = "This little dude is pathfinding through the area.";
@@ -132,8 +131,12 @@ void DemoScreenPathfinding::Stop()
 
 void DemoScreenPathfinding::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
+	if ( ((DemoGameManager*)theWorld.GetGameManager())->GetCurrentScreen() != this)
+	{
+		return;
+	}
 	TypedMessage<Vec2i> *m = new TypedMessage<Vec2i>("MouseDown", screenCoordinates);
-	theSwitchboard.Broadcast(m);
+	theSwitchboard.Broadcast(m);	
 }
 
 
@@ -182,7 +185,7 @@ void MazeFinder::ReceiveMessage(Message *message)
 {
 	// Well get this PointReached message every time we hit a waypoint in the path.
 	//  Just sets us up to go the next point if there is one. 
-	if (message->GetMessageName() == "MazeFinderPathPointReached")
+	if ( (message->GetMessageName() == "MazeFinderPathPointReached") && (message->GetSender() == this) )
 	{
 		if (_pathIndex < _pathPoints.size() - 1)
 		{
@@ -190,6 +193,7 @@ void MazeFinder::ReceiveMessage(Message *message)
 		}
 		else 
 		{
+			theSwitchboard.Broadcast(new Message("MazeFinderEndPointReached", this));
 			_pathPoints.clear();
 			_pathIndex = 0;
 		}

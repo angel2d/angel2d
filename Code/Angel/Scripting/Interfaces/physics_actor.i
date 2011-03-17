@@ -1,6 +1,6 @@
 %module angel
 %{
-#include "../../Physics/PhysicsActor.h"
+#include "../../Actors/PhysicsActor.h"
 %}
 
 class PhysicsActor : public Actor
@@ -29,7 +29,8 @@ public:
 	void ApplyForce(const Vector2& force, const Vector2& point);
 	void ApplyLocalForce(const Vector2& force, const Vector2& point);	// apply a local space force on the object
 	void ApplyTorque(float torque);
-	void ApplyImpulse(const Vector2& impulse, const Vector2& point);
+	void ApplyLinearImpulse(const Vector2& impulse, const Vector2& point);
+	void ApplyAngularImpulse(float impulse);
 	
 	void SetDrawSize(float x, float y = -1.f);
 };

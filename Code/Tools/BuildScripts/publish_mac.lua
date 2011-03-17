@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -80,6 +80,7 @@ local app_path = pl.path.join(output_d, config.game_info.name .. ".app")
 if pl.path.exists(app_path) then
   pl.dir.rmtree(app_path)
 end
+
 recursive_copy(fulljoin(output_d, "..", "..", "Release", args.gamename), app_path)
 
 conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")

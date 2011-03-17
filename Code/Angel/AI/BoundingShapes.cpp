@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -276,33 +276,28 @@ bool BoundingBox::Contains(const Vector2& point) const
 
 void BoundingBox::RenderOutline() const
 {
-	glBegin(GL_LINES);
-	{
-		glVertex2f(Min.X, Min.Y);
-		glVertex2f(Min.X, Max.Y);
-
-		glVertex2f(Min.X, Max.Y);
-		glVertex2f(Max.X, Max.Y);
-
-		glVertex2f(Max.X, Max.Y);
-		glVertex2f(Max.X, Min.Y);
-
-		glVertex2f(Max.X, Min.Y);
-		glVertex2f(Min.X, Min.Y);
-	}
-	glEnd();
+	static float vertices[] = {
+		Min.X, Min.Y,
+		Min.X, Max.Y,
+		Max.X, Max.Y,
+		Max.X, Min.Y,
+	};
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(2, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_LINE_LOOP, 0, 4);
 }
 
 void BoundingBox::RenderBox() const
 {
-	glBegin(GL_QUADS);
-	{
-		glVertex2f(Max.X, Max.Y);
-		glVertex2f(Min.X, Max.Y);
-		glVertex2f(Min.X, Min.Y);
-		glVertex2f(Max.X, Min.Y);
-	}
-	glEnd();
+	static float vertices[] = {
+		Max.X, Max.Y,
+		Min.X, Max.Y,
+		Max.X, Min.Y,
+		Min.X, Min.Y,
+	};
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(2, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 

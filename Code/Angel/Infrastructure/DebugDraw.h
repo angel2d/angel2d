@@ -23,14 +23,12 @@ protected:
 
 	virtual void Draw()
 	{
-		glBegin(GL_LINES);
-			glVertex2f( _start.X, _start.Y );
-			glVertex2f( _end.X, _end.Y );
-		glEnd();
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glVertexPointer(2, GL_FLOAT, 0, _points);
+		glDrawArrays(GL_LINES, 0, 2);
 	}
 
-	Vector2 _start;
-	Vector2 _end;
+	float _points[4];
 };
 
 typedef std::vector< DebugDrawBase* >::iterator		DebugDrawIterator;

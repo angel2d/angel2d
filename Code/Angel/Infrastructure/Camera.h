@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -185,6 +185,15 @@ public:
 	 * @return The camera's Z coordinate. 
 	 */
 	virtual float GetZ();
+	
+	/**
+	 * Set the rotation of the camera. Only rotates about the Z-axis,
+	 *  since we prefer the 2-dimensional.
+	 * 
+	 * @param v2 The new rotation for the Camera. As with Actors, positive
+	 *   rotations are counter-clockwise.
+	 */
+	virtual void SetRotation(float rotation);
 	
 	/**
 	* Get the Z value necessary to achieve the requested view radius. 

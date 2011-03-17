@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -181,7 +181,7 @@ end
 function get_swig_path()
   if (pl.path.is_windows) then
     -- we're on windows, use the distributed swig
-    return "..\\swigwin-1.3.36\\swig.exe" 
+    return "..\\swigwin-2.0.2\\swig.exe" 
   end
   
   local ports_path = "/opt/local/bin/swig"
@@ -201,12 +201,21 @@ function get_swig_path()
   return s:gsub("\n" , "")
 end
 
+function find_in_table(haystack, needle)
+  for _,v in pairs(haystack) do
+    if v == needle then
+      return true
+    end
+  end
+  return false
+end
+
 -- generate typemap inheritance for SWIG factories
-function generate_typemaps(interface_directory, additional_define)
+function generate_typemaps(interface_directory, additional_defines)
   local swig = get_swig_path()
   local junkfile = fulljoin(interface_directory, "..", "..", "..", "Tools", "BuildScripts", "build_cache", "swigout.txt")
   local inheritance_file = ""
-  if (additional_define == "INTROGAME") then
+  if (find_in_table(additional_defines, "INTROGAME")) then
     inheritance_file = fulljoin(interface_directory, "inheritance_intro.i")
   else
     inheritance_file = fulljoin(interface_directory, "inheritance.i")
@@ -218,8 +227,8 @@ function generate_typemaps(interface_directory, additional_define)
     inheritance_handle:close()
   end
   local swig_options = ""
-  if (additional_define ~= nil) then
-    swig_options = swig_options .. " -D" .. additional_define
+  if (additional_defines ~= nil) then
+    swig_options = swig_options .. " -D" .. table.concat(additional_defines, " -D")
   end
   swig_options = swig_options .. " -c++ -lua -Werror -debug-typedef -I" .. interface_directory .. " -o " .. junkfile .. " " .. fulljoin(interface_directory, "angel.i")
   

@@ -4,7 +4,7 @@
 //  in ActorDef or Level files (since both of those rely on Lua scripting for 
 //  their magic.)
 
-
+#ifndef ANGEL_MOBILE
 %module angel  // makes sure we're able to properly inherit from Angel classes
 %{
 // Any header files that define classes should be here. 
@@ -29,7 +29,7 @@ class MazeFinder : public Actor
 public:
 	MazeFinder();
 };
-
+#endif
 
 /*
 class MazeFinder : public Actor

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -32,6 +32,7 @@
 #include "../Infrastructure/VecStructs.h"
 #include "../Infrastructure/Camera.h"
 #include "../Util/MathUtil.h"
+#include "../Infrastructure/Log.h"
 
 void HUDActor::Render()
 {
@@ -44,6 +45,9 @@ void HUDActor::Render()
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
+	#if ANGEL_IPHONE
+		glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
+	#endif
 	gluOrtho2D(0, winDimensions.X, 0, winDimensions.Y);
 	
 	//set up modelview
@@ -66,25 +70,35 @@ void HUDActor::Render()
 	{
 		default:
 		case ADS_Square:
-			glBegin(GL_QUADS);
-			//glNormal3f(0.0f, 0.0f, 1.0f);
-			glTexCoord2f(UV_rightup.X, UV_rightup.Y); glVertex2f( 0.5f,  0.5f);
-			glTexCoord2f(UV_leftlow.X, UV_rightup.Y); glVertex2f(-0.5f,  0.5f);
-			glTexCoord2f(UV_leftlow.X, UV_leftlow.Y); glVertex2f(-0.5f, -0.5f);
-			glTexCoord2f(UV_rightup.X, UV_leftlow.Y); glVertex2f( 0.5f, -0.5f);
-			glEnd();
-			break;
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+			glVertexPointer(2, GL_FLOAT, 0, _squareVertices);
+			glTexCoordPointer(2, GL_FLOAT, 0, _UV);
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		break;
 			
 		case ADS_Circle:
-			const int NUM_SECTIONS = 32;
-			glBegin(GL_TRIANGLE_FAN);
-			glVertex2f(0, 0);
-			for (float i = 0; i <= NUM_SECTIONS; i++)
-			{
-				glVertex2f(0.5f*cos((float) MathUtil::TwoPi * i / NUM_SECTIONS), 0.5f*sin((float) MathUtil::TwoPi * i / NUM_SECTIONS));
-			}
-			glEnd();
-			break;
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+			glVertexPointer(2, GL_FLOAT, 0, _circleVertices);
+			glTexCoordPointer(2, GL_FLOAT, 0, _circleTextureCoords);
+			glDrawArrays(GL_TRIANGLE_FAN, 0, CIRCLE_DRAW_SECTIONS+2);
+		break;
+			
+		case ADS_CustomList:
+			#if ANGEL_IPHONE
+				sysLog.Printf("glCallList is unsupported in OpenGL|ES.");
+			#else
+				if (_displayListIndex < 0)
+				{
+					sysLog.Printf("Invalid display list index: %i.", _displayListIndex);
+				}
+				else
+				{
+					glCallList(_displayListIndex);
+				}
+			#endif
+		break;
 	}
 	
 	if (textureReference >= 0)

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -1104,6 +1104,7 @@
 #include "Actors/GridActor.h"
 #include "Actors/HUDActor.h"
 #include "Actors/ParticleActor.h"
+#include "Actors/PhysicsActor.h"
 #include "Actors/TextActor.h"
 
 #include "AI/BoundingShapes.h"
@@ -1138,16 +1139,20 @@
 #include "Infrastructure/Vector3.h"
 #include "Infrastructure/World.h"
 
-#include "Input/Input.h"
-#include "Input/InputManager.h"
-#include "Input/MouseInput.h"
-#include "Input/Controller.h"
+#if !ANGEL_IPHONE
+	#include "Input/Input.h"
+	#include "Input/InputManager.h"
+	#include "Input/MouseInput.h"
+	#include "Input/Controller.h"
+	#include "Input/MobileSimulator.h"
+#else
+#endif
+
+// Used in the simulator even if the platform doesn't support it
+#include "Input/MultiTouch.h" 
 
 #include "Messaging/Message.h"
 #include "Messaging/Switchboard.h"
-
-#include "Physics/PhysicsActor.h"
-#include "Physics/PhysicsDebugDraw.h"
 
 #include "Util/DrawUtil.h"
 #include "Util/FileUtil.h"

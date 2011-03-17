@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -87,7 +87,11 @@ void Camera::Resize(int width, int height)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(_aperture, (float)_windowWidth/(float)_windowHeight, _zNearClip, _zFarClip);
+	#if !ANGEL_IPHONE
+		gluPerspective(_aperture, (float)_windowWidth/(float)_windowHeight, _zNearClip, _zFarClip);
+	#else
+		gluPerspective(_aperture, (float)_windowHeight/(float)_windowWidth, _zNearClip, _zFarClip);
+	#endif
 	glMatrixMode(GL_MODELVIEW);
 
 	theSwitchboard.Broadcast(new Message("CameraChange"));
@@ -126,6 +130,11 @@ void Camera::Render()
 	*/
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	#if !ANGEL_IPHONE
+		glRotatef(_rotation, 0.0f, 0.0f, 1.0f);
+	#else
+		glRotatef(_rotation-90.0f, 0.0f, 0.0f, 1.0f);
+	#endif
 	gluLookAt(_position.X, _position.Y, _position.Z,
 			_position.X + _view.X,
 			_position.Y + _view.Y,
@@ -148,7 +157,6 @@ void Camera::SetPosition(float x, float y)
 
 void Camera::SetPosition(Vector2 v2)
 {
-//	_position = Vector3(v2.X, v2.Y, 0);
 	_position = Vector3(v2.X, v2.Y, _position.Z);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
@@ -167,6 +175,12 @@ Vector2 Camera::GetPosition()
 float Camera::GetZ()
 {
 	return _position.Z;
+}
+
+void Camera::SetRotation(float newRotation)
+{
+	Actor::SetRotation(newRotation);
+	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
 float Camera::GetZForViewRadius(float radius)

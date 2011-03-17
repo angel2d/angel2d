@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -69,9 +69,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD_d.lib freetype237_D.lib box2d_d.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD_d.lib freetype237_D.lib Box2D.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2\Box2D\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMTD.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -114,7 +114,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Scripting setup..."
-				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -p &quot;$(SolutionDir)&#x0D;&#x0A;"
+				CommandLine="xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe swig_wrap.lua -p &quot;$(SolutionDir)&quot;&#x0D;&#x0A;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -133,7 +133,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
@@ -154,9 +154,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD.lib freetype237.lib box2d.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD.lib freetype237.lib Box2D.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2\Box2D\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -254,7 +254,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Config\tuning.ini"
+				RelativePath=".\Config\tuning.lua"
 				>
 			</File>
 			<Filter

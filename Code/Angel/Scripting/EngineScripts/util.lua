@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -28,42 +28,42 @@
 ------------------------------------------------------------------------------
 
 function string:split(sep)
- local sep, fields = sep or " ", {}
- local pattern = string.format("([^%s]+)", sep)
- self:gsub(pattern, function(c) fields[#fields+1] = c end)
- return fields
+  local sep, fields = sep or " ", {}
+  local pattern = string.format("([^%s]+)", sep)
+  self:gsub(pattern, function(c) fields[#fields+1] = c end)
+  return fields
 end
 
 function string:starts(startString)
-   return string.sub(self, 1, string.len(startString)) == startString
+  return string.sub(self, 1, string.len(startString)) == startString
 end
 
 function string:ends(endString)
-   return endString == '' or string.sub(self, -string.len(endString)) == endString
+  return endString == '' or string.sub(self, -string.len(endString)) == endString
 end
 
 function loadFileIn(filename, environment)
   local f, err = loadfile(filename)
   if (f == nil) then
-   print(err)
+    print(err)
   end
   if (environment == nil) then
-   environment = getfenv()
+    environment = getfenv()
   end
   setfenv(f, environment)
   return f()
 end
 
 function addClassMethod(className, methodName, method)
-	if ("function" ~= type(method)) then
-		print ("WARNING: " .. method .. " is not a function.")
-	end
-	local reg = debug.getregistry()
-	local classTable = reg["SWIG"][className]
-	if (classTable == nil) then
-		print("WARNING: No class called " .. className .. " to give " .. method .. ".")
-		return
-	end
-	classTable[".fn"][tostring(methodName)] = method
+  if ("function" ~= type(method)) then
+    print ("WARNING: " .. method .. " is not a function.")
+  end
+  local reg = debug.getregistry()
+  local classTable = reg["SWIG"][className]
+  if (classTable == nil) then
+    print("WARNING: No class called " .. className .. " to give " .. method .. ".")
+    return
+  end
+  classTable[".fn"][tostring(methodName)] = method
 end
 

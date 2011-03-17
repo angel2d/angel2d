@@ -6,14 +6,14 @@ import sys
 
 FILE_PATH = os.path.abspath(__file__)
 ROOT_DIR = os.path.dirname(FILE_PATH)
-INST_DIR = ROOT_DIR + "/install/"
+INST_DIR = os.path.join(ROOT_DIR, "install")
 
 BASE_CFLAGS = "-I%sinclude -L%sinclude -m32" % (INST_DIR, INST_DIR)
 BASE_CFLAGS += " -O -g -isysroot /Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.6"
 BASE_CPPFLAGS = BASE_CFLAGS
-BASE_LDFLAGS = "-L%slib -m32 -arch i386" % (INST_DIR)
+BASE_LDFLAGS = "-L%slib -lstdc++ -m32 -arch i386" % (INST_DIR)
 BASE_ARCHFLAGS = "-arch i386"
-CLEAN = True
+CLEAN = False
 
 LIBLIST = {
     "DevIL-1.7.8.tar.gz" : "devil-1.7.8",
@@ -78,7 +78,7 @@ os.system('make install')
 #####################################
 resetStuff()
 os.chdir("libpng-1.4.1")
-config_string = "./configure --disable-shared --enable-static --disable-dependency-tracking --prefix=%s " % (INST_DIR)
+config_string = "./configure --disable-shared --enable-static --disable-dependency-tracking --prefix=%s --host=i686-apple-darwin10 " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 
@@ -87,7 +87,7 @@ os.system('make install')
 #####################################
 resetStuff()
 os.chdir("jpeg-8a")
-config_string = "./configure --prefix=%s --disable-shared --enable-static " % (INST_DIR)
+config_string = "./configure --prefix=%s --disable-shared --enable-static --host=i686-apple-darwin10 " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 
@@ -96,7 +96,7 @@ os.system('make install')
 #####################################
 resetStuff()
 os.chdir("tiff-3.9.2")
-config_string = "./configure --prefix=%s --disable-shared --enable-static " % (INST_DIR)
+config_string = "./configure --prefix=%s --disable-shared --enable-static --host=i686-apple-darwin10 " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 
@@ -105,7 +105,7 @@ os.system('make install')
 #####################################
 resetStuff()
 os.chdir("lcms-1.19")
-config_string = "./configure --prefix=%s --disable-shared --enable-static " % (INST_DIR)
+config_string = "./configure --prefix=%s --disable-shared --enable-static --host=i686-apple-darwin10 " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 
@@ -119,7 +119,7 @@ os.system("ln -s makefiles/configure.in .")
 os.system("ln -s makefiles/acinclude.m4 .")
 os.system("ln -s makefiles/Makefile.am .")
 os.system("autoreconf -fi")
-config_string = "./configure --prefix=%s --disable-shared --enable-static " % (INST_DIR)
+config_string = "./configure --prefix=%s --disable-shared --enable-static --host=i686-apple-darwin10 " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 
@@ -128,7 +128,7 @@ os.system('make install')
 #####################################
 resetStuff()
 os.chdir("jasper-1.900.1")
-config_string = "./configure --prefix=%s --disable-shared --enable-static " % (INST_DIR)
+config_string = "./configure --prefix=%s --disable-shared --enable-static --host=i686-apple-darwin10 " % (INST_DIR)
 os.system(config_string)
 os.system('make install')
 

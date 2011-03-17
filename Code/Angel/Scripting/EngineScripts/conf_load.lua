@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -274,20 +274,22 @@ function LoadLevel(levelName)
       print("Actor " .. name .. " has no definition specified.")
     else
       local a = Actor_Create(def)
-      a:SetName(name)
-      local layer = tonumber(desc["layer"])
-      if (layer == nil) then
-        layer = 0
-      end
-      for config, value in pairs(desc) do
-        if (config ~= "def") then
-          _ApplyToActor(a, config, value)
+      if (a ~= nil) then
+        a:SetName(name)
+        local layer = tonumber(desc["layer"])
+        if (layer == nil) then
+          layer = 0
         end
-      end
-      theWorld:Add(a, layer)
-      local mt = getmetatable(a)
-      if (type(mt[".fn"]["InitPhysics"]) == "function") then
-        a:InitPhysics()
+        for config, value in pairs(desc) do
+          if (config ~= "def") then
+            _ApplyToActor(a, config, value)
+          end
+        end
+        theWorld:Add(a, layer)
+        local mt = getmetatable(a)
+        if (type(mt[".fn"]["InitPhysics"]) == "function") then
+          a:InitPhysics()
+        end
       end
     end
   end

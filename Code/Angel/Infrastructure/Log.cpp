@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -88,7 +88,9 @@ void ConsoleLog::Log( const String& val)
 {
 	if (theWorld.GetConsole() != NULL)
 	{
-		theWorld.GetConsole()->WriteToOutput(val + "\n");
+		#if !ANGEL_IPHONE
+			theWorld.GetConsole()->WriteToOutput(val + "\n");
+		#endif
 	}
 }
 
@@ -96,10 +98,21 @@ String FileLog::MakeLogFileName( const String& fileName )
 {
 	#if defined(WIN32)
 		String logDir = "Logs/";
-	#elif defined(__APPLE__) || defined(__linux__)
+	#elif defined(__APPLE__)
+		#if !ANGEL_IPHONE
+			String logDir = getenv("HOME");
+			logDir += "/Library/Application Support/Angel Games/Logs/";
+			MakeDirectories(logDir);
+		#else
+			NSArray* arrayPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+			NSString* docPath = [arrayPaths objectAtIndex:0];
+			String logDir = [docPath UTF8String];
+			logDir += "/Logs/";
+			MakeDirectories(logDir);
+		#endif
+	#elif defined(__linux__)
 		String logDir = getenv("HOME");
-		logDir += "/Library/Application Support/Angel Games/Logs/";
-		MakeDirectories(logDir);
+		logDir += "/.angelLogs/";
 	#endif
 	
 	return logDir + fileName + ".log";
@@ -123,8 +136,8 @@ FileLog::FileLog( const String& fileName )
 	#elif defined(__APPLE__) || defined(__linux__)
 		char *timeString = ctime(&rawtime);
 	#endif
-		logHeader.push_back( String("On: ") + timeString );
-		WriteLinesToFile( _fileName, logHeader );
+	logHeader.push_back( String("On: ") + timeString );
+	WriteLinesToFile( _fileName, logHeader );
 }
 
 void FileLog::Log( const String& val)

@@ -14,7 +14,7 @@ endif
 
 INCLUDE = 							\
 	-ILibraries/glfw/include				\
-	-ILibraries/Box2D-2.0.1/Include				\
+	-ILibraries/Box2D-2.1.2					\
 	-ILibraries/FTGL/include				\
 	-ILibraries/lua-5.1.4/src				\
 	-IInfrastructure					\
@@ -25,7 +25,7 @@ endif
 
 LIBS = 								\
 	Libraries/glfw/lib/x11/libglfw.a			\
-	Libraries/Box2D-2.0.1/Source/Gen/float/libbox2d.a	\
+	Libraries/Box2D-2.1.2/Build/Box2D/libBox2D.a		\
 	Libraries/FTGL/unix/src/.libs/libftgl.a
 
 SRCS =								\
@@ -34,6 +34,7 @@ SRCS =								\
 	Actors/GridActor.cpp					\
 	Actors/HUDActor.cpp					\
 	Actors/ParticleActor.cpp				\
+	Actors/PhysicsActor.cpp					\
 	Actors/TextActor.cpp					\
 	AI/BoundingShapes.cpp					\
 	AI/Brain.cpp						\
@@ -69,8 +70,6 @@ SRCS =								\
 	Messaging/Switchboard.cpp				\
 	Scripting/LuaConsole.cpp				\
 	Scripting/LuaModule.cpp					\
-	Physics/PhysicsActor.cpp				\
-	Physics/PhysicsDebugDraw.cpp				\
 	Util/DrawUtil.cpp					\
 	Util/FileUtil.cpp					\
 	Util/MathUtil.cpp					\
@@ -99,10 +98,12 @@ GLFW-clean:
 	cd Libraries/glfw && make x11-clean
 
 Box2D:
-	cd Libraries/Box2D-2.0.1/Source && make
+	cd Libraries/Box2D-2.1.2/Build && cmake .. && make Box2D
 
 Box2D-clean:
-	cd Libraries/Box2D-2.0.1/Source && make clean
+	cd Libraries/Box2D-2.1.2/Build && make clean && rm -rf Box2D \
+		CMakeCache.txt CMakeFiles cmake_install.cmake freeglut glui \
+		HelloWorld Makefile Testbed
 
 Lua:
 	cd Libraries/angel-lua-build && make

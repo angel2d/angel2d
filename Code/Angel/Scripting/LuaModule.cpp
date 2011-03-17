@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -34,7 +34,9 @@
 #include "../Messaging/Switchboard.h"
 #include "../Util/StringUtil.h"
 #include "../Infrastructure/Log.h"
-#include "../Scripting/LuaConsole.h"
+#if !ANGEL_IPHONE
+	#include "../Scripting/LuaConsole.h"
+#endif
 
 extern "C"
 {	
@@ -54,11 +56,18 @@ void LuaScriptingModule::Initialize()
 	luaopen_angel(L);
 	lua_gc(L, LUA_GCRESTART, 0);
 	
-	LuaConsole *lc = new LuaConsole();
-	theWorld.RegisterConsole(lc);
+	#if !ANGEL_IPHONE
+		LuaConsole *lc = new LuaConsole();
+		theWorld.RegisterConsole(lc);
+		lua_pushboolean(L, 0);
+		lua_setglobal(L, "ANGEL_MOBILE");
+	#else
+		lua_pushboolean(L, 1);
+		lua_setglobal(L, "ANGEL_MOBILE");
+	#endif
 	
-	bool result = luaL_dofile(L, "./Resources/Scripts/start.lua");
-	
+	int result = luaL_dofile(L, "./Resources/Scripts/start.lua");
+		
 	isInitialized = !result;
 	if (isInitialized)
 	{
@@ -96,7 +105,9 @@ void LuaScriptingModule::ExecuteInScript(String code)
 		
 		if (error.substr(error.length()-6, 5) != "<eof>")
 		{
-			theWorld.GetConsole()->WriteToOutput("ERROR: " + error + "\n");
+			#if !ANGEL_IPHONE
+				theWorld.GetConsole()->WriteToOutput("ERROR: " + error + "\n");
+			#endif
 		}
 		else
 		{
@@ -106,8 +117,10 @@ void LuaScriptingModule::ExecuteInScript(String code)
 	}
 	else
 	{
-		if (lua_pcall(L, 0, LUA_MULTRET, 0 ) )
+		if (lua_pcall(L, 0, LUA_MULTRET, 0 ))
 		{
+			const char* errs = lua_tostring(L, -1);
+			sysLog.Printf("ERROR: %s\n", errs);
 			// error, will be in the stack trace
 			lua_gc(L, LUA_GCCOLLECT, 0); // garbage collect on error
 		}
@@ -134,16 +147,20 @@ lua_State* LuaScriptingModule::GetLuaState()
 
 ConfigUpdater::ConfigUpdater()
 {
-	LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
-	theSwitchboard.SubscribeTo(this, TUNING_MESSAGE_NAME);
-	theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
+	#if !defined(ANGEL_IPHONE)
+		LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
+		theSwitchboard.SubscribeTo(this, TUNING_MESSAGE_NAME);
+		theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
+	#endif
 }
 
 void ConfigUpdater::ReceiveMessage(Message *message)
 {
-	if (message->GetMessageName() == TUNING_MESSAGE_NAME)
-	{
-		LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
-		theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
-	}
+	#if !defined(ANGEL_IPHONE)
+		if (message->GetMessageName() == TUNING_MESSAGE_NAME)
+		{
+			LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
+			theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
+		}
+	#endif
 }

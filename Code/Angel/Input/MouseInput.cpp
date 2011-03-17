@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -49,6 +49,7 @@ MouseListener::~MouseListener()
 void MouseListener::MouseDownEvent(Vec2i /*screenCoordinates*/, MouseButtonInput /*button*/) {}
 void MouseListener::MouseUpEvent(Vec2i /*screenCoordinates*/, MouseButtonInput /*button*/) {}
 void MouseListener::MouseMotionEvent(Vec2i /*screenCoordinates*/) {}
+void MouseListener::MouseWheelEvent(int /*pos*/) {}
 
 void RegisterMouseSubscriber(MouseListener* actor)
 {
@@ -103,6 +104,16 @@ void MouseButton(int button, int state)
 		{
 			(*it)->MouseUpEvent(_mouseLocation, mouseButton);
 		}
+		it++;
+	}
+}
+
+void MouseWheel(int pos)
+{
+	std::set<MouseListener*>::iterator it = _mouseSubscribers.begin();
+	while (it != _mouseSubscribers.end())
+	{
+		(*it)->MouseWheelEvent(pos);
 		it++;
 	}
 }

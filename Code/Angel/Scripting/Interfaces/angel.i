@@ -61,11 +61,15 @@ typedef std::vector<String>	StringList;
 
 %include world.i
 %include log.i
-%include console.i
 %include tuning.i
 %include sound.i
+
+#ifndef ANGEL_MOBILE
+%include console.i
 %include controller.i
 %include mouse.i
+#endif
+
 %include actor.i
 %include camera.i
 %include physics_actor.i

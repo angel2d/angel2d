@@ -11,7 +11,7 @@ public:
 	
 	virtual const String GetMessageName();
 	
-	const MessageListener* GetSender();
+	MessageListener* const GetSender();
 };
 
 %feature("director") MessageListener;

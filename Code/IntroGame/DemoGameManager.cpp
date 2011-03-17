@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -30,26 +30,30 @@
 #include "stdafx.h"
 #include "DemoGameManager.h"
 
+#if !ANGEL_IPHONE
+	#include "DemoScreenStart.h"
+	#include "DemoScreenInstructions.h"
+	#include "DemoScreenSimpleActor.h"
+	#include "DemoScreenMovingActor.h"
+	#include "DemoScreenIntervals.h"
+	#include "DemoScreenPhysicsActor.h"
+	#include "DemoScreenDefFile.h"
+	#include "DemoScreenLevelFile.h"
+	#include "DemoScreenConsole.h"
+	#include "DemoScreenByeBye.h"
+	#include "DemoScreenRenderLayers.h"
+	#include "DemoScreenBindingInstructions.h"
+	#include "DemoScreenLayeredCollisionLevelFile.h"
+	#include "DemoScreenParticleActors.h"
+	#include "DemoScreenMessagePassing.h"
+	#include "DemoScreenMultipleControllers.h"
+	#include "DemoScreenControllerInstructions.h"
+	#include "DemoScreenTuningVariables.h"
+	#include "DemoScreenImageMap.h"
+	#include "DemoScreenPathfinding.h"
+#endif
 
-#include "DemoScreenStart.h"
-#include "DemoScreenInstructions.h"
-#include "DemoScreenSimpleActor.h"
-#include "DemoScreenMovingActor.h"
-#include "DemoScreenIntervals.h"
-#include "DemoScreenPhysicsActor.h"
-#include "DemoScreenDefFile.h"
-#include "DemoScreenLevelFile.h"
-#include "DemoScreenConsole.h"
-#include "DemoScreenByeBye.h"
-#include "DemoScreenRenderLayers.h"
-#include "DemoScreenBindingInstructions.h"
-#include "DemoScreenLayeredCollisionLevelFile.h"
-#include "DemoScreenParticleActors.h"
-#include "DemoScreenMessagePassing.h"
-#include "DemoScreenPathfinding.h"
-#include "DemoScreenMultipleControllers.h"
-#include "DemoScreenControllerInstructions.h"
-#include "DemoScreenTuningVariables.h"
+#include "DemoScreenMobileSimulator.h"
 
 DemoScreen::DemoScreen() {}
 
@@ -60,6 +64,18 @@ void DemoScreen::Stop()
 	std::vector<Renderable*>::iterator it = _objects.begin();
 	while(_objects.end() != it)
 	{
+		// we're pre-destroying physics bodies here because it 
+		//  can mess with the pathfinding regeneration.
+		PhysicsActor* pa = dynamic_cast<PhysicsActor*> (*it);
+		if (pa != NULL)
+		{
+			if (pa->GetBody() != NULL)
+			{
+				pa->GetBody()->SetUserData(NULL);
+				theWorld.GetPhysicsWorld().DestroyBody(pa->GetBody());
+				pa->ResetBody();
+			}
+		}
 		(*it)->Destroy();
 		it++;
 	}
@@ -79,25 +95,31 @@ DemoGameManager::DemoGameManager()
 	theSwitchboard.SubscribeTo(this, "MoveForwards");
 	theSwitchboard.SubscribeTo(this, "MoveBackwards");
 	
-	_screens.push_back(new DemoScreenStart());							// 0
-	_screens.push_back(new DemoScreenInstructions());					// 1
-	_screens.push_back(new DemoScreenSimpleActor());					// 2
-	_screens.push_back(new DemoScreenRenderLayers());					// 3
-	_screens.push_back(new DemoScreenControllerInstructions());			// 4
-	_screens.push_back(new DemoScreenMovingActor());					// 5
-	_screens.push_back(new DemoScreenMultipleControllers());			// 6
-	_screens.push_back(new DemoScreenDefFile());						// 7
-	_screens.push_back(new DemoScreenLevelFile());						// 8
-	_screens.push_back(new DemoScreenBindingInstructions());			// 9
-	_screens.push_back(new DemoScreenParticleActors());					//10
-	_screens.push_back(new DemoScreenPhysicsActor());					//11
-	_screens.push_back(new DemoScreenMessagePassing());					//12
-	_screens.push_back(new DemoScreenIntervals());						//13
-	_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//14
-	_screens.push_back(new DemoScreenConsole());						//15
-	_screens.push_back(new DemoScreenTuningVariables());				//16
-	_screens.push_back(new DemoScreenPathfinding());					//17
-	_screens.push_back(new DemoScreenByeBye());							//18
+	#if ANGEL_IPHONE
+		_screens.push_back(new DemoScreenMobileSimulator());				// 0
+	#else
+		_screens.push_back(new DemoScreenStart());							// 0
+		_screens.push_back(new DemoScreenInstructions());					// 1
+		_screens.push_back(new DemoScreenSimpleActor());					// 2
+		_screens.push_back(new DemoScreenRenderLayers());					// 3
+		_screens.push_back(new DemoScreenControllerInstructions());			// 4
+		_screens.push_back(new DemoScreenMovingActor());					// 5
+		_screens.push_back(new DemoScreenMultipleControllers());			// 6
+		_screens.push_back(new DemoScreenMobileSimulator());				// 7
+		_screens.push_back(new DemoScreenDefFile());						// 8
+		_screens.push_back(new DemoScreenLevelFile());						// 9
+		_screens.push_back(new DemoScreenBindingInstructions());			//10
+		_screens.push_back(new DemoScreenParticleActors());					//11
+		_screens.push_back(new DemoScreenPhysicsActor());					//12
+		_screens.push_back(new DemoScreenMessagePassing());					//13
+		_screens.push_back(new DemoScreenIntervals());						//14
+		_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//15
+		_screens.push_back(new DemoScreenConsole());						//16
+		_screens.push_back(new DemoScreenTuningVariables());				//17
+		_screens.push_back(new DemoScreenPathfinding());					//18
+		_screens.push_back(new DemoScreenImageMap());						//19
+		_screens.push_back(new DemoScreenByeBye());							//20
+	#endif
 
 	unsigned int startingIndex = 0;
 	if (_screens.size() > startingIndex)
@@ -125,6 +147,11 @@ DemoGameManager& DemoGameManager::GetInstance()
 		s_DemoGameManager = new DemoGameManager();
 	}
 	return *s_DemoGameManager;
+}
+
+DemoScreen* DemoGameManager::GetCurrentScreen()
+{
+	return _screens[_current];
 }
 
 void DemoGameManager::ReceiveMessage(Message* message)

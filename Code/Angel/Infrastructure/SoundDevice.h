@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -32,10 +32,6 @@
 #include "../AngelConfig.h"
 #include "../Infrastructure/Callback.h"
 
-#if TARGET_OS_IPHONE
-	#define ANGEL_DISABLE_FMOD 1
-#endif
-
 #if !ANGEL_DISABLE_FMOD
 	#include <map>
 	#include <assert.h>
@@ -49,6 +45,7 @@
 	#else
 		#include <OpenAL/al.h>
 		#include <OpenAL/alc.h>
+		#define OV_EXCLUDE_STATIC_CALLBACKS 1
 	#endif
 	#include <vorbis/vorbisfile.h>
 #endif
@@ -243,7 +240,7 @@ private:
 	#if !ANGEL_DISABLE_FMOD
 		FMOD::System*				_system;	
 		std::vector<FMOD::Sound*>	_samples;
-		static FMOD_RESULT F_CALLBACK FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, int command, unsigned int commanddata1, unsigned int commanddata2);
+		static FMOD_RESULT F_CALLBACK FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, void *commanddata1, void *commanddata2);
 	#else
 		struct StreamingAudio
 		{

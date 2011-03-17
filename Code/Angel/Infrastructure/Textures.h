@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -88,9 +88,19 @@ const int GetTextureReference(String name, bool optional = false);
 const int GetTextureReference(String filename, GLint clampmode, GLint filtermode, bool optional = false);
 
 /**
+ * Remove a texture from memory. On the desktop this usually isn't an issue 
+ *  unless your game is long-running and uses lots of images, but those
+ *  issues crop up earlier on mobile platforms. 
+ * 
+ * @param filename The filename of the texture to be removed
+ * @return Whether the texture was previously loaded into memory or not
+ */
+bool PurgeTexture(String filename);
+
+/**
 * Use this function to process an image into positional data, in other words,
-* use an image as map or level data.  For every pixel within the tolerance
-* range of the specified color, a Vector2 is added to positions.  Resulting
+* use an image as map or level data. For every pixel within the tolerance
+* range of the specified color, a Vector2 is added to positions. Resulting
 * positions will be in range imageSizeX * gridSize, imageSizeY * gridSize, and
 * be centered on 0,0. 
 * 

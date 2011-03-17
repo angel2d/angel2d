@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -48,7 +48,7 @@ const String Message::GetMessageName()
 	return _messageName;
 }
 
-const MessageListener* Message::GetSender()
+MessageListener* const Message::GetSender()
 {
 	return _sender;
 }

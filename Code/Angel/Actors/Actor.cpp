@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -42,10 +42,37 @@
 
 #include <sstream>
 
+const float Actor::_squareVertices[] = {
+	-0.5f,  0.5f,
+	-0.5f, -0.5f,
+	 0.5f,  0.5f,
+	 0.5f, -0.5f,
+};
+
+float Actor::_circleVertices[(CIRCLE_DRAW_SECTIONS+2)*2];
+float Actor::_circleTextureCoords[(CIRCLE_DRAW_SECTIONS+2)*2];
+bool __inittedActorCirclePoints = false;
+
 std::map<String, Actor*> Actor::_nameList;
 
 Actor::Actor()
 {
+	if (!__inittedActorCirclePoints)
+	{
+		Actor::_circleVertices[0] = 0.0f;
+		Actor::_circleVertices[1] = 0.0f;
+		Actor::_circleTextureCoords[0] = 0.5f;
+		Actor::_circleTextureCoords[1] = 0.5f;
+		for (int i=1; i < CIRCLE_DRAW_SECTIONS+2; i++)
+		{
+			Actor::_circleVertices[i*2]     = 0.5f * cos((float) MathUtil::TwoPi * i / CIRCLE_DRAW_SECTIONS);
+			Actor::_circleVertices[(i*2)+1] = 0.5f * sin((float) MathUtil::TwoPi * i / CIRCLE_DRAW_SECTIONS);
+			Actor::_circleTextureCoords[i*2]     = Actor::_circleVertices[i*2]     + 0.5f;
+			Actor::_circleTextureCoords[(i*2)+1] = Actor::_circleVertices[(i*2)+1] + 0.5f;
+		}
+		__inittedActorCirclePoints = true;
+	}
+
 	SetColor(1.0f, 1.0f, 1.0f);
 	SetAlpha(1.0f);
 	SetSize(1.0f);
@@ -251,31 +278,38 @@ void Actor::Render()
 		glBindTexture(GL_TEXTURE_2D, textureReference);
 	}
 	
-	const int NUM_SECTIONS = 32;
 	switch( _drawShape )
 	{
 		default:
 		case ADS_Square:
-			glBegin(GL_QUADS);
-				//glNormal3f(0.0f, 0.0f, 1.0f);
-				glTexCoord2f(UV_rightup.X, UV_rightup.Y); glVertex2f( 0.5f,  0.5f);
-				glTexCoord2f(UV_leftlow.X, UV_rightup.Y); glVertex2f(-0.5f,  0.5f);
-				glTexCoord2f(UV_leftlow.X, UV_leftlow.Y); glVertex2f(-0.5f, -0.5f);
-				glTexCoord2f(UV_rightup.X, UV_leftlow.Y); glVertex2f( 0.5f, -0.5f);
-			glEnd();
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+			glVertexPointer(2, GL_FLOAT, 0, _squareVertices);
+			glTexCoordPointer(2, GL_FLOAT, 0, _UV);
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		break;
 		
 		case ADS_Circle:
-			glBegin(GL_TRIANGLE_FAN);
-			glVertex2f(0, 0);
-			for (float i = 0; i <= NUM_SECTIONS; i++)
-				glVertex2f(0.5f*cos((float) MathUtil::TwoPi * i / NUM_SECTIONS), 0.5f*sin((float) MathUtil::TwoPi * i / NUM_SECTIONS));
-			glEnd();
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+			glVertexPointer(2, GL_FLOAT, 0, _circleVertices);
+			glTexCoordPointer(2, GL_FLOAT, 0, _circleTextureCoords);
+			glDrawArrays(GL_TRIANGLE_FAN, 0, CIRCLE_DRAW_SECTIONS+2);
 		break;
 
 		case ADS_CustomList:
-			assert(_displayListIndex > 0);
-			glCallList(_displayListIndex);
+			#if ANGEL_IPHONE
+				sysLog.Printf("glCallList is unsupported in OpenGL|ES.");
+			#else
+				if (_displayListIndex < 0)
+				{
+					sysLog.Printf("Invalid display list index: %i.", _displayListIndex);
+				}
+				else
+				{
+					glCallList(_displayListIndex);
+				}
+			#endif
 		break;
 	}
 
@@ -537,14 +571,22 @@ void Actor::LoadSpriteFrames(String firstFilename, GLint clampmode, GLint filter
 
 void Actor::SetUVs(const Vector2 lowleft, const Vector2 upright)
 {
-	UV_rightup = upright;
-	UV_leftlow = lowleft;
+	_UV[0] = lowleft.X;
+	_UV[1] = upright.Y;
+	_UV[2] = lowleft.X;
+	_UV[3] = lowleft.Y;
+	_UV[4] = upright.X;
+	_UV[5] = upright.Y;
+	_UV[6] = upright.X;
+	_UV[7] = lowleft.Y;
 }
 
 void Actor::GetUVs(Vector2 &lowleft, Vector2 &upright) const
 {
-	upright = UV_rightup;
-	lowleft = UV_leftlow;
+	lowleft.X = _UV[2];
+	lowleft.Y = _UV[3];
+	upright.X = _UV[4];
+	upright.Y = _UV[5];
 }
 
 const bool Actor::IsTagged(String tag)
@@ -619,7 +661,7 @@ const String Actor::GetName()
 	return _name;
 }
 
-const Actor* Actor::GetNamed(String nameLookup)
+Actor* const Actor::GetNamed(String nameLookup)
 {
 	std::map<String,Actor*>::iterator it = _nameList.find(nameLookup);
 	if (it == _nameList.end())

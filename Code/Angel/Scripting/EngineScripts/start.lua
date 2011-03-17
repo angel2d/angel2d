@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -40,16 +40,18 @@ function catchExit()
   print("Can't exit game from console.")
 end
 
-function angelPrint(...)
-  local str
-  str = ""
-  for i=1, arg.n do
-    if (str ~= "") then
-      str = str .. '\t'
+if (ANGEL_MOBILE == false) then
+  function angelPrint(...)
+    local str
+    str = ""
+    for i=1, arg.n do
+      if (str ~= "") then
+        str = str .. '\t'
+      end
+      str = str .. tostring(arg[i])
     end
-    str = str .. tostring(arg[i])
+    LuaWrite(str)
   end
-  LuaWrite(str)
 end
 
 function angelStart()
@@ -65,8 +67,10 @@ function angelStart()
   os.exit = catchExit
   
   -- override printing to go to in-game console
-  print = angelPrint
-  io.write = angelPrint
+  if (ANGEL_MOBILE == false) then
+    print = angelPrint
+    io.write = angelPrint
+  end
   
   -- stir up some syntactic sugar
   require("sugar")

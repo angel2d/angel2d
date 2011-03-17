@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -35,15 +35,32 @@
 #pragma once
 
 #if defined(WIN32)
-	#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+	#define WIN32_LEAN_AND_MEAN
 	#include <windows.h>
 	#include <hash_map>
 	#define hashmap_ns stdext
+	#include <GL/gl.h>
 	#include <GL/glu.h>
-
 #elif defined(__APPLE__)
-	#include <OpenGL/gl.h>
-	#include <OpenGL/glu.h>
+	#include "TargetConditionals.h"
+	#if ANGEL_IPHONE
+		#include <OpenGLES/ES1/gl.h>
+		#include "glu.h"
+		#include <sys/time.h>
+		#import <Availability.h>
+		#ifndef __IPHONE_3_0
+			#warning "This project uses features only available in iPhone SDK 3.0 and later."
+		#endif
+		#ifdef __OBJC__
+			#import <Foundation/Foundation.h>
+			#import <UIKit/UIKit.h>
+		#else
+			#include <CoreFoundation/CoreFoundation.h>
+		#endif
+	#else
+		#include <OpenGL/gl.h>
+		#include <OpenGL/glu.h>
+	#endif
 #endif
 #if defined(__APPLE__) || defined(__linux__)	
 	#include <ext/hash_map>
@@ -61,9 +78,16 @@
 			}
 		};
 	}
+	#if ANGEL_IPHONE
+		// making up for OpenGL|ES missing pieces
+		#define glColor3f(r,g,b) glColor4f(r,g,b,1.0f)
+		#define GL_CLAMP GL_CLAMP_TO_EDGE
+	#endif
 #endif
 
-#include <GL/glfw.h>
+#if !defined(__APPLE__) || !ANGEL_IPHONE
+	#include <GL/glfw.h>
+#endif
 
 #include <math.h>
 #include <iostream>

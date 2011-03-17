@@ -1,0 +1,55 @@
+# Configuration for Darwin / MacOS X, making dynamic libs
+
+include $(TOP)/configs/default
+
+CONFIG_NAME = darwin
+
+INSTALL_DIR = /usr/X11
+
+# Compiler and flags
+CC = gcc
+CXX = gcc
+PIC_FLAGS = 
+DEFINES =  -D_DARWIN_C_SOURCE -D_POSIX_SOURCE -D_POSIX_C_SOURCE=199309L \
+	   -D_BSD_SOURCE -D_SVID_SOURCE -D_GNU_SOURCE -DPTHREADS \
+	   -DGLX_INDIRECT_RENDERING \
+	   -DGLX_ALIAS_UNSUPPORTED
+
+# -DGLX_DIRECT_RENDERING - pulls in libdrm stuff in glx/x11
+# -DIN_DRI_DRIVER
+
+ARCH_FLAGS += $(RC_CFLAGS)
+
+CFLAGS =  -g -O2 -Wall -Wmissing-prototypes -std=c99 -ffast-math -fno-strict-aliasing \
+	-I$(INSTALL_DIR)/include $(OPT_FLAGS) $(PIC_FLAGS) $(ARCH_FLAGS) $(ASM_FLAGS) $(DEFINES)
+CXXFLAGS =  -g -O2 -Wall -fno-strict-aliasing \
+	-I$(INSTALL_DIR)/include $(OPT_FLAGS) $(PIC_FLAGS) $(ARCH_FLAGS) $(ASM_FLAGS) $(DEFINES)
+
+# Library names (actual file names)
+GL_LIB_NAME = libGL.dylib
+GLU_LIB_NAME = libGLU.dylib
+GLUT_LIB_NAME = libglut.dylib
+GLW_LIB_NAME = libGLw.dylib
+OSMESA_LIB_NAME = libOSMesa.dylib
+
+# globs used to install the lib and all symlinks
+GL_LIB_GLOB = libGL.*dylib
+GLU_LIB_GLOB = libGLU.*dylib
+GLUT_LIB_GLOB = libglut.*dylib
+GLW_LIB_GLOB = libGLw.*dylib
+OSMESA_LIB_GLOB = libOSMesa.*dylib
+
+GL_LIB_DEPS = -L$(INSTALL_DIR)/$(LIB_DIR) -lX11 -lXext -lm -lpthread
+OSMESA_LIB_DEPS = -L$(TOP)/$(LIB_DIR) -l$(GL_LIB)
+GLU_LIB_DEPS = -L$(TOP)/$(LIB_DIR) -l$(GL_LIB)
+GLUT_LIB_DEPS = -L$(TOP)/$(LIB_DIR) -l$(GLU_LIB) -l$(GL_LIB)  -L$(INSTALL_DIR)/$(LIB_DIR) -lX11 -lXmu -lXi -lXext
+GLW_LIB_DEPS = -L$(TOP)/$(LIB_DIR) -l$(GL_LIB) -L$(INSTALL_DIR)/$(LIB_DIR) -lX11 -lXt
+APP_LIB_DEPS = -L$(TOP)/lib -l$(GLUT_LIB) -l$(GLU_LIB) -l$(GL_LIB) -L$(INSTALL_DIR)/$(LIB_DIR) -lX11 -lXmu -lXt -lXi -lm
+
+# omit glw lib for now:
+SRC_DIRS = glx/x11 mesa glu glw glut/glx
+GLU_DIRS = sgi
+DRIVER_DIRS = osmesa
+#DRIVER_DIRS = dri
+DRI_DIRS = swrast
+PROGRAM_DIRS = xdemos

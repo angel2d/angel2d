@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -69,5 +69,6 @@ void FullScreenActor::_resize()
 	Vector2 dimensions = maxVert - minVert;
 	
 	SetPosition(Vector2::Zero + theCamera.GetPosition());
+	SetRotation(-theCamera.GetRotation());
 	SetSize(dimensions.X, dimensions.Y);	
 }

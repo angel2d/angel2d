@@ -1,0 +1,32 @@
+# Configuration for iPhone OS, making static libs
+
+include $(TOP)/configs/darwin
+
+CONFIG_NAME = darwin-iphone
+
+GCC_VERSION = 4.0
+IPHONEOS_DEPLOYMENT_TARGET = 3.1.3
+MACOSX_DEPLOYMENT_TARGET = 10.5
+
+PLATFORM_DEVELOPER_BIN_DIR = /Developer/Platforms/$(PLATFORM).platform/Developer/usr/bin
+SDKROOT = /Developer/Platforms/$(PLATFORM).platform/Developer/SDKs/$(PLATFORM)$(IPHONEOS_DEPLOYMENT_TARGET).sdk
+EXTRA_CFLAGS += -arch $(ARCH) -pipe -mdynamic-no-pic -fvisibility=hidden -isysroot $(SDKROOT)
+EXTRA_LDFLAGS += -arch $(ARCH) -isysroot $(SDKROOT) -Wl,-dead_strip
+
+ifeq ($(PLATFORM),iPhoneOS)
+EXTRA_CFLAGS += -miphoneos-version-min=$(IPHONEOS_DEPLOYMENT_TARGET)
+EXTRA_LDFLAGS += -miphoneos-version-min=$(IPHONEOS_DEPLOYMENT_TARGET)
+else
+EXTRA_CFLAGS += -D__IPHONE_OS_VERSION_MIN_REQUIRED=20000 -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET)
+EXTRA_LDFLAGS += -mmacosx-version-min=$(MACOSX_DEPLOYMENT_TARGET)
+endif
+
+AR = $(PLATFORM_DEVELOPER_BIN_DIR)/ar
+CC = $(PLATFORM_DEVELOPER_BIN_DIR)/gcc-$(GCC_VERSION)
+CFLAGS += $(EXTRA_CFLAGS)
+LDFLAGS += $(EXTRA_LDFLAGS)
+CXX = $(PLATFORM_DEVELOPER_BIN_DIR)/g++-$(GCC_VERSION)
+CXXFLAGS += $(EXTRA_CFLAGS) -fvisibility-inlines-hidden
+
+GLU_LIB_NAME = libGLU.a
+INSTALL_DIR = $(HOME)$(SDKROOT)

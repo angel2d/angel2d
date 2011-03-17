@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)src&quot;;&quot;$(ProjectDir)..\lua-libs\alien-0.4.1\libffi\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)src&quot;"
 				PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;NOGDI"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -106,7 +106,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)src&quot;;&quot;$(ProjectDir)..\lua-libs\alien-0.4.1\libffi\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)src&quot;"
 				PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;NOGDI"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"

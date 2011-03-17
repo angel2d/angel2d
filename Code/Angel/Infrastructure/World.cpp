@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -31,15 +31,19 @@
 #include "../Infrastructure/World.h"
 
 #include "../Infrastructure/Camera.h"
-#include "../Infrastructure/Console.h"
+#include "../Infrastructure/Log.h"
 #include "../AI/SpatialGraph.h"
-#include "../Input/Input.h"
-#include "../Input/MouseInput.h"
-#include "../Input/Controller.h"
+#if !ANGEL_IPHONE
+	#include "../Infrastructure/Console.h"
+	#include "../Input/Input.h"
+	#include "../Input/MouseInput.h"
+	#include "../Input/Controller.h"
+	#include "../Input/InputManager.h"
+#else
+	#include "../Infrastructure/TextRendering.h"
+#endif
 #include "../Infrastructure/Textures.h"
-#include "../Input/InputManager.h"
-#include "../Physics/PhysicsActor.h"
-#include "../Physics/PhysicsDebugDraw.h"
+#include "../Actors/PhysicsActor.h"
 #include "../Messaging/Switchboard.h"
 #include "../Scripting/LuaModule.h"
 #include "../Infrastructure/SoundDevice.h"
@@ -60,9 +64,9 @@ World::World()
 	_blockersOn = false;
 	_blockerRestitution = 0.0f;
 	_blockers[0] = _blockers[1] = _blockers[2] = _blockers[3] = NULL;
-	_physicsDebugDraw = NULL;
 	_gameManager = NULL;
 	_elementsLocked = false;
+	_highResScreen = false;
 	
 	_processingDeferredAdds = false;
 }
@@ -103,39 +107,51 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	}
 	
 	_running = true;
-	glfwInit();
-	if (antiAliasing)
-	{
-		glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
-	}
-	int windowMode = GLFW_WINDOW;
-	if (fullScreen)
-	{
-		windowMode = GLFW_FULLSCREEN;
-	}
-	glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, windowMode);
-	glfwSetWindowPos(50, 50);
 	
-	glfwSetWindowTitle(windowName.c_str());
+	//Windowing system setup
+	#if !ANGEL_IPHONE
+		glfwInit();
+		if (antiAliasing)
+		{
+			glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
+		}
+		int windowMode = GLFW_WINDOW;
+		if (fullScreen)
+		{
+			windowMode = GLFW_FULLSCREEN;
+		}
+		glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, windowMode);
+		glfwSetWindowPos(50, 50);
+		
+		glfwSetWindowTitle(windowName.c_str());
 
-	glfwSwapInterval(1); //better visual quality, set to zero for max drawing performance
-	glfwSetWindowSizeCallback(Camera::ResizeCallback);
-	glfwSetKeyCallback(keyboardInput);
-	glfwSetCharCallback(charInput);
-	glfwDisable(GLFW_KEY_REPEAT);
-	glfwSetMousePosCallback(MouseMotion);
-	glfwSetMouseButtonCallback(MouseButton);
-	glfwSetWindowCloseCallback(windowClosed);
-
-	_prevTime = glfwGetTime();
-
+		glfwSwapInterval(1); //better visual quality, set to zero for max drawing performance
+		glfwSetWindowSizeCallback(Camera::ResizeCallback);
+		glfwSetKeyCallback(keyboardInput);
+		glfwSetCharCallback(charInput);
+		glfwDisable(GLFW_KEY_REPEAT);
+		glfwSetMousePosCallback(MouseMotion);
+		glfwSetMouseButtonCallback(MouseButton);
+		glfwSetMouseWheelCallback(MouseWheel);
+		glfwSetWindowCloseCallback(windowClosed);
+		_prevTime = glfwGetTime();
+	#else
+		struct timeval tv;
+		gettimeofday(&tv, NULL);
+		_currTime = _startTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0;
+	#endif
+	
+	
+	//OpenGL state setup
+	#if !ANGEL_IPHONE
+		glClearDepth(1.0f);
+		glPolygonMode(GL_FRONT, GL_FILL);
+	#endif
 	glShadeModel(GL_FLAT);
-	glPolygonMode(GL_FRONT, GL_FILL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	glEnable(GL_CULL_FACE);
 	glFrontFace(GL_CCW);
 	glCullFace(GL_BACK);
-	glClearDepth(1.0f);
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
@@ -144,35 +160,48 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	theCamera.ResizeCallback(windowWidth, windowHeight);
-	theControllerManager.Setup();
 	
 	InitializeTextureLoading();
 	
 	#if defined(__APPLE__)
 		// Set up paths correctly in the .app bundle
-		// TODO: Centralize a declaration/initialization of paths
-		CFBundleRef mainBundle = CFBundleGetMainBundle();
-		CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
-		char path[PATH_MAX];
-		if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
-		{
-			sysLog.Log("Problem setting up working directory!");
-		}
-		CFRelease(resourcesURL);
-		chdir(path);
-		chdir("..");
-		#if DEBUG
-			CFURLRef exeURL = CFBundleCopyExecutableURL(mainBundle);
-			char exePath[PATH_MAX];
-			if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
+		#if !ANGEL_IPHONE
+			CFBundleRef mainBundle = CFBundleGetMainBundle();
+			CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+			char path[PATH_MAX];
+			if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
 			{
 				sysLog.Log("Problem setting up working directory!");
 			}
-			CFRelease(exeURL);
-			chdir(".."); //for some reason this skips over the *.app directory
-			StringList pathElements = SplitString(exePath, "/");
-			String exeName = pathElements[pathElements.size()-1];
-			chdir(exeName.c_str());
+			CFRelease(resourcesURL);
+			chdir(path);
+			chdir("..");
+			#if DEBUG
+				// set paths to the local resources rather than the copied ones
+				CFURLRef exeURL = CFBundleCopyExecutableURL(mainBundle);
+				char exePath[PATH_MAX];
+				if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
+				{
+					sysLog.Log("Problem setting up working directory!");
+				}
+				CFRelease(exeURL);
+				chdir("../../../..");
+				getcwd(path, PATH_MAX);
+				StringList pathElements = SplitString(exePath, "/");
+				String exeName = pathElements[pathElements.size()-1];
+				chdir(exeName.c_str());
+			#endif
+		#else
+			CFBundleRef mainBundle = CFBundleGetMainBundle();
+			CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+			char path[PATH_MAX];
+			if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
+			{
+				std::cout << "Problem setting up working directory!" << std::endl;
+			}
+			CFRelease(resourcesURL);
+			chdir(path);
+			chdir("Angel"); // the iPhone doesn't like having a "Resources" directory in the root of the .app bundle
 		#endif
 	#endif
 	
@@ -180,11 +209,20 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	theSwitchboard.SubscribeTo(this, "CameraChange");
 	
 	//initialize singletons
-	theInput;
+	#if !ANGEL_IPHONE
+		theInput;
+		theControllerManager.Setup();
+	#endif
 	theSound;
 	theSpatialGraph;
-	
-	RegisterConsole(new TestConsole());
+
+	#if !ANGEL_IPHONE
+		RegisterConsole(new TestConsole());
+	#else
+		// register fonts, since we don't have the console doing it for us on the phone
+		RegisterFont("Resources/Fonts/Inconsolata.otf", 24, "Console");
+		RegisterFont("Resources/Fonts/Inconsolata.otf", 18, "ConsoleSmall");
+	#endif
 
 	LuaScriptingModule::Initialize();
 	
@@ -204,26 +242,23 @@ bool World::SetupPhysics(Vector2 gravity, Vector2 maxVertex, Vector2 minVertex)
 	worldAABB.upperBound.Set(maxVertex.X, maxVertex.Y);
 	b2Vec2 gravityVector(gravity.X, gravity.Y);
 	bool doSleep = true;
-	_physicsWorld = new b2World(worldAABB, gravityVector, doSleep);
+	_physicsWorld = new b2World(gravityVector, doSleep);
 
 	_physicsWorld->SetContactListener(this);
-
-	_physicsDebugDraw = new /*Physics*/DebugDraw();
-	_physicsWorld->SetDebugDraw(_physicsDebugDraw);
-
+	
 	return _physicsSetUp = true;
 }
 
 
 void World::Destroy()
 {
+	#if !ANGEL_IPHONE
+		theInput.Destroy();
+	#endif
 	theSound.Shutdown();
-	theInput.Destroy();
 	
 	FinalizeTextureLoading();
 	LuaScriptingModule::Finalize();
-	
-	delete _physicsDebugDraw;
 }
 
 void World::StartGame()
@@ -247,10 +282,14 @@ void World::StartGame()
 
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
-		glfwSwapBuffers();
+		#if !ANGEL_IPHONE
+			glfwSwapBuffers();
+		#endif
 	}
 	
-	glfwTerminate();
+	#if !ANGEL_IPHONE
+		glfwTerminate();
+	#endif
 }
 
 void World::StopGame()
@@ -270,10 +309,16 @@ void World::LoadLevel(String levelName)
 
 float World::CalculateNewDT()
 {
-	_currTime = glfwGetTime();
+	#if ANGEL_IPHONE
+		struct timeval tv;
+		gettimeofday(&tv, NULL);
+		_currTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0 - _startTime;
+	#else
+		_currTime = glfwGetTime();
+	#endif
 	_dt = MathUtil::Clamp((_currTime - _prevTime), 0.0f, MAX_TIMESTEP);
 	_prevTime = _currTime;
-	return _dt;
+	return _dt;		
 }
 
 void World::Simulate(bool simRunning)
@@ -281,8 +326,10 @@ void World::Simulate(bool simRunning)
 	float frame_dt = CalculateNewDT();
 
 	//system updates
-	_console->Update( (float)frame_dt );
-	theControllerManager.UpdateState();
+	#if !ANGEL_IPHONE
+		theControllerManager.UpdateState();
+		_console->Update( (float)frame_dt );
+	#endif
 	theCamera.Update(frame_dt);
 
 	// Must be called once per frame.
@@ -298,9 +345,6 @@ void World::Simulate(bool simRunning)
 	{
 		// Deliver any messages that have been queued from the last frame. 
 		theSwitchboard.SendAllMessages();
-
-		//Clear out the collision contact points
-		_contactPointCount = 0;
 		
 		//rb - Flag that the _elements array is locked so we don't try to add any
 		// new actors during the update.
@@ -338,7 +382,7 @@ void World::RunPhysics(float frame_dt)
 	{
 		// more iterations -> more stability, more cpu
 		// tune to your liking...
-		GetPhysicsWorld().Step(physicsDT, /*iterations*/ 10);
+		GetPhysicsWorld().Step(physicsDT, /*velocity iterations*/ 10, /* position iterations */ 10);
 		total_step -= physicsDT;
 	}
 	_physicsRemainderDT = total_step;
@@ -355,67 +399,40 @@ void World::RunPhysics(float frame_dt)
 	}
 }
 
-void World::bufferContactPoint(const b2ContactPoint* point)
+void World::bufferContactPoint(b2Contact* contact)
 {
-	if (_contactPointCount == MAX_CONTACT_POINTS)
+	PhysicsActor* pa1 = (PhysicsActor*)contact->GetFixtureA()->GetBody()->GetUserData();
+	PhysicsActor* pa2 = (PhysicsActor*)contact->GetFixtureB()->GetBody()->GetUserData();
+	String pa1Message = "CollisionWith" + pa1->GetName();
+	String pa2Message = "CollisionWith" + pa2->GetName();
+	if (theSwitchboard.GetSubscribersTo(pa1Message).size() > 0)
 	{
-		return;
-	}
-
-	b2ContactPoint* cp = _contactPoints + _contactPointCount;
-	cp->shape1 = point->shape1;
-	cp->shape2 = point->shape2;
-	cp->position = point->position;
-	cp->velocity = point->velocity;
-	cp->normal = point->normal;
-	cp->separation = point->separation;
-	cp->friction = point->friction;
-	cp->restitution = point->restitution;
-	cp->id = point->id;
-	
-	PhysicsActor* pa1 = (PhysicsActor*)cp->shape1->GetBody()->GetUserData();
-	PhysicsActor* pa2 = (PhysicsActor*)cp->shape2->GetBody()->GetUserData();
-	if (theSwitchboard.GetSubscribersTo("CollisionWith" + pa1->GetName()).size() > 0)
-	{
-		if (_currentTouches[pa1].find(pa2) != _currentTouches[pa1].end())
+		if (_currentTouches[pa1].find(pa2) == _currentTouches[pa1].end())
 		{
-			TypedMessage<b2ContactPoint*>* coll = new TypedMessage<b2ContactPoint*>("CollisionWith" + pa1->GetName(), cp, pa2);
+			TypedMessage<b2Contact*>* coll = new TypedMessage<b2Contact*>(pa1Message, contact, pa2);
 			theSwitchboard.Broadcast(coll);
 		}
 		_currentTouches[pa1].insert(pa2);
 	}
-	if (theSwitchboard.GetSubscribersTo("CollisionWith" + pa2->GetName()).size() > 0)
+	if (theSwitchboard.GetSubscribersTo(pa2Message).size() > 0)
 	{
-		if (_currentTouches[pa2].find(pa1) != _currentTouches[pa2].end())
+		if (_currentTouches[pa2].find(pa1) == _currentTouches[pa2].end())
 		{
-			TypedMessage<b2ContactPoint*>* coll = new TypedMessage<b2ContactPoint*>("CollisionWith" + pa2->GetName(), cp, pa1);
+			TypedMessage<b2Contact*>* coll = new TypedMessage<b2Contact*>(pa2Message, contact, pa1);
 			theSwitchboard.Broadcast(coll);
 		}
 		_currentTouches[pa2].insert(pa1);
 	}
-
-	_contactPointCount++;
 }
 
-void World::Add(const b2ContactPoint* point)
+void World::BeginContact(b2Contact* contact)
 {
-	//Persist is the only consistent message we care about at the moment
-	bufferContactPoint(point);
+	bufferContactPoint(contact);
 }
 
-void World::Persist(const b2ContactPoint* point)
+void World::EndContact(b2Contact* contact)
 {
-	bufferContactPoint(point);
-}
-
-void World::Remove(const b2ContactPoint* /*point*/)
-{
-	//Persist is the only consistent message we care about at the moment
-}
-
-void World::Result(const b2ContactResult* /*result*/)
-{
-	//Result?
+	// we only care about the BeginContact signal
 }
 
 void World::TickAndRender()
@@ -436,8 +453,10 @@ void World::TickAndRender()
 
 	DrawDebugItems();
 
-	//Draw developer console
-	_console->Render();
+	#if !ANGEL_IPHONE
+		//Draw developer console
+		_console->Render();
+	#endif
 }
 
 void World::CleanupRenderables()
@@ -476,17 +495,6 @@ void World::DrawRenderables()
 		(*it)->Render();
 		++it;
 	}
-}
-
-void World::DisplayCallback()
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glPushMatrix();
-
-	theWorld.TickAndRender();
-
-	glPopMatrix();
-	glfwSwapBuffers();
 }
 
 const float World::GetDT()
@@ -649,8 +657,10 @@ const int World::GetLayerByName(String name)
 void World::DrawDebugLine( Vector2 a, Vector2 b, float time, Color color )
 {
 	DebugLine* line = new DebugLine();
-	line->_start = a;
-	line->_end = b;
+	line->_points[0] = a.X;
+	line->_points[1] = a.Y;
+	line->_points[2] = b.X;
+	line->_points[3] = a.Y;
 	line->_color = color;
 	line->_timeRemaining = time;
 	line->_bPermanent = (time < 0);
@@ -661,18 +671,13 @@ void World::WakeAllPhysics()
 {
 	for (b2Body* b = GetPhysicsWorld().GetBodyList(); b; b = b->GetNext())
 	{
-		b->WakeUp();
+		b->SetAwake(true);
 	}
 }
 
 b2World& World::GetPhysicsWorld()
 {
 	return *_physicsWorld;
-}
-
-void World::SetPhysicsDebugFlags(uint32 flags)
-{
-	if (_physicsDebugDraw) _physicsDebugDraw->SetFlags(flags);
 }
 
 void World::SetSideBlockers(bool turnOn, float restitution)

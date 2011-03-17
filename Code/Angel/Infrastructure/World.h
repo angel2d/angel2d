@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -35,12 +35,11 @@
 #include "../Infrastructure/DebugDraw.h"
 #include "../Messaging/Message.h"
 
-#include "Box2D.h"
+#include <Box2D/Box2D.h>
 
 //forward declarations
 class Actor;
 class PhysicsActor;
-class /*Physics*/DebugDraw;
 class Console;
 
 #define MAX_TIMESTEP 1.0f
@@ -291,29 +290,17 @@ public:
 	void WakeAllPhysics();
 	
 	/**
-	 * Implementation of the b2ContactListener::Add function. We use it to
-	 *  manage collision notifications. 
+	 * Implementation of the b2ContactListener::BeginContact function. We 
+	 *  use it to manage collision notifications. 
 	 */
-	virtual void Add(const b2ContactPoint* point);
+	virtual void BeginContact(b2Contact* contact);
 	
 	/**
-	 * Implementation of the b2ContactListener::Persist function. We use it to
-	 *  manage collision notifications. 
+	 * Implementation of the b2ContactListener::EndContact function. We 
+	 *  use it to manage collision notifications. 
 	 */
-	virtual void Persist(const b2ContactPoint* point);
-	
-	/**
-	 * Implementation of the b2ContactListener::Remove function. We use it to
-	 *  manage collision notifications. 
-	 */
-	virtual void Remove(const b2ContactPoint* point);
-	
-	/**
-	 * Implementation of the b2ContactListener::Result function. We use it to
-	 *  manage collision notifications. 
-	 */
-	virtual void Result(const b2ContactResult* point);
-	
+	virtual void EndContact(b2Contact* contact);
+		
 	/**
 	 * When working with physics, oftentimes you want to keep objects from 
 	 *  going beyond the edge of the visible screen. This function sets up 
@@ -355,14 +342,6 @@ public:
 	* 
 	*/
 	void PurgeDebugDrawing();
-
-	/**
-	* Specify which debug flags to use for rendering physics debug information.  This is simply a 
-	* wrapper function for Box2D.  See b2DebugDraw class in b2WorldCallbacks.h for more info.
-	* 
-	* @param flags The flags to pass down to Box2D, such as b2DebugDraw::e_shapeBit.
-	*/
-	void SetPhysicsDebugFlags(uint32 flags); // control rendering of debug physics drawing
 
 	/**
 	* Check whether the simulation is running.  See also StartSimulation() and StopSimulation().
@@ -419,15 +398,32 @@ public:
 	 *  to get notifications of camera changes so the side blockers can be
 	 *  updated if they're enabled. 
 	 * 
-	 * @param *m 
+	 * @param m The message being delivered. 
 	 */
 	virtual void ReceiveMessage(Message *m);
 	
 	/**
-	 * The callback that the windowing toolkit (GLFW) will use to drive the
-	 *  rendering loop. 
+	 * Lets you know whether the current rendering device is high resolution
+	 *  (like the iPhone 4's "Retina Display").
+	 *
+	 * @return Whether or not the screen is high resolution.
 	 */
-	static void DisplayCallback();
+	const bool IsHighResScreen() { return _highResScreen; }
+	
+	/**
+	 * INTERNAL: This function is called by the OS setup functions to let Angel
+	 *  know about the screen resolution. If you call in manually, expect
+	 *  weirdness. 
+	 *
+	 * @param highRes Whether or not we should be set up for high resolution rendering.
+	 */
+	void SetHighResolutionScreen(bool highRes) { _highResScreen = highRes; }
+	
+	/**
+	 * INTERNAL: This function is used by various OS systems to run the Angel
+	 *  update loop. If you call it manually, expect weirdness. 
+	 */
+	void TickAndRender();
 	
 protected:
 	World();
@@ -437,7 +433,6 @@ protected:
 	void CleanupRenderables();
 	void DrawRenderables();
 	void Simulate(bool simRunning);
-	void TickAndRender();
 	void ProcessDeferredAdds();
 	void ProcessDeferredLayerChanges();
 	void ProcessDeferredRemoves();
@@ -452,6 +447,10 @@ private:
 		int			_layer;
 	};
 	bool _running;
+	#if ANGEL_IPHONE
+		float _startTime;
+	#endif
+	bool _highResScreen;
 	float _prevTime;
 	float _currTime;
 	float _dt;
@@ -474,12 +473,8 @@ private:
 
 	b2World *_physicsWorld;
 	bool _physicsSetUp;
-
-	/*Physics*/DebugDraw *_physicsDebugDraw;
-
-	void bufferContactPoint(const b2ContactPoint* cp);
-	b2ContactPoint _contactPoints[MAX_CONTACT_POINTS];
-	int _contactPointCount;
+	
+	void bufferContactPoint(b2Contact* cp);
 	std::map< PhysicsActor*, ActorSet > _currentTouches;
 
 	bool _blockersOn;

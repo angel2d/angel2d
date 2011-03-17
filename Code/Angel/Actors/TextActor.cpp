@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -31,6 +31,7 @@
 #include "../Actors/TextActor.h"
 
 #include "../Infrastructure/TextRendering.h"
+#include "../Infrastructure/Camera.h"
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"
 #include "../Messaging/Switchboard.h"
@@ -38,7 +39,7 @@
 
 TextActor::TextActor(String fontNickname, String displayString, TextAlignment align, int lineSpacing)
 {
-	SetColor(0,0,0); //default text is black
+	SetColor(0.0f, 0.0f, 0.0f); //default text is black
 	_fontNickname = fontNickname;
 	_alignment = align;
 	_lineSpacing = lineSpacing;
@@ -56,7 +57,7 @@ void TextActor::Render()
 	glColor4f(_color.R, _color.G, _color.B, _color.A);
 	for(unsigned int i=0; i < _displayStrings.size(); i++)
 	{
-		DrawGameText(_displayStrings[i]._string, _fontNickname, (int)_displayStrings[i]._position.X, (int)_displayStrings[i]._position.Y);
+		DrawGameText(_displayStrings[i]._string, _fontNickname, (int)_displayStrings[i]._position.X, (int)_displayStrings[i]._position.Y, _rotation + theCamera.GetRotation());
 	}
 }
 
@@ -172,12 +173,12 @@ void TextActor::CalculatePosition()
 		case TXT_Center:
 			(*it)._position = 
 				Vector2(MathUtil::WorldToScreen(GetPosition()).X, currentY) + 
-				Vector2(-(*it)._extents.X * 0.5f, 0.0f);
+					Vector2::Rotate(Vector2(-(*it)._extents.X * 0.5f, 0.0f), -MathUtil::ToRadians(theCamera.GetRotation()));
 			break;
 		case TXT_Right:
 			(*it)._position = 
 				Vector2(MathUtil::WorldToScreen(GetPosition()).X, currentY) + 
-				Vector2(-(*it)._extents.X, 0.0f);
+					Vector2::Rotate(Vector2(-(*it)._extents.X, 0.0f), -MathUtil::ToRadians(theCamera.GetRotation()));
 			break;
 		}
 		

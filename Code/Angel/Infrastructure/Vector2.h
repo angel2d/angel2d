@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -28,6 +28,8 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once
+
+#include "../Infrastructure/VecStructs.h"
 
 ///A two-dimensional floating point vector and associated math functions
 /** 
@@ -98,6 +100,13 @@ struct Vector2
 	 * @param value The value to use for both the X and Y dimension
 	 */
 	Vector2(float value);
+
+	/**
+	 * Constructor to initalize from a Vec2i struct.
+	 * 
+	 * @param copy The Vec2i to be converted into a Vector2.
+	 */
+	Vector2(Vec2i copy);
 	
 	/**
 	 * Constructor to initialize a zero-length vector (0, 0)
@@ -153,6 +162,19 @@ struct Vector2
 	 */
 	static float Dot(const Vector2& value1, const Vector2& value2);
 	
+	/**
+	 * Get the cross product of two vectors. Note that the \b mathematical 
+	 *  definition of a cross product results in another vector perpendicular
+	 *  to the two inputs, but since both of our vectors are 2D, the 
+	 *  returned vector will always have X and Y components of 0. Thus 
+	 *  this function returns what would be the Z component of that vector.
+	 * 
+	 * @param value1 The first vector
+	 * @param value2 The second vector
+	 * @return The Z component of the cross product
+	 */
+	static float Cross(const Vector2& value1, const Vector2& value2);
+
 	/**
 	 * Normalizes a vector in place -- retains its direction, but ensures
 	 *  that its magnitude is equal to 1.0. 

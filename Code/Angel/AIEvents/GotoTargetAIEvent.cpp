@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -35,7 +35,7 @@
 #include "../AI/SpatialGraph.h"
 #include "../Infrastructure/TagCollection.h"
 
-#include "Box2D.h"
+#include <Box2D/Box2D.h>
 
 
 GotoTargetAIEvent* GotoTargetAIEvent::Initialize( const String& targetTag, float moveSpeed, float arrivalDist )

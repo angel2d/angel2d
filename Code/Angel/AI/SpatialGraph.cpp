@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -37,7 +37,7 @@
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"
 
-#include "Box2D.h"
+#include <Box2D/Box2D.h>
 
 void SpatialGraphKDNode::Render()
 {
@@ -77,21 +77,24 @@ void SpatialGraphKDNode::Render()
 	if( theSpatialGraph.GetDrawGraph() && !bBlocked )
 	{
 		glColor3f(1.f,0.f,0.f);
-
+		
+		float linePoints[4];
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glVertexPointer(2, GL_FLOAT, 0, linePoints);
 		for( unsigned int i = 0; i < Neighbors.size(); i++ )
 		{
 			if( Neighbors[i]->bBlocked || !NeighborLOS[i] )
 				continue;
-			//Draw lines
-			glBegin(GL_LINES);
+
 			//draw centroid to centroid half way point
 			Vector2 neighbor = Neighbors[i]->BBox.Centroid();
 			neighbor = centroid + ((neighbor - centroid) * 0.6f);
-
-			glVertex2f(centroid.X, centroid.Y);
-			glVertex2f(neighbor.X, neighbor.Y);
-
-			glEnd();
+			
+			linePoints[0] = centroid.X;
+			linePoints[1] = centroid.Y;
+			linePoints[2] = neighbor.X;
+			linePoints[3] = neighbor.Y;
+			glDrawArrays(GL_LINES, 0, 2);
 		}
 	}
 
@@ -278,42 +281,59 @@ void SpatialGraph::Render()
 	}
 }
 
+const int __maxFixtureCount = 1024;
+b2Fixture* __spatialGraphTempFixtures[__maxFixtureCount];
+int __spatialGraphNumFixtures = 0;
+
+bool SpatialGraphManager::ReportFixture(b2Fixture* fixture)
+{
+	if (__spatialGraphNumFixtures >= __maxFixtureCount - 1)
+	{
+		return false;
+	}
+	__spatialGraphTempFixtures[__spatialGraphNumFixtures++] = fixture;
+	return true;
+}
+
 bool IsBlocked( const BoundingBox& bbox )
 {
-	const int maxShapeCount = 1024;
+	
 	b2AABB physBounds;
 	physBounds.lowerBound = b2Vec2( bbox.Min.X, bbox.Min.Y ); 
 	physBounds.upperBound = b2Vec2( bbox.Max.X, bbox.Max.Y );
-	static b2Shape* tempShapes[maxShapeCount];
-
-	int numBroadphase = theWorld.GetPhysicsWorld().Query( physBounds, tempShapes, maxShapeCount );
+	
+	__spatialGraphNumFixtures = 0;
+	theWorld.GetPhysicsWorld().QueryAABB(&theSpatialGraph, physBounds);
 
 	//No bodies here
-	if( numBroadphase == 0 )
+	if( __spatialGraphNumFixtures == 0 )
 		return false;
 
-	b2PolygonDef shapeBoundsDef;
-	shapeBoundsDef.vertexCount = 4;
-	shapeBoundsDef.vertices[0].Set( physBounds.lowerBound.x, physBounds.lowerBound.y );
-	shapeBoundsDef.vertices[1].Set( physBounds.upperBound.x, physBounds.lowerBound.y );
-	shapeBoundsDef.vertices[2].Set( physBounds.upperBound.x, physBounds.upperBound.y );
-	shapeBoundsDef.vertices[3].Set( physBounds.lowerBound.x, physBounds.upperBound.y );
+	b2PolygonShape shapeBoundsPoly;
+	b2Vec2 vertices[4];
+	vertices[0].Set( physBounds.lowerBound.x, physBounds.lowerBound.y );
+	vertices[1].Set( physBounds.upperBound.x, physBounds.lowerBound.y );
+	vertices[2].Set( physBounds.upperBound.x, physBounds.upperBound.y );
+	vertices[3].Set( physBounds.lowerBound.x, physBounds.upperBound.y );
+	shapeBoundsPoly.Set(vertices, 4);
 
 	b2BodyDef fakeBodyDef;
 	//b2Vec2 center = physBounds.lowerBound + (0.5f * shapeBoundsDef.extents);
 	fakeBodyDef.position.Set(0.0f, 0.0f );
 	b2Body* fakeBody = theWorld.GetPhysicsWorld().CreateBody(&fakeBodyDef);
-	b2Shape* shapeBounds = fakeBody->CreateShape( &shapeBoundsDef );
-
-	for( int i = 0; i < numBroadphase; i++ )
+	b2FixtureDef fakeFixtureDef;
+	fakeFixtureDef.shape = &shapeBoundsPoly;
+	b2Fixture* shapeBounds = fakeBody->CreateFixture(&fakeFixtureDef);
+	
+	for( int i = 0; i < __spatialGraphNumFixtures; i++ )
 	{
-		b2Shape* pSh = tempShapes[i];
-		if( pSh->GetType() == e_polygonShape  )
+		b2Fixture* pFix = __spatialGraphTempFixtures[i];
+		if( pFix->GetType() == b2Shape::e_polygon  )
 		{
-			b2PolygonShape* pPolyShape = (b2PolygonShape*)pSh;
+			b2PolygonShape* pPolyShape = (b2PolygonShape*)pFix->GetShape();
 
 			b2Manifold m0;
-			b2CollidePolygons(&m0, (b2PolygonShape*)shapeBounds, fakeBody->GetXForm(), pPolyShape, pPolyShape->GetBody()->GetXForm());
+			b2CollidePolygons(&m0, (b2PolygonShape*)shapeBounds->GetShape(), fakeBody->GetTransform(), pPolyShape, pFix->GetBody()->GetTransform());
 
 			if( m0.pointCount > 0 )
 			{
@@ -321,11 +341,11 @@ bool IsBlocked( const BoundingBox& bbox )
 				return true;	
 			}
 		}
-		else if( pSh->GetType() == e_circleShape )
+		else if( pFix->GetType() == b2Shape::e_circle )
 		{
-			b2CircleShape* pCircleShape = (b2CircleShape*)pSh;
+			b2CircleShape* pCircleShape = (b2CircleShape*)pFix->GetShape();
 			b2Manifold m0;
-			b2CollidePolygonAndCircle( &m0, (b2PolygonShape*)shapeBounds, fakeBody->GetXForm(), pCircleShape, pCircleShape->GetBody()->GetXForm());
+			b2CollidePolygonAndCircle( &m0, (b2PolygonShape*)shapeBounds->GetShape(), fakeBody->GetTransform(), pCircleShape, pFix->GetBody()->GetTransform());
 			if( m0.pointCount > 0 )
 			{
 				theWorld.GetPhysicsWorld().DestroyBody(fakeBody);

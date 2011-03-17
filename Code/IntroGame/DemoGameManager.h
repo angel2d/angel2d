@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -62,6 +62,9 @@ public:
 	void MoveBackwards();
 
 	static DemoGameManager &GetInstance();
+	
+	DemoScreen* GetCurrentScreen();
+	
 	virtual void Render();
 
 	virtual void SoundEnded(AngelSoundHandle sound);

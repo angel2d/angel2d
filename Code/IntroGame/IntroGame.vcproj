@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;;&quot;$(ProjectDir)\DemoScreens&quot;;&quot;$(ProjectDir)&quot;"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;;&quot;$(ProjectDir)\DemoScreens&quot;;&quot;$(ProjectDir)&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -69,9 +69,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD_d.lib freetype237_D.lib box2d_d.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD_d.lib freetype237_D.lib Box2D.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2\Box2D\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMTD.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -133,7 +133,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;;&quot;$(ProjectDir)\DemoScreens&quot;;&quot;$(ProjectDir)&quot;"
+				AdditionalIncludeDirectories="&quot;$(DXSDK_DIR)include&quot;;&quot;$(ProjectDir)\..\Angel&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\src&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\inc&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\include&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\include&quot;;&quot;$(ProjectDir)\DemoScreens&quot;;&quot;$(ProjectDir)&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
@@ -154,9 +154,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD.lib freetype237.lib box2d.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
+				AdditionalDependencies="DevIL.lib ILU.lib ILUT.lib opengl32.lib glu32.lib fmodex_vc.lib _GLFW.lib ftgl_static_MTD.lib freetype237.lib Box2D.lib Angel.lib Lua.lib libOpenAL32.dll.a _libogg.lib _libvorbis.lib _libvorbisfile_static.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.0.1\Library&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;$(DXSDK_DIR)lib\x86&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FMOD\lib&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\glfw\support\msvc80\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\freetype-2.3.7\objs&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\Box2D-2.1.2\Box2D\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Scripting\IntroGame$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.13-bin\lib\Win32&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libogg-1.2.0\win32\VS2008\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\Win32\$(ConfigurationName)&quot;;&quot;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\Win32\$(ConfigurationName)&quot;"
 				IgnoreDefaultLibraryNames="LIBCMT"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -254,26 +254,26 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Config\tuning.ini"
+				RelativePath=".\Config\tuning.lua"
 				>
 			</File>
 			<Filter
 				Name="Level"
 				>
 				<File
-					RelativePath=".\Config\Level\collisionlevel_demo.ini"
+					RelativePath=".\Config\Level\collisionlevel_demo.lua"
 					>
 				</File>
 				<File
-					RelativePath=".\Config\Level\layeredcollisionlevel_demo.ini"
+					RelativePath=".\Config\Level\layeredcollisionlevel_demo.lua"
 					>
 				</File>
 				<File
-					RelativePath=".\Config\Level\level_demo.ini"
+					RelativePath=".\Config\Level\level_demo.lua"
 					>
 				</File>
 				<File
-					RelativePath=".\Config\Level\maze.ini"
+					RelativePath=".\Config\Level\maze.lua"
 					>
 				</File>
 			</Filter>
@@ -281,7 +281,7 @@
 				Name="ActorDef"
 				>
 				<File
-					RelativePath=".\Config\ActorDef\demo_actors.ini"
+					RelativePath=".\Config\ActorDef\demo_actors.lua"
 					>
 				</File>
 			</Filter>
@@ -330,6 +330,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DemoScreens\DemoScreenImageMap.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreens\DemoScreenImageMap.h"
+				>
+			</File>
+			<File
 				RelativePath=".\DemoScreens\DemoScreenInstructions.cpp"
 				>
 			</File>
@@ -367,6 +375,14 @@
 			</File>
 			<File
 				RelativePath=".\DemoScreens\DemoScreenMessagePassing.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreens\DemoScreenMobileSimulator.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreens\DemoScreenMobileSimulator.h"
 				>
 			</File>
 			<File

@@ -13,7 +13,7 @@ WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrapping.cpp
 INCLUDE = 							\
 	-I../Angel						\
 	-I../Angel/Libraries/glfw/include			\
-	-I../Angel/Libraries/Box2D-2.0.1/Include		\
+	-I../Angel/Libraries/Box2D-2.1.2			\
 	-I../Angel/Libraries/FTGL/include			\
 	-I../Angel/Libraries/lua-5.1.4/src			\
 	-I/usr/include/freetype2
@@ -24,7 +24,7 @@ endif
 LIBS = 									\
 	$(LIBANGEL)							\
 	../Angel/Libraries/glfw/lib/x11/libglfw.a			\
-	../Angel/Libraries/Box2D-2.0.1/Source/Gen/float/libbox2d.a	\
+	../Angel/Libraries/Box2D-2.1.2/Build/Box2D/libBox2D.a		\
 	../Angel/Libraries/FTGL/unix/src/.libs/libftgl.a		\
 	../Angel/Libraries/angel-lua-build/liblua.a
 

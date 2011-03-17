@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -30,6 +30,7 @@
 #include "stdafx.h"
 #include "../Util/MathUtil.h"
 
+#include "../Infrastructure/World.h"
 #include "../Infrastructure/Camera.h"
 
 #include <math.h>
@@ -171,32 +172,41 @@ Vector2 MathUtil::ScreenToWorld(Vec2i screenCoordinates)
 
 Vector2 MathUtil::ScreenToWorld(int x, int y)
 {
+	if (theWorld.IsHighResScreen())
+	{
+		x *= 2;
+		y *= 2;
+	}
+	
 	Vector2 worldDimensions = GetWorldDimensions();
 
 	float worldX = ( ((float)x / (float)theCamera.GetWindowWidth()) - 0.5f ) * worldDimensions.X;
 	float worldY = ( 0.5f - ((float)y / (float)theCamera.GetWindowHeight()) ) * worldDimensions.Y;
 	
 	Vector2 camPos = theCamera.GetPosition();
-	return Vector2(worldX + camPos.X, worldY + camPos.Y);
+	Vector2 forReturn(worldX + camPos.X, worldY + camPos.Y);
+	
+	return Vector2::Rotate(forReturn, MathUtil::ToRadians(-theCamera.GetRotation()));
 }
 
 Vector2 MathUtil::WorldToScreen(Vector2 worldCoordinates)
 {
-	return WorldToScreen(worldCoordinates.X, worldCoordinates.Y);
+	Vector2 camPos = theCamera.GetPosition();
+	worldCoordinates.X -= camPos.X;
+	worldCoordinates.Y -= camPos.Y;
+	worldCoordinates = Vector2::Rotate(worldCoordinates, ToRadians(theCamera.GetRotation()));
+	
+	Vector2 worldDimensions = GetWorldDimensions();
+	
+	float screenX = theCamera.GetWindowWidth() * ( (worldCoordinates.X / worldDimensions.X) + 0.5f );
+	float screenY = theCamera.GetWindowHeight() - (theCamera.GetWindowHeight() * ( 0.5f + (worldCoordinates.Y / worldDimensions.Y) ));
+	
+	return Vector2(screenX, screenY);
 }
 
 Vector2 MathUtil::WorldToScreen(float x, float y)
 {
-	Vector2 camPos = theCamera.GetPosition();
-	x -= camPos.X;
-	y -= camPos.Y;
-
-	Vector2 worldDimensions = GetWorldDimensions();
-
-	float screenX = theCamera.GetWindowWidth() * ( (x / worldDimensions.X) + 0.5f );
-	float screenY = theCamera.GetWindowHeight() - (theCamera.GetWindowHeight() * ( 0.5f + (y / worldDimensions.Y) ));
-
-	return Vector2(screenX, screenY);
+	return WorldToScreen(Vector2(x, y));
 }
 
 Vector2 MathUtil::GetWorldDimensions()
@@ -205,6 +215,11 @@ Vector2 MathUtil::GetWorldDimensions()
 	int screenWidth = theCamera.GetWindowWidth();
 	int screenHeight = theCamera.GetWindowHeight();
 	float aspect = (float)screenWidth / (float)screenHeight;
+	#if ANGEL_IPHONE
+		int hold = screenWidth;
+		screenWidth = screenHeight;
+		screenHeight = hold;
+	#endif
 	if (screenWidth > screenHeight)
 	{
 		//window is wider than it is tall; radius goes with height

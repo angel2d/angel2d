@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -33,23 +33,33 @@
 #include "../AngelConfig.h"
 #include "../Infrastructure/Log.h"
 
-#define ILUT_USE_OPENGL
-#undef  _UNICODE
-#include "IL/il.h"
-#include "IL/ilu.h"
-#include "IL/ilut.h"
+#if ANGEL_IPHONE || ANGEL_DISABLE_DEVIL
+	#define _ANGEL_DISABLE_DEVIL 1
+#endif
+
+#if !_ANGEL_DISABLE_DEVIL
+	#define ILUT_USE_OPENGL
+	#undef  _UNICODE
+	#include "IL/il.h"
+	#include "IL/ilu.h"
+	#include "IL/ilut.h"
+#else
+	#include "png.h"
+#endif
 
 void InitializeTextureLoading()
 {
-	ilInit();
-	iluInit();
-	ilutInit();
-	glDisable(GL_TEXTURE_2D);
-	
-	// Convert any paletted images
-	ilEnable(IL_CONV_PAL);
-	// Allegedly gets rid of dithering on some nvidia cards. 
-	ilutEnable(ILUT_OPENGL_CONV);
+	#if !_ANGEL_DISABLE_DEVIL
+		ilInit();
+		iluInit();
+		ilutInit();
+		glDisable(GL_TEXTURE_2D);
+		
+		// Convert any paletted images
+		ilEnable(IL_CONV_PAL);
+		// Allegedly gets rid of dithering on some nvidia cards. 
+		ilutEnable(ILUT_OPENGL_CONV);
+	#endif
 }
 
 void FinalizeTextureLoading()
@@ -83,56 +93,225 @@ const int GetTextureReference(String filename, bool bOptional)
 	return GetTextureReference(filename, GL_CLAMP, GL_LINEAR, bOptional);
 }
 
-void HandleDevILErrors(String errorPrefix="")
+bool PurgeTexture(String filename)
 {
-	ILenum error = ilGetError();
-	if (error != IL_NO_ERROR)
+	std::map<String,TextureCacheEntry>::iterator it = theTextureCache.find(filename);
+	if (it == theTextureCache.end())
 	{
-		sysLog.Log("DevIL errors loading: " + errorPrefix);
-		do 
+		return false;
+	}
+	glDeleteTextures(1, &it->second.textureIndex);
+	theTextureCache.erase(it);
+	return true;
+}
+
+#if !_ANGEL_DISABLE_DEVIL
+	void HandleDevILErrors(String errorPrefix="")
+	{
+		ILenum error = ilGetError();
+		if (error != IL_NO_ERROR)
 		{
-			sysLog.Log(iluErrorString(error));
-		} while ((error = ilGetError()));
+			sysLog.Log("DevIL errors loading: " + errorPrefix);
+			do 
+			{
+				sysLog.Log(iluErrorString(error));
+			} while ((error = ilGetError()));
+		}
 	}
-}
 
-void ClearDevILErrors()
-{
-	ILenum error = ilGetError();
-	while (error != IL_NO_ERROR)
+	void ClearDevILErrors()
 	{
-		error = ilGetError();
+		ILenum error = ilGetError();
+		while (error != IL_NO_ERROR)
+		{
+			error = ilGetError();
+		}
 	}
-}
-
-// Modified from the ilut source file for GLBind
-GLuint BindTexImageWithClampAndFilter(GLint ClampMode, GLint FilterMode)
-{
-	GLuint	TexID = 0;
-
-	glGenTextures(1, &TexID);
-	glBindTexture(GL_TEXTURE_2D, TexID);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, ClampMode);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, ClampMode);
-
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, FilterMode);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, FilterMode);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
-	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-	glPixelStorei(GL_UNPACK_SWAP_BYTES, IL_FALSE);
-
-	if (!ilutGLTexImage(0)) 
+	
+	// Modified from the ilut source file for GLBind
+	GLuint BindTexImageWithClampAndFilter(GLint ClampMode, GLint FilterMode)
 	{
-		glDeleteTextures(1, &TexID);
+		GLuint	TexID = 0;
+		
+		glGenTextures(1, &TexID);
+		glBindTexture(GL_TEXTURE_2D, TexID);
+		
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, ClampMode);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, ClampMode);
+		
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, FilterMode);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, FilterMode);
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+		glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+		glPixelStorei(GL_UNPACK_SWAP_BYTES, IL_FALSE);
+		
+		if (!ilutGLTexImage(0)) 
+		{
+			glDeleteTextures(1, &TexID);
+			return 0;
+		}
+		
+		return TexID;
+	}
+#else
+	bool LoadPNG(String filename, png_byte* &PNG_image_buffer, png_uint_32 &width, png_uint_32 &height)
+	{
+		FILE *PNG_file = fopen(filename.c_str(), "rb");
+		if (PNG_file == NULL)
+		{
+			sysLog.Printf("ERROR: Couldn't open %s.", filename.c_str());
+			return false;
+		}
+		
+		GLubyte PNG_header[8];
+		
+		fread(PNG_header, 1, 8, PNG_file);
+		if (png_sig_cmp(PNG_header, 0, 8) != 0)
+		{
+			sysLog.Printf("ERROR: %s is not a PNG.", filename.c_str());
+			return false;
+		}
+		
+		png_structp PNG_reader = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+		if (PNG_reader == NULL)
+		{
+			sysLog.Printf("ERROR: Can't start reading %s.", filename.c_str());
+			fclose(PNG_file);
+			return false;
+		}
+		
+		png_infop PNG_info = png_create_info_struct(PNG_reader);
+		if (PNG_info == NULL)
+		{
+			sysLog.Printf("ERROR: Can't get info for %s.", filename.c_str());
+			png_destroy_read_struct(&PNG_reader, NULL, NULL);
+			fclose(PNG_file);
+			return false;
+		}
+		
+		png_infop PNG_end_info = png_create_info_struct(PNG_reader);
+		if (PNG_end_info == NULL)
+		{
+			sysLog.Printf("ERROR: Can't get end info for %s.", filename.c_str());
+			png_destroy_read_struct(&PNG_reader, &PNG_info, NULL);
+			fclose(PNG_file);
+			return false;
+		}
+		
+		if (setjmp(png_jmpbuf(PNG_reader)))
+		{
+			sysLog.Printf("ERROR: Can't load %s.", filename.c_str());
+			png_destroy_read_struct(&PNG_reader, &PNG_info, &PNG_end_info);
+			fclose(PNG_file);
+			return false;
+		}
+
+		png_init_io(PNG_reader, PNG_file);
+		png_set_sig_bytes(PNG_reader, 8);
+		
+		png_read_info(PNG_reader, PNG_info);
+		
+		width = png_get_image_width(PNG_reader, PNG_info);
+		height = png_get_image_height(PNG_reader, PNG_info);
+
+		png_uint_32 bit_depth, color_type;
+		bit_depth = png_get_bit_depth(PNG_reader, PNG_info);
+		color_type = png_get_color_type(PNG_reader, PNG_info);
+
+		if (color_type == PNG_COLOR_TYPE_PALETTE)
+		{
+			png_set_palette_to_rgb(PNG_reader);
+		}
+
+		if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) 
+		{
+			png_set_expand_gray_1_2_4_to_8(PNG_reader);
+		}
+
+		if (color_type == PNG_COLOR_TYPE_GRAY ||
+			color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+		{
+			png_set_gray_to_rgb(PNG_reader);
+		}
+
+		if (png_get_valid(PNG_reader, PNG_info, PNG_INFO_tRNS))
+		{
+			png_set_tRNS_to_alpha(PNG_reader);
+		}
+		else
+		{
+			png_set_filler(PNG_reader, 0xff, PNG_FILLER_AFTER);
+		}
+
+		if (bit_depth == 16)
+		{
+			png_set_strip_16(PNG_reader);
+		}
+
+		png_read_update_info(PNG_reader, PNG_info);
+
+		PNG_image_buffer = (png_byte*)malloc(4 * width * height);
+		png_byte** PNG_rows = (png_byte**)malloc(height * sizeof(png_byte*));
+
+		unsigned int row;
+		for (row = 0; row < height; ++row)
+		{
+			PNG_rows[height - 1 - row] = PNG_image_buffer + (row * 4 * width);
+		}
+
+		png_read_image(PNG_reader, PNG_rows);
+
+		free(PNG_rows);
+
+		png_destroy_read_struct(&PNG_reader, &PNG_info, &PNG_end_info);
+		fclose(PNG_file);
+
+		return true;
+	}
+
+	// adapted from SimpleImage
+	// http://onesadcookie.com/svn/SimpleImage/
+	int BindPNG(String filename, GLuint &texRef, GLint clampmode, GLint filtermode)
+	{
+		png_byte* pngData;
+		png_uint_32 width, height;
+		
+		if (!LoadPNG(filename, pngData, width, height))
+		{
+			//error was output by the load
+			return -1;
+		}
+
+		glGenTextures(1, &texRef);
+		glBindTexture(GL_TEXTURE_2D, texRef);
+		
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampmode);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampmode);
+		
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filtermode);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filtermode);
+		
+		glTexImage2D(
+			GL_TEXTURE_2D,
+			0, 
+			GL_RGBA,
+			width,
+			height,
+			0,
+			GL_RGBA,
+			GL_UNSIGNED_BYTE,
+			pngData
+		);
+		
+		free(pngData);
+		
 		return 0;
 	}
-
-	return TexID;
-}
+#endif //_ANGEL_DISABLE_DEVIL
 
 const int GetTextureReference(String filename, GLint clampmode, GLint filtermode, bool optional)
 {
@@ -155,37 +334,45 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 		cached = true;
 		currentCacheEntry = &(it->second);
 	}
-	
-	ILuint imgRef;
+
 	GLuint texRef;
+	#if !_ANGEL_DISABLE_DEVIL
+		ILuint imgRef;
 
-	ilGenImages(1, &imgRef);
-	ilBindImage(imgRef);
+		ilGenImages(1, &imgRef);
+		ilBindImage(imgRef);
 
-	// Load it up, log any errors if we need to
-	if (!ilLoadImage(filename.c_str()))
-	{
-		if (!optional)
+		// Load it up, log any errors if we need to
+		if (!ilLoadImage(filename.c_str()))
 		{
-			HandleDevILErrors(filename);
-		}
-		else 
-		{
-			ClearDevILErrors();
+			if (!optional)
+			{
+				HandleDevILErrors(filename);
+			}
+			else 
+			{
+				ClearDevILErrors();
+			}
+
+			ilDeleteImages(1, &imgRef);
+			return -1;
 		}
 
+		// Send it to GL
+		texRef = BindTexImageWithClampAndFilter(clampmode, filtermode);
+
+		// Clear it out
 		ilDeleteImages(1, &imgRef);
-		return -1;
-	}
-
-	// Send it to GL
-	texRef = BindTexImageWithClampAndFilter(clampmode, filtermode);
-
-	// Clear it out
-	ilDeleteImages(1, &imgRef);
-	
-	// output any errors that happened during the binding/deleting
-	HandleDevILErrors(filename);
+		
+		// output any errors that happened during the binding/deleting
+		HandleDevILErrors(filename);
+	#else
+		int result = BindPNG(filename, texRef, clampmode, filtermode);
+		if (result != 0)
+		{
+			return -1;
+		}
+	#endif //_ANGEL_DISABLE_DEVIL
 	
 	// If it was cached, clear the dirty flag so we don't try and load it again.
 	if (cached)
@@ -209,31 +396,66 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 
 bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance)
 {
-	ILuint imgRef;
+	#if _ANGEL_DISABLE_DEVIL
+		png_byte* pngData;
+		float* rawData;
+		png_uint_32 width, height;
+		
+		if (!LoadPNG(filename, pngData, width, height))
+		{
+			//error was output by the load
+			return false;
+		}
 
-	ilGenImages(1, &imgRef);
-	ilBindImage(imgRef);
+		// convert png ubyte data to float array
+		rawData = (float*)malloc(3 * width * height * sizeof(float));
+		
+		int j = 0;
+		for (int i = 0; i < (4 * width * height); i++)
+		{
+			if ((i+1) % 4)
+			{
+				rawData[j] = (float)pngData[i] / 255.0f;
+				j++;				
+			}
+		}
+
+		free(pngData);
+	#else
+		ILuint imgRef;
+
+		ilGenImages(1, &imgRef);
+		ilBindImage(imgRef);
+		
+		// load image into DevIL
+		if (!ilLoadImage(filename.c_str()))
+		{
+			HandleDevILErrors(filename);
+			return false;
+		}
+		
+		// get image datums
+		unsigned int width  = ilGetInteger(IL_IMAGE_WIDTH);
+		unsigned int height = ilGetInteger(IL_IMAGE_HEIGHT);
+		
+		// convert it to RGB floats for easy comparison
+		ilConvertImage(IL_RGB, IL_FLOAT);
 	
-	// load image into DevIL
-	if (!ilLoadImage(filename.c_str()))
-	{
-		HandleDevILErrors(filename);
-		return false;
-	}
-	
-	// get image datums
-	int width = ilGetInteger(IL_IMAGE_WIDTH);
-	int height = ilGetInteger(IL_IMAGE_HEIGHT);
-	Vector2 offset(-width*gridSize/2.f, -height*gridSize/2.f);
-	
-	// convert it to RGB floats
-	ilConvertImage(IL_RGB, IL_FLOAT);
-	
-	// grab the raw data
-	ILfloat* rawData = (ILfloat*)ilGetData(); 
+		// flip it if we need to
+		if (ilGetInteger(IL_IMAGE_ORIGIN) != IL_ORIGIN_LOWER_LEFT)
+		{
+			iluFlipImage();
+		}
+
+		// grab the raw data
+		ILfloat* rawData = (ILfloat*)ilGetData(); 
+	#endif //_ANGEL_DISABLE_DEVIL
 	
 	// check every pixel, see if it's within the tolerance of the target
-	ILfloat pixR, pixG, pixB;
+	float w = -((float)width)*gridSize/2.f;
+	float h = -((float)height)*gridSize/2.f;
+	Vector2 offset(w, h);
+	float pixR, pixG, pixB;
 	unsigned int pixOffset = 0;
 	for (int y=0; y < height; y++)
 	{
@@ -254,6 +476,11 @@ bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, fl
 	}
 	
 	// cleanup and return
-	ilDeleteImages(1, &imgRef);
+	#if _ANGEL_DISABLE_DEVIL
+		free(rawData);
+	#else
+		ilDeleteImages(1, &imgRef);
+	#endif
+
 	return true;
 }

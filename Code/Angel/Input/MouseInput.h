@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -91,6 +91,15 @@ public:
 	 *   \c MOUSE_MIDDLE, or \c MOUSE_RIGHT. 
 	 */
 	virtual void MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button);
+
+	/**
+	 * Called whenever the player moves the scroll wheel on the mouse.
+	 * 
+	 * @param position The position of the scroll wheel, relative to its position
+	 *   when the game was launched. Its rate of change will vary based on operating
+	 *   system, mouse hardware, driver settings, etc. 
+	 */
+	virtual void MouseWheelEvent(int position);
 };
 
 
@@ -122,3 +131,10 @@ void MouseMotion(int x, int y);
  *  needs these loose functions to operate.
  */
 void MouseButton(int button, int state);
+
+/** 
+ * A C-based function to get called by the windowing system when the
+ *  mouse-wheel moves. Because our windowing/input toolkit (GLFW) is 
+ *  C-based, it needs these loose functions to operate.
+ */
+void MouseWheel(int pos);

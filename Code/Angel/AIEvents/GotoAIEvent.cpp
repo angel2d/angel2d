@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -33,7 +33,7 @@
 #include "../AI/Sentient.h"
 #include "../AI/PathFinder.h"
 
-#include "Box2D.h"
+#include <Box2D/Box2D.h>
 
 GotoAIEvent* GotoAIEvent::Initialize(const Vector2& destination, float moveSpeed, float arrivalDist)
 {
@@ -53,7 +53,7 @@ void GotoAIEvent::Update(float /*dt*/)
 
 	if( move.LastResult == PathFinder::PFMR_PATH_FOUND)
 	{
-		pActor->ApplyImpulse( move.MoveDir * _moveSpeed * pActor->GetBody()->GetMass(), Vector2::Zero );
+		pActor->ApplyLinearImpulse( move.MoveDir * _moveSpeed * pActor->GetBody()->GetMass(), Vector2::Zero );
 	}
 	else if( move.LastResult == PathFinder::PFMR_ARRIVED )
 	{

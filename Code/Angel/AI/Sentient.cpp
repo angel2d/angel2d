@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -30,7 +30,6 @@
 #include "stdafx.h"
 #include "../AI/Sentient.h"
 
-//#include "../Infrastructure/Console.h"
 #include "../Infrastructure/TextRendering.h"
 #include "../Util/DrawUtil.h"
 

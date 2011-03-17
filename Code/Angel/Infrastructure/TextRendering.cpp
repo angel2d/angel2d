@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -34,8 +34,12 @@
 #include "../Infrastructure/VecStructs.h"
 #include "../Infrastructure/Log.h"
 
-#include "FTFont.h"
-#include "FTGLTextureFont.h"
+#if ANGEL_IPHONE
+	#include <ftgl/ftgles.h>
+#else
+	#include "FTFont.h"
+	#include "FTGLTextureFont.h"
+#endif
 
 
 std::map<String, FTFont*> _fontCache;
@@ -46,6 +50,11 @@ const bool RegisterFont(String filename, int pointSize, String nickname)
 	if(it != _fontCache.end())
 	{
 		UnRegisterFont(nickname);
+	}
+	
+	if (theWorld.IsHighResScreen())
+	{
+		pointSize = pointSize * 2;
 	}
 
 	FTFont *font = new FTGLTextureFont(filename.c_str());
@@ -99,14 +108,17 @@ Vector2 DrawGameText(String text, String nickname, int pixelX, int pixelY, float
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	gluOrtho2D(0, winDimensions.X, 0, winDimensions.Y);
+	#if ANGEL_IPHONE
+		glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
+	#endif
+	gluOrtho2D(0.0f, winDimensions.X, 0.0f, winDimensions.Y);
 
 	//set up modelview
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glLoadIdentity();
-	glTranslatef((GLfloat)pixelX, (GLfloat)pixelY, 0);
-	glRotatef(angle, 0, 0, 1);
+	glTranslatef((GLfloat)pixelX, (GLfloat)pixelY, 0.0f);
+	glRotatef(angle, 0.0f, 0.0f, 1.0f);
 
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_DEPTH_TEST);

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -83,14 +83,15 @@ void DrawTile( int xPos, int yPos, int width, int height )
 	//	glPushAttrib( GL_ENABLE_BIT | GL_COLOR_BUFFER_BIT);
 
 	//Render console background
-	glBegin(GL_QUADS);
-	{
-		glVertex2f( 0.0f,  0.0f);
-		glVertex2f((GLfloat)width, 0.0f);
-		glVertex2f((GLfloat)width, (GLfloat)height);
-		glVertex2f(0.0f, (GLfloat)height);
-	}
-	glEnd();
+	float vertices[] = {
+		(GLfloat)width, 0.0f,
+		(GLfloat)width, (GLfloat)height,
+		0.0f, 0.0f,
+		0.0f, (GLfloat)height,
+	};
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(2, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
 	//	glPopAttrib();
 

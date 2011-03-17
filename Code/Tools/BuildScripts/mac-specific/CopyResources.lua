@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Copyright (C) 2008-2010, Shane J. M. Liesegang
+-- Copyright (C) 2008-2011, Shane Liesegang
 -- All rights reserved.
 -- 
 -- Redistribution and use in source and binary forms, with or without 
@@ -47,8 +47,24 @@ local env = os.environ()
 
 lfs.chdir(fulljoin(env['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
 
+function building_for_iphone()
+  if ((env['PLATFORM_NAME'] == "iphonesimulator") or (env['PLATFORM_NAME'] == "iphoneos")) then
+    return true
+  else
+    return false
+  end
+end
+
 local dest = ""
-if (env['CONFIGURATION'] == 'Debug') then
+if (building_for_iphone()) then
+  dest = fulljoin(
+      env['TARGET_BUILD_DIR'],
+      env['EXECUTABLE_NAME'] .. '.app',
+      'Angel',
+      'Resources',
+      'Scripts'
+    )
+elseif (env['CONFIGURATION'] == 'Debug') then
   dest = fulljoin(
       env['PROJECT_DIR'],
       env['EXECUTABLE_NAME'],
@@ -78,12 +94,20 @@ for _, filename in pairs(pl.dir.getfiles(lfs.currentdir(), ".lua")) do
   end
 end
 
-if (env['CONFIGURATION'] == 'Debug') then
+if (env['CONFIGURATION'] == 'Debug' and building_for_iphone() == false) then
   os.exit(0)
 end
 
-local source = fulljoin(env['PROJECT_DIR'], env['EXECUTABLE_NAME'], 'Resources')
-local dest = fulljoin(
+local source = fulljoin(env['PROJECT_DIR'], env['TARGET_NAME'], 'Resources')
+if (building_for_iphone()) then
+  dest = fulljoin(
+      env['TARGET_BUILD_DIR'],
+      env['EXECUTABLE_NAME'] .. '.app',
+      'Angel',
+      'Resources'
+    )
+else
+  dest = fulljoin(
     env['PROJECT_DIR'],
     'build',
     env['CONFIGURATION'],
@@ -91,10 +115,19 @@ local dest = fulljoin(
     'Contents',
     'Resources'
   )
+end
 recursive_copy(source, dest)
 
-source = fulljoin(env['PROJECT_DIR'], env['EXECUTABLE_NAME'], 'Config')
-dest = fulljoin(
+source = fulljoin(env['PROJECT_DIR'], env['TARGET_NAME'], 'Config')
+if (building_for_iphone()) then
+  dest = fulljoin(
+      env['TARGET_BUILD_DIR'],
+      env['EXECUTABLE_NAME'] .. '.app',
+      'Angel',
+      'Config'
+    )
+else
+  dest = fulljoin(
     env['PROJECT_DIR'],
     'build',
     env['CONFIGURATION'],
@@ -102,16 +135,19 @@ dest = fulljoin(
     'Contents',
     'Config'
   )
+end
 recursive_copy(source, dest)
 
-local log_path = fulljoin(
-    env['PROJECT_DIR'],
-    'build',
-    env['CONFIGURATION'],
-    env['EXECUTABLE_NAME'] .. '.app',
-    'Contents',
-    'Logs'
-  )
-if not pl.path.exists(log_path) then
-    makedirs(log_path)
+if (building_for_iphone() == false) then
+  local log_path = fulljoin(
+      env['PROJECT_DIR'],
+      'build',
+      env['CONFIGURATION'],
+      env['EXECUTABLE_NAME'] .. '.app',
+      'Contents',
+      'Logs'
+    )
+  if not pl.path.exists(log_path) then
+      makedirs(log_path)
+  end
 end

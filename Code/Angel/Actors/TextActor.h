@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -31,7 +31,6 @@
 #pragma once
 
 #include "../Actors/Actor.h"
-//#include "../Infrastructure/Bounding
 
 /**
  * An enumeration for the alignment of text within a TextActor
@@ -152,6 +151,16 @@ public:
 	 * (in GL units) 
 	 */
 	virtual void SetPosition(Vector2 position);
+	
+	/**
+	 * An override of the SetRotation function, since we need to update the screen
+	 *  space drawing coordinates of our text drawing when the TextActor moves in 
+	 *  the World.
+	 * 
+	 * @param position a float indicating the new rotation counter-clockwise around
+	 * the z-axis (in degrees)
+	 */
+	//virtual void SetRotation(float newRotation);
 	
 	/**
 	 * An implementation of the MessageListener interface, which listens for 

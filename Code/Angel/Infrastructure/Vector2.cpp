@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -54,6 +54,11 @@ Vector2::Vector2()
 , Y(0)
 {}
 
+Vector2::Vector2(Vec2i copy)
+: X(copy.X)
+, Y(copy.Y)
+{}
+
 float Vector2::Length()
 {
 	return sqrt(LengthSquared());
@@ -72,12 +77,16 @@ float Vector2::LengthSquared()
 /*static*/ float Vector2::DistanceSquared(const Vector2& value1, const Vector2& value2)
 {
 	return Vector2(value1 - value2).LengthSquared();
-
 }
 
 /*static*/ float Vector2::Dot(const Vector2& value1, const Vector2& value2)
 {
-	return ((value1.X * value2.X) + (value1.Y * value2.Y));
+	return (value1.X * value2.X) + (value1.Y * value2.Y);
+}
+
+/*static*/ float Vector2::Cross(const Vector2& value1, const Vector2& value2)
+{
+	return (value1.X * value2.Y) - (value1.Y * value2.X);
 }
 
 void Vector2::Normalize()
@@ -129,6 +138,7 @@ void Vector2::Normalize()
 {
 	return Vector2( MathUtil::Lerp( value1.X, value2.X, amount ), MathUtil::Lerp( value1.Y, value2.Y, amount ) );
 }
+
 /*static*/ Vector2 Vector2::Negate(const Vector2& value)
 {
 	return -value;

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2010, Shane J. M. Liesegang
+// Copyright (C) 2008-2011, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -38,6 +38,7 @@
 #include "../Util/StringUtil.h"
 
 #define MAX_SPRITE_FRAMES 64
+#define CIRCLE_DRAW_SECTIONS 32
 
 /**
  * An enumeration for the type of animations that can be given to an Actor. 
@@ -143,7 +144,7 @@ public:
 	 * 
 	 * @param rotation Desired rotation in degrees
 	 */
-	void SetRotation(float rotation);
+	virtual void SetRotation(float rotation);
 	
 	/**
 	 * Return the rotation of this Actor.
@@ -473,7 +474,7 @@ public:
 	 * @param nameLookup The name index to look for
 	 * @return The Actor with the given name. Will be NULL if there's no match
 	 */
-	static const Actor* GetNamed(String nameLookup);
+	static Actor* const GetNamed(String nameLookup);
 	
 	/**
 	 * An implementation of the MessageListener interface, which will be 
@@ -593,11 +594,13 @@ protected:
 	Vector2 _position;
 	Color _color;
 	float _rotation;
-
-	Vector2 UV_rightup;
-	Vector2 UV_leftlow;
-
+	
+	float _UV[8];
+	
 	actorDrawShape _drawShape;
+	static const float _squareVertices[];
+	static float _circleVertices[];
+	static float _circleTextureCoords[];
 
 	int					_spriteCurrentFrame;
 	int					_spriteNumFrames;
