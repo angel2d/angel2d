@@ -117,6 +117,10 @@ public:
 	
 	Actor* GetSelf();
 	virtual const String GetClassName();
+	
+	%apply SWIGTYPE *DISOWN {Actor* a};
+	static void SetScriptCreatedActor(Actor* a);
+	%clear Actor* a;
 };
 
 

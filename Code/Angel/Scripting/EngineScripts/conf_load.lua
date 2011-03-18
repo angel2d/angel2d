@@ -246,14 +246,27 @@ function Actor_Create(actor_type)
     return nil
   end
   local a = _G[class_name]()
-
+  
   for config, value in pairs(desc) do
     if (config ~= "class") then
       _ApplyToActor(a, config, value)
     end
   end
-
+  
   return a
+end
+
+-- Instantiate an Actor and pass it back to the engine for use. 
+--  
+--  This is used internally by the engine so it can directly get
+--  at Actors that it instantiates with Create calls. (Otherwise
+--  we would have to jump through some hoops to find them in
+--  memory.) You probably shouldn't call this directly.
+--  NB: This function also disowns the Actor so Lua won't 
+--  garbage-collect it. 
+function Actor_CreateAndRegister(actor_type)
+  a = Actor_Create(actor_type)
+  Actor_SetScriptCreatedActor(a)
 end
 
 -- Instantiate and add all Actors described in a previously loaded

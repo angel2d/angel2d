@@ -51,6 +51,7 @@ const float Actor::_squareVertices[] = {
 
 float Actor::_circleVertices[(CIRCLE_DRAW_SECTIONS+2)*2];
 float Actor::_circleTextureCoords[(CIRCLE_DRAW_SECTIONS+2)*2];
+Actor* Actor::_scriptCreatedActor = NULL;
 bool __inittedActorCirclePoints = false;
 
 std::map<String, Actor*> Actor::_nameList;
@@ -676,33 +677,20 @@ Actor* const Actor::GetNamed(String nameLookup)
 
 Actor* Actor::Create(String archetype)
 {
-	//TODO: this is kind of a fragile way to get the Actor the script created.	
-	String markerTag = "last-spawned-actor-from-code";
-	String toExec = "_lastSpawnedActor = Actor_Create('" + archetype + "')\n";
-	toExec += "if (_lastSpawnedActor ~= nil) then _lastSpawnedActor:Tag('" + markerTag + "') end\n";
+	// Yes it might be faster to directly find the function in the Lua state
+	//   and call it with the C API, but this is much more readable. You're welcome.
+	String toExec = "Actor_CreateAndRegister('" + archetype + "')\n";
 	theWorld.ScriptExec(toExec);
-	ActorSet tagged = theTagList.GetObjectsTagged(markerTag);
-	if (tagged.size() > 1)
-	{
-		sysLog.Log("WARNING: more than one Actor tagged with '" + markerTag + "'. (" + archetype + ")");
-	}
-	if (tagged.size() < 1)
-	{
-		sysLog.Log("ERROR: Script failed to create Actor with archetype " + archetype + ". ");
-		return NULL;
-	}
-	ActorSet::iterator it = tagged.begin();
-	Actor* forReturn = *it;
-	toExec =  "_lastSpawnedActor:__disown()\n";
-	toExec += "_lastSpawnedActor = nil\n";
-	theWorld.ScriptExec(toExec);
-	if (forReturn != NULL)
-	{
-		forReturn->Untag(markerTag);	
-	}
-	return forReturn;
+	return _scriptCreatedActor;
+	
+	// For those curious, it would look like this:
+		/*
+		lua_State* L = LuaScriptingModule::GetLuaState();
+		lua_getglobal(L, "Actor_CreateAndRegister");
+		lua_pushstring(L, archetype.c_str());
+		lua_call(L, 1, 0);
+		*/
 }
-
 
 void Actor::SetLayer(int layerIndex)
 {

@@ -588,6 +588,8 @@ public:
 	 * @return The string "Actor"
 	 */
 	virtual const String GetClassName() { return "Actor"; }
+	
+	static void SetScriptCreatedActor(Actor* a) { _scriptCreatedActor = a; }
 
 protected:
 	Vector2 _size;
@@ -619,6 +621,7 @@ protected:
 	static std::map<String, Actor*> _nameList;
 
 	String _currentAnimName;
+	static Actor* _scriptCreatedActor;
 
 private:
 	void SetSpriteTexture(int texRef, int frame = 0);
