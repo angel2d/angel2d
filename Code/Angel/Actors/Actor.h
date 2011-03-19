@@ -149,7 +149,7 @@ public:
 	/**
 	 * Return the rotation of this Actor.
 	 * 
-	 * @return Actor's rotation
+	 * @return Actor's rotation in degrees
 	 */
 	const float GetRotation() const;
 	
@@ -558,29 +558,40 @@ public:
 	}
 	
 	/**
-	 * Create an Actor from an archetype defined in an .ini file in 
+	 * Create an Actor from an archetype defined in a .lua file in 
 	 *  Config/ActorDef. Automatically adds the Actor to the World. 
 	 * 
-	 * The section titles in the .ini files designate the name of the 
-	 *  archetype, while the values in each section specify the properties for 
-	 *  that archetype. Any function that can be called on an Actor can be 
-	 *  used as a property -- things like SetSize can be called simply "size." 
+	 * The table names in the .lua files designate the name of the archetype, 
+	 *  while the values in each table specify the properties for that 
+	 *  archetype. Any function that can be called on an Actor can be used as 
+	 *  a property -- things like SetSize can be called simply "size." 
 	 * 
-	 * Colors and Vectors can be defined as arrays, so the following 
+	 * Colors and Vectors can be defined as tables, so the following 
 	 *  definition is valid. 
 	 * 
 	 * \code
-	 * [my_actor]
-	 * color=[1, 0, 1]
-	 * alpha=0.5
-	 * size=5
+	 * my_actor = {
+	 *   color = {1, 0, 1},
+	 *   alpha = 0.5,
+	 *   size = 5,
+	 * }
 	 * \endcode
 	 * 
-	 * @param the name of the Actor archetype (the section header from the 
-	 *   .ini)
+	 * @param archetype the name of the Actor archetype (the table name from 
+	 *   the .lua file)
 	 */
 	static Actor* Create(const String& archetype);
 	
+	/**
+	 * This static function is used internally by the scripting layer to
+	 *  let the core engine get at Actors that created in script. If that
+	 *  doesn't make complete sense to you, you probably have no need to
+	 *  call this function. 
+	 * 
+	 * @param a The actor that was just created in script
+	 */
+	static void SetScriptCreatedActor(Actor* a) { _scriptCreatedActor = a; }
+
 	/**
 	 * Used by the SetName function to create a basename for this class. 
 	 *  Overridden in derived classes.
@@ -589,8 +600,6 @@ public:
 	 */
 	virtual const String GetClassName() { return "Actor"; }
 	
-	static void SetScriptCreatedActor(Actor* a) { _scriptCreatedActor = a; }
-
 protected:
 	Vector2 _size;
 	Vector2 _position;

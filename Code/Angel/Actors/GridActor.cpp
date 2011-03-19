@@ -44,7 +44,7 @@ GridActor::GridActor()
 	RecalculatePoints();
 }
 
-GridActor::GridActor(Color lines, Color axis, float interval, Vector2 minCoord, Vector2 maxCoord)
+GridActor::GridActor(const Color& lines, const Color& axis, float interval, const Vector2& minCoord, const Vector2& maxCoord)
 {
 	_lineColor = lines;
 	_axisColor = axis;

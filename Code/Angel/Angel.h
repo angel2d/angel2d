@@ -45,7 +45,10 @@
  * 
  * This file really only documents the engine itself -- for information on 
  *  how to get started building, the history of Angel, support, etc., please
- *  visit the <a href="http://angel-engine.googlecode.com">website</a>. 
+ *  visit the <a href="http://angel-engine.googlecode.com">website</a>. Note
+ *  that this documentation is focused on the desktop builds of Angel. The
+ *  differences that exist in the iOS build are documented in \ref ios 
+ *  "their own section." 
  * 
  * Whether you're a beginner or advanced, please drop a line if you think 
  *  something in here is wrong or could be explained better. Always looking
@@ -63,8 +66,9 @@
  *  subdirectories [not an exhaustive list, these are just the ones that are
  *  interesting or may warrant explanation]: 
  *  - \b GameJam.sln: The Visual Studio 2008 solution file (Windows)
- *  - \b GameJam.xcodeproj: The Xcode 3 build and project information (Mac OS 
- *       X)
+ *  - \b GameJam-Mac.xcodeproj: The Xcode 3 build and project information (Mac 
+ *       OS X)
+ *  - \b GameJam-iOS.xcodeproj: The Xcode 3 build and project information (iOS)
  *  - \b README.Linux: Information about how to get Angel up and running on
  *       Linux, along with data about what should and shouldn't work at 
  *       present.
@@ -74,6 +78,8 @@
  *    - \e Angel.h: the master header file that includes all other header 
  *      files you should need for your game. The included starter projects 
  *      have this set up as part of their pre-compiled header. 
+ *    - \e AngelConfig.h: A set of global defines that are used to disable
+ *      large scale libraries like FMOD and DevIL. 
  *    - \e Libraries: all the third-party libraries that Angel works to do its 
  *      magic. \n
  *      They all include their distributed documentation and appropriate 
@@ -93,6 +99,10 @@
  *        (http://www.glfw.org/)
  *      - HID Utilities: USB Controller support for Mac OS X \n
  *        (http://developer.apple.com/samplecode/HID_Utilities_Source/index.html)
+ *      - LibOgg and LibVorbis: Open source alternative to FMOD \n
+ *        (http://www.vorbis.com)
+ *      - LibPNG: Library for loading PNG files (when DevIL is disabled) \n
+ *        (http://www.libpng.org/pub/png/libpng.html)
  *      - Lua: Scripting \n
  *        (http://www.lua.org)
  *  - \b Tools: a collection of scripts and tools that are used as part of the 
@@ -156,9 +166,12 @@
  *      gets copied to your distribution, so don't leave anything in here you 
  *      don't want to become public somehow. 
  *      - \c input_bindings.ini: maps keyboard and controller button presses 
- *        to Messages that will be sent in the game (see below)
- *      - \c ActorDef: definition files for your actor archetypes (see below)
- *      - \c Level: definitions files for your levels (see below)
+ *        to Messages that will be sent in the game (see the \ref messaging 
+ *        "Messages" section)
+ *      - \c ActorDef: definition files for your actor archetypes (see the 
+ *        \ref actor_defs "Archetypes" section)
+ *      - \c Level: definitions files for your levels (see the \ref levels
+ *        "Levels" section)
  *    - \e Logs: Where any logs you generate in your game will be stored for 
  *      later viewing. (Assuming you use the Angel built-in logging. Obviously 
  *      you could write your own files wherever the heck you want.) Gets 
@@ -318,6 +331,8 @@
  *      http://www.gnome.org/fonts/
  *    - Open Font Library:
  *      http://openfontlibrary.org/
+ *    - Google Web Fonts:
+ *      http://www.google.com/webfonts
  * 
  * When you actually want to render some text on the screen, you simply call:
  * 
@@ -376,9 +391,8 @@
  *  added. The layer numbers are arbitrary, so use whatever system makes 
  *  sense to you. 
  * 
- * You can also assign a texture to an Actor, but in Angel 2.0 it will only 
- *  draw the texture if the Actor is rendering as a square (ADS_Square). If 
- *  we wanted the previous actor to have a texture, we would have called: 
+ * You can also assign a texture to an Actor. If we wanted the previous actor 
+ *  to have a texture, we would have called: 
  * 
  * \code
  * a->SetDrawShape(ADS_Square);
@@ -387,7 +401,8 @@
  * 
  * Images can be in any format supported by <a href="
  *  http://openil.sourceforge.net/features.html">DevIL</a>, and any
- *  transparency on the image will show up in Angel. 
+ *  transparency on the image will show up in Angel. (Note that if you disable)
+ *  DevIL in AngelConfig.h, only PNG images will be supported.
  * 
  * You can also assign multiple sprites to an Actor, either for use in an
  *  animation or for switching between various visual states. To load up a
@@ -636,7 +651,7 @@
  *  designate what Messages get sent when keys or buttons are pressed. (See 
  *  the \c input_bindings.ini file included with IntroGame for an example.)
  * 
- * By using Messages to signal game events, you make is easier to extend your
+ * By using Messages to signal game events, you make it easier to extend your
  *  game -- anybody can listen for any message, so you don't have to keep 
  *  making changes to the class sending the signals to have new objects
  *  respond to it. You can also kind of "sketch out" your game flow in Message
@@ -763,6 +778,48 @@
  *  of the controller (currently only on Windows). 
  * 
  * See the Controller class documentation for more information. 
+ *
+ * @subsection multitouch MultiTouch
+ * When building for iOS devices, Angel will wrap the unique hardware input
+ *  for these devices into a more angelic, C++ interface so you don't have
+ *  to learn Objective-C and/or scatter your code with strange references to
+ *  a foreign SDK. 
+ * 
+ * You can have any of your classes inherit from TouchListener to get
+ *  notifications when each touch starts, moves, or ends. (The interface is
+ *  very similar to the MouseListener setup.)
+ * 
+ * In addition, you can query to get a list of all touches the devices is 
+ *  currently registering with the static function TouchListener::GetTouchList,
+ *  which returns a list of pointers to Touch structures.
+ * 
+ * Finally, there's the Accelerometer class, which just provides access to 
+ *  the current tilt data as a Vector3. Note that it does some simple 
+ *  buffering and smoothing of the values to prevent jitter -- if you want to
+ *  tweak the lag/smoothness tradeoff, edit the value for 
+ *  ANGEL_ACCEL_BUFFER_SIZE, found in AngelAppDelegate.m
+ *
+ * @subsection mobilesimulator MobileSimulator
+ * Angel builds and runs on iOS devices and the simulators that Apple provides
+ *  with their SDK. Maybe not everyone on your team has a Mac, though, or 
+ *  you just want to play with an idea and don't want to bother setting up the
+ *  extra machine. The MobileSimulator class will help you out here. When you
+ *  add one of these objects for the world, it \e pretends to be the hardware
+ *  of an iPhone, iPod Touch, or iPad. Mouse clicks are treated as touches, 
+ *  holding down the Ctrl key will let you play with multi-touch gestures, 
+ *  and the Xbox 360 controller's thumbsticks are read as the accelerometer
+ *  input. 
+ * 
+ * The important thing here is that this simulator fills all the same data
+ *  structures that the real hardware would, so as long as your code is 
+ *  working through the provided TouchListener and Accelerometer interfaces,
+ *  it will work the same as it would on the device itself. 
+ * 
+ * Obviously you would eventually want to build with the real Apple SDK, but
+ *  this can get you a lot of the way there. Also, since the iOS build doesn't
+ *  support the Console, using the MobileSimulator can be useful to let you
+ *  run the same code, but have more control over your world while you're 
+ *  prototyping. 
  * 
  * @section sound Sound
  * The sound system in Angel is a wrapper around <a href="
@@ -802,6 +859,18 @@
  *  playback.
  * 
  * See the SoundDevice class documentation for more information. 
+ * 
+ * FMOD is the default sound system for Angel, but it is \b not free to
+ *  distribute if you are charging for your game. 
+ *  Their <a href="http://www.fmod.org/index.php/sales">rates</a> are very
+ *  reasonable, but if you would prefer a free alternative, you can disable
+ *  FMOD in AngelConfig.h. This will cause Angel to fall back to OpenAL 
+ *  support only. 
+ * 
+ * \b NB: OpenAL, as implemented in Angel, does not produce sound at the same
+ *  quality level as FMOD. In particular, you're likely to hear skips/pops in
+ *  looping audio at the boundaries. In addition, we only support Ogg Vorbis
+ *  playback if you've chosen to use OpenAL. Them's the breaks. 
  * 
  * @section ai AI
  * @subsection pathfinding Pathfinding
@@ -977,7 +1046,7 @@
  *  href="http://www.lua.org/pil/">Programming in Lua</a></i> is a good 
  *  start. (The online edition is for version 5.0, whereas we ship with 5.1. 
  *  Most functionality is the same, but there are some differences, so if 
- *  you want to dive into Lua further, be sure to track down a print copy.)
+ *  you want to dive further into Lua, be sure to track down a print copy.)
  * 
  * @subsection console In-Game Console
  * When you press the "~" button, the in-game console appears. This is, for
@@ -1037,6 +1106,42 @@
  *  \c SaveTuningVariables() from the console and the values you've set will
  *  be written back out into the file so you don't have to try and remember
  *  them. 
+ * 
+ * @section ios Working on iOS
+ * There are a few differences to be aware of when building a game for iOS, or
+ *  when porting an existing game to the platform. 
+ * 
+ *  - iOS apps are structured a little differently than traditional desktop
+ *    programs. In particular, the \c main() function is used to set up the
+ *    OpenGL context and input hooks, so the spot to do any game initialization
+ *    is now in \c iPhoneMain.cpp. 
+ *  - You can't set the name of your came in the \c build.lua file anymore, 
+ *    because Xcode needs to know the final program name so it can do 
+ *    code signing. To set your game's name, open the target properties for
+ *    ClientGame and set the "Product Name" value to whatever you want.
+ *  - If you are disabling FMOD, in addition to setting the value in 
+ *    AngelConfig.h, you \b also need to remove the "Other Linker Flags" 
+ *    values in the Target properties. Otherwise the app will try to link
+ *    against FMOD anyway, and then segfault when you try to load audio. 
+ *  - In the \c ClientGame/ios folder, in addition to the \c iPhoneMain.* 
+ *    and \c .plist files, you'll also find a series of images. 
+ *    - The ones named as \c Icon*.png will, not surprisingly, get used as 
+ *      icons in various places in iOS. Don't change the names, dimensions, or
+ *      format of any of these images, but put your own content into each image
+ *      file. The Xcode target has already been set up to pull these images in
+ *      as part of the packaging process. 
+ *    - The ones called \c Default*.png will be used as splash screens on 
+ *      various devices while the game is loading. Same principles apply -- 
+ *      keep the names, dimensions, and PNG format, but put whatever you want 
+ *      into the files. 
+ *    - Finally, there's the \c iTunesArtwork file. Though it doesn't have a
+ *      file extension, it's a PNG file at 512x512 pixels. It's for that 
+ *      glorious day in the far-flung future when your game is making a 
+ *      hojillion dollars on the App Store. This is the image that will be 
+ *      displayed on the store page. 
+ * 
+ * See the \ref multitouch "MultiTouch" section for information on how to 
+ *  access the hardware input of iOS devices. 
  * 
  * @section util Niceties and Handy Doodads
  * Finally, we provide a number of utility classes and functions to handle 
@@ -1145,10 +1250,7 @@
 	#include "Input/MouseInput.h"
 	#include "Input/Controller.h"
 	#include "Input/MobileSimulator.h"
-#else
 #endif
-
-// Used in the simulator even if the platform doesn't support it
 #include "Input/MultiTouch.h" 
 
 #include "Messaging/Message.h"

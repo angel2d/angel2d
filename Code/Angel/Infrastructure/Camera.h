@@ -283,4 +283,3 @@ private:
 	float _zNearClip;
 	float _zFarClip;
 };
-

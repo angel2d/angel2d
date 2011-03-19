@@ -58,7 +58,7 @@ public:
 	 * @param minCoord the bottom-left coordinate from which to start drawing
 	 * @param maxCoord the top-right coordinate at which to stop drawing
 	 */ 
-	GridActor(Color lines, Color axis, float interval, Vector2 minCoord, Vector2 maxCoord);
+	GridActor(const Color& lines, const Color& axis, float interval, const Vector2& minCoord, const Vector2& maxCoord);
 	
 	/**
 	 * Set the color of the non-axis lines of the grid. 

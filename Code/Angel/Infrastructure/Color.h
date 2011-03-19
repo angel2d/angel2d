@@ -35,7 +35,7 @@
 ///A class to encapsulate color information
 /** 
  * This class consolidates all color information into a single unit that can
- *  be easily passed around functions, manipulatd, and lerped.
+ *  be easily passed around functions, manipulated, and lerped.
  * 
  * The four color components are public members since they are frequently
  *  accessed and there is no real reason to hide them behind accessors. They 

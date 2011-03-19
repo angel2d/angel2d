@@ -85,5 +85,3 @@ function printAutoCompletions(inc)
     table.foreach(ac, print)
   end
 end
-
-

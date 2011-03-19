@@ -33,7 +33,7 @@ elif [ "$DIST" == 'Ubuntu' ] ; then
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which port`" != "" ] ; then
 		if [ "`port installed swig | grep currently`" == "" ] ; then
-			port install swig
+			port install swig-lua
 		fi
 	else
 		echo "MacPorts is not installed -- please download and install from <http://macports.org>."

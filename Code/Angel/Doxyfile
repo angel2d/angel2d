@@ -598,7 +598,11 @@ EXCLUDE_SYMLINKS       = NO
 
 EXCLUDE_PATTERNS       = */Libraries/* \
                          */.svn* \
-                         */AngelLuaWrapping.cpp
+                         */AngelLuaWrapping.cpp \
+                         */AngelLuaWrappingIntroGame.cpp \
+                         */AngelLuaWrappingMobileIntroGame.cpp \
+                         */AngelLuaWrappingMobile.cpp \
+                         */iOS/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names 
 # (namespaces, classes, functions, etc.) that should be excluded from the 
