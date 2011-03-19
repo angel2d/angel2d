@@ -401,8 +401,8 @@
  * 
  * Images can be in any format supported by <a href="
  *  http://openil.sourceforge.net/features.html">DevIL</a>, and any
- *  transparency on the image will show up in Angel. (Note that if you disable)
- *  DevIL in AngelConfig.h, only PNG images will be supported.
+ *  transparency on the image will show up in Angel. (Note that if you disable
+ *  DevIL in AngelConfig.h, only PNG images will be supported.)
  * 
  * You can also assign multiple sprites to an Actor, either for use in an
  *  animation or for switching between various visual states. To load up a
@@ -868,8 +868,8 @@
  *  support only. 
  * 
  * \b NB: OpenAL, as implemented in Angel, does not produce sound at the same
- *  quality level as FMOD. In particular, you're likely to hear skips/pops in
- *  looping audio at the boundaries. In addition, we only support Ogg Vorbis
+ *  quality level as FMOD. In particular, you're likely to hear skips/pops at
+ *  the boundaries of looping audio. In addition, we only support Ogg Vorbis
  *  playback if you've chosen to use OpenAL. Them's the breaks. 
  * 
  * @section ai AI
