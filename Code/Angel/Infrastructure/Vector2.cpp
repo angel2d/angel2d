@@ -54,7 +54,7 @@ Vector2::Vector2()
 , Y(0)
 {}
 
-Vector2::Vector2(Vec2i copy)
+Vector2::Vector2(const Vec2i& copy)
 : X(copy.X)
 , Y(copy.Y)
 {}

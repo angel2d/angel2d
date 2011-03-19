@@ -80,7 +80,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its integer representation
 	 */
-	int GetInt(String name);
+	int GetInt(const String& name);
 	
 	/**
 	 * Get a floating point representation of a tuning variable. The engine
@@ -91,7 +91,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its floating point representation
 	 */
-	float GetFloat(String name);
+	float GetFloat(const String& name);
 	
 	/**
 	 * Get a string representation of a tuning variable. If the variable was
@@ -102,7 +102,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its string representation
 	 */
-	String GetString(String name);
+	String GetString(const String& name);
 	
 	/**
 	 * Get a Vector2 representation of a tuning variable. This guy is pretty
@@ -114,7 +114,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its Vector2 representation
 	 */
-	Vector2 GetVector(String name);
+	Vector2 GetVector(const String& name);
 	
 	/**
 	 * Change a tuning variable's value to a new integer. The Set* functions
@@ -123,7 +123,7 @@ public:
 	 * @param name The name of the variable to change
 	 * @param val The new integer value
 	 */
-	void SetInt(String name, int val);
+	void SetInt(const String& name, int val);
 	
 	/**
 	 * Change a tuning variable's value to a new float. The Set* functions
@@ -132,7 +132,7 @@ public:
 	 * @param name The name of the variable to change. 
 	 * @param val The new float value
 	 */
-	void SetFloat(String name, float val);
+	void SetFloat(const String& name, float val);
 	
 	/**
 	 * Change a tuning variable's value to a new string. The Set* functions
@@ -141,7 +141,7 @@ public:
 	 * @param name The name of the variable to change. 
 	 * @param val The new string value
 	 */
-	void SetString(String name, String val);
+	void SetString(const String& name, const String& val);
 	
 	/**
 	 * Change a tuning variable's value to a new vector. The Set* functions
@@ -150,7 +150,7 @@ public:
 	 * @param name The name of the variable to change. 
 	 * @param val The new vector value
 	 */
-	void SetVector(String name, Vector2 val);
+	void SetVector(const String& name, const Vector2& val);
 	
 	/**
 	 * For internal usage -- lets the engine keep track of what variables have
@@ -159,7 +159,7 @@ public:
 	 * 
 	 * @param varName The name of the variable to add to the list. 
 	 */
-	void AddToRuntimeTuningList(String varName);
+	void AddToRuntimeTuningList(const String& varName);
 	
 	/**
 	 * For internal usage -- lets the engine keep check if a variable has
@@ -169,7 +169,7 @@ public:
 	 * @param varName The name of the variable to check
 	 * @return Whether or not it's been tuned manually during this session
 	 */
-	bool IsRuntimeTuned(String varName);
+	bool IsRuntimeTuned(const String& varName);
 	
 private:
 	Tuning();

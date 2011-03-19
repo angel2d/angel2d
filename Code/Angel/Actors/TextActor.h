@@ -65,7 +65,7 @@ public:
 	 * @param align the desired alignment of the text
 	 * @param lineSpacing the amount of space (in pixels) between each line of text
 	 */
-	TextActor(String fontNickname="Console", String displayString="", TextAlignment align=TXT_Left, int lineSpacing=5);
+	TextActor(const String& fontNickname="Console", const String& displayString="", TextAlignment align=TXT_Left, int lineSpacing=5);
 	
 	/**
 	 * Override of the Renderable::Render function to draw text
@@ -77,7 +77,7 @@ public:
 	 * 
 	 * @return the nickname of the current font, as set in RegisterFont
 	 */
-	const String GetFont();
+	const String& GetFont() const;
 	
 	/**
 	 * Change the font used in drawing this TextActor. 
@@ -86,14 +86,14 @@ public:
 	 *  before being set here -- the TextActor will not draw at all if this is an invalid
 	 *  nickname. 
 	 */ 
-	void SetFont(String newFont);
+	void SetFont(const String& newFont);
 	
 	/**
 	 * Get the current string being drawn by this TextActor.
 	 * 
 	 * @return the display string
 	 */
-	const String GetDisplayString();
+	const String& GetDisplayString() const;
 	
 	/**
 	 * Change the string to be drawn by this TextActor. Newlines can be delimited with
@@ -102,7 +102,7 @@ public:
 	 * @param newString the string that should be drawn by this TextActor in the next
 	 *  frame
 	 */
-	void SetDisplayString(String newString);
+	void SetDisplayString(const String& newString);
 	
 	/**
 	 * Get the current alignment being used by this TextActor
@@ -150,7 +150,7 @@ public:
 	 * @param position a Vector2 indicating the X and Y coordinates of the TextActor
 	 * (in GL units) 
 	 */
-	virtual void SetPosition(Vector2 position);
+	virtual void SetPosition(const Vector2& position);
 	
 	/**
 	 * An override of the SetRotation function, since we need to update the screen
@@ -180,7 +180,7 @@ public:
 	 * @return A BoundingBox describing the area covered by the TextActor in 
 	 *   GL units (not pixels). 
 	 */
-	const BoundingBox GetBoundingBox();
+	const BoundingBox& GetBoundingBox() const;
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 
@@ -188,7 +188,7 @@ public:
 	 * 
 	 * @return The string "TextActor"
 	 */
-	virtual const String GetClassName() { return "TextActor"; }
+	virtual const String GetClassName() const { return "TextActor"; }
 
 private:
 	struct TextNugget

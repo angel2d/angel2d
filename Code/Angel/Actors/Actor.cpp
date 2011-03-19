@@ -230,12 +230,12 @@ void Actor::SetDrawShape( actorDrawShape drawShape )
 	_drawShape = drawShape;
 }
 
-const actorDrawShape Actor::GetDrawShape()
+const actorDrawShape& Actor::GetDrawShape() const
 {
 	return _drawShape;
 }
 
-void Actor::MoveTo(Vector2 newPosition, float duration, bool smooth, String onCompletionMessage)
+void Actor::MoveTo(const Vector2& newPosition, float duration, bool smooth, String onCompletionMessage)
 {
 	_positionInterval = Interval<Vector2>(_position, newPosition, duration, smooth);
 	_positionIntervalMessage = onCompletionMessage;
@@ -247,13 +247,13 @@ void Actor::RotateTo(float newRotation, float duration, bool smooth, String onCo
 	_rotationIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeColorTo(Color newColor, float duration, bool smooth, String onCompletionMessage)
+void Actor::ChangeColorTo(const Color& newColor, float duration, bool smooth, String onCompletionMessage)
 {
 	_colorInterval = Interval<Color>(_color, newColor, duration, smooth);
 	_colorIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeSizeTo(Vector2 newSize, float duration, bool smooth, String onCompletionMessage)
+void Actor::ChangeSizeTo(const Vector2& newSize, float duration, bool smooth, String onCompletionMessage)
 {
 	_sizeInterval = Interval<Vector2>(_size, newSize, duration, smooth);
 	_sizeIntervalMessage = onCompletionMessage;
@@ -336,20 +336,20 @@ void Actor::SetSize(float x, float y)
 	_size = Vector2(sizeX, sizeY);
 }
 
-void Actor::SetSize(Vector2 newSize)
+void Actor::SetSize(const Vector2& newSize)
 {
-	if (newSize.X < 0.0f)
-	{
-		newSize.X = 0.0f;
-	}
-	if (newSize.Y < 0.0f)
-	{
-		newSize.Y = 0.0f;
-	}
 	_size = newSize;
+	if (_size.X < 0.0f)
+	{
+		_size.X = 0.0f;
+	}
+	if (_size.Y < 0.0f)
+	{
+		_size.Y = 0.0f;
+	}
 }
 
-const Vector2 Actor::GetSize()
+const Vector2& Actor::GetSize() const
 {
 	return _size;
 }
@@ -360,12 +360,12 @@ void Actor::SetPosition(float x, float y)
 	_position.Y = y;
 }
 
-void Actor::SetPosition(Vector2 pos)
+void Actor::SetPosition(const Vector2& pos)
 {
 	_position = pos;
 }
 
-const Vector2 Actor::GetPosition()
+const Vector2& Actor::GetPosition() const
 {
 	return _position;
 }
@@ -375,12 +375,12 @@ void Actor::SetRotation(float rotation)
 	_rotation = rotation;
 }
 
-const float Actor::GetRotation()
+const float Actor::GetRotation() const
 {
 	return _rotation;
 }
 
-const Color Actor::GetColor()
+const Color& Actor::GetColor() const
 {
 	return _color;
 }
@@ -390,7 +390,7 @@ void Actor::SetColor(float r, float g, float b, float a)
 	_color = Color(r, g, b, a);
 }
 
-void Actor::SetColor(Color color)
+void Actor::SetColor(const Color& color)
 {
 	_color = color;
 }
@@ -400,7 +400,7 @@ void Actor::SetAlpha(float newAlpha)
 	_color.A = newAlpha;
 }
 
-const float Actor::GetAlpha()
+const float Actor::GetAlpha() const
 {
 	return _color.A;
 }
@@ -418,7 +418,7 @@ void Actor::SetSpriteTexture(int texRef, int frame)
 	_spriteTextureReferences[frame] = texRef;
 }
 
-const int Actor::GetSpriteTexture(int frame)
+int Actor::GetSpriteTexture(int frame) const
 {
 	frame = MathUtil::Clamp(frame, 0, _spriteNumFrames - 1);
 
@@ -428,7 +428,7 @@ const int Actor::GetSpriteTexture(int frame)
 
 // Will load the sprite if it doesn't find it in the texture cache.
 // The texture cache caches textures by filename.
-bool Actor::SetSprite(String filename, int frame, GLint clampmode, GLint filtermode, bool optional)
+bool Actor::SetSprite(const String& filename, int frame, GLint clampmode, GLint filtermode, bool optional)
 {
 	int textureReference = GetTextureReference(filename, clampmode, filtermode, optional);
 	if (textureReference == -1)
@@ -476,7 +476,7 @@ void Actor::PlaySpriteAnimation(float delay, spriteAnimationType animType, int s
 		_currentAnimName = _animName;
 }
 
-void Actor::LoadSpriteFrames(String firstFilename, GLint clampmode, GLint filtermode)
+void Actor::LoadSpriteFrames(const String& firstFilename, GLint clampmode, GLint filtermode)
 {
 	int extensionLocation = firstFilename.rfind(".");
 	int numberSeparator = firstFilename.rfind("_");
@@ -570,7 +570,7 @@ void Actor::LoadSpriteFrames(String firstFilename, GLint clampmode, GLint filter
 	}
 }
 
-void Actor::SetUVs(const Vector2 lowleft, const Vector2 upright)
+void Actor::SetUVs(const Vector2& lowleft, const Vector2& upright)
 {
 	_UV[0] = lowleft.X;
 	_UV[1] = upright.Y;
@@ -590,7 +590,7 @@ void Actor::GetUVs(Vector2 &lowleft, Vector2 &upright) const
 	upright.Y = _UV[5];
 }
 
-const bool Actor::IsTagged(String tag)
+const bool Actor::IsTagged(const String& tag) const
 {
 	StringSet::iterator it = _tags.find(tag);
 	if (it != _tags.end())
@@ -603,7 +603,7 @@ const bool Actor::IsTagged(String tag)
 	}
 }
 
-void Actor::Tag(String newTag)
+void Actor::Tag(const String& newTag)
 {
 	StringList tags = SplitString(newTag, ", ");
 	for(unsigned int i=0; i < tags.size(); i++)
@@ -614,18 +614,18 @@ void Actor::Tag(String newTag)
 	}
 }
 
-void Actor::Untag(String oldTag)
+void Actor::Untag(const String& oldTag)
 {
 	_tags.erase(oldTag);
 	theTagList.RemoveObjFromTagList(this, oldTag);
 }
 
-const StringSet Actor::GetTags()
+const StringSet& Actor::GetTags() const
 {
 	return _tags;
 }
 
-const String Actor::SetName(String newName)
+const String& Actor::SetName(String newName)
 {
 	if(newName.length() == 0)
 	{
@@ -657,12 +657,12 @@ const String Actor::SetName(String newName)
 	return _name;
 }
 
-const String Actor::GetName()
+const String& Actor::GetName() const
 {
 	return _name;
 }
 
-Actor* const Actor::GetNamed(String nameLookup)
+Actor* const Actor::GetNamed(const String& nameLookup)
 {
 	std::map<String,Actor*>::iterator it = _nameList.find(nameLookup);
 	if (it == _nameList.end())
@@ -675,7 +675,7 @@ Actor* const Actor::GetNamed(String nameLookup)
 	}
 }
 
-Actor* Actor::Create(String archetype)
+Actor* Actor::Create(const String& archetype)
 {
 	// Yes it might be faster to directly find the function in the Lua state
 	//   and call it with the C API, but this is much more readable. You're welcome.
@@ -697,7 +697,7 @@ void Actor::SetLayer(int layerIndex)
 	theWorld.UpdateLayer(this, layerIndex);
 }
 
-void Actor::SetLayer(String layerName)
+void Actor::SetLayer(const String& layerName)
 {
 	theWorld.UpdateLayer(this, layerName);
 }

@@ -374,7 +374,7 @@ void Console::ToggleConsole()
 	Enable( !IsEnabled() );
 }
 
-void Console::SetPrompt(String prompt)
+void Console::SetPrompt(const String& prompt)
 {
 	_prompt = prompt;
 }

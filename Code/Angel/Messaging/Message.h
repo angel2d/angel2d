@@ -65,7 +65,7 @@ public:
 	 *   and the Switchboard to manage delivery. 
 	 * @param sender Who sent this Message; NULL by default
 	 */
-	Message(String messageName, MessageListener* sender = NULL);
+	Message(const String& messageName, MessageListener* sender = NULL);
 	
 	/**
 	 * Get the name of this Message. Since all Messages come to the listener
@@ -74,7 +74,7 @@ public:
 	 * 
 	 * @return The name of this message
 	 */
-	virtual const String GetMessageName();
+	virtual const String& GetMessageName() const;
 	
 	/**
 	 * Find out who requested this Message to be sent. This can have all sorts
@@ -114,7 +114,7 @@ public:
 	 * @param value Any data of the type defined in the template constructor
 	 * @param sender Who is sending this message; NULL by default
 	 */
-	TypedMessage(String messageName, T value, MessageListener* sender = NULL)
+	TypedMessage(const String& messageName, T value, MessageListener* sender = NULL)
 	{
 		_messageName = messageName;
 		_value = value;

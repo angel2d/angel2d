@@ -97,28 +97,28 @@ void Camera::Resize(int width, int height)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-const int Camera::GetWindowHeight()
+const int Camera::GetWindowHeight() const
 {
 	return _windowHeight;
 }
 
-const int Camera::GetWindowWidth()
+const int Camera::GetWindowWidth() const
 {
 	return _windowWidth;
 }
 
-const double Camera::GetViewRadius() 
+const double Camera::GetViewRadius() const
 {
 	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
 	return tan(sideAngle) * abs(_position.Z);
 }
 
-const Vector2 Camera::GetWorldMaxVertex()
+const Vector2 Camera::GetWorldMaxVertex() const
 {
 	return MathUtil::ScreenToWorld(GetWindowWidth(), 0);
 }
 
-const Vector2 Camera::GetWorldMinVertex()
+const Vector2 Camera::GetWorldMinVertex() const
 {
 	return MathUtil::ScreenToWorld(0, GetWindowHeight());
 }
@@ -155,24 +155,24 @@ void Camera::SetPosition(float x, float y)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-void Camera::SetPosition(Vector2 v2)
+void Camera::SetPosition(const Vector2& v2)
 {
 	_position = Vector3(v2.X, v2.Y, _position.Z);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-void Camera::SetPosition(Vector3 v3)
+void Camera::SetPosition(const Vector3& v3)
 {
 	_position = v3;
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-Vector2 Camera::GetPosition()
+Vector2 Camera::GetPosition() const
 {
 	return Vector2(_position.X, _position.Y);
 }
 
-float Camera::GetZ()
+float Camera::GetZ() const
 {
 	return _position.Z;
 }
@@ -223,7 +223,7 @@ void Camera::SetViewCenter(float x, float y, float z)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-Vector3 Camera::GetViewCenter()
+const Vector3& Camera::GetViewCenter() const
 {
 	return _view;
 }

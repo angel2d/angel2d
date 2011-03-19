@@ -99,7 +99,7 @@ int windowClosed(void)
 	return GL_FALSE;
 }
 
-bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen)
+bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, const String& windowName, bool antiAliasing, bool fullScreen)
 {
 	if (_initialized)
 	{
@@ -229,7 +229,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	return _initialized = true;
 }
 
-bool World::SetupPhysics(Vector2 gravity, Vector2 maxVertex, Vector2 minVertex)
+bool World::SetupPhysics(const Vector2& gravity, const Vector2& maxVertex, const Vector2& minVertex)
 {
 	if (_physicsSetUp)
 	{
@@ -297,12 +297,12 @@ void World::StopGame()
 	_running = false;
 }
 
-void World::ScriptExec(String code)
+void World::ScriptExec(const String& code)
 {
 	LuaScriptingModule::ExecuteInScript(code);
 }
 
-void World::LoadLevel(String levelName)
+void World::LoadLevel(const String& levelName)
 {
 	ScriptExec("LoadLevel('" + levelName + "')");
 }
@@ -523,7 +523,7 @@ void World::ResetWorld()
 	UnloadAll();
 }
 
-void World::SetBackgroundColor(Color bgColor)
+void World::SetBackgroundColor(const Color& bgColor)
 {
 	glClearColor(bgColor.R, bgColor.G, bgColor.B, 1.0f);
 }
@@ -561,7 +561,7 @@ void World::Add(Renderable *newElement, int layer)
 	}
 }
 
-void World::Add(Renderable *newElement, String layer)
+void World::Add(Renderable *newElement, const String& layer)
 {
 	Add(newElement, GetLayerByName(layer));
 }
@@ -631,17 +631,17 @@ void World::UpdateLayer(Renderable* element, int newLayer)
 	_deferredLayerChanges.push_back( layerChange );
 }
 
-void World::UpdateLayer(Renderable* element, String newLayerName)
+void World::UpdateLayer(Renderable* element, const String& newLayerName)
 {
 	UpdateLayer(element, GetLayerByName(newLayerName));
 }
 
-void World::NameLayer(String name, int number)
+void World::NameLayer(const String& name, int number)
 {
 	_layerNames[name] = number;
 }
 
-const int World::GetLayerByName(String name)
+const int World::GetLayerByName(const String& name)
 {
 	std::map<String,int>::iterator it = _layerNames.find(name);
 	if (it != _layerNames.end())
@@ -654,7 +654,7 @@ const int World::GetLayerByName(String name)
 	}
 }
 
-void World::DrawDebugLine( Vector2 a, Vector2 b, float time, Color color )
+void World::DrawDebugLine(const Vector2& a, const Vector2& b, float time, const Color& color)
 {
 	DebugLine* line = new DebugLine();
 	line->_points[0] = a.X;

@@ -37,7 +37,7 @@
 #include "../Messaging/Switchboard.h"
 #include "../Util/DrawUtil.h"
 
-TextActor::TextActor(String fontNickname, String displayString, TextAlignment align, int lineSpacing)
+TextActor::TextActor(const String& fontNickname, const String& displayString, TextAlignment align, int lineSpacing)
 {
 	SetColor(0.0f, 0.0f, 0.0f); //default text is black
 	_fontNickname = fontNickname;
@@ -61,23 +61,23 @@ void TextActor::Render()
 	}
 }
 
-const String TextActor::GetFont()
+const String& TextActor::GetFont() const
 {
 	return _fontNickname;
 }
 
-void TextActor::SetFont(String newFont)
+void TextActor::SetFont(const String& newFont)
 {
 	_fontNickname = newFont;
 	CalculatePosition();
 }
 
-const String TextActor::GetDisplayString()
+const String& TextActor::GetDisplayString() const
 {
 	return _rawString;
 }
 
-void TextActor::SetDisplayString(String newString)
+void TextActor::SetDisplayString(const String& newString)
 {
 	_rawString = newString;
 	_displayStrings.clear();
@@ -122,7 +122,7 @@ void TextActor::SetPosition(float x, float y)
 	CalculatePosition();
 }
 
-void TextActor::SetPosition(Vector2 position)
+void TextActor::SetPosition(const Vector2& position)
 {
 	Actor::SetPosition(position);
 	CalculatePosition();
@@ -136,7 +136,7 @@ void TextActor::ReceiveMessage(Message* m)
 	}
 }
 
-const BoundingBox TextActor::GetBoundingBox()
+const BoundingBox& TextActor::GetBoundingBox() const
 {
 	return _extents; 
 }

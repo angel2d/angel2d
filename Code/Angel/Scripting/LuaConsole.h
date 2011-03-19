@@ -9,7 +9,7 @@ public:
 	LuaConsole();
 
 	virtual void Execute(String input);
-	virtual StringList GetCompletions(String input);
+	virtual StringList GetCompletions(const String& input);
 	
 private:
 	String _mainPrompt;

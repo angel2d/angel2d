@@ -83,7 +83,7 @@ public:
 	 * @param obj The Actor to tag
 	 * @param tag The tag to apply
 	 */
-	void AddObjToTagList(Actor* obj, String tag);
+	void AddObjToTagList(Actor* obj, const String& tag);
 	
 	/**
 	 * Removes a tag from an Actor. Shouldn't be called directly; use the 
@@ -92,7 +92,7 @@ public:
 	 * @param obj The Actor to untag
 	 * @param tag The tag to remove
 	 */
-	void RemoveObjFromTagList(Actor* obj, String tag);
+	void RemoveObjFromTagList(Actor* obj, const String& tag);
 
 protected:
 	TagCollection();

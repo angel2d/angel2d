@@ -55,22 +55,22 @@ GridActor::GridActor(Color lines, Color axis, float interval, Vector2 minCoord, 
 	RecalculatePoints();
 }
 
-void GridActor::SetLineColor(Color lineCol)
+void GridActor::SetLineColor(const Color& lineCol)
 {
 	_lineColor = lineCol;
 }
 
-const Color GridActor::GetLineColor()
+const Color& GridActor::GetLineColor() const
 {
 	return _lineColor;
 }
 
-void GridActor::SetAxisColor(Color axisCol)
+void GridActor::SetAxisColor(const Color& axisCol)
 {
 	_axisColor = axisCol;
 }
 
-const Color GridActor::GetAxisColor()
+const Color& GridActor::GetAxisColor() const
 {
 	return _axisColor;
 }
@@ -80,29 +80,29 @@ void GridActor::SetInterval(float interval)
 	_interval = interval;
 }
 
-const float GridActor::GetInterval()
+const float GridActor::GetInterval() const
 {
 	return _interval;
 }
 
-void GridActor::SetMinCoord(Vector2 minCoord)
+void GridActor::SetMinCoord(const Vector2& minCoord)
 {
 	_minCoord = minCoord;
 	RecalculatePoints();
 }
 
-const Vector2 GridActor::GetMinCoord()
+const Vector2 GridActor::GetMinCoord() const
 {
 	return _minCoord;
 }
 
-void GridActor::SetMaxCoord(Vector2 maxCoord)
+void GridActor::SetMaxCoord(const Vector2& maxCoord)
 {
 	_maxCoord = maxCoord;
 	RecalculatePoints();
 }
 
-const Vector2 GridActor::GetMaxCoord()
+const Vector2 GridActor::GetMaxCoord() const
 {
 	return _maxCoord;
 }

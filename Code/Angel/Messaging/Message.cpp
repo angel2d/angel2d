@@ -37,13 +37,13 @@ Message::Message()
 	_sender = NULL;
 }
 
-Message::Message(String messageName, MessageListener* sender)
+Message::Message(const String& messageName, MessageListener* sender)
 {
 	_messageName = messageName;
 	_sender = sender;
 }
 
-const String Message::GetMessageName()
+const String& Message::GetMessageName() const
 {
 	return _messageName;
 }

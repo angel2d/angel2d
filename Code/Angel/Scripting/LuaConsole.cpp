@@ -78,7 +78,7 @@ void LuaConsole::Execute(String input)
 }
 
 
-StringList LuaConsole::GetCompletions(String input)
+StringList LuaConsole::GetCompletions(const String& input)
 {
 	StringList forReturn;
 	

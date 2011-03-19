@@ -106,7 +106,7 @@ struct Vector2
 	 * 
 	 * @param copy The Vec2i to be converted into a Vector2.
 	 */
-	Vector2(Vec2i copy);
+	Vector2(const Vec2i& copy);
 	
 	/**
 	 * Constructor to initialize a zero-length vector (0, 0)
@@ -264,3 +264,5 @@ struct Vector2
 	Vector2& operator*=(float f);
 	Vector2& operator/=(float f);
 };
+
+typedef std::vector<Vector2> Vector2List;

@@ -91,7 +91,7 @@ void LuaScriptingModule::Finalize()
 	lua_close(L);
 }
 
-void LuaScriptingModule::ExecuteInScript(String code)
+void LuaScriptingModule::ExecuteInScript(const String& code)
 {
 	if (!isInitialized)
 	{

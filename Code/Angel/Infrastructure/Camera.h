@@ -98,14 +98,14 @@ public:
 	 * 
 	 * @return Height in pixels. 
 	 */
-	const int GetWindowHeight();
+	const int GetWindowHeight() const;
 	
 	/**
 	 * Get the window's current width. 
 	 * 
 	 * @return Width in pixels.
 	 */
-	const int GetWindowWidth();
+	const int GetWindowWidth() const;
 	
 	/**
 	 * If you were to draw a circle inscribed in the viewport, this function
@@ -117,21 +117,21 @@ public:
 	 * 
 	 * @return The radius size in GL units. 
 	 */
-	const double GetViewRadius();
+	const double GetViewRadius() const;
 	
 	/**
 	 * Get the world coordinate of the top-right point of the window. 
 	 * 
 	 * @return The world coordinate (GL units).
 	 */
-	const Vector2 GetWorldMaxVertex();
+	const Vector2 GetWorldMaxVertex() const;
 	
 	/**
 	 * Get the world coordinate of the bottom-left point of the window. 
 	 * 
 	 * @return The world cooredinate (GL units).
 	 */
-	const Vector2 GetWorldMinVertex();
+	const Vector2 GetWorldMinVertex() const;
 
 	/**
 	 * Set the position of the camera. Note that the camera is the only
@@ -160,7 +160,7 @@ public:
 	 *
 	 * @param v3 The new position for the camera. 
 	 */
-	virtual void SetPosition(Vector3 v3);
+	virtual void SetPosition(const Vector3& v3);
 	
 	/**
 	 * Set the position of the camera. Using this two-dimensional function, 
@@ -168,7 +168,7 @@ public:
 	 * 
 	 * @param v2 The new position for the Camera
 	 */
-	virtual void SetPosition(Vector2 v2);
+	virtual void SetPosition(const Vector2& v2);
 	
 	/**
 	 * Gets the position of the Camera. Only returns the X and Y position so
@@ -177,14 +177,14 @@ public:
 	 * 
 	 * @return The (X, Y) position of the camera. 
 	 */
-	virtual Vector2 GetPosition();
+	virtual Vector2 GetPosition() const;
 	
 	/**
 	 * Get the position of the camera on the Z-axis. 
 	 * 
 	 * @return The camera's Z coordinate. 
 	 */
-	virtual float GetZ();
+	virtual float GetZ() const;
 	
 	/**
 	 * Set the rotation of the camera. Only rotates about the Z-axis,
@@ -256,7 +256,7 @@ public:
 	 * 
 	 * @return The point where the Camera is currently looking. 
 	 */
-	virtual Vector3 GetViewCenter();
+	virtual const Vector3& GetViewCenter() const;
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 
@@ -264,7 +264,7 @@ public:
 	 * 
 	 * @return The string "Camera"
 	 */
-	virtual const String GetClassName() { return "Camera"; }
+	virtual const String GetClassName() const { return "Camera"; }
 
 protected:
 	Camera();

@@ -65,28 +65,28 @@ public:
 	 * 
 	 * @param lineCol the color of the lines
 	 */
-	void SetLineColor(Color lineCol);
+	void SetLineColor(const Color &lineCol);
 	
 	/**
 	 * Return the current line color of this GridActor.
 	 * 
 	 * @return the current line color as a Color object
 	 */
-	const Color GetLineColor();
+	const Color& GetLineColor() const;
 	
 	/**
 	 * Set the color of the axis lines of the grid. 
 	 * 
 	 * @param axisCol the color of the axis lines
 	 */
-	void SetAxisColor(Color axisCol);
+	void SetAxisColor(const Color &axisCol);
 	
 	/**
 	 * Return the current axis line color of this GridActor.
 	 * 
 	 * @return the current axis line color as a Color object
 	 */
-	const Color GetAxisColor();
+	const Color& GetAxisColor() const;
 	
 	/**
 	 * Set the spacing of the lines. 
@@ -100,35 +100,35 @@ public:
 	 * 
 	 * @return the current interval in GL units
 	 */
-	const float GetInterval();
+	const float GetInterval() const;
 	
 	/**
 	 * Set the bottom-left coordinate at which to start drawing the grid.
 	 * 
 	 * @param minCoord the bottom-left X and Y position in GL units 
 	 */
-	void SetMinCoord(Vector2 minCoord);
+	void SetMinCoord(const Vector2 &minCoord);
 	
 	/**
 	 * Return the bottom-left start coordinate of the grid.
 	 * 
 	 * @return the bottom-left X and Y position in GL unites
 	 */
-	const Vector2 GetMinCoord();
+	const Vector2 GetMinCoord() const;
 	
 	/**
 	 * Set the top-right coordinate at which to stop drawing the grid.
 	 * 
 	 * @param maxCoord the top-right X and Y position in GL units
 	 */
-	void SetMaxCoord(Vector2 maxCoord);
+	void SetMaxCoord(const Vector2 &maxCoord);
 	
 	/**
 	 * Return the top-right coordinate of the grid.
 	 * 
 	 * @return the top-right X and Y position in GL units
 	 */
-	const Vector2 GetMaxCoord();
+	const Vector2 GetMaxCoord() const;
 	
 	/**
 	 * Override of the normal Renderable::Render function. Draws the lines that

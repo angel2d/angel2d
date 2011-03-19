@@ -44,7 +44,7 @@
 
 std::map<String, FTFont*> _fontCache;
 
-const bool RegisterFont(String filename, int pointSize, String nickname)
+const bool RegisterFont(const String& filename, int pointSize, const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if(it != _fontCache.end())
@@ -75,7 +75,7 @@ const bool RegisterFont(String filename, int pointSize, String nickname)
 	return true;
 }
 
-const bool UnRegisterFont(String nickname)
+const bool UnRegisterFont(const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if (it == _fontCache.end())
@@ -89,7 +89,7 @@ const bool UnRegisterFont(String nickname)
 	return true;
 }
 
-Vector2 DrawGameText(String text, String nickname, int pixelX, int pixelY, float angle)
+Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int pixelY, float angle)
 {
 	Vector2 forReturn;
 
@@ -138,7 +138,7 @@ Vector2 DrawGameText(String text, String nickname, int pixelX, int pixelY, float
 	return forReturn;
 }
 
-Vector2 GetTextExtents(String text, String nickname)
+Vector2 GetTextExtents(const String& text, const String& nickname)
 {
 	Vector2 forReturn;
 

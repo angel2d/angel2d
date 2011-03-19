@@ -119,12 +119,12 @@ StringSet TagCollection::GetTagList()
 }
 
 
-void TagCollection::AddObjToTagList(Actor* obj, String tag)
+void TagCollection::AddObjToTagList(Actor* obj, const String& tag)
 {
 	_tagMappings[tag].insert(obj);
 }
 
-void TagCollection::RemoveObjFromTagList(Actor* obj, String tag)
+void TagCollection::RemoveObjFromTagList(Actor* obj, const String& tag)
 {
 	_tagMappings[tag].erase(obj);
 	if (_tagMappings[tag].empty())

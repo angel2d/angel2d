@@ -32,8 +32,6 @@
 #include "../Infrastructure/Common.h"
 #include "../Infrastructure/Vector2.h"
 
-typedef std::vector<Vector2> Vector2List;
-
 struct PathFinderMove;
 class FindNextMoveState;
 

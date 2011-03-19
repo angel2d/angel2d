@@ -90,7 +90,7 @@ public:
 	 * 
 	 * @param code The code to execute. 
 	 */
-	static void ExecuteInScript(String code);
+	static void ExecuteInScript(const String& code);
 
 	/**
 	 * Get the internal Lua state that all our script code is using to run.

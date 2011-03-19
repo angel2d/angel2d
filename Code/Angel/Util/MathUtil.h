@@ -76,7 +76,7 @@ public:
 	static const float PiOver4;
 	
 	/** 
-	 * 2 times Pi
+	 * 2 times Pi (Tau)
 	 */
 	static const float TwoPi;
 	
@@ -353,7 +353,7 @@ public:
 	 * @return A random vector ranging from (0, 0) to (maxValues.X, 
 	 *   maxValuesY)
 	 */
-	static Vector2 RandomVector(Vector2 maxValues);
+	static Vector2 RandomVector(const Vector2& maxValues);
 	
 	/**
 	 * Get a random Vector2 within a specified range
@@ -363,7 +363,7 @@ public:
 	 * @return A random vector ranging from (minValues.X, minValues.Y) to 
 	 *   (maxValues.X, maxValues.y)
 	 */
-	static Vector2 RandomVector(Vector2 minValues, Vector2 maxValues);
+	static Vector2 RandomVector(const Vector2& minValues, const Vector2& maxValues);
 	
 	/**
 	 * Compare two floating point values for "equality," with a permissible
@@ -392,7 +392,7 @@ public:
 	 * @return Whether the two vectors have components within epsilon of 
 	 *  each other
 	 */
-	static bool FuzzyEquals(Vector2 v1, Vector2 v2, float epsilon=Epsilon);
+	static bool FuzzyEquals(const Vector2& v1, const Vector2& v2, float epsilon=Epsilon);
 	
 	/**
 	 * Convert screen (pixel) coordinates to world (GL unit) coordinates. 
@@ -413,7 +413,7 @@ public:
 	 * @param screenCoordinates The pixel coordinates
 	 * @return The world space coordinates
 	 */
-	static Vector2 ScreenToWorld(Vec2i screenCoordinates);
+	static Vector2 ScreenToWorld(const Vec2i& screenCoordinates);
 	
 	/**
 	 * Convert world (GL unit) coordinates to screen (pixel) coordinates. 
@@ -434,7 +434,7 @@ public:
 	 * @param worldCoordinates The world coordinates
 	 * @return The screen space coordinates
 	 */
-	static Vector2 WorldToScreen(Vector2 worldCoordinates);
+	static Vector2 WorldToScreen(const Vector2& worldCoordinates);
 	
 	/**
 	 * Find out the dimensions of the area currently displayed in the window.
@@ -503,5 +503,5 @@ public:
 	 * @param v2 The second vector
 	 * @return The difference in their angles
 	 */
-	static float VectorDeltaAngle(Vector2 v1, Vector2 v2);
+	static float VectorDeltaAngle(const Vector2& v1, const Vector2& v2);
 };

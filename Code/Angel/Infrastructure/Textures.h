@@ -69,7 +69,7 @@ void FlushTextureCache();
  * @return The GLuint that OpenGL uses to reference the texture. If the number
  *   is negative, that means the texture couldn't be loaded or found. 
  */
-const int GetTextureReference(String name, bool optional = false);
+const int GetTextureReference(const String& name, bool optional = false);
 
 /**
  * The same as the above function, but with some more available parameters if
@@ -85,7 +85,7 @@ const int GetTextureReference(String name, bool optional = false);
  * @return The GLuint that OpenGL uses to reference the texture. If the number
  *   is negative, that means the texture couldn't be loaded or found. 
  */
-const int GetTextureReference(String filename, GLint clampmode, GLint filtermode, bool optional = false);
+const int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional = false);
 
 /**
  * Remove a texture from memory. On the desktop this usually isn't an issue 
@@ -95,7 +95,7 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
  * @param filename The filename of the texture to be removed
  * @return Whether the texture was previously loaded into memory or not
  */
-bool PurgeTexture(String filename);
+bool PurgeTexture(const String& filename);
 
 /**
 * Use this function to process an image into positional data, in other words,
@@ -113,4 +113,4 @@ bool PurgeTexture(String filename);
 * @param tolerance The amount RGB channels can deviate from pixelColor.
 * @return Whether the image was found and processed.
 */
-bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance=0.1f);
+bool PixelsToPositions(const String& filename, Vector2List &positions, float gridSize, const Color& pixelColor, float tolerance=0.1f);

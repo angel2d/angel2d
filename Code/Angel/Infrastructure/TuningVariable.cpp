@@ -58,7 +58,7 @@ StringSet Tuning::GetVariables()
 	return forReturn;
 }
 
-int Tuning::GetInt(String name)
+int Tuning::GetInt(const String& name)
 {
 	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
@@ -68,7 +68,7 @@ int Tuning::GetInt(String name)
 	return it->second._int;
 }
 
-float Tuning::GetFloat(String name)
+float Tuning::GetFloat(const String& name)
 {
 	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
@@ -78,7 +78,7 @@ float Tuning::GetFloat(String name)
 	return it->second._float;
 }
 
-String Tuning::GetString(String name)
+String Tuning::GetString(const String& name)
 {
 	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
@@ -88,7 +88,7 @@ String Tuning::GetString(String name)
 	return it->second._string;
 }
 
-Vector2 Tuning::GetVector(String name)
+Vector2 Tuning::GetVector(const String& name)
 {
 	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
@@ -98,32 +98,32 @@ Vector2 Tuning::GetVector(String name)
 	return it->second._vector;
 }
 
-void Tuning::SetInt(String name, int val)
+void Tuning::SetInt(const String& name, int val)
 {
 	_tuningVariables[name] = TuningVariable(val);
 }
 
-void Tuning::SetFloat(String name, float val)
+void Tuning::SetFloat(const String& name, float val)
 {
 	_tuningVariables[name] = TuningVariable(val);
 }
 
-void Tuning::SetString(String name, String val)
+void Tuning::SetString(const String& name, const String& val)
 {
 	_tuningVariables[name] = TuningVariable(val);
 }
 
-void Tuning::SetVector(String name, Vector2 val)
+void Tuning::SetVector(const String& name, const Vector2& val)
 {
 	_tuningVariables[name] = TuningVariable(val);
 }
 
-void Tuning::AddToRuntimeTuningList(String varName)
+void Tuning::AddToRuntimeTuningList(const String& varName)
 {
 	_runTimeTunedList.insert(varName);
 }
 
-bool Tuning::IsRuntimeTuned(String varName)
+bool Tuning::IsRuntimeTuned(const String& varName)
 {
 	return (_runTimeTunedList.count(varName) > 0);
 }

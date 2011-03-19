@@ -88,12 +88,12 @@ void FlushTextureCache()
 	}
 }
 
-const int GetTextureReference(String filename, bool bOptional)
+const int GetTextureReference(const String& filename, bool bOptional)
 {
 	return GetTextureReference(filename, GL_CLAMP, GL_LINEAR, bOptional);
 }
 
-bool PurgeTexture(String filename)
+bool PurgeTexture(const String& filename)
 {
 	std::map<String,TextureCacheEntry>::iterator it = theTextureCache.find(filename);
 	if (it == theTextureCache.end())
@@ -106,7 +106,7 @@ bool PurgeTexture(String filename)
 }
 
 #if !_ANGEL_DISABLE_DEVIL
-	void HandleDevILErrors(String errorPrefix="")
+	void HandleDevILErrors(const String& errorPrefix="")
 	{
 		ILenum error = ilGetError();
 		if (error != IL_NO_ERROR)
@@ -157,7 +157,7 @@ bool PurgeTexture(String filename)
 		return TexID;
 	}
 #else
-	bool LoadPNG(String filename, png_byte* &PNG_image_buffer, png_uint_32 &width, png_uint_32 &height)
+	bool LoadPNG(const String& filename, png_byte* &PNG_image_buffer, png_uint_32 &width, png_uint_32 &height)
 	{
 		FILE *PNG_file = fopen(filename.c_str(), "rb");
 		if (PNG_file == NULL)
@@ -274,7 +274,7 @@ bool PurgeTexture(String filename)
 
 	// adapted from SimpleImage
 	// http://onesadcookie.com/svn/SimpleImage/
-	int BindPNG(String filename, GLuint &texRef, GLint clampmode, GLint filtermode)
+	int BindPNG(const String& filename, GLuint &texRef, GLint clampmode, GLint filtermode)
 	{
 		png_byte* pngData;
 		png_uint_32 width, height;
@@ -313,7 +313,7 @@ bool PurgeTexture(String filename)
 	}
 #endif //_ANGEL_DISABLE_DEVIL
 
-const int GetTextureReference(String filename, GLint clampmode, GLint filtermode, bool optional)
+const int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional)
 {
 	bool cached = false;
 	TextureCacheEntry* currentCacheEntry = NULL;
@@ -394,7 +394,7 @@ const int GetTextureReference(String filename, GLint clampmode, GLint filtermode
 	return texRef;
 }
 
-bool PixelsToPositions(std::string filename, std::vector<Vector2> &positions, float gridSize, Color pixelColor, float tolerance)
+bool PixelsToPositions(const String& filename, Vector2List &positions, float gridSize, const Color& pixelColor, float tolerance)
 {
 	#if _ANGEL_DISABLE_DEVIL
 		png_byte* pngData;

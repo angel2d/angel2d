@@ -135,12 +135,12 @@ Vector2 MathUtil::RandomVector()
 	return RandomVector(Vector2(1.0f));//.Normalize();
 }
 
-Vector2 MathUtil::RandomVector(Vector2 maxValues)
+Vector2 MathUtil::RandomVector(const Vector2& maxValues)
 {
 	return RandomVector(Vector2::Zero, maxValues);
 }
 
-Vector2 MathUtil::RandomVector(Vector2 minValues, Vector2 maxValues)
+Vector2 MathUtil::RandomVector(const Vector2& minValues, const Vector2& maxValues)
 {
 	return Vector2(RandomFloatInRange(minValues.X, maxValues.X), RandomFloatInRange(minValues.Y, maxValues.Y));
 }
@@ -156,7 +156,7 @@ bool MathUtil::FuzzyEquals(float value1, float value2, float epsilon)
 }
 
 
-bool MathUtil::FuzzyEquals(Vector2 v1, Vector2 v2, float epsilon)
+bool MathUtil::FuzzyEquals(const Vector2& v1, const Vector2& v2, float epsilon)
 {
 	if ( (MathUtil::FuzzyEquals(v1.X, v2.X, epsilon)) && (MathUtil::FuzzyEquals(v1.Y, v2.Y, epsilon)) )
 	{
@@ -165,7 +165,7 @@ bool MathUtil::FuzzyEquals(Vector2 v1, Vector2 v2, float epsilon)
 	return false;
 }
 
-Vector2 MathUtil::ScreenToWorld(Vec2i screenCoordinates)
+Vector2 MathUtil::ScreenToWorld(const Vec2i& screenCoordinates)
 {
 	return MathUtil::ScreenToWorld(screenCoordinates.X, screenCoordinates.Y);
 }
@@ -189,17 +189,18 @@ Vector2 MathUtil::ScreenToWorld(int x, int y)
 	return Vector2::Rotate(forReturn, MathUtil::ToRadians(-theCamera.GetRotation()));
 }
 
-Vector2 MathUtil::WorldToScreen(Vector2 worldCoordinates)
+Vector2 MathUtil::WorldToScreen(const Vector2& worldCoordinates)
 {
+	Vector2 startingWorldCoords(worldCoordinates.X, worldCoordinates.Y);
 	Vector2 camPos = theCamera.GetPosition();
-	worldCoordinates.X -= camPos.X;
-	worldCoordinates.Y -= camPos.Y;
-	worldCoordinates = Vector2::Rotate(worldCoordinates, ToRadians(theCamera.GetRotation()));
+	startingWorldCoords.X -= camPos.X;
+	startingWorldCoords.Y -= camPos.Y;
+	startingWorldCoords = Vector2::Rotate(startingWorldCoords, ToRadians(theCamera.GetRotation()));
 	
 	Vector2 worldDimensions = GetWorldDimensions();
 	
-	float screenX = theCamera.GetWindowWidth() * ( (worldCoordinates.X / worldDimensions.X) + 0.5f );
-	float screenY = theCamera.GetWindowHeight() - (theCamera.GetWindowHeight() * ( 0.5f + (worldCoordinates.Y / worldDimensions.Y) ));
+	float screenX = theCamera.GetWindowWidth() * ( (startingWorldCoords.X / worldDimensions.X) + 0.5f );
+	float screenY = theCamera.GetWindowHeight() - (theCamera.GetWindowHeight() * ( 0.5f + (startingWorldCoords.Y / worldDimensions.Y) ));
 	
 	return Vector2(screenX, screenY);
 }
@@ -305,7 +306,7 @@ float MathUtil::DeltaAngle(float A1, float A2)
 	return Delta;
 }
 
-float MathUtil::VectorDeltaAngle(Vector2 v1, Vector2 v2)
+float MathUtil::VectorDeltaAngle(const Vector2& v1, const Vector2& v2)
 {
 	return acos( Vector2::Dot(v1, v2) );
 }

@@ -49,7 +49,7 @@
  * @return Whether or not it successfully registered (check the error log if
  *   this returns false)
  */
-const bool RegisterFont(String filename, int pointSize, String nickname);
+const bool RegisterFont(const String& filename, int pointSize, const String& nickname);
 
 /**
  * If you're done using a font and are concerned about memory usage, you can
@@ -58,7 +58,7 @@ const bool RegisterFont(String filename, int pointSize, String nickname);
  * @param nickname The name you gave the font when you registered it
  * @return Whether it successfully unregistered. If false, check the error log. 
  */
-const bool UnRegisterFont(String nickname);
+const bool UnRegisterFont(const String& nickname);
 
 /**
  * Draw text on the screen (but only once, so you need to call this every
@@ -73,7 +73,7 @@ const bool UnRegisterFont(String nickname);
  *   where you could safely start drawing and not overwrite the string you
  *   just displayed. 
  */
-Vector2 DrawGameText(String text, String nickname, int pixelX, int pixelY, float angle=0.0f);
+Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int pixelY, float angle=0.0f);
 
 /**
  * If you're just interested in how much space a certain string will take up, 
@@ -85,4 +85,4 @@ Vector2 DrawGameText(String text, String nickname, int pixelX, int pixelY, float
  *   where you could safely start drawing and not overwrite the string if you
  *   had drawn it to the screen. 
  */
-Vector2 GetTextExtents(String text, String nickname);
+Vector2 GetTextExtents(const String& text, const String& nickname);

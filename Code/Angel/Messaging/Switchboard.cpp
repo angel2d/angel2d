@@ -77,7 +77,7 @@ void Switchboard::Update(float dt)
 	}
 }
 
-const bool Switchboard::SubscribeTo(MessageListener* subscriber, String messageType)
+const bool Switchboard::SubscribeTo(MessageListener* subscriber, const String& messageType)
 {
 	if (_messagesLocked)
 	{
@@ -90,7 +90,7 @@ const bool Switchboard::SubscribeTo(MessageListener* subscriber, String messageT
 	return insertResult.second;
 }
 
-const bool Switchboard::UnsubscribeFrom(MessageListener* subscriber, String messageType)
+const bool Switchboard::UnsubscribeFrom(MessageListener* subscriber, const String& messageType)
 {
 	if (_messagesLocked)
 	{
@@ -117,7 +117,7 @@ const bool Switchboard::UnsubscribeFrom(MessageListener* subscriber, String mess
 	}
 }
 
-const std::set<MessageListener*> Switchboard::GetSubscribersTo(String messageType)
+const std::set<MessageListener*> Switchboard::GetSubscribersTo(const String& messageType)
 {
 	if (_subscribers.find(messageType) == _subscribers.end())
 	{

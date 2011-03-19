@@ -275,7 +275,7 @@ public:
 	 * An override of the Actor::SetPosition function that disables itself 
 	 *  after #InitPhysics has been called.
 	 */
-	void SetPosition(Vector2 pos);
+	void SetPosition(const Vector2& pos);
 	
 	/**
 	 * An override of the Actor::SetRotation function that disables itself 
@@ -287,7 +287,7 @@ public:
 	 * An override of the Actor::MoveTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors. 
 	 */
-	void MoveTo(Vector2 newPosition, float duration, String onCompletionMessage="") {}
+	void MoveTo(const Vector2& newPosition, float duration, String onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::RotateTo function that doesn't allow the 
@@ -299,7 +299,7 @@ public:
 	 * An override of the Actor::ChangeSizeTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void ChangeSizeTo(Vector2 newSize, float duration, String onCompletionMessage="") {}
+	void ChangeSizeTo(const Vector2& newSize, float duration, String onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::ChangeSizeTo function that doesn't allow the 
@@ -313,7 +313,7 @@ public:
 	 * 
 	 * @return The string "PhysicsActor"
 	 */
-	virtual const String GetClassName() { return "PhysicsActor"; }
+	virtual const String GetClassName() const { return "PhysicsActor"; }
 
 protected:
 	virtual void InitShape(b2Shape* /*shapeDef*/ ) {}

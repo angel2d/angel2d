@@ -237,7 +237,7 @@ void PhysicsActor::SetPosition(float x, float y)
 		sysLog.Log("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
 }
 
-void PhysicsActor::SetPosition(Vector2 pos)
+void PhysicsActor::SetPosition(const Vector2& pos)
 {
 	if (_physBody == NULL)
 		Actor::SetPosition(pos);

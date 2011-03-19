@@ -144,7 +144,7 @@ public:
 	 * 
 	 * @param prompt The new prompt string
 	 */
-	void SetPrompt(String prompt);
+	void SetPrompt(const String& prompt);
 
 	/**
 	 * Get the width of tabs when output to this console.
@@ -189,7 +189,7 @@ public:
 	 * @param input The input string to try and match. 
 	 * @return The list of potential matches
 	 */
-	virtual StringList GetCompletions(String input) = 0;
+	virtual StringList GetCompletions(const String& input) = 0;
 
 protected:
 	bool IsTextKey(unsigned char key);
@@ -242,5 +242,5 @@ public:
 	 * @param input The input to be ignored
 	 * @return An empty list
 	 */
-	virtual StringList GetCompletions(String input) { return StringList(); }
+	virtual StringList GetCompletions(const String& input) { return StringList(); }
 };

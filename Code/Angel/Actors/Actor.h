@@ -107,14 +107,14 @@ public:
 	 * @param newSize Desired size of Actor in OpenGL units. If either 
 	 *  dimension is negative, it's clamped to zero. 
 	 */
-	void SetSize(Vector2 newSize);
+	void SetSize(const Vector2& newSize);
 	
 	/**
 	 * Return the size of this Actor.
 	 * 
 	 * @return Actor's size as a Vector2
 	 */
-	const Vector2 GetSize();
+	const Vector2& GetSize() const;
 	
 	/**
 	 * Set the position of the Actor in world coordinates. 
@@ -129,14 +129,14 @@ public:
 	 * 
 	 * @param pos Desired X and Y coordinates wrapped up into a Vector2
 	 */
-	virtual void SetPosition(Vector2 pos);
+	virtual void SetPosition(const Vector2& pos);
 	
 	/**
 	 * Return the position of this Actor.
 	 * 
 	 * @return Actor's position as a Vector2
 	 */
-	const Vector2 GetPosition();
+	const Vector2& GetPosition() const;
 	
 	/**
 	 * Sets the rotation of the Actor. Positive rotations are 
@@ -151,7 +151,7 @@ public:
 	 * 
 	 * @return Actor's rotation
 	 */
-	const float GetRotation();
+	const float GetRotation() const;
 	
 	/**
 	 * Sets the color of the Actor with individual components.
@@ -168,14 +168,14 @@ public:
 	 * 
 	 * @param color Desired color
 	 */
-	void SetColor(Color color);
+	void SetColor(const Color& color);
 	
 	/**
 	 * Return the Color of this Actor.
 	 * 
 	 * @return Actor's current color as a Color object
 	 */
-	const Color GetColor();
+	const Color& GetColor() const;
 	
 	/**
 	 * Set the transparency of the Actor, independent of the other color 
@@ -191,7 +191,7 @@ public:
 	 * 
 	 * @return Actor's current transparency value.
 	 */
-	const float GetAlpha();
+	const float GetAlpha() const;
 	
 	/**
 	 * Set the shape of the Actor when it's drawn.
@@ -206,7 +206,7 @@ public:
 	 *
 	 * @return Actor's shape
 	 */
-	const actorDrawShape GetDrawShape();
+	const actorDrawShape& GetDrawShape() const;
 
 	/**
 	* Use a display list index for drawing rather than a built-in shape.
@@ -236,7 +236,7 @@ public:
 	 *  sent when the movement is complete, letting you know when it's done. 
 	 *  You will have to manually subscribe to this Message, though. 
 	 */
-	void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that rotates an Actor over a designated 
@@ -262,7 +262,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeColorTo(Color newColor, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeColorTo(const Color& newColor, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's size over a 
@@ -276,7 +276,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(Vector2 newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's size over a 
@@ -299,7 +299,7 @@ public:
 	 *   reference for a specific frame
 	 * @return The OpenGL texture reference
 	 */
-	const int GetSpriteTexture(int frame = 0);
+	int GetSpriteTexture(int frame = 0) const;
 	
 	/**
 	 * Apply texture information to an Actor. The file can be any image format
@@ -319,7 +319,7 @@ public:
 	 *   load this texture. 
 	 * @return True if the sprite was successfully set, false otherwise
 	 */
-	bool SetSprite(String filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=false);
+	bool SetSprite(const String& filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=false);
 	
 	/**
 	 * Remove all sprite information from an Actor
@@ -343,7 +343,7 @@ public:
 	 * @param clampmode The clamp mode to be used by the #SetSprite function
 	 * @param filtermode The filter mode to be used by the #SetSprite function
 	 */
-	void LoadSpriteFrames(String firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
+	void LoadSpriteFrames(const String& firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
 	
 	//rb - TODO - Add a way to associate anim type, and frame indices to a name.
 	/**
@@ -373,14 +373,14 @@ public:
 	 * 
 	 * @return The current animation frame.
 	 */
-	const int GetSpriteFrame() { return _spriteCurrentFrame; }
+	int GetSpriteFrame() const { return _spriteCurrentFrame; }
 	
 	/**
 	 * Lets you find out if an animation is currently playing on this Actor.
 	 * 
 	 * @return True if there's an animation playing, false if there isn't. 
 	 */
-	bool IsSpriteAnimPlaying()
+	const bool IsSpriteAnimPlaying() const
 	{
 		return (_spriteFrameDelay > 0);
 	}
@@ -402,7 +402,7 @@ public:
 	 * @param lowleft The desired lower left UV
 	 * @param upright The desired upper right UV
 	 */
-	void SetUVs(const Vector2 lowleft, const Vector2 upright);
+	void SetUVs(const Vector2& lowleft, const Vector2& upright);
 	
 	/**
 	 * Get the current UV coordinates being used by the Actor to draw. 
@@ -421,7 +421,7 @@ public:
 	 * @param tag the tag in question
 	 * @return True if the Actor has the tag
 	 */
-	const bool IsTagged(String tag);
+	const bool IsTagged(const String& tag) const;
 	
 	/**
 	 * Adds a tag to an Actor. If the Actor already has this tag, no action is 
@@ -430,7 +430,7 @@ public:
 	 * @see TagCollection
 	 * @param newTag The tag to add
 	 */
-	void Tag(String newTag);
+	void Tag(const String& newTag);
 	
 	/**
 	 * Removes a tag from an Actor. If the Actor doesn't have this tag, no 
@@ -439,7 +439,7 @@ public:
 	 * @see TagCollection
 	 * @param oldTag The tag to remove
 	 */
-	void Untag(String oldTag);
+	void Untag(const String& oldTag);
 	
 	/**
 	 * Get all the tags for this ACtor. 
@@ -447,7 +447,7 @@ public:
 	 * @see TagCollection
 	 * @return A StringSet (std::vector<std::string>) of all the Actor's tags
 	 */
-	const StringSet GetTags();
+	const StringSet& GetTags() const;
 	
 	/**
 	 * Give this Actor a name that can later be used as a unique identifier. 
@@ -458,14 +458,14 @@ public:
 	 * @param newName The desired name
 	 * @return The actual name that was given
 	 */
-	const String SetName(String newName);
+	const String& SetName(String newName);
 	
 	/**
 	 * Get the unique name assigned to this Actor.
 	 * 
 	 * @return The Actor's current name.
 	 */
-	const String GetName();
+	const String& GetName() const;
 	
 	/**
 	 * A static function of the Actor class which returns an Actor from a 
@@ -474,7 +474,7 @@ public:
 	 * @param nameLookup The name index to look for
 	 * @return The Actor with the given name. Will be NULL if there's no match
 	 */
-	static Actor* const GetNamed(String nameLookup);
+	static Actor* const GetNamed(const String& nameLookup);
 	
 	/**
 	 * An implementation of the MessageListener interface, which will be 
@@ -509,7 +509,7 @@ public:
 	 * @see SetLayer
 	 * @param layerName the name of the render layer you want to assign
 	 */
-	void SetLayer(String layerName);
+	void SetLayer(const String& layerName);
 	
 	/**
 	 * A function which makes the necessary updates to the Actor. The base 
@@ -579,7 +579,7 @@ public:
 	 * @param the name of the Actor archetype (the section header from the 
 	 *   .ini)
 	 */
-	static Actor* Create(String archetype);
+	static Actor* Create(const String& archetype);
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 

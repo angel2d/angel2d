@@ -91,7 +91,7 @@ public:
 	 * @return Returns true if initialization worked (i.e. if world was not
 	 *   already initialized)
 	 */
-	bool Initialize(unsigned int windowWidth=1024, unsigned int windowHeight=768, String windowName="Angel Engine", bool antiAliasing=false, bool fullScreen=false);
+	bool Initialize(unsigned int windowWidth=1024, unsigned int windowHeight=768, const String& windowName="Angel Engine", bool antiAliasing=false, bool fullScreen=false);
 	
 	/**
 	 * Intialize physics. If you're not using our built-in physics, you don't
@@ -107,7 +107,7 @@ public:
 	 *   bounding box.
 	 * @return True is successfully setup, false if physics were already initialized
 	 */
-	bool SetupPhysics(Vector2 gravity = Vector2(0, -10), Vector2 maxVertex = Vector2(100.0f, 100.0f), Vector2 minVertex = Vector2(-100.0f, -100.0f));
+	bool SetupPhysics(const Vector2& gravity = Vector2(0, -10), const Vector2& maxVertex = Vector2(100.0f, 100.0f), const Vector2& minVertex = Vector2(-100.0f, -100.0f));
 	
 	/**
 	 * Called when the game shuts down, does all cleanup. 
@@ -138,7 +138,7 @@ public:
 	 * 
 	 * @param code The string to execute
 	 */
-	void ScriptExec(String code);
+	void ScriptExec(const String& code);
 	
 	/**
 	 * Loads a level from Config/Level/[levelName].lua. 
@@ -152,7 +152,7 @@ public:
 	 * @see Actor::Create
 	 * @param levelName 
 	 */
-	void LoadLevel(String levelName);
+	void LoadLevel(const String& levelName);
 	
 	/**
 	 * Get the amount of time that elapsed between the start of the last frame
@@ -185,7 +185,7 @@ public:
 	 * 
 	 * @param bgColor The new background color
 	 */
-	void SetBackgroundColor(Color bgColor);
+	void SetBackgroundColor(const Color& bgColor);
 	
 	/**
 	 * Add a Renderable to the World so it will start receiving Update and
@@ -202,7 +202,7 @@ public:
 	 * @param *newElement The new object to insert into the world
 	 * @param layer The name of the layer at which to insert it
 	 */
-	void Add(Renderable *newElement, String layer);
+	void Add(Renderable *newElement, const String& layer);
 	
 	/**
 	 * Remove a Renderable from the World. Does not deallocate any memory; 
@@ -226,7 +226,7 @@ public:
 	 * @param element The renderable to move
 	 * @param newLayerName The name of its new home
 	 */
-	void UpdateLayer(Renderable* element, String newLayerName);
+	void UpdateLayer(Renderable* element, const String& newLayerName);
 	
 	/**
 	 * Lets you name layers for easier reference later. This name can be
@@ -235,7 +235,7 @@ public:
 	 * @param name The string to assign as a layer name
 	 * @param number The number to which this name should refer
 	 */
-	void NameLayer(String name, int number);
+	void NameLayer(const String& name, int number);
 	
 	/**
 	 * Retrieve the layer number associated with a name. 
@@ -244,7 +244,7 @@ public:
 	 * @return The layer number. Will return 0 if the name has not been
 	 *   registered; note that 0 is still a valid layer. 
 	 */
-	const int GetLayerByName(String name);
+	const int GetLayerByName(const String& name);
 	
 	/**
 	 * Get the set of layers and their associated Renderables
@@ -335,7 +335,7 @@ public:
 	* @param time The length of time the line will be drawn (less than 0 will draw it permanently)
 	* @param color The color of the line
 	*/
-	void DrawDebugLine( Vector2 a, Vector2 b, float time = 5.f, Color color = Color(1.f, 0.f, 0.f) );
+	void DrawDebugLine( const Vector2& a, const Vector2& b, float time = 5.f, const Color& color = Color(1.f, 0.f, 0.f) );
 
 	/**
 	* Purge all debug drawing.
