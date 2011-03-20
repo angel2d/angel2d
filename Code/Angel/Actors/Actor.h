@@ -421,7 +421,7 @@ public:
 	 * @param tag the tag in question
 	 * @return True if the Actor has the tag
 	 */
-	const bool IsTagged(const String& tag) const;
+	const bool IsTagged(const String& tag);
 	
 	/**
 	 * Adds a tag to an Actor. If the Actor already has this tag, no action is 

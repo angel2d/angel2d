@@ -590,7 +590,7 @@ void Actor::GetUVs(Vector2 &lowleft, Vector2 &upright) const
 	upright.Y = _UV[5];
 }
 
-const bool Actor::IsTagged(const String& tag) const
+const bool Actor::IsTagged(const String& tag)
 {
 	StringSet::iterator it = _tags.find(tag);
 	if (it != _tags.end())
