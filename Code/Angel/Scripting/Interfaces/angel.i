@@ -69,6 +69,7 @@ typedef std::vector<String>	StringList;
 %include controller.i
 %include mouse.i
 #endif
+%include multitouch.i
 
 %include actor.i
 %include camera.i

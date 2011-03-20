@@ -44,6 +44,8 @@ public:
 	void PickNewTarget(MazeFinder* mf);
 	
 	virtual void ReceiveMessage(Message* m);
+	
+	virtual void Update(float dt);
 
 private:
 	Vector2List _availableTargets;

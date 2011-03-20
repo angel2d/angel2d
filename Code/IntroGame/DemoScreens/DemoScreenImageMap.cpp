@@ -80,6 +80,9 @@ void DemoScreenImageMap::Start()
 	}
 	
 	// Generate the pathfinding graph, as seen in the previous screen. 
+	//  Note that because our usage of the image map resulted in lots of small
+	//  objects to path around, the graph takes longer to generate than it did
+	//  on the previous screen.
 	BoundingBox bounds(Vector2(-20, -20), Vector2(20, 20));
 	theSpatialGraph.CreateGraph(0.5f, bounds);
 	
@@ -116,11 +119,21 @@ void DemoScreenImageMap::Start()
 	description += "time the walls, red guys, and their \n";
 	description += "targets were all placed by interpreting \n";
 	description += "an image map. It can be a lot easier \n";
-	description += "to do visual layout of spaces this way.";
+	description += "to do visual layout of spaces this way.\n\n";
+	description += "Press [B] to see the image that was\n";
+	description += "used to generate this space.";
 	TextActor *t = new TextActor("Console", description);
 	t->SetAlignment(TXT_Left);
 	t->SetPosition(-4.5f, -2.0f);
 	theWorld.Add(t);
+	Actor *image = new Actor();
+	image->SetPosition(-3.0f, 3.0f);
+	image->SetSize(Vector2(4.9f, 3.5f));
+	image->SetSprite("Resources/Images/map.png", 0, GL_CLAMP, GL_NEAREST);
+	image->SetAlpha(0.0f);
+	image->SetName("ImageMap");
+	theWorld.Add(image);
+	_objects.push_back(image);
 	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenImageMap.cpp, map.png");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
@@ -178,4 +191,18 @@ void DemoScreenImageMap::Stop()
 {
 	_availableTargets.clear();
 	DemoScreen::Stop();
+}
+
+void DemoScreenImageMap::Update(float dt)
+{
+	Actor* image = Actor::GetNamed("ImageMap");
+	if ((theController.IsConnected() && theController.IsBButtonDown()) || theInput.IsKeyDown('b'))
+	{
+		image->SetAlpha(1.0f);
+	}
+	else 
+	{
+		image->SetAlpha(0.0f);
+	}
+
 }
