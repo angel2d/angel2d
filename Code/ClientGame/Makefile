@@ -43,6 +43,8 @@ ifeq ($(ANGEL_DISABLE_FMOD), 1)
 endif
 ifneq ($(ANGEL_DISABLE_DEVIL),1)
 	SHLIBS += -lIL -lILU -lILUT
+else
+	SHLIBS += -lpng
 endif
 
 SYSSRCS = 							\

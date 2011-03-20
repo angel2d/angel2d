@@ -65,7 +65,9 @@ SRCS =								\
 	Input/Controller.cpp					\
 	Input/Input.cpp						\
 	Input/InputManager.cpp					\
+	Input/MobileSimulator.cpp				\
 	Input/MouseInput.cpp					\
+	Input/MultiTouch.cpp					\
 	Messaging/Message.cpp					\
 	Messaging/Switchboard.cpp				\
 	Scripting/LuaConsole.cpp				\

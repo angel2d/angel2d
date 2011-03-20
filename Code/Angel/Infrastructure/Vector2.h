@@ -29,6 +29,7 @@
 
 #pragma once
 
+#include "../Infrastructure/Common.h"
 #include "../Infrastructure/VecStructs.h"
 
 ///A two-dimensional floating point vector and associated math functions

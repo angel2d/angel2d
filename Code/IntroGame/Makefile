@@ -45,6 +45,8 @@ ifeq ($(ANGEL_DISABLE_FMOD),1)
 endif
 ifneq ($(ANGEL_DISABLE_DEVIL),1)
 	SHLIBS += -lIL -lILU -lILUT
+else
+	SHLIBS += -lpng
 endif
 
 SYSSRCS = 							\
@@ -57,11 +59,13 @@ SRCS =								\
 	DemoScreens/DemoScreenConsole.cpp			\
 	DemoScreens/DemoScreenControllerInstructions.cpp	\
 	DemoScreens/DemoScreenDefFile.cpp			\
+	DemoScreens/DemoScreenImageMap.cpp			\
 	DemoScreens/DemoScreenInstructions.cpp			\
 	DemoScreens/DemoScreenIntervals.cpp			\
 	DemoScreens/DemoScreenLayeredCollisionLevelFile.cpp	\
 	DemoScreens/DemoScreenLevelFile.cpp			\
 	DemoScreens/DemoScreenMessagePassing.cpp		\
+	DemoScreens/DemoScreenMobileSimulator.cpp		\
 	DemoScreens/DemoScreenMovingActor.cpp			\
 	DemoScreens/DemoScreenMultipleControllers.cpp		\
 	DemoScreens/DemoScreenParticleActors.cpp		\
