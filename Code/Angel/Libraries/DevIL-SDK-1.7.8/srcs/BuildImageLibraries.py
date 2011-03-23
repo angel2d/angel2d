@@ -52,6 +52,10 @@ if (CLEAN):
 # unarchive everything              #
 #####################################
 for libname, data in LIBLIST.iteritems():
+    if (libname == "libpng"):
+        print "Copying libpng from Angel libraries..."
+        os.system("cp -R ../../libpng-1.4.1 ./")
+        continue
     lib = data[0]
     directory = data[1]
     if os.path.exists(directory):
@@ -66,6 +70,7 @@ for libname, data in LIBLIST.iteritems():
     else:
         print "Problem, don't know how to unarchive %s" % lib
 
+sys.exit(1)
 #####################################
 # build libpng                      #
 #####################################
