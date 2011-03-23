@@ -94,7 +94,10 @@ if (disable_fmod == 1) then
   local lib = fulljoin(app_path, "Contents", "Frameworks", "libfmodex.dylib")
   os.remove(lib)
 end
-
-if (disable_devil) then
-  -- remove devil library
+if (disable_devil == 1) then
+  local libs = {"libIL.dylib", "libILU.dylib", "libILUT.dylib", "libjpeg.dylib", "liblcms.dylib", "libmng.dylib", "libtiff.dylib"}
+  for _, lib in pairs(libs) do
+    local libpath = fulljoin(app_path, "Contents", "Frameworks", lib)
+    os.remove(libpath)
+  end
 end
