@@ -70,7 +70,6 @@ for libname, data in LIBLIST.iteritems():
     else:
         print "Problem, don't know how to unarchive %s" % lib
 
-sys.exit(1)
 #####################################
 # build libpng                      #
 #####################################
