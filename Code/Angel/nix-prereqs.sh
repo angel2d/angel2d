@@ -25,11 +25,11 @@ fi
 if   [ "$DIST" == 'Fedora' ] ; then
 	yum -y install gcc-c++ make swig mesa-libGLU-devel DevIL-ILUT-devel\
 		readline-devel libXrandr-devel freetype-devel cmake\
-		openal-soft-devel libvorbis-deveil
+		openal-soft-devel libvorbis-devel
 elif [ "$DIST" == 'Ubuntu' ] ; then
 	apt-get -y install build-essential cmake swig libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
-		joystick libopenal-dev libvorbis-dev
+		joystick libopenal-dev libvorbis-dev libpng12-dev
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which port`" != "" ] ; then
 		if [ "`port installed swig | grep currently`" == "" ] ; then
