@@ -77,7 +77,7 @@ tr = t:read("*all")
 disable_fmod = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_FMOD%s+([0-9]+)"))
 disable_devil = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_DEVIL%s+([0-9]+)"))
 
-local files_ex = {"DevIL.dll", "ILU.dll", "ILUT.dll"}
+local files_ex = {}
 local files_base = {"GameInfo.txt", "Attributions.txt"}
 local directories = {"Resources", "Config", "Logs"}
 
@@ -85,6 +85,12 @@ if (disable_fmod == 1) then
   table.insert(files_ex, "OpenAL32.dll")
 else
   table.insert(files_ex, "fmodex.dll")
+end
+
+if (disable_devil ~= 1) then
+  table.insert(files_ex, "DevIL.dll")
+  table.insert(files_ex, "ILU.dll")
+  table.insert(files_ex, "ILUT.dll")
 end
 
 for _, file_ex in pairs(files_ex) do

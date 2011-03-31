@@ -190,11 +190,11 @@ function correct_attributions(filename, att_dir, disable_devil, disable_fmod)
   
   local f = assert(io.open(filename, "a+"))
   append_to(f, fulljoin(att_dir, "base-angel.txt"))
-  if (disable_devil ~= true) then
+  if (disable_devil ~= 1) then
     append_to(f, fulljoin(att_dir, "devil-libs.txt"))
     lgpl = true
   end
-  if (disable_fmod) then
+  if (disable_fmod == 1) then
     append_to(f, fulljoin(att_dir, "ogg-vorbis.txt"))
     if (pl.path.is_windows) then
       append_to(f, fulljoin(att_dir, "openal-soft.txt"))
