@@ -110,7 +110,7 @@ const int Camera::GetWindowWidth() const
 const double Camera::GetViewRadius() const
 {
 	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
-	return tan(sideAngle) * abs(_position.Z);
+	return tan(sideAngle) * fabs(_position.Z);
 }
 
 const Vector2 Camera::GetWorldMaxVertex() const
