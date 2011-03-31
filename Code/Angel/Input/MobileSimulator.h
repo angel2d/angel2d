@@ -35,7 +35,7 @@
 ///A class to somewhat simulate the setup of an iOS app on the desktop.
 /** 
  * If you add this Renderable to the world, it'll pretend to be the mobile hardware,
- *  filling the sate data structures that the real hardware would, meaning you can 
+ *  filling the same data structures that the real hardware would, meaning you can 
  *  use this to prototype a lot of iOS gameplay without having the hardware 
  *  immediately accessible. 
  * 

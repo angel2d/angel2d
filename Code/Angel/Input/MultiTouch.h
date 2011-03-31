@@ -61,7 +61,7 @@ enum TouchInput
 };
 
 /**
- * Structure bundling the data about individual gestures that are received
+ * Structure which bundles the data about individual gestures that are received
  *  and sent via messages. 
  */
 struct GestureData

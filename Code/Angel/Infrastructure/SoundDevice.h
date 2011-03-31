@@ -75,15 +75,15 @@ class GameManager;
  * 
  * Note that FMOD requires licensing fees if you want to distribute your game
  *  for money. Because we're focused on prototyping, and FMOD supports a 
- *  wide array of sound formats and is very high quality, it's the default
- *  sound system in Angel. If it doesn't fit your needs for some reason, 
- *  though, no worries. This same interface can play sound through OpenAL,
+ *  wide array of sound formats while producing very high quality audio, it's 
+ *  the default sound system in Angel. If it doesn't fit your needs for some 
+ *  reason, though, no worries. This same interface can play sound through OpenAL,
  *  but only in the Ogg Vorbis format. 
  * 
  * To switch to OpenAL, set the ANGEL_DISABLE_FMOD flag in AngelConfig.h
  *  to 1. 
  * 
- * It uses the singleton pattern; you can't actually declare a new instance
+ * This class uses the singleton pattern; you can't actually declare a new instance
  *  of a SoundDevice. To access sound in your world, use "theSound" to retrieve
  *  the singleton object. "theSound" is defined in both C++ and Lua. 
  * 
