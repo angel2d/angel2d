@@ -50,22 +50,6 @@
 	#include <vorbis/vorbisfile.h>
 #endif
 
-/* ----------------------------------------------------------------------------
-
-TODO: 
-	Add 3D support.
-	Cache off a map of filename (base) to SampleID.
-	Add Flag support.
-	Add next phase of functionality based on feedback and what FMOD has available.
-		Some ideas are to support the FMOD Designer files, reverb, etc.
-
-NOTES:
-	PlaySound can be told to reuse SoundChannels by adding FMOD_CHANNEL_REUSE
-		If FMOD_CHANNEL_REUSE is used, this can contain a previously used channel handle and FMOD will re-use it to play a sound on. 
-
- 
------------------------------------------------------------------------------*/
-
 //typedefs so our declarations can look more sensible
 #if !ANGEL_DISABLE_FMOD
 	typedef void* AngelSoundHandle;
@@ -88,6 +72,16 @@ class GameManager;
  *  usage, it shouldn't be hard to expand this class. 
  * 
  * For more information on FMOD: http://www.fmod.org/
+ * 
+ * Note that FMOD requires licensing fees if you want to distribute your game
+ *  for money. Because we're focused on prototyping, and FMOD supports a 
+ *  wide array of sound formats and is very high quality, it's the default
+ *  sound system in Angel. If it doesn't fit your needs for some reason, 
+ *  though, no worries. This same interface can play sound through OpenAL,
+ *  but only in the Ogg Vorbis format. 
+ * 
+ * To switch to OpenAL, set the ANGEL_DISABLE_FMOD flag in AngelConfig.h
+ *  to 1. 
  * 
  * It uses the singleton pattern; you can't actually declare a new instance
  *  of a SoundDevice. To access sound in your world, use "theSound" to retrieve
@@ -132,7 +126,7 @@ public:
 	 *   normal volume. (1.0 is maximum volume.)
 	 * @param looping Whether you want the sound to repeat when it's done
 	 * @param flags Currently unused; this will eventually let you pass in
-	 *   flags to the underlying sound system (FMOD)
+	 *   flags to the underlying sound system (only supported with FMOD)
 	 * @return The AngelSoundHandle that you can use to monitor or affect playback
 	 */
 	AngelSoundHandle PlaySound(AngelSampleHandle sample, float volume=1.0f, bool looping=false, int flags=0);
@@ -219,9 +213,9 @@ public:
 	
 	/**
 	 * Releases all sounds (invalidating your leftover AngelSoundHandle and 
-	 *  AngelSampleHandle pointers) and shuts down FMOD. Should really only be
-	 *  called at the end of the game, which the World handles for you by
-	 *  default. 
+	 *  AngelSampleHandle pointers) and shuts down FMOD if necessary. Should 
+	 *  really only be called at the end of the game, which the World handles 
+	 *  for you by default. 
 	 */
 	void Shutdown();
 	

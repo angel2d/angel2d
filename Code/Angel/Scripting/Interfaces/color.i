@@ -77,8 +77,9 @@ public:
 	float R, G, B, A;
 	
 	Color();
-	Color(float r, float g, float b, float a=1.0f);
-	Color(String hexString);
+	Color(float r, float g, float b, float a=1.0f, bool clamp=true);
+	Color FromInts(int r, int g, int b, int a=255, bool clamp=true);
+	Color FromHexString(String hexString);
 	
 	bool operator==(const Color &c) const;
 	bool operator!=(const Color &c) const;

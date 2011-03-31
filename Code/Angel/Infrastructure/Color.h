@@ -86,7 +86,7 @@ public:
 	Color(float r, float g, float b, float a=1.0f, bool clamp=true);
 	
 	/**
-	 * A constructor to specify colors as integers from 0 to 255. Useful if
+	 * A function to specify colors as integers from 0 to 255. Useful if
 	 *  you've got a color picker you like that gives you values in this range. 
 	 *  
 	 * Note that internally the numbers are converted to floats from 0 to 1. 
@@ -100,15 +100,15 @@ public:
 	 *   unless you're doing some kind of nutty color math, in which case you 
 	 *   should set this to false.
 	 */
-	Color(int r, int g, int b, int a=255, bool clamp=true);
+	static Color FromInts(int r, int g, int b, int a=255, bool clamp=true);
 	
 	/**
-	 * A constructor to specify a color as a hex string, like in CSS. For those
+	 * A function to specify a color as a hex string, like in CSS. For those
 	 *  used to specifying colors for web pages, you have an option here. 
 	 * 
 	 * @param hexString The string identifying the color ("0xfff", "#fa6244", etc.)
 	 */
-	Color(String hexString);
+	static Color FromHexString(String hexString);
 	
 	bool operator==(const Color &c) const;
 	bool operator!=(const Color &c) const;

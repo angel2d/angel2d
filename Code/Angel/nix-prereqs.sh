@@ -32,7 +32,7 @@ elif [ "$DIST" == 'Ubuntu' ] ; then
 		joystick libopenal-dev libvorbis-dev libpng12-dev
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which port`" != "" ] ; then
-		if [ "`port installed swig | grep currently`" == "" ] ; then
+		if [ "`port installed swig-lua | grep currently`" == "" ] ; then
 			port install swig-lua
 		fi
 	else

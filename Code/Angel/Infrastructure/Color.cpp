@@ -52,21 +52,25 @@ Color::Color(float r, float g, float b, float a, bool clamp)
 	}
 }
 
-Color::Color(int r, int g, int b, int a, bool clamp)
+Color Color::FromInts(int r, int g, int b, int a, bool clamp)
 {
-	R = (float)r / 255.0f;
-	G = (float)g / 255.0f;
-	B = (float)b / 255.0f;
-	A = (float)a / 255.0f;
+	Color forReturn;
+	forReturn.R = (float)r / 255.0f;
+	forReturn.G = (float)g / 255.0f;
+	forReturn.B = (float)b / 255.0f;
+	forReturn.A = (float)a / 255.0f;
 	
 	if (clamp)
 	{
-		ClampMe();		
+		forReturn.ClampMe();		
 	}
+
+	return forReturn;
 }
 
-Color::Color(String hexString)
+Color Color::FromHexString(String hexString)
 {
+	Color forReturn;
 	bool isHex = false;
 	if (hexString[0] == '#')
 	{
@@ -84,8 +88,7 @@ Color::Color(String hexString)
 		if ( (hexString.length() != 3) && (hexString.length() != 6) )
 		{
 			//invalid length, set to white
-			R = G = B = A = 1.0f;
-			return;
+			return Color();
 		}
 		
 		if (hexString.length() == 3)
@@ -106,18 +109,18 @@ Color::Color(String hexString)
 		int gInt = HexToInteger(gString);
 		int bInt = HexToInteger(bString);
 		
-		R = (float)rInt / 255.0f;
-		G = (float)gInt / 255.0f;
-		B = (float)bInt / 255.0f;
-		A = 1.0f;
+		forReturn.R = (float)rInt / 255.0f;
+		forReturn.G = (float)gInt / 255.0f;
+		forReturn.B = (float)bInt / 255.0f;
+		forReturn.A = 1.0f;
 		
-		ClampMe();
+		forReturn.ClampMe();
+		return forReturn;
 	}
 	else
 	{
 		// no support for other string-defined colors -- to white with you
-		R = G = B = A = 1.0f;
-		return;
+		return Color();
 	}
 }
 

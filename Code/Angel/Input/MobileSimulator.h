@@ -34,19 +34,19 @@
 
 ///A class to somewhat simulate the setup of an iOS app on the desktop.
 /** 
+ * If you add this Renderable to the world, it'll pretend to be the mobile hardware,
+ *  filling the sate data structures that the real hardware would, meaning you can 
+ *  use this to prototype a lot of iOS gameplay without having the hardware 
+ *  immediately accessible. 
  * 
+ * You shouldn't actually have to call any of the methods on this class. Add
+ *  it to the world and then use the interfaces defined in MultiTouch.h.
  */
 class MobileSimulator : public Renderable, MouseListener
 {
 public:
-	/**
-	 * Constructor for the mobile simulator. 
-	 */
 	MobileSimulator();
 
-	/**
-	 * Destructor, required by virtual inheritance.
-	 */
 	virtual ~MobileSimulator();
 
 	virtual void Update(float dt);

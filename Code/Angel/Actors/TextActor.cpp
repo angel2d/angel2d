@@ -122,6 +122,12 @@ void TextActor::SetPosition(float x, float y)
 	CalculatePosition();
 }
 
+void TextActor::SetRotation(float newRotation)
+{
+	Actor::SetRotation(newRotation);
+	CalculatePosition();
+}
+
 void TextActor::SetPosition(const Vector2& position)
 {
 	Actor::SetPosition(position);
@@ -160,29 +166,32 @@ void TextActor::CalculatePosition()
 		it++;
 	}
 
-	float currentY = MathUtil::WorldToScreen(GetPosition()).Y;
+	Vector2 startPoint = MathUtil::WorldToScreen(GetPosition());
+	Vector2 currentPoint(startPoint.X, startPoint.Y);
+
 	it = _displayStrings.begin();
 	while(it != _displayStrings.end())
 	{
 		Vector2 size;
 		switch(_alignment)
 		{
-		case TXT_Left:
-			(*it)._position = Vector2(MathUtil::WorldToScreen(GetPosition()).X, currentY);
-			break;
-		case TXT_Center:
-			(*it)._position = 
-				Vector2(MathUtil::WorldToScreen(GetPosition()).X, currentY) + 
-					Vector2::Rotate(Vector2(-(*it)._extents.X * 0.5f, 0.0f), -MathUtil::ToRadians(theCamera.GetRotation()));
-			break;
-		case TXT_Right:
-			(*it)._position = 
-				Vector2(MathUtil::WorldToScreen(GetPosition()).X, currentY) + 
-					Vector2::Rotate(Vector2(-(*it)._extents.X, 0.0f), -MathUtil::ToRadians(theCamera.GetRotation()));
-			break;
+			case TXT_Left:
+				(*it)._position = currentPoint;
+				break;
+			case TXT_Center:
+				(*it)._position = 
+					currentPoint + 
+						Vector2::Rotate(Vector2(-(*it)._extents.X * 0.5f, 0.0f), -MathUtil::ToRadians(GetRotation() + theCamera.GetRotation()));
+				break;
+			case TXT_Right:
+				(*it)._position = 
+					currentPoint + 
+						Vector2::Rotate(Vector2(-(*it)._extents.X, 0.0f), -MathUtil::ToRadians(GetRotation() + theCamera.GetRotation()));
+				break;
 		}
 		
-		currentY += largest.Y + _lineSpacing;
+		Vector2 translation(0.0f, largest.Y + _lineSpacing);
+		currentPoint += Vector2::Rotate(translation, -MathUtil::ToRadians(GetRotation() + theCamera.GetRotation()));
 		it++;
 	}
 	

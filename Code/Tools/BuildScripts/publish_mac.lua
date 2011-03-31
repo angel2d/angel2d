@@ -101,3 +101,6 @@ if (disable_devil == 1) then
     os.remove(libpath)
   end
 end
+
+att_path = fulljoin(args.input_directory, "..", "Tools", "BuildScripts", "Attributions")
+correct_attributions(pl.path.join(output_d, "Attributions.txt"), att_path, disable_devil, disable_fmod)

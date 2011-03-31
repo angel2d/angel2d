@@ -97,6 +97,9 @@ for _, directory in pairs(directories) do
   recursive_copy(pl.path.join(args.input_directory, directory), pl.path.join(bits_path, directory))
 end
 
+att_path = fulljoin(args.input_directory, "..", "Tools", "BuildScripts", "Attributions")
+correct_attributions(pl.path.join(args.output_directory, "Attributions.txt"), att_path, disable_devil, disable_fmod)
+
 copyfile(fulljoin(args.input_directory, "Release", args.gamename), pl.path.join(bits_path, config.game_info.name .. ".exe"))
 
 local batch = io.open(pl.path.join(args.output_directory, config.game_info.name .. ".bat"), "w")

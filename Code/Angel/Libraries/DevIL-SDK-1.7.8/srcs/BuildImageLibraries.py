@@ -52,16 +52,15 @@ if (CLEAN):
 # unarchive everything              #
 #####################################
 for libname, data in LIBLIST.iteritems():
-    if (libname == "libpng"):
-        print "Copying libpng from Angel libraries..."
-        os.system("cp -R ../../libpng-1.4.1 ./")
-        continue
     lib = data[0]
     directory = data[1]
     if os.path.exists(directory):
         print "Skipping %s, %s already exists" % (lib, directory)
         continue
-    if lib.endswith(".zip"):
+    if (libname == "libpng"):
+        print "Copying libpng from Angel libraries..."
+        os.system("cp -R ../../libpng-1.4.1 ./")
+    elif lib.endswith(".zip"):
         print "Unzipping %s..." % lib
         os.system("unzip %s > /dev/null" % lib)
     elif (lib.endswith(".tar.gz") or lib.endswith(".tgz")):
@@ -92,7 +91,6 @@ if ("libjpeg" in LIBLIST.keys()):
     os.system('make install')
     os.system('install_name_tool -id @executable_path/../Frameworks/libjpeg.dylib %s/lib/libjpeg.dylib' % (INST_DIR))
     
-
 #####################################
 # build libtiff                     #
 #####################################

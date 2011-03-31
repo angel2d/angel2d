@@ -56,8 +56,6 @@ public:
 	
 	/**
 	 * Base destructor removes this object from the list. 
-	 * 
-	 * @return 
 	 */
 	virtual ~MouseListener();
 
@@ -111,7 +109,7 @@ public:
 void RegisterMouseSubscriber(MouseListener* actor);
 
 /** 
- * Adds a MouseListener to the list of objects getting notified when 
+ * Removes a MouseListener from the list of objects getting notified when 
  *  mouse events happen. Don't call this function directly; let the 
  *  MouseListener destructor handle it.
  */

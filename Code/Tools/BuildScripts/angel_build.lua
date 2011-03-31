@@ -124,7 +124,7 @@ function recursive_copy(src, dst)
   end
 end
 
--- split a string into a table along separators
+-- split a string into a table along a single separator character
 function string:split(sep)
   local sep, fields = sep or " ", {}
   local pattern = string.format("([^%s]+)", sep)
@@ -168,13 +168,47 @@ function loadFileIn(filename, environment)
   return f()
 end
 
--- get the absolute path toe the current file
+-- get the absolute path to the current file
 function get_file_location()
   local file_location = debug.getinfo(2,'S').source
   if (file_location:sub(1,1) == "@") then
     file_location = file_location:sub(2, -1)
   end
   return (pl.path.dirname(pl.path.abspath(file_location)))
+end
+
+-- correct a given attributions file to claim the used libraries
+function correct_attributions(filename, att_dir, disable_devil, disable_fmod)
+  local function append_to(file_handle, newfile)
+    local newfile_handle = assert(io.open(newfile, "r"))
+    local newtext = newfile_handle:read("*all")
+    newfile_handle:close()
+    file_handle:write(newtext)
+  end
+  
+  local lgpl = false
+  
+  local f = assert(io.open(filename, "a+"))
+  append_to(f, fulljoin(att_dir, "base-angel.txt"))
+  if (disable_devil ~= true) then
+    append_to(f, fulljoin(att_dir, "devil-libs.txt"))
+    lgpl = true
+  end
+  if (disable_fmod) then
+    append_to(f, fulljoin(att_dir, "ogg-vorbis.txt"))
+    if (pl.path.is_windows) then
+      append_to(f, fulljoin(att_dir, "openal-soft.txt"))
+      lgpl = true
+    end
+  else
+    append_to(f, fulljoin(att_dir, "fmod.txt"))
+  end
+  
+  if (lgpl) then
+    append_to(f, fulljoin(att_dir, "lgpl.txt"))
+  end
+  
+  f:close()
 end
 
 -- find a local install of SWIG

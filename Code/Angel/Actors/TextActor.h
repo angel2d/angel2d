@@ -160,7 +160,7 @@ public:
 	 * @param position a float indicating the new rotation counter-clockwise around
 	 * the z-axis (in degrees)
 	 */
-	//virtual void SetRotation(float newRotation);
+	virtual void SetRotation(float newRotation);
 	
 	/**
 	 * An implementation of the MessageListener interface, which listens for 
