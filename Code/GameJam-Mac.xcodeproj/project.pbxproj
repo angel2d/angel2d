@@ -341,8 +341,8 @@
 		346E5EA80F30122000258B84 /* DemoScreenIntervals.h in Headers */ = {isa = PBXBuildFile; fileRef = 346E5EA60F30122000258B84 /* DemoScreenIntervals.h */; };
 		3473839C11D062BD00088BB9 /* lfs.c in Sources */ = {isa = PBXBuildFile; fileRef = 3473839A11D062BD00088BB9 /* lfs.c */; };
 		3473839D11D062BD00088BB9 /* lfs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3473839B11D062BD00088BB9 /* lfs.h */; };
-		34810A150E67A38B00246544 /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
-		34810B240E68450000246544 /* libfmodex.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
+		34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
+		34810B240E68450000246544 /* libfmodex.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
 		3489C3D9130CEAAB0034F4FB /* MobileSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3489C3D7130CEAAB0034F4FB /* MobileSimulator.h */; };
 		3489C3DA130CEAAB0034F4FB /* MobileSimulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3489C3D8130CEAAB0034F4FB /* MobileSimulator.cpp */; };
 		34974A320E2925BE0018A032 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A300E2925BE0018A032 /* stdafx.cpp */; };
@@ -416,27 +416,29 @@
 		34D34E6E0E2C38A20053994C /* DemoScreenSimpleActor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D34DF80E2C375A0053994C /* DemoScreenSimpleActor.h */; };
 		34D6B4BC11CC3CF700D72FE6 /* libLua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EECBDC11CB922100667B26 /* libLua.a */; };
 		34D6B4C511CC3D1F00D72FE6 /* lua.c in Sources */ = {isa = PBXBuildFile; fileRef = 34D6B4C411CC3D1F00D72FE6 /* lua.c */; };
+		34D6C166134762C500D82C14 /* angel.icns in Copy Icon */ = {isa = PBXBuildFile; fileRef = 34D6C1511347619800D82C14 /* angel.icns */; };
+		34D6C1721347638F00D82C14 /* angel.icns in Copy Icon */ = {isa = PBXBuildFile; fileRef = 34D6C1701347636500D82C14 /* angel.icns */; };
 		34E762841338C6F600BA9A3C /* libIL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762851338C6F600BA9A3C /* libILU.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762861338C6F600BA9A3C /* libILUT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762871338C6F600BA9A3C /* libjpeg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762891338C6F600BA9A3C /* libmng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E7628B1338C6F600BA9A3C /* libtiff.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		34E762941338C70000BA9A3C /* libIL.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
-		34E762951338C70000BA9A3C /* libILU.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
-		34E762961338C70000BA9A3C /* libILUT.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
-		34E762971338C70000BA9A3C /* libjpeg.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; };
-		34E762991338C70000BA9A3C /* libmng.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; };
-		34E7629B1338C70000BA9A3C /* libtiff.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; };
-		34E7629C1338C70F00BA9A3C /* libIL.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
-		34E7629D1338C70F00BA9A3C /* libILU.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
-		34E7629E1338C70F00BA9A3C /* libILUT.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
-		34E7629F1338C70F00BA9A3C /* libjpeg.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; };
-		34E762A11338C70F00BA9A3C /* libmng.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; };
-		34E762A31338C70F00BA9A3C /* libtiff.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; };
+		34E762941338C70000BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
+		34E762951338C70000BA9A3C /* libILU.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
+		34E762961338C70000BA9A3C /* libILUT.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
+		34E762971338C70000BA9A3C /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; };
+		34E762991338C70000BA9A3C /* libmng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; };
+		34E7629B1338C70000BA9A3C /* libtiff.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; };
+		34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
+		34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
+		34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
+		34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; };
+		34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; };
+		34E762A31338C70F00BA9A3C /* libtiff.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; };
 		34E762BC1338C7C000BA9A3C /* liblcms.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		34E762BE1338C7C500BA9A3C /* liblcms.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; };
-		34E762BF1338C7CC00BA9A3C /* liblcms.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; };
+		34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; };
+		34E762BF1338C7CC00BA9A3C /* liblcms.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; };
 		34E762D31338CA9900BA9A3C /* libIL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762D41338CA9900BA9A3C /* libILU.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762D51338CA9900BA9A3C /* libILUT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -446,8 +448,8 @@
 		34E762DA1338CA9900BA9A3C /* libtiff.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E76404133979E000BA9A3C /* libpng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
 		34E76405133979E000BA9A3C /* libpng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
-		34E76406133979EA00BA9A3C /* libpng.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
-		34E76407133979F700BA9A3C /* libpng.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
+		34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
+		34E76407133979F700BA9A3C /* libpng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
 		34EECC0C11CB936D00667B26 /* lapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EECBF511CB936D00667B26 /* lapi.h */; };
 		34EECC0D11CB936D00667B26 /* lauxlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EECBF611CB936D00667B26 /* lauxlib.h */; };
 		34EECC0E11CB936D00667B26 /* lcode.h in Headers */ = {isa = PBXBuildFile; fileRef = 34EECBF711CB936D00667B26 /* lcode.h */; };
@@ -612,40 +614,64 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		34F1FD350E5D27710065CD22 /* CopyFiles */ = {
+		34D6C16C134762D400D82C14 /* Copy Icon */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 7;
 			files = (
-				34E7629C1338C70F00BA9A3C /* libIL.dylib in CopyFiles */,
-				34E7629D1338C70F00BA9A3C /* libILU.dylib in CopyFiles */,
-				34E7629E1338C70F00BA9A3C /* libILUT.dylib in CopyFiles */,
-				34E762BE1338C7C500BA9A3C /* liblcms.dylib in CopyFiles */,
-				34E7629F1338C70F00BA9A3C /* libjpeg.dylib in CopyFiles */,
-				34E762A11338C70F00BA9A3C /* libmng.dylib in CopyFiles */,
-				34E762A31338C70F00BA9A3C /* libtiff.dylib in CopyFiles */,
-				34E76406133979EA00BA9A3C /* libpng.dylib in CopyFiles */,
-				34810A150E67A38B00246544 /* libfmodex.dylib in CopyFiles */,
+				34D6C166134762C500D82C14 /* angel.icns in Copy Icon */,
 			);
+			name = "Copy Icon";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		34F1FF040E5D2FE30065CD22 /* CopyFiles */ = {
+		34D6C173134763AD00D82C14 /* Copy Icon */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				34D6C1721347638F00D82C14 /* angel.icns in Copy Icon */,
+			);
+			name = "Copy Icon";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34F1FD350E5D27710065CD22 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				34E762941338C70000BA9A3C /* libIL.dylib in CopyFiles */,
-				34E762951338C70000BA9A3C /* libILU.dylib in CopyFiles */,
-				34E762961338C70000BA9A3C /* libILUT.dylib in CopyFiles */,
-				34E762BF1338C7CC00BA9A3C /* liblcms.dylib in CopyFiles */,
-				34E762971338C70000BA9A3C /* libjpeg.dylib in CopyFiles */,
-				34E762991338C70000BA9A3C /* libmng.dylib in CopyFiles */,
-				34E7629B1338C70000BA9A3C /* libtiff.dylib in CopyFiles */,
-				34E76407133979F700BA9A3C /* libpng.dylib in CopyFiles */,
-				34810B240E68450000246544 /* libfmodex.dylib in CopyFiles */,
+				34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */,
+				34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */,
+				34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */,
+				34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */,
+				34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */,
+				34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */,
+				34E762A31338C70F00BA9A3C /* libtiff.dylib in Copy Frameworks */,
+				34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */,
+				34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34F1FF040E5D2FE30065CD22 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				34E762941338C70000BA9A3C /* libIL.dylib in Copy Frameworks */,
+				34E762951338C70000BA9A3C /* libILU.dylib in Copy Frameworks */,
+				34E762961338C70000BA9A3C /* libILUT.dylib in Copy Frameworks */,
+				34E762BF1338C7CC00BA9A3C /* liblcms.dylib in Copy Frameworks */,
+				34E762971338C70000BA9A3C /* libjpeg.dylib in Copy Frameworks */,
+				34E762991338C70000BA9A3C /* libmng.dylib in Copy Frameworks */,
+				34E7629B1338C70000BA9A3C /* libtiff.dylib in Copy Frameworks */,
+				34E76407133979F700BA9A3C /* libpng.dylib in Copy Frameworks */,
+				34810B240E68450000246544 /* libfmodex.dylib in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1051,12 +1077,14 @@
 		34D34E4A0E2C38250053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = IntroGame/Attributions.txt; sourceTree = "<group>"; };
 		34D34E4B0E2C38480053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = ClientGame/GameInfo.txt; sourceTree = "<group>"; };
 		34D34E4C0E2C38480053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Attributions.txt; sourceTree = "<group>"; };
-		34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/ClientGameInfo.plist; sourceTree = "<group>"; };
-		34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/IntroGameInfo.plist; sourceTree = "<group>"; };
+		34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/mac/ClientGameInfo.plist; sourceTree = "<group>"; };
+		34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/mac/IntroGameInfo.plist; sourceTree = "<group>"; };
 		34D6B4B611CC3CCA00D72FE6 /* Lua */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lua; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D6B4C411CC3D1F00D72FE6 /* lua.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lua.c; path = "Angel/Libraries/lua-5.1.4/src/lua.c"; sourceTree = "<group>"; };
 		34D6B53E11CC79B700D72FE6 /* LuaModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaModule.cpp; path = Angel/Scripting/LuaModule.cpp; sourceTree = "<group>"; };
 		34D6B53F11CC79B700D72FE6 /* LuaModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaModule.h; path = Angel/Scripting/LuaModule.h; sourceTree = "<group>"; };
+		34D6C1511347619800D82C14 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = IntroGame/mac/angel.icns; sourceTree = "<group>"; };
+		34D6C1701347636500D82C14 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = ClientGame/mac/angel.icns; sourceTree = "<group>"; };
 		34D6C2710F96C0EC00430618 /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
 		34DB1B9B0E441C73006F63F5 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		34DB1B9C0E441C73006F63F5 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
@@ -1734,8 +1762,8 @@
 		34974B850E2929B90018A032 /* Mac Build */ = {
 			isa = PBXGroup;
 			children = (
-				34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */,
-				34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */,
+				34D6C16F1347635400D82C14 /* ClientGame */,
+				34D6C16E1347634900D82C14 /* IntroGame */,
 			);
 			name = "Mac Build";
 			sourceTree = "<group>";
@@ -2036,6 +2064,24 @@
 				34D34DDF0E2C375A0053994C /* stdafx.cpp */,
 			);
 			name = PCH;
+			sourceTree = "<group>";
+		};
+		34D6C16E1347634900D82C14 /* IntroGame */ = {
+			isa = PBXGroup;
+			children = (
+				34D6C1511347619800D82C14 /* angel.icns */,
+				34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */,
+			);
+			name = IntroGame;
+			sourceTree = "<group>";
+		};
+		34D6C16F1347635400D82C14 /* ClientGame */ = {
+			isa = PBXGroup;
+			children = (
+				34D6C1701347636500D82C14 /* angel.icns */,
+				34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */,
+			);
+			name = ClientGame;
 			sourceTree = "<group>";
 		};
 		34DB1B980E441C73006F63F5 /* Infrastructure */ = {
@@ -2615,7 +2661,8 @@
 				34388F4311E3EFE6002A79B1 /* Generate Lua Wrapping */,
 				34D34E230E2C376A0053994C /* Headers */,
 				34D34E250E2C376A0053994C /* Sources */,
-				34F1FF040E5D2FE30065CD22 /* CopyFiles */,
+				34D6C16C134762D400D82C14 /* Copy Icon */,
+				34F1FF040E5D2FE30065CD22 /* Copy Frameworks */,
 				34D34E290E2C376A0053994C /* Frameworks */,
 				34D34E350E2C376A0053994C /* Copy Resources */,
 			);
@@ -2673,7 +2720,8 @@
 				34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */,
 				34974A490E29265E0018A032 /* Headers */,
 				8D11072C0486CEB800E47090 /* Sources */,
-				34F1FD350E5D27710065CD22 /* CopyFiles */,
+				34D6C173134763AD00D82C14 /* Copy Icon */,
+				34F1FD350E5D27710065CD22 /* Copy Frameworks */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				341822660E2B176D003EC89B /* Copy Resources */,
 			);
@@ -3585,7 +3633,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/IntroGameInfo.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/mac/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
@@ -3613,7 +3661,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/IntroGameInfo.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/mac/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
@@ -3730,7 +3778,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = ClientGame/ClientGameInfo.plist;
+				INFOPLIST_FILE = ClientGame/mac/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
@@ -3757,7 +3805,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = ClientGame/ClientGameInfo.plist;
+				INFOPLIST_FILE = ClientGame/mac/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
