@@ -33,7 +33,7 @@
 
 DemoScreenStart::DemoScreenStart()
 {
-	music = theSound.LoadSample("Resources/Sounds/drop.ogg", true /*stream*/);
+	music = theSound.LoadSample("Resources/Sounds/xylophone.ogg", true /*stream*/);
 	if (music)
 		theSound.PlaySound(music, 0.5f, true, 0);
 }

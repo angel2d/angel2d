@@ -15,15 +15,21 @@ http://flickr.com/photos/special/229619/
 Some Rights Reserved: Creative Commons Attribution Non-Commerical 2.0
 http://creativecommons.org/licenses/by-nc/2.0/deed.en
 -----------------
-"Drop" © Ashtar Command, 2005
-All Rights Reserved
+"The Annual New England Xylophone Symposium" by DoKashiteru
+http://ccmixter.org/files/DoKashiteru/19848
+
+Some Rights Reserved: Creative Commons Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
 -----------------
 This game uses the following sound files from The Freesound Project:
 
 "mouse_click" from THE_bizniss
-"jaw harp 6" from stomachache
+http://www.freesound.org/samplesViewSingle.php?id=39562
 
-(freesound.org)
+"jaw harp 6" from stomachache
+http://www.freesound.org/samplesViewSingle.php?id=29811
+
+Some Rights Reserved: Creative Commons Sampling Plus 1.0
 http://creativecommons.org/licenses/sampling+/1.0/
 -----------------
 Inconsolata
