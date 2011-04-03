@@ -1,14 +1,4 @@
-This file contains acknowledgements and copyright notices for all included
-software and resources. The publish script (run when you build in release
-mode) will append the necessary library attributions to this file in your
-Published directory. If you distribute software using Angel, you must
-distribute this file with it to comply with the license requirements for
-various Angel components. 
-
-You are free to add your own acknowledgements to this file as appropriate,
-and remove this top notification if you want.
-
------------------
+﻿-----------------
 Angel image found on Flickr, uploaded by Special. 
 http://flickr.com/photos/special/229619/
 
