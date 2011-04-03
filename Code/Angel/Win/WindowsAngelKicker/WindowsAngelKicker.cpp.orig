@@ -6,16 +6,18 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <direct.h>
-#include <stdlib.h>
+#include <process.h>
+#include <errno.h>
 
-#define ANGEL_EXE_NAME "\"My GameJam Game.exe\""
+#define ANGEL_EXE_NAME "My GameJam Game.exe"
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char** argv)
 {
 	_chdir("bits");
 
-	system(ANGEL_EXE_NAME);
+	intptr_t retVal = _execl(ANGEL_EXE_NAME, ANGEL_EXE_NAME);
 
 	return 0;
 }
+
 

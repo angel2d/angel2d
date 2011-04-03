@@ -35,7 +35,7 @@ DemoScreenStart::DemoScreenStart()
 {
 	music = theSound.LoadSample("Resources/Sounds/xylophone.ogg", true /*stream*/);
 	if (music)
-		theSound.PlaySound(music, 0.5f, true, 0);
+		theSound.PlaySound(music, 0.2f, true, 0);
 }
 
 void DemoScreenStart::Start()

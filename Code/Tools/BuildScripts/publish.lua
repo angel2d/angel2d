@@ -131,13 +131,17 @@ local kicker_file = io.open(kicker_source_fname, "r")
 local kicker_source = kicker_file:read("*all")
 kicker_file:close()
 
-local newstring = string.format("\n#define ANGEL_EXE_NAME \"\\\"%s.exe\\\"\"", config.game_info.name)
+local newstring = string.format("\n#define ANGEL_EXE_NAME \"%s.exe\"", config.game_info.name)
 kicker_source = kicker_source:gsub("\n#define%s+ANGEL_EXE_NAME%s+[^\n]+", newstring)
 kicker_file = io.open(kicker_source_fname, "w")
 kicker_file:write(kicker_source)
 kicker_file:close()
 
-local exec_string = string.format("echo off & \"%sbin\\vcvars32.bat\" > nul & msbuild WindowsAngelKicker.sln /p:Configuration=Release /nologo /noconsolelogger /v:quiet > nul", args.vcpath)
+local kicker_config = "Debug" -- for some reason the release build barfs at runtime.
+                              --  need to figure this out.
+
+local exec_string = string.format("echo off & \"%sbin\\vcvars32.bat\" > nul & msbuild WindowsAngelKicker.sln /p:Configuration=%s /nologo /noconsolelogger /v:quiet > nul", args.vcpath, kicker_config)
+
 os.execute(exec_string)
 
-copyfile(fulljoin(kicker_dir, "Release", "WindowsAngelKicker.exe"), fulljoin(args.output_directory, config.game_info.name .. ".exe"))
+copyfile(fulljoin(kicker_dir, kicker_config, "WindowsAngelKicker.exe"), fulljoin(args.output_directory, config.game_info.name .. ".exe"))
