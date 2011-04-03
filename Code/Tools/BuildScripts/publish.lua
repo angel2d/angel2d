@@ -47,6 +47,7 @@ local args = pl.lapp [[
   Packages a game for easy distribution. 
     -i,--input_directory (string)  Project directory
     -o,--output_directory  (string)  Where the packaged game should go
+    -v,--vcpath (string)  Where Visual Studio is installed
     -g,--gamename (default ClientGame.exe)  Name of the final game
   ]]
 
@@ -73,6 +74,7 @@ end
 conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
 t = io.open(conf_path, "r")
 tr = t:read("*all")
+t:close()
 
 disable_fmod = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_FMOD%s+([0-9]+)"))
 disable_devil = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_DEVIL%s+([0-9]+)"))
@@ -108,7 +110,34 @@ correct_attributions(pl.path.join(args.output_directory, "Attributions.txt"), at
 
 copyfile(fulljoin(args.input_directory, "Release", args.gamename), pl.path.join(bits_path, config.game_info.name .. ".exe"))
 
-local batch = io.open(pl.path.join(args.output_directory, config.game_info.name .. ".bat"), "w")
-batch:write("cd bits\n\"" .. config.game_info.name .. ".exe\"")
-batch:close()
 
+local kicker_dir = fulljoin(args.input_directory, "..", "Angel", "Win", "WindowsAngelKicker")
+local kicker_source_fname = "WindowsAngelKicker.cpp"
+
+local kicker_files = {"angel.ico", "angel_small.ico"}
+for _, kicker_file in pairs(kicker_files) do
+  local src = fulljoin(args.input_directory, "win", kicker_file)
+  local dst = fulljoin(kicker_dir, kicker_file)
+  copyfile(src, dst)
+end
+
+lfs.chdir(kicker_dir)
+
+if (pl.path.exists(kicker_source_fname) ~= true) then
+  copyfile("WindowsAngelKicker.cpp.orig", kicker_source_fname)
+end
+
+local kicker_file = io.open(kicker_source_fname, "r")
+local kicker_source = kicker_file:read("*all")
+kicker_file:close()
+
+local newstring = string.format("\n#define ANGEL_EXE_NAME \"\\\"%s.exe\\\"\"", config.game_info.name)
+kicker_source = kicker_source:gsub("\n#define%s+ANGEL_EXE_NAME%s+[^\n]+", newstring)
+kicker_file = io.open(kicker_source_fname, "w")
+kicker_file:write(kicker_source)
+kicker_file:close()
+
+local exec_string = string.format("echo off & \"%sbin\\vcvars32.bat\" > nul & msbuild WindowsAngelKicker.sln /p:Configuration=Release /nologo /noconsolelogger /v:quiet > nul", args.vcpath)
+os.execute(exec_string)
+
+copyfile(fulljoin(kicker_dir, "Release", "WindowsAngelKicker.exe"), fulljoin(args.output_directory, config.game_info.name .. ".exe"))

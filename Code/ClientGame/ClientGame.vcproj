@@ -6,7 +6,7 @@
 	ProjectGUID="{5B267A7F-D9DF-4B2E-B3E7-73A4EF0F1A36}"
 	RootNamespace="ClientGame"
 	Keyword="Win32Proj"
-	TargetFrameworkVersion="131072"
+	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
 		<Platform
@@ -62,6 +62,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="$(ProjectDir)/win"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -147,6 +148,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="$(ProjectDir)/win"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -187,7 +189,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLLs and publishing..."
-				CommandLine="copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul&#x0D;&#x0A;copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul&#x0D;&#x0A;copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul&#x0D;&#x0A;copy ..\Angel\Libraries\openal-soft-1.13-bin\Win32\soft_oal.dll .\OpenAL32.dll /y &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts\&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe publish.lua -o &quot;$(ProjectDir)Published&quot; -i &quot;$(ProjectDir)&#x0D;&#x0A;"
+				CommandLine="copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul&#x0D;&#x0A;copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul&#x0D;&#x0A;copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul&#x0D;&#x0A;xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul&#x0D;&#x0A;copy ..\Angel\Libraries\openal-soft-1.13-bin\Win32\soft_oal.dll .\OpenAL32.dll /y &gt; nul&#x0D;&#x0A;&#x0D;&#x0A;cd ..\Tools\BuildScripts\&#x0D;&#x0A;..\..\Angel\Libraries\lua-5.1.4\$(ConfigurationName)\lua.exe publish.lua -o &quot;$(ProjectDir)Published&quot; -i &quot;$(ProjectDir)\&quot; -v &quot;$(VCInstallDir)\&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
