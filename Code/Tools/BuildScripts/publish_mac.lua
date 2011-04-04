@@ -73,7 +73,7 @@ end
 
 local files_base = {"GameInfo.txt", "Attributions.txt"}
 for _, file_base in pairs(files_base) do
-  pl.dir.copyfile(pl.path.join(args.input_directory, file_base), pl.path.join(output_d, file_base), true)
+  pl.dir.copyfile(fulljoin(args.input_directory, "Documentation", file_base), pl.path.join(output_d, file_base), true)
 end
 
 local app_path = pl.path.join(output_d, config.game_info.name .. ".app")

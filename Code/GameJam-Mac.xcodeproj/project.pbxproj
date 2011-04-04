@@ -1066,7 +1066,7 @@
 		34D34DEF0E2C375A0053994C /* DemoScreenMovingActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMovingActor.cpp; path = IntroGame/DemoScreens/DemoScreenMovingActor.cpp; sourceTree = "<group>"; };
 		34D34DF00E2C375A0053994C /* DemoScreenRenderLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenRenderLayers.h; path = IntroGame/DemoScreens/DemoScreenRenderLayers.h; sourceTree = "<group>"; };
 		34D34DF10E2C375A0053994C /* DemoScreenPhysicsActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenPhysicsActor.cpp; path = IntroGame/DemoScreens/DemoScreenPhysicsActor.cpp; sourceTree = "<group>"; };
-		34D34DF20E2C375A0053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = IntroGame/GameInfo.txt; sourceTree = "<group>"; };
+		34D34DF20E2C375A0053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = IntroGame/Documentation/GameInfo.txt; sourceTree = "<group>"; };
 		34D34DF30E2C375A0053994C /* DemoScreenSimpleActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenSimpleActor.cpp; path = IntroGame/DemoScreens/DemoScreenSimpleActor.cpp; sourceTree = "<group>"; };
 		34D34DF40E2C375A0053994C /* DemoScreenLevelFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenLevelFile.cpp; path = IntroGame/DemoScreens/DemoScreenLevelFile.cpp; sourceTree = "<group>"; };
 		34D34DF50E2C375A0053994C /* DemoScreenStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenStart.h; path = IntroGame/DemoScreens/DemoScreenStart.h; sourceTree = "<group>"; };
@@ -1074,17 +1074,17 @@
 		34D34DF70E2C375A0053994C /* DemoScreenStart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenStart.cpp; path = IntroGame/DemoScreens/DemoScreenStart.cpp; sourceTree = "<group>"; };
 		34D34DF80E2C375A0053994C /* DemoScreenSimpleActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenSimpleActor.h; path = IntroGame/DemoScreens/DemoScreenSimpleActor.h; sourceTree = "<group>"; };
 		34D34E390E2C376A0053994C /* IntroGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		34D34E4A0E2C38250053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = IntroGame/Attributions.txt; sourceTree = "<group>"; };
-		34D34E4B0E2C38480053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = ClientGame/GameInfo.txt; sourceTree = "<group>"; };
-		34D34E4C0E2C38480053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Attributions.txt; sourceTree = "<group>"; };
-		34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/mac/ClientGameInfo.plist; sourceTree = "<group>"; };
-		34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/mac/IntroGameInfo.plist; sourceTree = "<group>"; };
+		34D34E4A0E2C38250053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = IntroGame/Documentation/Attributions.txt; sourceTree = "<group>"; };
+		34D34E4B0E2C38480053994C /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = ClientGame/Documentation/GameInfo.txt; sourceTree = "<group>"; };
+		34D34E4C0E2C38480053994C /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Documentation/Attributions.txt; sourceTree = "<group>"; };
+		34D34E8D0E2C39D10053994C /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/platforms/mac/ClientGameInfo.plist; sourceTree = "<group>"; };
+		34D34E8E0E2C39D10053994C /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/platforms/mac/IntroGameInfo.plist; sourceTree = "<group>"; };
 		34D6B4B611CC3CCA00D72FE6 /* Lua */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lua; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D6B4C411CC3D1F00D72FE6 /* lua.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lua.c; path = "Angel/Libraries/lua-5.1.4/src/lua.c"; sourceTree = "<group>"; };
 		34D6B53E11CC79B700D72FE6 /* LuaModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaModule.cpp; path = Angel/Scripting/LuaModule.cpp; sourceTree = "<group>"; };
 		34D6B53F11CC79B700D72FE6 /* LuaModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaModule.h; path = Angel/Scripting/LuaModule.h; sourceTree = "<group>"; };
-		34D6C1511347619800D82C14 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = IntroGame/mac/angel.icns; sourceTree = "<group>"; };
-		34D6C1701347636500D82C14 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = ClientGame/mac/angel.icns; sourceTree = "<group>"; };
+		34D6C1511347619800D82C14 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = IntroGame/platforms/mac/angel.icns; sourceTree = "<group>"; };
+		34D6C1701347636500D82C14 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = ClientGame/platforms/mac/angel.icns; sourceTree = "<group>"; };
 		34D6C2710F96C0EC00430618 /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
 		34DB1B9B0E441C73006F63F5 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		34DB1B9C0E441C73006F63F5 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
@@ -3633,7 +3633,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/mac/IntroGameInfo.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/platforms/mac/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
@@ -3660,7 +3660,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/mac/IntroGameInfo.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/IntroGame/platforms/mac/IntroGameInfo.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
@@ -3776,7 +3776,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = ClientGame/mac/ClientGameInfo.plist;
+				INFOPLIST_FILE = ClientGame/platforms/mac/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
@@ -3803,7 +3803,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = ClientGame/mac/ClientGameInfo.plist;
+				INFOPLIST_FILE = ClientGame/platforms/mac/ClientGameInfo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",

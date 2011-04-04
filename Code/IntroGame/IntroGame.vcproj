@@ -471,11 +471,11 @@
 			Name="Docs"
 			>
 			<File
-				RelativePath=".\Attributions.txt"
+				RelativePath=".\Documentation\Attributions.txt"
 				>
 			</File>
 			<File
-				RelativePath=".\GameInfo.txt"
+				RelativePath=".\Documentation\GameInfo.txt"
 				>
 			</File>
 		</Filter>

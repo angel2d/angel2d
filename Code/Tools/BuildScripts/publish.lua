@@ -116,7 +116,7 @@ local kicker_source_fname = "WindowsAngelKicker.cpp"
 
 local kicker_files = {"angel.ico", "angel_small.ico"}
 for _, kicker_file in pairs(kicker_files) do
-  local src = fulljoin(args.input_directory, "win", kicker_file)
+  local src = fulljoin(args.input_directory, "platforms", "win", kicker_file)
   local dst = fulljoin(kicker_dir, kicker_file)
   copyfile(src, dst)
 end
