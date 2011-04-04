@@ -610,28 +610,27 @@
 		34433D81131DDB0900040805 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		34433D87131DDB1F00040805 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		345CC3FC132EF90700D375BE /* Angel Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Angel Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		345CC3FE132EF90800D375BE /* ClientGameInfo copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ClientGameInfo copy.plist"; path = "ClientGame/ios/ClientGameInfo copy.plist"; sourceTree = "<group>"; };
-		345CC463132EF98F00D375BE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "IntroGame/ios/Icon-72.png"; sourceTree = "<group>"; };
-		345CC464132EF98F00D375BE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "IntroGame/ios/Icon-Small-50.png"; sourceTree = "<group>"; };
-		345CC465132EF98F00D375BE /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "IntroGame/ios/Icon-Small.png"; sourceTree = "<group>"; };
-		345CC466132EF98F00D375BE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "IntroGame/ios/Icon-Small@2x.png"; sourceTree = "<group>"; };
-		345CC467132EF98F00D375BE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = IntroGame/ios/Icon.png; sourceTree = "<group>"; };
-		345CC468132EF98F00D375BE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "IntroGame/ios/Icon@2x.png"; sourceTree = "<group>"; };
-		345CC469132EF98F00D375BE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = IntroGame/ios/iTunesArtwork; sourceTree = "<group>"; };
-		345CC473132EF9B100D375BE /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "IntroGame/ios/Default-Landscape.png"; sourceTree = "<group>"; };
-		345CC474132EF9B100D375BE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = IntroGame/ios/Default.png; sourceTree = "<group>"; };
-		345CC475132EF9B100D375BE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "IntroGame/ios/Default@2x.png"; sourceTree = "<group>"; };
-		345CC479132EFA3900D375BE /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = IntroGame/Attributions.txt; sourceTree = "<group>"; };
-		345CC47A132EFA3900D375BE /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = IntroGame/GameInfo.txt; sourceTree = "<group>"; };
+		345CC463132EF98F00D375BE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "IntroGame/platforms/ios/Icon-72.png"; sourceTree = "<group>"; };
+		345CC464132EF98F00D375BE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "IntroGame/platforms/ios/Icon-Small-50.png"; sourceTree = "<group>"; };
+		345CC465132EF98F00D375BE /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "IntroGame/platforms/ios/Icon-Small.png"; sourceTree = "<group>"; };
+		345CC466132EF98F00D375BE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "IntroGame/platforms/ios/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		345CC467132EF98F00D375BE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = IntroGame/platforms/ios/Icon.png; sourceTree = "<group>"; };
+		345CC468132EF98F00D375BE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "IntroGame/platforms/ios/Icon@2x.png"; sourceTree = "<group>"; };
+		345CC469132EF98F00D375BE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; name = iTunesArtwork; path = IntroGame/platforms/ios/iTunesArtwork; sourceTree = "<group>"; };
+		345CC473132EF9B100D375BE /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "IntroGame/platforms/ios/Default-Landscape.png"; sourceTree = "<group>"; };
+		345CC474132EF9B100D375BE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = IntroGame/platforms/ios/Default.png; sourceTree = "<group>"; };
+		345CC475132EF9B100D375BE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "IntroGame/platforms/ios/Default@2x.png"; sourceTree = "<group>"; };
+		345CC479132EFA3900D375BE /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = IntroGame/Documentation/Attributions.txt; sourceTree = "<group>"; };
+		345CC47A132EFA3900D375BE /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = IntroGame/Documentation/GameInfo.txt; sourceTree = "<group>"; };
 		345CC47D132EFA4D00D375BE /* script_interface.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = script_interface.i; path = IntroGame/script_interface.i; sourceTree = "<group>"; };
-		345CC47E132EFA7500D375BE /* iPhoneMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iPhoneMain.cpp; path = IntroGame/ios/iPhoneMain.cpp; sourceTree = "<group>"; };
-		345CC47F132EFA7500D375BE /* iPhoneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPhoneMain.h; path = IntroGame/ios/iPhoneMain.h; sourceTree = "<group>"; };
+		345CC47E132EFA7500D375BE /* iPhoneMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iPhoneMain.cpp; path = IntroGame/platforms/ios/iPhoneMain.cpp; sourceTree = "<group>"; };
+		345CC47F132EFA7500D375BE /* iPhoneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPhoneMain.h; path = IntroGame/platforms/ios/iPhoneMain.h; sourceTree = "<group>"; };
 		345CC4C6132F00DB00D375BE /* AngelLuaWrappingMobileIntroGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelLuaWrappingMobileIntroGame.cpp; path = Angel/Scripting/Interfaces/AngelLuaWrappingMobileIntroGame.cpp; sourceTree = "<group>"; };
 		345CC4CD132F027900D375BE /* DemoGameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoGameManager.cpp; path = IntroGame/DemoGameManager.cpp; sourceTree = "<group>"; };
 		345CC4CE132F027900D375BE /* DemoGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoGameManager.h; path = IntroGame/DemoGameManager.h; sourceTree = "<group>"; };
 		345CC4D1132F029900D375BE /* DemoScreenMobileSimulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenMobileSimulator.cpp; path = IntroGame/DemoScreens/DemoScreenMobileSimulator.cpp; sourceTree = "<group>"; };
 		345CC4D2132F029900D375BE /* DemoScreenMobileSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenMobileSimulator.h; path = IntroGame/DemoScreens/DemoScreenMobileSimulator.h; sourceTree = "<group>"; };
-		349EB96D132BE74A0034B2EC /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ClientGame/ios/iTunesArtwork; sourceTree = "<group>"; };
+		349EB96D132BE74A0034B2EC /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ClientGame/platforms/ios/iTunesArtwork; sourceTree = "<group>"; };
 		34A36E4A131DC5C5007EAC45 /* libLua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLua.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A36E56131DC61E007EAC45 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = "Angel/Libraries/lua-5.1.4/src/lapi.c"; sourceTree = "<group>"; };
 		34A36E57131DC61E007EAC45 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lauxlib.c; path = "Angel/Libraries/lua-5.1.4/src/lauxlib.c"; sourceTree = "<group>"; };
@@ -1026,8 +1025,8 @@
 		34A37216131DCF3B007EAC45 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = World.cpp; path = Angel/Infrastructure/World.cpp; sourceTree = "<group>"; };
 		34A37217131DCF3B007EAC45 /* MultiTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MultiTouch.cpp; path = Angel/Input/MultiTouch.cpp; sourceTree = "<group>"; };
 		34A37272131DD0F4007EAC45 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		34A3730C131DD316007EAC45 /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/ios/ClientGameInfo.plist; sourceTree = "<group>"; };
-		34A3730D131DD316007EAC45 /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/ios/IntroGameInfo.plist; sourceTree = "<group>"; };
+		34A3730C131DD316007EAC45 /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = ClientGame/platforms/ios/ClientGameInfo.plist; sourceTree = "<group>"; };
+		34A3730D131DD316007EAC45 /* IntroGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = IntroGameInfo.plist; path = IntroGame/platforms/ios/IntroGameInfo.plist; sourceTree = "<group>"; };
 		34A3730E131DD316007EAC45 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = Angel/iOS/main.mm; sourceTree = "<group>"; };
 		34A3730F131DD316007EAC45 /* AngelAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AngelAppDelegate.h; path = Angel/iOS/AngelAppDelegate.h; sourceTree = "<group>"; };
 		34A37310131DD316007EAC45 /* AngelAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AngelAppDelegate.m; path = Angel/iOS/AngelAppDelegate.m; sourceTree = "<group>"; };
@@ -1038,23 +1037,23 @@
 		34A37315131DD316007EAC45 /* ES1Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ES1Renderer.h; path = Angel/iOS/ES1Renderer.h; sourceTree = "<group>"; };
 		34A37316131DD316007EAC45 /* ES1Renderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ES1Renderer.mm; path = Angel/iOS/ES1Renderer.mm; sourceTree = "<group>"; };
 		34A37317131DD316007EAC45 /* ESRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESRenderer.h; path = Angel/iOS/ESRenderer.h; sourceTree = "<group>"; };
-		34A3732B131DD3B7007EAC45 /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Attributions.txt; sourceTree = "<group>"; };
-		34A3732C131DD3B7007EAC45 /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = ClientGame/GameInfo.txt; sourceTree = "<group>"; };
+		34A3732B131DD3B7007EAC45 /* Attributions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Attributions.txt; path = ClientGame/Documentation/Attributions.txt; sourceTree = "<group>"; };
+		34A3732C131DD3B7007EAC45 /* GameInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GameInfo.txt; path = ClientGame/Documentation/GameInfo.txt; sourceTree = "<group>"; };
 		34A3732D131DD3B7007EAC45 /* script_interface.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = script_interface.i; path = ClientGame/script_interface.i; sourceTree = "<group>"; };
 		34A3732E131DD3B7007EAC45 /* build.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = build.lua; path = ClientGame/build.lua; sourceTree = "<group>"; };
-		34A3732F131DD3B7007EAC45 /* iPhoneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPhoneMain.h; path = ClientGame/ios/iPhoneMain.h; sourceTree = "<group>"; };
-		34A37330131DD3B7007EAC45 /* iPhoneMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iPhoneMain.cpp; path = ClientGame/ios/iPhoneMain.cpp; sourceTree = "<group>"; };
-		34A37331131DD3B7007EAC45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ClientGame/ios/Default.png; sourceTree = "<group>"; };
-		34A37332131DD3B7007EAC45 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "ClientGame/ios/Default@2x.png"; sourceTree = "<group>"; };
-		34A37333131DD3B7007EAC45 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "ClientGame/ios/Default-Landscape.png"; sourceTree = "<group>"; };
+		34A3732F131DD3B7007EAC45 /* iPhoneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPhoneMain.h; path = ClientGame/platforms/ios/iPhoneMain.h; sourceTree = "<group>"; };
+		34A37330131DD3B7007EAC45 /* iPhoneMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iPhoneMain.cpp; path = ClientGame/platforms/ios/iPhoneMain.cpp; sourceTree = "<group>"; };
+		34A37331131DD3B7007EAC45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ClientGame/platforms/ios/Default.png; sourceTree = "<group>"; };
+		34A37332131DD3B7007EAC45 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "ClientGame/platforms/ios/Default@2x.png"; sourceTree = "<group>"; };
+		34A37333131DD3B7007EAC45 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "ClientGame/platforms/ios/Default-Landscape.png"; sourceTree = "<group>"; };
 		34A3733B131DD423007EAC45 /* AngelLuaWrappingMobile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelLuaWrappingMobile.cpp; path = Angel/Scripting/Interfaces/AngelLuaWrappingMobile.cpp; sourceTree = "<group>"; };
 		34A3736B131DD5F1007EAC45 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		34AF574C132B323500E47D63 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "ClientGame/ios/Icon-72.png"; sourceTree = "<group>"; };
-		34AF574D132B323500E47D63 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "ClientGame/ios/Icon-Small-50.png"; sourceTree = "<group>"; };
-		34AF574E132B323500E47D63 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "ClientGame/ios/Icon-Small.png"; sourceTree = "<group>"; };
-		34AF574F132B323500E47D63 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "ClientGame/ios/Icon-Small@2x.png"; sourceTree = "<group>"; };
-		34AF5750132B323500E47D63 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ClientGame/ios/Icon.png; sourceTree = "<group>"; };
-		34AF5751132B323500E47D63 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "ClientGame/ios/Icon@2x.png"; sourceTree = "<group>"; };
+		34AF574C132B323500E47D63 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "ClientGame/platforms/ios/Icon-72.png"; sourceTree = "<group>"; };
+		34AF574D132B323500E47D63 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "ClientGame/platforms/ios/Icon-Small-50.png"; sourceTree = "<group>"; };
+		34AF574E132B323500E47D63 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "ClientGame/platforms/ios/Icon-Small.png"; sourceTree = "<group>"; };
+		34AF574F132B323500E47D63 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "ClientGame/platforms/ios/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		34AF5750132B323500E47D63 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ClientGame/platforms/ios/Icon.png; sourceTree = "<group>"; };
+		34AF5751132B323500E47D63 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "ClientGame/platforms/ios/Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1850,7 +1849,6 @@
 				34A37315131DD316007EAC45 /* ES1Renderer.h */,
 				34A37316131DD316007EAC45 /* ES1Renderer.mm */,
 				34A37317131DD316007EAC45 /* ESRenderer.h */,
-				345CC3FE132EF90800D375BE /* ClientGameInfo copy.plist */,
 			);
 			name = "iOS Build";
 			sourceTree = "<group>";
@@ -2907,7 +2905,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = ClientGame/ios/ClientGameInfo.plist;
+				INFOPLIST_FILE = ClientGame/platforms/ios/ClientGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD/iphonelib\"",
@@ -2935,7 +2933,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = ClientGame/ios/ClientGameInfo.plist;
+				INFOPLIST_FILE = ClientGame/platforms/ios/ClientGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD/iphonelib\"",
@@ -2966,7 +2964,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = IntroGame/ios/IntroGameInfo.plist;
+				INFOPLIST_FILE = IntroGame/platforms/ios/IntroGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD/iphonelib\"",
@@ -2995,7 +2993,7 @@
 					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
 				);
-				INFOPLIST_FILE = IntroGame/ios/IntroGameInfo.plist;
+				INFOPLIST_FILE = IntroGame/platforms/ios/IntroGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Angel/Libraries/FMOD/iphonelib\"",
