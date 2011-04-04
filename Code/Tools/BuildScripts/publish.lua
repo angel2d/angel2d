@@ -99,7 +99,7 @@ for _, file_ex in pairs(files_ex) do
   copyfile(pl.path.join(args.input_directory, file_ex), pl.path.join(bits_path, file_ex))
 end
 for _, file_base in pairs(files_base) do
-  copyfile(pl.path.join(args.input_directory, file_base), pl.path.join(args.output_directory, file_base))
+  copyfile(fulljoin(args.input_directory, "Documentation", file_base), pl.path.join(args.output_directory, file_base))
 end
 for _, directory in pairs(directories) do
   recursive_copy(pl.path.join(args.input_directory, directory), pl.path.join(bits_path, directory))
