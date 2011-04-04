@@ -78,7 +78,7 @@ MobileSimulator::~MobileSimulator()
 
 void MobileSimulator::Update(float dt)
 {
-	if (theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL) || theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL))
+	if (theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL) || theInput.IsKeyDown(ANGEL_KEY_RIGHTCONTROL))
 	{
 		_fingerGhost1->SetAlpha(0.5f);
 		_fingerGhost2->SetAlpha(0.5f);
@@ -186,7 +186,7 @@ void MobileSimulator::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput b
 
 	TouchList* tl = &TouchListener::GetTouchList();
 
-	if (theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL) || theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL))
+	if (theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL) || theInput.IsKeyDown(ANGEL_KEY_RIGHTCONTROL))
 	{
 		// add the two touches
 		Touch* t = new Touch();
@@ -224,7 +224,7 @@ void MobileSimulator::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput but
 
 	TouchList* tl = &TouchListener::GetTouchList();
 	
-	if (theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL) || theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL))
+	if (theInput.IsKeyDown(ANGEL_KEY_LEFTCONTROL) || theInput.IsKeyDown(ANGEL_KEY_RIGHTCONTROL))
 	{
 		TouchList::iterator it = tl->begin();
 		while (it != tl->end())
