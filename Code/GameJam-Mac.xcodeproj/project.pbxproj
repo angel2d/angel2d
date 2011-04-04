@@ -3638,7 +3638,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
 					"\"$(SRCROOT)/Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
-					"\"$(SRCROOT)/build/Debug\"",
 				);
 				PRODUCT_NAME = IntroGame;
 			};
@@ -3666,7 +3665,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD\"",
 					"\"$(SRCROOT)/Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
-					"\"$(SRCROOT)/build/Debug\"",
 				);
 				PRODUCT_NAME = IntroGame;
 			};
