@@ -132,6 +132,11 @@ function string:split(sep)
   return fields
 end
 
+--trim leading and following whitespace from a string
+function string:trim()
+  return self:match("^%s*(.-)%s*$")
+end
+
 -- <sigh> the penlight library only joins paths one at a time. :-(
 --  (this also corrects for its inability to deal with quoted paths)
 function fulljoin(...)
