@@ -99,7 +99,7 @@ end
 os.chdir(output_d)
 
 local dtop_file = io.open(config.game_info.name .. ".desktop", "w")
-dtop_file:write(string.format("[Desktop Entry]\nName=%s\nExec=%s\nIcon=%s\nTerminal=false\nType=Application\n", config.game_info.name, config.game_info.name, config.game_info.name))
+dtop_file:write(string.format("[Desktop Entry]\nName=%s\nExec=%s\nIcon=%s\nTerminal=false\nType=Application\n", config.game_info.name, args.executable_name, config.game_info.name))
 dtop_file:close()
 
 copyfile(fulljoin(APPIMAGE_PATH, "AppRun"), "AppRun")
@@ -107,7 +107,7 @@ copyfile(fulljoin(APPIMAGE_PATH, "AppRun"), "AppRun")
 pl.dir.makepath("usr/lib")
 pl.dir.makepath("usr/bin")
 
-copyfile(pl.path.join(args.input_directory, args.executable_name), "usr/bin/" .. config.game_info.name)
+copyfile(pl.path.join(args.input_directory, args.executable_name), "usr/bin/")
 copyfile(pl.path.join(args.input_directory, "platforms/linux/angel.png"), config.game_info.name .. ".png")
 
 local directories = {"Resources", "Config"}
@@ -130,7 +130,7 @@ for _, lib_line in pairs(ldd_lines) do
   end
 end
 
-os.execute("sed -i -e 's|../Angel/Libraries/FMOD/lib/libfmodex.so|././././././././././././lib/libfmodex.so|g' usr/bin/IntroGame")
+os.execute("sed -i -e 's|../Angel/Libraries/FMOD/lib/libfmodex.so|././././././././././././lib/libfmodex.so|g' usr/bin/" .. args.executable_name)
 copyfile("../../Angel/Libraries/FMOD/lib/libfmodex.so", "usr/lib/libfmodex.so")
 
 os.chdir("..")
@@ -138,7 +138,8 @@ os.chdir("..")
 local pubdir = fulljoin(args.input_directory, "Published")
 pl.dir.makepath(pubdir)
 
-os.execute(APPIMAGE_EXE .. " " .. output_d ..  " " .. fulljoin(pubdir, config.game_info.name))
+os.execute(APPIMAGE_EXE .. " " .. output_d:gsub(" ", "\\ ") ..  " " .. pubdir .. "/" .. config.game_info.name:gsub(" ", "\\ "))
+os.exit(0)
 
 local files_base = {"GameInfo.txt", "Attributions.txt"}
 for _, base in pairs(files_base) do

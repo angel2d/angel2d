@@ -44,15 +44,15 @@ Known Differences:
 The following list represents the current known differences in the Linux
 build.
 
- * No publish script. Due to the massive number of configuration 
-   possibilities, we don't currently have a script that bundles all the data
-   and code files together for simple one-directory distribution. The 
-   publish.lua and publish-mac.lua scripts in the Tools/BuildScripts 
-   directory represent reasonable templates from which someone could start 
-   that work. There's also a decent exploration of the issues involved and 
-   various workarounds here: 
-
-   http://www.gamedev.net/reference/programming/features/linuxprogramming2/
+ * The publish script is experimental, using the AppImageKit provided by
+   the elementary-os project. To try it out, run "make publish" for your
+   project. Note that it will only build a redistributable program for
+   your architecture. 
+   
+   Note that the script will do its best to pull the needed libraries in to 
+   the AppImage, but if you're using some other system libs that wouldn't 
+   appear in the stock version of your distribution, you'll want to add them
+   to the platforms/linux/libs.lua file. 
 
  * Rather than using the version of FreeType included with the distribution,
    the Linux build relies on the developer and user already having FreeType
@@ -61,8 +61,8 @@ build.
 
 Known Problems and Work-arounds:
 --------------------------------
- * FMOD (the sound library used by Angel) sometimes has difficulties with
-   autodetecting your audio subsystem.  Because of this, by default we
+ * FMOD (the default sound library used by Angel) sometimes has difficulties 
+   with autodetecting your audio subsystem.  Because of this, by default we
    configure FMOD to use ALSA.  If you do not wish to use ALSA, you can
    override the audio subsystem selection using an environment variable:
    FMOD_OUTPUTTYPE. The possible override choices are: AUTODETECT,

@@ -88,6 +88,9 @@ OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 all: $(TARGET)
 
+publish: $(TARGET)
+	$(LUA) ../Tools/BuildScripts/publish_linux.lua -i $(CWD) -e $(TARGET) -g IntroGame
+
 SWIG-Wrapper:
 	$(LUA) ../Tools/BuildScripts/swig_wrap.lua -p "$(CODE_DIR)" -D INTROGAME
 
@@ -98,7 +101,8 @@ $(TARGET): $(LIBANGEL) $(OBJS) $(SYSOBJS) $(WRAPPER)
 	cp -p ../Angel/Scripting/EngineScripts/*.lua Resources/Scripts
 
 clean:
-	rm -f $(OBJS) $(SYSOBJS) $(TARGET) $(WRAPPER)
+	rm -f $(OBJS) $(SYSOBJS) $(TARGET) $(WRAPPER) 
+	rm -rf $(TARGET).appdir Published
 
 $(LIBANGEL):
 	cd ../Angel && make

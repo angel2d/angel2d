@@ -29,7 +29,8 @@ if   [ "$DIST" == 'Fedora' ] ; then
 elif [ "$DIST" == 'Ubuntu' ] ; then
 	apt-get -y install build-essential cmake swig libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
-		joystick libopenal-dev libvorbis-dev libpng12-dev
+		joystick libopenal-dev libvorbis-dev libpng12-dev libfuse-dev\
+		libglib2.0-dev
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which port`" != "" ] ; then
 		if [ "`port installed swig-lua | grep currently`" == "" ] ; then
