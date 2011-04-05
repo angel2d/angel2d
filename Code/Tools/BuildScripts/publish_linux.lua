@@ -53,6 +53,7 @@ local args = pl.lapp [[
 TOOLS_PATH = fulljoin(args.input_directory, "..", "Tools", "LinuxBuildTools")
 APPIMAGE_PATH = fulljoin(TOOLS_PATH, "AppImageKit-8")
 APPIMAGE_EXE = fulljoin(APPIMAGE_PATH, "AppImageAssistant.appdir", "package")
+
 if (pl.path.exists(APPIMAGE_PATH) ~= true) then
   lfs.chdir(TOOLS_PATH)
   os.execute("tar xzf AppImageKit-8.tar.gz")
@@ -88,6 +89,9 @@ if (config.game_info == nil) then
 end
 if (config.game_info.name == nil) then
   config.game_info.name = pl.path.splitext(args.gamename)
+end
+if (config.libs == nil) then
+  config.libs = {}
 end
 
 local output_d = pl.path.join(args.input_directory, config.game_info.name .. ".appdir")
@@ -139,7 +143,6 @@ local pubdir = fulljoin(args.input_directory, "Published")
 pl.dir.makepath(pubdir)
 
 os.execute(APPIMAGE_EXE .. " " .. output_d:gsub(" ", "\\ ") ..  " " .. pubdir .. "/" .. config.game_info.name:gsub(" ", "\\ "))
-os.exit(0)
 
 local files_base = {"GameInfo.txt", "Attributions.txt"}
 for _, base in pairs(files_base) do
