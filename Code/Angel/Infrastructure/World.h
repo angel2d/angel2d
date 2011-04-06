@@ -308,9 +308,9 @@ public:
 	 * 
 	 * @param turnOn If true, side blockers are enabled, if false, they're 
 	 *   disabled
-	 * @param resitution The restitution of the blockers (how bouncy they are)
+	 * @param restitution The restitution of the blockers (how bouncy they are)
 	 */
-	void SetSideBlockers(bool turnOn, float resitution=-1.0f);
+	void SetSideBlockers(bool turnOn, float restitution=-1.0f);
 	
 	/**
 	 * Find out how much time has elapsed since the game started
