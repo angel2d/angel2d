@@ -54,10 +54,6 @@ TOOLS_PATH = fulljoin(args.input_directory, "..", "Tools", "LinuxBuildTools")
 APPIMAGE_PATH = fulljoin(TOOLS_PATH, "AppImageKit-8")
 APPIMAGE_EXE = fulljoin(APPIMAGE_PATH, "AppImageAssistant.appdir", "package")
 
-if (pl.path.exists(APPIMAGE_PATH) ~= true) then
-  lfs.chdir(TOOLS_PATH)
-  os.execute("tar xzf AppImageKit-8.tar.gz")
-end
 if (pl.path.exists(fulljoin(APPIMAGE_PATH, "AppImageAssistant")) ~= true) then
   lfs.chdir(APPIMAGE_PATH)
   os.execute("make")
