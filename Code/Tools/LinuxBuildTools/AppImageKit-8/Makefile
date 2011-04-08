@@ -1,4 +1,4 @@
-DIST = $(shell ./distcheck.sh)
+DIST = $(shell ../distcheck.sh)
 FUSE_LIB = /usr/lib/libfuse.so
 ifeq ($(DIST),Fedora)
 	FUSE_LIB = /lib/libfuse.so
