@@ -36,7 +36,7 @@ ifneq ($(ANGEL_DISABLE_FMOD), 1)
 	endif
 endif
 
-SHLIBS = -lGL -lGLU -ldl -lfreetype -lXrandr -lX11
+SHLIBS = -lGL -lGLU -ldl -lfreetype -lXrandr -lX11 -lpthread
 SHLIBS += $(ALLEGRO_LIBS)
 ifeq ($(ANGEL_DISABLE_FMOD), 1)
 	SHLIBS += -lopenal -lvorbisfile
