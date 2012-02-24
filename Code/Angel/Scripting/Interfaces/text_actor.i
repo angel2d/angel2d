@@ -3,6 +3,13 @@
 #include "../../Actors/TextActor.h"
 %}
 
+enum TextAlignment
+{
+	TXT_Left,
+	TXT_Center,
+	TXT_Right
+};
+
 class TextActor : public Actor
 {
 public:
