@@ -1,5 +1,5 @@
 /* ============================================================================================ */
-/* FMOD iPhone Specific header file. Copyright (c), Firelight Technologies Pty, Ltd. 2005-2010. */
+/* FMOD iPhone Specific header file. Copyright (c), Firelight Technologies Pty, Ltd. 2005-2011. */
 /* ============================================================================================ */
 
 #ifndef _FMODIPHONE_H
@@ -29,10 +29,10 @@
 typedef enum
 {
     FMOD_IPHONE_SESSIONCATEGORY_DEFAULT,            /* Default for the device OS version (MediaPlayback for iPhone OS 2.0 to 2.1, SoloAmbientSound for iPhone OS 2.2 onwards) */
-    FMOD_IPHONE_SESSIONCATEGORY_AMBIENTSOUND,       /* kAudioSessionCategory_AmbientSound ~ obeys slient switch, silent when locked, mixes with other audio */
-    FMOD_IPHONE_SESSIONCATEGORY_SOLOAMBIENTSOUND,   /* kAudioSessionCategory_SoloAmbientSound (iPhone OS >= 2.2 required) ~ obeys slient switch, silent when locked, doesn't mix with other audio */
-    FMOD_IPHONE_SESSIONCATEGORY_MEDIAPLAYBACK,      /* kAudioSessionCategory_MediaPlayback ~ ignores slient switch, plays when locked, doesn't mix with other audio */
-    FMOD_IPHONE_SESSIONCATEGORY_PLAYANDRECORD,      /* kAudioSessionCategory_PlayAndRecord ~ ignores slient switch, plays when locked, doesn't mix with other audio */    
+    FMOD_IPHONE_SESSIONCATEGORY_AMBIENTSOUND,       /* kAudioSessionCategory_AmbientSound ~ obeys slient switch, silent when locked, mixes with other audio, not allowed in background */
+    FMOD_IPHONE_SESSIONCATEGORY_SOLOAMBIENTSOUND,   /* kAudioSessionCategory_SoloAmbientSound (iPhone OS >= 2.2 required) ~ obeys slient switch, silent when locked, doesn't mix with other audio, not allowed in background */
+    FMOD_IPHONE_SESSIONCATEGORY_MEDIAPLAYBACK,      /* kAudioSessionCategory_MediaPlayback ~ ignores slient switch, plays when locked, doesn't mix with other audio (unless forced), allowed in background */
+    FMOD_IPHONE_SESSIONCATEGORY_PLAYANDRECORD,      /* kAudioSessionCategory_PlayAndRecord ~ ignores slient switch, plays when locked, doesn't mix with other audio (unless forced), allowed in background */
     
     FMOD_IPHONE_SESSIONCATEGORY_FORCEINT = 65536    /* Makes sure this enum is signed 32bit */
 } FMOD_IPHONE_SESSIONCATEGORY;
@@ -63,6 +63,7 @@ typedef enum
     FMOD_AUDIOQUEUE_CODECPOLICY_FORCEINT = 65536    /* Makes sure this enum is signed 32bit */
 } FMOD_AUDIOQUEUE_CODECPOLICY;
 
+
 /*
 [STRUCTURE] 
 [
@@ -87,29 +88,10 @@ typedef struct FMOD_IPHONE_EXTRADRIVERDATA
     bool                         forceMixWithOthers;     /* (IN)  Force mixing behavior allowing iPod audio to play with FMOD even if the audio session doesn't usually permit this */ 
 } FMOD_IPHONE_EXTRADRIVERDATA;
 
-
-/*
-[STRUCTURE] 
-[
-    [DESCRIPTION]
-    Use this structure for codec specific initialization.
-
-    Pass this structure in as the "extracodecdata" parameter in System::createSound or System::createStream.
-
-    [REMARKS]
-
-    [PLATFORMS]
-    iPhone
-
-    [SEE_ALSO]
-    System::init
-]
-*/
-typedef struct FMOD_AUDIOQUEUE_EXTRACODECDATA
+#ifdef __cplusplus
+extern "C"
 {
-    FMOD_AUDIOQUEUE_CODECPOLICY codecPolicy;    /* (IN) Policy used to determine whether hardware or software is used for decoding (iPhone OS >= 3.0 required, otherwise only hardware is available) */
-} FMOD_AUDIOQUEUE_EXTRACODECDATA;
-
+#endif
 
 /*
 [
@@ -193,5 +175,9 @@ FMOD_RESULT F_API FMOD_IPhone_MixWithOtherAudio(bool mix);
 ]
 */
 FMOD_RESULT F_API FMOD_IPhone_RestoreAudioSession();
-    
+
+#ifdef __cplusplus
+}
 #endif
+    
+#endif  /* _FMODIPHONE_H */

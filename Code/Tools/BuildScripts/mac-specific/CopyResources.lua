@@ -72,10 +72,10 @@ elseif (env['CONFIGURATION'] == 'Debug') then
       'Scripts'
     )
 else
+
+  -- BUILT_PRODUCTS_DIR /Users/shane/Library/Developer/Xcode/DerivedData/GameJam-Mac-bjldnnhavcykqvckkqpixhfzxejm/Build/Products/Debug
   dest = fulljoin(
-      env['PROJECT_DIR'],
-      'build',
-      env['CONFIGURATION'],
+      env['BUILT_PRODUCTS_DIR'],
       env['EXECUTABLE_NAME'] .. '.app',
       'Contents',
       'Resources',
@@ -108,9 +108,7 @@ if (building_for_iphone()) then
     )
 else
   dest = fulljoin(
-    env['PROJECT_DIR'],
-    'build',
-    env['CONFIGURATION'],
+    env['BUILT_PRODUCTS_DIR'],
     env['EXECUTABLE_NAME'] .. '.app',
     'Contents',
     'Resources'
@@ -128,9 +126,7 @@ if (building_for_iphone()) then
     )
 else
   dest = fulljoin(
-    env['PROJECT_DIR'],
-    'build',
-    env['CONFIGURATION'],
+    env['BUILT_PRODUCTS_DIR'],
     env['EXECUTABLE_NAME'] .. '.app',
     'Contents',
     'Config'
@@ -140,9 +136,7 @@ recursive_copy(source, dest)
 
 if (building_for_iphone() == false) then
   local log_path = fulljoin(
-      env['PROJECT_DIR'],
-      'build',
-      env['CONFIGURATION'],
+      env['BUILT_PRODUCTS_DIR'],
       env['EXECUTABLE_NAME'] .. '.app',
       'Contents',
       'Logs'

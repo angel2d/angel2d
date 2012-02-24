@@ -43,6 +43,8 @@ require "lfs"
 require "pl.path"
 require "pl.lapp"
 
+local env = os.environ()
+
 local args = pl.lapp [[
   Packages a game for easy distribution. 
     -i,--input_directory (string)  Project directory
@@ -81,7 +83,8 @@ if pl.path.exists(app_path) then
   pl.dir.rmtree(app_path)
 end
 
-recursive_copy(fulljoin(output_d, "..", "..", "Release", args.gamename), app_path)
+recursive_copy(fulljoin(env['BUILT_PRODUCTS_DIR'], args.gamename), app_path)
+-- recursive_copy(fulljoin(output_d, "..", "..", "Release", args.gamename), app_path)
 
 conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
 t = io.open(conf_path, "r")

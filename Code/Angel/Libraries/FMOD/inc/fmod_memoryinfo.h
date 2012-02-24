@@ -1,5 +1,5 @@
 /* ============================================================================================= */
-/* FMOD Ex - Memory info header file. Copyright (c), Firelight Technologies Pty, Ltd. 2008-2010. */
+/* FMOD Ex - Memory info header file. Copyright (c), Firelight Technologies Pty, Ltd. 2008-2011. */
 /*                                                                                               */
 /* Use this header if you are interested in getting detailed information on FMOD's memory        */
 /* usage. See the documentation for more details.                                                */
@@ -24,7 +24,7 @@
 
 
     [PLATFORMS]
-    Win32, Win64, Linux, Linux64, Macintosh, Xbox, Xbox360, PlayStation 2, GameCube, PlayStation Portable, PlayStation 3
+    Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
     [SEE_ALSO]
     System::getMemoryInfo
@@ -60,7 +60,7 @@ typedef struct FMOD_MEMORY_USAGE_DETAILS
     unsigned int eventsystem;                    /* [out] EventSystem and various internals */
     unsigned int musicsystem;                    /* [out] MusicSystem and various internals */
     unsigned int fev;                            /* [out] Definition of objects contained in all loaded projects e.g. events, groups, categories */
-    unsigned int memoryfsb;                      /* [out] Data loaded with registerMemoryFSB */
+    unsigned int memoryfsb;                      /* [out] Data loaded with preloadFSB */
     unsigned int eventproject;                   /* [out] EventProject objects and internals */
     unsigned int eventgroupi;                    /* [out] EventGroup objects and internals */
     unsigned int soundbankclass;                 /* [out] Objects used to manage wave banks */
@@ -101,7 +101,7 @@ typedef struct FMOD_MEMORY_USAGE_DETAILS
     The FMOD_MEMBITS defines can be OR'd together to specify precisely what memory usage you'd like to get information on. See System::getMemoryInfo for an example.
 
     [PLATFORMS]
-    Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation 2, PlayStation Portable, PlayStation 3, Wii, Solaris, iPhone
+    Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
     [SEE_ALSO]
     FMOD_EVENT_MEMBITS
@@ -150,7 +150,7 @@ typedef struct FMOD_MEMORY_USAGE_DETAILS
     The FMOD_EVENT_MEMBITS defines can be OR'd together to specify precisely what memory usage you'd like to get information on. See EventSystem::getMemoryInfo for an example.
 
     [PLATFORMS]
-    Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation 2, PlayStation Portable, PlayStation 3, Wii, Solaris, iPhone
+    Win32, Win64, Linux, Linux64, Macintosh, Xbox360, PlayStation Portable, PlayStation 3, Wii, iPhone, 3GS, NGP, Android
 
     [SEE_ALSO]
     FMOD_MEMBITS
@@ -160,7 +160,7 @@ typedef struct FMOD_MEMORY_USAGE_DETAILS
 #define FMOD_EVENT_MEMBITS_EVENTSYSTEM           0x00000001  /* EventSystem and various internals */
 #define FMOD_EVENT_MEMBITS_MUSICSYSTEM           0x00000002  /* MusicSystem and various internals */
 #define FMOD_EVENT_MEMBITS_FEV                   0x00000004  /* Definition of objects contained in all loaded projects e.g. events, groups, categories */
-#define FMOD_EVENT_MEMBITS_MEMORYFSB             0x00000008  /* Data loaded with registerMemoryFSB */
+#define FMOD_EVENT_MEMBITS_MEMORYFSB             0x00000008  /* Data loaded with preloadFSB */
 #define FMOD_EVENT_MEMBITS_EVENTPROJECT          0x00000010  /* EventProject objects and internals */
 #define FMOD_EVENT_MEMBITS_EVENTGROUPI           0x00000020  /* EventGroup objects and internals */
 #define FMOD_EVENT_MEMBITS_SOUNDBANKCLASS        0x00000040  /* Objects used to manage wave banks */

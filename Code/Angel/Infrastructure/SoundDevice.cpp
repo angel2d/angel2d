@@ -178,7 +178,7 @@ void SoundDevice::Initialize()
 			}
 		#endif // __linux__
 
-		ANGEL_SOUND_CHECKED( _system->getDriverCaps(0, &caps, 0, 0, &speakermode) )
+		ANGEL_SOUND_CHECKED( _system->getDriverCaps(0, &caps, 0, &speakermode) )
 		/* Set the user selected speaker mode. */
 		ANGEL_SOUND_CHECKED( _system->setSpeakerMode(speakermode) )
 		
