@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2011, Shane Liesegang
+// Copyright (C) 2008-2012, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 

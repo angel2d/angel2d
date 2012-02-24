@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2011, Shane Liesegang
+// Copyright (C) 2008-2012, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -178,6 +178,8 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, cons
 			chdir("..");
 			#if DEBUG
 				// set paths to the local resources rather than the copied ones
+                String fileName = __FILE__;
+                String dirPath = fileName.substr(0, fileName.size() - String("Angel/Infrastructure/World.cpp").size());
 				CFURLRef exeURL = CFBundleCopyExecutableURL(mainBundle);
 				char exePath[PATH_MAX];
 				if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
@@ -185,7 +187,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, cons
 					sysLog.Log("Problem setting up working directory!");
 				}
 				CFRelease(exeURL);
-				chdir("../../../..");
+				chdir(dirPath.c_str());
 				getcwd(path, PATH_MAX);
 				StringList pathElements = SplitString(exePath, "/");
 				String exeName = pathElements[pathElements.size()-1];
