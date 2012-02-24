@@ -178,8 +178,8 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, cons
 			chdir("..");
 			#if DEBUG
 				// set paths to the local resources rather than the copied ones
-                String fileName = __FILE__;
-                String dirPath = fileName.substr(0, fileName.size() - String("Angel/Infrastructure/World.cpp").size());
+				String fileName = __FILE__;
+				String dirPath = fileName.substr(0, fileName.size() - String("Angel/Infrastructure/World.cpp").size());
 				CFURLRef exeURL = CFBundleCopyExecutableURL(mainBundle);
 				char exePath[PATH_MAX];
 				if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
