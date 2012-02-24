@@ -68,7 +68,7 @@ void Camera::ResizeCallback(int w, int h)
 void Camera::Reset()
 {
 	_aperture = 90.0f;
-	_position = Vector3(0.0f, 0.0f, 10.0f);
+	_camera3DPosition = Vector3(0.0f, 0.0f, 10.0f);
 	_view = Vector3(0.0f, 0.0f, -10.0f);
 	_up = Vector3(0.0f, 1.0f, 0.0);
 	_zNearClip = 0.001f;
@@ -110,7 +110,7 @@ const int Camera::GetWindowWidth() const
 const double Camera::GetViewRadius() const
 {
 	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
-	return tan(sideAngle) * fabs(_position.Z);
+	return tan(sideAngle) * fabs(_camera3DPosition.Z);
 }
 
 const Vector2 Camera::GetWorldMaxVertex() const
@@ -135,46 +135,49 @@ void Camera::Render()
 	#else
 		glRotatef(_rotation-90.0f, 0.0f, 0.0f, 1.0f);
 	#endif
-	gluLookAt(_position.X, _position.Y, _position.Z,
-			_position.X + _view.X,
-			_position.Y + _view.Y,
-			_position.Z + _view.Z,
+	gluLookAt(_camera3DPosition.X, _camera3DPosition.Y, _camera3DPosition.Z,
+			_camera3DPosition.X + _view.X,
+			_camera3DPosition.Y + _view.Y,
+			_camera3DPosition.Z + _view.Z,
 			_up.X, _up.Y, _up.Z
 		);
 }
 
 void Camera::SetPosition(float x, float y, float z)
 {
-	_position = Vector3(x, y, z);
+	_camera3DPosition = Vector3(x, y, z);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
 void Camera::SetPosition(float x, float y)
 {
-	_position = Vector3(x, y, _position.Z);
+	_camera3DPosition = Vector3(x, y, _camera3DPosition.Z);
+	_position = Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
 void Camera::SetPosition(const Vector2& v2)
 {
-	_position = Vector3(v2.X, v2.Y, _position.Z);
+	_camera3DPosition = Vector3(v2.X, v2.Y, _camera3DPosition.Z);
+	_position = Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
 void Camera::SetPosition(const Vector3& v3)
 {
-	_position = v3;
+	_camera3DPosition = v3;
+	_position = Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
 Vector2 Camera::GetPosition() const
 {
-	return Vector2(_position.X, _position.Y);
+	return Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 }
 
 float Camera::GetZ() const
 {
-	return _position.Z;
+	return _camera3DPosition.Z;
 }
 
 void Camera::SetRotation(float newRotation)
@@ -202,7 +205,7 @@ float Camera::GetFarClipDist()
 void Camera::SetZByViewRadius(float newRadius)
 {
 	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
-	_position.Z = newRadius / tan(sideAngle);
+	_camera3DPosition.Z = newRadius / tan(sideAngle);
 }
 
 void Camera::SetNearClipDist(float dist)

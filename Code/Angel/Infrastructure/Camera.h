@@ -276,7 +276,7 @@ private:
 	int _windowWidth;
 	int _windowHeight;
 	double _aperture;
-	Vector3 _position;
+	Vector3 _camera3DPosition;
 	Vector3 _view;
 	Vector3 _up;
 
