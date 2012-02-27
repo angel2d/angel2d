@@ -14,7 +14,7 @@ endif
 
 INCLUDE = 							\
 	-ILibraries/glfw/include				\
-	-ILibraries/Box2D-2.1.2					\
+	-ILibraries/Box2D-2.2.1					\
 	-ILibraries/FTGL/include				\
 	-ILibraries/lua-5.1.4/src				\
 	-IInfrastructure					\
@@ -25,7 +25,7 @@ endif
 
 LIBS = 								\
 	Libraries/glfw/lib/x11/libglfw.a			\
-	Libraries/Box2D-2.1.2/Build/Box2D/libBox2D.a		\
+	Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
 	Libraries/FTGL/unix/src/.libs/libftgl.a
 
 SRCS =								\
@@ -100,10 +100,10 @@ GLFW-clean:
 	cd Libraries/glfw && make x11-clean
 
 Box2D:
-	cd Libraries/Box2D-2.1.2/Build && cmake .. && make Box2D
+	cd Libraries/Box2D-2.2.1/Build && cmake .. && make Box2D
 
 Box2D-clean:
-	cd Libraries/Box2D-2.1.2/Build && make clean && rm -rf Box2D \
+	cd Libraries/Box2D-2.2.1/Build && make clean && rm -rf Box2D \
 		CMakeCache.txt CMakeFiles cmake_install.cmake freeglut glui \
 		HelloWorld Makefile Testbed
 

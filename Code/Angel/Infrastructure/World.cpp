@@ -243,8 +243,7 @@ bool World::SetupPhysics(const Vector2& gravity, const Vector2& maxVertex, const
 	worldAABB.lowerBound.Set(minVertex.X, minVertex.Y);
 	worldAABB.upperBound.Set(maxVertex.X, maxVertex.Y);
 	b2Vec2 gravityVector(gravity.X, gravity.Y);
-	bool doSleep = true;
-	_physicsWorld = new b2World(gravityVector, doSleep);
+	_physicsWorld = new b2World(gravityVector);
 
 	_physicsWorld->SetContactListener(this);
 	
