@@ -37,11 +37,6 @@
 extern "C" {
 #endif
 	
-	/**
-	 * This function is deprecated.
-	 */
-	extern GLvoid ftglInitImmediateModeGL();
-	
 	extern GLvoid ftglBegin( GLenum prim );
 	
 	extern GLvoid ftglVertex3f( float x, float y, float z );

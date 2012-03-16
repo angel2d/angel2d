@@ -41,9 +41,9 @@ elif [ "$DIST" == 'Darwin' ] ; then
 		exit 1
 	fi
 	if [ ! -d /System/Library/Extensions/360Controller.kext ] ; then
-		hdiutil attach ../Tools/Mac360/360ControllerInstall.0.09.dmg
-		installer -target / -pkg /Volumes/360ControllerInstall.0.09/Install360Controller.pkg
-		hdiutil detach /Volumes/360ControllerInstall.0.09
+		hdiutil attach ../Tools/Mac360/360ControllerInstall.0.11.dmg
+		installer -target / -pkg /Volumes/360ControllerInstall/Install360Controller.pkg
+		hdiutil detach /Volumes/360ControllerInstall
 		echo "You should restart your machine to get access to the 360 Controller."
 	fi
 else

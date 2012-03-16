@@ -33,7 +33,7 @@
 #include "../Infrastructure/Camera.h"
 #include "../Infrastructure/Log.h"
 #include "../AI/SpatialGraph.h"
-#if !ANGEL_IPHONE
+#if !ANGEL_MOBILE
 	#include "../Infrastructure/Console.h"
 	#include "../Input/Input.h"
 	#include "../Input/MouseInput.h"
@@ -46,6 +46,7 @@
 #include "../Actors/PhysicsActor.h"
 #include "../Messaging/Switchboard.h"
 #include "../Scripting/LuaModule.h"
+#include "../Infrastructure/Preferences.h"
 #include "../Infrastructure/SoundDevice.h"
 
 #include <algorithm>
@@ -99,7 +100,7 @@ int windowClosed(void)
 	return GL_FALSE;
 }
 
-bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, const String& windowName, bool antiAliasing, bool fullScreen)
+bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen, bool resizable)
 {
 	if (_initialized)
 	{
@@ -108,70 +109,20 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, cons
 	
 	_running = true;
 	
-	//Windowing system setup
-	#if !ANGEL_IPHONE
+	// General windowing initialization
+	#if !ANGEL_MOBILE
 		glfwInit();
-		if (antiAliasing)
-		{
-			glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
-		}
-		int windowMode = GLFW_WINDOW;
-		if (fullScreen)
-		{
-			windowMode = GLFW_FULLSCREEN;
-		}
-		glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, windowMode);
-		glfwSetWindowPos(50, 50);
-		
-		glfwSetWindowTitle(windowName.c_str());
-
-		glfwSwapInterval(1); //better visual quality, set to zero for max drawing performance
-		glfwSetWindowSizeCallback(Camera::ResizeCallback);
-		glfwSetKeyCallback(keyboardInput);
-		glfwSetCharCallback(charInput);
-		glfwDisable(GLFW_KEY_REPEAT);
-		glfwSetMousePosCallback(MouseMotion);
-		glfwSetMouseButtonCallback(MouseButton);
-		glfwSetMouseWheelCallback(MouseWheel);
-		glfwSetWindowCloseCallback(windowClosed);
-		_prevTime = glfwGetTime();
-	#else
-		struct timeval tv;
-		gettimeofday(&tv, NULL);
-		_currTime = _startTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0;
 	#endif
-	
-	
-	//OpenGL state setup
-	#if !ANGEL_IPHONE
-		glClearDepth(1.0f);
-		glPolygonMode(GL_FRONT, GL_FILL);
-	#endif
-	glShadeModel(GL_FLAT);
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	glEnable(GL_CULL_FACE);
-	glFrontFace(GL_CCW);
-	glCullFace(GL_BACK);
-	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glClearStencil(0);
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-
-	theCamera.ResizeCallback(windowWidth, windowHeight);
-	
-	InitializeTextureLoading();
 	
 	#if defined(__APPLE__)
 		// Set up paths correctly in the .app bundle
-		#if !ANGEL_IPHONE
+		#if !ANGEL_MOBILE
 			CFBundleRef mainBundle = CFBundleGetMainBundle();
 			CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
 			char path[PATH_MAX];
 			if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
 			{
-				sysLog.Log("Problem setting up working directory!");
+				//sysLog.Log("Problem setting up working directory!");
 			}
 			CFRelease(resourcesURL);
 			chdir(path);
@@ -184,11 +135,10 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, cons
 				char exePath[PATH_MAX];
 				if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
 				{
-					sysLog.Log("Problem setting up working directory!");
+					//sysLog.Log("Problem setting up working directory!");
 				}
 				CFRelease(exeURL);
 				chdir(dirPath.c_str());
-				getcwd(path, PATH_MAX);
 				StringList pathElements = SplitString(exePath, "/");
 				String exeName = pathElements[pathElements.size()-1];
 				chdir(exeName.c_str());
@@ -207,29 +157,145 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, cons
 		#endif
 	#endif
 	
+	//Start scripting
+	LuaScriptingModule::Prep();
+
+	//Reset values based on preferences
+	antiAliasing = thePrefs.OverrideInt("WindowSettings", "antiAliasing", antiAliasing);
+	fullScreen = thePrefs.OverrideInt("WindowSettings", "antiAliasing", fullScreen);
+	resizable = thePrefs.OverrideInt("WindowSettings", "antiAliasing", resizable);
+	windowHeight = thePrefs.OverrideInt("WindowSettings", "height", windowHeight);
+	windowWidth = thePrefs.OverrideInt("WindowSettings", "width", windowWidth);
+	windowName = thePrefs.OverrideString("WindowSettings", "name", windowName);
+	
+	//Windowing system setup
+	#if !ANGEL_MOBILE
+		if (antiAliasing)
+		{
+			glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
+		}
+		int windowMode = GLFW_WINDOW;
+		if (fullScreen)
+		{
+			windowMode = GLFW_FULLSCREEN;
+		}
+		if (resizable)
+		{
+			glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_FALSE);
+		}
+		else
+		{
+			glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
+		}
+	
+		glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, windowMode);		
+		glfwSetWindowTitle(windowName.c_str());
+
+		glfwSwapInterval(1); //better visual quality, set to zero for max drawing performance
+		glfwSetWindowSizeCallback(Camera::ResizeCallback);
+		glfwSetKeyCallback(keyboardInput);
+		glfwSetCharCallback(charInput);
+		glfwDisable(GLFW_KEY_REPEAT);
+		glfwSetMousePosCallback(MouseMotion);
+		glfwSetMouseButtonCallback(MouseButton);
+		glfwSetMouseWheelCallback(MouseWheel);
+		glfwSetWindowCloseCallback(windowClosed);
+		_prevTime = glfwGetTime();
+	#else
+		struct timeval tv;
+		gettimeofday(&tv, NULL);
+		_currTime = _startTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0;
+	#endif
+	
+	//OpenGL state setup
+	#if !ANGEL_MOBILE
+		glClearDepth(1.0f);
+		glPolygonMode(GL_FRONT, GL_FILL);
+	#endif
+	glShadeModel(GL_FLAT);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+	glEnable(GL_CULL_FACE);
+	glFrontFace(GL_CCW);
+	glCullFace(GL_BACK);
+	glDepthFunc(GL_LEQUAL);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glClearStencil(0);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+	theCamera.ResizeCallback(windowWidth, windowHeight);
+	
+	//Get textures going
+	InitializeTextureLoading();
+	
 	//Subscribe to camera changes
 	theSwitchboard.SubscribeTo(this, "CameraChange");
 	
 	//initialize singletons
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		theInput;
 		theControllerManager.Setup();
 	#endif
 	theSound;
 	theSpatialGraph;
 
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		RegisterConsole(new TestConsole());
 	#else
 		// register fonts, since we don't have the console doing it for us on the phone
 		RegisterFont("Resources/Fonts/Inconsolata.otf", 24, "Console");
 		RegisterFont("Resources/Fonts/Inconsolata.otf", 18, "ConsoleSmall");
 	#endif
-
-	LuaScriptingModule::Initialize();
 	
+	LuaScriptingModule::Initialize();
+
 	return _initialized = true;
 }
+
+
+std::vector<Vec3ui> World::GetVideoModes()
+{
+	std::vector<Vec3ui> forReturn;
+	#if !ANGEL_MOBILE
+		GLFWvidmode vidModes[64];
+
+		int modesDetected = glfwGetVideoModes(vidModes, 64);
+
+		for (int i=0; i < modesDetected; i++)
+		{
+			Vec3ui avm;
+			avm.X = vidModes[i].Width;
+			avm.Y = vidModes[i].Height;
+			avm.Z = vidModes[i].RedBits + vidModes[i].GreenBits + vidModes[i].BlueBits;
+			forReturn.push_back(avm);
+		}
+	#else
+		//TODO: return the device's native resolution?
+	#endif
+
+	return forReturn;
+}
+
+void World::AdjustWindow(int windowWidth, int windowHeight, const String& windowName)
+{
+	#if !ANGEL_MOBILE
+		glfwSetWindowTitle(windowName.c_str());
+
+		int width, height;
+		glfwGetWindowSize(&width, &height);
+		if ( (width != windowWidth) || (height != windowHeight) )
+		{
+			glfwSetWindowSize(windowWidth, windowHeight);
+		}
+	#endif
+}
+
+void World::MoveWindow(int xPosition, int yPosition)
+{
+	
+}
+
 
 bool World::SetupPhysics(const Vector2& gravity, const Vector2& maxVertex, const Vector2& minVertex)
 {
@@ -253,7 +319,7 @@ bool World::SetupPhysics(const Vector2& gravity, const Vector2& maxVertex, const
 
 void World::Destroy()
 {
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		theInput.Destroy();
 	#endif
 	theSound.Shutdown();
@@ -283,12 +349,12 @@ void World::StartGame()
 
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
-		#if !ANGEL_IPHONE
+		#if !ANGEL_MOBILE
 			glfwSwapBuffers();
 		#endif
 	}
 	
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		glfwTerminate();
 	#endif
 }
@@ -310,7 +376,7 @@ void World::LoadLevel(const String& levelName)
 
 float World::CalculateNewDT()
 {
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		struct timeval tv;
 		gettimeofday(&tv, NULL);
 		_currTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0 - _startTime;
@@ -327,7 +393,7 @@ void World::Simulate(bool simRunning)
 	float frame_dt = CalculateNewDT();
 
 	//system updates
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		theControllerManager.UpdateState();
 		_console->Update( (float)frame_dt );
 	#endif
@@ -454,7 +520,7 @@ void World::TickAndRender()
 
 	DrawDebugItems();
 
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		//Draw developer console
 		_console->Render();
 	#endif

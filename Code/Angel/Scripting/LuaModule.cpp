@@ -34,7 +34,8 @@
 #include "../Messaging/Switchboard.h"
 #include "../Util/StringUtil.h"
 #include "../Infrastructure/Log.h"
-#if !ANGEL_IPHONE
+#include "../Infrastructure/World.h"
+#if !ANGEL_MOBILE
 	#include "../Scripting/LuaConsole.h"
 #endif
 
@@ -47,7 +48,7 @@ bool LuaScriptingModule::isInitialized = false;
 lua_State* LuaScriptingModule::L = NULL;
 ConfigUpdater* LuaScriptingModule::_configUpdater = NULL;
 
-void LuaScriptingModule::Initialize()
+void LuaScriptingModule::Prep()
 {
 	L = luaL_newstate();
 	
@@ -56,14 +57,22 @@ void LuaScriptingModule::Initialize()
 	luaopen_angel(L);
 	lua_gc(L, LUA_GCRESTART, 0);
 	
-	#if !ANGEL_IPHONE
-		LuaConsole *lc = new LuaConsole();
-		theWorld.RegisterConsole(lc);
+	#if !ANGEL_MOBILE
 		lua_pushboolean(L, 0);
 		lua_setglobal(L, "ANGEL_MOBILE");
 	#else
 		lua_pushboolean(L, 1);
 		lua_setglobal(L, "ANGEL_MOBILE");
+	#endif
+	
+	luaL_dofile(L, "./Resources/Scripts/pref_load.lua");
+}
+
+void LuaScriptingModule::Initialize()
+{
+	#if !ANGEL_MOBILE
+		LuaConsole *lc = new LuaConsole();
+		theWorld.RegisterConsole(lc);
 	#endif
 	
 	int result = luaL_dofile(L, "./Resources/Scripts/start.lua");
@@ -105,7 +114,7 @@ void LuaScriptingModule::ExecuteInScript(const String& code)
 		
 		if (error.substr(error.length()-6, 5) != "<eof>")
 		{
-			#if !ANGEL_IPHONE
+			#if !ANGEL_MOBILE
 				theWorld.GetConsole()->WriteToOutput("ERROR: " + error + "\n");
 			#endif
 		}
@@ -147,7 +156,7 @@ lua_State* LuaScriptingModule::GetLuaState()
 
 ConfigUpdater::ConfigUpdater()
 {
-	#if !defined(ANGEL_IPHONE)
+	#if !defined(ANGEL_MOBILE)
 		LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
 		theSwitchboard.SubscribeTo(this, TUNING_MESSAGE_NAME);
 		theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
@@ -156,7 +165,7 @@ ConfigUpdater::ConfigUpdater()
 
 void ConfigUpdater::ReceiveMessage(Message *message)
 {
-	#if !defined(ANGEL_IPHONE)
+	#if !defined(ANGEL_MOBILE)
 		if (message->GetMessageName() == TUNING_MESSAGE_NAME)
 		{
 			LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");

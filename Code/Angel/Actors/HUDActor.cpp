@@ -45,7 +45,7 @@ void HUDActor::Render()
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
 	#endif
 	gluOrtho2D(0, winDimensions.X, 0, winDimensions.Y);
@@ -86,7 +86,7 @@ void HUDActor::Render()
 		break;
 			
 		case ADS_CustomList:
-			#if ANGEL_IPHONE
+			#if ANGEL_MOBILE
 				sysLog.Printf("glCallList is unsupported in OpenGL|ES.");
 			#else
 				if (_displayListIndex < 0)

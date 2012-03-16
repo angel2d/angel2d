@@ -5,7 +5,7 @@ AR = ar rcu
 RANLIB = ranlib
 LIBNAME = liblua.a
 EXENAME = lua
-LUA_DIR    := ../lua-5.1.4/src
+LUA_DIR    := ../lua-5.1.5/src
 LUA_EX_DIR := ../lua-libs/lua-ex/posix
 LUA_FS_DIR := ../lua-libs/luafilesystem-1.5.0/src
 
@@ -65,7 +65,7 @@ $(LIBNAME): $(LIBOBJS)
 	$(RANLIB) $@
 
 $(EXENAME): $(LIBNAME) $(EXEOBJS)
-	$(CC) -o $@ $(LDFLAGS) $(EXEOBJS) $(LIBNAME)
+	$(CC) -o $@ $(EXEOBJS) $(LIBNAME) $(LDFLAGS)
 
 clean:
 	rm -f $(LIBOBJS) $(EXEOBJS) $(LIBNAME) $(EXENAME)

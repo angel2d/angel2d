@@ -87,7 +87,7 @@ void Camera::Resize(int width, int height)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		gluPerspective(_aperture, (float)_windowWidth/(float)_windowHeight, _zNearClip, _zFarClip);
 	#else
 		gluPerspective(_aperture, (float)_windowHeight/(float)_windowWidth, _zNearClip, _zFarClip);
@@ -130,7 +130,7 @@ void Camera::Render()
 	*/
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		glRotatef(_rotation, 0.0f, 0.0f, 1.0f);
 	#else
 		glRotatef(_rotation-90.0f, 0.0f, 0.0f, 1.0f);

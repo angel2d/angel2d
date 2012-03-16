@@ -36,6 +36,7 @@ theSwitchboard = Switchboard_GetInstance()
 theCamera = Camera_GetInstance()
 theSound = SoundDevice_GetInstance()
 theTuning = Tuning_GetInstance()
+thePrefs = Preferences_GetInstance()
 if (ANGEL_MOBILE == false) then
   theControllerManager = ControllerManager_GetInstance()
   sysLog = CompoundLog_GetSystemLog()

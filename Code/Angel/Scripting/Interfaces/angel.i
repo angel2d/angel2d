@@ -62,6 +62,7 @@ typedef std::vector<String>	StringList;
 %include world.i
 %include log.i
 %include tuning.i
+%include preferences.i
 %include sound.i
 
 #ifndef ANGEL_MOBILE

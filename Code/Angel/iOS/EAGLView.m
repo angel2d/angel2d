@@ -47,7 +47,7 @@
 
 //The EAGL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 - (id)initWithCoder:(NSCoder*)coder
-{    
+{
 	if ((self = [super initWithCoder:coder]))
 	{
 		// Get the layer

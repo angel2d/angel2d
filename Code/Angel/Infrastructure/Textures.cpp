@@ -33,7 +33,7 @@
 #include "../AngelConfig.h"
 #include "../Infrastructure/Log.h"
 
-#if ANGEL_IPHONE || ANGEL_DISABLE_DEVIL
+#if ANGEL_MOBILE || ANGEL_DISABLE_DEVIL
 	#define _ANGEL_DISABLE_DEVIL 1
 #endif
 
@@ -416,7 +416,7 @@ bool PixelsToPositions(const String& filename, Vector2List &positions, float gri
 			if ((i+1) % 4)
 			{
 				rawData[j] = (float)pngData[i] / 255.0f;
-				j++;				
+				j++;
 			}
 		}
 

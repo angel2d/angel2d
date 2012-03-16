@@ -54,7 +54,7 @@ bool GetLinesFromFile(const String& fileName, StringList& outList );
  *   own line)
  * @return True if we could write to the file, false if we couldn't
  */
-bool WriteLinesToFile( const String& fileName, const StringList& strings );
+bool WriteLinesToFile(const String& fileName, const StringList& strings );
 
 /**
  * Appends a set of lines to a file. 
@@ -64,7 +64,7 @@ bool WriteLinesToFile( const String& fileName, const StringList& strings );
  *   own line)
  * @return True if we could write to the file, false if we couldn't
  */
-bool AppendLineToFile( const String& fileName, const String& line );
+bool AppendLineToFile(const String& fileName, const String& line );
 
 /**
  * Ensures that a path of directories exists -- returns true if it does,
@@ -74,4 +74,28 @@ bool AppendLineToFile( const String& fileName, const String& line );
  * @param path The path to create
  * @return Whether it actually exists at the end of this function
  */
-bool MakeDirectories( const String& path );
+bool MakeDirectories(const String& path );
+
+/**
+ * Convenience function for reading an entire file as a single string.
+ *  If there is no such file, and empty string will be returned.
+ * 
+ * @param fileName The file to read
+ * @return The complete text of the file
+ */
+const String ReadWholeFile(const String& fileName);
+
+/**
+ * Gives a system-appropriate writable directory for the use of logs,
+ *  preference files, etc. 
+ * 
+ * @return The path to the defined writable directory.
+ */
+const String GetStorageDirectory();
+
+/**
+ * Gives the name of the current executable. 
+ *
+ * @return The name of the current executable
+ */
+const String GetExeName();

@@ -45,9 +45,9 @@ class FTOutlineGlyphImpl : public FTGlyphImpl
 
     private:
         /**
-         * Private rendering method.
+         * Renders contours of vectoriser.
          */
-        void DoRender();
+        void RenderContours(const FTPoint& pen);
 
         /**
          * Private rendering variables.

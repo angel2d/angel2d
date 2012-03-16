@@ -57,16 +57,27 @@ class FTOutlineFontImpl : public FTFontImpl
                                FTPoint position, FTPoint spacing,
                                int renderMode);
 
+
+	
     private:
         /**
          * The outset distance for the font.
          */
         float outset;
+	
+	
+	bool preRendered;
 
         /* Internal generic Render() implementation */
         template <typename T>
         inline FTPoint RenderI(const T *s, const int len,
                                FTPoint position, FTPoint spacing, int mode);
+
+	 void PreRender();
+	
+	
+	void PostRender();
+
 };
 
 #endif // __FTOutlineFontImpl__

@@ -299,7 +299,7 @@ void Actor::Render()
 		break;
 
 		case ADS_CustomList:
-			#if ANGEL_IPHONE
+			#if ANGEL_MOBILE
 				sysLog.Printf("glCallList is unsupported in OpenGL|ES.");
 			#else
 				if (_displayListIndex < 0)

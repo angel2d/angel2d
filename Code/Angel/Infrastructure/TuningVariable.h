@@ -30,6 +30,7 @@
 #pragma once
 
 #include "../Infrastructure/Common.h"
+#include "../Infrastructure/LoadedVariable.h"
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"
 
@@ -175,50 +176,6 @@ private:
 	Tuning();
 	static Tuning* s_Tuning;
 	
-	struct TuningVariable
-	{
-		int _int;
-		float _float;
-		String _string;
-		Vector2 _vector;
-		
-		TuningVariable()
-		{
-			_int = 0;
-			_float = 0.0f;
-			_string = "";
-			_vector = Vector2::Zero;
-		}
-		TuningVariable(int val)
-		{
-			_int = val;
-			_float = (float)val;
-			_string = IntToString(val);
-			_vector = Vector2::Zero;
-		}
-		TuningVariable(float val)
-		{
-			_int = MathUtil::RoundToInt(val);
-			_float = val;
-			_string = FloatToString(val);
-			_vector = Vector2::Zero;
-		}
-		TuningVariable(String val)
-		{
-			_int = StringToInt(val); 
-			_float = StringToFloat(val);
-			_string = val;
-			_vector = Vector2::Zero;
-		}
-		TuningVariable(Vector2 val)
-		{
-			_int = 0;
-			_float = 0.0f;
-			_string = "{" + FloatToString(val.X) + ", " + FloatToString(val.Y) + "}";
-			_vector = val;
-		}
-	};
-	
-	hashmap_ns::hash_map<String, TuningVariable> _tuningVariables;
+	LoadedVariableMap _tuningVariables;
 	StringSet _runTimeTunedList;
 };

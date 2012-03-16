@@ -9,13 +9,13 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Angel", "Angel\Angel.vcproj", "{D9A0401F-5FAF-483D-81EB-1066CD52F9D4}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3A214E06-B95E-4D61-A291-1F8DF2EC10FD} = {3A214E06-B95E-4D61-A291-1F8DF2EC10FD}
+		{43A70737-8C58-44EA-BBBB-6BF9BDDD1C34} = {43A70737-8C58-44EA-BBBB-6BF9BDDD1C34}
 		{DC0ED983-3C48-4E71-8AFF-998661D9E42E} = {DC0ED983-3C48-4E71-8AFF-998661D9E42E}
 		{CEBDE98B-A6AA-46E6-BC79-FAAF823DB9EC} = {CEBDE98B-A6AA-46E6-BC79-FAAF823DB9EC}
-		{43A70737-8C58-44EA-BBBB-6BF9BDDD1C34} = {43A70737-8C58-44EA-BBBB-6BF9BDDD1C34}
 		{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9} = {BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_freetype", "Angel\Libraries\freetype-2.3.7\builds\win32\visualc\freetype.vcproj", "{78B079BD-9FC7-4B9E-B4A6-96DA0F00248B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_freetype", "Angel\Libraries\freetype-2.4.8\builds\win32\vc2008\freetype.vcproj", "{78B079BD-9FC7-4B9E-B4A6-96DA0F00248B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_FTGL", "Angel\Libraries\FTGL\win32_vcpp\ftgl_static_lib\ftgl_static_lib.vcproj", "{21CCDF71-9702-4596-860C-ECC082E63F5E}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -24,28 +24,33 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_FTGL", "Angel\Libraries\FT
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientGame", "ClientGame\ClientGame.vcproj", "{5B267A7F-D9DF-4B2E-B3E7-73A4EF0F1A36}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_GLFW", "Angel\Libraries\glfw\support\msvc80\GLFW.vcproj", "{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_GLFW", "Angel\Libraries\glfw-2.7.3\support\msvc90\GLFW.vcproj", "{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_LuaLib", "Angel\Libraries\lua-5.1.4\Lua.vcproj", "{958B2042-89DD-422B-B103-85ED2E41F20B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_LuaLib", "Angel\Libraries\lua-5.1.5\Lua.vcproj", "{958B2042-89DD-422B-B103-85ED2E41F20B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_LuaExe", "Angel\Libraries\lua-5.1.4\LuaExe.vcproj", "{DC0ED983-3C48-4E71-8AFF-998661D9E42E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_LuaExe", "Angel\Libraries\lua-5.1.5\LuaExe.vcproj", "{DC0ED983-3C48-4E71-8AFF-998661D9E42E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{958B2042-89DD-422B-B103-85ED2E41F20B} = {958B2042-89DD-422B-B103-85ED2E41F20B}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_libogg", "Angel\Libraries\libogg-1.2.0\win32\VS2008\libogg_static.vcproj", "{15CBFEFF-7965-41F5-B4E2-21E8795C9159}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_libogg", "Angel\Libraries\libogg-1.3.0\win32\VS2008\libogg_static.vcproj", "{15CBFEFF-7965-41F5-B4E2-21E8795C9159}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_libvorbis", "Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbis\libvorbis_static.vcproj", "{3A214E06-B95E-4D61-A291-1F8DF2EC10FD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_libvorbis", "Angel\Libraries\libvorbis-1.3.2\win32\VS2008\libvorbis\libvorbis_static.vcproj", "{3A214E06-B95E-4D61-A291-1F8DF2EC10FD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{15CBFEFF-7965-41F5-B4E2-21E8795C9159} = {15CBFEFF-7965-41F5-B4E2-21E8795C9159}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_libvorbisfile", "Angel\Libraries\libvorbis-1.3.1\win32\VS2008\libvorbisfile\libvorbisfile_static.vcproj", "{CEBDE98B-A6AA-46E6-BC79-FAAF823DB9EC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_libvorbisfile", "Angel\Libraries\libvorbis-1.3.2\win32\VS2008\libvorbisfile\libvorbisfile_static.vcproj", "{CEBDE98B-A6AA-46E6-BC79-FAAF823DB9EC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{15CBFEFF-7965-41F5-B4E2-21E8795C9159} = {15CBFEFF-7965-41F5-B4E2-21E8795C9159}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_Box2D", "Angel\Libraries\Box2D-2.2.1\Build\vs2008\Box2D.vcproj", "{43A70737-8C58-44EA-BBBB-6BF9BDDD1C34}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_LuaCompiler", "Angel\Libraries\lua-5.1.5\LuaCompiler.vcproj", "{0994716E-B3A0-476D-981F-82165BE650FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{958B2042-89DD-422B-B103-85ED2E41F20B} = {958B2042-89DD-422B-B103-85ED2E41F20B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +106,10 @@ Global
 		{43A70737-8C58-44EA-BBBB-6BF9BDDD1C34}.Debug|Win32.Build.0 = Debug|Win32
 		{43A70737-8C58-44EA-BBBB-6BF9BDDD1C34}.Release|Win32.ActiveCfg = Release|Win32
 		{43A70737-8C58-44EA-BBBB-6BF9BDDD1C34}.Release|Win32.Build.0 = Release|Win32
+		{0994716E-B3A0-476D-981F-82165BE650FF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0994716E-B3A0-476D-981F-82165BE650FF}.Debug|Win32.Build.0 = Debug|Win32
+		{0994716E-B3A0-476D-981F-82165BE650FF}.Release|Win32.ActiveCfg = Release|Win32
+		{0994716E-B3A0-476D-981F-82165BE650FF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

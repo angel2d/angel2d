@@ -29,7 +29,7 @@
 
 #pragma once
 
-///A handy structure for passing around 2d integer coordinates
+///A handy set of structures for passing around sets of numbers
 /** 
  * The little brother of Vector2 and Vector3, which handle floats, Vec2i 
  *  simply bundles together two integers to make it easier to pass around
@@ -40,4 +40,34 @@ struct Vec2i
 	int X, Y;
 	Vec2i(int x, int y) : X(x), Y(y) {}
 	Vec2i() : X(0), Y(0) {}
+};
+
+/** 
+ * Similar to Vec2i, but for situations that demand unsigned integers.
+ */
+struct Vec2ui
+{
+	unsigned int X, Y;
+	Vec2ui(unsigned int x, unsigned int y) : X(x), Y(y) {}
+	Vec2ui() : X(0), Y(0) {}
+};
+
+/** 
+ * The 3-integer version of Vec2i.
+ */
+struct Vec3i
+{
+	int X, Y, Z;
+	Vec3i(int x, int y, int z) : X(x), Y(y), Z(z) {}
+	Vec3i() : X(0), Y(0), Z(0) {}
+};
+
+/** 
+ * The 3-integer version of Vec2ui.
+ */
+struct Vec3ui
+{
+	unsigned int X, Y, Z;
+	Vec3ui(unsigned int x, unsigned int y, unsigned int z) : X(x), Y(y), Z(z) {}
+	Vec3ui() : X(0), Y(0), Z(0) {}
 };

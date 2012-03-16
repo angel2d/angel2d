@@ -49,7 +49,7 @@ Tuning::Tuning()
 StringSet Tuning::GetVariables()
 {
 	StringSet forReturn;
-	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.begin();
+	LoadedVariableMap::iterator it = _tuningVariables.begin();
 	while (it != _tuningVariables.end())
 	{
 		forReturn.insert(it->first);
@@ -60,62 +60,62 @@ StringSet Tuning::GetVariables()
 
 int Tuning::GetInt(const String& name)
 {
-	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
-		return TuningVariable()._int;
+		return LoadedVariable()._int;
 	}
 	return it->second._int;
 }
 
 float Tuning::GetFloat(const String& name)
 {
-	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
-		return TuningVariable()._float;
+		return LoadedVariable()._float;
 	}
 	return it->second._float;
 }
 
 String Tuning::GetString(const String& name)
 {
-	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
-		return TuningVariable()._string;
+		return LoadedVariable()._string;
 	}
 	return it->second._string;
 }
 
 Vector2 Tuning::GetVector(const String& name)
 {
-	hashmap_ns::hash_map<String, TuningVariable>::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
-		return TuningVariable()._vector;
+		return LoadedVariable()._vector;
 	}
 	return it->second._vector;
 }
 
 void Tuning::SetInt(const String& name, int val)
 {
-	_tuningVariables[name] = TuningVariable(val);
+	_tuningVariables[name] = LoadedVariable(val);
 }
 
 void Tuning::SetFloat(const String& name, float val)
 {
-	_tuningVariables[name] = TuningVariable(val);
+	_tuningVariables[name] = LoadedVariable(val);
 }
 
 void Tuning::SetString(const String& name, const String& val)
 {
-	_tuningVariables[name] = TuningVariable(val);
+	_tuningVariables[name] = LoadedVariable(val);
 }
 
 void Tuning::SetVector(const String& name, const Vector2& val)
 {
-	_tuningVariables[name] = TuningVariable(val);
+	_tuningVariables[name] = LoadedVariable(val);
 }
 
 void Tuning::AddToRuntimeTuningList(const String& varName)

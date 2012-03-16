@@ -8,7 +8,12 @@ class World
 {
 public:
 	static World &GetInstance();
-		
+	
+	std::vector<Vec3ui> GetVideoModes();
+
+	void AdjustWindow(int windowWidth, int windowHeight, const String& windowName);
+	void MoveWindow(int xPosition, int yPosition);
+
 	void ResetWorld();
 	
 	void StopGame();

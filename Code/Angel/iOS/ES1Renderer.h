@@ -35,14 +35,14 @@
 @interface ES1Renderer : NSObject <ESRenderer>
 {
 @private
-    EAGLContext *context;
+	EAGLContext *context;
 
-    // The pixel dimensions of the CAEAGLLayer
-    GLint backingWidth;
-    GLint backingHeight;
+	// The pixel dimensions of the CAEAGLLayer
+	GLint backingWidth;
+	GLint backingHeight;
 
-    // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view
-    GLuint defaultFramebuffer, colorRenderbuffer;
+	// The OpenGL ES names for the framebuffer and renderbuffer used to render to this view
+	GLuint defaultFramebuffer, colorRenderbuffer;
 }
 
 - (void)render;

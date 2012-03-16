@@ -78,6 +78,11 @@ public:
 	 * The initial call to get Angel up and running. Opens the window, sets
 	 *  up our display, and begins the Update/Render loop. 
 	 * 
+	 * The values passed in here will be overridden by any values set in
+	 *  the Preferences, with the WindowSettings table. (See the Preferences
+	 *  documentation and the example preferences file in IntroGame for more
+	 *  information.)
+	 * 
 	 * @param windowWidth The desired width (in pixels) of the window
 	 * @param windowHeight The desired height (in pixels) of the window
 	 * @param windowName The string that should appear in the window's title bar
@@ -88,11 +93,44 @@ public:
 	 *   and that Angel will attempt to change the system's video mode 
 	 *   accordingly. We don't do any detection of what modes are valid, so
 	 *   make sure you're feeding this a legitimate resolution.
+	 * @param resizable Whether the user will be allowed to resize the game window
+	 8   using the operating system's normal resize widgets.
 	 * @return Returns true if initialization worked (i.e. if world was not
 	 *   already initialized)
 	 */
-	bool Initialize(unsigned int windowWidth=1024, unsigned int windowHeight=768, const String& windowName="Angel Engine", bool antiAliasing=false, bool fullScreen=false);
+	bool Initialize(unsigned int windowWidth=1024, unsigned int windowHeight=768, String windowName="Angel Engine", bool antiAliasing=false, bool fullScreen=false, bool resizable=false);
 	
+	/**
+	 * Queries the video drivers to get a list of supported video modes for
+	 *  fullscreen gameplay. You'll likely want to get a list of valid modes to give
+	 *  the player a choice of resolutions. (You can then save the selected mode
+	 *  as part of the preferences.)
+	 *
+	 * @return A list of video modes bundled, each bundled as a Vec3ui. The X
+	 *   value is the width; the Y value is the height, and the Z-value
+	 *   represents the color depth. 
+	 */
+	std::vector<Vec3ui> GetVideoModes();
+
+	/**
+	 * Changes the dimension of the window while the game is running. Note that the
+	 *  behavior is undefined if this method is called while in fullscreen mode.
+	 * 
+	 * @param windowWidth The new desired width
+	 * @param windowHeight The new desired height
+	 * @param windowName The new string to go in the window's title bar
+	 */
+	void AdjustWindow(int windowWidth, int windowHeight, const String& windowName);
+
+	/**
+	 * Moves the window around on screen, relative to the system origin. Note that
+	 *  behavior is undefined if this method is called while in fullscreen mode.
+	 * 
+	 * @param xPosition The new x position offset from the system origin
+	 * @param yPosition The new y position offset from the system origin
+	 */
+	void MoveWindow(int xPosition, int yPosition);
+
 	/**
 	 * Intialize physics. If you're not using our built-in physics, you don't
 	 *  have to call this function, but no PhysicsActors will do anything 
@@ -447,7 +485,7 @@ private:
 		int			_layer;
 	};
 	bool _running;
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		float _startTime;
 	#endif
 	bool _highResScreen;

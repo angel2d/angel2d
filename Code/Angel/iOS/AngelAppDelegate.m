@@ -53,23 +53,23 @@ Vector3 __angelAccelBuffer[ANGEL_ACCEL_BUFFER_SIZE];
 	[accelerometer setDelegate:self];
 	[accelerometer setUpdateInterval: 1.0f / ANGEL_ACCEL_UPDATE_FREQ];
 	
-    [glView startAnimation];
-    return YES;
+	[glView startAnimation];
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    [glView stopAnimation];
+	[glView stopAnimation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [glView startAnimation];
+	[glView startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [glView stopAnimation];
+	[glView stopAnimation];
 }
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
@@ -111,10 +111,10 @@ Vector3 __angelAccelBuffer[ANGEL_ACCEL_BUFFER_SIZE];
 
 - (void)dealloc
 {
-    [window release];
-    [glView release];
+	[window release];
+	[glView release];
 
-    [super dealloc];
+	[super dealloc];
 }
 
 @end

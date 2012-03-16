@@ -68,6 +68,14 @@ class LuaScriptingModule
 {
 public:
 	/**
+	 * Does the very initial stages of setting up Lua so that it can be used
+	 *  to load the preferences files. 
+	 * 
+	 * Called by the World during setup.
+	 */
+	static void Prep();
+	
+	/**
 	 * Work the magic to set up Lua and load our extension module. 
 	 * 
 	 * Note that the start.lua file located in Scripting/EngineScripts will

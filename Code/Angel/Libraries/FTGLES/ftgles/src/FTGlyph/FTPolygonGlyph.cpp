@@ -81,48 +81,48 @@ FTPolygonGlyphImpl::FTPolygonGlyphImpl(FT_GlyphSlot glyph, float _outset,
         return;
     }
 
-	/*
-	 * David Petrie Note:
-	 * 
-	 * The original FTGL code included support for gl display lists (via 
-	 * glGenList, etc). This has been removed because OpenGL ES 1.1 has
-	 * no support for them.
-	 */
-	
+    /*
+     * David Petrie Note:
+     * 
+     * The original FTGL code included support for gl display lists (via 
+     * glGenList, etc). This has been removed because OpenGL ES 1.1 has
+     * no support for them.
+     */
+    
     hscale = glyph->face->size->metrics.x_ppem * 64;
     vscale = glyph->face->size->metrics.y_ppem * 64;
     outset = _outset;
-	
-	/*
-	 * David Petrie Note:
-	 * 
-	 * vectoriser->MakeMesh was being called every DoRender() in the
-	 * original FTGL code. I've shifted it here so it is only called once,
-	 * as the iPhone is not efficient enough to handle a tesselation
-	 * on each frame.
-	 */
-	if (vectoriser)
-		vectoriser->MakeMesh(1.0, 1, outset);
+    
+    /*
+     * David Petrie Note:
+     * 
+     * vectoriser->MakeMesh was being called every DoRender() in the
+     * original FTGL code. I've shifted it here so it is only called once,
+     * as the iPhone is not efficient enough to handle a tesselation
+     * on each frame.
+     */
+    if (vectoriser)
+        vectoriser->MakeMesh(1.0, 1, outset);
 }
 
 
 FTPolygonGlyphImpl::~FTPolygonGlyphImpl()
 {
-	if (vectoriser)
+    if (vectoriser)
     {
         delete vectoriser;
     }
-}
+}   
 
 
 const FTPoint& FTPolygonGlyphImpl::RenderImpl(const FTPoint& pen,
                                               int renderMode)
 {
     glTranslatef(pen.Xf(), pen.Yf(), pen.Zf());
-	if (vectoriser)
-	{
-		DoRender();
-	}
+    if (vectoriser)
+    {
+        DoRender();
+    }
     glTranslatef(-pen.Xf(), -pen.Yf(), -pen.Zf());
     return advance;
 }
@@ -130,26 +130,26 @@ const FTPoint& FTPolygonGlyphImpl::RenderImpl(const FTPoint& pen,
 
 void FTPolygonGlyphImpl::DoRender()
 {
-	GLfloat colors[4];
-	
+    GLfloat colors[4];
+    
     const FTMesh *mesh = vectoriser->GetMesh();
 
     for(unsigned int t = 0; t < mesh->TesselationCount(); ++t)
     {
         const FTTesselation* subMesh = mesh->Tesselation(t);
         unsigned int polygonType = subMesh->PolygonType();
-		
-		glGetFloatv(GL_CURRENT_COLOR, colors);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		
+        
+        glGetFloatv(GL_CURRENT_COLOR, colors);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        
         ftglBegin(polygonType);
-		ftglColor4f(colors[0], colors[1], colors[2], colors[3]);
-		for(unsigned int i = 0; i < subMesh->PointCount(); ++i)
-		{
-			FTPoint point = subMesh->Point(i);
-			ftglTexCoord2f(point.Xf() / hscale, point.Yf() / vscale);
-			ftglVertex3f(point.Xf() / 64.0f, point.Yf() / 64.0f, 0.0f);
-		}
+        ftglColor4f(colors[0], colors[1], colors[2], colors[3]);
+        for(unsigned int i = 0; i < subMesh->PointCount(); ++i)
+        {
+            FTPoint point = subMesh->Point(i);
+            ftglTexCoord2f(point.Xf() / hscale, point.Yf() / vscale);
+            ftglVertex3f(point.Xf() / 64.0f, point.Yf() / 64.0f, 0.0f);
+        }
         ftglEnd();
     }
 }

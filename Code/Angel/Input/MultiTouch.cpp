@@ -32,7 +32,7 @@
 
 #include "../Infrastructure/Common.h"
 
-#if !ANGEL_IPHONE
+#if !ANGEL_MOBILE
 	#include "../Input/Controller.h"
 #endif
 
@@ -115,7 +115,7 @@ Accelerometer& Accelerometer::GetInstance()
 
 const Vector3 Accelerometer::GetData()
 {
-	#if defined(ANGEL_IPHONE)
+	#if defined(ANGEL_MOBILE)
 		return _data;
 	#else
 		if (theController.IsConnected())

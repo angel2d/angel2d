@@ -89,6 +89,7 @@ recursive_copy(fulljoin(env['BUILT_PRODUCTS_DIR'], args.gamename), app_path)
 conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
 t = io.open(conf_path, "r")
 tr = t:read("*all")
+t:close()
 
 disable_fmod = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_FMOD%s+([0-9]+)"))
 disable_devil = tonumber(tr:match("\n%s*#define%s+ANGEL_DISABLE_DEVIL%s+([0-9]+)"))
@@ -104,6 +105,22 @@ if (disable_devil == 1) then
     os.remove(libpath)
   end
 end
+
+exename = env['EXECUTABLE_NAME']
+exepath = fulljoin(app_path, "Contents", "MacOS", exename)
+renamed = fulljoin(app_path, "Contents", "MacOS", config.game_info.name)
+pl.dir.movefile(exepath, renamed)
+
+plist_path = fulljoin(app_path, "Contents", "Info.plist")
+plist = io.open(plist_path, "r")
+plist_text = plist:read("*all")
+plist:close()
+plist = io.open(plist_path, "w")
+find = "<key>CFBundleExecutable</key>\n\t<string>" .. exename .. "</string>"
+replace = "<key>CFBundleExecutable</key>\n\t<string>" .. config.game_info.name .. "</string>"
+plist_text = plist_text:gsub(find, replace)
+plist:write(plist_text)
+plist:close()
 
 att_path = fulljoin(args.input_directory, "..", "Tools", "BuildScripts", "Attributions")
 correct_attributions(pl.path.join(output_d, "Attributions.txt"), att_path, disable_devil, disable_fmod)

@@ -32,8 +32,8 @@
 @class EAGLView;
 
 @interface AngelAppDelegate : NSObject <UIApplicationDelegate, UIAccelerometerDelegate> {
-    UIWindow *window;
-    EAGLView *glView;
+	UIWindow *window;
+	EAGLView *glView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

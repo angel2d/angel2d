@@ -50,8 +50,11 @@ _cursorDispTime(0.0f),
 _bCursorDisp(true),
 _tabWidth(8)
 {
-	RegisterFont("Resources/Fonts/Inconsolata.otf", 24, "Console");
-	RegisterFont("Resources/Fonts/Inconsolata.otf", 18, "ConsoleSmall");
+	if (!IsFontRegistered("Console") || !IsFontRegistered("ConsoleSmall"))
+	{
+		RegisterFont("Resources/Fonts/Inconsolata.otf", 24, "Console");
+		RegisterFont("Resources/Fonts/Inconsolata.otf", 18, "ConsoleSmall");
+	}
 }
 
 Console::~Console()

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2011, Shane J. M. Liesegang
+// Copyright (C) 2008-2012, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -45,7 +45,7 @@ public:
 	virtual void ReceiveMessage(Message *m);
 
 private:
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		MobileSimulator* _ms;
 	#endif
 };

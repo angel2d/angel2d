@@ -32,7 +32,6 @@ if (package.path == nil) then
   package.path = ""
 end
 package.path = package.path .. ";./Resources/Scripts/?.lua"
-SCRIPTS = "./Resources/Scripts/"
 
 require "util"
 

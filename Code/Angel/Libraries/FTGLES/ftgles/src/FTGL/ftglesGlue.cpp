@@ -23,96 +23,103 @@
  */
 
 #include "ftglesGlue.h"
+#define FTGLES_GLUE_MAX_VERTICES 32768
 
-struct Vertex 
+typedef struct 
 {
 	float xyz[3];
 	float st[2];
-	GLubyte c[4];
-};
+	GLubyte rgba[4];
+} ftglesVertex_t;
 
-#define MAX_VERTS 16384
 
-typedef struct Vertex Vertex;
-Vertex immediate[MAX_VERTS];
-Vertex vab;
-short quad_indexes[MAX_VERTS * 3 / 2];
-int curr_vertex;
-GLenum curr_prim;
-bool initted = false;
-
-GLvoid ftglInitImmediateModeGL() 
+typedef struct 
 {
-	// deprecated.
-}
+	ftglesVertex_t vertices[FTGLES_GLUE_MAX_VERTICES];
+	short quadIndices[FTGLES_GLUE_MAX_VERTICES * 3 / 2];
+	ftglesVertex_t currVertex;
+	unsigned int currIndex;
+} ftglesGlueArrays_t;
 
+ftglesGlueArrays_t ftglesGlueArrays;
+
+GLenum ftglesCurrentPrimitive = GL_TRIANGLES;
+bool ftglesQuadIndicesInitted = false;
 
 GLvoid ftglBegin(GLenum prim) 
 {
-	if (!initted)
+	if (!ftglesQuadIndicesInitted)
 	{
-		for (int i = 0; i < MAX_VERTS * 3 / 2; i += 6) 
+		for (int i = 0; i < FTGLES_GLUE_MAX_VERTICES * 3 / 2; i += 6) 
 		{
 			int q = i / 6 * 4;
-			quad_indexes[i + 0] = q + 0;
-			quad_indexes[i + 1] = q + 1;
-			quad_indexes[i + 2] = q + 2;
+			ftglesGlueArrays.quadIndices[i + 0] = q + 0;
+			ftglesGlueArrays.quadIndices[i + 1] = q + 1;
+			ftglesGlueArrays.quadIndices[i + 2] = q + 2;
 			
-			quad_indexes[i + 3] = q + 0;
-			quad_indexes[i + 4] = q + 2;
-			quad_indexes[i + 5] = q + 3;
+			ftglesGlueArrays.quadIndices[i + 3] = q + 0;
+			ftglesGlueArrays.quadIndices[i + 4] = q + 2;
+			ftglesGlueArrays.quadIndices[i + 5] = q + 3;
 		}
-		initted = true;
+		ftglesQuadIndicesInitted = true;
 	}
-	curr_vertex = 0;
-	curr_prim = prim;
+	ftglesGlueArrays.currIndex = 0;
+	ftglesCurrentPrimitive = prim;
 }
 
 
 GLvoid ftglVertex3f(float x, float y, float z) 
 {
-	assert(curr_vertex < MAX_VERTS);
-	vab.xyz[0] = x;
-	vab.xyz[1] = y;
-	vab.xyz[2] = z;
-	immediate[curr_vertex] = vab;
-	curr_vertex++;
+	if (ftglesGlueArrays.currIndex >= FTGLES_GLUE_MAX_VERTICES)
+	{
+		return;
+	}
+	
+	ftglesGlueArrays.currVertex.xyz[0] = x;
+	ftglesGlueArrays.currVertex.xyz[1] = y;
+	ftglesGlueArrays.currVertex.xyz[2] = z;
+	ftglesGlueArrays.vertices[ftglesGlueArrays.currIndex] = ftglesGlueArrays.currVertex;
+	ftglesGlueArrays.currIndex++;
 }
 
 
 GLvoid ftglVertex2f(float x, float y) 
 {
-	assert(curr_vertex < MAX_VERTS);
-	vab.xyz[0] = x;
-	vab.xyz[1] = y;
-	vab.xyz[2] = 0.0f;
-	immediate[curr_vertex] = vab;
-	curr_vertex++;
+	if (ftglesGlueArrays.currIndex >= FTGLES_GLUE_MAX_VERTICES)
+	{
+		return;
+	}
+	
+	ftglesGlueArrays.currVertex.xyz[0] = x;
+	ftglesGlueArrays.currVertex.xyz[1] = y;
+	ftglesGlueArrays.currVertex.xyz[2] = 0.0f;
+	ftglesGlueArrays.vertices[ftglesGlueArrays.currIndex] = ftglesGlueArrays.currVertex;
+	ftglesGlueArrays.currIndex++;
 }
 
 
 GLvoid ftglColor4ub(GLubyte r, GLubyte g, GLubyte b, GLubyte a) 
 {
-	vab.c[0] = r;
-	vab.c[1] = g;
-	vab.c[2] = b;
-	vab.c[3] = a;
+	ftglesGlueArrays.currVertex.rgba[0] = r;
+	ftglesGlueArrays.currVertex.rgba[1] = g;
+	ftglesGlueArrays.currVertex.rgba[2] = b;
+	ftglesGlueArrays.currVertex.rgba[3] = a;
 }
 
 
 GLvoid ftglColor4f(GLfloat r, GLfloat g, GLfloat b, GLfloat a) 
 {
-	vab.c[0] = (GLubyte) (r * 255);
-	vab.c[1] = (GLubyte) (g * 255);
-	vab.c[2] = (GLubyte) (b * 255);
-	vab.c[3] = (GLubyte) (a * 255);
+	ftglesGlueArrays.currVertex.rgba[0] = (GLubyte) (r * 255);
+	ftglesGlueArrays.currVertex.rgba[1] = (GLubyte) (g * 255);
+	ftglesGlueArrays.currVertex.rgba[2] = (GLubyte) (b * 255);
+	ftglesGlueArrays.currVertex.rgba[3] = (GLubyte) (a * 255);
 }
 
 
 GLvoid ftglTexCoord2f(GLfloat s, GLfloat t) 
 {
-	vab.st[0] = s;
-	vab.st[1] = t;
+	ftglesGlueArrays.currVertex.st[0] = s;
+	ftglesGlueArrays.currVertex.st[1] = t;
 }
 
 
@@ -156,7 +163,7 @@ GLvoid ftglEnd()
 		glEnableClientState(GL_VERTEX_ARRAY);
 	}
 	
-	if (vertexArrayPointer != &immediate[0].xyz)
+	if (vertexArrayPointer != &ftglesGlueArrays.vertices[0].xyz)
 	{
 		glGetIntegerv(GL_VERTEX_ARRAY_TYPE, &vertexArrayType);
 		glGetIntegerv(GL_VERTEX_ARRAY_SIZE, &vertexArraySize);
@@ -173,9 +180,9 @@ GLvoid ftglEnd()
 			glGetIntegerv(GL_COLOR_ARRAY_SIZE, &colorArraySize);
 			glGetIntegerv(GL_COLOR_ARRAY_STRIDE, &colorArrayStride);
 		}	
-		glVertexPointer(3, GL_FLOAT, sizeof(Vertex), immediate[0].xyz);
-		glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), immediate[0].st);
-		glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Vertex), immediate[0].c);
+		glVertexPointer(3, GL_FLOAT, sizeof(ftglesVertex_t), ftglesGlueArrays.vertices[0].xyz);
+		glTexCoordPointer(2, GL_FLOAT, sizeof(ftglesVertex_t), ftglesGlueArrays.vertices[0].st);
+		glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(ftglesVertex_t), ftglesGlueArrays.vertices[0].rgba);
 		
 		resetPointers = true;
 	}
@@ -186,22 +193,22 @@ GLvoid ftglEnd()
 	if (!colorArrayEnabled)
 		glEnableClientState(GL_COLOR_ARRAY);
 	
-	if (curr_vertex == 0) 
+	if (ftglesGlueArrays.currIndex == 0) 
 	{
-		curr_prim = 0;
+		ftglesCurrentPrimitive = 0;
 		return;
 	}
 	
-	if (curr_prim == GL_QUADS) 
+	if (ftglesCurrentPrimitive == GL_QUADS) 
 	{
-		glDrawElements(GL_TRIANGLES, curr_vertex / 4 * 6, GL_UNSIGNED_SHORT, quad_indexes);
+		glDrawElements(GL_TRIANGLES, ftglesGlueArrays.currIndex / 4 * 6, GL_UNSIGNED_SHORT, ftglesGlueArrays.quadIndices);
 	} 
 	else 
 	{
-		glDrawArrays(curr_prim, 0, curr_vertex);
+		glDrawArrays(ftglesCurrentPrimitive, 0, ftglesGlueArrays.currIndex);
 	}
-	curr_vertex = 0;
-	curr_prim = 0;
+	ftglesGlueArrays.currIndex = 0;
+	ftglesCurrentPrimitive = 0;
 	
 	if (resetPointers)
 	{
@@ -263,3 +270,4 @@ GLvoid ftglError(const char *source)
 			break;
 	}
 }
+

@@ -84,15 +84,13 @@ FTTextureGlyphImpl::FTTextureGlyphImpl(FT_GlyphSlot glyph, int id, int xOffset,
 
     destWidth  = bitmap.width;
     destHeight = bitmap.rows;
-
+	
     if (destWidth && destHeight)
     {
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		glBindTexture(GL_TEXTURE_2D, glTextureID);
         glTexSubImage2D(GL_TEXTURE_2D, 0, xOffset, yOffset, destWidth, destHeight, GL_ALPHA, GL_UNSIGNED_BYTE, bitmap.buffer);
     }
-
-
 //      0
 //      +----+
 //      |    |
@@ -100,7 +98,6 @@ FTTextureGlyphImpl::FTTextureGlyphImpl(FT_GlyphSlot glyph, int id, int xOffset,
 //      |    |
 //      +----+
 //           1
-
     uv[0].X(static_cast<float>(xOffset) / static_cast<float>(width));
     uv[0].Y(static_cast<float>(yOffset) / static_cast<float>(height));
     uv[1].X(static_cast<float>(xOffset + destWidth) / static_cast<float>(width));
@@ -120,7 +117,6 @@ const FTPoint& FTTextureGlyphImpl::RenderImpl(const FTPoint& pen,
     float dx, dy;
 	
 	glGetIntegerv(GL_TEXTURE_BINDING_2D, &activeTextureID);
-	
     if(activeTextureID != glTextureID)
     {
 		glBindTexture(GL_TEXTURE_2D, (GLuint)glTextureID);

@@ -63,6 +63,11 @@ class FTTextureFontImpl : public FTFontImpl
                                FTPoint position, FTPoint spacing,
                                int renderMode);
 
+	void PreRender();
+	
+	
+	void PostRender();
+	
     private:
         /**
          * Create an FTTextureGlyph object for the base class.
@@ -141,6 +146,14 @@ class FTTextureFontImpl : public FTFontImpl
         /**
          */
         int yOffset;
+	
+	bool preRendered;
+	
+	bool disableTexture2D;
+	bool disableBlend;
+	GLint originalBlendSfactor;
+	GLint originalBlendDfactor;
+	
 
         /* Internal generic Render() implementation */
         template <typename T>

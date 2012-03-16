@@ -31,6 +31,7 @@
 #include "../Util/FileUtil.h"
 
 #include "../Infrastructure/Common.h"
+#include "../Infrastructure/Log.h"
 #include "../Util/StringUtil.h"
 #if defined(WIN32)
 	#include <shlobj.h>
@@ -46,7 +47,6 @@ using namespace std;
 
 bool GetLinesFromFile(const String& fileName, StringList& outList )
 {
-
 	ifstream inputFile( fileName.c_str() );
 	if( inputFile.is_open() )
 	{
@@ -63,9 +63,21 @@ bool GetLinesFromFile(const String& fileName, StringList& outList )
 	return false;
 }
 
+const String ReadWholeFile(const String& fileName)
+{
+	String forReturn = "";
+	StringList lines;
+	GetLinesFromFile(fileName, lines);
+	for (int i=0; i < lines.size(); i++)
+	{
+		forReturn += lines[i];
+	}
+	return forReturn;
+}
+
 bool WriteLinesToFile( const String& fileName, const StringList& strings )
 {
-	ofstream outputFile( fileName.c_str());
+	ofstream outputFile( fileName.c_str(), ios_base::trunc );
 	if( outputFile.is_open() )
 	{
 		for( unsigned int i = 0; i < strings.size(); i++ )
@@ -138,4 +150,65 @@ bool MakeDirectories( const String& path )
 		chdir(currentDir);
 		return retVal;
 	#endif
+}
+
+const String GetStorageDirectory()
+{
+	#if defined(WIN32)
+		return "./";
+	#elif defined(__APPLE__)
+		#if !ANGEL_MOBILE
+			String writeDirectory = getenv("HOME");
+			writeDirectory += "/Library/Application Support/Angel Games/" + GetExeName() + "/";
+			return writeDirectory;
+		#else
+			NSArray* arrayPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+			NSString* docPath = [arrayPaths objectAtIndex:0];
+			String writeDirectory = [docPath UTF8String];
+			writeDirectory += "/" + GetExeName() + "/";
+			return writeDirectory;
+		#endif
+	#elif defined(__linux__)
+		String writeDirectory = getenv("HOME");
+		writeDirectory += "/.angel/" + GetExeName() + "/";
+		return writeDirectory;
+	#endif
+}
+
+const String GetExeName() 
+{
+	String pathSplit = "/";
+	#if defined (WIN32)
+		TCHAR exePathWin[MAX_PATH];
+		GetModuleFileName( NULL, exePathWin, MAX_PATH );
+		String exePath(exePathWin);
+		int length = exePath.length();
+		if (exePath.substr(length - 4, length) == ".exe")
+		{
+			exePath = exePath.substr(0, length - 4);
+		}
+		pathSplit = "\\";
+	#elif defined (__APPLE__)
+		CFBundleRef mainBundle = CFBundleGetMainBundle();
+		CFURLRef exeURL = CFBundleCopyExecutableURL(mainBundle);
+		char exePath[PATH_MAX];
+		if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
+		{
+			CFRelease(exeURL);
+			sysLog.Log("Couldn't get exe name.");
+			return "";
+		}
+		CFRelease(exeURL);
+	#elif defined (__linux__)
+		pid_t pid = getpid();
+		char procPath[PATH_MAX];
+		sprintf(procPath, "/proc/%i/cmdline", pid);
+		String exePath = ReadWholeFile(procPath);
+		exePath = exePath.substr(0, exePath.size()-1); //trim the null character
+	#endif
+	
+	StringList pathElements = SplitString(exePath, pathSplit);
+	String exeName = pathElements[pathElements.size()-1];
+
+	return exeName;
 }

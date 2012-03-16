@@ -175,6 +175,14 @@ FTPoint FTFont::Render(const wchar_t * string, const int len,
 }
 
 
+
+void FTFont::PreRender() { impl->PreRender(); }
+
+
+void FTFont::PostRender() { impl->PostRender(); }
+
+
+
 float FTFont::Advance(const char * string, const int len, FTPoint spacing)
 {
     return impl->Advance(string, len, spacing);
@@ -490,6 +498,7 @@ inline FTPoint FTFontImpl::RenderI(const T* string, const int len,
 
         if(CheckGlyph(thisChar))
         {
+			
             position += glyphList->Render(thisChar, nextChar,
                                           position, renderMode);
         }
@@ -533,7 +542,7 @@ bool FTFontImpl::CheckGlyph(const unsigned int characterCode)
         err = face.Error();
         return false;
     }
-
+	
     FTGlyph* tempGlyph = intf->MakeGlyph(ftSlot);
     if(!tempGlyph)
     {

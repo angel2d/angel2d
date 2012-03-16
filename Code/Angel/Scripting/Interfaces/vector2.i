@@ -11,6 +11,28 @@ struct Vec2i
 	Vec2i() : X(0), Y(0) {}
 };
 
+struct Vec2ui
+{
+	unsigned int X, Y;
+	Vec2ui(unsigned int x, unsigned int y) : X(x), Y(y) {}
+	Vec2ui() : X(0), Y(0) {}
+};
+
+struct Vec3i
+{
+	int X, Y, Z;
+	Vec3i(int x, int y, int z) : X(x), Y(y), Z(z) {}
+	Vec3i() : X(0), Y(0), Z(0) {}
+};
+
+struct Vec3ui
+{
+	unsigned int X, Y, Z;
+	Vec3ui(unsigned int x, unsigned int y, unsigned int z) : X(x), Y(y), Z(z) {}
+	Vec3ui() : X(0), Y(0), Z(0) {}
+};
+
+
 #ifdef SWIGLUA
 %typemap(out) std::vector<Vector2>
 %{

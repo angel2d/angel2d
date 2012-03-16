@@ -109,6 +109,10 @@ namespace FTGL
     #define FTGL_EXPORT
 #endif
 
+#if defined __APPLE_CC__
+#include <TargetConditionals.h>
+#endif
+
 #include "FTPoint.h"
 #include "FTBBox.h"
 #include "FTBuffer.h"

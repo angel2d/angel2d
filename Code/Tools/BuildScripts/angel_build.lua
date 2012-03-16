@@ -220,7 +220,7 @@ end
 function get_swig_path()
   if (pl.path.is_windows) then
     -- we're on windows, use the distributed swig
-    return "..\\swigwin-2.0.2\\swig.exe" 
+    return "..\\swigwin-2.0.4\\swig.exe"
   end
   
   local ports_path = "/opt/local/bin/swig"

@@ -26,6 +26,9 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		342B4CD4132F1C3D0038FD4E /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 342B4CD3132F1C3D0038FD4E /* stdafx.h */; };
+		34349883150F694E00666CBC /* LoadedVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = 34349882150F694E00666CBC /* LoadedVariable.h */; };
+		34349887150F696600666CBC /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34349885150F696600666CBC /* Preferences.cpp */; };
+		34349888150F696600666CBC /* Preferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 34349886150F696600666CBC /* Preferences.h */; };
 		34433D82131DDB0900040805 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34433D81131DDB0900040805 /* CoreAudio.framework */; };
 		34433D88131DDB1F00040805 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34433D87131DDB1F00040805 /* AudioToolbox.framework */; };
 		345CC3CF132EF90700D375BE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34A37311131DD316007EAC45 /* MainWindow.xib */; };
@@ -627,6 +630,9 @@
 		342B4C9D132F19440038FD4E /* vector2.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = vector2.i; path = Angel/Scripting/Interfaces/vector2.i; sourceTree = "<group>"; };
 		342B4C9E132F19440038FD4E /* world.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = world.i; path = Angel/Scripting/Interfaces/world.i; sourceTree = "<group>"; };
 		342B4CD3132F1C3D0038FD4E /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = Angel/Infrastructure/stdafx.h; sourceTree = "<group>"; };
+		34349882150F694E00666CBC /* LoadedVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadedVariable.h; path = Angel/Infrastructure/LoadedVariable.h; sourceTree = "<group>"; };
+		34349885150F696600666CBC /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Preferences.cpp; path = Angel/Infrastructure/Preferences.cpp; sourceTree = "<group>"; };
+		34349886150F696600666CBC /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = Angel/Infrastructure/Preferences.h; sourceTree = "<group>"; };
 		34433D81131DDB0900040805 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		34433D87131DDB1F00040805 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		345CC3FC132EF90700D375BE /* Angel Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Angel Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -743,133 +749,133 @@
 		348E879314FB3BDE0045F209 /* b2Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = b2Timer.h; path = "Angel/Libraries/Box2D-2.2.1/Box2D/Common/b2Timer.h"; sourceTree = "<group>"; };
 		349EB96D132BE74A0034B2EC /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ClientGame/platforms/ios/iTunesArtwork; sourceTree = "<group>"; };
 		34A36E4A131DC5C5007EAC45 /* libLua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLua.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34A36E56131DC61E007EAC45 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = "Angel/Libraries/lua-5.1.4/src/lapi.c"; sourceTree = "<group>"; };
-		34A36E57131DC61E007EAC45 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lauxlib.c; path = "Angel/Libraries/lua-5.1.4/src/lauxlib.c"; sourceTree = "<group>"; };
-		34A36E58131DC61E007EAC45 /* lbaselib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lbaselib.c; path = "Angel/Libraries/lua-5.1.4/src/lbaselib.c"; sourceTree = "<group>"; };
-		34A36E59131DC61E007EAC45 /* lcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lcode.c; path = "Angel/Libraries/lua-5.1.4/src/lcode.c"; sourceTree = "<group>"; };
-		34A36E5A131DC61E007EAC45 /* ldblib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldblib.c; path = "Angel/Libraries/lua-5.1.4/src/ldblib.c"; sourceTree = "<group>"; };
-		34A36E5B131DC61E007EAC45 /* ldebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldebug.c; path = "Angel/Libraries/lua-5.1.4/src/ldebug.c"; sourceTree = "<group>"; };
-		34A36E5C131DC61E007EAC45 /* ldo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldo.c; path = "Angel/Libraries/lua-5.1.4/src/ldo.c"; sourceTree = "<group>"; };
-		34A36E5D131DC61E007EAC45 /* ldump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldump.c; path = "Angel/Libraries/lua-5.1.4/src/ldump.c"; sourceTree = "<group>"; };
-		34A36E5E131DC61E007EAC45 /* lfunc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfunc.c; path = "Angel/Libraries/lua-5.1.4/src/lfunc.c"; sourceTree = "<group>"; };
-		34A36E5F131DC61E007EAC45 /* lgc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgc.c; path = "Angel/Libraries/lua-5.1.4/src/lgc.c"; sourceTree = "<group>"; };
-		34A36E60131DC61E007EAC45 /* linit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = linit.c; path = "Angel/Libraries/lua-5.1.4/src/linit.c"; sourceTree = "<group>"; };
-		34A36E61131DC61E007EAC45 /* liolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = liolib.c; path = "Angel/Libraries/lua-5.1.4/src/liolib.c"; sourceTree = "<group>"; };
-		34A36E62131DC61E007EAC45 /* llex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = llex.c; path = "Angel/Libraries/lua-5.1.4/src/llex.c"; sourceTree = "<group>"; };
-		34A36E63131DC61E007EAC45 /* lmathlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmathlib.c; path = "Angel/Libraries/lua-5.1.4/src/lmathlib.c"; sourceTree = "<group>"; };
-		34A36E64131DC61E007EAC45 /* lmem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmem.c; path = "Angel/Libraries/lua-5.1.4/src/lmem.c"; sourceTree = "<group>"; };
-		34A36E65131DC61E007EAC45 /* loadlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loadlib.c; path = "Angel/Libraries/lua-5.1.4/src/loadlib.c"; sourceTree = "<group>"; };
-		34A36E66131DC61E007EAC45 /* lobject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lobject.c; path = "Angel/Libraries/lua-5.1.4/src/lobject.c"; sourceTree = "<group>"; };
-		34A36E67131DC61E007EAC45 /* lopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lopcodes.c; path = "Angel/Libraries/lua-5.1.4/src/lopcodes.c"; sourceTree = "<group>"; };
-		34A36E68131DC61E007EAC45 /* loslib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loslib.c; path = "Angel/Libraries/lua-5.1.4/src/loslib.c"; sourceTree = "<group>"; };
-		34A36E69131DC61E007EAC45 /* lparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lparser.c; path = "Angel/Libraries/lua-5.1.4/src/lparser.c"; sourceTree = "<group>"; };
-		34A36E6A131DC61E007EAC45 /* lstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstate.c; path = "Angel/Libraries/lua-5.1.4/src/lstate.c"; sourceTree = "<group>"; };
-		34A36E6B131DC61E007EAC45 /* lstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstring.c; path = "Angel/Libraries/lua-5.1.4/src/lstring.c"; sourceTree = "<group>"; };
-		34A36E6C131DC61E007EAC45 /* lstrlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstrlib.c; path = "Angel/Libraries/lua-5.1.4/src/lstrlib.c"; sourceTree = "<group>"; };
-		34A36E6D131DC61E007EAC45 /* ltable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltable.c; path = "Angel/Libraries/lua-5.1.4/src/ltable.c"; sourceTree = "<group>"; };
-		34A36E6E131DC61E007EAC45 /* ltablib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltablib.c; path = "Angel/Libraries/lua-5.1.4/src/ltablib.c"; sourceTree = "<group>"; };
-		34A36E6F131DC61E007EAC45 /* ltm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltm.c; path = "Angel/Libraries/lua-5.1.4/src/ltm.c"; sourceTree = "<group>"; };
-		34A36E70131DC61E007EAC45 /* lundump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lundump.c; path = "Angel/Libraries/lua-5.1.4/src/lundump.c"; sourceTree = "<group>"; };
-		34A36E71131DC61E007EAC45 /* lvm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lvm.c; path = "Angel/Libraries/lua-5.1.4/src/lvm.c"; sourceTree = "<group>"; };
-		34A36E72131DC61E007EAC45 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lzio.c; path = "Angel/Libraries/lua-5.1.4/src/lzio.c"; sourceTree = "<group>"; };
+		34A36E56131DC61E007EAC45 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lapi.c; path = "Angel/Libraries/lua-5.1.5/src/lapi.c"; sourceTree = "<group>"; };
+		34A36E57131DC61E007EAC45 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lauxlib.c; path = "Angel/Libraries/lua-5.1.5/src/lauxlib.c"; sourceTree = "<group>"; };
+		34A36E58131DC61E007EAC45 /* lbaselib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lbaselib.c; path = "Angel/Libraries/lua-5.1.5/src/lbaselib.c"; sourceTree = "<group>"; };
+		34A36E59131DC61E007EAC45 /* lcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lcode.c; path = "Angel/Libraries/lua-5.1.5/src/lcode.c"; sourceTree = "<group>"; };
+		34A36E5A131DC61E007EAC45 /* ldblib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldblib.c; path = "Angel/Libraries/lua-5.1.5/src/ldblib.c"; sourceTree = "<group>"; };
+		34A36E5B131DC61E007EAC45 /* ldebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldebug.c; path = "Angel/Libraries/lua-5.1.5/src/ldebug.c"; sourceTree = "<group>"; };
+		34A36E5C131DC61E007EAC45 /* ldo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldo.c; path = "Angel/Libraries/lua-5.1.5/src/ldo.c"; sourceTree = "<group>"; };
+		34A36E5D131DC61E007EAC45 /* ldump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ldump.c; path = "Angel/Libraries/lua-5.1.5/src/ldump.c"; sourceTree = "<group>"; };
+		34A36E5E131DC61E007EAC45 /* lfunc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfunc.c; path = "Angel/Libraries/lua-5.1.5/src/lfunc.c"; sourceTree = "<group>"; };
+		34A36E5F131DC61E007EAC45 /* lgc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgc.c; path = "Angel/Libraries/lua-5.1.5/src/lgc.c"; sourceTree = "<group>"; };
+		34A36E60131DC61E007EAC45 /* linit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = linit.c; path = "Angel/Libraries/lua-5.1.5/src/linit.c"; sourceTree = "<group>"; };
+		34A36E61131DC61E007EAC45 /* liolib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = liolib.c; path = "Angel/Libraries/lua-5.1.5/src/liolib.c"; sourceTree = "<group>"; };
+		34A36E62131DC61E007EAC45 /* llex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = llex.c; path = "Angel/Libraries/lua-5.1.5/src/llex.c"; sourceTree = "<group>"; };
+		34A36E63131DC61E007EAC45 /* lmathlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmathlib.c; path = "Angel/Libraries/lua-5.1.5/src/lmathlib.c"; sourceTree = "<group>"; };
+		34A36E64131DC61E007EAC45 /* lmem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmem.c; path = "Angel/Libraries/lua-5.1.5/src/lmem.c"; sourceTree = "<group>"; };
+		34A36E65131DC61E007EAC45 /* loadlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loadlib.c; path = "Angel/Libraries/lua-5.1.5/src/loadlib.c"; sourceTree = "<group>"; };
+		34A36E66131DC61E007EAC45 /* lobject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lobject.c; path = "Angel/Libraries/lua-5.1.5/src/lobject.c"; sourceTree = "<group>"; };
+		34A36E67131DC61E007EAC45 /* lopcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lopcodes.c; path = "Angel/Libraries/lua-5.1.5/src/lopcodes.c"; sourceTree = "<group>"; };
+		34A36E68131DC61E007EAC45 /* loslib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loslib.c; path = "Angel/Libraries/lua-5.1.5/src/loslib.c"; sourceTree = "<group>"; };
+		34A36E69131DC61E007EAC45 /* lparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lparser.c; path = "Angel/Libraries/lua-5.1.5/src/lparser.c"; sourceTree = "<group>"; };
+		34A36E6A131DC61E007EAC45 /* lstate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstate.c; path = "Angel/Libraries/lua-5.1.5/src/lstate.c"; sourceTree = "<group>"; };
+		34A36E6B131DC61E007EAC45 /* lstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstring.c; path = "Angel/Libraries/lua-5.1.5/src/lstring.c"; sourceTree = "<group>"; };
+		34A36E6C131DC61E007EAC45 /* lstrlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lstrlib.c; path = "Angel/Libraries/lua-5.1.5/src/lstrlib.c"; sourceTree = "<group>"; };
+		34A36E6D131DC61E007EAC45 /* ltable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltable.c; path = "Angel/Libraries/lua-5.1.5/src/ltable.c"; sourceTree = "<group>"; };
+		34A36E6E131DC61E007EAC45 /* ltablib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltablib.c; path = "Angel/Libraries/lua-5.1.5/src/ltablib.c"; sourceTree = "<group>"; };
+		34A36E6F131DC61E007EAC45 /* ltm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltm.c; path = "Angel/Libraries/lua-5.1.5/src/ltm.c"; sourceTree = "<group>"; };
+		34A36E70131DC61E007EAC45 /* lundump.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lundump.c; path = "Angel/Libraries/lua-5.1.5/src/lundump.c"; sourceTree = "<group>"; };
+		34A36E71131DC61E007EAC45 /* lvm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lvm.c; path = "Angel/Libraries/lua-5.1.5/src/lvm.c"; sourceTree = "<group>"; };
+		34A36E72131DC61E007EAC45 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lzio.c; path = "Angel/Libraries/lua-5.1.5/src/lzio.c"; sourceTree = "<group>"; };
 		34A36E73131DC61E007EAC45 /* lfs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfs.c; path = "Angel/Libraries/lua-libs/luafilesystem-1.5.0/src/lfs.c"; sourceTree = "<group>"; };
 		34A36E74131DC61E007EAC45 /* ex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ex.c; path = "Angel/Libraries/lua-libs/lua-ex/posix/ex.c"; sourceTree = "<group>"; };
 		34A36E75131DC61E007EAC45 /* posix_spawn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = posix_spawn.c; path = "Angel/Libraries/lua-libs/lua-ex/posix/posix_spawn.c"; sourceTree = "<group>"; };
 		34A36E76131DC61E007EAC45 /* spawn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = spawn.c; path = "Angel/Libraries/lua-libs/lua-ex/posix/spawn.c"; sourceTree = "<group>"; };
-		34A36E98131DC62A007EAC45 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lapi.h; path = "Angel/Libraries/lua-5.1.4/src/lapi.h"; sourceTree = "<group>"; };
-		34A36E99131DC62A007EAC45 /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lauxlib.h; path = "Angel/Libraries/lua-5.1.4/src/lauxlib.h"; sourceTree = "<group>"; };
-		34A36E9A131DC62A007EAC45 /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lcode.h; path = "Angel/Libraries/lua-5.1.4/src/lcode.h"; sourceTree = "<group>"; };
-		34A36E9B131DC62A007EAC45 /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ldebug.h; path = "Angel/Libraries/lua-5.1.4/src/ldebug.h"; sourceTree = "<group>"; };
-		34A36E9C131DC62A007EAC45 /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ldo.h; path = "Angel/Libraries/lua-5.1.4/src/ldo.h"; sourceTree = "<group>"; };
-		34A36E9D131DC62A007EAC45 /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfunc.h; path = "Angel/Libraries/lua-5.1.4/src/lfunc.h"; sourceTree = "<group>"; };
-		34A36E9E131DC62A007EAC45 /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lgc.h; path = "Angel/Libraries/lua-5.1.4/src/lgc.h"; sourceTree = "<group>"; };
-		34A36E9F131DC62A007EAC45 /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = llex.h; path = "Angel/Libraries/lua-5.1.4/src/llex.h"; sourceTree = "<group>"; };
-		34A36EA0131DC62A007EAC45 /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = llimits.h; path = "Angel/Libraries/lua-5.1.4/src/llimits.h"; sourceTree = "<group>"; };
-		34A36EA1131DC62A007EAC45 /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lmem.h; path = "Angel/Libraries/lua-5.1.4/src/lmem.h"; sourceTree = "<group>"; };
-		34A36EA2131DC62A007EAC45 /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lobject.h; path = "Angel/Libraries/lua-5.1.4/src/lobject.h"; sourceTree = "<group>"; };
-		34A36EA3131DC62A007EAC45 /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lopcodes.h; path = "Angel/Libraries/lua-5.1.4/src/lopcodes.h"; sourceTree = "<group>"; };
-		34A36EA4131DC62A007EAC45 /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lparser.h; path = "Angel/Libraries/lua-5.1.4/src/lparser.h"; sourceTree = "<group>"; };
-		34A36EA5131DC62A007EAC45 /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lstate.h; path = "Angel/Libraries/lua-5.1.4/src/lstate.h"; sourceTree = "<group>"; };
-		34A36EA6131DC62A007EAC45 /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lstring.h; path = "Angel/Libraries/lua-5.1.4/src/lstring.h"; sourceTree = "<group>"; };
-		34A36EA7131DC62A007EAC45 /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ltable.h; path = "Angel/Libraries/lua-5.1.4/src/ltable.h"; sourceTree = "<group>"; };
-		34A36EA8131DC62A007EAC45 /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ltm.h; path = "Angel/Libraries/lua-5.1.4/src/ltm.h"; sourceTree = "<group>"; };
-		34A36EA9131DC62A007EAC45 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = "Angel/Libraries/lua-5.1.4/src/lua.h"; sourceTree = "<group>"; };
-		34A36EAA131DC62A007EAC45 /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luaconf.h; path = "Angel/Libraries/lua-5.1.4/src/luaconf.h"; sourceTree = "<group>"; };
-		34A36EAB131DC62A007EAC45 /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lualib.h; path = "Angel/Libraries/lua-5.1.4/src/lualib.h"; sourceTree = "<group>"; };
-		34A36EAC131DC62A007EAC45 /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lundump.h; path = "Angel/Libraries/lua-5.1.4/src/lundump.h"; sourceTree = "<group>"; };
-		34A36EAD131DC62A007EAC45 /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lvm.h; path = "Angel/Libraries/lua-5.1.4/src/lvm.h"; sourceTree = "<group>"; };
-		34A36EAE131DC62A007EAC45 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lzio.h; path = "Angel/Libraries/lua-5.1.4/src/lzio.h"; sourceTree = "<group>"; };
+		34A36E98131DC62A007EAC45 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lapi.h; path = "Angel/Libraries/lua-5.1.5/src/lapi.h"; sourceTree = "<group>"; };
+		34A36E99131DC62A007EAC45 /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lauxlib.h; path = "Angel/Libraries/lua-5.1.5/src/lauxlib.h"; sourceTree = "<group>"; };
+		34A36E9A131DC62A007EAC45 /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lcode.h; path = "Angel/Libraries/lua-5.1.5/src/lcode.h"; sourceTree = "<group>"; };
+		34A36E9B131DC62A007EAC45 /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ldebug.h; path = "Angel/Libraries/lua-5.1.5/src/ldebug.h"; sourceTree = "<group>"; };
+		34A36E9C131DC62A007EAC45 /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ldo.h; path = "Angel/Libraries/lua-5.1.5/src/ldo.h"; sourceTree = "<group>"; };
+		34A36E9D131DC62A007EAC45 /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfunc.h; path = "Angel/Libraries/lua-5.1.5/src/lfunc.h"; sourceTree = "<group>"; };
+		34A36E9E131DC62A007EAC45 /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lgc.h; path = "Angel/Libraries/lua-5.1.5/src/lgc.h"; sourceTree = "<group>"; };
+		34A36E9F131DC62A007EAC45 /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = llex.h; path = "Angel/Libraries/lua-5.1.5/src/llex.h"; sourceTree = "<group>"; };
+		34A36EA0131DC62A007EAC45 /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = llimits.h; path = "Angel/Libraries/lua-5.1.5/src/llimits.h"; sourceTree = "<group>"; };
+		34A36EA1131DC62A007EAC45 /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lmem.h; path = "Angel/Libraries/lua-5.1.5/src/lmem.h"; sourceTree = "<group>"; };
+		34A36EA2131DC62A007EAC45 /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lobject.h; path = "Angel/Libraries/lua-5.1.5/src/lobject.h"; sourceTree = "<group>"; };
+		34A36EA3131DC62A007EAC45 /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lopcodes.h; path = "Angel/Libraries/lua-5.1.5/src/lopcodes.h"; sourceTree = "<group>"; };
+		34A36EA4131DC62A007EAC45 /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lparser.h; path = "Angel/Libraries/lua-5.1.5/src/lparser.h"; sourceTree = "<group>"; };
+		34A36EA5131DC62A007EAC45 /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lstate.h; path = "Angel/Libraries/lua-5.1.5/src/lstate.h"; sourceTree = "<group>"; };
+		34A36EA6131DC62A007EAC45 /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lstring.h; path = "Angel/Libraries/lua-5.1.5/src/lstring.h"; sourceTree = "<group>"; };
+		34A36EA7131DC62A007EAC45 /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ltable.h; path = "Angel/Libraries/lua-5.1.5/src/ltable.h"; sourceTree = "<group>"; };
+		34A36EA8131DC62A007EAC45 /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ltm.h; path = "Angel/Libraries/lua-5.1.5/src/ltm.h"; sourceTree = "<group>"; };
+		34A36EA9131DC62A007EAC45 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua.h; path = "Angel/Libraries/lua-5.1.5/src/lua.h"; sourceTree = "<group>"; };
+		34A36EAA131DC62A007EAC45 /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luaconf.h; path = "Angel/Libraries/lua-5.1.5/src/luaconf.h"; sourceTree = "<group>"; };
+		34A36EAB131DC62A007EAC45 /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lualib.h; path = "Angel/Libraries/lua-5.1.5/src/lualib.h"; sourceTree = "<group>"; };
+		34A36EAC131DC62A007EAC45 /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lundump.h; path = "Angel/Libraries/lua-5.1.5/src/lundump.h"; sourceTree = "<group>"; };
+		34A36EAD131DC62A007EAC45 /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lvm.h; path = "Angel/Libraries/lua-5.1.5/src/lvm.h"; sourceTree = "<group>"; };
+		34A36EAE131DC62A007EAC45 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lzio.h; path = "Angel/Libraries/lua-5.1.5/src/lzio.h"; sourceTree = "<group>"; };
 		34A36EAF131DC62A007EAC45 /* lfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfs.h; path = "Angel/Libraries/lua-libs/luafilesystem-1.5.0/src/lfs.h"; sourceTree = "<group>"; };
 		34A36EB0131DC62A007EAC45 /* environ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = environ.h; path = "Angel/Libraries/lua-libs/lua-ex/posix/environ.h"; sourceTree = "<group>"; };
 		34A36EB1131DC62A007EAC45 /* posix_spawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = posix_spawn.h; path = "Angel/Libraries/lua-libs/lua-ex/posix/posix_spawn.h"; sourceTree = "<group>"; };
 		34A36EB2131DC62A007EAC45 /* spawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spawn.h; path = "Angel/Libraries/lua-libs/lua-ex/posix/spawn.h"; sourceTree = "<group>"; };
 		34A36EB3131DC62A007EAC45 /* crt_externs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crt_externs.h; path = "Angel/Libraries/lua-libs/lua-ex/posix/crt_externs.h"; sourceTree = "<group>"; };
 		34A36EF6131DC94A007EAC45 /* libOgg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOgg.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34A36EF9131DC965007EAC45 /* bitwise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitwise.c; path = "Angel/Libraries/libogg-1.2.0/src/bitwise.c"; sourceTree = "<group>"; };
-		34A36EFA131DC965007EAC45 /* framing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = framing.c; path = "Angel/Libraries/libogg-1.2.0/src/framing.c"; sourceTree = "<group>"; };
+		34A36EF9131DC965007EAC45 /* bitwise.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitwise.c; path = "Angel/Libraries/libogg-1.3.0/src/bitwise.c"; sourceTree = "<group>"; };
+		34A36EFA131DC965007EAC45 /* framing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = framing.c; path = "Angel/Libraries/libogg-1.3.0/src/framing.c"; sourceTree = "<group>"; };
 		34A36F0A131DCA05007EAC45 /* libVorbis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVorbis.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34A36F11131DCA4A007EAC45 /* analysis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = analysis.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/analysis.c"; sourceTree = "<group>"; };
-		34A36F12131DCA4A007EAC45 /* bitrate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitrate.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/bitrate.c"; sourceTree = "<group>"; };
-		34A36F13131DCA4A007EAC45 /* block.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = block.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/block.c"; sourceTree = "<group>"; };
-		34A36F14131DCA4A007EAC45 /* codebook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = codebook.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/codebook.c"; sourceTree = "<group>"; };
-		34A36F15131DCA4A007EAC45 /* envelope.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = envelope.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/envelope.c"; sourceTree = "<group>"; };
-		34A36F16131DCA4A007EAC45 /* floor0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = floor0.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/floor0.c"; sourceTree = "<group>"; };
-		34A36F17131DCA4A007EAC45 /* floor1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = floor1.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/floor1.c"; sourceTree = "<group>"; };
-		34A36F18131DCA4A007EAC45 /* info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = info.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/info.c"; sourceTree = "<group>"; };
-		34A36F19131DCA4A007EAC45 /* lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lookup.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/lookup.c"; sourceTree = "<group>"; };
-		34A36F1A131DCA4A007EAC45 /* lpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lpc.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/lpc.c"; sourceTree = "<group>"; };
-		34A36F1B131DCA4A007EAC45 /* lsp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lsp.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/lsp.c"; sourceTree = "<group>"; };
-		34A36F1C131DCA4A007EAC45 /* mapping0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mapping0.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/mapping0.c"; sourceTree = "<group>"; };
-		34A36F1D131DCA4A007EAC45 /* mdct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mdct.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/mdct.c"; sourceTree = "<group>"; };
-		34A36F1E131DCA4A007EAC45 /* psy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psy.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/psy.c"; sourceTree = "<group>"; };
-		34A36F1F131DCA4A007EAC45 /* registry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = registry.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/registry.c"; sourceTree = "<group>"; };
-		34A36F20131DCA4A007EAC45 /* res0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = res0.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/res0.c"; sourceTree = "<group>"; };
-		34A36F21131DCA4A007EAC45 /* sharedbook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sharedbook.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/sharedbook.c"; sourceTree = "<group>"; };
-		34A36F22131DCA4A007EAC45 /* smallft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smallft.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/smallft.c"; sourceTree = "<group>"; };
-		34A36F23131DCA4A007EAC45 /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/synthesis.c"; sourceTree = "<group>"; };
-		34A36F24131DCA4A007EAC45 /* vorbisenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisenc.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/vorbisenc.c"; sourceTree = "<group>"; };
-		34A36F25131DCA4A007EAC45 /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/vorbisfile.c"; sourceTree = "<group>"; };
-		34A36F26131DCA4A007EAC45 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Angel/Libraries/libvorbis-1.3.1/lib/window.c"; sourceTree = "<group>"; };
+		34A36F11131DCA4A007EAC45 /* analysis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = analysis.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/analysis.c"; sourceTree = "<group>"; };
+		34A36F12131DCA4A007EAC45 /* bitrate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitrate.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/bitrate.c"; sourceTree = "<group>"; };
+		34A36F13131DCA4A007EAC45 /* block.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = block.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/block.c"; sourceTree = "<group>"; };
+		34A36F14131DCA4A007EAC45 /* codebook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = codebook.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/codebook.c"; sourceTree = "<group>"; };
+		34A36F15131DCA4A007EAC45 /* envelope.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = envelope.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/envelope.c"; sourceTree = "<group>"; };
+		34A36F16131DCA4A007EAC45 /* floor0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = floor0.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/floor0.c"; sourceTree = "<group>"; };
+		34A36F17131DCA4A007EAC45 /* floor1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = floor1.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/floor1.c"; sourceTree = "<group>"; };
+		34A36F18131DCA4A007EAC45 /* info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = info.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/info.c"; sourceTree = "<group>"; };
+		34A36F19131DCA4A007EAC45 /* lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lookup.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/lookup.c"; sourceTree = "<group>"; };
+		34A36F1A131DCA4A007EAC45 /* lpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lpc.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/lpc.c"; sourceTree = "<group>"; };
+		34A36F1B131DCA4A007EAC45 /* lsp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lsp.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/lsp.c"; sourceTree = "<group>"; };
+		34A36F1C131DCA4A007EAC45 /* mapping0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mapping0.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/mapping0.c"; sourceTree = "<group>"; };
+		34A36F1D131DCA4A007EAC45 /* mdct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mdct.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/mdct.c"; sourceTree = "<group>"; };
+		34A36F1E131DCA4A007EAC45 /* psy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psy.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/psy.c"; sourceTree = "<group>"; };
+		34A36F1F131DCA4A007EAC45 /* registry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = registry.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/registry.c"; sourceTree = "<group>"; };
+		34A36F20131DCA4A007EAC45 /* res0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = res0.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/res0.c"; sourceTree = "<group>"; };
+		34A36F21131DCA4A007EAC45 /* sharedbook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sharedbook.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/sharedbook.c"; sourceTree = "<group>"; };
+		34A36F22131DCA4A007EAC45 /* smallft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smallft.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/smallft.c"; sourceTree = "<group>"; };
+		34A36F23131DCA4A007EAC45 /* synthesis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = synthesis.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/synthesis.c"; sourceTree = "<group>"; };
+		34A36F24131DCA4A007EAC45 /* vorbisenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisenc.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/vorbisenc.c"; sourceTree = "<group>"; };
+		34A36F25131DCA4A007EAC45 /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/vorbisfile.c"; sourceTree = "<group>"; };
+		34A36F26131DCA4A007EAC45 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Angel/Libraries/libvorbis-1.3.2/lib/window.c"; sourceTree = "<group>"; };
 		34A36F4E131DCACF007EAC45 /* libFreeType.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFreeType.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34A36F53131DCAEA007EAC45 /* ftconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftconfig.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftconfig.h"; sourceTree = "<group>"; };
-		34A36F54131DCAEA007EAC45 /* ftheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftheader.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftheader.h"; sourceTree = "<group>"; };
-		34A36F55131DCAEA007EAC45 /* ftmodule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftmodule.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftmodule.h"; sourceTree = "<group>"; };
-		34A36F56131DCAEA007EAC45 /* ftoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftoption.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftoption.h"; sourceTree = "<group>"; };
-		34A36F57131DCAEA007EAC45 /* ftstdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftstdlib.h; path = "Angel/Libraries/freetype-2.3.7/include/freetype/config/ftstdlib.h"; sourceTree = "<group>"; };
-		34A36F58131DCAEA007EAC45 /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ft2build.h; path = "Angel/Libraries/freetype-2.3.7/include/ft2build.h"; sourceTree = "<group>"; };
-		34A36F5F131DCAF5007EAC45 /* autofit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = autofit.c; path = "Angel/Libraries/freetype-2.3.7/src/autofit/autofit.c"; sourceTree = "<group>"; };
-		34A36F60131DCAF5007EAC45 /* bdf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bdf.c; path = "Angel/Libraries/freetype-2.3.7/src/bdf/bdf.c"; sourceTree = "<group>"; };
-		34A36F61131DCAF5007EAC45 /* cff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cff.c; path = "Angel/Libraries/freetype-2.3.7/src/cff/cff.c"; sourceTree = "<group>"; };
-		34A36F62131DCAF5007EAC45 /* ftbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbase.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftbase.c"; sourceTree = "<group>"; };
-		34A36F63131DCAF5007EAC45 /* ftbitmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbitmap.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftbitmap.c"; sourceTree = "<group>"; };
-		34A36F64131DCAF5007EAC45 /* ftcache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftcache.c; path = "Angel/Libraries/freetype-2.3.7/src/cache/ftcache.c"; sourceTree = "<group>"; };
-		34A36F65131DCAF5007EAC45 /* ftdebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftdebug.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftdebug.c"; sourceTree = "<group>"; };
-		34A36F66131DCAF5007EAC45 /* ftgasp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftgasp.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftgasp.c"; sourceTree = "<group>"; };
-		34A36F67131DCAF5007EAC45 /* ftglyph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftglyph.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftglyph.c"; sourceTree = "<group>"; };
-		34A36F68131DCAF5007EAC45 /* ftgzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftgzip.c; path = "Angel/Libraries/freetype-2.3.7/src/gzip/ftgzip.c"; sourceTree = "<group>"; };
-		34A36F69131DCAF5007EAC45 /* ftinit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftinit.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftinit.c"; sourceTree = "<group>"; };
-		34A36F6A131DCAF5007EAC45 /* ftlzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftlzw.c; path = "Angel/Libraries/freetype-2.3.7/src/lzw/ftlzw.c"; sourceTree = "<group>"; };
-		34A36F6B131DCAF5007EAC45 /* ftstroke.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftstroke.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftstroke.c"; sourceTree = "<group>"; };
-		34A36F6C131DCAF5007EAC45 /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftsystem.c"; sourceTree = "<group>"; };
-		34A36F6D131DCAF5007EAC45 /* ftmm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftmm.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftmm.c"; sourceTree = "<group>"; };
-		34A36F6E131DCAF5007EAC45 /* ftbbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbbox.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftbbox.c"; sourceTree = "<group>"; };
-		34A36F6F131DCAF5007EAC45 /* ftpfr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpfr.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftpfr.c"; sourceTree = "<group>"; };
-		34A36F70131DCAF5007EAC45 /* ftsynth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsynth.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftsynth.c"; sourceTree = "<group>"; };
-		34A36F71131DCAF5007EAC45 /* fttype1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fttype1.c; path = "Angel/Libraries/freetype-2.3.7/src/base/fttype1.c"; sourceTree = "<group>"; };
-		34A36F72131DCAF5007EAC45 /* ftwinfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftwinfnt.c; path = "Angel/Libraries/freetype-2.3.7/src/base/ftwinfnt.c"; sourceTree = "<group>"; };
-		34A36F73131DCAF5007EAC45 /* pcf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pcf.c; path = "Angel/Libraries/freetype-2.3.7/src/pcf/pcf.c"; sourceTree = "<group>"; };
-		34A36F74131DCAF5007EAC45 /* pfr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pfr.c; path = "Angel/Libraries/freetype-2.3.7/src/pfr/pfr.c"; sourceTree = "<group>"; };
-		34A36F75131DCAF5007EAC45 /* psaux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psaux.c; path = "Angel/Libraries/freetype-2.3.7/src/psaux/psaux.c"; sourceTree = "<group>"; };
-		34A36F76131DCAF5007EAC45 /* pshinter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pshinter.c; path = "Angel/Libraries/freetype-2.3.7/src/pshinter/pshinter.c"; sourceTree = "<group>"; };
-		34A36F77131DCAF5007EAC45 /* psmodule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psmodule.c; path = "Angel/Libraries/freetype-2.3.7/src/psnames/psmodule.c"; sourceTree = "<group>"; };
-		34A36F78131DCAF5007EAC45 /* raster.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = raster.c; path = "Angel/Libraries/freetype-2.3.7/src/raster/raster.c"; sourceTree = "<group>"; };
-		34A36F79131DCAF5007EAC45 /* sfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sfnt.c; path = "Angel/Libraries/freetype-2.3.7/src/sfnt/sfnt.c"; sourceTree = "<group>"; };
-		34A36F7A131DCAF5007EAC45 /* truetype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = truetype.c; path = "Angel/Libraries/freetype-2.3.7/src/truetype/truetype.c"; sourceTree = "<group>"; };
-		34A36F7B131DCAF5007EAC45 /* type1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1.c; path = "Angel/Libraries/freetype-2.3.7/src/type1/type1.c"; sourceTree = "<group>"; };
-		34A36F7C131DCAF5007EAC45 /* type1cid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1cid.c; path = "Angel/Libraries/freetype-2.3.7/src/cid/type1cid.c"; sourceTree = "<group>"; };
-		34A36F7D131DCAF5007EAC45 /* type42.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type42.c; path = "Angel/Libraries/freetype-2.3.7/src/type42/type42.c"; sourceTree = "<group>"; };
-		34A36F7E131DCAF5007EAC45 /* winfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = winfnt.c; path = "Angel/Libraries/freetype-2.3.7/src/winfonts/winfnt.c"; sourceTree = "<group>"; };
-		34A36F7F131DCAF5007EAC45 /* smooth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smooth.c; path = "Angel/Libraries/freetype-2.3.7/src/smooth/smooth.c"; sourceTree = "<group>"; };
+		34A36F53131DCAEA007EAC45 /* ftconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftconfig.h; path = "Angel/Libraries/freetype-2.4.8/include/freetype/config/ftconfig.h"; sourceTree = "<group>"; };
+		34A36F54131DCAEA007EAC45 /* ftheader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftheader.h; path = "Angel/Libraries/freetype-2.4.8/include/freetype/config/ftheader.h"; sourceTree = "<group>"; };
+		34A36F55131DCAEA007EAC45 /* ftmodule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftmodule.h; path = "Angel/Libraries/freetype-2.4.8/include/freetype/config/ftmodule.h"; sourceTree = "<group>"; };
+		34A36F56131DCAEA007EAC45 /* ftoption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftoption.h; path = "Angel/Libraries/freetype-2.4.8/include/freetype/config/ftoption.h"; sourceTree = "<group>"; };
+		34A36F57131DCAEA007EAC45 /* ftstdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftstdlib.h; path = "Angel/Libraries/freetype-2.4.8/include/freetype/config/ftstdlib.h"; sourceTree = "<group>"; };
+		34A36F58131DCAEA007EAC45 /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ft2build.h; path = "Angel/Libraries/freetype-2.4.8/include/ft2build.h"; sourceTree = "<group>"; };
+		34A36F5F131DCAF5007EAC45 /* autofit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = autofit.c; path = "Angel/Libraries/freetype-2.4.8/src/autofit/autofit.c"; sourceTree = "<group>"; };
+		34A36F60131DCAF5007EAC45 /* bdf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bdf.c; path = "Angel/Libraries/freetype-2.4.8/src/bdf/bdf.c"; sourceTree = "<group>"; };
+		34A36F61131DCAF5007EAC45 /* cff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cff.c; path = "Angel/Libraries/freetype-2.4.8/src/cff/cff.c"; sourceTree = "<group>"; };
+		34A36F62131DCAF5007EAC45 /* ftbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbase.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftbase.c"; sourceTree = "<group>"; };
+		34A36F63131DCAF5007EAC45 /* ftbitmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbitmap.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftbitmap.c"; sourceTree = "<group>"; };
+		34A36F64131DCAF5007EAC45 /* ftcache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftcache.c; path = "Angel/Libraries/freetype-2.4.8/src/cache/ftcache.c"; sourceTree = "<group>"; };
+		34A36F65131DCAF5007EAC45 /* ftdebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftdebug.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftdebug.c"; sourceTree = "<group>"; };
+		34A36F66131DCAF5007EAC45 /* ftgasp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftgasp.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftgasp.c"; sourceTree = "<group>"; };
+		34A36F67131DCAF5007EAC45 /* ftglyph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftglyph.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftglyph.c"; sourceTree = "<group>"; };
+		34A36F68131DCAF5007EAC45 /* ftgzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftgzip.c; path = "Angel/Libraries/freetype-2.4.8/src/gzip/ftgzip.c"; sourceTree = "<group>"; };
+		34A36F69131DCAF5007EAC45 /* ftinit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftinit.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftinit.c"; sourceTree = "<group>"; };
+		34A36F6A131DCAF5007EAC45 /* ftlzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftlzw.c; path = "Angel/Libraries/freetype-2.4.8/src/lzw/ftlzw.c"; sourceTree = "<group>"; };
+		34A36F6B131DCAF5007EAC45 /* ftstroke.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftstroke.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftstroke.c"; sourceTree = "<group>"; };
+		34A36F6C131DCAF5007EAC45 /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftsystem.c"; sourceTree = "<group>"; };
+		34A36F6D131DCAF5007EAC45 /* ftmm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftmm.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftmm.c"; sourceTree = "<group>"; };
+		34A36F6E131DCAF5007EAC45 /* ftbbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftbbox.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftbbox.c"; sourceTree = "<group>"; };
+		34A36F6F131DCAF5007EAC45 /* ftpfr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpfr.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftpfr.c"; sourceTree = "<group>"; };
+		34A36F70131DCAF5007EAC45 /* ftsynth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsynth.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftsynth.c"; sourceTree = "<group>"; };
+		34A36F71131DCAF5007EAC45 /* fttype1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fttype1.c; path = "Angel/Libraries/freetype-2.4.8/src/base/fttype1.c"; sourceTree = "<group>"; };
+		34A36F72131DCAF5007EAC45 /* ftwinfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftwinfnt.c; path = "Angel/Libraries/freetype-2.4.8/src/base/ftwinfnt.c"; sourceTree = "<group>"; };
+		34A36F73131DCAF5007EAC45 /* pcf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pcf.c; path = "Angel/Libraries/freetype-2.4.8/src/pcf/pcf.c"; sourceTree = "<group>"; };
+		34A36F74131DCAF5007EAC45 /* pfr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pfr.c; path = "Angel/Libraries/freetype-2.4.8/src/pfr/pfr.c"; sourceTree = "<group>"; };
+		34A36F75131DCAF5007EAC45 /* psaux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psaux.c; path = "Angel/Libraries/freetype-2.4.8/src/psaux/psaux.c"; sourceTree = "<group>"; };
+		34A36F76131DCAF5007EAC45 /* pshinter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pshinter.c; path = "Angel/Libraries/freetype-2.4.8/src/pshinter/pshinter.c"; sourceTree = "<group>"; };
+		34A36F77131DCAF5007EAC45 /* psmodule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psmodule.c; path = "Angel/Libraries/freetype-2.4.8/src/psnames/psmodule.c"; sourceTree = "<group>"; };
+		34A36F78131DCAF5007EAC45 /* raster.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = raster.c; path = "Angel/Libraries/freetype-2.4.8/src/raster/raster.c"; sourceTree = "<group>"; };
+		34A36F79131DCAF5007EAC45 /* sfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sfnt.c; path = "Angel/Libraries/freetype-2.4.8/src/sfnt/sfnt.c"; sourceTree = "<group>"; };
+		34A36F7A131DCAF5007EAC45 /* truetype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = truetype.c; path = "Angel/Libraries/freetype-2.4.8/src/truetype/truetype.c"; sourceTree = "<group>"; };
+		34A36F7B131DCAF5007EAC45 /* type1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1.c; path = "Angel/Libraries/freetype-2.4.8/src/type1/type1.c"; sourceTree = "<group>"; };
+		34A36F7C131DCAF5007EAC45 /* type1cid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1cid.c; path = "Angel/Libraries/freetype-2.4.8/src/cid/type1cid.c"; sourceTree = "<group>"; };
+		34A36F7D131DCAF5007EAC45 /* type42.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type42.c; path = "Angel/Libraries/freetype-2.4.8/src/type42/type42.c"; sourceTree = "<group>"; };
+		34A36F7E131DCAF5007EAC45 /* winfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = winfnt.c; path = "Angel/Libraries/freetype-2.4.8/src/winfonts/winfnt.c"; sourceTree = "<group>"; };
+		34A36F7F131DCAF5007EAC45 /* smooth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smooth.c; path = "Angel/Libraries/freetype-2.4.8/src/smooth/smooth.c"; sourceTree = "<group>"; };
 		34A36FBB131DCC7E007EAC45 /* libzlib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzlib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A36FC0131DCCA3007EAC45 /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crc32.h; path = "Angel/Libraries/zlib-1.2.3/crc32.h"; sourceTree = "<group>"; };
 		34A36FC1131DCCA3007EAC45 /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = deflate.h; path = "Angel/Libraries/zlib-1.2.3/deflate.h"; sourceTree = "<group>"; };
@@ -1030,7 +1036,7 @@
 		34A371F2131DCF3B007EAC45 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Angel/Infrastructure/Camera.cpp; sourceTree = "<group>"; };
 		34A371F3131DCF3B007EAC45 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = Angel/Infrastructure/Color.cpp; sourceTree = "<group>"; };
 		34A371F4131DCF3B007EAC45 /* DrawUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawUtil.cpp; path = Angel/Util/DrawUtil.cpp; sourceTree = "<group>"; };
-		34A371F5131DCF3B007EAC45 /* FileUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileUtil.cpp; path = Angel/Util/FileUtil.cpp; sourceTree = "<group>"; };
+		34A371F5131DCF3B007EAC45 /* FileUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = FileUtil.cpp; path = Angel/Util/FileUtil.cpp; sourceTree = "<group>"; };
 		34A371F6131DCF3B007EAC45 /* FullScreenActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreenActor.cpp; path = Angel/Actors/FullScreenActor.cpp; sourceTree = "<group>"; };
 		34A371F7131DCF3B007EAC45 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameManager.cpp; path = Angel/Infrastructure/GameManager.cpp; sourceTree = "<group>"; };
 		34A371F8131DCF3B007EAC45 /* GotoAIEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GotoAIEvent.cpp; path = Angel/AIEvents/GotoAIEvent.cpp; sourceTree = "<group>"; };
@@ -1412,8 +1418,11 @@
 				34A371F7131DCF3B007EAC45 /* GameManager.cpp */,
 				34A37195131DCF33007EAC45 /* GameManager.h */,
 				34A3719A131DCF33007EAC45 /* Interval.h */,
+				34349882150F694E00666CBC /* LoadedVariable.h */,
 				34A371FC131DCF3B007EAC45 /* Log.cpp */,
 				34A3719B131DCF33007EAC45 /* Log.h */,
+				34349885150F696600666CBC /* Preferences.cpp */,
+				34349886150F696600666CBC /* Preferences.h */,
 				34A371A5131DCF33007EAC45 /* Renderable.h */,
 				34A37205131DCF3B007EAC45 /* RenderableIterator.cpp */,
 				34A371A6131DCF33007EAC45 /* RenderableIterator.h */,
@@ -2261,6 +2270,8 @@
 				34A371ED131DCF33007EAC45 /* MultiTouch.h in Headers */,
 				34A371EE131DCF33007EAC45 /* AngelConfig.h in Headers */,
 				342B4CD4132F1C3D0038FD4E /* stdafx.h in Headers */,
+				34349883150F694E00666CBC /* LoadedVariable.h in Headers */,
+				34349888150F696600666CBC /* Preferences.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2972,6 +2983,7 @@
 				34A3723E131DCF3B007EAC45 /* Vector3.cpp in Sources */,
 				34A3723F131DCF3B007EAC45 /* World.cpp in Sources */,
 				34A37240131DCF3B007EAC45 /* MultiTouch.cpp in Sources */,
+				34349887150F696600666CBC /* Preferences.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3057,8 +3069,8 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				INFOPLIST_FILE = ClientGame/platforms/ios/ClientGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -3085,8 +3097,8 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				INFOPLIST_FILE = ClientGame/platforms/ios/ClientGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -3116,8 +3128,8 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				INFOPLIST_FILE = IntroGame/platforms/ios/IntroGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -3145,8 +3157,8 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				INFOPLIST_FILE = IntroGame/platforms/ios/IntroGameInfo.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -3191,7 +3203,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=0",
 					"DEBUG=1",
-					"ANGEL_IPHONE=1",
+					"ANGEL_MOBILE=1",
 					"MISSING_POSIX_SPAWN=1",
 					"LUA_USE_MACOSX=1",
 				);
@@ -3209,7 +3221,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=1",
 					"DEBUG=0",
-					"ANGEL_IPHONE=1",
+					"ANGEL_MOBILE=1",
 					"MISSING_POSIX_SPAWN=1",
 					"LUA_USE_MACOSX=1",
 				);
@@ -3226,7 +3238,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"";
 				PRODUCT_NAME = Ogg;
 				SDKROOT = iphoneos;
 			};
@@ -3238,7 +3250,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"";
 				PRODUCT_NAME = Ogg;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -3252,11 +3264,12 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/lib\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/lib\"",
 				);
 				PRODUCT_NAME = Vorbis;
 				SDKROOT = iphoneos;
@@ -3269,11 +3282,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/lib\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/lib\"",
 				);
 				PRODUCT_NAME = Vorbis;
 				SDKROOT = iphoneos;
@@ -3291,15 +3305,15 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=0",
 					"DEBUG=1",
-					"ANGEL_IPHONE=1",
+					"ANGEL_MOBILE=1",
 					_LIB,
 					FT2_BUILD_LIBRARY,
 					FT_CONFIG_OPTION_SYSTEM_ZLIB,
 					DARWIN_NO_CARBON,
 				);
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/builds/unix\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/builds/unix\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/include\"",
 				);
 				PRODUCT_NAME = FreeType;
 				SDKROOT = iphoneos;
@@ -3315,15 +3329,15 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=1",
 					"DEBUG=0",
-					"ANGEL_IPHONE=1",
+					"ANGEL_MOBILE=1",
 					_LIB,
 					FT2_BUILD_LIBRARY,
 					FT_CONFIG_OPTION_SYSTEM_ZLIB,
 					DARWIN_NO_CARBON,
 				);
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/builds/unix\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/builds/unix\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/include\"",
 				);
 				PRODUCT_NAME = FreeType;
 				SDKROOT = iphoneos;
@@ -3387,7 +3401,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/ftgles\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/ftgles/src\"",
 				);
@@ -3403,7 +3417,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				HEADER_SEARCH_PATHS = (
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/ftgles\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/ftgles/src\"",
 				);
@@ -3453,12 +3467,12 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/FTGLES/src\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/FTGLES/src/iGLU-1.0.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libpng-1.4.1\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				PRODUCT_NAME = Angel;
 				SDKROOT = iphoneos;
@@ -3476,12 +3490,12 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/FTGLES/src\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FTGLES/FTGLES/src/iGLU-1.0.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.3.7/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/freetype-2.4.8/include\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Angel/Libraries/libpng-1.4.1\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.2.0/include\"",
-					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.1/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				PRODUCT_NAME = Angel;
 				SDKROOT = iphoneos;
@@ -3498,7 +3512,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=0",
 					"DEBUG=1",
-					"ANGEL_IPHONE=1",
+					"ANGEL_MOBILE=1",
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -3516,7 +3530,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"RELEASE=1",
 					"DEBUG=0",
-					"ANGEL_IPHONE=1",
+					"ANGEL_MOBILE=1",
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

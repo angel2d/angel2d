@@ -1,4 +1,0 @@
-#!/bin/bash
-cd $(dirname "${0}")
-EXEC=$(grep -m 1 -r Exec= ./*.desktop | cut -d "=" -f 2 | cut -d % -f 1)
-LD_LIBRARY_PATH="./:${LD_LIBRARY_PATH}" PATH="./:${PATH}" exec $EXEC $@

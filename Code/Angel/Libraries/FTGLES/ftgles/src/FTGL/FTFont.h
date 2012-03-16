@@ -355,6 +355,13 @@ class FTGL_EXPORT FTFont
                                FTPoint spacing = FTPoint(),
                                int renderMode = FTGL::RENDER_ALL);
 
+	
+	virtual void PreRender();
+	
+	
+	virtual void PostRender();
+	
+	
         /**
          * Queries the Font for errors.
          *

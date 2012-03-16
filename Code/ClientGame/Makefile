@@ -12,10 +12,10 @@ WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrapping.cpp
 
 INCLUDE = 							\
 	-I../Angel						\
-	-I../Angel/Libraries/glfw/include			\
-	-I../Angel/Libraries/Box2D-2.1.2			\
+	-I../Angel/Libraries/glfw-2.7.3/include			\
+	-I../Angel/Libraries/Box2D-2.2.1			\
 	-I../Angel/Libraries/FTGL/include			\
-	-I../Angel/Libraries/lua-5.1.4/src			\
+	-I../Angel/Libraries/lua-5.1.5/src			\
 	-I/usr/include/freetype2
 ifneq ($(ANGEL_DISABLE_FMOD), 1)
 	INCLUDE += -I../Angel/Libraries/FMOD/inc
@@ -23,8 +23,8 @@ endif
 
 LIBS = 									\
 	$(LIBANGEL)							\
-	../Angel/Libraries/glfw/lib/x11/libglfw.a			\
-	../Angel/Libraries/Box2D-2.1.2/Build/Box2D/libBox2D.a		\
+	../Angel/Libraries/glfw-2.7.3/lib/x11/libglfw.a			\
+	../Angel/Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
 	../Angel/Libraries/FTGL/unix/src/.libs/libftgl.a		\
 	../Angel/Libraries/angel-lua-build/liblua.a
 

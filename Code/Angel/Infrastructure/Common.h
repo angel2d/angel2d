@@ -43,7 +43,7 @@
 	#include <GL/glu.h>
 #elif defined(__APPLE__)
 	#include "TargetConditionals.h"
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		#include <OpenGLES/ES1/gl.h>
 		#include "glu.h"
 		#include <sys/time.h>
@@ -78,14 +78,14 @@
 			}
 		};
 	}
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		// making up for OpenGL|ES missing pieces
 		#define glColor3f(r,g,b) glColor4f(r,g,b,1.0f)
 		#define GL_CLAMP GL_CLAMP_TO_EDGE
 	#endif
 #endif
 
-#if !defined(__APPLE__) || !ANGEL_IPHONE
+#if !defined(__APPLE__) || !ANGEL_MOBILE
 	#include <GL/glfw.h>
 #endif
 

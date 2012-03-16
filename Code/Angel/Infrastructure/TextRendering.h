@@ -52,6 +52,13 @@
 const bool RegisterFont(const String& filename, int pointSize, const String& nickname);
 
 /**
+ * Tell whether there is already a font with a given name (to avoid repeat loading).
+ * 
+ * @return Whether or not there is currently a registered font by the given name.
+ */
+const bool IsFontRegistered(const String& nickname);
+
+/**
  * If you're done using a font and are concerned about memory usage, you can
  *  remove it from active use. 
  * 

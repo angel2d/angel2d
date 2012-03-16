@@ -304,6 +304,31 @@
  * sysLog.Log("This will log to both the system console and the log file we created.");
  * \endcode
  * 
+ * @subsection preferences Preferences
+ * Angel contains a simple mechanism for storing persistent values so your 
+ *  players can store data across sessions. It's only good for simple sets
+ *  of values (floats, ints, strings), but you can do quite a bit with just
+ *  those.
+ * 
+ * To set a preference, we call the appropriate function for the desired type.
+ * 
+ * \code
+ * thePrefs.SetInt("GameStartupSettings", "NumberOfEnemies", 15);
+ * thePrefs.SetFloat("GameStartupSettings", "JumpHeight", 3.14159);
+ * thePrefs.SetString("GameStartupSettings", "HeroName", "SuperDude");
+ * \endcode
+ *
+ * Note that just setting the preference does not make it persist. If you want 
+ *  to hang on to the current values of the preference system, call 
+ *  \c thePrefs.SavePreferences() at some point. This will write out a file
+ *  that the game will look for at next startup. 
+ * 
+ * There's a file in the Config directory of your game called \c defaults.ini.
+ *  Any values you put in here will automatically be loaded into the 
+ *  Preferences structure, where tables will become categories. The values will
+ *  be overridden if you have called \c thePrefs.SavePreferences() to store
+ *  them off. 
+ * 
  * @subsection text Text Rendering
  * There are two steps you have to take before drawing text to the screen. 
  *  First off, you have to register the font with our text system. You can
@@ -1232,6 +1257,7 @@
 #include "Infrastructure/GameManager.h"
 #include "Infrastructure/Interval.h"
 #include "Infrastructure/Log.h"
+#include "Infrastructure/Preferences.h"
 #include "Infrastructure/Renderable.h"
 #include "Infrastructure/RenderableIterator.h"
 #include "Infrastructure/SoundDevice.h"
@@ -1244,7 +1270,7 @@
 #include "Infrastructure/Vector3.h"
 #include "Infrastructure/World.h"
 
-#if !ANGEL_IPHONE
+#if !ANGEL_MOBILE
 	#include "Input/Input.h"
 	#include "Input/InputManager.h"
 	#include "Input/MouseInput.h"

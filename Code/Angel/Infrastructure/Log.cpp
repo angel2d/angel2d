@@ -30,6 +30,7 @@
 #include "stdafx.h"
 #include "../Infrastructure/Log.h"
 
+#include "../Infrastructure/World.h"
 #include "../Util/MathUtil.h"
 #include "../Util/FileUtil.h"
 
@@ -41,6 +42,21 @@
 CompoundLog* CompoundLog::_sysLog = NULL;
 
 #define MAX_LOG_STRING 1024
+
+const String __GetTimeString()
+{
+	time_t rawtime;
+	time ( &rawtime );
+	
+	#if defined(WIN32)
+		const unsigned int timeWidth = 26; 
+		char timeString[timeWidth]; //ctime_s fills a string of exactly 26 characters
+		ctime_s(timeString, timeWidth, &rawtime);
+	#elif defined(__APPLE__) || defined(__linux__)
+		char *timeString = ctime(&rawtime);
+	#endif
+	return TrimString(timeString);
+}
 
 void DeveloperLog::Printf(const char* format, ...)
 {
@@ -88,7 +104,7 @@ void ConsoleLog::Log( const String& val)
 {
 	if (theWorld.GetConsole() != NULL)
 	{
-		#if !ANGEL_IPHONE
+		#if !ANGEL_MOBILE
 			theWorld.GetConsole()->WriteToOutput(val + "\n");
 		#endif
 	}
@@ -96,23 +112,13 @@ void ConsoleLog::Log( const String& val)
 
 String FileLog::MakeLogFileName( const String& fileName )
 {
+	String logDir = GetStorageDirectory() + "Logs/";
 	#if defined(WIN32)
-		String logDir = "Logs/";
+		// logDir is already sufficient
 	#elif defined(__APPLE__)
-		#if !ANGEL_IPHONE
-			String logDir = getenv("HOME");
-			logDir += "/Library/Application Support/Angel Games/Logs/";
-			MakeDirectories(logDir);
-		#else
-			NSArray* arrayPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-			NSString* docPath = [arrayPaths objectAtIndex:0];
-			String logDir = [docPath UTF8String];
-			logDir += "/Logs/";
-			MakeDirectories(logDir);
-		#endif
+		MakeDirectories(logDir);
 	#elif defined(__linux__)
-		String logDir = getenv("HOME");
-		logDir += "/.angelLogs/";
+		// logDir is already sufficient
 	#endif
 	
 	return logDir + fileName + ".log";
@@ -122,45 +128,27 @@ String FileLog::MakeLogFileName( const String& fileName )
 FileLog::FileLog( const String& fileName )
 : _fileName(fileName)
 {
-	time_t rawtime;
-	time ( &rawtime );
-
 	//TODO: may want to backup the old log?
 	//Clear the current log
 	StringList logHeader;
 	logHeader.push_back( String("Opened Log: ") + _fileName );
-	#if defined(WIN32)
-		const unsigned int timeWidth = 26; 
-		char timeString[timeWidth]; //ctime_s fills a string of exactly 26 characters
-		ctime_s(timeString, timeWidth, &rawtime);
-	#elif defined(__APPLE__) || defined(__linux__)
-		char *timeString = ctime(&rawtime);
-	#endif
-	logHeader.push_back( String("On: ") + timeString );
+	logHeader.push_back( String("On: ") + __GetTimeString() );
+	logHeader.push_back("");
 	WriteLinesToFile( _fileName, logHeader );
 }
 
 void FileLog::Log( const String& val)
 {
-	AppendLineToFile( _fileName, val );
+	AppendLineToFile( _fileName, __GetTimeString() + ": " + val );
 }
 
 
 void SystemLog::Log( const String &val)
 {
 	#if defined(_MSC_VER)
-		//convert string to wstring
-		String prepped = val + "\n";
-		int len;
-		int slength = (int)prepped.length() + 1;
-		len = MultiByteToWideChar(CP_ACP, 0, prepped.c_str(), slength, 0, 0); 
-		wchar_t* buf = new wchar_t[len];
-		MultiByteToWideChar(CP_ACP, 0, prepped.c_str(), slength, buf, len);
-		std::wstring wval(buf);
-		delete[] buf;
-	
 		//output to pane
-		OutputDebugString(wval.c_str());
+		String prepped = val + "\n";
+		OutputDebugString(val.c_str());
 	#else
 		std::cout << val << std::endl;
 	#endif

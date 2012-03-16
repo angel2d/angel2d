@@ -33,8 +33,9 @@
 #include "../Infrastructure/Camera.h"
 #include "../Infrastructure/VecStructs.h"
 #include "../Infrastructure/Log.h"
+#include "../Infrastructure/World.h"
 
-#if ANGEL_IPHONE
+#if ANGEL_MOBILE
 	#include <ftgl/ftgles.h>
 #else
 	#include "FTFont.h"
@@ -75,6 +76,19 @@ const bool RegisterFont(const String& filename, int pointSize, const String& nic
 	return true;
 }
 
+const bool IsFontRegistered(const String& nickname)
+{
+	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
+	if (it != _fontCache.end())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 const bool UnRegisterFont(const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
@@ -108,7 +122,7 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
 	#endif
 	gluOrtho2D(0.0f, winDimensions.X, 0.0f, winDimensions.Y);

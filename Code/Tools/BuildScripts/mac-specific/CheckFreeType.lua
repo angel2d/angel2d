@@ -49,7 +49,7 @@ if (env['PROJECT_DIR']:find(' ')) then
   env['PROJECT_DIR'] = '"' .. env['PROJECT_DIR'] .. '"'
 end
 
-local BASEDIR = fulljoin(env['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.3.7")
+local BASEDIR = fulljoin(env['PROJECT_DIR'], "Angel", "Libraries", "freetype-2.4.8")
 local CHECKFILE = fulljoin(BASEDIR, "builds", "unix", "ftconfig.h")
 
 lfs.chdir(BASEDIR:gsub('"', ''))

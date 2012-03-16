@@ -31,7 +31,6 @@
 
 #include "../Util/StringUtil.h"
 #include "../Infrastructure/Console.h"
-#include "../Infrastructure/World.h"
 
 ///Abstract base class for logs
 /** 

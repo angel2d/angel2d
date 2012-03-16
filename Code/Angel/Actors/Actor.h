@@ -407,12 +407,12 @@ public:
 	/**
 	 * Get the current UV coordinates being used by the Actor to draw. 
 	 * 
-	 * @param upright An out parameter that will be set to the current upper 
-	 *   right UV
 	 * @param lowleft An out parameter that will be set to the current lower
 	 *   left UV
+	 * @param upright An out parameter that will be set to the current upper 
+	 *   right UV
 	 */
-	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
+	void GetUVs(Vector2 &lowleft, Vector2 &upright) const;
 	
 	/**
 	 * Returns whether or not this Actor has been given a particular tag. 

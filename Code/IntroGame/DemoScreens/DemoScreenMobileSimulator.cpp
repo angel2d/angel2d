@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2011, Shane J. M. Liesegang
+// Copyright (C) 2008-2012, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -40,7 +40,7 @@ DemoScreenMobileSimulator::DemoScreenMobileSimulator()
 	// Note that we're doing conditional compilation here to not add the 
 	//  simulator when we're actually building for the iPhone. This same
 	//  DemoScreen runs in the IntroGame for iOS. 
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		_ms = new MobileSimulator();
 	#endif
 }
@@ -48,7 +48,7 @@ DemoScreenMobileSimulator::DemoScreenMobileSimulator()
 void DemoScreenMobileSimulator::Start()
 {
 	// Add the MobileSimulator object to the world.
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		theWorld.Add(_ms);
 	#endif
 	
@@ -68,7 +68,7 @@ void DemoScreenMobileSimulator::Start()
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo Housekeeping
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		String description = "This is a fun screen. \n\n";
 		description +=		 "Angel supports iOS, but you probably don't\n";
 		description +=		 "have multi-touch or an accelerometer in \n";
@@ -104,7 +104,7 @@ void DemoScreenMobileSimulator::Stop()
 	// Clear out the simulator and unsubscribe from messages when we move
 	//  away from this screen. 
 	
-	#if !ANGEL_IPHONE
+	#if !ANGEL_MOBILE
 		theWorld.Remove(_ms);
 	#endif
 	

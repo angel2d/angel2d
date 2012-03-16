@@ -30,7 +30,7 @@
 #include "stdafx.h"
 #include "DemoGameManager.h"
 
-#if !ANGEL_IPHONE
+#if !ANGEL_MOBILE
 	#include "DemoScreenStart.h"
 	#include "DemoScreenInstructions.h"
 	#include "DemoScreenSimpleActor.h"
@@ -95,7 +95,7 @@ DemoGameManager::DemoGameManager()
 	theSwitchboard.SubscribeTo(this, "MoveForwards");
 	theSwitchboard.SubscribeTo(this, "MoveBackwards");
 	
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		_screens.push_back(new DemoScreenMobileSimulator());				// 0
 	#else
 		_screens.push_back(new DemoScreenStart());							// 0

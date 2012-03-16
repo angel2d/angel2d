@@ -13,10 +13,10 @@ ifeq ($(ARCH),x86_64)
 endif
 
 INCLUDE = 							\
-	-ILibraries/glfw/include				\
+	-ILibraries/glfw-2.7.3/include				\
 	-ILibraries/Box2D-2.2.1					\
 	-ILibraries/FTGL/include				\
-	-ILibraries/lua-5.1.4/src				\
+	-ILibraries/lua-5.1.5/src				\
 	-IInfrastructure					\
 	-I/usr/include/freetype2
 ifneq ($(ANGEL_DISABLE_FMOD), 1)
@@ -24,7 +24,7 @@ ifneq ($(ANGEL_DISABLE_FMOD), 1)
 endif
 
 LIBS = 								\
-	Libraries/glfw/lib/x11/libglfw.a			\
+	Libraries/glfw-2.7.3/lib/x11/libglfw.a			\
 	Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
 	Libraries/FTGL/unix/src/.libs/libftgl.a
 
@@ -53,6 +53,7 @@ SRCS =								\
 	Infrastructure/Console.cpp				\
 	Infrastructure/GameManager.cpp				\
 	Infrastructure/Log.cpp					\
+	Infrastructure/Preferences.cpp				\
 	Infrastructure/RenderableIterator.cpp			\
 	Infrastructure/SoundDevice.cpp				\
 	Infrastructure/TagCollection.cpp			\
@@ -94,10 +95,10 @@ FTGL-clean:
 		Make.conf libtool demo/FTGLDemo docs/doc-stamp
 
 GLFW:
-	cd Libraries/glfw && make x11
+	cd Libraries/glfw-2.7.3 && make x11
 
 GLFW-clean:
-	cd Libraries/glfw && make x11-clean
+	cd Libraries/glfw-2.7.3 && make x11-clean
 
 Box2D:
 	cd Libraries/Box2D-2.2.1/Build && cmake .. && make Box2D

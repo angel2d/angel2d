@@ -97,37 +97,37 @@ FTOutlineGlyphImpl::~FTOutlineGlyphImpl()
 const FTPoint& FTOutlineGlyphImpl::RenderImpl(const FTPoint& pen,
                                               int renderMode)
 {
-    glTranslatef(pen.Xf(), pen.Yf(), pen.Zf());
-	if(vectoriser)
+    if(vectoriser)
     {
-        DoRender();
+        RenderContours(pen);
     }
-    glTranslatef(-pen.Xf(), -pen.Yf(), -pen.Zf());
 
     return advance;
 }
 
 
-void FTOutlineGlyphImpl::DoRender()
+void FTOutlineGlyphImpl::RenderContours(const FTPoint& pen)
 {
-	GLfloat colors[4];
-	
-    for(unsigned int c = 0; c < vectoriser->ContourCount(); ++c)
+	for(unsigned int c = 0; c < vectoriser->ContourCount(); ++c)
     {
         const FTContour* contour = vectoriser->Contour(c);
 		
-		glGetFloatv(GL_CURRENT_COLOR, colors);
-		glBindTexture(GL_TEXTURE_2D, 0);
-        ftglBegin(GL_LINE_LOOP);
-		ftglColor4f(colors[0], colors[1], colors[2], colors[3]);
 		for(unsigned int i = 0; i < contour->PointCount(); ++i)
 		{
-			FTPoint point = FTPoint(contour->Point(i).X() + contour->Outset(i).X() * outset,
-									contour->Point(i).Y() + contour->Outset(i).Y() * outset,
-									0);
-			ftglVertex2f(point.Xf() / 64.0f, point.Yf() / 64.0f);
+			unsigned ii = (i+1 == contour->PointCount()) ? 0 : i+1;
+			
+			FTPoint point1 = FTPoint(contour->Point(i).X() + contour->Outset(i).X() * outset,
+									 contour->Point(i).Y() + contour->Outset(i).Y() * outset,
+									 0);
+			FTPoint point2 = FTPoint(contour->Point(ii).X() + contour->Outset(ii).X() * outset,
+									 contour->Point(ii).Y() + contour->Outset(ii).Y() * outset,
+									 0);
+			ftglVertex2f((point1.Xf() / 64.0f) + pen.Xf(), 
+						 (point1.Yf() / 64.0f) + pen.Yf());
+			ftglVertex2f((point2.Xf() / 64.0f) + pen.Xf(), 
+						 (point2.Yf() / 64.0f) + pen.Yf());
 		}
-        ftglEnd();
+        
     }
 }
 

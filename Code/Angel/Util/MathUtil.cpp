@@ -72,7 +72,7 @@ float MathUtil::AngleFromVector(const Vector2& v1)
 }
 
 float MathUtil::AngleFromVectors(const Vector2& v1, const Vector2& v2)
-{	
+{
 	return atan2(v1.Y, v1.X) - atan2(v2.Y, v2.X);
 }
 
@@ -216,7 +216,7 @@ Vector2 MathUtil::GetWorldDimensions()
 	int screenWidth = theCamera.GetWindowWidth();
 	int screenHeight = theCamera.GetWindowHeight();
 	float aspect = (float)screenWidth / (float)screenHeight;
-	#if ANGEL_IPHONE
+	#if ANGEL_MOBILE
 		int hold = screenWidth;
 		screenWidth = screenHeight;
 		screenHeight = hold;

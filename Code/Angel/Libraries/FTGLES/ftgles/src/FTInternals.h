@@ -64,44 +64,8 @@
 
 #else
 
-//#include <OpenGLES/EAGL.h>
-//#include <OpenGLES/ES1/gl.h>
-//#include <OpenGLES/ES1/glext.h>
-
-
 #include "FTGL/ftglesGlue.h"
 
-/*
-    // Non windows platforms - don't require nonsense as seen above :-)
-    #ifndef __gl_h_
-        #ifdef SDL_main
-            #include "SDL_opengl.h"
-        #elif __APPLE_CC__
-            #include <OpenGL/gl.h>
-            #include <OpenGL/glu.h>
-
-		#elif (TARGET_IPHONE_SIMULATOR == 0) && (TARGET_OS_IPHONE == 1)
-			#include <OpenGLES/EAGL.h>
-			#include <OpenGLES/ES1/gl.h>
-			#include <OpenGLES/ES1/glext.h>
-#error AWESSOME
-        #else
-            #include <GL/gl.h>
-            #if defined (__sun__) && !defined (__sparc__)
-                #include <mesa/glu.h>
-            #else
-                #include <GL/glu.h>
-            #endif
-        #endif
-
-    #endif
-
-    // Required for compatibility with glext.h style function definitions of
-    // OpenGL extensions, such as in src/osg/Point.cpp.
-    #ifndef APIENTRY
-        #define APIENTRY
-    #endif
- */
 #endif
 
 FTGL_BEGIN_C_DECLS
