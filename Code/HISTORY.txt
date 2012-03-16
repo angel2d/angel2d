@@ -1,0 +1,73 @@
+3.0 -- ??/??/2012
+-----------------
+* Major release
+* Python scripting replaced with Lua
+* iOS build
+* Libraries updated to latest contemporary versions: 
+    * Lua
+    * SWIG
+    * Box2D
+    * FreeType
+    * FTGLES
+    * GLFW
+    * Vorbis
+    * Ogg
+* Compile-time options to not use DevIL or FMOD, falling back to vorbis and libpng support for audio and textures
+* Support for user preferences
+* MobileSimulator object to provide fake device inputs for Windows devs working on iOS projects
+* Various bug fixes and optimizations for all builds
+
+2.2 --  4/30/2010
+-----------------
+* Minor release
+* Linux support (Ubuntu and Fedora)
+* Replaced FreeImage with DevIL
+* Mac builds targeting Snow Leopard and higher; no longer a universal binary
+
+2.1 --   3/2/2009
+-----------------
+* Minor release
+* Updating FreeType build process on the Mac
+* Adding accessor for Actor's current sprite frame
+* Documentation fixes
+* Fixes to Python Windows build
+* Fixes to Mac publish step so that scripts would be pre-compiled
+
+2.0 --  2/13/2009
+-----------------
+* Major release
+* Python scripting
+* Mac support
+* Removal of ClusterGame
+* Doxygen-powered documentation
+* Massive cleanup and re-org
+* 
+
+1.1 --  6/??/2008
+-----------------
+* Minor release
+* Big cleanup pass to fix last-minute duct tape solutions that arose in the leadup to the gamejam
+* Incorporation of some features added during the course of the jam
+* First public release, licensed under BSD-style license
+
+1.0 --  4/25/2008
+-----------------
+* Internal milestone release for first Electronic Arts Los Angeles gamejam
+* Developed over a few months by a core team of EALA progammers (and one designer)
+* Basic framework
+    * Actors
+    * Textures (with FreeImage)
+    * Simple animations
+    * Physics (with Box2D)
+    * Sound (with FMOD)
+    * Text rendering (with FTGL)
+    * Particles
+    * AI state machine and pathfinding
+    * Mouse, Keyboard, 360 Controller input
+    * Config and Tuning support
+    * In-Game Console
+* IntroGame/ClientGame to show off functionality + provide base starting point
+* ClusterGame -- Original "DemoGame" where all functionality was crammed as it was added (more a development artifact than a useful thing)
+* Simple publish scripts
+* Windows only
+

@@ -1,0 +1,5 @@
+Examine window init/positioning code to see if there are improvements to be made with new GLFW
+Make sure library choices are properly documented (ref: https://groups.google.com/group/angel-engine/browse_thread/thread/c4b58e5d095dc349)
+Review documentation in general
+See if it's worth trimming out parts of included libs for space saving
+
