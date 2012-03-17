@@ -204,7 +204,10 @@ const String GetExeName()
 		char procPath[PATH_MAX];
 		sprintf(procPath, "/proc/%i/cmdline", pid);
 		String exePath = ReadWholeFile(procPath);
-		exePath = exePath.substr(0, exePath.size()-1); //trim the null character
+		if (exePath[exePath.size()-1] == '\0')
+		{
+			exePath = exePath.substr(0, exePath.size()-1); //trim the null character
+		}
 	#endif
 	
 	StringList pathElements = SplitString(exePath, pathSplit);
