@@ -3408,6 +3408,7 @@
 				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = FreeType;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3431,6 +3432,7 @@
 				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = FreeType;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3445,6 +3447,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = HIDUtilities;
+				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = "-w";
 			};
 			name = Debug;
@@ -3458,6 +3461,7 @@
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = HIDUtilities;
+				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = "-w";
 				ZERO_LINK = NO;
 			};
@@ -3474,6 +3478,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Ogg;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3487,6 +3492,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Ogg;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3507,6 +3513,7 @@
 				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Vorbis;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3525,6 +3532,7 @@
 				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Vorbis;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3556,6 +3564,7 @@
 					"\"$(SRCROOT)/Angel/Libraries/freetype-2.4.8/built/lib\"",
 				);
 				PRODUCT_NAME = Angel;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3585,6 +3594,7 @@
 					"\"$(SRCROOT)/Angel/Libraries/freetype-2.4.8/built/lib\"",
 				);
 				PRODUCT_NAME = Angel;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3606,6 +3616,7 @@
 					"\"$(SRCROOT)/Angel/Libraries/freetype-2.4.8/built\"",
 				);
 				PRODUCT_NAME = FTGL;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3625,6 +3636,7 @@
 					"\"$(SRCROOT)/Angel/Libraries/freetype-2.4.8/built\"",
 				);
 				PRODUCT_NAME = FTGL;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3642,6 +3654,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Box2D;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3657,6 +3670,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Box2D;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3673,6 +3687,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = GLFW;
+				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = "-w";
 			};
 			name = Debug;
@@ -3688,6 +3703,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = GLFW;
+				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = "-w";
 				ZERO_LINK = NO;
 			};
@@ -3765,6 +3781,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = Lua;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3783,6 +3800,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = Lua;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3804,6 +3822,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Lua;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3823,6 +3842,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Lua;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;

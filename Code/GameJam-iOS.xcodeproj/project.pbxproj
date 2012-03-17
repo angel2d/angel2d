@@ -633,6 +633,7 @@
 		34349882150F694E00666CBC /* LoadedVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadedVariable.h; path = Angel/Infrastructure/LoadedVariable.h; sourceTree = "<group>"; };
 		34349885150F696600666CBC /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Preferences.cpp; path = Angel/Infrastructure/Preferences.cpp; sourceTree = "<group>"; };
 		34349886150F696600666CBC /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = Angel/Infrastructure/Preferences.h; sourceTree = "<group>"; };
+		343E72AD15142DD800D9E0C4 /* ClientGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ClientGame.entitlements; path = ClientGame/ClientGame.entitlements; sourceTree = "<group>"; };
 		34433D81131DDB0900040805 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		34433D87131DDB1F00040805 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		345CC3FC132EF90700D375BE /* Angel Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Angel Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1997,6 +1998,7 @@
 		34A3732A131DD39B007EAC45 /* ClientGame */ = {
 			isa = PBXGroup;
 			children = (
+				343E72AD15142DD800D9E0C4 /* ClientGame.entitlements */,
 				34AF5748132B321700E47D63 /* Icons */,
 				34AF5746132B320900E47D63 /* SpashScreens */,
 				34A3732B131DD3B7007EAC45 /* Attributions.txt */,
@@ -3209,6 +3211,7 @@
 				);
 				PRODUCT_NAME = Lua;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3227,6 +3230,7 @@
 				);
 				PRODUCT_NAME = Lua;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3241,6 +3245,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"";
 				PRODUCT_NAME = Ogg;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3253,6 +3258,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/libogg-1.3.0/include\"";
 				PRODUCT_NAME = Ogg;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3273,6 +3279,7 @@
 				);
 				PRODUCT_NAME = Vorbis;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3291,6 +3298,7 @@
 				);
 				PRODUCT_NAME = Vorbis;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3317,6 +3325,7 @@
 				);
 				PRODUCT_NAME = FreeType;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3341,6 +3350,7 @@
 				);
 				PRODUCT_NAME = FreeType;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3354,6 +3364,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = zlib;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3365,6 +3376,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_NAME = zlib;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3378,6 +3390,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = libpng;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3389,6 +3402,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_NAME = libpng;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3407,6 +3421,7 @@
 				);
 				PRODUCT_NAME = FTGLES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3423,6 +3438,7 @@
 				);
 				PRODUCT_NAME = FTGLES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3438,6 +3454,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"";
 				PRODUCT_NAME = Box2D;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3451,6 +3468,7 @@
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Angel/Libraries/Box2D-2.2.1\"";
 				PRODUCT_NAME = Box2D;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3476,6 +3494,7 @@
 				);
 				PRODUCT_NAME = Angel;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3499,6 +3518,7 @@
 				);
 				PRODUCT_NAME = Angel;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
