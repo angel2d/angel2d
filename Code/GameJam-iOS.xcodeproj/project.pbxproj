@@ -633,7 +633,6 @@
 		34349882150F694E00666CBC /* LoadedVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadedVariable.h; path = Angel/Infrastructure/LoadedVariable.h; sourceTree = "<group>"; };
 		34349885150F696600666CBC /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Preferences.cpp; path = Angel/Infrastructure/Preferences.cpp; sourceTree = "<group>"; };
 		34349886150F696600666CBC /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = Angel/Infrastructure/Preferences.h; sourceTree = "<group>"; };
-		343E72AD15142DD800D9E0C4 /* ClientGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ClientGame.entitlements; path = ClientGame/ClientGame.entitlements; sourceTree = "<group>"; };
 		34433D81131DDB0900040805 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		34433D87131DDB1F00040805 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		345CC3FC132EF90700D375BE /* Angel Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Angel Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1998,7 +1997,6 @@
 		34A3732A131DD39B007EAC45 /* ClientGame */ = {
 			isa = PBXGroup;
 			children = (
-				343E72AD15142DD800D9E0C4 /* ClientGame.entitlements */,
 				34AF5748132B321700E47D63 /* Icons */,
 				34AF5746132B320900E47D63 /* SpashScreens */,
 				34A3732B131DD3B7007EAC45 /* Attributions.txt */,
