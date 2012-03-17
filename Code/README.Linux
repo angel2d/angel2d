@@ -1,7 +1,7 @@
 Building Angel on Linux
 ------------------------------------------------------------------------------
-Angel has been tested on Ubuntu 10.04 LTS and Fedora Core 12. It should 
-probably build on other recent distributions as long as all of the 
+This release of Angel has been tested on Ubuntu 11.10 and Fedora Core 16. 
+It should probably build on other recent distributions as long as all of the 
 dependencies are installed.
 
 Dependencies:
