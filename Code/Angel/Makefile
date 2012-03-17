@@ -97,10 +97,10 @@ FTGL-clean:
 MAKEFILE_X11 = Libraries/glfw-2.7.3/lib/x11/Makefile.x11
 
 $(MAKEFILE_X11):
-	cd Libraries/glfw-2.7.3 && @sh ./compile.sh
+	cd Libraries/glfw-2.7.3 && sh ./compile.sh
 
 GLFW: $(MAKEFILE_X11)
-	cd Libraries/glfw-2.7.3/lib/x11 && make libglfw.a
+	cd Libraries/glfw-2.7.3/lib/x11 && make -f Makefile.x11 libglfw.a
 
 GLFW-clean:
 	cd Libraries/glfw-2.7.3 && make x11-clean
