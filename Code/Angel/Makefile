@@ -94,8 +94,13 @@ FTGL-clean:
 	cd Libraries/FTGL/unix && rm -f config.log config.status ftgl.pc \
 		Make.conf libtool demo/FTGLDemo docs/doc-stamp
 
-GLFW:
-	cd Libraries/glfw-2.7.3 && make x11
+MAKEFILE_X11 = Libraries/glfw-2.7.3/lib/x11/Makefile.x11
+
+$(MAKEFILE_X11):
+	cd Libraries/glfw-2.7.3 && @sh ./compile.sh
+
+GLFW: $(MAKEFILE_X11)
+	cd Libraries/glfw-2.7.3/lib/x11 && make libglfw.a
 
 GLFW-clean:
 	cd Libraries/glfw-2.7.3 && make x11-clean
