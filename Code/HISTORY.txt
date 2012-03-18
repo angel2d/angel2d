@@ -41,7 +41,6 @@
 * Removal of ClusterGame
 * Doxygen-powered documentation
 * Massive cleanup and re-org
-* 
 
 1.1 --  6/??/2008
 -----------------
