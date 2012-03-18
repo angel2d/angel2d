@@ -4,6 +4,7 @@
 {
 protected:
 	friend class World;
+	virtual ~DebugDrawBase() {}
 	virtual void Draw() = 0;
 
 	void SetupDraw()
