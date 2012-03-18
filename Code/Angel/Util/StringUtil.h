@@ -33,7 +33,10 @@
  */
 #pragma once
 
+#include "../Infrastructure/Common.h"
 #include "../Infrastructure/Vector2.h"
+
+#include <set>
 
 //Typedefs to let us reference things more sanely
 typedef std::string			String;
