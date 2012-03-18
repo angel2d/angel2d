@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Infrastructure/Vector2.h"
 #include "../AI/Brain.h"
 

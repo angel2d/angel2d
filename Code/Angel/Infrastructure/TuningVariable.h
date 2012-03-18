@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Infrastructure/LoadedVariable.h"
 #include "../Util/StringUtil.h"
 #include "../Util/MathUtil.h"

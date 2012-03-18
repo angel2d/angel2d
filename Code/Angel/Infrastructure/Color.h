@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Util/StringUtil.h"
 
 ///A class to encapsulate color information

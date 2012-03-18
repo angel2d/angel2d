@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../AI/BoundingShapes.h"
 
 #include <Box2D/Box2D.h>

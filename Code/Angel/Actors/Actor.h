@@ -30,12 +30,10 @@
 /** @file */
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Infrastructure/Renderable.h"
 #include "../Infrastructure/Color.h"
 #include "../Infrastructure/Interval.h"
 #include "../Messaging/Message.h"
-#include "../Util/StringUtil.h"
 
 #define MAX_SPRITE_FRAMES 64
 #define CIRCLE_DRAW_SECTIONS 32

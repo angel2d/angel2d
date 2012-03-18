@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Infrastructure/VecStructs.h"
 #include "../Infrastructure/Vector2.h"
 #include "../Infrastructure/Log.h"

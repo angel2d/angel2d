@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Messaging/Message.h"
 #include "../Util/MathUtil.h"
 

@@ -419,10 +419,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Physics\PhysicsUtil.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Util\StringUtil.cpp"
 				>
 			</File>
@@ -574,10 +570,6 @@
 			</File>
 			<File
 				RelativePath=".\Infrastructure\TuningVariable.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Infrastructure\ValueCache.h"
 				>
 			</File>
 			<File

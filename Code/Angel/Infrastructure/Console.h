@@ -30,7 +30,6 @@
 #pragma once
 
 #include "../Util/StringUtil.h"
-#include "../Infrastructure/Log.h"
 #include "../Infrastructure/Vector2.h"
 
 

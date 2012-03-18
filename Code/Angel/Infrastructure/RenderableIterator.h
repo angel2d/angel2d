@@ -29,7 +29,6 @@
 
 #pragma once
 
-#include "../Infrastructure/Common.h"
 #include "../Infrastructure/Renderable.h"
 
 typedef std::vector<Renderable*>	RenderList;
