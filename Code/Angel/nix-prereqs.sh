@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # This script will attempt to install any necessary prerequsites on Unix
-#  systems. At the moment it only supports Fedora (13), Ubuntu (10.4) and
-#  Mac OS X (10.6). 
+#  systems. At the moment it only supports Fedora, Ubuntu, and Mac OS X. 
 # 
-# On all systems, it should be run with sudo or root privileges. 
+# On all systems, it needs to be run with sudo or root privileges. 
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script requires root privileges to run."
@@ -23,14 +22,13 @@ elif [ "`uname`" == 'Darwin' ] ; then
 fi
 
 if   [ "$DIST" == 'Fedora' ] ; then
-	yum -y install gcc-c++ make swig mesa-libGLU-devel DevIL-ILUT-devel\
-		readline-devel libXrandr-devel freetype-devel cmake\
+	yum -y install gcc-c++ make cmake swig mesa-libGLU-devel readline-devel\
+		DevIL-ILUT-devel libXrandr-devel freetype-devel\
 		openal-soft-devel libvorbis-devel libpng-devel
 elif [ "$DIST" == 'Ubuntu' ] ; then
 	apt-get -y install build-essential cmake swig libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
-		joystick libopenal-dev libvorbis-dev libpng12-dev libfuse-dev\
-		libglib2.0-dev
+		joystick libopenal-dev libvorbis-dev libpng12-dev
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which port`" != "" ] ; then
 		if [ "`port installed swig-lua | grep currently`" == "" ] ; then
