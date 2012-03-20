@@ -200,9 +200,10 @@ const String GetExeName()
 		}
 		CFRelease(exeURL);
 	#elif defined (__linux__)
-		pid_t pid = getpid();
 		String exePath = ReadWholeFile("/proc/self/cmdline");
-		exePath = SplitString(exePath, "\0")[0];
+		String splitChars = "";
+		splitChars.push_back('\0'); // have to construct null-containing strings carefully
+		exePath = SplitString(exePath, splitChars)[0];
 	#endif
 	
 	StringList pathElements = SplitString(exePath, pathSplit);
