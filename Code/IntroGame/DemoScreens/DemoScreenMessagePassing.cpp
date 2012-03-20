@@ -67,12 +67,12 @@ void DemoScreenMessagePassing::Setup()
 	// which is part of the MessageListener interface, to see how to handle the messages. 
 	theSwitchboard.SubscribeTo(this, "ScreenStarted");
 	
-	//This message is interesting -- all collision messages take the form "CollisionWith"
-	// plus the name of the actor colliding. Note that this means if you change the name
-	// of the actor, you need to change your subscriptions if you want to hear about 
-	// collisions. 
-	theSwitchboard.SubscribeTo(this, "CollisionWith" + p1->GetName());
-	theSwitchboard.SubscribeTo(this, "CollisionWith" + p2->GetName());
+	//This message is interesting -- all collision messages take the form 
+	// "CollisionStartWith" plus the name of the actor colliding. Note that this means 
+	// if you change the name of the actor, you need to change your subscriptions if you 
+	// want to hear about collisions. 
+	theSwitchboard.SubscribeTo(this, "CollisionStartWith" + p1->GetName());
+	theSwitchboard.SubscribeTo(this, "CollisionStartWith" + p2->GetName());
 
 	bounceSample = theSound.LoadSample("Resources/Sounds/sprong.wav", false);
 }
@@ -127,7 +127,7 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 	}
 	
 	//When the first actor collides, we kick off the physics for the second actor. 
-	if (message->GetMessageName() == "CollisionWith" + p1->GetName())
+	if (message->GetMessageName() == "CollisionStartWith" + p1->GetName())
 	{
 		// Only init the physics if it isn't already initialized.
 		//   *weird* things happen if you initialize it a second time.
@@ -155,7 +155,7 @@ void DemoScreenMessagePassing::ReceiveMessage(Message *message)
 			theSound.PlaySound(bounceSample, 1.0f, false, 0);			
 		}
 	}
-	else if (message->GetMessageName() == "CollisionWith" + p2->GetName())
+	else if (message->GetMessageName() == "CollisionStartWith" + p2->GetName())
 	{
 		b2Vec2 vel = p2->GetBody()->GetLinearVelocity();
 		if (bounceSample && fabsf(vel.y) > 5.0f)

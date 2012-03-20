@@ -512,7 +512,7 @@ private:
 	b2World *_physicsWorld;
 	bool _physicsSetUp;
 	
-	void bufferContactPoint(b2Contact* cp);
+	void SendCollisionNotifications(b2Contact* cp, bool beginning);
 	std::map< PhysicsActor*, ActorSet > _currentTouches;
 
 	bool _blockersOn;

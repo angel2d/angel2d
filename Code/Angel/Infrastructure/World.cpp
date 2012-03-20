@@ -467,12 +467,21 @@ void World::RunPhysics(float frame_dt)
 	}
 }
 
-void World::bufferContactPoint(b2Contact* contact)
+void World::SendCollisionNotifications(b2Contact* contact, bool beginning)
 {
 	PhysicsActor* pa1 = (PhysicsActor*)contact->GetFixtureA()->GetBody()->GetUserData();
 	PhysicsActor* pa2 = (PhysicsActor*)contact->GetFixtureB()->GetBody()->GetUserData();
-	String pa1Message = "CollisionWith" + pa1->GetName();
-	String pa2Message = "CollisionWith" + pa2->GetName();
+	String messageStart;
+	if (beginning)
+	{
+		messageStart = "CollisionStartWith";
+	}
+	else
+	{
+		messageStart = "CollisionEndWith";
+	}
+	String pa1Message = messageStart + pa1->GetName();
+	String pa2Message = messageStart + pa2->GetName();
 	if (theSwitchboard.GetSubscribersTo(pa1Message).size() > 0)
 	{
 		if (_currentTouches[pa1].find(pa2) == _currentTouches[pa1].end())
@@ -495,12 +504,12 @@ void World::bufferContactPoint(b2Contact* contact)
 
 void World::BeginContact(b2Contact* contact)
 {
-	bufferContactPoint(contact);
+	SendCollisionNotifications(contact, true);
 }
 
 void World::EndContact(b2Contact* contact)
 {
-	// we only care about the BeginContact signal
+	SendCollisionNotifications(contact, false);
 }
 
 void World::TickAndRender()

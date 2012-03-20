@@ -30,13 +30,16 @@ elif [ "$DIST" == 'Ubuntu' ] ; then
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
 		joystick libopenal-dev libvorbis-dev libpng12-dev
 elif [ "$DIST" == 'Darwin' ] ; then
-	if [ "`which port`" != "" ] ; then
+	if   [ "`which make`" == "" ] ; then
+		echo "The Xcode command line tools are not installed -- use the Downloads section of the Xcode preferences to install them."
+		exit 1
+	elif [ "`which port`" == "" ] ; then
+		echo "MacPorts is not installed -- please download and install from <http://macports.org>."
+		exit 1
+	else
 		if [ "`port installed swig-lua | grep currently`" == "" ] ; then
 			port install swig-lua
 		fi
-	else
-		echo "MacPorts is not installed -- please download and install from <http://macports.org>."
-		exit 1
 	fi
 	if [ ! -d /System/Library/Extensions/360Controller.kext ] ; then
 		hdiutil attach ../Tools/Mac360/360ControllerInstall.0.11.dmg
