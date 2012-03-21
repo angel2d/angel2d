@@ -469,8 +469,6 @@ void World::RunPhysics(float frame_dt)
 
 void World::SendCollisionNotifications(b2Contact* contact, bool beginning)
 {
-	PhysicsActor* pa1 = (PhysicsActor*)contact->GetFixtureA()->GetBody()->GetUserData();
-	PhysicsActor* pa2 = (PhysicsActor*)contact->GetFixtureB()->GetBody()->GetUserData();
 	String messageStart;
 	if (beginning)
 	{
@@ -480,25 +478,36 @@ void World::SendCollisionNotifications(b2Contact* contact, bool beginning)
 	{
 		messageStart = "CollisionEndWith";
 	}
-	String pa1Message = messageStart + pa1->GetName();
-	String pa2Message = messageStart + pa2->GetName();
-	if (theSwitchboard.GetSubscribersTo(pa1Message).size() > 0)
+	
+	PhysicsActor* pa1 = (PhysicsActor*)contact->GetFixtureA()->GetBody()->GetUserData();
+	PhysicsActor* pa2 = (PhysicsActor*)contact->GetFixtureB()->GetBody()->GetUserData();
+	
+	if (pa1 != NULL)
 	{
-		if (_currentTouches[pa1].find(pa2) == _currentTouches[pa1].end())
+		String pa1Message = messageStart + pa1->GetName();
+		if (theSwitchboard.GetSubscribersTo(pa1Message).size() > 0)
 		{
-			TypedMessage<b2Contact*>* coll = new TypedMessage<b2Contact*>(pa1Message, contact, pa2);
-			theSwitchboard.Broadcast(coll);
+			if (_currentTouches[pa1].find(pa2) == _currentTouches[pa1].end())
+			{
+				TypedMessage<b2Contact*>* coll = new TypedMessage<b2Contact*>(pa1Message, contact, pa2);
+				theSwitchboard.Broadcast(coll);
+			}
+			_currentTouches[pa1].insert(pa2);
 		}
-		_currentTouches[pa1].insert(pa2);
 	}
-	if (theSwitchboard.GetSubscribersTo(pa2Message).size() > 0)
+	
+	if (pa2 != NULL)
 	{
-		if (_currentTouches[pa2].find(pa1) == _currentTouches[pa2].end())
+		String pa2Message = messageStart + pa2->GetName();
+		if (theSwitchboard.GetSubscribersTo(pa2Message).size() > 0)
 		{
-			TypedMessage<b2Contact*>* coll = new TypedMessage<b2Contact*>(pa2Message, contact, pa1);
-			theSwitchboard.Broadcast(coll);
+			if (_currentTouches[pa2].find(pa1) == _currentTouches[pa2].end())
+			{
+				TypedMessage<b2Contact*>* coll = new TypedMessage<b2Contact*>(pa2Message, contact, pa1);
+				theSwitchboard.Broadcast(coll);
+			}
+			_currentTouches[pa2].insert(pa1);
 		}
-		_currentTouches[pa2].insert(pa1);
 	}
 }
 
