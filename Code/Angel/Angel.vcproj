@@ -299,6 +299,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Actors\HUDActor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Actors\HUDActor.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Actors\ParticleActor.cpp"
 				>
 			</File>
