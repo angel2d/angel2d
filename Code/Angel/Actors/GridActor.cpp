@@ -38,8 +38,8 @@ GridActor::GridActor()
 	_lineColor = Color(.76f, .83f, 1.0f);
 	_axisColor = Color(1.0f, .41f, .6f);
 	_interval = 1.0f;
-	_minCoord = Vector2(-100.0f, -100.0f);
-	_maxCoord = Vector2(100.0f, 100.0f);
+	_minCoord = Vector2(-20.0f, -20.0f);
+	_maxCoord = Vector2(20.0f, 20.0f);
 
 	RecalculatePoints();
 }
