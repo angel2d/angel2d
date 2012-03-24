@@ -1,5 +1,13 @@
-3.0 --  3/21/2012
------------------
+3.0.1  --  3/??/2012
+--------------------
+* Bugfix release
+* Fixing crash that would occur if contact lost messages were sent as the result of destroyed PhysicsActor
+* Making GridActor not overdraw as much
+* Fixing Windows build to include HUDActor
+* Updating copyright notices for generated Attributions.txt
+
+3.0    --  3/20/2012
+--------------------
 * Major release
 * Python scripting replaced with Lua
 * iOS build
@@ -17,15 +25,15 @@
 * MobileSimulator object to provide fake device inputs for Windows devs working on iOS projects
 * Various bug fixes and optimizations for all builds
 
-2.2 --  4/30/2010
------------------
+2.2    --  4/30/2010
+--------------------
 * Minor release
 * Linux support (Ubuntu and Fedora)
 * Replaced FreeImage with DevIL
 * Mac builds targeting Snow Leopard and higher; no longer a universal binary
 
-2.1 --   3/2/2009
------------------
+2.1    --   3/2/2009
+--------------------
 * Minor release
 * Updating FreeType build process on the Mac
 * Adding accessor for Actor's current sprite frame
@@ -33,8 +41,8 @@
 * Fixes to Python Windows build
 * Fixes to Mac publish step so that scripts would be pre-compiled
 
-2.0 --  2/13/2009
------------------
+2.0    --  2/13/2009
+--------------------
 * Major release
 * Python scripting
 * Mac support
@@ -42,15 +50,15 @@
 * Doxygen-powered documentation
 * Massive cleanup and re-org
 
-1.1 --  6/??/2008
------------------
+1.1    --  6/??/2008
+--------------------
 * Minor release
 * Big cleanup pass to fix last-minute duct tape solutions that arose in the leadup to the gamejam
 * Incorporation of some features added during the course of the jam
 * First public release, licensed under BSD-style license
 
-1.0 --  4/25/2008
------------------
+1.0    --  4/25/2008
+--------------------
 * Internal milestone release for first Electronic Arts Los Angeles gamejam
 * Developed over a few months by a core team of EALA progammers (and one designer)
 * Basic framework
