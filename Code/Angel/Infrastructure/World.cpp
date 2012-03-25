@@ -294,7 +294,9 @@ void World::AdjustWindow(int windowWidth, int windowHeight, const String& window
 
 void World::MoveWindow(int xPosition, int yPosition)
 {
-	
+	#if !ANGEL_MOBILE
+		glfwSetWindowPos(xPosition, yPosition);
+	#endif
 }
 
 
