@@ -56,7 +56,7 @@ lfs.chdir(BASEDIR:gsub('"', ''))
 
 if (not pl.path.exists(CHECKFILE:gsub('"', ''))) then
   local conf_string = 'env CFLAGS='
-  conf_string = conf_string .. '"-O -g -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386" '
+  conf_string = conf_string .. '"-O -g -arch i386" '
   conf_string = conf_string .. 'LDFLAGS='
   conf_string = conf_string .. '"-arch i386" '
   conf_string = conf_string .. './configure'
