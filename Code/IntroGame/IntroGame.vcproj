@@ -251,6 +251,10 @@
 			Name="Config"
 			>
 			<File
+				RelativePath=".\Config\defaults.lua"
+				>
+			</File>
+			<File
 				RelativePath=".\Config\input_bindings.ini"
 				>
 			</File>
