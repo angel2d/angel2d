@@ -2,6 +2,7 @@
 --------------------
 * Bugfix release
 * Fixing crash that would occur if contact lost messages were sent as the result of destroyed PhysicsActor
+* Minor bug fixes: MoveWindow not doing anything; Mac FreeType build throwing warnings
 * Making GridActor not overdraw as much
 * Fixing Windows build to include HUDActor
 * Updating copyright notices for generated Attributions.txt
