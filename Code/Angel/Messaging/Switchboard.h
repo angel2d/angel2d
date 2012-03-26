@@ -110,12 +110,10 @@ public:
 	
 	/**
 	 * Lets a MessageListener stop receiving notifications of specific 
-	 *  name. Actors, GameManagers, and classes derived from them will 
-	 *  automatically unsubscribe from all their Messages when their
-	 *  destructors are called, but if you're implementing MessageListener on
-	 *  another class, make sure to have it Unsubscribe from all its Messages
-	 *  when it gets deleted. Otherwise, you'll get a crash when the
-	 *  Switchboard tries to send a Message to some deallocated memory. 
+	 *  name. MessageListeners automatically unsubscribe from all their Messages 
+	 *  when their destructors are called, so you don't have to worry about
+	 *  this when destroying an object; this would only be called directly in 
+	 *  user code when you no longer care about a particular Message. 
 	 * 
 	 * @param subscriber The MessageListener that doesn't want to get these
 	 *   Messages anymore

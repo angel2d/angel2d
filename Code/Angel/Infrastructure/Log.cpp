@@ -147,8 +147,7 @@ void SystemLog::Log( const String &val)
 {
 	#if defined(_MSC_VER)
 		//output to pane
-		String prepped = val + "\n";
-		OutputDebugString(prepped.c_str());
+		OutputDebugString(val.c_str());
 	#else
 		std::cout << val << std::endl;
 	#endif
