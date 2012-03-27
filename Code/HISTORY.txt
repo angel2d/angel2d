@@ -1,4 +1,4 @@
-3.0.1  --  3/??/2012
+3.0.1  --  3/26/2012
 --------------------
 * Bugfix release
 * Fixing crash that would occur if contact lost messages were sent as the result of destroyed PhysicsActor
