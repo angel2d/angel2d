@@ -111,37 +111,56 @@ correct_attributions(pl.path.join(args.output_directory, "Attributions.txt"), at
 copyfile(fulljoin(args.input_directory, "Release", args.gamename), pl.path.join(bits_path, config.game_info.name .. ".exe"))
 
 
+local kicker_exe = fulljoin(args.output_directory, config.game_info.name .. ".exe")
 local kicker_dir = fulljoin(args.input_directory, "..", "Angel", "Win", "WindowsAngelKicker")
 local kicker_source_fname = "WindowsAngelKicker.cpp"
+local kicker_config = "Debug" -- for some reason the release build barfs at runtime.
+                              --  need to figure this out.
+local kicker_built = fulljoin(kicker_dir, kicker_config, "WindowsAngelKicker.exe")
+
+local rebuild_needed = false
+if (pl.path.exists(kicker_exe) ~= true) then
+  rebuild_needed = true
+end
 
 local kicker_files = {"angel.ico", "angel_small.ico"}
 for _, kicker_file in pairs(kicker_files) do
   local src = fulljoin(args.input_directory, "platforms", "win", kicker_file)
   local dst = fulljoin(kicker_dir, kicker_file)
-  copyfile(src, dst)
+    
+  if ( (pl.path.exists(dst) ~= true) or (lfs.attributes(dst, "modification") < lfs.attributes(src, "modification") ) ) then
+    rebuild_needed = true
+    copyfile(src, dst)
+  end
 end
 
 lfs.chdir(kicker_dir)
 
 if (pl.path.exists(kicker_source_fname) ~= true) then
+  rebuild_needed = true
   copyfile("WindowsAngelKicker.cpp.orig", kicker_source_fname)
 end
 
-local kicker_file = io.open(kicker_source_fname, "r")
-local kicker_source = kicker_file:read("*all")
-kicker_file:close()
+local build_file = fulljoin(args.input_directory, "build.lua")
+if (lfs.attributes(kicker_source_fname, "modification") < lfs.attributes(build_file, "modification")) then 
+  rebuild_needed = true
+  local kicker_file = io.open(kicker_source_fname, "r")
+  local kicker_source = kicker_file:read("*all")
+  kicker_file:close()
+  
+  local newstring = string.format("\n#define ANGEL_EXE_NAME \"%s.exe\"", config.game_info.name)
+  kicker_source = kicker_source:gsub("\n#define%s+ANGEL_EXE_NAME%s+[^\n]+", newstring)
+  kicker_file = io.open(kicker_source_fname, "w")
+  kicker_file:write(kicker_source)
+  kicker_file:close()
+end
 
-local newstring = string.format("\n#define ANGEL_EXE_NAME \"%s.exe\"", config.game_info.name)
-kicker_source = kicker_source:gsub("\n#define%s+ANGEL_EXE_NAME%s+[^\n]+", newstring)
-kicker_file = io.open(kicker_source_fname, "w")
-kicker_file:write(kicker_source)
-kicker_file:close()
+if (rebuild_needed) then
+  print("Rebuilding kicker...")
+  local exec_string = string.format("echo off & \"%sbin\\vcvars32.bat\" > nul & msbuild WindowsAngelKicker.sln /p:Configuration=%s /nologo /noconsolelogger /v:quiet > nul", args.vcpath, kicker_config)
+  
+  os.execute(exec_string)
+end
 
-local kicker_config = "Debug" -- for some reason the release build barfs at runtime.
-                              --  need to figure this out.
+copyfile(kicker_built, kicker_exe)
 
-local exec_string = string.format("echo off & \"%sbin\\vcvars32.bat\" > nul & msbuild WindowsAngelKicker.sln /p:Configuration=%s /nologo /noconsolelogger /v:quiet > nul", args.vcpath, kicker_config)
-
-os.execute(exec_string)
-
-copyfile(fulljoin(kicker_dir, kicker_config, "WindowsAngelKicker.exe"), fulljoin(args.output_directory, config.game_info.name .. ".exe"))
