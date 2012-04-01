@@ -13,7 +13,8 @@
 
 int main(int argc, char** argv)
 {
-	_chdir("bits");
+	int chdirResult = _chdir("bits");
+	printf("%i: Starting bits\\%s and exiting.", chdirResult, ANGEL_EXE_NAME);
 
 	intptr_t retVal = _execl(ANGEL_EXE_NAME, ANGEL_EXE_NAME);
 

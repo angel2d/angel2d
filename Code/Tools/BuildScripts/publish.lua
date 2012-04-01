@@ -114,8 +114,7 @@ copyfile(fulljoin(args.input_directory, "Release", args.gamename), pl.path.join(
 local kicker_exe = fulljoin(args.output_directory, config.game_info.name .. ".exe")
 local kicker_dir = fulljoin(args.input_directory, "..", "Angel", "Win", "WindowsAngelKicker")
 local kicker_source_fname = "WindowsAngelKicker.cpp"
-local kicker_config = "Debug" -- for some reason the release build barfs at runtime.
-                              --  need to figure this out.
+local kicker_config = "Release" 
 local kicker_built = fulljoin(kicker_dir, kicker_config, "WindowsAngelKicker.exe")
 
 local rebuild_needed = false
