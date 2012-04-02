@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O2 -w -DLUA_USE_LINUX -DMISSING_POSIX_SPAWN -Wl,-E
+CFLAGS = -O2 -w -DLUA_USE_LINUX -DMISSING_POSIX_SPAWN
 LDFLAGS = -ldl -lreadline -lncurses -lm
 AR = ar rcu
 RANLIB = ranlib

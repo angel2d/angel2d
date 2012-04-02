@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		34A36E3F131DC592007EAC45 /* LuaExe */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 34A36E51131DC5D6007EAC45 /* Build configuration list for PBXAggregateTarget "LuaExe" */;
+			buildPhases = (
+				34A36E3E131DC592007EAC45 /* Build Lua */,
+			);
+			dependencies = (
+			);
+			name = LuaExe;
+			productName = LuaExe;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		3497B7681529326B0000AC1F /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3497B7671529326B0000AC1F /* Icon-Small-50@2x.png */; };
+		3497B76A1529327E0000AC1F /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3497B7691529327E0000AC1F /* Icon-72@2x.png */; };
+		3497B76C152932880000AC1F /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 3497B76B152932880000AC1F /* iTunesArtwork@2x */; };
+		3497B78115293F4E0000AC1F /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3497B78015293F4E0000AC1F /* Default-Landscape@2x.png */; };
+		349D47691527AB500049FEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		349D476A1527AB500049FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		349D476C1527AB500049FEB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349D476B1527AB500049FEB8 /* CoreGraphics.framework */; };
+		349D476D1527AB500049FEB8 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A6E65D15279E9500BEA400 /* GLKit.framework */; };
+		349D476E1527AB500049FEB8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
+		349D477A1527AB500049FEB8 /* AngelAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 349D47791527AB500049FEB8 /* AngelAppDelegate.m */; };
+		349D47811527AB500049FEB8 /* AngelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 349D47801527AB500049FEB8 /* AngelViewController.m */; };
+		349D47841527AB500049FEB8 /* AngelViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349D47821527AB500049FEB8 /* AngelViewController_iPhone.xib */; };
+		349D47871527AB500049FEB8 /* AngelViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349D47851527AB500049FEB8 /* AngelViewController_iPad.xib */; };
+		349D47B41527ACCA0049FEB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 349D47B31527ACCA0049FEB8 /* main.m */; };
+		349D47B81527B2740049FEB8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A37331131DD3B7007EAC45 /* Default.png */; };
+		349D47B91527B2770049FEB8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A37332131DD3B7007EAC45 /* Default@2x.png */; };
+		349D47BA1527B27A0049FEB8 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 34A37333131DD3B7007EAC45 /* Default-Landscape.png */; };
+		349D47BB1527B2800049FEB8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AF5751132B323500E47D63 /* Icon@2x.png */; };
+		349D47BC1527B2830049FEB8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AF5750132B323500E47D63 /* Icon.png */; };
+		349D47BD1527B2860049FEB8 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AF574F132B323500E47D63 /* Icon-Small@2x.png */; };
+		349D47BE1527B28B0049FEB8 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AF574E132B323500E47D63 /* Icon-Small.png */; };
+		349D47BF1527B28F0049FEB8 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AF574D132B323500E47D63 /* Icon-Small-50.png */; };
+		349D47C01527B2920049FEB8 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AF574C132B323500E47D63 /* Icon-72.png */; };
+		349D47C11527B2950049FEB8 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 349EB96D132BE74A0034B2EC /* iTunesArtwork */; };
+		349D47C31527B2CE0049FEB8 /* iPhoneMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A3732F131DD3B7007EAC45 /* iPhoneMain.h */; };
+		349D47C41527B2EF0049FEB8 /* AngelAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 349D47781527AB500049FEB8 /* AngelAppDelegate.h */; };
+		349D47C51527B2F20049FEB8 /* AngelViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 349D477F1527AB500049FEB8 /* AngelViewController.h */; };
+		349D47C61527B2F90049FEB8 /* iPhoneMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A37330131DD3B7007EAC45 /* iPhoneMain.cpp */; };
+		349D47C71527B3080049FEB8 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A6E5B3152787DA00BEA400 /* libAngel.a */; };
+		349D47C81527B31B0049FEB8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A3736B131DD5F1007EAC45 /* OpenAL.framework */; };
+		349D47C91527B3210049FEB8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34433D81131DDB0900040805 /* CoreAudio.framework */; };
+		349D47CA1527B3250049FEB8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34433D87131DDB1F00040805 /* AudioToolbox.framework */; };
+		349D47D31527BC070049FEB8 /* AngelLuaWrappingMobile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349D47D21527BC070049FEB8 /* AngelLuaWrappingMobile.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		349D47B51527B2170049FEB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34A36E3F131DC592007EAC45;
+			remoteInfo = LuaExe;
+		};
+		34A6E5B2152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A3717A131DCF02007EAC45;
+			remoteInfo = Angel;
+		};
+		34A6E5B4152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A370D7131DCE93007EAC45;
+			remoteInfo = Box2D;
+		};
+		34A6E5B6152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A36F0A131DCA05007EAC45;
+			remoteInfo = Vorbis;
+		};
+		34A6E5B8152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A36EF6131DC94A007EAC45;
+			remoteInfo = Ogg;
+		};
+		34A6E5BA152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A37025131DCD1D007EAC45;
+			remoteInfo = FTGLES;
+		};
+		34A6E5BC152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A36F4E131DCACF007EAC45;
+			remoteInfo = FreeType;
+		};
+		34A6E5BE152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A36FF2131DCCC8007EAC45;
+			remoteInfo = libpng;
+		};
+		34A6E5C0152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A36FBB131DCC7E007EAC45;
+			remoteInfo = zlib;
+		};
+		34A6E5C2152787DA00BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A36E4A131DC5C5007EAC45;
+			remoteInfo = Lua;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		34433D81131DDB0900040805 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		34433D87131DDB1F00040805 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3497B7671529326B0000AC1F /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "platforms/ios/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		3497B7691529327E0000AC1F /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "platforms/ios/Icon-72@2x.png"; sourceTree = "<group>"; };
+		3497B76B152932880000AC1F /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; name = "iTunesArtwork@2x"; path = "platforms/ios/iTunesArtwork@2x"; sourceTree = "<group>"; };
+		3497B78015293F4E0000AC1F /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x.png"; path = "platforms/ios/Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		349D47671527AB500049FEB8 /* ClientGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		349D476B1527AB500049FEB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		349D47781527AB500049FEB8 /* AngelAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AngelAppDelegate.h; path = ../Angel/iOS/AngelAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		349D47791527AB500049FEB8 /* AngelAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AngelAppDelegate.m; path = ../Angel/iOS/AngelAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		349D477F1527AB500049FEB8 /* AngelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AngelViewController.h; path = ../Angel/iOS/AngelViewController.h; sourceTree = SOURCE_ROOT; };
+		349D47801527AB500049FEB8 /* AngelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AngelViewController.m; path = ../Angel/iOS/AngelViewController.m; sourceTree = SOURCE_ROOT; };
+		349D47831527AB500049FEB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AngelViewController_iPhone.xib; sourceTree = "<group>"; };
+		349D47861527AB500049FEB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AngelViewController_iPad.xib; sourceTree = "<group>"; };
+		349D47B31527ACCA0049FEB8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../Angel/iOS/main.m; sourceTree = SOURCE_ROOT; };
+		349D47CB1527B3C90049FEB8 /* stdafx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = stdafx.h; sourceTree = SOURCE_ROOT; };
+		349D47D21527BC070049FEB8 /* AngelLuaWrappingMobile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelLuaWrappingMobile.cpp; path = ../Angel/Scripting/Interfaces/AngelLuaWrappingMobile.cpp; sourceTree = "<group>"; };
+		349D485B1527EEEA0049FEB8 /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = platforms/ios/ClientGameInfo.plist; sourceTree = "<group>"; };
+		349EB96D132BE74A0034B2EC /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; name = iTunesArtwork; path = platforms/ios/iTunesArtwork; sourceTree = "<group>"; };
+		34A37272131DD0F4007EAC45 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		34A3732D131DD3B7007EAC45 /* script_interface.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = script_interface.i; sourceTree = "<group>"; };
+		34A3732E131DD3B7007EAC45 /* build.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build.lua; sourceTree = "<group>"; };
+		34A3732F131DD3B7007EAC45 /* iPhoneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPhoneMain.h; path = platforms/ios/iPhoneMain.h; sourceTree = "<group>"; };
+		34A37330131DD3B7007EAC45 /* iPhoneMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iPhoneMain.cpp; path = platforms/ios/iPhoneMain.cpp; sourceTree = "<group>"; };
+		34A37331131DD3B7007EAC45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = platforms/ios/Default.png; sourceTree = "<group>"; };
+		34A37332131DD3B7007EAC45 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "platforms/ios/Default@2x.png"; sourceTree = "<group>"; };
+		34A37333131DD3B7007EAC45 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "platforms/ios/Default-Landscape.png"; sourceTree = "<group>"; };
+		34A3736B131DD5F1007EAC45 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Angel-iOS.xcodeproj"; path = "../Angel/Angel-iOS.xcodeproj"; sourceTree = "<group>"; };
+		34A6E65D15279E9500BEA400 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		34AF574C132B323500E47D63 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "platforms/ios/Icon-72.png"; sourceTree = "<group>"; };
+		34AF574D132B323500E47D63 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "platforms/ios/Icon-Small-50.png"; sourceTree = "<group>"; };
+		34AF574E132B323500E47D63 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "platforms/ios/Icon-Small.png"; sourceTree = "<group>"; };
+		34AF574F132B323500E47D63 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "platforms/ios/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		34AF5750132B323500E47D63 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = platforms/ios/Icon.png; sourceTree = "<group>"; };
+		34AF5751132B323500E47D63 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "platforms/ios/Icon@2x.png"; sourceTree = "<group>"; };
+		34D1DD4F1528082600EC947A /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Config; sourceTree = "<group>"; };
+		34D1DD501528082600EC947A /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
+		34D1DD511528082600EC947A /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		349D47641527AB500049FEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349D47C71527B3080049FEB8 /* libAngel.a in Frameworks */,
+				349D47CA1527B3250049FEB8 /* AudioToolbox.framework in Frameworks */,
+				349D47C91527B3210049FEB8 /* CoreAudio.framework in Frameworks */,
+				349D47C81527B31B0049FEB8 /* OpenAL.framework in Frameworks */,
+				349D47691527AB500049FEB8 /* UIKit.framework in Frameworks */,
+				349D476A1527AB500049FEB8 /* Foundation.framework in Frameworks */,
+				349D476C1527AB500049FEB8 /* CoreGraphics.framework in Frameworks */,
+				349D476D1527AB500049FEB8 /* GLKit.framework in Frameworks */,
+				349D476E1527AB500049FEB8 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				34A6E60115278DAD00BEA400 /* Angel Support */,
+				34D1DD4F1528082600EC947A /* Config */,
+				34D1DD501528082600EC947A /* Documentation */,
+				34D1DD511528082600EC947A /* Resources */,
+				34AF5748132B321700E47D63 /* Icons */,
+				34AF5746132B320900E47D63 /* SpashScreens */,
+				34A3732D131DD3B7007EAC45 /* script_interface.i */,
+				34A3732E131DD3B7007EAC45 /* build.lua */,
+				34A37330131DD3B7007EAC45 /* iPhoneMain.cpp */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				34A6E5CE1527884800BEA400 /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34A6E65D15279E9500BEA400 /* GLKit.framework */,
+				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
+				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				34A37272131DD0F4007EAC45 /* CoreFoundation.framework */,
+				34A3736B131DD5F1007EAC45 /* OpenAL.framework */,
+				34433D81131DDB0900040805 /* CoreAudio.framework */,
+				34433D87131DDB1F00040805 /* AudioToolbox.framework */,
+				349D476B1527AB500049FEB8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34A6E5A3152787D900BEA400 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34A6E5B3152787DA00BEA400 /* libAngel.a */,
+				34A6E5B5152787DA00BEA400 /* libBox2D.a */,
+				34A6E5B7152787DA00BEA400 /* libVorbis.a */,
+				34A6E5B9152787DA00BEA400 /* libOgg.a */,
+				34A6E5BB152787DA00BEA400 /* libFTGLES.a */,
+				34A6E5BD152787DA00BEA400 /* libFreeType.a */,
+				34A6E5BF152787DA00BEA400 /* liblibpng.a */,
+				34A6E5C1152787DA00BEA400 /* libzlib.a */,
+				34A6E5C3152787DA00BEA400 /* libLua.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34A6E5CE1527884800BEA400 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				349D47671527AB500049FEB8 /* ClientGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34A6E60115278DAD00BEA400 /* Angel Support */ = {
+			isa = PBXGroup;
+			children = (
+				34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */,
+				34A3732F131DD3B7007EAC45 /* iPhoneMain.h */,
+				349D485B1527EEEA0049FEB8 /* ClientGameInfo.plist */,
+				349D47CB1527B3C90049FEB8 /* stdafx.h */,
+				349D47D21527BC070049FEB8 /* AngelLuaWrappingMobile.cpp */,
+				349D47B31527ACCA0049FEB8 /* main.m */,
+				349D47781527AB500049FEB8 /* AngelAppDelegate.h */,
+				349D47791527AB500049FEB8 /* AngelAppDelegate.m */,
+				349D477F1527AB500049FEB8 /* AngelViewController.h */,
+				349D47801527AB500049FEB8 /* AngelViewController.m */,
+				349D47821527AB500049FEB8 /* AngelViewController_iPhone.xib */,
+				349D47851527AB500049FEB8 /* AngelViewController_iPad.xib */,
+			);
+			name = "Angel Support";
+			sourceTree = "<group>";
+		};
+		34AF5746132B320900E47D63 /* SpashScreens */ = {
+			isa = PBXGroup;
+			children = (
+				34A37331131DD3B7007EAC45 /* Default.png */,
+				34A37332131DD3B7007EAC45 /* Default@2x.png */,
+				34A37333131DD3B7007EAC45 /* Default-Landscape.png */,
+				3497B78015293F4E0000AC1F /* Default-Landscape@2x.png */,
+			);
+			name = SpashScreens;
+			sourceTree = "<group>";
+		};
+		34AF5748132B321700E47D63 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				34AF5750132B323500E47D63 /* Icon.png */,
+				34AF5751132B323500E47D63 /* Icon@2x.png */,
+				34AF574E132B323500E47D63 /* Icon-Small.png */,
+				34AF574F132B323500E47D63 /* Icon-Small@2x.png */,
+				34AF574D132B323500E47D63 /* Icon-Small-50.png */,
+				3497B7671529326B0000AC1F /* Icon-Small-50@2x.png */,
+				34AF574C132B323500E47D63 /* Icon-72.png */,
+				3497B7691529327E0000AC1F /* Icon-72@2x.png */,
+				349EB96D132BE74A0034B2EC /* iTunesArtwork */,
+				3497B76B152932880000AC1F /* iTunesArtwork@2x */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		349D47C21527B2C60049FEB8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349D47C51527B2F20049FEB8 /* AngelViewController.h in Headers */,
+				349D47C41527B2EF0049FEB8 /* AngelAppDelegate.h in Headers */,
+				349D47C31527B2CE0049FEB8 /* iPhoneMain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		349D47661527AB500049FEB8 /* ClientGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 349D47881527AB500049FEB8 /* Build configuration list for PBXNativeTarget "ClientGame" */;
+			buildPhases = (
+				349D47B71527B21A0049FEB8 /* Generate Lua Wrappings */,
+				349D47651527AB500049FEB8 /* Resources */,
+				349D47C21527B2C60049FEB8 /* Headers */,
+				349D47631527AB500049FEB8 /* Sources */,
+				349D47641527AB500049FEB8 /* Frameworks */,
+				349D480B1527C3470049FEB8 /* Copy Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				349D47B61527B2170049FEB8 /* PBXTargetDependency */,
+			);
+			name = ClientGame;
+			productName = "ClientGame-iOS";
+			productReference = 349D47671527AB500049FEB8 /* ClientGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ClientGame-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 34A6E5CE1527884800BEA400 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 34A6E5A3152787D900BEA400 /* Products */;
+					ProjectRef = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				349D47661527AB500049FEB8 /* ClientGame */,
+				34A36E3F131DC592007EAC45 /* LuaExe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		34A6E5B3152787DA00BEA400 /* libAngel.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAngel.a;
+			remoteRef = 34A6E5B2152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5B5152787DA00BEA400 /* libBox2D.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBox2D.a;
+			remoteRef = 34A6E5B4152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5B7152787DA00BEA400 /* libVorbis.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVorbis.a;
+			remoteRef = 34A6E5B6152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5B9152787DA00BEA400 /* libOgg.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOgg.a;
+			remoteRef = 34A6E5B8152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5BB152787DA00BEA400 /* libFTGLES.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFTGLES.a;
+			remoteRef = 34A6E5BA152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5BD152787DA00BEA400 /* libFreeType.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFreeType.a;
+			remoteRef = 34A6E5BC152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5BF152787DA00BEA400 /* liblibpng.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblibpng.a;
+			remoteRef = 34A6E5BE152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5C1152787DA00BEA400 /* libzlib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libzlib.a;
+			remoteRef = 34A6E5C0152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E5C3152787DA00BEA400 /* libLua.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libLua.a;
+			remoteRef = 34A6E5C2152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		349D47651527AB500049FEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349D47841527AB500049FEB8 /* AngelViewController_iPhone.xib in Resources */,
+				349D47871527AB500049FEB8 /* AngelViewController_iPad.xib in Resources */,
+				349D47B81527B2740049FEB8 /* Default.png in Resources */,
+				349D47B91527B2770049FEB8 /* Default@2x.png in Resources */,
+				349D47BA1527B27A0049FEB8 /* Default-Landscape.png in Resources */,
+				349D47BB1527B2800049FEB8 /* Icon@2x.png in Resources */,
+				349D47BC1527B2830049FEB8 /* Icon.png in Resources */,
+				349D47BD1527B2860049FEB8 /* Icon-Small@2x.png in Resources */,
+				349D47BE1527B28B0049FEB8 /* Icon-Small.png in Resources */,
+				349D47BF1527B28F0049FEB8 /* Icon-Small-50.png in Resources */,
+				349D47C01527B2920049FEB8 /* Icon-72.png in Resources */,
+				349D47C11527B2950049FEB8 /* iTunesArtwork in Resources */,
+				3497B7681529326B0000AC1F /* Icon-Small-50@2x.png in Resources */,
+				3497B76A1529327E0000AC1F /* Icon-72@2x.png in Resources */,
+				3497B76C152932880000AC1F /* iTunesArtwork@2x in Resources */,
+				3497B78115293F4E0000AC1F /* Default-Landscape@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		349D47B71527B21A0049FEB8 /* Generate Lua Wrappings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Lua Wrappings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" ../Tools/BuildScripts/swig_wrap.lua -M -p \"${PROJECT_DIR}/../\"";
+			showEnvVarsInLog = 0;
+		};
+		349D480B1527C3470049FEB8 /* Copy Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n\"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" ../Tools/BuildScripts/mac-specific/CopyResources.lua";
+			showEnvVarsInLog = 0;
+		};
+		34A36E3E131DC592007EAC45 /* Build Lua */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Lua";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build\"\nmake -f Makefile-mac\n\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		349D47631527AB500049FEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349D477A1527AB500049FEB8 /* AngelAppDelegate.m in Sources */,
+				349D47811527AB500049FEB8 /* AngelViewController.m in Sources */,
+				349D47C61527B2F90049FEB8 /* iPhoneMain.cpp in Sources */,
+				349D47B41527ACCA0049FEB8 /* main.m in Sources */,
+				349D47D31527BC070049FEB8 /* AngelLuaWrappingMobile.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		349D47B61527B2170049FEB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34A36E3F131DC592007EAC45 /* LuaExe */;
+			targetProxy = 349D47B51527B2170049FEB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		349D47821527AB500049FEB8 /* AngelViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				349D47831527AB500049FEB8 /* en */,
+			);
+			name = AngelViewController_iPhone.xib;
+			path = ../Angel/iOS;
+			sourceTree = SOURCE_ROOT;
+		};
+		349D47851527AB500049FEB8 /* AngelViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				349D47861527AB500049FEB8 /* en */,
+			);
+			name = AngelViewController_iPad.xib;
+			path = ../Angel/iOS;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		349D47891527AB500049FEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = stdafx.h;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../Angel\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/Box2D-2.2.1\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FTGLES/ftgles/src/iGLU-1.0.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+				);
+				INFOPLIST_FILE = platforms/ios/ClientGameInfo.plist;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Angel/Libraries/FMOD/iphonelib\"";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "-lfmodex_iphoneos";
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = "-lfmodex_iphonesimulator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		349D478A1527AB500049FEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = stdafx.h;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../Angel\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/Box2D-2.2.1\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FTGLES/ftgles/src/iGLU-1.0.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+				);
+				INFOPLIST_FILE = platforms/ios/ClientGameInfo.plist;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Angel/Libraries/FMOD/iphonelib\"";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "-lfmodex_iphoneos";
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = "-lfmodex_iphonesimulator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34A36E40131DC592007EAC45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = LuaExe;
+			};
+			name = Debug;
+		};
+		34A36E41131DC592007EAC45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = LuaExe;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RELEASE=0",
+					"DEBUG=1",
+					"ANGEL_MOBILE=1",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RELEASE=1",
+					"DEBUG=0",
+					"ANGEL_MOBILE=1",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		349D47881527AB500049FEB8 /* Build configuration list for PBXNativeTarget "ClientGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				349D47891527AB500049FEB8 /* Debug */,
+				349D478A1527AB500049FEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34A36E51131DC5D6007EAC45 /* Build configuration list for PBXAggregateTarget "LuaExe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34A36E40131DC592007EAC45 /* Debug */,
+				34A36E41131DC592007EAC45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ClientGame-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -216,11 +216,6 @@ Vector2 MathUtil::GetWorldDimensions()
 	int screenWidth = theCamera.GetWindowWidth();
 	int screenHeight = theCamera.GetWindowHeight();
 	float aspect = (float)screenWidth / (float)screenHeight;
-	#if ANGEL_MOBILE
-		int hold = screenWidth;
-		screenWidth = screenHeight;
-		screenHeight = hold;
-	#endif
 	if (screenWidth > screenHeight)
 	{
 		//window is wider than it is tall; radius goes with height

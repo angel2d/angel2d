@@ -462,6 +462,29 @@ public:
 	 *  update loop. If you call it manually, expect weirdness. 
 	 */
 	void TickAndRender();
+
+	/**
+	 * INTERNAL: This function is used by various OS systems to run the Angel
+	 *  update loop. If you call it manually, expect weirdness. 
+	 */
+	void Tick();
+
+	/**
+	 * INTERNAL: This function is used by various OS systems to run the Angel
+	 *  update loop. If you call it manually, expect weirdness. 
+	 */
+	void Render();
+
+	/**
+	 * INTERNAL: This function is used by various OS systems to run the Angel
+	 *  update loop. If you call it manually, expect weirdness. 
+	 */	
+	void SetDT(float dt)
+	{
+		#if ANGEL_MOBILE
+			_systemEstimatedDT = dt;
+		#endif
+	}
 	
 protected:
 	World();
@@ -487,6 +510,7 @@ private:
 	bool _running;
 	#if ANGEL_MOBILE
 		float _startTime;
+		float _systemEstimatedDT;
 	#endif
 	bool _highResScreen;
 	float _prevTime;

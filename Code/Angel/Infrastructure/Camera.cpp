@@ -87,11 +87,8 @@ void Camera::Resize(int width, int height)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	#if !ANGEL_MOBILE
-		gluPerspective(_aperture, (float)_windowWidth/(float)_windowHeight, _zNearClip, _zFarClip);
-	#else
-		gluPerspective(_aperture, (float)_windowHeight/(float)_windowWidth, _zNearClip, _zFarClip);
-	#endif
+	float aspect = (float)_windowWidth/(float)_windowHeight;
+	gluPerspective(_aperture, aspect, _zNearClip, _zFarClip);
 	glMatrixMode(GL_MODELVIEW);
 
 	theSwitchboard.Broadcast(new Message("CameraChange"));
@@ -130,11 +127,7 @@ void Camera::Render()
 	*/
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	#if !ANGEL_MOBILE
-		glRotatef(_rotation, 0.0f, 0.0f, 1.0f);
-	#else
-		glRotatef(_rotation-90.0f, 0.0f, 0.0f, 1.0f);
-	#endif
+	glRotatef(_rotation, 0.0f, 0.0f, 1.0f);
 	gluLookAt(_camera3DPosition.X, _camera3DPosition.Y, _camera3DPosition.Z,
 			_camera3DPosition.X + _view.X,
 			_camera3DPosition.Y + _view.Y,

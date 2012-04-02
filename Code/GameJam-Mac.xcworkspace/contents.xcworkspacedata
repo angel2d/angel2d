@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Angel/Angel.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IntroGame/IntroGame.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ClientGame/ClientGame.xcodeproj">
+   </FileRef>
+</Workspace>

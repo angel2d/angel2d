@@ -45,7 +45,7 @@ require "pl.path"
 
 local env = os.environ()
 
-lfs.chdir(fulljoin(env['PROJECT_DIR'], 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
+lfs.chdir(fulljoin(env['PROJECT_DIR'], '..', 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
 
 function building_for_iphone()
   if ((env['PLATFORM_NAME'] == "iphonesimulator") or (env['PLATFORM_NAME'] == "iphoneos")) then
@@ -67,13 +67,10 @@ if (building_for_iphone()) then
 elseif (env['CONFIGURATION'] == 'Debug') then
   dest = fulljoin(
       env['PROJECT_DIR'],
-      env['EXECUTABLE_NAME'],
       'Resources',
       'Scripts'
     )
 else
-
-  -- BUILT_PRODUCTS_DIR /Users/shane/Library/Developer/Xcode/DerivedData/GameJam-Mac-bjldnnhavcykqvckkqpixhfzxejm/Build/Products/Debug
   dest = fulljoin(
       env['BUILT_PRODUCTS_DIR'],
       env['EXECUTABLE_NAME'] .. '.app',
@@ -98,7 +95,7 @@ if (env['CONFIGURATION'] == 'Debug' and building_for_iphone() == false) then
   os.exit(0)
 end
 
-local source = fulljoin(env['PROJECT_DIR'], env['TARGET_NAME'], 'Resources')
+local source = fulljoin(env['PROJECT_DIR'], 'Resources')
 if (building_for_iphone()) then
   dest = fulljoin(
       env['TARGET_BUILD_DIR'],
@@ -116,7 +113,7 @@ else
 end
 recursive_copy(source, dest)
 
-source = fulljoin(env['PROJECT_DIR'], env['TARGET_NAME'], 'Config')
+source = fulljoin(env['PROJECT_DIR'], 'Config')
 if (building_for_iphone()) then
   dest = fulljoin(
       env['TARGET_BUILD_DIR'],

@@ -149,6 +149,12 @@ void DemoScreenMobileSimulator::ReceiveMessage(Message *m)
 	//  - MultiTouchSwipeDown
 	//  - MultiTouchSwipeLeft
 	//  - MultiTouchSwipeRight
+	// As well as separate messages sent if the swipe was made with 
+	//  two fingers instead of one:
+	//	- MultiTouchSwipeUpDouble
+	//  - MultiTouchSwipeDownDouble
+	//  - MultiTouchSwipeLeftDouble
+	//  - MultiTouchSwipeRightDouble
 }
 
 void DemoScreenMobileSimulator::Render()

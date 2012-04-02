@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433A92B0E2AB09B00A02B4E /* IOKit.framework */; };
+		343C17421319544C003637EA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C174013195432003637EA /* OpenAL.framework */; };
+		345AAF4A11CB39A3002B4471 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3462B41814FC67280049A886 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3462B41614FC67280049A886 /* Cocoa.framework */; };
+		34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
+		34974A320E2925BE0018A032 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A300E2925BE0018A032 /* stdafx.cpp */; };
+		34974A330E2925BE0018A032 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A310E2925BE0018A032 /* Main.cpp */; };
+		34974A3B0E2926460018A032 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 34974A2F0E2925BE0018A032 /* stdafx.h */; };
+		34974B2F0E2926FB0018A032 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
+		34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34974B390E2927E00018A032 /* AGL.framework */; };
+		34A6E2A71527568800BEA400 /* AngelLuaWrapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E2A61527568800BEA400 /* AngelLuaWrapping.cpp */; };
+		34A6E2C0152758E100BEA400 /* angel.icns in Copy Icon */ = {isa = PBXBuildFile; fileRef = 34A6E2AA1527573600BEA400 /* angel.icns */; };
+		34A6E51B1527811300BEA400 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A6E3291527632500BEA400 /* libAngel.a */; };
+		34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
+		34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
+		34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
+		34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; };
+		34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; };
+		34E762A31338C70F00BA9A3C /* libtiff.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; };
+		34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; };
+		34E762D31338CA9900BA9A3C /* libIL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E762D41338CA9900BA9A3C /* libILU.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E762D51338CA9900BA9A3C /* libILUT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E762D61338CA9900BA9A3C /* libjpeg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E762D71338CA9900BA9A3C /* liblcms.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E762D81338CA9900BA9A3C /* libmng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E762DA1338CA9900BA9A3C /* libtiff.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34E76405133979E000BA9A3C /* libpng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
+		34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34A6E3281527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 345AAD0811CB3710002B4471;
+			remoteInfo = Angel;
+		};
+		34A6E32A1527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A18BA70E284044001C79A5;
+			remoteInfo = Box2D;
+		};
+		34A6E32C1527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 343C16CD13194490003637EA;
+			remoteInfo = Vorbis;
+		};
+		34A6E32E1527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 343C16BB13194433003637EA;
+			remoteInfo = Ogg;
+		};
+		34A6E3301527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34A18C510E284362001C79A5;
+			remoteInfo = GLFW;
+		};
+		34A6E3321527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 346E3BB90E28637A00E6C79E;
+			remoteInfo = FTGL;
+		};
+		34A6E3341527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3406447911E7DE4200033B1D;
+			remoteInfo = FreeType;
+		};
+		34A6E3361527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3433A8D10E2AADDE00A02B4E;
+			remoteInfo = HIDUtilities;
+		};
+		34A6E3381527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34D6B4B611CC3CCA00D72FE6;
+			remoteInfo = LuaExe;
+		};
+		34A6E33A1527632500BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34EECBDC11CB922100667B26;
+			remoteInfo = Lua;
+		};
+		34A6E33F1527633800BEA400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 34D6B4B511CC3CCA00D72FE6;
+			remoteInfo = LuaExe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		34D6C173134763AD00D82C14 /* Copy Icon */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				34A6E2C0152758E100BEA400 /* angel.icns in Copy Icon */,
+			);
+			name = "Copy Icon";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34F1FD350E5D27710065CD22 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */,
+				34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */,
+				34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */,
+				34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */,
+				34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */,
+				34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */,
+				34E762A31338C70F00BA9A3C /* libtiff.dylib in Copy Frameworks */,
+				34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */,
+				34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3433A92B0E2AB09B00A02B4E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		3433A9330E2AB0E000A02B4E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		343C174013195432003637EA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		3462B41614FC67280049A886 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		34713D900EA6D6F800AF58CA /* Config */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Config; sourceTree = "<group>"; };
+		34713D990EA6D71100AF58CA /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		347CFFE411DC239200761E0E /* script_interface.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = script_interface.i; sourceTree = "<group>"; };
+		347CFFF111DC243000761E0E /* build.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build.lua; sourceTree = "<group>"; };
+		34810A040E679FE500246544 /* libfmodexL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodexL.dylib; path = ../Angel/Libraries/FMOD/libfmodexL.dylib; sourceTree = "<group>"; };
+		34810A050E679FE500246544 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ../Angel/Libraries/FMOD/libfmodex.dylib; sourceTree = "<group>"; };
+		34974A2F0E2925BE0018A032 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
+		34974A300E2925BE0018A032 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
+		34974A310E2925BE0018A032 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		34974B390E2927E00018A032 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		34A18C9B0E284445001C79A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		34A6E2A61527568800BEA400 /* AngelLuaWrapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AngelLuaWrapping.cpp; path = ../Angel/Scripting/Interfaces/AngelLuaWrapping.cpp; sourceTree = "<group>"; };
+		34A6E2AA1527573600BEA400 /* angel.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = angel.icns; path = platforms/mac/angel.icns; sourceTree = SOURCE_ROOT; };
+		34A6E2AB1527573600BEA400 /* ClientGameInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ClientGameInfo.plist; path = platforms/mac/ClientGameInfo.plist; sourceTree = SOURCE_ROOT; };
+		34A6E3171527632500BEA400 /* Angel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Angel.xcodeproj; path = ../Angel/Angel.xcodeproj; sourceTree = "<group>"; };
+		34D1DD361528078D00EC947A /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
+		34D34D980E2C34430053994C /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = /System/Library/Frameworks/ForceFeedback.framework; sourceTree = "<absolute>"; };
+		34E7627C1338C6F600BA9A3C /* libIL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libIL.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libIL.dylib"; sourceTree = "<group>"; };
+		34E7627D1338C6F600BA9A3C /* libILU.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libILU.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libILU.dylib"; sourceTree = "<group>"; };
+		34E7627E1338C6F600BA9A3C /* libILUT.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libILUT.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libILUT.dylib"; sourceTree = "<group>"; };
+		34E7627F1338C6F600BA9A3C /* libjpeg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libjpeg.dylib"; sourceTree = "<group>"; };
+		34E762811338C6F600BA9A3C /* libmng.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmng.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libmng.dylib"; sourceTree = "<group>"; };
+		34E762831338C6F600BA9A3C /* libtiff.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtiff.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libtiff.dylib"; sourceTree = "<group>"; };
+		34E762BB1338C7C000BA9A3C /* liblcms.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblcms.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/liblcms.dylib"; sourceTree = "<group>"; };
+		34E76381133967E200BA9A3C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		34E76403133979E000BA9A3C /* libpng.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libpng.dylib"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* ClientGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34A6E51B1527811300BEA400 /* libAngel.a in Frameworks */,
+				345AAF4A11CB39A3002B4471 /* libfmodex.dylib in Frameworks */,
+				34E762D31338CA9900BA9A3C /* libIL.dylib in Frameworks */,
+				34E762D41338CA9900BA9A3C /* libILU.dylib in Frameworks */,
+				34E762D51338CA9900BA9A3C /* libILUT.dylib in Frameworks */,
+				34E762D61338CA9900BA9A3C /* libjpeg.dylib in Frameworks */,
+				34E762D81338CA9900BA9A3C /* libmng.dylib in Frameworks */,
+				34E762DA1338CA9900BA9A3C /* libtiff.dylib in Frameworks */,
+				34E76405133979E000BA9A3C /* libpng.dylib in Frameworks */,
+				34E762D71338CA9900BA9A3C /* liblcms.dylib in Frameworks */,
+				34974B2F0E2926FB0018A032 /* OpenGL.framework in Frameworks */,
+				34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */,
+				342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */,
+				343C17421319544C003637EA /* OpenAL.framework in Frameworks */,
+				3462B41814FC67280049A886 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* ClientGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* ClientGame */ = {
+			isa = PBXGroup;
+			children = (
+				347CFFE811DC23E100761E0E /* Angel Support */,
+				34713D900EA6D6F800AF58CA /* Config */,
+				34713D990EA6D71100AF58CA /* Resources */,
+				34D1DD361528078D00EC947A /* Documentation */,
+				347CFFE411DC239200761E0E /* script_interface.i */,
+				347CFFF111DC243000761E0E /* build.lua */,
+				34974A310E2925BE0018A032 /* Main.cpp */,
+				34A18C990E284421001C79A5 /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = ClientGame;
+			sourceTree = "<group>";
+		};
+		347CFFE811DC23E100761E0E /* Angel Support */ = {
+			isa = PBXGroup;
+			children = (
+				34A6E3171527632500BEA400 /* Angel.xcodeproj */,
+				34A6E2AA1527573600BEA400 /* angel.icns */,
+				34A6E2AB1527573600BEA400 /* ClientGameInfo.plist */,
+				34974A2F0E2925BE0018A032 /* stdafx.h */,
+				34974A300E2925BE0018A032 /* stdafx.cpp */,
+				34A6E2A61527568800BEA400 /* AngelLuaWrapping.cpp */,
+			);
+			name = "Angel Support";
+			sourceTree = "<group>";
+		};
+		34A18C990E284421001C79A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34E7627C1338C6F600BA9A3C /* libIL.dylib */,
+				34E7627D1338C6F600BA9A3C /* libILU.dylib */,
+				34E7627E1338C6F600BA9A3C /* libILUT.dylib */,
+				34E7627F1338C6F600BA9A3C /* libjpeg.dylib */,
+				34E762BB1338C7C000BA9A3C /* liblcms.dylib */,
+				34E762811338C6F600BA9A3C /* libmng.dylib */,
+				34E762831338C6F600BA9A3C /* libtiff.dylib */,
+				34810A040E679FE500246544 /* libfmodexL.dylib */,
+				34810A050E679FE500246544 /* libfmodex.dylib */,
+				34E76403133979E000BA9A3C /* libpng.dylib */,
+				34E76381133967E200BA9A3C /* libz.dylib */,
+				3433A9330E2AB0E000A02B4E /* CoreFoundation.framework */,
+				3433A92B0E2AB09B00A02B4E /* IOKit.framework */,
+				34974B390E2927E00018A032 /* AGL.framework */,
+				3462B41614FC67280049A886 /* Cocoa.framework */,
+				34A18C9B0E284445001C79A5 /* OpenGL.framework */,
+				34D34D980E2C34430053994C /* ForceFeedback.framework */,
+				343C174013195432003637EA /* OpenAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34A6E3181527632500BEA400 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34A6E3291527632500BEA400 /* libAngel.a */,
+				34A6E32B1527632500BEA400 /* libBox2D.a */,
+				34A6E32D1527632500BEA400 /* libVorbis.a */,
+				34A6E32F1527632500BEA400 /* libOgg.a */,
+				34A6E3311527632500BEA400 /* libGLFW.a */,
+				34A6E3331527632500BEA400 /* libFTGL.a */,
+				34A6E3351527632500BEA400 /* libFreeType.a */,
+				34A6E3371527632500BEA400 /* libHIDUtilities.a */,
+				34A6E3391527632500BEA400 /* Lua */,
+				34A6E33B1527632500BEA400 /* libLua.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		34974A490E29265E0018A032 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34974A3B0E2926460018A032 /* stdafx.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* ClientGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "ClientGame" */;
+			buildPhases = (
+				34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */,
+				34974A490E29265E0018A032 /* Headers */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				34D6C173134763AD00D82C14 /* Copy Icon */,
+				34F1FD350E5D27710065CD22 /* Copy Frameworks */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				341822660E2B176D003EC89B /* Copy Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34A6E3401527633800BEA400 /* PBXTargetDependency */,
+			);
+			name = ClientGame;
+			productInstallPath = "$(HOME)/Applications";
+			productName = ClientGame;
+			productReference = 8D1107320486CEB800E47090 /* ClientGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ClientGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* ClientGame */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 34A6E3181527632500BEA400 /* Products */;
+					ProjectRef = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* ClientGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		34A6E3291527632500BEA400 /* libAngel.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAngel.a;
+			remoteRef = 34A6E3281527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E32B1527632500BEA400 /* libBox2D.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBox2D.a;
+			remoteRef = 34A6E32A1527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E32D1527632500BEA400 /* libVorbis.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVorbis.a;
+			remoteRef = 34A6E32C1527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E32F1527632500BEA400 /* libOgg.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOgg.a;
+			remoteRef = 34A6E32E1527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E3311527632500BEA400 /* libGLFW.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGLFW.a;
+			remoteRef = 34A6E3301527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E3331527632500BEA400 /* libFTGL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFTGL.a;
+			remoteRef = 34A6E3321527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E3351527632500BEA400 /* libFreeType.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFreeType.a;
+			remoteRef = 34A6E3341527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E3371527632500BEA400 /* libHIDUtilities.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libHIDUtilities.a;
+			remoteRef = 34A6E3361527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E3391527632500BEA400 /* Lua */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Lua;
+			remoteRef = 34A6E3381527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34A6E33B1527632500BEA400 /* libLua.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libLua.a;
+			remoteRef = 34A6E33A1527632500BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		341822660E2B176D003EC89B /* Copy Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Why on earth does this need to happen here?\nif [ ! -d \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" ]; then\n\tmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nfi\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}\" -o \"${PROJECT_DIR}/Published\" -g ClientGame.app\nfi";
+			showEnvVarsInLog = 0;
+		};
+		34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Lua Wrapping";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/swig_wrap.lua -p \"${PROJECT_DIR}/..\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34974A330E2925BE0018A032 /* Main.cpp in Sources */,
+				34974A320E2925BE0018A032 /* stdafx.cpp in Sources */,
+				34A6E2A71527568800BEA400 /* AngelLuaWrapping.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34A6E3401527633800BEA400 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LuaExe;
+			targetProxy = 34A6E33F1527633800BEA400 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/stdafx.h";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../Angel/Libraries/Box2D-2.2.1\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
+					"\"$(PROJECT_DIR)/../Angel\"",
+				);
+				INFOPLIST_FILE = platforms/mac/ClientGameInfo.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD\"",
+					"\"$(SRCROOT)/../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
+				);
+				PRODUCT_NAME = ClientGame;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/stdafx.h";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../Angel/Libraries/Box2D-2.2.1\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
+					"\"$(PROJECT_DIR)/../Angel\"",
+				);
+				INFOPLIST_FILE = platforms/mac/ClientGameInfo.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD\"",
+					"\"$(SRCROOT)/../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib\"",
+				);
+				PRODUCT_NAME = ClientGame;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RELEASE=0",
+					"DEBUG=1",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
+				WARNING_CFLAGS = "-Wno-write-strings";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=0",
+					"RELEASE=1",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
+				WARNING_CFLAGS = "-Wno-write-strings";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "ClientGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ClientGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

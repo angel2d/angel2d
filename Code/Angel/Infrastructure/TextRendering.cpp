@@ -122,9 +122,6 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	#if ANGEL_MOBILE
-		glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
-	#endif
 	gluOrtho2D(0.0f, winDimensions.X, 0.0f, winDimensions.Y);
 
 	//set up modelview

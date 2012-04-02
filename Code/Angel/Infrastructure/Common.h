@@ -60,6 +60,9 @@
 	#else
 		#include <OpenGL/gl.h>
 		#include <OpenGL/glu.h>
+		#ifndef __OBJC__
+			#include <CoreFoundation/CoreFoundation.h>
+		#endif
 	#endif
 #endif
 #if defined(__APPLE__) || defined(__linux__)	

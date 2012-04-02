@@ -212,6 +212,9 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	#if !ANGEL_MOBILE
 		glClearDepth(1.0f);
 		glPolygonMode(GL_FRONT, GL_FILL);
+	#else
+		glEnable(GL_POLYGON_OFFSET_FILL);
+		glPolygonOffset(1.0f, -1.0f);
 	#endif
 	glShadeModel(GL_FLAT);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -224,6 +227,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glClearStencil(0);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 
 	theCamera.ResizeCallback(windowWidth, windowHeight);
 	
@@ -380,9 +384,14 @@ void World::LoadLevel(const String& levelName)
 float World::CalculateNewDT()
 {
 	#if ANGEL_MOBILE
-		struct timeval tv;
-		gettimeofday(&tv, NULL);
-		_currTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0 - _startTime;
+		// SJML - We're now using the iOS GLKit to handle the timing of the update
+		//   functions, so there's no need to compare against time of day anymore.
+		//   This code is being left here (commented) in case we decide to someday
+		//   port to other mobile platforms, stop using GLKit, etc. 
+		// struct timeval tv;
+		// gettimeofday(&tv, NULL);
+		// _currTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0 - _startTime;
+		return _systemEstimatedDT;
 	#else
 		_currTime = glfwGetTime();
 	#endif
@@ -525,8 +534,17 @@ void World::EndContact(b2Contact* contact)
 
 void World::TickAndRender()
 {
-	Simulate(_simulateOn);
+	Tick();
+	Render();
+}
 
+void World::Tick()
+{
+	Simulate(_simulateOn);
+}
+
+void World::Render()
+{
 	// Setup the camera matrix.
 	theCamera.Render();
 

@@ -29,15 +29,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class EAGLView;
+@class AngelViewController;
 
-@interface AngelAppDelegate : NSObject <UIApplicationDelegate, UIAccelerometerDelegate> {
-	UIWindow *window;
-	EAGLView *glView;
-}
+@interface AngelAppDelegate : UIResponder <UIApplicationDelegate, UIAccelerometerDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet EAGLView *glView;
+@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) AngelViewController *viewController;
 
 @end
-

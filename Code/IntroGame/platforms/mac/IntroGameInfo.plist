@@ -6,6 +6,8 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string>angel</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.angel2d.IntroGame</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -16,7 +18,5 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>CFBundleIconFile</key>
-	<string>angel</string>
 </dict>
 </plist>
