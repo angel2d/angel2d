@@ -145,6 +145,51 @@ Vector2 MathUtil::RandomVector(const Vector2& minValues, const Vector2& maxValue
 	return Vector2(RandomFloatInRange(minValues.X, maxValues.X), RandomFloatInRange(minValues.Y, maxValues.Y));
 }
 
+bool __poissonFieldCheck(Vector2List list, Vector2 point, float minDist)
+{
+	for (int i=0; i < list.size(); i++) {
+		if (Vector2::DistanceSquared(list[i], point) < minDist)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+Vector2List MathUtil::RandomPointField(int numPoints, const Vector2& min, const Vector2& max, float minDistance)
+{
+	Vector2List forReturn;
+	
+	int tryLimit = 100;
+	float reductionFactor = 0.75f;
+	
+	int tries;
+	Vector2 newPoint;
+	
+	while (forReturn.size() < numPoints)
+	{
+		tries = 0;
+		
+		do
+		{
+			newPoint = RandomVector(min, max);
+			tries++;
+		}
+		while (__poissonFieldCheck(forReturn, newPoint, minDistance) && tries < tryLimit);
+
+		if (tries < tryLimit)
+		{
+			forReturn.push_back(newPoint);
+		}
+		else 
+		{
+			minDistance *= reductionFactor;
+		}
+	}
+	
+	return forReturn;
+}
+
 bool MathUtil::FuzzyEquals(float value1, float value2, float epsilon)
 {
 	float a = value1 - value2;

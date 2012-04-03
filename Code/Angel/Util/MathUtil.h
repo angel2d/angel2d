@@ -366,6 +366,22 @@ public:
 	static Vector2 RandomVector(const Vector2& minValues, const Vector2& maxValues);
 	
 	/**
+	 * Get a set of random points in a Poisson disc distribution. (If you're not
+	 *  familiar with that term, just know that it's more likely to give a somewhat
+	 *  even distribution of random points, a more "natural" looking distribution,
+	 *  along the lines of what you're imagining when you think of "random."
+	 * 
+	 * @param numPoints The desired number of points
+	 * @param minValue A point representing the bottom-left coordinate of the field
+	 * @param maxValue A point representing the top-right coordinate of the field
+	 * @param minDistance The smallest distance that will be allowed in the field,
+	 *   effectively determining the spacing. Note that this value will iteratively
+	 *   decrease if the field ends up too tightly packed. 
+	 * @return The list of generated points
+	 */
+	static Vector2List RandomPointField(int numPoints, const Vector2& minValue, const Vector2& maxValue, float minDistance=0.5f);
+	
+	/**
 	 * Compare two floating point values for "equality," with a permissible
 	 *  amount of error. Oftentimes you only care if floats are "close enough
 	 *  for government work," and this function lets you make that 
