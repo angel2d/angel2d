@@ -157,12 +157,13 @@ bool PurgeTexture(const String& filename)
 		return TexID;
 	}
 #else
-	bool LoadPNG(const String& filename, png_byte* &PNG_image_buffer, png_uint_32 &width, png_uint_32 &height)
+	bool LoadPNG(const String& filename, png_byte* &PNG_image_buffer, png_uint_32 &width, png_uint_32 &height, bool optional)
 	{
 		FILE *PNG_file = fopen(filename.c_str(), "rb");
 		if (PNG_file == NULL)
 		{
-			sysLog.Printf("ERROR: Couldn't open %s.", filename.c_str());
+			if (!optional)
+				sysLog.Printf("ERROR: Couldn't open %s.", filename.c_str());
 			return false;
 		}
 		
@@ -171,14 +172,16 @@ bool PurgeTexture(const String& filename)
 		fread(PNG_header, 1, 8, PNG_file);
 		if (png_sig_cmp(PNG_header, 0, 8) != 0)
 		{
-			sysLog.Printf("ERROR: %s is not a PNG.", filename.c_str());
+			if (!optional)
+				sysLog.Printf("ERROR: %s is not a PNG.", filename.c_str());
 			return false;
 		}
 		
 		png_structp PNG_reader = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 		if (PNG_reader == NULL)
 		{
-			sysLog.Printf("ERROR: Can't start reading %s.", filename.c_str());
+			if (!optional)
+				sysLog.Printf("ERROR: Can't start reading %s.", filename.c_str());
 			fclose(PNG_file);
 			return false;
 		}
@@ -186,7 +189,8 @@ bool PurgeTexture(const String& filename)
 		png_infop PNG_info = png_create_info_struct(PNG_reader);
 		if (PNG_info == NULL)
 		{
-			sysLog.Printf("ERROR: Can't get info for %s.", filename.c_str());
+			if (!optional)
+				sysLog.Printf("ERROR: Can't get info for %s.", filename.c_str());
 			png_destroy_read_struct(&PNG_reader, NULL, NULL);
 			fclose(PNG_file);
 			return false;
@@ -195,7 +199,8 @@ bool PurgeTexture(const String& filename)
 		png_infop PNG_end_info = png_create_info_struct(PNG_reader);
 		if (PNG_end_info == NULL)
 		{
-			sysLog.Printf("ERROR: Can't get end info for %s.", filename.c_str());
+			if (!optional)
+				sysLog.Printf("ERROR: Can't get end info for %s.", filename.c_str());
 			png_destroy_read_struct(&PNG_reader, &PNG_info, NULL);
 			fclose(PNG_file);
 			return false;
@@ -203,7 +208,8 @@ bool PurgeTexture(const String& filename)
 		
 		if (setjmp(png_jmpbuf(PNG_reader)))
 		{
-			sysLog.Printf("ERROR: Can't load %s.", filename.c_str());
+			if (!optional)
+				sysLog.Printf("ERROR: Can't load %s.", filename.c_str());
 			png_destroy_read_struct(&PNG_reader, &PNG_info, &PNG_end_info);
 			fclose(PNG_file);
 			return false;
@@ -274,12 +280,12 @@ bool PurgeTexture(const String& filename)
 
 	// adapted from SimpleImage
 	// http://onesadcookie.com/svn/SimpleImage/
-	int BindPNG(const String& filename, GLuint &texRef, GLint clampmode, GLint filtermode)
+	int BindPNG(const String& filename, GLuint &texRef, GLint clampmode, GLint filtermode, bool optional)
 	{
 		png_byte* pngData;
 		png_uint_32 width, height;
 		
-		if (!LoadPNG(filename, pngData, width, height))
+		if (!LoadPNG(filename, pngData, width, height, optional))
 		{
 			//error was output by the load
 			return -1;
@@ -367,7 +373,7 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 		// output any errors that happened during the binding/deleting
 		HandleDevILErrors(filename);
 	#else
-		int result = BindPNG(filename, texRef, clampmode, filtermode);
+		int result = BindPNG(filename, texRef, clampmode, filtermode, optional);
 		if (result != 0)
 		{
 			return -1;
@@ -401,7 +407,7 @@ bool PixelsToPositions(const String& filename, Vector2List &positions, float gri
 		float* rawData;
 		png_uint_32 width, height;
 		
-		if (!LoadPNG(filename, pngData, width, height))
+		if (!LoadPNG(filename, pngData, width, height, true))
 		{
 			//error was output by the load
 			return false;
