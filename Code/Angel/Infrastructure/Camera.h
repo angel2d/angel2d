@@ -83,6 +83,11 @@ public:
 	void Destroy();
 	
 	/**
+	 * Override of actor's Update method to deal with the actor lock
+	 */
+	virtual void Update(float dt);
+	
+	/**
 	 * Makes sure the view matrix is properly set up on every frame. Called 
 	 *  by the world before rendering anything else. 
 	 */
@@ -92,6 +97,24 @@ public:
 	 * Resets the viewport to its default. 
 	 */
 	void Reset();
+	
+	/**
+	 * Locks the camera to a specific Actor so it will track
+	 *  it around.
+	 *
+	 * @param locked The actor to track
+	 * @param lockX Whether to track the actor's X position
+	 * @param lockY Whether to track the actor's Y position
+	 * @param lockRotation Whether to track the actor's rotation
+	 */
+	void LockTo(Actor* locked, bool lockX=true, bool lockY=true, bool lockRotation=false);
+	
+	/**
+	 * Get the actor that the camera is currently tracking. 
+	 * 
+	 * @return The tracked actor (NULL if not tracking anything)
+	 */
+	Actor* GetLockedActor() { return _locked; }
 	
 	/**
 	 * Get the window's current height. 
@@ -282,4 +305,9 @@ private:
 
 	float _zNearClip;
 	float _zFarClip;
+	
+	Actor* _locked;
+	bool _lockX;
+	bool _lockY;
+	bool _lockRotation;
 };

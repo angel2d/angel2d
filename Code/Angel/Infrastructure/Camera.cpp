@@ -73,6 +73,15 @@ void Camera::Reset()
 	_up = Vector3(0.0f, 1.0f, 0.0);
 	_zNearClip = 0.001f;
 	_zFarClip = 200.f;
+	_locked = NULL;
+}
+
+void Camera::LockTo(Actor *locked, bool lockX, bool lockY, bool lockRotation)
+{
+	_locked = locked;
+	_lockX = lockX;
+	_lockY = lockY;
+	_lockRotation = lockRotation;
 }
 
 void Camera::Resize(int width, int height)
@@ -118,6 +127,36 @@ const Vector2 Camera::GetWorldMaxVertex() const
 const Vector2 Camera::GetWorldMinVertex() const
 {
 	return MathUtil::ScreenToWorld(0, GetWindowHeight());
+}
+
+void Camera::Update(float dt)
+{
+	Actor::Update(dt);
+	
+	if (_locked != NULL)
+	{
+		bool change = false;
+		Vector2 pos = _locked->GetPosition();
+		if (_lockX && !MathUtil::FuzzyEquals(_camera3DPosition.X, pos.X))
+		{
+			_camera3DPosition.X = pos.X;
+			change = true;
+		}
+		if (_lockY && !MathUtil::FuzzyEquals(_camera3DPosition.Y, pos.Y))
+		{
+			_camera3DPosition.Y = pos.Y;
+			change = true;
+		}
+		if (_lockRotation && !MathUtil::FuzzyEquals(_rotation, _locked->GetRotation()))
+		{
+			_rotation = _locked->GetRotation();
+			change = true;
+		}
+		if (change)
+		{
+			theSwitchboard.Broadcast(new Message("CameraChange"));
+		}
+	}
 }
 
 void Camera::Render()

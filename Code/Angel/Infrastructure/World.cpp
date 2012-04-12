@@ -409,7 +409,6 @@ void World::Simulate(bool simRunning)
 		theControllerManager.UpdateState();
 		_console->Update( (float)frame_dt );
 	#endif
-	theCamera.Update(frame_dt);
 
 	// Must be called once per frame.
 	theSound.Update();
@@ -425,7 +424,7 @@ void World::Simulate(bool simRunning)
 		// Deliver any messages that have been queued from the last frame. 
 		theSwitchboard.SendAllMessages();
 		
-		//rb - Flag that the _elements array is locked so we don't try to add any
+		//Flag that the _elements array is locked so we don't try to add any
 		// new actors during the update.
 		_elementsLocked = true;
 			UpdateRenderables(frame_dt);
@@ -444,6 +443,9 @@ void World::Simulate(bool simRunning)
 		UpdateDebugItems(frame_dt);
 		//if there are any system updates that still need to be run, put them here
 	}
+	
+	//making this the last update so we can accurately lock on position for rendering
+	theCamera.Update(frame_dt);
 }
 
 void World::RunPhysics(float frame_dt)
