@@ -135,13 +135,14 @@ end
 
 lfs.chdir(kicker_dir)
 
+local build_file = fulljoin(args.input_directory, "build.lua")
+
 if (pl.path.exists(kicker_source_fname) ~= true) then
   rebuild_needed = true
   copyfile("WindowsAngelKicker.cpp.orig", kicker_source_fname)
 end
 
-local build_file = fulljoin(args.input_directory, "build.lua")
-if (lfs.attributes(kicker_source_fname, "modification") < lfs.attributes(build_file, "modification")) then 
+if ((pl.path.exists(build_file) ~= true) or (lfs.attributes(kicker_source_fname, "modification") < lfs.attributes(build_file, "modification"))) then
   rebuild_needed = true
   local kicker_file = io.open(kicker_source_fname, "r")
   local kicker_source = kicker_file:read("*all")
