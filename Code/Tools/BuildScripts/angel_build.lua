@@ -216,16 +216,40 @@ function correct_attributions(filename, att_dir, disable_devil, disable_fmod)
   f:close()
 end
 
+-- make sure that the installed SWIG is up to date
+function check_swig_version(path)
+  local f = assert(io.popen(path.." -version", 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+
+  version = s:match("\n%s*SWIG Version%s+([^%s]*)")
+  vparts = version:split(".")
+
+  -- check that we're at at least 2.0.6
+  local old = false
+  if (tonumber(vparts[1]) < 2) then
+    old = true
+  elseif ((tonumber(vparts[2]) < 1) and (tonumber(vparts[3]) < 6)) then
+    old = true
+  end
+
+  if (old) then
+    io.stderr:write("ERROR: swig version "..version.." is too old for Angel; update to at least 2.0.6.\n")
+    os.exit(1)
+  end
+end
+
 -- find a local install of SWIG
 function get_swig_path()
   if (pl.path.is_windows) then
     -- we're on windows, use the distributed swig
-    return "..\\swigwin-2.0.4\\swig.exe"
+    return "..\\swigwin-2.0.6\\swig.exe"
   end
   
   local ports_path = "/opt/local/bin/swig"
   if (pl.path.exists(ports_path)) then
     -- this mac user has wisely installed swig from macports
+    check_swig_version(ports_path)
     return ports_path
   end
     
@@ -237,7 +261,9 @@ function get_swig_path()
     io.stderr:write("ERROR: swig not found.\n")
     os.exit(1)
   end
-  return s:gsub("\n" , "")
+  local other_path = s:gsub("\n" , "")
+  check_swig_version(other_path)
+  return other_path
 end
 
 function find_in_table(haystack, needle)

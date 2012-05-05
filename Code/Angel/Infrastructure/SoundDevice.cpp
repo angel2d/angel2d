@@ -53,7 +53,6 @@
 		if (result != FMOD_OK)
 		{
 			sysLog.Printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
-			assert(0);
 		}
 	}
 #else
