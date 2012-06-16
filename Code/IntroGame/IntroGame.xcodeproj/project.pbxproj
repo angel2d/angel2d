@@ -688,6 +688,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
 				);
@@ -717,6 +718,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
 				);
