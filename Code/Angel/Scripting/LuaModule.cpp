@@ -56,6 +56,12 @@ void LuaScriptingModule::Prep()
 	luaL_openlibs(L);
 	luaopen_angel(L);
 	lua_gc(L, LUA_GCRESTART, 0);
+    
+    // need to manually clean up the stack since SWIG is acting funny with Lua 5.1 now.
+    while (lua_gettop(L) > 0)
+    {
+        lua_pop(L, 1);
+    }
 	
 	#if !ANGEL_MOBILE
 		lua_pushboolean(L, 0);
