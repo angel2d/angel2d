@@ -652,7 +652,7 @@ const String& Actor::SetName(String newName)
 	}
 	else
 	{
-		_name = GetClassName() + ULLIntToString(++nameIndex);
+		_name = newName + ULLIntToString(++nameIndex);
 	}
 	
 	Actor::_nameList[_name] = this;

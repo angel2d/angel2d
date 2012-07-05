@@ -457,8 +457,8 @@ public:
 	/**
 	 * Give this Actor a name that can later be used as a unique identifier. 
 	 *  The the actual name given may differ from what is passed in, but is 
-	 *  guaranteed to be unique. (Numbers will be appended until the name is 
-	 *  distinct.)
+	 *  guaranteed to be unique. (A global monotonically increasing number
+	 *  will be appended until the name is distinct.)
 	 * 
 	 * @param newName The desired name
 	 * @return The actual name that was given
