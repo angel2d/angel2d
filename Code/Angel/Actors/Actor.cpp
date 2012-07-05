@@ -635,7 +635,8 @@ const StringSet& Actor::GetTags() const
 
 const String& Actor::SetName(String newName)
 {
-	static int nameIndex = 1;
+	//overkill for sure, but who knows how many unique actors we'll need
+	static unsigned long long nameIndex = ULLONG_MAX - 1;
 	
 	if(newName.length() == 0)
 	{
@@ -651,6 +652,7 @@ const String& Actor::SetName(String newName)
 	}
 	else
 	{
+		String i = ULLIntToString(nameIndex);
 		_name = GetClassName() + IntToString(nameIndex++);
 	}
 	
