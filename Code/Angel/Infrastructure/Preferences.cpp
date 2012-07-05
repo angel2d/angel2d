@@ -138,6 +138,26 @@ String Preferences::GetString(const String& category, const String& name)
 	return lvmIt->second._string;
 }
 
+LoadedVariableMap Preferences::GetTable(const String& category)
+{
+	LoadedVariableMap forReturn;
+    
+	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	if (it == _preferenceVariables.end())
+	{
+		return forReturn;
+	}
+    
+	LoadedVariableMap::iterator lvmIt = it->second.begin();
+	while (lvmIt != it->second.end())
+	{
+		forReturn[lvmIt->first] = LoadedVariable(lvmIt->second._string);
+		lvmIt++;
+	}
+    
+	return forReturn;
+}
+
 void Preferences::SetInt(const String& category, const String& name, int val) 
 {
 	if (category == "" || name == "")

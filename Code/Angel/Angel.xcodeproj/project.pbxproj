@@ -804,6 +804,7 @@
 		34E762BB1338C7C000BA9A3C /* liblcms.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblcms.dylib; path = "Libraries/DevIL-SDK-1.7.8/mac/lib/liblcms.dylib"; sourceTree = "<group>"; };
 		34E76381133967E200BA9A3C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		34E76403133979E000BA9A3C /* libpng.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng.dylib; path = "Libraries/DevIL-SDK-1.7.8/mac/lib/libpng.dylib"; sourceTree = "<group>"; };
+		34EB438E15A59DD300CF9CD8 /* libjasper.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjasper.dylib; path = "Libraries/DevIL-SDK-1.7.8/mac/lib/libjasper.dylib"; sourceTree = "<group>"; };
 		34EECBDC11CB922100667B26 /* libLua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLua.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EECBF511CB936D00667B26 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lapi.h; path = "Libraries/lua-5.1.5/src/lapi.h"; sourceTree = "<group>"; };
 		34EECBF611CB936D00667B26 /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lauxlib.h; path = "Libraries/lua-5.1.5/src/lauxlib.h"; sourceTree = "<group>"; };
@@ -1665,6 +1666,7 @@
 				34E7627C1338C6F600BA9A3C /* libIL.dylib */,
 				34E7627D1338C6F600BA9A3C /* libILU.dylib */,
 				34E7627E1338C6F600BA9A3C /* libILUT.dylib */,
+				34EB438E15A59DD300CF9CD8 /* libjasper.dylib */,
 				34E7627F1338C6F600BA9A3C /* libjpeg.dylib */,
 				34E762BB1338C7C000BA9A3C /* liblcms.dylib */,
 				34E762811338C6F600BA9A3C /* libmng.dylib */,

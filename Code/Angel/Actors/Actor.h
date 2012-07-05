@@ -115,6 +115,13 @@ public:
 	const Vector2& GetSize() const;
 	
 	/**
+	 * Return the BoundingBox for this Actor.
+	 *
+	 * @return Actor's bounding box
+	 */
+	const BoundingBox GetBoundingBox() const;
+    
+	/**
 	 * Set the position of the Actor in world coordinates. 
 	 * 
 	 * @param x X-coordinate in OpenGL units

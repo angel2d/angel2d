@@ -40,6 +40,9 @@ struct Vec2i
 	int X, Y;
 	Vec2i(int x, int y) : X(x), Y(y) {}
 	Vec2i() : X(0), Y(0) {}
+    
+	bool operator==(const Vec2i &v) const { return ((X == v.X) && (Y == v.Y)); }
+	bool operator!=(const Vec2i &v) const { return !(*this == v); }
 };
 
 /** 
@@ -50,6 +53,9 @@ struct Vec2ui
 	unsigned int X, Y;
 	Vec2ui(unsigned int x, unsigned int y) : X(x), Y(y) {}
 	Vec2ui() : X(0), Y(0) {}
+    
+	bool operator==(const Vec2ui &v) const { return ((X == v.X) && (Y == v.Y)); }
+	bool operator!=(const Vec2ui &v) const { return !(*this == v); }
 };
 
 /** 
@@ -60,6 +66,9 @@ struct Vec3i
 	int X, Y, Z;
 	Vec3i(int x, int y, int z) : X(x), Y(y), Z(z) {}
 	Vec3i() : X(0), Y(0), Z(0) {}
+    
+	bool operator==(const Vec3i &v) const { return ((X == v.X) && (Y == v.Y) && (Z == v.Z)); }
+	bool operator!=(const Vec3i &v) const { return !(*this == v); }
 };
 
 /** 
@@ -70,4 +79,7 @@ struct Vec3ui
 	unsigned int X, Y, Z;
 	Vec3ui(unsigned int x, unsigned int y, unsigned int z) : X(x), Y(y), Z(z) {}
 	Vec3ui() : X(0), Y(0), Z(0) {}
+    
+	bool operator==(const Vec3ui &v) const { return ((X == v.X) && (Y == v.Y) && (Z == v.Z)); }
+	bool operator!=(const Vec3ui &v) const { return !(*this == v); }
 };

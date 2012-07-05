@@ -354,6 +354,14 @@ const Vector2& Actor::GetSize() const
 	return _size;
 }
 
+const BoundingBox Actor::GetBoundingBox() const
+{
+	BoundingBox forReturn;
+	forReturn.Min = _position - (_size / 2.0f);
+	forReturn.Max = _position + (_size / 2.0f);
+	return forReturn;
+}
+
 void Actor::SetPosition(float x, float y)
 {
 	_position.X = x;
@@ -627,13 +635,15 @@ const StringSet& Actor::GetTags() const
 
 const String& Actor::SetName(String newName)
 {
+    static int nameIndex = 1;
+    
 	if(newName.length() == 0)
 	{
 		newName = GetClassName();
 	}
-
+    
 	newName[0] = toupper(newName[0]);
-
+    
 	const Actor* preNamed = Actor::GetNamed(newName);
 	if ((preNamed == NULL) || (preNamed == this))
 	{
@@ -641,19 +651,11 @@ const String& Actor::SetName(String newName)
 	}
 	else
 	{
-		int counter = 1;
-		std::ostringstream iteratedName;
-		do 
-		{
-			iteratedName.str("");
-			iteratedName << newName << counter++;
-		} while(Actor::GetNamed(iteratedName.str()) != NULL);
-
-		_name = iteratedName.str();
+        _name = GetClassName() + IntToString(nameIndex++);
 	}
-
+    
 	Actor::_nameList[_name] = this;
-
+    
 	return _name;
 }
 

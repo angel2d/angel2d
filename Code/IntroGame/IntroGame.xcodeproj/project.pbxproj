@@ -80,6 +80,9 @@
 		34E762DA1338CA9900BA9A3C /* libtiff.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E76405133979E000BA9A3C /* libpng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
 		34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
+		34EB439115A59DEC00CF9CD8 /* libjasper.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB439015A59DEC00CF9CD8 /* libjasper.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34EB439C15A59DFD00CF9CD8 /* libjasper.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB439015A59DEC00CF9CD8 /* libjasper.dylib */; };
+		34EB43AA15A59EA100CF9CD8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76381133967E200BA9A3C /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +186,7 @@
 				34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */,
 				34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */,
 				34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */,
+				34EB439C15A59DFD00CF9CD8 /* libjasper.dylib in Copy Frameworks */,
 				34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */,
 				34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */,
 				34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */,
@@ -269,6 +273,7 @@
 		34E762BB1338C7C000BA9A3C /* liblcms.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblcms.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/liblcms.dylib"; sourceTree = "<group>"; };
 		34E76381133967E200BA9A3C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		34E76403133979E000BA9A3C /* libpng.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libpng.dylib"; sourceTree = "<group>"; };
+		34EB439015A59DEC00CF9CD8 /* libjasper.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjasper.dylib; path = "../Angel/Libraries/DevIL-SDK-1.7.8/mac/lib/libjasper.dylib"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* IntroGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -282,11 +287,13 @@
 				34E762D31338CA9900BA9A3C /* libIL.dylib in Frameworks */,
 				34E762D41338CA9900BA9A3C /* libILU.dylib in Frameworks */,
 				34E762D51338CA9900BA9A3C /* libILUT.dylib in Frameworks */,
+				34EB439115A59DEC00CF9CD8 /* libjasper.dylib in Frameworks */,
 				34E762D61338CA9900BA9A3C /* libjpeg.dylib in Frameworks */,
 				34E762D81338CA9900BA9A3C /* libmng.dylib in Frameworks */,
 				34E762DA1338CA9900BA9A3C /* libtiff.dylib in Frameworks */,
 				34E76405133979E000BA9A3C /* libpng.dylib in Frameworks */,
 				34E762D71338CA9900BA9A3C /* liblcms.dylib in Frameworks */,
+				34EB43AA15A59EA100CF9CD8 /* libz.dylib in Frameworks */,
 				34974B2F0E2926FB0018A032 /* OpenGL.framework in Frameworks */,
 				34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */,
 				342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */,
@@ -343,6 +350,7 @@
 				34E7627C1338C6F600BA9A3C /* libIL.dylib */,
 				34E7627D1338C6F600BA9A3C /* libILU.dylib */,
 				34E7627E1338C6F600BA9A3C /* libILUT.dylib */,
+				34EB439015A59DEC00CF9CD8 /* libjasper.dylib */,
 				34E7627F1338C6F600BA9A3C /* libjpeg.dylib */,
 				34E762BB1338C7C000BA9A3C /* liblcms.dylib */,
 				34E762811338C6F600BA9A3C /* libmng.dylib */,

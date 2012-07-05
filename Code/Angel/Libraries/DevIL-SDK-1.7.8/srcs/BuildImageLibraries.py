@@ -1,28 +1,31 @@
+#!/usr/bin/python
+
 # This file builds all the mac version of the image libraries. 
 # It won't work on Windows as it's using the Unix build methods. 
 
 import os
 import sys
+import shutil
 
 FILE_PATH = os.path.abspath(__file__)
 ROOT_DIR = os.path.dirname(FILE_PATH)
 INST_DIR = os.path.join(ROOT_DIR, "install")
 
 BASE_CFLAGS = "-I%s/include -L%s/lib -m32" % (INST_DIR, INST_DIR)
-BASE_CFLAGS += " -O -isysroot /Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.6 -arch i386"
+BASE_CFLAGS += " -O -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk -mmacosx-version-min=10.7 -arch i386"
 BASE_CPPFLAGS = BASE_CFLAGS
 BASE_LDFLAGS = "-L%s/lib -lstdc++ -m32 -arch i386" % (INST_DIR)
 BASE_ARCHFLAGS = "-arch i386"
 CLEAN = False
 
 LIBLIST = {
-    "devil": ["DevIL-1.7.8.tar.gz", "devil-1.7.8"],
-    "jasper": ["jasper-1.900.1.zip", "jasper-1.900.1"],
-    "libjpeg": ["jpegsrc.v8a.tar.gz", "jpeg-8a"],
-    "lcms": ["lcms-1.19.tar.gz", "lcms-1.19"],
-    "libpng": ["libpng-1.4.1.tar.gz", "libpng-1.4.1"],
-    "libmng": ["libmng-1.0.10.tar.gz", "libmng-1.0.10"],
-    "libtiff": ["tiff-3.9.2.tar.gz", "tiff-3.9.2"],
+    "devil": ["DevIL-1.7.8.tar.gz", "devil-1.7.8", ["libIL.dylib", "libILU.dylib", "libILUT.dylib"]],
+    "jasper": ["jasper-1.900.1.zip", "jasper-1.900.1", ["libjasper.dylib"]],
+    "libjpeg": ["jpegsrc.v8a.tar.gz", "jpeg-8a", ["libjpeg.dylib"]],
+    "lcms": ["lcms-1.19.tar.gz", "lcms-1.19", ["liblcms.dylib"]],
+    "libpng": ["libpng-1.4.1.tar.gz", "libpng-1.4.1", ["libpng.dylib"]],
+    "libmng": ["libmng-1.0.10.tar.gz", "libmng-1.0.10", ["libmng.dylib"]],
+    "libtiff": ["tiff-3.9.2.tar.gz", "tiff-3.9.2", ["libtiff.dylib"]],
     }
 
 def resetStuff():
@@ -123,7 +126,20 @@ if ("libmng" in LIBLIST.keys()):
     os.system("ln -s makefiles/configure.in .")
     os.system("ln -s makefiles/acinclude.m4 .")
     os.system("ln -s makefiles/Makefile.am .")
-    os.system("autoreconf -fi")
+
+    # need to patch the configure file to build with latest autoconf
+    srcFile = "configure.in"
+    srcFileHandle = open(srcFile)
+    srcData = srcFileHandle.read()
+    srcFileHandle.close()
+    badString = "\nAM_C_PROTOTYPES"
+    goodString = ""
+    srcData = srcData.replace(badString, goodString)
+    srcFileHandle = open(srcFile, 'w')
+    srcFileHandle.write(srcData)
+    srcFileHandle.close()
+
+    os.system("autoreconf -fvi")
     config_string = "./configure --prefix=%s --host=i686-apple-darwin10 " % (INST_DIR)
     os.system(config_string)
     os.system('make install')
@@ -132,9 +148,9 @@ if ("libmng" in LIBLIST.keys()):
 #####################################
 # build libjasper                   #
 #####################################
-if ("libjasper" in LIBLIST.keys()):
+if ("jasper" in LIBLIST.keys()):
     resetStuff()
-    os.chdir(LIBLIST["libjasper"][1])
+    os.chdir(LIBLIST["jasper"][1])
     config_string = "./configure --prefix=%s --enable-shared --host=i686-apple-darwin10 " % (INST_DIR)
     os.system(config_string)
     os.system('make install')
@@ -197,6 +213,27 @@ if ("devil" in LIBLIST.keys()):
             os.system(correction_string)
         move_string = "mv %s/lib/lib%s.1.dylib %s/lib/lib%s.dylib" % (INST_DIR, f, INST_DIR, f)
         os.system(move_string)
+
+
+#####################################
+# copying                           #
+#####################################
+resetStuff()
+
+libpath = os.path.join(INST_DIR, "lib") 
+exppath = os.path.join(INST_DIR, "exp")
+if not os.path.exists(libpath):
+    os.makedirs(libpath)
+if not os.path.exists(exppath):
+    os.makedirs(exppath)
+
+os.chdir(libpath)
+
+for libname, data in LIBLIST.iteritems():
+    files = data[2]
+    for f in files:
+        true_lib = os.path.realpath(f)
+        shutil.copyfile(true_lib, os.path.join(exppath, f))
 
 
 #####################################

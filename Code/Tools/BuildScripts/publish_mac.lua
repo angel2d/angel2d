@@ -99,7 +99,7 @@ if (disable_fmod == 1) then
   os.remove(lib)
 end
 if (disable_devil == 1) then
-  local libs = {"libIL.dylib", "libILU.dylib", "libILUT.dylib", "libjpeg.dylib", "liblcms.dylib", "libmng.dylib", "libtiff.dylib"}
+  local libs = {"libIL.dylib", "libILU.dylib", "libILUT.dylib", "libjasper.dylib", "libjpeg.dylib", "liblcms.dylib", "libmng.dylib", "libtiff.dylib"}
   for _, lib in pairs(libs) do
     local libpath = fulljoin(app_path, "Contents", "Frameworks", lib)
     os.remove(libpath)
