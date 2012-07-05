@@ -731,8 +731,10 @@ void World::Remove(Renderable *oldElement)
 void World::UpdateLayer(Renderable* element, int newLayer)
 {
 	if (element->_layer == newLayer)
+	{
 		return;
-    
+	}
+
 	if (!_elementsLocked)
 	{
 		Remove(element);

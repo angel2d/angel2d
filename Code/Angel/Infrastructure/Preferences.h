@@ -100,7 +100,7 @@ public:
 	 * @return The retrieved String (Empty string if this preference has never been set)
 	 */
 	String GetString(const String& category, const String& name);
-    
+
 	/**
 	 * Gets all variables in a given category.
 	 * 
@@ -108,7 +108,7 @@ public:
 	 * @return All defined preferences for this category
 	 */
 	LoadedVariableMap GetTable(const String& category);
-    
+
 	/**
 	 * Sets a preference as an integer. If it did not previously exist,
 	 *  it will be created.

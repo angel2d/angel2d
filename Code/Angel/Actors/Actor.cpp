@@ -635,15 +635,15 @@ const StringSet& Actor::GetTags() const
 
 const String& Actor::SetName(String newName)
 {
-    static int nameIndex = 1;
-    
+	static int nameIndex = 1;
+	
 	if(newName.length() == 0)
 	{
 		newName = GetClassName();
 	}
-    
+	
 	newName[0] = toupper(newName[0]);
-    
+	
 	const Actor* preNamed = Actor::GetNamed(newName);
 	if ((preNamed == NULL) || (preNamed == this))
 	{
@@ -651,11 +651,11 @@ const String& Actor::SetName(String newName)
 	}
 	else
 	{
-        _name = GetClassName() + IntToString(nameIndex++);
+		_name = GetClassName() + IntToString(nameIndex++);
 	}
-    
+	
 	Actor::_nameList[_name] = this;
-    
+	
 	return _name;
 }
 

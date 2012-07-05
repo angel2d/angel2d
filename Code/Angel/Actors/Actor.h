@@ -120,7 +120,7 @@ public:
 	 * @return Actor's bounding box
 	 */
 	const BoundingBox GetBoundingBox() const;
-    
+	
 	/**
 	 * Set the position of the Actor in world coordinates. 
 	 * 
