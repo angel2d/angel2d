@@ -21,7 +21,7 @@
 	lua_pop(L, 1);
 	
 	float a = 1.0f;
-	if (luaL_getn(L, $input) >= 4)
+	if (lua_rawlen(L, $input) >= 4)
 	{
 		lua_pushinteger(L, 4);
 		lua_gettable(L, $input);
@@ -46,7 +46,7 @@
 	
 	if (!naturalColor)
 	{
-		if (lua_istable(L, $input) && (luaL_getn(L, $input) >= 3))
+		if (lua_istable(L, $input) && (lua_rawlen(L, $input) >= 3))
 		{
 			// verify that at least the first three elements of the table contain numbers
 			lua_pushinteger(L, 1);

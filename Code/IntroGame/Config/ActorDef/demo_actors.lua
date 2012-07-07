@@ -4,8 +4,7 @@ maze_finder = {
 }
 
 simple_actor = {
-  color= {1, 0, 1},
-  alpha = 0.5,
+  color= {1, 0, 1, 0.5},
   size = 5,
   name = "SimpleActor",
 }
@@ -13,7 +12,6 @@ simple_actor = {
 particle_demo = {
   class = "ParticleActor",
   color = {1, 1, 1},
-  alpha = 1,
   size = {0.2, 0.2},
   sprite = "Resources/Images/Test.png",
   max_particles = 500,
@@ -33,14 +31,12 @@ ground_actor = {
   class = "PhysicsActor",
   color = {0, 1, 0},
   size = {30, 5},
-  alpha = 1.0,
   density = 0,
 }
 
 physics_event_actor = {
   class = "PhysicsActor",
   color = {1, 0, 1},
-  alpha = 1,
   size = 3,
   restitution = 0.95,
 }

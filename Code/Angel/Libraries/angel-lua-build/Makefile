@@ -5,7 +5,7 @@ AR = ar rcu
 RANLIB = ranlib
 LIBNAME = liblua.a
 EXENAME = lua
-LUA_DIR    := ../lua-5.1.5/src
+LUA_DIR    := ../lua-5.2.1/src
 LUA_EX_DIR := ../lua-libs/lua-ex/posix
 LUA_FS_DIR := ../lua-libs/luafilesystem-1.5.0/src
 
@@ -19,34 +19,37 @@ EXESRCS = 				\
 
 LIBSRCS =				\
 	$(LUA_DIR)/lapi.c		\
+	$(LUA_DIR)/lauxlib.c		\
+	$(LUA_DIR)/lbaselib.c		\
+	$(LUA_DIR)/lbitlib.c		\
 	$(LUA_DIR)/lcode.c		\
+	$(LUA_DIR)/lcorolib.c		\
+	$(LUA_DIR)/lctype.c		\
+	$(LUA_DIR)/ldblib.c		\
 	$(LUA_DIR)/ldebug.c		\
 	$(LUA_DIR)/ldo.c		\
 	$(LUA_DIR)/ldump.c		\
 	$(LUA_DIR)/lfunc.c		\
 	$(LUA_DIR)/lgc.c		\
+	$(LUA_DIR)/linit.c		\
+	$(LUA_DIR)/liolib.c		\
 	$(LUA_DIR)/llex.c		\
+	$(LUA_DIR)/lmathlib.c		\
 	$(LUA_DIR)/lmem.c		\
+	$(LUA_DIR)/loadlib.c		\
 	$(LUA_DIR)/lobject.c		\
 	$(LUA_DIR)/lopcodes.c		\
+	$(LUA_DIR)/loslib.c		\
 	$(LUA_DIR)/lparser.c		\
 	$(LUA_DIR)/lstate.c		\
 	$(LUA_DIR)/lstring.c		\
+	$(LUA_DIR)/lstrlib.c		\
 	$(LUA_DIR)/ltable.c		\
+	$(LUA_DIR)/ltablib.c		\
 	$(LUA_DIR)/ltm.c		\
 	$(LUA_DIR)/lundump.c		\
 	$(LUA_DIR)/lvm.c		\
 	$(LUA_DIR)/lzio.c		\
-	$(LUA_DIR)/lauxlib.c		\
-	$(LUA_DIR)/lbaselib.c		\
-	$(LUA_DIR)/ldblib.c		\
-	$(LUA_DIR)/liolib.c		\
-	$(LUA_DIR)/lmathlib.c		\
-	$(LUA_DIR)/loslib.c		\
-	$(LUA_DIR)/ltablib.c		\
-	$(LUA_DIR)/lstrlib.c		\
-	$(LUA_DIR)/loadlib.c		\
-	$(LUA_DIR)/linit.c		\
 	$(LUA_EX_DIR)/ex.c		\
 	$(LUA_EX_DIR)/posix_spawn.c	\
 	$(LUA_EX_DIR)/spawn.c		\

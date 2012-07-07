@@ -15,7 +15,7 @@ INCLUDE = 							\
 	-I../Angel/Libraries/glfw-2.7.3/include			\
 	-I../Angel/Libraries/Box2D-2.2.1			\
 	-I../Angel/Libraries/FTGL/include			\
-	-I../Angel/Libraries/lua-5.1.5/src			\
+	-I../Angel/Libraries/lua-5.2.1/src			\
 	-I/usr/include/freetype2
 ifneq ($(ANGEL_DISABLE_FMOD), 1)
 	INCLUDE += -I../Angel/Libraries/FMOD/inc

@@ -43,14 +43,14 @@ function string:ends(endString)
 end
 
 function loadFileIn(filename, environment)
-  local f, err = loadfile(filename)
+  if (environment == nil) then
+    print "ERROR: Cannot load into nil environment."
+  end
+  local f, err = loadfile(filename, "bt", environment)
   if (f == nil) then
     print(err)
+    return
   end
-  if (environment == nil) then
-    environment = getfenv()
-  end
-  setfenv(f, environment)
   return f()
 end
 

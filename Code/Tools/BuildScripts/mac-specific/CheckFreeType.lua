@@ -36,25 +36,26 @@ if (mydir == nil) then
 end
 mydir = mydir .. "/../"
 package.path = mydir .. "?.lua;" .. package.path
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?/init.lua"
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?/init.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/pl/?.lua"
 
 require "angel_build"
 require "lfs"
-require "pl.path"
+require "pl"
 
-local env = os.environ()
+local PROJECT_DIR = os.getenv('PROJECT_DIR')
 
-if (env['PROJECT_DIR']:find(' ')) then
-  env['PROJECT_DIR'] = '"' .. env['PROJECT_DIR'] .. '"'
+if (PROJECT_DIR:find(' ')) then
+  PROJECT_DIR = '"' .. PROJECT_DIR .. '"'
 end
 
-local BASEDIR = fulljoin(env['PROJECT_DIR'], "Libraries", "freetype-2.4.8")
+local BASEDIR = fulljoin(PROJECT_DIR, "Libraries", "freetype-2.4.8")
 local CHECKFILE = fulljoin(BASEDIR, "builds", "unix", "ftconfig.h")
 
 lfs.chdir(BASEDIR:gsub('"', ''))
 
-if (not pl.path.exists(CHECKFILE:gsub('"', ''))) then
+if (not path.exists(CHECKFILE:gsub('"', ''))) then
   local conf_string = 'env CFLAGS='
   conf_string = conf_string .. '"-O -g -arch i386" '
   conf_string = conf_string .. 'LDFLAGS='

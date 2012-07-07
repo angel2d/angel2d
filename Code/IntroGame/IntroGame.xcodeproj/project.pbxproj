@@ -614,7 +614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Why on earth does this need to happen here?\nif [ ! -d \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" ]; then\n\tmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nfi\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/mac-specific/CopyResources.lua\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}\" -o \"${PROJECT_DIR}/Published\" -g IntroGame.app\nfi";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Why on earth does this need to happen here?\nif [ ! -d \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" ]; then\n\tmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nfi\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" \"${PROJECT_DIR}/../Tools/BuildScripts/mac-specific/CopyResources.lua\"\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}\" -o \"${PROJECT_DIR}/Published\" -g IntroGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 		34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */ = {
@@ -696,7 +696,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
 				);
@@ -726,7 +726,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
 				);

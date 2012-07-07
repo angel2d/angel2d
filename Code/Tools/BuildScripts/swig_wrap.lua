@@ -35,15 +35,15 @@ if (mydir == nil) then
   mydir = "."
 end
 package.path = mydir .. "?.lua;" .. package.path
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?/init.lua"
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?/init.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/pl/?.lua"
 
 require "angel_build"
 require "lfs"
-require "pl.path"
-require "pl.lapp"
+require "pl"
 
-local args = pl.lapp [[
+local args = lapp [[
   Checks the included files in the aggregate scripting interface and touches it if any of them are newer than the generated wrapper.
     -p,--project_directory (string)  Project directory
     -D,--define (default SWIGLUA) An optional string to define when invoking swig 
@@ -87,7 +87,7 @@ local SWIG_OPTIONS = SWIG_OPTIONS .. " -c++ -lua -Werror -I" .. INTERFACE_DIRECT
 
 lfs.chdir(fulljoin(args.project_directory, "Tools", "BuildScripts"))
 
-if (not pl.path.exists(AGGREGATE_INTERFACE:gsub('"', ''))) then
+if (not path.exists(AGGREGATE_INTERFACE:gsub('"', ''))) then
   io.stderr:write("ERROR: Couldn't find " .. AGGREGATE_INTERFACE .. ".\n")
   os.exit(1)
 end
@@ -116,7 +116,7 @@ for line in interface_file:lines() do
 end
 interface_file:close()
 
-if (pl.path.exists(WRAPPER_SOURCE:gsub('"', '')) and not args.force_regeneration) then
+if (path.exists(WRAPPER_SOURCE:gsub('"', '')) and not args.force_regeneration) then
   local wrapper_modification = lfs.attributes(WRAPPER_SOURCE:gsub('"', ''), "modification")
   local update = false
   for _, f in pairs(files) do
@@ -127,7 +127,7 @@ if (pl.path.exists(WRAPPER_SOURCE:gsub('"', '')) and not args.force_regeneration
       -- print("Skipping " .. f)
     else
       local fp = fulljoin(INTERFACE_DIRECTORY, f):gsub('"', '')
-      if (pl.path.exists(fp)) then
+      if (path.exists(fp)) then
         if (wrapper_modification < lfs.attributes(fp, "modification")) then
           update = true
           print("At least " .. f .. " was newer than " .. WRAPPER_FILE .. " -- touching " .. MASTER_FILE .. " and regenerating " .. WRAPPER_FILE)
@@ -158,7 +158,7 @@ end
 
 if (should_regenerate) then
   local difftime = 0
-  if (pl.path.exists(WRAPPER_SOURCE)) then
+  if (path.exists(WRAPPER_SOURCE)) then
     difftime = lfs.attributes(WRAPPER_SOURCE, "modification") - os.time()
   end
   os.execute(SWIG_PATH .. SWIG_OPTIONS)

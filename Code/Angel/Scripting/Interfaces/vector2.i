@@ -81,7 +81,7 @@ struct Vec3ui
 	
 	if (!naturalVector)
 	{
-		if (lua_istable(L, $input) && (luaL_getn(L, $input) >= 2))
+		if (lua_istable(L, $input) && (lua_rawlen(L, $input) >= 2))
 		{
 			// verify that at least the first two elements of the table contain numbers
 			lua_pushinteger(L, 1);

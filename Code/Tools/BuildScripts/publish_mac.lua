@@ -35,17 +35,15 @@ if (mydir == nil) then
   mydir = "."
 end
 package.path = mydir .. "?.lua;" .. package.path
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?/init.lua"
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?/init.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/pl/?.lua"
 
 require "angel_build"
 require "lfs"
-require "pl.path"
-require "pl.lapp"
+require "pl"
 
-local env = os.environ()
-
-local args = pl.lapp [[
+local args = lapp [[
   Packages a game for easy distribution. 
     -i,--input_directory (string)  Project directory
     -o,--output_directory  (string)  Where the packaged game should go
@@ -56,7 +54,7 @@ lfs.chdir(args.input_directory)
 
 local config = {}
 
-if (pl.path.exists("build.lua")) then
+if (path.exists("build.lua")) then
   loadFileIn("build.lua", config)
 end
 
@@ -64,26 +62,26 @@ if (config.game_info == nil) then
   config.game_info = {}
 end
 if (config.game_info.name == nil) then
-  config.game_info.name = pl.path.splitext(args.gamename)
+  config.game_info.name = path.splitext(args.gamename)
 end
 
-local output_d = pl.path.join(args.output_directory, config.game_info.name)
+local output_d = path.join(args.output_directory, config.game_info.name)
 
-if (not pl.path.exists(output_d)) then
-  pl.dir.makepath(output_d)
+if (not path.exists(output_d)) then
+  dir.makepath(output_d)
 end
 
 local files_base = {"GameInfo.txt", "Attributions.txt"}
 for _, file_base in pairs(files_base) do
-  pl.dir.copyfile(fulljoin(args.input_directory, "Documentation", file_base), pl.path.join(output_d, file_base), true)
+  dir.copyfile(fulljoin(args.input_directory, "Documentation", file_base), path.join(output_d, file_base), true)
 end
 
-local app_path = pl.path.join(output_d, config.game_info.name .. ".app")
-if pl.path.exists(app_path) then
-  pl.dir.rmtree(app_path)
+local app_path = path.join(output_d, config.game_info.name .. ".app")
+if path.exists(app_path) then
+  dir.rmtree(app_path)
 end
 
-recursive_copy(fulljoin(env['BUILT_PRODUCTS_DIR'], args.gamename), app_path)
+recursive_copy(fulljoin(os.getenv('BUILT_PRODUCTS_DIR'), args.gamename), app_path)
 -- recursive_copy(fulljoin(output_d, "..", "..", "Release", args.gamename), app_path)
 
 conf_path = fulljoin(args.input_directory, "..", "Angel", "AngelConfig.h")
@@ -106,10 +104,10 @@ if (disable_devil == 1) then
   end
 end
 
-exename = env['EXECUTABLE_NAME']
+exename = os.getenv('EXECUTABLE_NAME')
 exepath = fulljoin(app_path, "Contents", "MacOS", exename)
 renamed = fulljoin(app_path, "Contents", "MacOS", config.game_info.name)
-pl.dir.movefile(exepath, renamed)
+dir.movefile(exepath, renamed)
 
 plist_path = fulljoin(app_path, "Contents", "Info.plist")
 plist = io.open(plist_path, "r")
@@ -123,4 +121,4 @@ plist:write(plist_text)
 plist:close()
 
 att_path = fulljoin(args.input_directory, "..", "Tools", "BuildScripts", "Attributions")
-correct_attributions(pl.path.join(output_d, "Attributions.txt"), att_path, disable_devil, disable_fmod)
+correct_attributions(path.join(output_d, "Attributions.txt"), att_path, disable_devil, disable_fmod)

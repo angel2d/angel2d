@@ -36,19 +36,18 @@ if (mydir == nil) then
 end
 mydir = mydir .. "/../"
 package.path = mydir .. "?.lua;" .. package.path
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?/init.lua"
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?/init.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/pl/?.lua"
 
 require "angel_build"
 require "lfs"
-require "pl.path"
+require "pl"
 
-local env = os.environ()
-
-lfs.chdir(fulljoin(env['PROJECT_DIR'], '..', 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
+lfs.chdir(fulljoin(os.getenv('PROJECT_DIR'), '..', 'Angel', 'Scripting', 'EngineScripts'):gsub('"', ''))
 
 function building_for_iphone()
-  if ((env['PLATFORM_NAME'] == "iphonesimulator") or (env['PLATFORM_NAME'] == "iphoneos")) then
+  if ((os.getenv('PLATFORM_NAME') == "iphonesimulator") or (os.getenv('PLATFORM_NAME') == "iphoneos")) then
     return true
   else
     return false
@@ -58,73 +57,73 @@ end
 local dest = ""
 if (building_for_iphone()) then
   dest = fulljoin(
-      env['TARGET_BUILD_DIR'],
-      env['EXECUTABLE_NAME'] .. '.app',
+      os.getenv('TARGET_BUILD_DIR'),
+      os.getenv('EXECUTABLE_NAME') .. '.app',
       'Angel',
       'Resources',
       'Scripts'
     )
-elseif (env['CONFIGURATION'] == 'Debug') then
+elseif (os.getenv('CONFIGURATION') == 'Debug') then
   dest = fulljoin(
-      env['PROJECT_DIR'],
+      os.getenv('PROJECT_DIR'),
       'Resources',
       'Scripts'
     )
 else
   dest = fulljoin(
-      env['BUILT_PRODUCTS_DIR'],
-      env['EXECUTABLE_NAME'] .. '.app',
+      os.getenv('BUILT_PRODUCTS_DIR'),
+      os.getenv('EXECUTABLE_NAME') .. '.app',
       'Contents',
       'Resources',
       'Scripts'
     )
 end
 
-if (not pl.path.exists(dest:gsub('"', ''))) then
+if (not path.exists(dest:gsub('"', ''))) then
   makedirs(dest:gsub('"', ''))
 end
 
-for _, filename in pairs(pl.dir.getfiles(lfs.currentdir(), ".lua")) do
+for _, filename in pairs(dir.getfiles(lfs.currentdir(), ".lua")) do
   if (not _isdotfile(filename)) then
-    local dstname = fulljoin(dest, pl.path.basename(filename))
-    pl.dir.copyfile(filename, dstname:gsub('"', ''))
+    local dstname = fulljoin(dest, path.basename(filename))
+    dir.copyfile(filename, dstname:gsub('"', ''))
   end
 end
 
-if (env['CONFIGURATION'] == 'Debug' and building_for_iphone() == false) then
+if (os.getenv('CONFIGURATION') == 'Debug' and building_for_iphone() == false) then
   os.exit(0)
 end
 
-local source = fulljoin(env['PROJECT_DIR'], 'Resources')
+local source = fulljoin(os.getenv('PROJECT_DIR'), 'Resources')
 if (building_for_iphone()) then
   dest = fulljoin(
-      env['TARGET_BUILD_DIR'],
-      env['EXECUTABLE_NAME'] .. '.app',
+      os.getenv('TARGET_BUILD_DIR'),
+      os.getenv('EXECUTABLE_NAME') .. '.app',
       'Angel',
       'Resources'
     )
 else
   dest = fulljoin(
-    env['BUILT_PRODUCTS_DIR'],
-    env['EXECUTABLE_NAME'] .. '.app',
+    os.getenv('BUILT_PRODUCTS_DIR'),
+    os.getenv('EXECUTABLE_NAME') .. '.app',
     'Contents',
     'Resources'
   )
 end
 recursive_copy(source, dest)
 
-source = fulljoin(env['PROJECT_DIR'], 'Config')
+source = fulljoin(os.getenv('PROJECT_DIR'), 'Config')
 if (building_for_iphone()) then
   dest = fulljoin(
-      env['TARGET_BUILD_DIR'],
-      env['EXECUTABLE_NAME'] .. '.app',
+      os.getenv('TARGET_BUILD_DIR'),
+      os.getenv('EXECUTABLE_NAME') .. '.app',
       'Angel',
       'Config'
     )
 else
   dest = fulljoin(
-    env['BUILT_PRODUCTS_DIR'],
-    env['EXECUTABLE_NAME'] .. '.app',
+    os.getenv('BUILT_PRODUCTS_DIR'),
+    os.getenv('EXECUTABLE_NAME') .. '.app',
     'Contents',
     'Config'
   )
@@ -133,12 +132,12 @@ recursive_copy(source, dest)
 
 if (building_for_iphone() == false) then
   local log_path = fulljoin(
-      env['BUILT_PRODUCTS_DIR'],
-      env['EXECUTABLE_NAME'] .. '.app',
+      os.getenv('BUILT_PRODUCTS_DIR'),
+      os.getenv('EXECUTABLE_NAME') .. '.app',
       'Contents',
       'Logs'
     )
-  if not pl.path.exists(log_path) then
+  if not path.exists(log_path) then
       makedirs(log_path)
   end
 end

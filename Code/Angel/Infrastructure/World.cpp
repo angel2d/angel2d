@@ -735,18 +735,10 @@ void World::UpdateLayer(Renderable* element, int newLayer)
 		return;
 	}
 
-	if (!_elementsLocked)
-	{
-		Remove(element);
-		Add(element, newLayer);
-	}
-	else
-	{
-		RenderableLayerPair layerChange;
-		layerChange._layer = newLayer;
-		layerChange._renderable = element;
-		_deferredLayerChanges.push_back( layerChange );
-	}
+    RenderableLayerPair layerChange;
+    layerChange._layer = newLayer;
+    layerChange._renderable = element;
+    _deferredLayerChanges.push_back( layerChange );
 }
 
 void World::UpdateLayer(Renderable* element, const String& newLayerName)

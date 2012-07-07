@@ -35,7 +35,7 @@
 
 LuaConsole::LuaConsole()
 {
-	String motd = String(LUA_RELEASE) + " " + String(LUA_COPYRIGHT) + "\n\n";
+	String motd = String(LUA_COPYRIGHT) + "\n\n";
 	motd += "This console is almost the same as the interactive Lua interpreter. Just make sure not\n";
 	motd += "to run any code that blocks on console input, or the whole engine will hang.\n\n";
 	WriteToOutput(motd);
@@ -125,7 +125,7 @@ StringList LuaConsole::GetCompletions(const String& input)
 	if (lua_istable(L, -1))
 	{
 		// get table values
-		int size = lua_objlen(L, -1);
+		int size = lua_rawlen(L, -1);
 		for (int i=0; i < size; i++)
 		{
 			lua_pushinteger(L, i+1);

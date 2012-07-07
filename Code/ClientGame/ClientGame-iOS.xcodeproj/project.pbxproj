@@ -494,7 +494,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n\"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" ../Tools/BuildScripts/mac-specific/CopyResources.lua";
+			shellScript = "# Copy over all the images, sounds, fonts, and scripts\n\"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" \"${PROJECT_DIR}/../Tools/BuildScripts/mac-specific/CopyResources.lua\"";
 			showEnvVarsInLog = 0;
 		};
 		34A36E3E131DC592007EAC45 /* Build Lua */ = {
@@ -577,7 +577,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FTGLES/ftgles/src/iGLU-1.0.0/include\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				INFOPLIST_FILE = platforms/ios/ClientGameInfo.plist;
@@ -603,7 +603,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FTGLES/ftgles/src/iGLU-1.0.0/include\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.1.5/src\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
 				);
 				INFOPLIST_FILE = platforms/ios/ClientGameInfo.plist;

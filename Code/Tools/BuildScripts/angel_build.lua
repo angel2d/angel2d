@@ -28,7 +28,6 @@
 ------------------------------------------------------------------------------
 
 require "lfs"
-require "ex"
 require "io"
 
 if (package.path == nil) then
@@ -39,16 +38,16 @@ if (mydir == nil) then
   mydir = "."
 end
 package.path = mydir .. "?.lua;" .. package.path
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?/init.lua"
-package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-0.8/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?/init.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/?.lua"
+package.path = package.path .. ";" .. mydir .. "lua-lib/penlight-1.0.2/lua/pl/?.lua"
 
-require "pl.path"
-require "pl.dir"
+require "pl"
 
 -- whether this file is hidden and should thus be ignored
 --  (mostly used for skipping .svn directories)
-function _isdotfile(path)
-  if (pl.path.basename(path):sub(1,1) == ".") then
+function _isdotfile(filePath)
+  if (path.basename(filePath):sub(1,1) == ".") then
     return true
   else
     return false
@@ -57,17 +56,17 @@ end
 
 -- because the penlight copy function doesn't preserve case on windows. :-(
 function copyfile(from, to)
-  if (pl.path.is_windows) then
+  if (path.is_windows) then
     os.execute(string.format('copy /Y "%s" "%s" > nul', from, to))
   else
-    pl.dir.copyfile(from, to, true)
+    dir.copyfile(from, to, true)
   end
 end
 
 -- this and makedirs blatantly copied from penlight, but without
 --  normalizing the case on Windows, because that is dumb
 local dirpat
-if pl.path.is_windows then
+if path.is_windows then
     dirpat = '(.+)\\[^\\]+$'
 else
     dirpat = '(.+)/[^/]+$'
@@ -82,7 +81,7 @@ function makedirs(p)
     return true
   end
 
-  if not pl.path.isdir(p) then
+  if not path.isdir(p) then
     local subp = p:match(dirpat)
     if not (makedirs(subp)) then
       io.stderr:write("ERROR: Cannot create " .. subp .. "\n")
@@ -97,27 +96,27 @@ end
 -- recursively copy a directory and its files from src to dst
 function recursive_copy(src, dst)
   if (_isdotfile(src)) then
-    -- print("Skipping " .. pl.path.basename(src))
+    -- print("Skipping " .. path.basename(src))
     return
   end
   
-  if (not pl.path.exists(dst)) then
+  if (not path.exists(dst)) then
     makedirs(dst)
   end
   
-  local names = pl.dir.getfiles(src, "")
+  local names = dir.getfiles(src, "")
   for _, name in pairs(names) do
     if (not _isdotfile(name)) then
-      name = pl.path.basename(name)
+      name = path.basename(name)
       local srcname = fulljoin(src, name)
       local dstname = fulljoin(dst, name)
       copyfile(srcname, dstname)
     end
   end
   
-  local dirs = pl.dir.getdirectories(src, "")
+  local dirs = dir.getdirectories(src, "")
   for _, dirname in pairs(dirs) do
-    dirname = pl.path.basename(dirname)
+    dirname = path.basename(dirname)
     local srcname = fulljoin(src, dirname)
     local dstname = fulljoin(dst, dirname)
     recursive_copy(srcname, dstname)
@@ -140,6 +139,7 @@ end
 -- <sigh> the penlight library only joins paths one at a time. :-(
 --  (this also corrects for its inability to deal with quoted paths)
 function fulljoin(...)
+  local arg = {...}
   local isQuoted = false
   -- check to see if any of the paths have quotes in them
   for i, v in ipairs(arg) do
@@ -151,7 +151,7 @@ function fulljoin(...)
 
   local for_return = ""
   for i, v in ipairs(arg) do
-    for_return = pl.path.join(for_return, v)
+    for_return = path.join(for_return, v)
   end
 
   if (isQuoted) then
@@ -162,14 +162,14 @@ end
 
 -- load a file using the passed table as its environment
 function loadFileIn(filename, environment)
-  local f, err = loadfile(filename)
-  if (f == nil) then
-   print(err)
-  end
   if (environment == nil) then
-   environment = getfenv()
+    print "ERROR: Cannot load into nil environment."
   end
-  setfenv(f, environment)
+  local f, err = loadfile(filename, "bt", environment)
+  if (f == nil) then
+    print(err)
+    return
+  end
   return f()
 end
 
@@ -179,7 +179,7 @@ function get_file_location()
   if (file_location:sub(1,1) == "@") then
     file_location = file_location:sub(2, -1)
   end
-  return (pl.path.dirname(pl.path.abspath(file_location)))
+  return (path.dirname(path.abspath(file_location)))
 end
 
 -- correct a given attributions file to claim the used libraries
@@ -201,7 +201,7 @@ function correct_attributions(filename, att_dir, disable_devil, disable_fmod)
   end
   if (disable_fmod == 1) then
     append_to(f, fulljoin(att_dir, "ogg-vorbis.txt"))
-    if (pl.path.is_windows) then
+    if (path.is_windows) then
       append_to(f, fulljoin(att_dir, "openal-soft.txt"))
       lgpl = true
     end
@@ -241,13 +241,13 @@ end
 
 -- find a local install of SWIG
 function get_swig_path()
-  if (pl.path.is_windows) then
+  if (path.is_windows) then
     -- we're on windows, use the distributed swig
     return "..\\swigwin-2.0.6\\swig.exe"
   end
   
   local ports_path = "/opt/local/bin/swig"
-  if (pl.path.exists(ports_path)) then
+  if (path.exists(ports_path)) then
     -- this mac user has wisely installed swig from macports
     check_swig_version(ports_path)
     return ports_path
@@ -285,7 +285,7 @@ function generate_typemaps(interface_directory, additional_defines)
   else
     inheritance_file = fulljoin(interface_directory, "inheritance.i")
   end
-  if (not pl.path.exists(inheritance_file:gsub('"', ''))) then
+  if (not path.exists(inheritance_file:gsub('"', ''))) then
     -- need to make sure we have at least a blank file for swig to include 
     --  when it runs to get the type data
     local inheritance_handle = assert(io.open(inheritance_file:gsub('"', ''), "w"))
@@ -329,7 +329,7 @@ function generate_typemaps(interface_directory, additional_defines)
       end
     end
   end
-    
+
   local sortf = function(class1, class2)
     local parents1 = immediate_class_data[class1]
     local parents2 = immediate_class_data[class2]
@@ -346,13 +346,14 @@ function generate_typemaps(interface_directory, additional_defines)
     end
     return false
   end
-  
+
   local out_strings = {}
   for base, descendants in pairs(class_data) do
     table.sort(class_data[base], sortf)
     table.insert(out_strings, "%factory("..base.."*, "..table.concat(descendants, ", ")..");")
   end
-  
+  table.sort(out_strings)
+
   local out_string = "%include <factory.i>\n\n" .. table.concat(out_strings, "\n")
   
   local out_file = assert(io.open(inheritance_file:gsub('"', ''), "r"))

@@ -41,9 +41,10 @@ end
 
 if (ANGEL_MOBILE == false) then
   function angelPrint(...)
+    arg = {...}
     local str
     str = ""
-    for i=1, arg.n do
+    for i=1, #arg do
       if (str ~= "") then
         str = str .. '\t'
       end
