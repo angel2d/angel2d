@@ -18,14 +18,14 @@ typedef std::string			String;
 		
 		if ($1.size() > 0)
 		{
-			for (unsigned int i=0; i <= $1.size(); i++)
+			for (unsigned int i=1; i <= $1.size(); i++)
 			{
 				lua_pushnumber(L, i);
 				lua_pushstring(L, $1.at(i-1).c_str()); 
-				lua_settable(L, -3);
+				lua_rawset(L, -3);
 			}
 		}
-	
+		
 		SWIG_arg += 1; 
 	}
 %}
