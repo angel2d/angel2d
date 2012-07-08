@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		3401563F15A9197B00E4C8BF /* LuaExe */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3401564015A9197B00E4C8BF /* Build configuration list for PBXAggregateTarget "LuaExe" */;
+			buildPhases = (
+				3401565115A919A300E4C8BF /* Build Lua */,
+			);
+			dependencies = (
+			);
+			name = LuaExe;
+			productName = LuaExe;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		342C29A20E2AFD3A0061D881 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433A92B0E2AB09B00A02B4E /* IOKit.framework */; };
 		343C17421319544C003637EA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C174013195432003637EA /* OpenAL.framework */; };
@@ -142,13 +156,6 @@
 			remoteGlobalIDString = 3433A8D10E2AADDE00A02B4E;
 			remoteInfo = HIDUtilities;
 		};
-		34A6E39C1527677000BEA400 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 34A6E37F1527677000BEA400 /* Angel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 34D6B4B611CC3CCA00D72FE6;
-			remoteInfo = LuaExe;
-		};
 		34A6E39E1527677000BEA400 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 34A6E37F1527677000BEA400 /* Angel.xcodeproj */;
@@ -160,7 +167,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 34A6E37F1527677000BEA400 /* Angel.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 34D6B4B511CC3CCA00D72FE6;
+			remoteGlobalIDString = 3401560615A918BF00E4C8BF;
 			remoteInfo = LuaExe;
 		};
 /* End PBXContainerItemProxy section */
@@ -381,7 +388,6 @@
 				34A6E3971527677000BEA400 /* libFTGL.a */,
 				34A6E3991527677000BEA400 /* libFreeType.a */,
 				34A6E39B1527677000BEA400 /* libHIDUtilities.a */,
-				34A6E39D1527677000BEA400 /* Lua */,
 				34A6E39F1527677000BEA400 /* libLua.a */,
 			);
 			name = Products;
@@ -524,6 +530,7 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* IntroGame */,
+				3401563F15A9197B00E4C8BF /* LuaExe */,
 			);
 		};
 /* End PBXProject section */
@@ -585,13 +592,6 @@
 			remoteRef = 34A6E39A1527677000BEA400 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		34A6E39D1527677000BEA400 /* Lua */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = Lua;
-			remoteRef = 34A6E39C1527677000BEA400 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		34A6E39F1527677000BEA400 /* libLua.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -602,6 +602,20 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3401565115A919A300E4C8BF /* Build Lua */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Lua";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${PROJECT_DIR}/Libraries/angel-lua-build\"\nmake -f Makefile-mac\n\n";
+		};
 		341822660E2B176D003EC89B /* Copy Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -614,7 +628,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Why on earth does this need to happen here?\nif [ ! -d \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" ]; then\n\tmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nfi\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${CONFIGURATION_BUILD_DIR}/Lua\" \"${PROJECT_DIR}/../Tools/BuildScripts/mac-specific/CopyResources.lua\"\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}\" -o \"${PROJECT_DIR}/Published\" -g IntroGame.app\nfi";
+			shellScript = "# Set the FMOD library to be loaded properly\ninstall_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n# Why on earth does this need to happen here?\nif [ ! -d \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" ]; then\n\tmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nfi\n\n# Copy over all the images, sounds, fonts, and scripts\n\"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" \"${PROJECT_DIR}/../Tools/BuildScripts/mac-specific/CopyResources.lua\"\n\n# Run the publish step if we're building in Release\nif [ ${CONFIGURATION} == \"Release\" ]; then\n    \"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" ../Tools/BuildScripts/publish_mac.lua -i \"${PROJECT_DIR}\" -o \"${PROJECT_DIR}/Published\" -g IntroGame.app\nfi";
 			showEnvVarsInLog = 0;
 		};
 		34388F3B11E3EF61002A79B1 /* Generate Lua Wrapping */ = {
@@ -629,7 +643,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${CONFIGURATION_BUILD_DIR}/Lua\" ../Tools/BuildScripts/swig_wrap.lua -p \"${PROJECT_DIR}/..\" -D INTROGAME";
+			shellScript = "\"${PROJECT_DIR}/../Angel/Libraries/angel-lua-build/lua\" ../Tools/BuildScripts/swig_wrap.lua -p \"${PROJECT_DIR}/..\" -D INTROGAME";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -678,6 +692,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3401564115A9197B00E4C8BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3401564215A9197B00E4C8BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -782,6 +810,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3401564015A9197B00E4C8BF /* Build configuration list for PBXAggregateTarget "LuaExe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3401564115A9197B00E4C8BF /* Debug */,
+				3401564215A9197B00E4C8BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "IntroGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
