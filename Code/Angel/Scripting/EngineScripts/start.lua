@@ -41,7 +41,7 @@ end
 
 if (ANGEL_MOBILE == false) then
   function angelPrint(...)
-    arg = {...}
+    local arg = {...}
     local str
     str = ""
     for i=1, #arg do
