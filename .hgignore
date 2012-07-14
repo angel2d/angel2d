@@ -12,7 +12,7 @@ syntax: glob
 *.xcodeproj/xcuserdata/*.xcuserdatad
 *.xcworkspace/xcuserdata/*.xcuserdatad
 *.xcworkspace/xcuserdata/*.xcuserdatad
-Code/Tools/BuildScripts/build_cache/*
+Code/Tools/BuildScripts/build_cache/swigout.txt
 Code/Published
 Code/Angel/Debug
 Code/Angel/Release
