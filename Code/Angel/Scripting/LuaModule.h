@@ -106,6 +106,12 @@ public:
 	 * @return The a pointer to the lua_State object at the heart of things.
 	 */
 	static lua_State* GetLuaState();
+	
+	/**
+	 * Print information about the current Lua stack to the system log. 
+	 *  Useful for debugging any custom Lua integration.
+	 */
+	static void DumpStack();
 
 private:
 	static bool isInitialized;

@@ -139,6 +139,15 @@ String ToUpper( const String& s );
 String ToLower( const String& s );
 
 /**
+ * Joins a list of strings into one, with a specified separator.
+ *
+ * @param The string list to join
+ * @param The string to put between each entry in the final string.
+ * @return The joined string.
+ */
+String JoinString (const StringList &list, const String& joinString="");
+
+/**
  * Splits a long string into a StringList. 
  * 
  * @param splitMe The string to split up

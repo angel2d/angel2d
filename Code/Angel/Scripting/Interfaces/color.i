@@ -6,45 +6,58 @@
 #ifdef SWIGLUA
 %typemap(in) Color
 {
-	// convert table parameters to floats
-	lua_pushinteger(L, 1);
-	lua_gettable(L, $input);
-	float r = lua_tonumber(L, -1);
-	lua_pop(L, 1);
-	lua_pushinteger(L, 2);
-	lua_gettable(L, $input);
-	float g = lua_tonumber(L, -1);
-	lua_pop(L, 1);
-	lua_pushinteger(L, 3);
-	lua_gettable(L, $input);
-	float b = lua_tonumber(L, -1);
-	lua_pop(L, 1);
-	
-	float a = 1.0f;
-	if (lua_rawlen(L, $input) >= 4)
+	// Color conversion
+	Color *col;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&col,SWIGTYPE_p_Color,0))) 
 	{
-		lua_pushinteger(L, 4);
-		lua_gettable(L, $input);
-		a = lua_tonumber(L, -1);
-		lua_pop(L, 1);
+		$1 = *col;
 	}
-	
-	// build the color
-	$1 = Color(r, g, b, a);
+	else
+	{
+		// convert table parameters to floats
+		lua_pushinteger(L, 1);
+		lua_gettable(L, $input);
+		float r = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		lua_pushinteger(L, 2);
+		lua_gettable(L, $input);
+		float g = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		lua_pushinteger(L, 3);
+		lua_gettable(L, $input);
+		float b = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		
+		float a = 1.0f;
+		if (lua_rawlen(L, $input) >= 4)
+		{
+			lua_pushinteger(L, 4);
+			lua_gettable(L, $input);
+			a = lua_tonumber(L, -1);
+			lua_pop(L, 1);
+		}
+		
+		// build the color
+		$1 = Color(r, g, b, a);
+	}
 }
 
 %typecheck(SWIG_TYPECHECK_POINTER) Color
 {
-	bool naturalColor = false;
-	void *ptr;
-	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&ptr,SWIGTYPE_p_Color,0))) 
+	// Color typecheck
+	swig_lua_userdata* usr;
+	swig_cast_info *cast;
+	usr=(swig_lua_userdata*)lua_touserdata(L,$input);
+	if (usr != NULL)
 	{
-		$1 = 1;
-		naturalColor = true;
+		cast=SWIG_TypeCheckStruct(usr->type, SWIGTYPE_p_Color);
+		if (cast)
+		{
+			$1 = 1;
+		}
 	}
 	
-	
-	if (!naturalColor)
+	if (!$1)
 	{
 		if (lua_istable(L, $input) && (lua_rawlen(L, $input) >= 3))
 		{
@@ -78,8 +91,8 @@ public:
 	
 	Color();
 	Color(float r, float g, float b, float a=1.0f, bool clamp=true);
-	Color FromInts(int r, int g, int b, int a=255, bool clamp=true);
-	Color FromHexString(String hexString);
+	static Color FromInts(int r, int g, int b, int a=255, bool clamp=true);
+	static Color FromHexString(String hexString);
 	
 	bool operator==(const Color &c) const;
 	bool operator!=(const Color &c) const;

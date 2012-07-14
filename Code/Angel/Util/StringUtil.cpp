@@ -182,6 +182,21 @@ StringList SplitString( const String& splitMe )
 	return SplitString( splitMe, StringUtil_WhiteSpaceChars );
 }
 
+String JoinString (const StringList &list, const String& joinString)
+{
+	String forReturn; 
+
+	for (int i=0; i < list.size(); i++)
+	{
+		forReturn += list[i];
+		if (i < list.size()-1)
+		{
+			forReturn += joinString;
+		}
+	}
+
+	return forReturn;
+}
 
 String TrimString( const String& trimMe, const String& trimChars )
 {

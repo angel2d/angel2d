@@ -817,6 +817,7 @@
 				3401564215A9197B00E4C8BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "IntroGame" */ = {
 			isa = XCConfigurationList;

@@ -59,6 +59,7 @@ ActorSet TagCollection::GetObjectsTagged(String findTag)
 	}
 	else if (tags.size() == 1)
 	{
+		findTag = ToLower(findTag);
 		std::map<String, ActorSet>::iterator it = _tagMappings.find(findTag);
 		if (it != _tagMappings.end())
 		{
@@ -73,13 +74,15 @@ ActorSet TagCollection::GetObjectsTagged(String findTag)
 	{
 		ActorSet t1;
 		ActorSet t2;
+		String searchTag = ToLower(tags[0]);
 		
 		bool t1_active = true;
-		t1 = GetObjectsTagged(tags[0]);
+		t1 = GetObjectsTagged(searchTag);
 
 		for(unsigned int i=1; i < tags.size(); i++)
 		{
-			ActorSet compare = GetObjectsTagged(tags[i]);
+			searchTag = tags[i];
+			ActorSet compare = GetObjectsTagged(searchTag);
 			if (t1_active)
 			{
 				std::set_intersection(t1.begin(), t1.end(), compare.begin(), compare.end(), std::inserter(t2, t2.begin()));

@@ -54,36 +54,111 @@ struct Vec3ui
 
 %typemap(in) Vector2
 {
-	// convert table parameters to floats
-	lua_pushinteger(L, 1);
-	lua_gettable(L, $input);
-	float x = lua_tonumber(L, -1);
-	lua_pop(L, 1);
-	lua_pushinteger(L, 2);
-	lua_gettable(L, $input);
-	float y = lua_tonumber(L, -1);
-	lua_pop(L, 1);
-	
-	// build the color
-	$1 = Vector2(x, y);
+	// Vector2 conversion
+	Vector2 *vec;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vec,SWIGTYPE_p_Vector2,0))) 
+	{
+		$1 = *vec;
+	}
+	else
+	{
+		// convert table parameters to floats
+		lua_pushinteger(L, 1);
+		lua_gettable(L, $input);
+		float x = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		lua_pushinteger(L, 2);
+		lua_gettable(L, $input);
+		float y = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		
+		// build the vector
+		$1 = Vector2(x, y);
+	}
+}
+
+%typemap(in) Vec2i
+{
+	// Vec2i conversion
+	Vec2i *vec;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vec,SWIGTYPE_p_Vec2i,0))) 
+	{
+		$1 = *vec;
+	}
+	else
+	{
+		// convert table parameters to ints
+		lua_pushinteger(L, 1);
+		lua_gettable(L, $input);
+		int x = lua_tointeger(L, -1);
+		lua_pop(L, 1);
+		lua_pushinteger(L, 2);
+		lua_gettable(L, $input);
+		int y = lua_tointeger(L, -1);
+		lua_pop(L, 1);
+		
+		// build the vector
+		$1 = Vec2i(x, y);
+	}
 }
 
 %typecheck(SWIG_TYPECHECK_POINTER) Vector2
 {
-	bool naturalVector = false;
-	void *ptr;
-	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&ptr,SWIGTYPE_p_Vector2,0))) 
+	// Vector2 typecheck
+	swig_lua_userdata* usr;
+	swig_cast_info *cast;
+	usr=(swig_lua_userdata*)lua_touserdata(L,$input);
+	if (usr != NULL)
 	{
-		$1 = 1;
-		naturalVector = true;
+		cast=SWIG_TypeCheckStruct(usr->type, SWIGTYPE_p_Vector2);
+		if (cast)
+		{
+			$1 = 1;
+		}
 	}
 	
-	
-	if (!naturalVector)
+	if (!$1)
 	{
 		if (lua_istable(L, $input) && (lua_rawlen(L, $input) >= 2))
 		{
 			// verify that at least the first two elements of the table contain numbers
+			lua_pushinteger(L, 1);
+			lua_gettable(L, $input);
+			int v1 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			lua_pushinteger(L, 2);
+			lua_gettable(L, $input);
+			int v2 = lua_isnumber(L, -1);
+			lua_pop(L, 1);
+			$1 = (v1 && v2);
+		}
+		else
+		{
+			$1 = 0;
+		}
+	}
+}
+
+%typecheck(SWIG_TYPECHECK_POINTER) Vec2i
+{
+	// Vector2 typecheck
+	swig_lua_userdata* usr;
+	swig_cast_info *cast;
+	usr=(swig_lua_userdata*)lua_touserdata(L,$input);
+	if (usr != NULL)
+	{
+		cast=SWIG_TypeCheckStruct(usr->type, SWIGTYPE_p_Vector2);
+		if (cast)
+		{
+			$1 = 1;
+		}
+	}
+
+	if (!$1)
+	{
+		if (lua_istable(L, $input) && (lua_rawlen(L, $input) >= 2))
+		{
+			// verify that at least the first two elements of the table contain integers
 			lua_pushinteger(L, 1);
 			lua_gettable(L, $input);
 			int v1 = lua_isnumber(L, -1);

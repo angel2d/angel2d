@@ -58,6 +58,7 @@ typedef std::vector<String>	StringList;
 %include color.i
 %include messaging.i
 %include renderable.i
+%include util.i
 
 %include world.i
 %include log.i
