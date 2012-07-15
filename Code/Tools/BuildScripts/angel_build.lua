@@ -100,6 +100,10 @@ function recursive_copy(src, dst)
     return
   end
   
+  if (not path.exists(src)) then
+    return
+  end
+
   if (not path.exists(dst)) then
     makedirs(dst)
   end
