@@ -6,12 +6,10 @@ RANLIB = ranlib
 LIBNAME = liblua.a
 EXENAME = lua
 LUA_DIR    := ../lua-5.2.1/src
-LUA_EX_DIR := ../lua-libs/lua-ex/posix
 LUA_FS_DIR := ../lua-libs/luafilesystem-1.5.0/src
 
 INCLUDE = 				\
 	-I$(LUA_DIR)			\
-	-I$(LUA_EX_DIR)			\
 	-I$(LUA_FS_DIR)			\
 
 EXESRCS = 				\
