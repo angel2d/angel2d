@@ -162,8 +162,8 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 
 	//Reset values based on preferences
 	antiAliasing = thePrefs.OverrideInt("WindowSettings", "antiAliasing", antiAliasing);
-	fullScreen = thePrefs.OverrideInt("WindowSettings", "antiAliasing", fullScreen);
-	resizable = thePrefs.OverrideInt("WindowSettings", "antiAliasing", resizable);
+	fullScreen = thePrefs.OverrideInt("WindowSettings", "fullScreen", fullScreen);
+	resizable = thePrefs.OverrideInt("WindowSettings", "resizable", resizable);
 	windowHeight = thePrefs.OverrideInt("WindowSettings", "height", windowHeight);
 	windowWidth = thePrefs.OverrideInt("WindowSettings", "width", windowWidth);
 	windowName = thePrefs.OverrideString("WindowSettings", "name", windowName);
