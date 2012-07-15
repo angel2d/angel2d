@@ -50,7 +50,7 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source
    distribution.
 -----------------
-Lua 5.1.5
+Lua 5.2.1
 Copyright © 1994-2012 Lua.org, PUC-Rio.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
