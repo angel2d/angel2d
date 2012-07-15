@@ -81,7 +81,7 @@ ActorSet TagCollection::GetObjectsTagged(String findTag)
 
 		for(unsigned int i=1; i < tags.size(); i++)
 		{
-			searchTag = tags[i];
+			searchTag = ToLower(tags[i]);
 			ActorSet compare = GetObjectsTagged(searchTag);
 			if (t1_active)
 			{

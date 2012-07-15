@@ -189,7 +189,10 @@ void Controller::Setup()
 			std::string product = _device->product;
 			if (manufacturer.length() > 0)
 				manufacturer = manufacturer.substr(1, manufacturer.length()-1).c_str(); //trimming off the initial copyright symbol so matching won't be dumb
-			if ((manufacturer == "Microsoft Corporation") && (product == "Controller"))
+			if (
+				((manufacturer == "Microsoft Corporation") && (product == "Controller"))
+				|| ((manufacturer == "icrosoft") && (product == "Wireless 360 Controller"))
+				)
 			{
 				sysLog.Printf("Controller %d connected!", _controllerID+1);
 				_connected = true;
