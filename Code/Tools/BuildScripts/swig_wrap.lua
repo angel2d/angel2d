@@ -43,7 +43,7 @@ require "angel_build"
 require "lfs"
 require "pl"
 
-local args = lapp [[
+args = lapp [[
   Checks the included files in the aggregate scripting interface and touches it if any of them are newer than the generated wrapper.
     -p,--project_directory (string)  Project directory
     -D,--define (default SWIGLUA) An optional string to define when invoking swig 

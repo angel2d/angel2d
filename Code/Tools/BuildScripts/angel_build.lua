@@ -238,8 +238,19 @@ function check_swig_version(path)
   end
 
   if (old) then
-    io.stderr:write("ERROR: swig version "..version.." is too old for Angel; update to at least 2.0.6.\n")
-    os.exit(1)
+    if (tonumber(vparts[1]) >= 2) then
+      local files = {'factory.i', 'luarun.swg'}
+      local good_lib = fulljoin(args.project_directory, "Tools", "swigwin-2.0.6", "Lib", "lua")
+      local target_dir = fulljoin(args.project_directory, "Angel", "Scripting", "Interfaces")
+      for _,file in ipairs(files) do
+        local src = fulljoin(good_lib, file)
+        local dst = fulljoin(target_dir, file)
+        copyfile(src, dst)
+      end
+    else
+      io.stderr:write("ERROR: swig version "..version.." is too old for Angel; update to at least 2.0.6.\n")
+      os.exit(1)
+    end
   end
 end
 
