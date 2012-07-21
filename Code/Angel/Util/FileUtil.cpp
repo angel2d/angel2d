@@ -40,6 +40,7 @@
 #elif defined(__linux__)
 	#include <sys/stat.h>
 	#include <linux/limits.h>
+	#include <unistd.h>
 #endif
 #include <fstream>
 

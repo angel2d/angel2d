@@ -45,6 +45,7 @@
 	#include <linux/joystick.h>
 	#include <string.h>
 	#include <sstream>
+	#include <unistd.h>
 	#define LINUX_CONTROLLER_1_PATH "/dev/input/js0"
 	#define LINUX_CONTROLLER_2_PATH "/dev/input/js1"
 	#define LINUX_EVENT_INTERFACE "/dev/input/event"
