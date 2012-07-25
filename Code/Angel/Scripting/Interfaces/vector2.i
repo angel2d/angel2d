@@ -105,6 +105,7 @@ struct Vec3ui
 %typecheck(SWIG_TYPECHECK_POINTER) Vector2
 {
 	// Vector2 typecheck
+	$1 = 0;
 	swig_lua_userdata* usr;
 	swig_cast_info *cast;
 	usr=(swig_lua_userdata*)lua_touserdata(L,$input);
@@ -141,7 +142,8 @@ struct Vec3ui
 
 %typecheck(SWIG_TYPECHECK_POINTER) Vec2i
 {
-	// Vector2 typecheck
+	// Vec2i typecheck
+	$1 = 0;
 	swig_lua_userdata* usr;
 	swig_cast_info *cast;
 	usr=(swig_lua_userdata*)lua_touserdata(L,$input);

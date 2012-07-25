@@ -45,6 +45,7 @@
 %typecheck(SWIG_TYPECHECK_POINTER) Color
 {
 	// Color typecheck
+	$1 = 0;
 	swig_lua_userdata* usr;
 	swig_cast_info *cast;
 	usr=(swig_lua_userdata*)lua_touserdata(L,$input);
