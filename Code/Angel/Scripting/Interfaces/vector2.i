@@ -149,7 +149,7 @@ struct Vec3ui
 	usr=(swig_lua_userdata*)lua_touserdata(L,$input);
 	if (usr != NULL)
 	{
-		cast=SWIG_TypeCheckStruct(usr->type, SWIGTYPE_p_Vector2);
+		cast=SWIG_TypeCheckStruct(usr->type, SWIGTYPE_p_Vec2i);
 		if (cast)
 		{
 			$1 = 1;
