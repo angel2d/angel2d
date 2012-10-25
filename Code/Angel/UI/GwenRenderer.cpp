@@ -295,7 +295,7 @@ void GwenRenderer::FreeFont( Gwen::Font* font )
 	std::map<Gwen::UnicodeString, String>::iterator it = _unicodeCache.find(font->facename);
 	if (it != _unicodeCache.end())
 	{
-		UnRegisterFont(it->second);
+        UnRegisterFont(it->second);
 	}
 }
 

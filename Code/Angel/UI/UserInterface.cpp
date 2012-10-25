@@ -43,17 +43,18 @@ bool UserInterface::isInitialized = false;
 namespace 
 {
 	Gwen::Controls::Canvas* AngelCanvas;
-	Gwen::Skin::Simple AngelSkin;
+	Gwen::Skin::Simple* AngelSkin;
 }
 
 void UserInterface::Initialize()
 {
     UserInterface::_renderer = new GwenRenderer();
     
-    AngelSkin.SetRender(_renderer);
-	AngelSkin.SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"));
+    AngelSkin = new Gwen::Skin::Simple();
+    AngelSkin->SetRender(_renderer);
+	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"));
     
-    AngelCanvas = new Gwen::Controls::Canvas(&AngelSkin);
+    AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
     AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
     
     Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
@@ -61,6 +62,15 @@ void UserInterface::Initialize()
     button->SetText("Angelic Button");
 
 	isInitialized = true;
+}
+
+void UserInterface::Finalize()
+{
+    delete AngelCanvas;
+    delete AngelSkin;
+    
+    delete _renderer;
+    isInitialized = false;
 }
 
 void UserInterface::Render()

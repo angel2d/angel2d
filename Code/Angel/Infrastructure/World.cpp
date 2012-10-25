@@ -335,6 +335,7 @@ void World::Destroy()
 	
 	FinalizeTextureLoading();
 	LuaScriptingModule::Finalize();
+    UserInterface::Finalize();
 }
 
 void World::StartGame()
