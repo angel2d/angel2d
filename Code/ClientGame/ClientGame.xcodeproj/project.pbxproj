@@ -31,7 +31,7 @@
 		34974A3B0E2926460018A032 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 34974A2F0E2925BE0018A032 /* stdafx.h */; };
 		34974B2F0E2926FB0018A032 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A18C9B0E284445001C79A5 /* OpenGL.framework */; };
 		34974B3A0E2927E00018A032 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34974B390E2927E00018A032 /* AGL.framework */; };
-		34A6E2A71527568800BEA400 /* AngelLuaWrapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E2A61527568800BEA400 /* AngelLuaWrapping.cpp */; };
+		34A6E2A71527568800BEA400 /* AngelLuaWrapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E2A61527568800BEA400 /* AngelLuaWrapping.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
 		34A6E2C0152758E100BEA400 /* angel.icns in Copy Icon */ = {isa = PBXBuildFile; fileRef = 34A6E2AA1527573600BEA400 /* angel.icns */; };
 		34A6E51B1527811300BEA400 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A6E3291527632500BEA400 /* libAngel.a */; };
 		34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
@@ -634,6 +634,7 @@
 				3401565015A9199300E4C8BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "ClientGame" */ = {
 			isa = XCConfigurationList;

@@ -77,7 +77,7 @@
 		34A6E44D1527692E00BEA400 /* DemoScreenTuningVariables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E4231527692E00BEA400 /* DemoScreenTuningVariables.cpp */; };
 		34A6E44E1527692E00BEA400 /* DemoScreenTuningVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A6E4241527692E00BEA400 /* DemoScreenTuningVariables.h */; };
 		34A6E44F15276A0B00BEA400 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A6E38D1527677000BEA400 /* libAngel.a */; };
-		34A6E45915276A3800BEA400 /* AngelLuaWrappingIntroGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E45815276A3800BEA400 /* AngelLuaWrappingIntroGame.cpp */; };
+		34A6E45915276A3800BEA400 /* AngelLuaWrappingIntroGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E45815276A3800BEA400 /* AngelLuaWrappingIntroGame.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
 		34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
 		34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
 		34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
@@ -507,7 +507,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "IntroGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -695,6 +695,7 @@
 		3401564115A9197B00E4C8BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -702,6 +703,7 @@
 		3401564215A9197B00E4C8BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -710,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -742,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_MODEL_TUNING = G5;

@@ -2858,6 +2858,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Infrastructure/stdafx.h;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
@@ -2888,6 +2889,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Infrastructure/stdafx.h;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
@@ -2918,6 +2920,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"";
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
@@ -2938,6 +2941,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"";
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = (
@@ -3111,6 +3115,7 @@
 				3401560815A918BF00E4C8BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3406448311E7DE9300033B1D /* Build configuration list for PBXNativeTarget "FreeType" */ = {
 			isa = XCConfigurationList;
