@@ -29,8 +29,7 @@
 
 #pragma once
 
-#include "Gwen/Gwen.h"
-#include "Gwen/Renderers/OpenGL.h"
+class GwenRenderer;
 
 class UserInterface {
 public:
@@ -39,5 +38,5 @@ public:
     static void Finalize();
     
 private:
-    static Gwen::Renderer::OpenGL* _renderer;
+    static GwenRenderer* _renderer;
 };

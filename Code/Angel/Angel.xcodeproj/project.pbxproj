@@ -104,6 +104,8 @@
 		343C172813195267003637EA /* AngelConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 343C172713195267003637EA /* AngelConfig.h */; };
 		343C17491319547E003637EA /* libOgg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C16BB13194433003637EA /* libOgg.a */; };
 		343C174A1319547E003637EA /* libVorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C16CD13194490003637EA /* libVorbis.a */; };
+		343E2E38163969EE005B5744 /* GwenRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343E2E36163969EE005B5744 /* GwenRenderer.cpp */; };
+		343E2E39163969EE005B5744 /* GwenRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 343E2E37163969EE005B5744 /* GwenRenderer.h */; };
 		34433F7C131DF50D00040805 /* MultiTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34433F7A131DF50D00040805 /* MultiTouch.cpp */; };
 		34433F7D131DF50D00040805 /* MultiTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 34433F7B131DF50D00040805 /* MultiTouch.h */; };
 		345AAD1511CB3759002B4471 /* Actor.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A1815C0E283FE0001C79A5 /* Actor.h */; };
@@ -789,6 +791,8 @@
 		343C17001319454A003637EA /* vorbisfile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorbisfile.c; path = "Libraries/libvorbis-1.3.2/lib/vorbisfile.c"; sourceTree = "<group>"; };
 		343C172713195267003637EA /* AngelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngelConfig.h; sourceTree = "<group>"; };
 		343C174013195432003637EA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		343E2E36163969EE005B5744 /* GwenRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GwenRenderer.cpp; path = UI/GwenRenderer.cpp; sourceTree = "<group>"; };
+		343E2E37163969EE005B5744 /* GwenRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GwenRenderer.h; path = UI/GwenRenderer.h; sourceTree = "<group>"; };
 		343F41870E31C1460097B760 /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		343F41880E31C1460097B760 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		343F41890E31C1460097B760 /* Switchboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Switchboard.cpp; sourceTree = "<group>"; };
@@ -2362,6 +2366,8 @@
 		34FB47721638FBD9002EB836 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				343E2E36163969EE005B5744 /* GwenRenderer.cpp */,
+				343E2E37163969EE005B5744 /* GwenRenderer.h */,
 				34FB47731638FC00002EB836 /* UserInterface.cpp */,
 				34FB47741638FC00002EB836 /* UserInterface.h */,
 			);
@@ -2686,6 +2692,7 @@
 				34B9C8971503096F0092D6C4 /* LoadedVariable.h in Headers */,
 				34A6E26815274CE100BEA400 /* stdafx.h in Headers */,
 				34FB47771638FC00002EB836 /* UserInterface.h in Headers */,
+				343E2E39163969EE005B5744 /* GwenRenderer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3352,6 +3359,7 @@
 				34433F7C131DF50D00040805 /* MultiTouch.cpp in Sources */,
 				34B9C892150303D00092D6C4 /* Preferences.cpp in Sources */,
 				34FB47751638FC00002EB836 /* UserInterface.cpp in Sources */,
+				343E2E38163969EE005B5744 /* GwenRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

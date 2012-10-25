@@ -88,6 +88,15 @@ const int GetTextureReference(const String& name, bool optional = false);
 const int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional = false);
 
 /**
+ * Gets the dimensions for a loaded texture. 
+ *
+ * @param filename The path to the texture's file.
+ * @return The width and height of the texture; if no texture is currently
+ *   loaded from the given filename, will return (0, 0)
+ */
+const Vec2i GetTextureSize(const String& filename);
+
+/**
  * Remove a texture from memory. On the desktop this usually isn't an issue 
  *  unless your game is long-running and uses lots of images, but those
  *  issues crop up earlier on mobile platforms. 

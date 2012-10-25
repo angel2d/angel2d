@@ -30,26 +30,26 @@
 #include "stdafx.h"
 #include "UserInterface.h"
 
-
+#include "Gwen/Gwen.h"
 #include "Gwen/Skins/Simple.h"
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
 
-Gwen::Renderer::OpenGL* UserInterface::_renderer = NULL;
+GwenRenderer* UserInterface::_renderer = NULL;
 
 void UserInterface::Initialize()
 {
-    UserInterface::_renderer = new Gwen::Renderer::OpenGL();
-    
-    Gwen::Skin::Simple skin;
-    skin.SetRender(_renderer);
-    
-    Gwen::Controls::Canvas* canvas = new Gwen::Controls::Canvas(&skin);
-    canvas->SetSize(1024, 768); // should be size of window (update when change)
-    
-    Gwen::Controls::Button* button = new Gwen::Controls::Button(canvas);
-    button->SetBounds(10, 10, 200, 100);
-    button->SetText("Angelic Button");
+//    UserInterface::_renderer = new GwenRenderer();
+//    
+//    Gwen::Skin::Simple skin;
+//    skin.SetRender(_renderer);
+//    
+//    Gwen::Controls::Canvas* canvas = new Gwen::Controls::Canvas(&skin);
+//    canvas->SetSize(1024, 768); // should be size of window (update when change)
+//    
+//    Gwen::Controls::Button* button = new Gwen::Controls::Button(canvas);
+//    button->SetBounds(10, 10, 200, 100);
+//    button->SetText("Angelic Button");
     
     // in renderloop: canvas->RenderCanvas();
 }

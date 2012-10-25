@@ -1,0 +1,251 @@
+//////////////////////////////////////////////////////////////////////////////
+// Copyright (C) 2008-2012, Shane Liesegang
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the copyright holder nor the names of any
+//       contributors may be used to endorse or promote products derived from
+//       this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "GwenRenderer.h"
+
+#include "Gwen/Utility.h"
+#include "Gwen/Font.h"
+#include "Gwen/Texture.h"
+#include "Gwen/WindowProvider.h"
+
+#include "../Infrastructure/Textures.h"
+
+GwenRenderer::GwenRenderer()
+{
+	_vertNum = 0;
+
+	for (int i=0; i < s_maxVerts; i++)
+	{
+		_vertices[ i ].z = 0.5f;
+	}
+}
+
+GwenRenderer::~GwenRenderer()
+{
+
+}
+
+
+void GwenRenderer::Init()
+{
+
+}
+
+void GwenRenderer::Begin()
+{
+	// glAlphaFunc( GL_GREATER, 1.0f );	
+}
+
+void GwenRenderer::End()
+{
+	Flush();
+}
+
+void GwenRenderer::Flush()
+{
+	if ( _vertNum == 0 ) 
+	{
+		return;
+	}
+
+	glVertexPointer( 3, GL_FLOAT, sizeof(Vertex), (void*) &_vertices[0].x );
+	glEnableClientState( GL_VERTEX_ARRAY );
+
+	glColorPointer( 4, GL_UNSIGNED_BYTE, sizeof(Vertex), (void*)&_vertices[0].r );
+	glEnableClientState( GL_COLOR_ARRAY );
+
+	glTexCoordPointer( 2, GL_FLOAT, sizeof(Vertex), (void*) &_vertices[0].u );
+	glEnableClientState( GL_TEXTURE_COORD_ARRAY );
+
+	glDrawArrays( GL_TRIANGLES, 0, (GLsizei) _vertNum );
+
+	_vertNum = 0;
+	glFlush();
+}
+
+void GwenRenderer::AddVertex(int x, int y, float u, float v)
+{
+	if ( _vertNum >= s_maxVerts - 1 )
+	{
+		Flush();
+	}
+
+	_vertices[ _vertNum ].x = (float)x;
+	_vertices[ _vertNum ].y = (float)y;
+	_vertices[ _vertNum ].u = u;
+	_vertices[ _vertNum ].v = v;
+
+	_vertices[ _vertNum ].r = _color.r;
+	_vertices[ _vertNum ].g = _color.g;
+	_vertices[ _vertNum ].b = _color.b;
+	_vertices[ _vertNum ].a = _color.a;
+
+	_vertNum++;
+}
+
+void GwenRenderer::SetDrawColor( Gwen::Color color )
+{
+	glColor4ubv( (GLubyte*)&color );
+	_color = color;
+}
+
+void GwenRenderer::DrawFilledRect( Gwen::Rect rect )
+{
+	GLboolean texturesOn;
+
+	glGetBooleanv(GL_TEXTURE_2D, &texturesOn);
+	if ( texturesOn )
+	{
+		Flush();
+		glDisable(GL_TEXTURE_2D);
+	}
+
+	Translate( rect );
+
+	AddVertex( rect.x, rect.y );
+	AddVertex( rect.x+rect.w, rect.y );
+	AddVertex( rect.x, rect.y + rect.h );
+
+	AddVertex( rect.x+rect.w, rect.y );
+	AddVertex( rect.x+rect.w, rect.y+rect.h );
+	AddVertex( rect.x, rect.y + rect.h );
+}
+
+void GwenRenderer::StartClip()
+{
+	Flush();
+	Gwen::Rect rect = ClipRegion();
+
+	// OpenGL's coords are from the bottom left
+	// so we need to translate them here.
+	{
+		GLint view[4];
+		glGetIntegerv( GL_VIEWPORT, &view[0] );
+		rect.y = view[3] - (rect.y + rect.h);
+	}
+
+	glScissor( rect.x * Scale(), rect.y * Scale(), rect.w * Scale(), rect.h * Scale() );
+	glEnable( GL_SCISSOR_TEST );
+}
+
+void GwenRenderer::EndClip()
+{
+	Flush();
+	glDisable( GL_SCISSOR_TEST );
+}
+
+void GwenRenderer::LoadTexture( Gwen::Texture* texture )
+{
+	const int texID = GetTextureReference(texture->name.Get());
+	if (texID < 0)
+	{
+		texture->failed = true;
+	}
+	else
+	{
+		texture->failed = false;
+		texture->data = (void*)texID;
+		const Vec2i dimensions = GetTextureSize(texture->name.Get());
+		texture->width = dimensions.X;
+		texture->height = dimensions.Y;
+	}
+}
+
+void GwenRenderer::FreeTexture( Gwen::Texture* texture )
+{
+	PurgeTexture(texture->name.Get());
+}
+
+void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRect, float u1, float v1, float u2, float v2)
+{
+
+}
+
+void GwenRenderer::DrawMissingImage( Gwen::Rect targetRect )
+{
+
+}
+
+Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, unsigned int y, const Gwen::Color& col_default)
+{
+    return col_default;
+}
+
+Gwen::Renderer::ICacheToTexture* GwenRenderer::GetCTT()
+{
+    return NULL;
+}
+
+void GwenRenderer::LoadFont( Gwen::Font* font )
+{
+
+}
+
+void GwenRenderer::FreeFont( Gwen::Font* font )
+{
+
+}
+
+void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::UnicodeString& text )
+{
+
+}
+
+Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeString& text )
+{
+    return Gwen::Point();
+}
+
+//
+// No need to implement these functions in your derived class, but if 
+// you can do them faster than the default implementation it's a good idea to.
+//
+/*
+void GwenRenderer::DrawLinedRect( Gwen::Rect rect )
+{
+
+}
+void GwenRenderer::DrawPixel( int x, int y )
+{
+
+}
+void GwenRenderer::DrawShavedCornerRect( Gwen::Rect rect, bool bSlight = false )
+{
+
+}
+Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::String& text )
+{
+
+}
+void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::String& text )
+{
+
+}
+*/
