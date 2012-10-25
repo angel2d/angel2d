@@ -48,6 +48,7 @@
 #include "../Scripting/LuaModule.h"
 #include "../Infrastructure/Preferences.h"
 #include "../Infrastructure/SoundDevice.h"
+#include "../UI/UserInterface.h"
 
 #include <algorithm>
 
@@ -558,6 +559,8 @@ void World::Render()
 
 	//Render debug information
 	theSpatialGraph.Render();
+
+	UserInterface::Render();
 
 	DrawDebugItems();
 

@@ -36,7 +36,10 @@ public:
     static void Prep();
     static void Initialize();
     static void Finalize();
+
+	static void Render();
     
 private:
+	static bool isInitialized;
     static GwenRenderer* _renderer;
 };

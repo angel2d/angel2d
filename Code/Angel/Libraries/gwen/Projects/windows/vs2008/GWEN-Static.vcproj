@@ -137,7 +137,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\gwen_staticd"
+				OutputFile="$(OutDir)\gwen_staticd.lib"
 				AdditionalLibraryDirectories="..\..\..\lib;..\..\..\lib\windows"
 			/>
 			<Tool

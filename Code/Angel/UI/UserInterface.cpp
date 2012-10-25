@@ -28,7 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "UserInterface.h"
+#include "../UI/UserInterface.h"
+
+#include "../UI/GwenRenderer.h"
 
 #include "Gwen/Gwen.h"
 #include "Gwen/Skins/Simple.h"
@@ -36,20 +38,36 @@
 #include "Gwen/Controls/Button.h"
 
 GwenRenderer* UserInterface::_renderer = NULL;
+bool UserInterface::isInitialized = false;
+
+namespace 
+{
+	Gwen::Controls::Canvas* AngelCanvas;
+	Gwen::Skin::Simple AngelSkin;
+}
 
 void UserInterface::Initialize()
 {
-//    UserInterface::_renderer = new GwenRenderer();
-//    
-//    Gwen::Skin::Simple skin;
-//    skin.SetRender(_renderer);
-//    
-//    Gwen::Controls::Canvas* canvas = new Gwen::Controls::Canvas(&skin);
-//    canvas->SetSize(1024, 768); // should be size of window (update when change)
-//    
-//    Gwen::Controls::Button* button = new Gwen::Controls::Button(canvas);
-//    button->SetBounds(10, 10, 200, 100);
-//    button->SetText("Angelic Button");
+    UserInterface::_renderer = new GwenRenderer();
     
-    // in renderloop: canvas->RenderCanvas();
+    AngelSkin.SetRender(_renderer);
+    
+    AngelCanvas = new Gwen::Controls::Canvas(&AngelSkin);
+    AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
+    
+    Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
+    button->SetBounds(10, 10, 200, 100);
+    button->SetText("Angelic Button");
+
+	isInitialized = true;
+}
+
+void UserInterface::Render()
+{
+	if (!isInitialized)
+	{
+		return;
+	}
+
+	AngelCanvas->RenderCanvas();
 }

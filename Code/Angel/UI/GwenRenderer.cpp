@@ -28,7 +28,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "GwenRenderer.h"
+#include "../UI/GwenRenderer.h"
 
 #include "Gwen/Utility.h"
 #include "Gwen/Font.h"
@@ -36,6 +36,7 @@
 #include "Gwen/WindowProvider.h"
 
 #include "../Infrastructure/Textures.h"
+#include "../Infrastructure/TextRendering.h"
 
 GwenRenderer::GwenRenderer()
 {
@@ -167,6 +168,7 @@ void GwenRenderer::LoadTexture( Gwen::Texture* texture )
 	if (texID < 0)
 	{
 		texture->failed = true;
+		texture->data = 0;
 	}
 	else
 	{
@@ -185,42 +187,105 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRect, float u1, float v1, float u2, float v2)
 {
+	GLuint* tex = (GLuint*)texture->data;
 
+	if (!tex)
+	{
+		return DrawMissingImage(targetRect);
+	}
+
+	Translate(targetRect);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *tex);
+
+	AddVertex( targetRect.x, targetRect.y,			u1, v1 );
+	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
+	AddVertex( targetRect.x, targetRect.y + targetRect.h,	u1, v2 );
+
+	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
+	AddVertex( targetRect.x+targetRect.w, targetRect.y+targetRect.h, u2, v2 );
+	AddVertex( targetRect.x, targetRect.y + targetRect.h, u1, v2 );	
 }
 
-void GwenRenderer::DrawMissingImage( Gwen::Rect targetRect )
-{
-
-}
+//void GwenRenderer::DrawMissingImage( Gwen::Rect targetRect )
+//{
+//
+//}
 
 Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, unsigned int y, const Gwen::Color& col_default)
 {
-    return col_default;
+	GLuint* tex = (GLuint*)texture->data;
+	if ( !tex ) return col_default;
+
+	unsigned int pixelSize = sizeof(unsigned char) * 4;
+
+	glBindTexture( GL_TEXTURE_2D, *tex );
+
+	unsigned char* data = (unsigned char*) malloc( pixelSize * texture->width * texture->height );
+
+	glGetTexImage( GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+	unsigned int offset = (y * texture->width + x) * 4;
+
+	Gwen::Color c;
+	c.r = data[0 + offset];
+	c.g = data[1 + offset];
+	c.b = data[2 + offset];
+	c.a = data[3 + offset];
+
+	//
+	// Retrieving the entire texture for a single pixel read
+	// is kind of a waste - maybe cache this pointer in the texture
+	// data and then release later on? It's never called during runtime
+	// - only during initialization.
+	//
+	free( data );
+
+	return c;
 }
 
-Gwen::Renderer::ICacheToTexture* GwenRenderer::GetCTT()
-{
-    return NULL;
-}
+//Gwen::Renderer::ICacheToTexture* GwenRenderer::GetCTT()
+//{
+//    return NULL;
+//}
 
 void GwenRenderer::LoadFont( Gwen::Font* font )
 {
-
+	font->realsize = font->size * Scale();
+	String fontName = Gwen::Utility::UnicodeToString(font->facename);
+	_unicodeCache[font->facename] = fontName;
+	if (!IsFontRegistered(fontName))
+	{
+		if (RegisterFont(fontName, font->realsize, fontName))
+		{
+			font->data = (void*)1;
+		}
+		else
+		{
+			font->data = NULL;
+		}
+	}
 }
 
 void GwenRenderer::FreeFont( Gwen::Font* font )
 {
-
+	std::map<Gwen::UnicodeString, String>::iterator it = _unicodeCache.find(font->facename);
+	if (it != _unicodeCache.end())
+	{
+		UnRegisterFont(it->second);
+	}
 }
 
 void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::UnicodeString& text )
 {
-
+	DrawGameText(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
 }
 
 Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeString& text )
 {
-    return Gwen::Point();
+	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
+    return Gwen::Point((int)extents.X, (int)extents.Y);
 }
 
 //

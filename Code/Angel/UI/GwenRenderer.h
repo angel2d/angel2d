@@ -29,6 +29,8 @@
 
 #pragma once
 
+#include "../Util/StringUtil.h"
+
 #include "Gwen/Gwen.h"
 
 class GwenRenderer : public Gwen::Renderer::Base
@@ -52,10 +54,10 @@ public:
 	virtual void LoadTexture( Gwen::Texture* pTexture );
 	virtual void FreeTexture( Gwen::Texture* pTexture );
 	virtual void DrawTexturedRect( Gwen::Texture* pTexture, Gwen::Rect pTargetRect, float u1=0.0f, float v1=0.0f, float u2=1.0f, float v2=1.0f );
-	virtual void DrawMissingImage( Gwen::Rect pTargetRect );
+	//virtual void DrawMissingImage( Gwen::Rect pTargetRect );
 	virtual Gwen::Color PixelColour( Gwen::Texture* pTexture, unsigned int x, unsigned int y, const Gwen::Color& col_default = Gwen::Color( 255, 255, 255, 255 ) );
 
-	virtual Gwen::Renderer::ICacheToTexture* GetCTT();
+	//virtual Gwen::Renderer::ICacheToTexture* GetCTT();
 
 	virtual void LoadFont( Gwen::Font* pFont );
 	virtual void FreeFont( Gwen::Font* pFont );
@@ -88,4 +90,6 @@ private:
 	Gwen::Color			_color;
 	int					_vertNum;
     Vertex              _vertices[ s_maxVerts ];
+
+	std::map<Gwen::UnicodeString, String> _unicodeCache;
 };
