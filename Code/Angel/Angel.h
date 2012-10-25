@@ -1282,6 +1282,8 @@
 #include "Messaging/Message.h"
 #include "Messaging/Switchboard.h"
 
+#include "UI/UserInterface.h"
+
 #include "Util/DrawUtil.h"
 #include "Util/FileUtil.h"
 #include "Util/MathUtil.h"

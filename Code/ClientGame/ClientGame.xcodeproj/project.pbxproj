@@ -126,6 +126,13 @@
 			remoteGlobalIDString = 3401560615A918BF00E4C8BF;
 			remoteInfo = LuaExe;
 		};
+		34FB48A71639001B002EB836 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E3171527632500BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34FB467C1638F773002EB836;
+			remoteInfo = GWEN;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -296,6 +303,7 @@
 				34A6E32D1527632500BEA400 /* libVorbis.a */,
 				34A6E32F1527632500BEA400 /* libOgg.a */,
 				34A6E3311527632500BEA400 /* libGLFW.a */,
+				34FB48A81639001B002EB836 /* libGWEN.a */,
 				34A6E3331527632500BEA400 /* libFTGL.a */,
 				34A6E3351527632500BEA400 /* libFreeType.a */,
 				34A6E3371527632500BEA400 /* libHIDUtilities.a */,
@@ -439,6 +447,13 @@
 			remoteRef = 34A6E33A1527632500BEA400 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		34FB48A81639001B002EB836 /* libGWEN.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGWEN.a;
+			remoteRef = 34FB48A71639001B002EB836 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -543,7 +558,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/gwen/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
@@ -574,7 +589,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-2.7.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/gwen/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
 					"\"$(PROJECT_DIR)/../Angel\"",

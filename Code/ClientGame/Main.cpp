@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 	//YOUR GAME SETUP CODE HERE
 	
 	
-	
+    UserInterface::Initialize();
     
 
 	
