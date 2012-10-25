@@ -561,7 +561,7 @@ void SpatialGraph::ComputeNeighbors( SpatialGraphKDNode* node )
 	Vector2 checkE = Vector2::UnitX * _smallestDimensions.X;
 	Vector2 checkW = Vector2::UnitX * -_smallestDimensions.X;
 
-	Vector2 centroid = node->BBox.Centroid();
+	/* Vector2 centroid = */ node->BBox.Centroid();
 
 	Vector2List gridPoints;
 	int xPoints, yPoints;

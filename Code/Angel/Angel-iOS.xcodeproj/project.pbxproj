@@ -2728,6 +2728,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
 					"\"$(PROJECT_DIR)/Libraries/FTGLES/ftgles\"",
@@ -2745,6 +2746,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
 					"\"$(PROJECT_DIR)/Libraries/FTGLES/ftgles\"",

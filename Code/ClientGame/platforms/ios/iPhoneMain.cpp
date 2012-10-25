@@ -12,8 +12,8 @@ void AngelGameInit()
 {
 	//adds a grid so you can more easily place Actors
 	GridActor *g = new GridActor();
-	g->SetMinCoord(Vector2(-15, -15));
-	g->SetMaxCoord(Vector2(15, 15));
+	g->SetMinCoord(Vector2(-20, -15));
+	g->SetMaxCoord(Vector2( 20,  15));
 	theWorld.Add(g, -1);
 	
 	

@@ -2858,7 +2858,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Infrastructure/stdafx.h;
-				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
@@ -2889,7 +2888,6 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Infrastructure/stdafx.h;
-				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",

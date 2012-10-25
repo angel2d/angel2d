@@ -438,7 +438,7 @@ void Console::Render()
 		while (it != _buffer.begin())
 		{
 			it--;
-			Vector2 textSize = DrawGameText( *it, "ConsoleSmall", sLogXPos, logYPos );
+			/* Vector2 textSize = */ DrawGameText( *it, "ConsoleSmall", sLogXPos, logYPos );
 			logYPos -= (int)_lineHeight + sTextBoxBorder;
 		}
 	}
