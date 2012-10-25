@@ -37,6 +37,7 @@
 
 #include "../Infrastructure/Textures.h"
 #include "../Infrastructure/TextRendering.h"
+#include "../Infrastructure/Camera.h"
 
 GwenRenderer::GwenRenderer()
 {
@@ -61,12 +62,33 @@ void GwenRenderer::Init()
 
 void GwenRenderer::Begin()
 {
-	// glAlphaFunc( GL_GREATER, 1.0f );	
+	glAlphaFunc( GL_GREATER, 1.0f );
+
+	Vec2i winDimensions;
+	winDimensions.X = theCamera.GetWindowWidth();
+	winDimensions.Y = theCamera.GetWindowHeight();
+	
+	//set up projection
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0, winDimensions.X, 0, winDimensions.Y);
+	
+	//set up modelview
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
 }
 
 void GwenRenderer::End()
 {
 	Flush();
+	glAlphaFunc(GL_ALWAYS, 0.0f);
+
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void GwenRenderer::Flush()
@@ -88,7 +110,7 @@ void GwenRenderer::Flush()
 	glDrawArrays( GL_TRIANGLES, 0, (GLsizei) _vertNum );
 
 	_vertNum = 0;
-	glFlush();
+//	glFlush();
 }
 
 void GwenRenderer::AddVertex(int x, int y, float u, float v)
@@ -284,6 +306,10 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
 
 Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeString& text )
 {
+	if (font->data == NULL)
+	{
+		LoadFont(font);
+	}
 	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
     return Gwen::Point((int)extents.X, (int)extents.Y);
 }

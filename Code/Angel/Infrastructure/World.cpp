@@ -49,6 +49,7 @@
 #include "../Infrastructure/Preferences.h"
 #include "../Infrastructure/SoundDevice.h"
 #include "../UI/UserInterface.h"
+#include "../Util/DrawUtil.h"
 
 #include <algorithm>
 
@@ -561,6 +562,7 @@ void World::Render()
 	theSpatialGraph.Render();
 
 	UserInterface::Render();
+	HandleGLErrors();
 
 	DrawDebugItems();
 

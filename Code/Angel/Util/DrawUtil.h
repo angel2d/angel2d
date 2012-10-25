@@ -63,4 +63,7 @@ void DrawPoint( const Vector2& point, float size );
  */
 void DrawLine( const Vector2& from, const Vector2& to );
 
-
+/**
+ * Checks for OpenGL errors and prints any found to the log.
+ */
+void HandleGLErrors();

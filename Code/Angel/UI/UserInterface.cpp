@@ -51,6 +51,7 @@ void UserInterface::Initialize()
     UserInterface::_renderer = new GwenRenderer();
     
     AngelSkin.SetRender(_renderer);
+	AngelSkin.SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"));
     
     AngelCanvas = new Gwen::Controls::Canvas(&AngelSkin);
     AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
