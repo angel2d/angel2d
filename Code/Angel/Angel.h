@@ -85,7 +85,7 @@
  *      They all include their distributed documentation and appropriate 
  *      website links.
  *      - Box2D: Physics \n
- *        (http://www.box2d.com)
+ *        (http://box2d.org)
  *      - DevIL: Image loading \n
  *        (http://openil.sourceforge.net)
  *      - FMOD: Sound \n
