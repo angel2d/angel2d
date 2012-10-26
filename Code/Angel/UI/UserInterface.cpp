@@ -53,6 +53,7 @@ EventHandler handler;
 
 GwenRenderer* UserInterface::_renderer = NULL;
 bool UserInterface::isInitialized = false;
+Vec2i UserInterface::_mousePosition;
 
 namespace 
 {
@@ -60,8 +61,23 @@ namespace
 	Gwen::Skin::Simple* AngelSkin;
 }
 
+UserInterface::UserInterface()
+{
+	isInitialized = false;
+}
+
+UserInterface::~UserInterface()
+{
+	if (isInitialized)
+	{
+		Finalize();
+	}
+}
+
 void UserInterface::Initialize()
 {
+	glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
+
 	UserInterface::_renderer = new GwenRenderer();
 	
 	AngelSkin = new Gwen::Skin::Simple();
@@ -100,19 +116,26 @@ void UserInterface::Render()
 	AngelCanvas->RenderCanvas();
 }
 
-void UserInterface::HandleMouseMoved(int x, int y, int deltaX, int deltaY)
+void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 {
-	AngelCanvas->InputMouseMoved(x, y, deltaX, deltaY);
+	int deltaX = _mousePosition.X - screenCoordinates.X;
+	int deltaY = _mousePosition.Y - screenCoordinates.Y;
+	AngelCanvas->InputMouseMoved(screenCoordinates.X, screenCoordinates.Y, deltaX, deltaY);
 }
 
-void UserInterface::HandleMouseButton(int button, bool down)
+void UserInterface::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
-    AngelCanvas->InputMouseButton(button, down);
+	AngelCanvas->InputMouseButton(button, true);
 }
 
-void UserInterface::HandleMouseWheel(int val)
+void UserInterface::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
-    AngelCanvas->InputMouseWheel(val);
+	AngelCanvas->InputMouseButton(button, false);
+}
+
+void UserInterface::MouseWheelEvent(int position)
+{
+	AngelCanvas->InputMouseWheel(position);
 }
 
 void UserInterface::HandleKey(int key, bool down)

@@ -29,24 +29,34 @@
 
 #pragma once
 
+#include "../Input/MouseInput.h"
+
 class GwenRenderer;
 
-class UserInterface {
+class UserInterface : public MouseListener 
+{
 public:
+	UserInterface();
+	~UserInterface();
+
     static void Prep();
     static void Initialize();
     static void Finalize();
 
 	static void Render();
     
-    void HandleMouseMoved(int x, int y, int deltaX, int deltaY);
-    void HandleMouseButton(int button, bool down);
-    void HandleMouseWheel(int val);
-    void HandleKey(int key, bool down);
+	virtual void MouseMotionEvent(Vec2i screenCoordinates);
+	virtual void MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button);
+	virtual void MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button);
+	virtual void MouseWheelEvent(int position);
+    
+	void HandleKey(int key, bool down);
     void HandleCharacter(wchar_t chr);
     
     
 private:
 	static bool isInitialized;
     static GwenRenderer* _renderer;
+
+	static Vec2i _mousePosition;
 };
