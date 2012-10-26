@@ -58,7 +58,7 @@ void UserInterface::Initialize()
     AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
     
     Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-    button->SetBounds(10, 10, 200, 100);
+    button->SetBounds(1024 / 2, 768 / 2, 200, 100);
     button->SetText("Angelic Button");
 
 	isInitialized = true;

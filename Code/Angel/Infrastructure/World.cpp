@@ -563,7 +563,6 @@ void World::Render()
 	theSpatialGraph.Render();
 
 	UserInterface::Render();
-	HandleGLErrors();
 
 	DrawDebugItems();
 
@@ -571,6 +570,8 @@ void World::Render()
 		//Draw developer console
 		_console->Render();
 	#endif
+    
+    HandleGLErrors();
 }
 
 void World::CleanupRenderables()

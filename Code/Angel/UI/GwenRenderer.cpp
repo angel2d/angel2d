@@ -85,6 +85,8 @@ void GwenRenderer::End()
 	Flush();
 	glAlphaFunc(GL_ALWAYS, 0.0f);
 
+    glDisableClientState( GL_COLOR_ARRAY );
+    
 	glPopMatrix();
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -110,7 +112,6 @@ void GwenRenderer::Flush()
 	glDrawArrays( GL_TRIANGLES, 0, (GLsizei) _vertNum );
 
 	_vertNum = 0;
-//	glFlush();
 }
 
 void GwenRenderer::AddVertex(int x, int y, float u, float v)
@@ -163,16 +164,18 @@ void GwenRenderer::DrawFilledRect( Gwen::Rect rect )
 
 void GwenRenderer::StartClip()
 {
+    return;
+    
 	Flush();
 	Gwen::Rect rect = ClipRegion();
 
 	// OpenGL's coords are from the bottom left
 	// so we need to translate them here.
-	{
-		GLint view[4];
-		glGetIntegerv( GL_VIEWPORT, &view[0] );
-		rect.y = view[3] - (rect.y + rect.h);
-	}
+//	{
+//		GLint view[4];
+//		glGetIntegerv( GL_VIEWPORT, &view[0] );
+//		rect.y = view[3] - (rect.y + rect.h);
+//	}
 
 	glScissor( rect.x * Scale(), rect.y * Scale(), rect.w * Scale(), rect.h * Scale() );
 	glEnable( GL_SCISSOR_TEST );
@@ -180,6 +183,7 @@ void GwenRenderer::StartClip()
 
 void GwenRenderer::EndClip()
 {
+    return;
 	Flush();
 	glDisable( GL_SCISSOR_TEST );
 }
@@ -209,25 +213,25 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRect, float u1, float v1, float u2, float v2)
 {
-	GLuint* tex = (GLuint*)texture->data;
-
-	if (!tex)
-	{
-		return DrawMissingImage(targetRect);
-	}
-
-	Translate(targetRect);
-
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *tex);
-
-	AddVertex( targetRect.x, targetRect.y,			u1, v1 );
-	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
-	AddVertex( targetRect.x, targetRect.y + targetRect.h,	u1, v2 );
-
-	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
-	AddVertex( targetRect.x+targetRect.w, targetRect.y+targetRect.h, u2, v2 );
-	AddVertex( targetRect.x, targetRect.y + targetRect.h, u1, v2 );	
+//	GLuint* tex = (GLuint*)texture->data;
+//
+//	if (!tex)
+//	{
+//		return DrawMissingImage(targetRect);
+//	}
+//
+//	Translate(targetRect);
+//
+//	glEnable(GL_TEXTURE_2D);
+//	glBindTexture(GL_TEXTURE_2D, *tex);
+//
+//	AddVertex( targetRect.x, targetRect.y,			u1, v1 );
+//	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
+//	AddVertex( targetRect.x, targetRect.y + targetRect.h,	u1, v2 );
+//
+//	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
+//	AddVertex( targetRect.x+targetRect.w, targetRect.y+targetRect.h, u2, v2 );
+//	AddVertex( targetRect.x, targetRect.y + targetRect.h, u1, v2 );	
 }
 
 //void GwenRenderer::DrawMissingImage( Gwen::Rect targetRect )
@@ -301,7 +305,9 @@ void GwenRenderer::FreeFont( Gwen::Font* font )
 
 void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::UnicodeString& text )
 {
-	DrawGameText(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
+    Translate(pos.x, pos.y);
+    glColor4ubv( (GLubyte*)&_color );
+	DrawGameTextRaw(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
 }
 
 Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeString& text )

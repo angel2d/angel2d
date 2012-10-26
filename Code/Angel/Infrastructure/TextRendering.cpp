@@ -149,6 +149,37 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 	return forReturn;
 }
 
+Vector2 DrawGameTextRaw(const String& text, const String& nickname, int pixelX, int pixelY, float angle)
+{
+    Vector2 forReturn;
+    
+	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
+	if (it == _fontCache.end())
+	{
+		return forReturn;
+	}
+    
+    glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+    
+    glTranslatef((GLfloat)pixelX, (GLfloat)pixelY, 0.0f);
+	glRotatef(angle, 0.0f, 0.0f, 1.0f);
+    
+	glEnable(GL_TEXTURE_2D);
+	glDisable(GL_DEPTH_TEST);
+	it->second->Render(text.c_str());
+	glDisable(GL_TEXTURE_2D);
+	glEnable(GL_DEPTH_TEST);
+    
+    glPopMatrix();
+    
+    float llx, lly, llz, urx, ury, urz;
+	it->second->BBox(text.c_str(), llx, lly, llz, urx, ury, urz);
+	forReturn.X = urx - llx;
+	forReturn.Y = ury - lly;
+	return forReturn;
+}
+
 Vector2 GetTextExtents(const String& text, const String& nickname)
 {
 	Vector2 forReturn;
