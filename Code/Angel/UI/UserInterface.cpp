@@ -37,6 +37,20 @@
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
 
+#include "../Infrastructure/Log.h"
+
+
+class EventHandler : public Gwen::Event::Handler
+{
+public:
+	void OnPress(Gwen::Controls::Base* control)
+	{
+		sysLog.Printf("Button pressed!");
+	}
+};
+
+EventHandler handler;
+
 GwenRenderer* UserInterface::_renderer = NULL;
 bool UserInterface::isInitialized = false;
 
@@ -48,29 +62,31 @@ namespace
 
 void UserInterface::Initialize()
 {
-    UserInterface::_renderer = new GwenRenderer();
-    
-    AngelSkin = new Gwen::Skin::Simple();
-    AngelSkin->SetRender(_renderer);
+	UserInterface::_renderer = new GwenRenderer();
+	
+	AngelSkin = new Gwen::Skin::Simple();
+	AngelSkin->SetRender(_renderer);
 	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"));
-    
-    AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
-    AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
-    
-    Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-    button->SetBounds(1024 / 2, 768 / 2, 200, 100);
-    button->SetText("Angelic Button");
+	
+	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
+	AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
+	
+	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
+//    button->SetBounds(1024 / 2, 768 / 2, 20, 10);
+	button->SetText("Angelic Button");
+	button->SetPos(1024 / 2 - (button->GetSize().x / 2), 768 / 2 - (button->GetSize().y / 2));
+	button->onPress.Add(&handler, &EventHandler::OnPress);
 
 	isInitialized = true;
 }
 
 void UserInterface::Finalize()
 {
-    delete AngelCanvas;
-    delete AngelSkin;
-    
-    delete _renderer;
-    isInitialized = false;
+	delete AngelCanvas;
+	delete AngelSkin;
+	
+	delete _renderer;
+	isInitialized = false;
 }
 
 void UserInterface::Render()
@@ -80,5 +96,33 @@ void UserInterface::Render()
 		return;
 	}
 
+	AngelCanvas->DoThink();
 	AngelCanvas->RenderCanvas();
 }
+
+void UserInterface::HandleMouseMoved(int x, int y, int deltaX, int deltaY)
+{
+	AngelCanvas->InputMouseMoved(x, y, deltaX, deltaY);
+}
+
+void UserInterface::HandleMouseButton(int button, bool down)
+{
+    AngelCanvas->InputMouseButton(button, down);
+}
+
+void UserInterface::HandleMouseWheel(int val)
+{
+    AngelCanvas->InputMouseWheel(val);
+}
+
+void UserInterface::HandleKey(int key, bool down)
+{
+    AngelCanvas->InputKey(key, down);
+}
+
+void UserInterface::HandleCharacter(wchar_t chr)
+{
+    AngelCanvas->InputCharacter(chr);
+}
+
+

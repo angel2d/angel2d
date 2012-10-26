@@ -39,6 +39,13 @@ public:
 
 	static void Render();
     
+    void HandleMouseMoved(int x, int y, int deltaX, int deltaY);
+    void HandleMouseButton(int button, bool down);
+    void HandleMouseWheel(int val);
+    void HandleKey(int key, bool down);
+    void HandleCharacter(wchar_t chr);
+    
+    
 private:
 	static bool isInitialized;
     static GwenRenderer* _renderer;

@@ -38,6 +38,7 @@
 #include "../Infrastructure/Textures.h"
 #include "../Infrastructure/TextRendering.h"
 #include "../Infrastructure/Camera.h"
+#include "../Infrastructure/Log.h"
 
 GwenRenderer::GwenRenderer()
 {
@@ -213,25 +214,25 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRect, float u1, float v1, float u2, float v2)
 {
-//	GLuint* tex = (GLuint*)texture->data;
-//
-//	if (!tex)
-//	{
-//		return DrawMissingImage(targetRect);
-//	}
-//
-//	Translate(targetRect);
-//
-//	glEnable(GL_TEXTURE_2D);
-//	glBindTexture(GL_TEXTURE_2D, *tex);
-//
-//	AddVertex( targetRect.x, targetRect.y,			u1, v1 );
-//	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
-//	AddVertex( targetRect.x, targetRect.y + targetRect.h,	u1, v2 );
-//
-//	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
-//	AddVertex( targetRect.x+targetRect.w, targetRect.y+targetRect.h, u2, v2 );
-//	AddVertex( targetRect.x, targetRect.y + targetRect.h, u1, v2 );	
+	GLuint* tex = (GLuint*)texture->data;
+
+	if (!tex)
+	{
+		return DrawMissingImage(targetRect);
+	}
+
+	Translate(targetRect);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, *tex);
+
+	AddVertex( targetRect.x, targetRect.y,			u1, v1 );
+	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
+	AddVertex( targetRect.x, targetRect.y + targetRect.h,	u1, v2 );
+
+	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
+	AddVertex( targetRect.x+targetRect.w, targetRect.y+targetRect.h, u2, v2 );
+	AddVertex( targetRect.x, targetRect.y + targetRect.h, u1, v2 );	
 }
 
 //void GwenRenderer::DrawMissingImage( Gwen::Rect targetRect )
@@ -305,8 +306,11 @@ void GwenRenderer::FreeFont( Gwen::Font* font )
 
 void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::UnicodeString& text )
 {
+    Flush();
     Translate(pos.x, pos.y);
     glColor4ubv( (GLubyte*)&_color );
+//    sysLog.Printf("Text color: %i, %i, %i, %i", _color.r, _color.g, _color.b, _color.a);
+//    glColor3f(1.0f, 0.0f, 0.0f);
 	DrawGameTextRaw(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
 }
 

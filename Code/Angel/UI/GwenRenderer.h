@@ -93,3 +93,4 @@ private:
 
 	std::map<Gwen::UnicodeString, String> _unicodeCache;
 };
+
