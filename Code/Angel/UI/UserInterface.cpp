@@ -81,18 +81,18 @@ UserInterface::UserInterface()
 	//AngelSkin->SetRender(_renderer);
 	AngelSkin = new Gwen::Skin::TexturedBase(_renderer);
 	((Gwen::Skin::TexturedBase*)AngelSkin)->Init("Resources/Images/DefaultSkin.png");
-	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20.0f);
+	//AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20.0f);
 	
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
 	AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
 
-    //UnitTest* ut = new UnitTest(AngelCanvas);
+    UnitTest* ut = new UnitTest(AngelCanvas);
     
-	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-	button->SetSize(160, 40);
-	button->SetText("Angelic Button");
-	button->SetPos(100, 100);
-	button->onPress.Add(&handler, &EventHandler::OnPress);
+	//Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
+	//button->SetSize(160, 40);
+	//button->SetText("Angelic Button");
+	//button->SetPos(100, 100);
+	//button->onPress.Add(&handler, &EventHandler::OnPress);
 }
 
 UserInterface::~UserInterface()
