@@ -51,9 +51,6 @@ public:
 
 EventHandler handler;
 
-GwenRenderer* UserInterface::_renderer = NULL;
-bool UserInterface::isInitialized = false;
-Vec2i UserInterface::_mousePosition;
 
 namespace 
 {
@@ -61,24 +58,21 @@ namespace
 	Gwen::Skin::Simple* AngelSkin;
 }
 
+UserInterface* UserInterface::s_UserInterface = NULL;
+
+UserInterface& UserInterface::GetInstance()
+{
+	if (s_UserInterface == NULL)
+	{
+		s_UserInterface = new UserInterface();
+	}
+	return *s_UserInterface;
+}
+
 UserInterface::UserInterface()
 {
-	isInitialized = false;
-}
-
-UserInterface::~UserInterface()
-{
-	if (isInitialized)
-	{
-		Finalize();
-	}
-}
-
-void UserInterface::Initialize()
-{
 	glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
-
-	UserInterface::_renderer = new GwenRenderer();
+	_renderer = new GwenRenderer();
 	
 	AngelSkin = new Gwen::Skin::Simple();
 	AngelSkin->SetRender(_renderer);
@@ -88,30 +82,27 @@ void UserInterface::Initialize()
 	AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
 	
 	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-//    button->SetBounds(1024 / 2, 768 / 2, 20, 10);
+    //    button->SetBounds(1024 / 2, 768 / 2, 20, 10);
 	button->SetText("Angelic Button");
 	button->SetPos(1024 / 2 - (button->GetSize().x / 2), 768 / 2 - (button->GetSize().y / 2));
 	button->onPress.Add(&handler, &EventHandler::OnPress);
-
-	isInitialized = true;
 }
 
-void UserInterface::Finalize()
+UserInterface::~UserInterface()
 {
-	delete AngelCanvas;
+    
+}
+
+void UserInterface::Shutdown()
+{
+    delete AngelCanvas;
 	delete AngelSkin;
 	
 	delete _renderer;
-	isInitialized = false;
 }
 
 void UserInterface::Render()
 {
-	if (!isInitialized)
-	{
-		return;
-	}
-
 	AngelCanvas->DoThink();
 	AngelCanvas->RenderCanvas();
 }
@@ -120,6 +111,8 @@ void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 {
 	int deltaX = _mousePosition.X - screenCoordinates.X;
 	int deltaY = _mousePosition.Y - screenCoordinates.Y;
+    _mousePosition.X = screenCoordinates.X;
+    _mousePosition.Y = screenCoordinates.Y;
 	AngelCanvas->InputMouseMoved(screenCoordinates.X, screenCoordinates.Y, deltaX, deltaY);
 }
 

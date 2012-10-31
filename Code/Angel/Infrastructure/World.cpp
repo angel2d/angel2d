@@ -335,7 +335,8 @@ void World::Destroy()
 	
 	FinalizeTextureLoading();
 	LuaScriptingModule::Finalize();
-    UserInterface::Finalize();
+    
+    theUI.Shutdown();
 }
 
 void World::StartGame()
@@ -562,7 +563,7 @@ void World::Render()
 	//Render debug information
 	theSpatialGraph.Render();
 
-	UserInterface::Render();
+	theUI.Render();
 
 	DrawDebugItems();
 

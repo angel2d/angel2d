@@ -33,17 +33,21 @@
 
 class GwenRenderer;
 
+//singleton shortcut
+#define theUI UserInterface::GetInstance()
+
 class UserInterface : public MouseListener 
 {
 public:
-	UserInterface();
-	~UserInterface();
-
-    static void Prep();
-    static void Initialize();
-    static void Finalize();
-
-	static void Render();
+    /**
+	 * Used to access the singleton instance of this class. As a shortcut,
+	 *  you can just use "theUI".
+	 *
+	 * @return The singleton
+	 */
+	static UserInterface& GetInstance();
+    
+    void Render();
     
 	virtual void MouseMotionEvent(Vec2i screenCoordinates);
 	virtual void MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button);
@@ -53,10 +57,16 @@ public:
 	void HandleKey(int key, bool down);
     void HandleCharacter(wchar_t chr);
     
+    void Shutdown();
     
-private:
-	static bool isInitialized;
-    static GwenRenderer* _renderer;
+protected:
+    UserInterface();
+	~UserInterface();
+    
+    static UserInterface* s_UserInterface;
 
-	static Vec2i _mousePosition;
+private:
+    GwenRenderer* _renderer;
+
+	Vec2i _mousePosition;
 };
