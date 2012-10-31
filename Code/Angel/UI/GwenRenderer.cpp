@@ -87,6 +87,7 @@ void GwenRenderer::End()
 	glAlphaFunc(GL_ALWAYS, 0.0f);
 
     glDisableClientState( GL_COLOR_ARRAY );
+    glDisable(GL_TEXTURE_2D);
     
 	glPopMatrix();
 	glMatrixMode(GL_PROJECTION);
@@ -339,14 +340,6 @@ void GwenRenderer::DrawPixel( int x, int y )
 
 }
 void GwenRenderer::DrawShavedCornerRect( Gwen::Rect rect, bool bSlight = false )
-{
-
-}
-Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::String& text )
-{
-
-}
-void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::String& text )
 {
 
 }

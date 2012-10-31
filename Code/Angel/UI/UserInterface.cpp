@@ -36,8 +36,10 @@
 #include "Gwen/Skins/TexturedBase.h"
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
+#include "Gwen/UnitTest/UnitTest.h"
 
 #include "../Infrastructure/Log.h"
+#include "../Infrastructure/Camera.h"
 
 
 class EventHandler : public Gwen::Event::Handler
@@ -76,16 +78,18 @@ UserInterface::UserInterface()
 	
 	AngelSkin = new Gwen::Skin::TexturedBase(_renderer);
     ((Gwen::Skin::TexturedBase*)AngelSkin)->Init("Resources/Images/DefaultSkin.png");
-	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20.0f);
+//	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20.0f);
 	
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
 	AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
+
+    UnitTest* ut = new UnitTest(AngelCanvas);
     
-	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-    button->SetSize(160, 40);
-	button->SetText("Angelic Button");
-	button->SetPos(1024 / 2 - (button->GetSize().x / 2), 768 / 2 - (button->GetSize().y / 2));
-	button->onPress.Add(&handler, &EventHandler::OnPress);
+//	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
+//    button->SetSize(160, 40);
+//	button->SetText("Angelic Button");
+//	button->SetPos(500, 500);
+//	button->onPress.Add(&handler, &EventHandler::OnPress);
 }
 
 UserInterface::~UserInterface()
@@ -109,6 +113,7 @@ void UserInterface::Render()
 
 void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 {
+    screenCoordinates.Y = theCamera.GetWindowHeight() - screenCoordinates.Y;
 	int deltaX = _mousePosition.X - screenCoordinates.X;
 	int deltaY = _mousePosition.Y - screenCoordinates.Y;
     _mousePosition.X = screenCoordinates.X;
