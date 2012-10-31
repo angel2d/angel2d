@@ -33,7 +33,7 @@
 #include "../UI/GwenRenderer.h"
 
 #include "Gwen/Gwen.h"
-#include "Gwen/Skins/Simple.h"
+#include "Gwen/Skins/TexturedBase.h"
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
 
@@ -55,7 +55,7 @@ EventHandler handler;
 namespace 
 {
 	Gwen::Controls::Canvas* AngelCanvas;
-	Gwen::Skin::Simple* AngelSkin;
+	Gwen::Skin::Base* AngelSkin;
 }
 
 UserInterface* UserInterface::s_UserInterface = NULL;
@@ -74,15 +74,15 @@ UserInterface::UserInterface()
 	glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
 	_renderer = new GwenRenderer();
 	
-	AngelSkin = new Gwen::Skin::Simple();
-	AngelSkin->SetRender(_renderer);
-	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"));
+	AngelSkin = new Gwen::Skin::TexturedBase(_renderer);
+    ((Gwen::Skin::TexturedBase*)AngelSkin)->Init("Resources/Images/DefaultSkin.png");
+	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20.0f);
 	
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
 	AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
-	
+    
 	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-    //    button->SetBounds(1024 / 2, 768 / 2, 20, 10);
+    button->SetSize(160, 40);
 	button->SetText("Angelic Button");
 	button->SetPos(1024 / 2 - (button->GetSize().x / 2), 768 / 2 - (button->GetSize().y / 2));
 	button->onPress.Add(&handler, &EventHandler::OnPress);

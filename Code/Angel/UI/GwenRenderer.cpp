@@ -214,17 +214,20 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRect, float u1, float v1, float u2, float v2)
 {
-	GLuint* tex = (GLuint*)texture->data;
+	GLuint tex = (GLuint)texture->data;
 
 	if (!tex)
 	{
 		return DrawMissingImage(targetRect);
 	}
+    
+    v1 = 1.0f - v1;
+    v2 = 1.0f - v2;
 
 	Translate(targetRect);
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *tex);
+	glBindTexture(GL_TEXTURE_2D, tex);
 
 	AddVertex( targetRect.x, targetRect.y,			u1, v1 );
 	AddVertex( targetRect.x+targetRect.w, targetRect.y,		u2, v1 );
@@ -242,18 +245,18 @@ void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRe
 
 Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, unsigned int y, const Gwen::Color& col_default)
 {
-	GLuint* tex = (GLuint*)texture->data;
+	GLuint tex = (GLuint)texture->data;
 	if ( !tex ) return col_default;
 
 	unsigned int pixelSize = sizeof(unsigned char) * 4;
 
-	glBindTexture( GL_TEXTURE_2D, *tex );
+	glBindTexture( GL_TEXTURE_2D, tex );
 
 	unsigned char* data = (unsigned char*) malloc( pixelSize * texture->width * texture->height );
 
 	glGetTexImage( GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
-	unsigned int offset = (y * texture->width + x) * 4;
+	unsigned int offset = ((texture->height - y) * texture->width + x) * 4;
 
 	Gwen::Color c;
 	c.r = data[0 + offset];
@@ -309,8 +312,6 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
     Flush();
     Translate(pos.x, pos.y);
     glColor4ubv( (GLubyte*)&_color );
-//    sysLog.Printf("Text color: %i, %i, %i, %i", _color.r, _color.g, _color.b, _color.a);
-//    glColor3f(1.0f, 0.0f, 0.0f);
 	DrawGameTextRaw(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
 }
 
