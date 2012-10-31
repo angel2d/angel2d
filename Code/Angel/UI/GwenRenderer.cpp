@@ -312,6 +312,11 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
 {
     Flush();
     Translate(pos.x, pos.y);
+	
+	// UGH there must be a more efficient way to handle this without rewriting the placement functions in gwen
+	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
+	pos.y += extents.Y;
+
     glColor4ubv( (GLubyte*)&_color );
 	DrawGameText(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
 }
