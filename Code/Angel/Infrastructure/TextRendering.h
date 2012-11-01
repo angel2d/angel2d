@@ -93,3 +93,14 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
  *   had drawn it to the screen. 
  */
 Vector2 GetTextExtents(const String& text, const String& nickname);
+
+/**
+ * Gets the standard line height of this font -- the number of pixels vertically 
+ *  occupied by a String containing capital letters. This does not include 
+ *  descenders like the bottom loop of a lowercase "g", only the height from
+ *  the baseline. Useful for laying out multi-line text.
+ * @param nickname The font whose height you want.
+ * @return The number of vertical pixels used. Will return 0 if a font is not
+ *   registered.
+ */
+float GetTextAscenderHeight(const String& nickname);

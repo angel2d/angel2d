@@ -165,3 +165,14 @@ Vector2 GetTextExtents(const String& text, const String& nickname)
 	forReturn.Y = ury - lly;	
 	return forReturn;
 }
+
+float GetTextAscenderHeight(const String& nickname)
+{
+    std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
+	if (it == _fontCache.end())
+	{
+		return 0.0f;
+	}
+    
+    return it->second->Ascender();
+}

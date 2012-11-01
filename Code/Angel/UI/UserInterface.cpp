@@ -151,20 +151,33 @@ void UserInterface::MouseWheelEvent(int position)
 	AngelCanvas->InputMouseWheel(position);
 }
 
+void UserInterface::RemoveUIElement(AngelUIHandle element)
+{
+    std::set<AngelUIHandle>::iterator it = _elements.find(element);
+    if (it != _elements.end())
+    {
+        delete (Gwen::Controls::Base*)(*it);
+        _elements.erase(it);
+    }
+}
+
 AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void (*callback)(), const String& font, Vec2i padding)
 {
 	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-	button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
-	button->SetText(label);
 	if (font != "")
 	{
 		button->SetFont(Gwen::Utility::StringToUnicode(font), 20, false);
 	}
+	button->SetText(label);
+	button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
 	button->SizeToContents();
 	button->SetPos(position.X, position.Y);
+    
 	button->onPress.Add(&handler, &EventHandler::OnPress);
 	handler.AddCallback(button, callback);
 	
+    _elements.insert(button);
+    
 	return button;
 }
 

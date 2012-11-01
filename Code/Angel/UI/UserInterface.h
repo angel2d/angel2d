@@ -63,6 +63,7 @@ public:
     
     void Shutdown();
     
+    void RemoveUIElement(AngelUIHandle element);
     AngelUIHandle AddButton(const String& label, Vec2i position, void (*callback)(), const String& font="", Vec2i padding=Vec2i(10, 10));
     
 protected:
@@ -75,4 +76,6 @@ private:
     GwenRenderer* _renderer;
 
 	Vec2i _mousePosition;
+    
+    std::set<AngelUIHandle> _elements;
 };

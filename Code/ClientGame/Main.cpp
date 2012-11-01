@@ -23,11 +23,8 @@ int main(int argc, char* argv[])
 	theWorld.Add(new GridActor(), -1);
 	
 	//YOUR GAME SETUP CODE HERE
-	theUI.AddButton("TTT", Vec2i(100, 100), ButtonPressed);
-    theUI.AddButton("Tesgt", Vec2i(100, 150), ButtonPressed);
-    theUI.AddButton("gggg", Vec2i(100, 200), ButtonPressed);
-    theUI.AddButton("aceors", Vec2i(100, 250), ButtonPressed);
-	   
+	AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(100, 100), ButtonPressed);
+//    theUI.RemoveUIElement(button);
 
 	
 	
