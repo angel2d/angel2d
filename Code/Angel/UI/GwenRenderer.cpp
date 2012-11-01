@@ -192,18 +192,16 @@ void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRe
 
 void GwenRenderer::StartClip()
 {
-    return;
-    
-	Flush();
+    Flush();
 	Gwen::Rect rect = ClipRegion();
 
 	// OpenGL's coords are from the bottom left
 	// so we need to translate them here.
-//	{
-//		GLint view[4];
-//		glGetIntegerv( GL_VIEWPORT, &view[0] );
-//		rect.y = view[3] - (rect.y + rect.h);
-//	}
+	{
+		GLint view[4];
+		glGetIntegerv( GL_VIEWPORT, &view[0] );
+		rect.y = view[3] - (rect.y + rect.h);
+	}
 
 	glScissor( rect.x * Scale(), rect.y * Scale(), rect.w * Scale(), rect.h * Scale() );
 	glEnable( GL_SCISSOR_TEST );
@@ -211,7 +209,6 @@ void GwenRenderer::StartClip()
 
 void GwenRenderer::EndClip()
 {
-    return;
 	Flush();
 	glDisable( GL_SCISSOR_TEST );
 }
@@ -331,21 +328,3 @@ Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeStri
     return Gwen::Point((int)extents.X, (int)extents.Y);
 }
 
-//
-// No need to implement these functions in your derived class, but if 
-// you can do them faster than the default implementation it's a good idea to.
-//
-/*
-void GwenRenderer::DrawLinedRect( Gwen::Rect rect )
-{
-
-}
-void GwenRenderer::DrawPixel( int x, int y )
-{
-
-}
-void GwenRenderer::DrawShavedCornerRect( Gwen::Rect rect, bool bSlight = false )
-{
-
-}
-*/
