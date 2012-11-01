@@ -33,32 +33,55 @@
 #include "../UI/GwenRenderer.h"
 
 #include "Gwen/Gwen.h"
-#include "Gwen/Skins/TexturedBase.h"
-#include "Gwen/Skins/Simple.h"
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
 #include "Gwen/UnitTest/UnitTest.h"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdangling-else"
+#pragma GCC diagnostic ignored "-Wunused-variable"
+	#include "Gwen/Skins/TexturedBase.h"
+#pragma GCC diagnostic pop
 
 #include "../Infrastructure/Log.h"
 #include "../Infrastructure/Camera.h"
 
 
+
+typedef std::map<AngelUIHandle, void (*)()> EventMapping;
+
 class EventHandler : public Gwen::Event::Handler
 {
 public:
+	void AddCallback(Gwen::Controls::Base* control, void (*callback)())
+	{
+		_callbacks[control] = callback;
+	}
+	
 	void OnPress(Gwen::Controls::Base* control)
 	{
-		sysLog.Printf("Button pressed!");
+		Check(control);
 	}
+	
+private:
+	void Check(Gwen::Controls::Base* control)
+	{
+		EventMapping::iterator it = _callbacks.find(control);
+		if (it != _callbacks.end())
+		{
+			it->second();
+		}
+	}
+	
+	EventMapping _callbacks;
 };
-
-EventHandler handler;
 
 
 namespace 
 {
 	Gwen::Controls::Canvas* AngelCanvas;
 	Gwen::Skin::Base* AngelSkin;
+	
+	EventHandler handler;
 }
 
 UserInterface* UserInterface::s_UserInterface = NULL;
@@ -77,32 +100,22 @@ UserInterface::UserInterface()
 	glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
 	_renderer = new GwenRenderer();
 
-	//AngelSkin = new Gwen::Skin::Simple();
-	//AngelSkin->SetRender(_renderer);
 	AngelSkin = new Gwen::Skin::TexturedBase(_renderer);
 	((Gwen::Skin::TexturedBase*)AngelSkin)->Init("Resources/Images/DefaultSkin.png");
-	//AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20.0f);
+	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20);
 	
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
 	AngelCanvas->SetSize(1024, 768); // should be size of window (update when change)
-
-    UnitTest* ut = new UnitTest(AngelCanvas);
-    
-	//Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
-	//button->SetSize(160, 40);
-	//button->SetText("Angelic Button");
-	//button->SetPos(100, 100);
-	//button->onPress.Add(&handler, &EventHandler::OnPress);
 }
 
 UserInterface::~UserInterface()
 {
-    
+	
 }
 
 void UserInterface::Shutdown()
 {
-    delete AngelCanvas;
+	delete AngelCanvas;
 	delete AngelSkin;
 	
 	delete _renderer;
@@ -118,8 +131,8 @@ void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 {
 	int deltaX = _mousePosition.X - screenCoordinates.X;
 	int deltaY = _mousePosition.Y - screenCoordinates.Y;
-    _mousePosition.X = screenCoordinates.X;
-    _mousePosition.Y = screenCoordinates.Y;
+	_mousePosition.X = screenCoordinates.X;
+	_mousePosition.Y = screenCoordinates.Y;
 	AngelCanvas->InputMouseMoved(screenCoordinates.X, screenCoordinates.Y, deltaX, deltaY);
 }
 
@@ -138,14 +151,20 @@ void UserInterface::MouseWheelEvent(int position)
 	AngelCanvas->InputMouseWheel(position);
 }
 
-void UserInterface::HandleKey(int key, bool down)
+AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void (*callback)(), const String& font, Vec2i padding)
 {
-    AngelCanvas->InputKey(key, down);
+	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
+	button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
+	button->SetText(label);
+	if (font != "")
+	{
+		button->SetFont(Gwen::Utility::StringToUnicode(font), 20, false);
+	}
+	button->SizeToContents();
+	button->SetPos(position.X, position.Y);
+	button->onPress.Add(&handler, &EventHandler::OnPress);
+	handler.AddCallback(button, callback);
+	
+	return button;
 }
-
-void UserInterface::HandleCharacter(wchar_t chr)
-{
-    AngelCanvas->InputCharacter(chr);
-}
-
 

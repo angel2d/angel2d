@@ -39,6 +39,7 @@
 #include "../Infrastructure/TextRendering.h"
 #include "../Infrastructure/Camera.h"
 #include "../Infrastructure/Log.h"
+#include "../Util/MathUtil.h"
 
 GwenRenderer::GwenRenderer()
 {
@@ -325,6 +326,6 @@ Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeStri
 		LoadFont(font);
 	}
 	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
-    return Gwen::Point((int)extents.X, (int)extents.Y);
+    return Gwen::Point(MathUtil::RoundToInt(extents.X), MathUtil::RoundToInt(extents.Y));
 }
 

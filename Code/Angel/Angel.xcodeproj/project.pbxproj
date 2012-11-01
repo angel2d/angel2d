@@ -346,31 +346,6 @@
 		34B9C892150303D00092D6C4 /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B9C891150303D00092D6C4 /* Preferences.cpp */; };
 		34B9C895150303DE0092D6C4 /* Preferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B9C894150303DE0092D6C4 /* Preferences.h */; };
 		34B9C8971503096F0092D6C4 /* LoadedVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = 34B9C8961503096E0092D6C4 /* LoadedVariable.h */; };
-		34D4C0021640CFA100DCBFC8 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFE81640CFA100DCBFC8 /* Button.cpp */; };
-		34D4C0031640CFA100DCBFC8 /* Checkbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFE91640CFA100DCBFC8 /* Checkbox.cpp */; };
-		34D4C0041640CFA100DCBFC8 /* CollapsibleList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFEA1640CFA100DCBFC8 /* CollapsibleList.cpp */; };
-		34D4C0051640CFA100DCBFC8 /* ColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFEB1640CFA100DCBFC8 /* ColorPicker.cpp */; };
-		34D4C0061640CFA100DCBFC8 /* ComboBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFEC1640CFA100DCBFC8 /* ComboBox.cpp */; };
-		34D4C0071640CFA100DCBFC8 /* CrossSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFED1640CFA100DCBFC8 /* CrossSplitter.cpp */; };
-		34D4C0081640CFA100DCBFC8 /* GroupBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFEE1640CFA100DCBFC8 /* GroupBox.cpp */; };
-		34D4C0091640CFA100DCBFC8 /* ImagePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFEF1640CFA100DCBFC8 /* ImagePanel.cpp */; };
-		34D4C00A1640CFA100DCBFC8 /* Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF01640CFA100DCBFC8 /* Label.cpp */; };
-		34D4C00B1640CFA100DCBFC8 /* LabelMultiline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF11640CFA100DCBFC8 /* LabelMultiline.cpp */; };
-		34D4C00C1640CFA100DCBFC8 /* ListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF21640CFA100DCBFC8 /* ListBox.cpp */; };
-		34D4C00D1640CFA100DCBFC8 /* MenuStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF31640CFA100DCBFC8 /* MenuStrip.cpp */; };
-		34D4C00E1640CFA100DCBFC8 /* Numeric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF41640CFA100DCBFC8 /* Numeric.cpp */; };
-		34D4C00F1640CFA100DCBFC8 /* PageControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF51640CFA100DCBFC8 /* PageControl.cpp */; };
-		34D4C0101640CFA100DCBFC8 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF61640CFA100DCBFC8 /* ProgressBar.cpp */; };
-		34D4C0111640CFA100DCBFC8 /* Properties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF71640CFA100DCBFC8 /* Properties.cpp */; };
-		34D4C0121640CFA100DCBFC8 /* RadioButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFF81640CFA100DCBFC8 /* RadioButton.cpp */; };
-		34D4C0131640CFA100DCBFC8 /* ScrollControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFFA1640CFA100DCBFC8 /* ScrollControl.cpp */; };
-		34D4C0141640CFA100DCBFC8 /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFFB1640CFA100DCBFC8 /* Slider.cpp */; };
-		34D4C0151640CFA100DCBFC8 /* StatusBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFFC1640CFA100DCBFC8 /* StatusBar.cpp */; };
-		34D4C0161640CFA100DCBFC8 /* TabControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFFD1640CFA100DCBFC8 /* TabControl.cpp */; };
-		34D4C0171640CFA100DCBFC8 /* TextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFFE1640CFA100DCBFC8 /* TextBox.cpp */; };
-		34D4C0181640CFA100DCBFC8 /* TreeControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4BFFF1640CFA100DCBFC8 /* TreeControl.cpp */; };
-		34D4C0191640CFA100DCBFC8 /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4C0001640CFA100DCBFC8 /* UnitTest.cpp */; };
-		34D4C01A1640CFA100DCBFC8 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D4C0011640CFA100DCBFC8 /* Window.cpp */; };
 		34F03CEB14FB1F6D009A3EC4 /* Box2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F03CEA14FB1F6D009A3EC4 /* Box2D.h */; };
 		34F03CF914FB1F7E009A3EC4 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F03CEC14FB1F7E009A3EC4 /* b2BroadPhase.cpp */; };
 		34F03CFA14FB1F7E009A3EC4 /* b2BroadPhase.h in Headers */ = {isa = PBXBuildFile; fileRef = 34F03CED14FB1F7E009A3EC4 /* b2BroadPhase.h */; };
@@ -1051,32 +1026,6 @@
 		34CCFF3F0E61E40F003772E0 /* color.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = color.i; path = Scripting/Interfaces/color.i; sourceTree = "<group>"; };
 		34CCFFC30E61EA03003772E0 /* messaging.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = messaging.i; path = Scripting/Interfaces/messaging.i; sourceTree = "<group>"; };
 		34D34D980E2C34430053994C /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = /System/Library/Frameworks/ForceFeedback.framework; sourceTree = "<absolute>"; };
-		34D4BFE81640CFA100DCBFC8 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Button.cpp; path = Libraries/gwen/UnitTest/Button.cpp; sourceTree = "<group>"; };
-		34D4BFE91640CFA100DCBFC8 /* Checkbox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Checkbox.cpp; path = Libraries/gwen/UnitTest/Checkbox.cpp; sourceTree = "<group>"; };
-		34D4BFEA1640CFA100DCBFC8 /* CollapsibleList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollapsibleList.cpp; path = Libraries/gwen/UnitTest/CollapsibleList.cpp; sourceTree = "<group>"; };
-		34D4BFEB1640CFA100DCBFC8 /* ColorPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ColorPicker.cpp; path = Libraries/gwen/UnitTest/ColorPicker.cpp; sourceTree = "<group>"; };
-		34D4BFEC1640CFA100DCBFC8 /* ComboBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComboBox.cpp; path = Libraries/gwen/UnitTest/ComboBox.cpp; sourceTree = "<group>"; };
-		34D4BFED1640CFA100DCBFC8 /* CrossSplitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CrossSplitter.cpp; path = Libraries/gwen/UnitTest/CrossSplitter.cpp; sourceTree = "<group>"; };
-		34D4BFEE1640CFA100DCBFC8 /* GroupBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GroupBox.cpp; path = Libraries/gwen/UnitTest/GroupBox.cpp; sourceTree = "<group>"; };
-		34D4BFEF1640CFA100DCBFC8 /* ImagePanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImagePanel.cpp; path = Libraries/gwen/UnitTest/ImagePanel.cpp; sourceTree = "<group>"; };
-		34D4BFF01640CFA100DCBFC8 /* Label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Label.cpp; path = Libraries/gwen/UnitTest/Label.cpp; sourceTree = "<group>"; };
-		34D4BFF11640CFA100DCBFC8 /* LabelMultiline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LabelMultiline.cpp; path = Libraries/gwen/UnitTest/LabelMultiline.cpp; sourceTree = "<group>"; };
-		34D4BFF21640CFA100DCBFC8 /* ListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListBox.cpp; path = Libraries/gwen/UnitTest/ListBox.cpp; sourceTree = "<group>"; };
-		34D4BFF31640CFA100DCBFC8 /* MenuStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuStrip.cpp; path = Libraries/gwen/UnitTest/MenuStrip.cpp; sourceTree = "<group>"; };
-		34D4BFF41640CFA100DCBFC8 /* Numeric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Numeric.cpp; path = Libraries/gwen/UnitTest/Numeric.cpp; sourceTree = "<group>"; };
-		34D4BFF51640CFA100DCBFC8 /* PageControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PageControl.cpp; path = Libraries/gwen/UnitTest/PageControl.cpp; sourceTree = "<group>"; };
-		34D4BFF61640CFA100DCBFC8 /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ProgressBar.cpp; path = Libraries/gwen/UnitTest/ProgressBar.cpp; sourceTree = "<group>"; };
-		34D4BFF71640CFA100DCBFC8 /* Properties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Properties.cpp; path = Libraries/gwen/UnitTest/Properties.cpp; sourceTree = "<group>"; };
-		34D4BFF81640CFA100DCBFC8 /* RadioButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RadioButton.cpp; path = Libraries/gwen/UnitTest/RadioButton.cpp; sourceTree = "<group>"; };
-		34D4BFF91640CFA100DCBFC8 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ReadMe.txt; path = Libraries/gwen/UnitTest/ReadMe.txt; sourceTree = "<group>"; };
-		34D4BFFA1640CFA100DCBFC8 /* ScrollControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollControl.cpp; path = Libraries/gwen/UnitTest/ScrollControl.cpp; sourceTree = "<group>"; };
-		34D4BFFB1640CFA100DCBFC8 /* Slider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Slider.cpp; path = Libraries/gwen/UnitTest/Slider.cpp; sourceTree = "<group>"; };
-		34D4BFFC1640CFA100DCBFC8 /* StatusBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusBar.cpp; path = Libraries/gwen/UnitTest/StatusBar.cpp; sourceTree = "<group>"; };
-		34D4BFFD1640CFA100DCBFC8 /* TabControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TabControl.cpp; path = Libraries/gwen/UnitTest/TabControl.cpp; sourceTree = "<group>"; };
-		34D4BFFE1640CFA100DCBFC8 /* TextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextBox.cpp; path = Libraries/gwen/UnitTest/TextBox.cpp; sourceTree = "<group>"; };
-		34D4BFFF1640CFA100DCBFC8 /* TreeControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TreeControl.cpp; path = Libraries/gwen/UnitTest/TreeControl.cpp; sourceTree = "<group>"; };
-		34D4C0001640CFA100DCBFC8 /* UnitTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UnitTest.cpp; path = Libraries/gwen/UnitTest/UnitTest.cpp; sourceTree = "<group>"; };
-		34D4C0011640CFA100DCBFC8 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = Libraries/gwen/UnitTest/Window.cpp; sourceTree = "<group>"; };
 		34D6B53E11CC79B700D72FE6 /* LuaModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaModule.cpp; path = Scripting/LuaModule.cpp; sourceTree = "<group>"; };
 		34D6B53F11CC79B700D72FE6 /* LuaModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaModule.h; path = Scripting/LuaModule.h; sourceTree = "<group>"; };
 		34D6C2710F96C0EC00430618 /* DebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDraw.h; sourceTree = "<group>"; };
@@ -2129,39 +2078,6 @@
 			name = FTGL;
 			sourceTree = "<group>";
 		};
-		34D4BFE61640CF8F00DCBFC8 /* UnitTest */ = {
-			isa = PBXGroup;
-			children = (
-				34D4BFE81640CFA100DCBFC8 /* Button.cpp */,
-				34D4BFE91640CFA100DCBFC8 /* Checkbox.cpp */,
-				34D4BFEA1640CFA100DCBFC8 /* CollapsibleList.cpp */,
-				34D4BFEB1640CFA100DCBFC8 /* ColorPicker.cpp */,
-				34D4BFEC1640CFA100DCBFC8 /* ComboBox.cpp */,
-				34D4BFED1640CFA100DCBFC8 /* CrossSplitter.cpp */,
-				34D4BFEE1640CFA100DCBFC8 /* GroupBox.cpp */,
-				34D4BFEF1640CFA100DCBFC8 /* ImagePanel.cpp */,
-				34D4BFF01640CFA100DCBFC8 /* Label.cpp */,
-				34D4BFF11640CFA100DCBFC8 /* LabelMultiline.cpp */,
-				34D4BFF21640CFA100DCBFC8 /* ListBox.cpp */,
-				34D4BFF31640CFA100DCBFC8 /* MenuStrip.cpp */,
-				34D4BFF41640CFA100DCBFC8 /* Numeric.cpp */,
-				34D4BFF51640CFA100DCBFC8 /* PageControl.cpp */,
-				34D4BFF61640CFA100DCBFC8 /* ProgressBar.cpp */,
-				34D4BFF71640CFA100DCBFC8 /* Properties.cpp */,
-				34D4BFF81640CFA100DCBFC8 /* RadioButton.cpp */,
-				34D4BFF91640CFA100DCBFC8 /* ReadMe.txt */,
-				34D4BFFA1640CFA100DCBFC8 /* ScrollControl.cpp */,
-				34D4BFFB1640CFA100DCBFC8 /* Slider.cpp */,
-				34D4BFFC1640CFA100DCBFC8 /* StatusBar.cpp */,
-				34D4BFFD1640CFA100DCBFC8 /* TabControl.cpp */,
-				34D4BFFE1640CFA100DCBFC8 /* TextBox.cpp */,
-				34D4BFFF1640CFA100DCBFC8 /* TreeControl.cpp */,
-				34D4C0001640CFA100DCBFC8 /* UnitTest.cpp */,
-				34D4C0011640CFA100DCBFC8 /* Window.cpp */,
-			);
-			name = UnitTest;
-			sourceTree = "<group>";
-		};
 		34DB1B980E441C73006F63F5 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -2450,7 +2366,6 @@
 		34FB47721638FBD9002EB836 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				34D4BFE61640CF8F00DCBFC8 /* UnitTest */,
 				343E2E36163969EE005B5744 /* GwenRenderer.cpp */,
 				343E2E37163969EE005B5744 /* GwenRenderer.h */,
 				34FB47731638FC00002EB836 /* UserInterface.cpp */,
@@ -3445,31 +3360,6 @@
 				34B9C892150303D00092D6C4 /* Preferences.cpp in Sources */,
 				34FB47751638FC00002EB836 /* UserInterface.cpp in Sources */,
 				343E2E38163969EE005B5744 /* GwenRenderer.cpp in Sources */,
-				34D4C0021640CFA100DCBFC8 /* Button.cpp in Sources */,
-				34D4C0031640CFA100DCBFC8 /* Checkbox.cpp in Sources */,
-				34D4C0041640CFA100DCBFC8 /* CollapsibleList.cpp in Sources */,
-				34D4C0051640CFA100DCBFC8 /* ColorPicker.cpp in Sources */,
-				34D4C0061640CFA100DCBFC8 /* ComboBox.cpp in Sources */,
-				34D4C0071640CFA100DCBFC8 /* CrossSplitter.cpp in Sources */,
-				34D4C0081640CFA100DCBFC8 /* GroupBox.cpp in Sources */,
-				34D4C0091640CFA100DCBFC8 /* ImagePanel.cpp in Sources */,
-				34D4C00A1640CFA100DCBFC8 /* Label.cpp in Sources */,
-				34D4C00B1640CFA100DCBFC8 /* LabelMultiline.cpp in Sources */,
-				34D4C00C1640CFA100DCBFC8 /* ListBox.cpp in Sources */,
-				34D4C00D1640CFA100DCBFC8 /* MenuStrip.cpp in Sources */,
-				34D4C00E1640CFA100DCBFC8 /* Numeric.cpp in Sources */,
-				34D4C00F1640CFA100DCBFC8 /* PageControl.cpp in Sources */,
-				34D4C0101640CFA100DCBFC8 /* ProgressBar.cpp in Sources */,
-				34D4C0111640CFA100DCBFC8 /* Properties.cpp in Sources */,
-				34D4C0121640CFA100DCBFC8 /* RadioButton.cpp in Sources */,
-				34D4C0131640CFA100DCBFC8 /* ScrollControl.cpp in Sources */,
-				34D4C0141640CFA100DCBFC8 /* Slider.cpp in Sources */,
-				34D4C0151640CFA100DCBFC8 /* StatusBar.cpp in Sources */,
-				34D4C0161640CFA100DCBFC8 /* TabControl.cpp in Sources */,
-				34D4C0171640CFA100DCBFC8 /* TextBox.cpp in Sources */,
-				34D4C0181640CFA100DCBFC8 /* TreeControl.cpp in Sources */,
-				34D4C0191640CFA100DCBFC8 /* UnitTest.cpp in Sources */,
-				34D4C01A1640CFA100DCBFC8 /* Window.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4165,6 +4055,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/gwen/include\"";
@@ -4182,6 +4073,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/Libraries/gwen/include\"";

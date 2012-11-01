@@ -83,21 +83,6 @@ const bool UnRegisterFont(const String& nickname);
 Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int pixelY, float angle=0.0f);
 
 /**
- * Draw text without doing any transforms beforehand. Must be called every frame,
- *  just like DrawGameText.
- * 
- * @param text The string to write
- * @param nickname The name you've assigned to the font you want to use
- * @param pixelX The X-coordinate (in pixels) to start drawing
- * @param pixelY The Y-coordinate (in pixels) to start drawing
- * @param angle The angle at which to draw the text
- * @return The 2d point (in pixels) representing the bottom-most, right-most point
- *   where you could safely start drawing and not overwrite the string you
- *   just displayed.
- */
-Vector2 DrawGameTextRaw(const String& text, const String& nickname, int pixelX, int pixelY, float angle=0.0f);
-
-/**
  * If you're just interested in how much space a certain string will take up, 
  *  but don't want to bother drawing it, this is the function for you. 
  * 

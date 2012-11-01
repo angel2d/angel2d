@@ -30,11 +30,15 @@
 #pragma once
 
 #include "../Input/MouseInput.h"
+#include "../Util/StringUtil.h"
 
 class GwenRenderer;
 
 //singleton shortcut
 #define theUI UserInterface::GetInstance()
+
+typedef void* AngelUIHandle;
+
 
 class UserInterface : public MouseListener 
 {
@@ -58,6 +62,8 @@ public:
     void HandleCharacter(wchar_t chr);
     
     void Shutdown();
+    
+    AngelUIHandle AddButton(const String& label, Vec2i position, void (*callback)(), const String& font="", Vec2i padding=Vec2i(10, 10));
     
 protected:
     UserInterface();
