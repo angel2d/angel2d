@@ -65,6 +65,7 @@ public:
     
     void RemoveUIElement(AngelUIHandle element);
     AngelUIHandle AddButton(const String& label, Vec2i position, void (*callback)(), const String& font="", Vec2i padding=Vec2i(10, 10));
+	AngelUIHandle ShowChoiceBox(const StringList& labels, Vec2i position, void (*callback)(int), const String& font="", bool modal=true);
     
 protected:
     UserInterface();

@@ -33,12 +33,18 @@
 #include "Gwen/Gwen.h"
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
-#include "Gwen/UnitTest/UnitTest.h"
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdangling-else"
-#pragma GCC diagnostic ignored "-Wunused-variable"
-	#include "Gwen/Skins/TexturedBase.h"
-#pragma GCC diagnostic pop
+#include "Gwen/Controls/GroupBox.h"
+
+#if defined(__APPLE__)
+	// included files from gwen trigger Clang/GCC warnings
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wdangling-else"
+	#pragma GCC diagnostic ignored "-Wunused-variable"
+#endif
+		#include "Gwen/Skins/TexturedBase.h"
+#if defined(__APPLE__)
+	#pragma GCC diagnostic pop
+#endif
 
 #include "../UI/GwenRenderer.h"
 #include "../Infrastructure/Log.h"
@@ -200,3 +206,27 @@ AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void
 	return button;
 }
 
+AngelUIHandle UserInterface::ShowChoiceBox(const StringList& labels, Vec2i position, void (*callback)(int), const String& font, bool modal)
+{
+	Gwen::Controls::GroupBox* box = new Gwen::Controls::GroupBox(AngelCanvas);
+	
+	Gwen::TextObject fontTextObject = Gwen::Utility::StringToUnicode(font);
+
+	for	(unsigned int i=0; i < labels.size(); i++)
+	{
+		Gwen::Controls::Button* button = new Gwen::Controls::Button(box);
+		if (font != "")
+		{
+			button->SetFont(fontTextObject, 20, false);
+		}
+		button->SetText(labels[i]);
+		button->SizeToContents();
+	}
+
+	box->SetPos(position.X, position.Y);
+	box->SizeToContents();
+
+	_elements.insert(box);
+
+	return box;
+}
