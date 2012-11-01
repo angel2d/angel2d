@@ -30,8 +30,6 @@
 #include "stdafx.h"
 #include "../UI/UserInterface.h"
 
-#include "../UI/GwenRenderer.h"
-
 #include "Gwen/Gwen.h"
 #include "Gwen/Controls/Canvas.h"
 #include "Gwen/Controls/Button.h"
@@ -42,9 +40,10 @@
 	#include "Gwen/Skins/TexturedBase.h"
 #pragma GCC diagnostic pop
 
+#include "../UI/GwenRenderer.h"
 #include "../Infrastructure/Log.h"
 #include "../Infrastructure/Camera.h"
-
+#include "../Infrastructure/World.h"
 
 
 typedef std::map<AngelUIHandle, void (*)()> EventMapping;
@@ -129,6 +128,11 @@ void UserInterface::Render()
 
 void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 {
+    if (theWorld.GetConsole()->IsEnabled())
+    {
+        return;
+    }
+    
 	int deltaX = _mousePosition.X - screenCoordinates.X;
 	int deltaY = _mousePosition.Y - screenCoordinates.Y;
 	_mousePosition.X = screenCoordinates.X;
@@ -138,16 +142,31 @@ void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 
 void UserInterface::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
+    if (theWorld.GetConsole()->IsEnabled())
+    {
+        return;
+    }
+    
 	AngelCanvas->InputMouseButton(button, true);
 }
 
 void UserInterface::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
+    if (theWorld.GetConsole()->IsEnabled())
+    {
+        return;
+    }
+    
 	AngelCanvas->InputMouseButton(button, false);
 }
 
 void UserInterface::MouseWheelEvent(int position)
 {
+    if (theWorld.GetConsole()->IsEnabled())
+    {
+        return;
+    }
+    
 	AngelCanvas->InputMouseWheel(position);
 }
 
