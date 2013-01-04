@@ -108,7 +108,7 @@ void DemoScreenUI::Start()
 	t->SetPosition(0, 5.5);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
-    TextActor *t2 = new TextActor("Console", "(It's based on the GWEN UI toolkit, so if you need\nfancier UI functionality it's all there.\nhttps://gwen.googlecode.com)");
+    TextActor *t2 = new TextActor("Console", "(It's based on the GWEN UI toolkit, so if you need\nfancier UI functionality it's all there.\nhttp://gwen.googlecode.com)");
     t2->SetPosition(0, -5.5);
     t2->SetAlignment(TXT_Center);
     theWorld.Add(t2);
