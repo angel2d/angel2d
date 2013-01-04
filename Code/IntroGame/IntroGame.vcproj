@@ -462,6 +462,14 @@
 				RelativePath=".\DemoScreens\DemoScreenTuningVariables.h"
 				>
 			</File>
+			<File
+				RelativePath=".\DemoScreens\DemoScreenUI.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DemoScreens\DemoScreenUI.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Logs"

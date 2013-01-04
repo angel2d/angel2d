@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -64,8 +64,8 @@ public:
     void Shutdown();
     
     void RemoveUIElement(AngelUIHandle element);
-    AngelUIHandle AddButton(const String& label, Vec2i position, void (*callback)(), const String& font="", Vec2i padding=Vec2i(10, 10));
-	AngelUIHandle ShowChoiceBox(const String& choiceLabel, const StringList& labels, Vec2i position, void (*callback)(int), const String& font="", Vec2i padding=Vec2i(10, 10), bool modal=true);
+    AngelUIHandle AddButton(const String& label, Vec2i position, void (*callback)(), bool center = false, const String& font="", Vec2i padding=Vec2i(10, 10));
+	AngelUIHandle ShowChoiceBox(const String& choiceLabel, const StringList& labels, void (*callback)(int), const String& font="", Vec2i padding=Vec2i(10, 10), bool modal=true);
     
     
 protected:

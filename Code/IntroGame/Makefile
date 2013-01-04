@@ -75,6 +75,7 @@ SRCS =								\
 	DemoScreens/DemoScreenSimpleActor.cpp			\
 	DemoScreens/DemoScreenStart.cpp				\
 	DemoScreens/DemoScreenTuningVariables.cpp		\
+	DemoScreens/DemoScreenUI.cpp				\
 	stdafx.cpp						\
 	Main.cpp
 

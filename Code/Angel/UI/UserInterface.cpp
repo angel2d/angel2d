@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -240,7 +240,7 @@ void UserInterface::RemoveUIElement(AngelUIHandle element)
     }
 }
 
-AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void (*callback)(), const String& font, Vec2i padding)
+AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void (*callback)(), bool center, const String& font, Vec2i padding)
 {
 	Gwen::Controls::Button* button = new Gwen::Controls::Button(AngelCanvas);
 	if (font != "")
@@ -250,7 +250,15 @@ AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void
 	button->SetText(label);
 	button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
 	button->SizeToContents();
-	button->SetPos(position.X, position.Y);
+    if (center)
+    {
+        Gwen::Point size = button->GetSize();
+        button->SetPos(position.X - (size.x / 2), position.Y - (size.y / 2));
+    }
+    else
+    {
+        button->SetPos(position.X, position.Y);
+    }
     
 	button->onPress.Add(&handler, &EventHandler::OnPress);
 	handler.AddButtonCallback(button, callback);
@@ -260,7 +268,7 @@ AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void
 	return button;
 }
 
-AngelUIHandle UserInterface::ShowChoiceBox(const String& choiceLabel, const StringList& labels, Vec2i position, void (*callback)(int), const String& font, Vec2i padding, bool modal)
+AngelUIHandle UserInterface::ShowChoiceBox(const String& choiceLabel, const StringList& labels, void (*callback)(int), const String& font, Vec2i padding, bool modal)
 {
 	Gwen::Controls::WindowControl* box = new Gwen::Controls::WindowControl(AngelCanvas);
     

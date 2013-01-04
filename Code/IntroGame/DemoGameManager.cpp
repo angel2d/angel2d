@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -51,6 +51,7 @@
 	#include "DemoScreenTuningVariables.h"
 	#include "DemoScreenImageMap.h"
 	#include "DemoScreenPathfinding.h"
+    #include "DemoScreenUI.h"
 #endif
 
 #include "DemoScreenMobileSimulator.h"
@@ -115,10 +116,11 @@ DemoGameManager::DemoGameManager()
 		_screens.push_back(new DemoScreenIntervals());						//14
 		_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//15
 		_screens.push_back(new DemoScreenConsole());						//16
-		_screens.push_back(new DemoScreenTuningVariables());				//17
-		_screens.push_back(new DemoScreenPathfinding());					//18
-		_screens.push_back(new DemoScreenImageMap());						//19
-		_screens.push_back(new DemoScreenByeBye());							//20
+        _screens.push_back(new DemoScreenUI());                             //17
+		_screens.push_back(new DemoScreenTuningVariables());				//18
+		_screens.push_back(new DemoScreenPathfinding());					//19
+		_screens.push_back(new DemoScreenImageMap());						//20
+		_screens.push_back(new DemoScreenByeBye());							//21
 	#endif
 
 	unsigned int startingIndex = 0;

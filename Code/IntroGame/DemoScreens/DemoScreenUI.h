@@ -27,72 +27,21 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //////////////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h"
-#include "../Util/DrawUtil.h"
+#pragma once
 
-#include "../Infrastructure/Common.h"
-#include "../Infrastructure/Log.h"
+#include "DemoGameManager.h"
 
-void DrawCross( const Vector2& point, float size )
+class DemoScreenUI : public DemoScreen
 {
-	size *= 0.5f;
-	Vector2 north(point + Vector2::UnitY * size );
-	Vector2 south(point - Vector2::UnitY * size );
-	Vector2 east(point + Vector2::UnitX * size );
-	Vector2 west(point - Vector2::UnitX * size );
+public:
+	DemoScreenUI();
 
-	float points[] = {
-		north.X, north.Y,
-		south.X, south.Y,
-		east.X, east.Y,
-		west.X, west.Y,
-	};
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(2, GL_FLOAT, 0, points);
-	glDrawArrays(GL_LINES, 0, 4);
-}
+	virtual void Start();
+    virtual void Stop();
 
-void DrawPoint( const Vector2& point, float size )
-{
-	size *= 0.5f;
-	Vector2 north(point + Vector2::UnitY * size );
-	Vector2 south(point - Vector2::UnitY * size );
-	Vector2 east(point + Vector2::UnitX * size );
-	Vector2 west(point - Vector2::UnitX * size );
-
-	float points[] = {
-		north.X, north.Y,
-		east.X, east.Y,
-		south.X, south.Y,
-		west.X, west.Y,
-	};
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(2, GL_FLOAT, 0, points);
-	glDrawArrays(GL_LINE_LOOP, 0, 4);
-}
-
-void DrawLine( const Vector2& vFrom, const Vector2& vTo )
-{
-	float points[] = {
-		vFrom.X, vFrom.Y,
-		vTo.X, vTo.Y
-	};
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(2, GL_FLOAT, 0, points);
-	glDrawArrays(GL_LINES, 0, 2);
-}
-
-void HandleGLErrors()
-{
-	GLenum errorCode;
-	const GLubyte *errorString;
-	do
-	{
-		errorCode = glGetError();
-		if (errorCode != GL_NO_ERROR)
-		{
-			errorString = gluErrorString(errorCode);
-			sysLog.Printf("OpenGL Error: %s", errorString);
-		}
-	} while (errorCode != GL_NO_ERROR);
-}
+    static TextActor* _output;
+    static AngelUIHandle _choiceBox;
+    
+private:
+    AngelUIHandle _button;
+};
