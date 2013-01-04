@@ -173,9 +173,9 @@ void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRe
 	{
 		return DrawMissingImage(targetRect);
 	}
-    
-    v1 = 1.0f - v1;
-    v2 = 1.0f - v2;
+
+	v1 = 1.0f - v1;
+	v2 = 1.0f - v2;
 
 	Translate(targetRect);
 
@@ -193,7 +193,7 @@ void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRe
 
 void GwenRenderer::StartClip()
 {
-    Flush();
+	Flush();
 	Gwen::Rect rect = ClipRegion();
 
 	// OpenGL's coords are from the bottom left
@@ -302,19 +302,19 @@ void GwenRenderer::FreeFont( Gwen::Font* font )
 	std::map<Gwen::UnicodeString, String>::iterator it = _unicodeCache.find(font->facename);
 	if (it != _unicodeCache.end())
 	{
-        UnRegisterFont(it->second);
+		UnRegisterFont(it->second);
 	}
 }
 
 void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::UnicodeString& text )
 {
-    Flush();
-    Translate(pos.x, pos.y);
-	
-    String fontConv = Gwen::Utility::UnicodeToString(font->facename);
-    pos.y += GetTextAscenderHeight(fontConv);
+	Flush();
+	Translate(pos.x, pos.y);
 
-    glColor4ubv( (GLubyte*)&_color );
+	String fontConv = Gwen::Utility::UnicodeToString(font->facename);
+	pos.y += GetTextAscenderHeight(fontConv);
+
+	glColor4ubv( (GLubyte*)&_color );
 	DrawGameText(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
 }
 
@@ -325,6 +325,6 @@ Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeStri
 		LoadFont(font);
 	}
 	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
-    return Gwen::Point(MathUtil::RoundToInt(extents.X), MathUtil::RoundToInt(extents.Y));
+	return Gwen::Point(MathUtil::RoundToInt(extents.X), MathUtil::RoundToInt(extents.Y));
 }
 

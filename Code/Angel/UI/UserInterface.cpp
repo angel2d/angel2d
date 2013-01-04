@@ -63,12 +63,12 @@ public:
 	{
 		_buttonCallbacks[control] = callback;
 	}
-    
-    void AddChoiceCallback(Gwen::Controls::Base* control, void (*callback)(int))
-    {
-        _choiceCallbacks[control] = callback;
-    }
-    
+	
+	void AddChoiceCallback(Gwen::Controls::Base* control, void (*callback)(int))
+	{
+		_choiceCallbacks[control] = callback;
+	}
+	
 	
 	void OnPress(Gwen::Controls::Base* control)
 	{
@@ -82,35 +82,35 @@ private:
 		if (buttonIt != _buttonCallbacks.end())
 		{
 			buttonIt->second();
-            return;
+			return;
 		}
-        
-        ChoiceMapping::iterator choiceIt = _choiceCallbacks.find(control->GetParent());
-        if (choiceIt != _choiceCallbacks.end())
-        {
-            int button = -1;
-            Gwen::Controls::Base::List buttons = ((Gwen::Controls::Base*)choiceIt->first)->GetChildren();
-            Gwen::Controls::Base::List::iterator butIt = buttons.begin();
-            int count = 0;
-            while (butIt != buttons.end())
-            {
-                if (*butIt == control)
-                {
-                    button = count;
-                    break;
-                }
-                butIt++;
-                count++;
-            }
-            
-            choiceIt->second(button);
-            theUI.RemoveUIElement(choiceIt->first);
-            return;
-        }
+
+		ChoiceMapping::iterator choiceIt = _choiceCallbacks.find(control->GetParent());
+		if (choiceIt != _choiceCallbacks.end())
+		{
+			int button = -1;
+			Gwen::Controls::Base::List buttons = ((Gwen::Controls::Base*)choiceIt->first)->GetChildren();
+			Gwen::Controls::Base::List::iterator butIt = buttons.begin();
+			int count = 0;
+			while (butIt != buttons.end())
+			{
+				if (*butIt == control)
+				{
+					button = count;
+					break;
+				}
+				butIt++;
+				count++;
+			}
+			
+			choiceIt->second(button);
+			theUI.RemoveUIElement(choiceIt->first);
+			return;
+		}
 	}
 	
 	ButtonMapping _buttonCallbacks;
-    ChoiceMapping _choiceCallbacks;
+	ChoiceMapping _choiceCallbacks;
 };
 
 
@@ -144,8 +144,8 @@ UserInterface::UserInterface()
 	
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
 	AngelCanvas->SetSize(theCamera.GetWindowWidth(), theCamera.GetWindowHeight()); // should be size of window (update when change)
-    
-    _locked = false;
+
+	_locked = false;
 }
 
 UserInterface::~UserInterface()
@@ -163,25 +163,25 @@ void UserInterface::Shutdown()
 
 void UserInterface::Render()
 {
-    for (unsigned int i=0; i < _deferredRemoves.size(); i++)
-    {
-        RemoveUIElement(_deferredRemoves[i]);
-    }
-    _deferredRemoves.clear();
-    
-    _locked = true;
-        AngelCanvas->DoThink();
-        AngelCanvas->RenderCanvas();
-    _locked = false;
+	for (unsigned int i=0; i < _deferredRemoves.size(); i++)
+	{
+		RemoveUIElement(_deferredRemoves[i]);
+	}
+	_deferredRemoves.clear();
+	
+	_locked = true;
+		AngelCanvas->DoThink();
+		AngelCanvas->RenderCanvas();
+	_locked = false;
 }
 
 void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 {
-    if (theWorld.GetConsole()->IsEnabled())
-    {
-        return;
-    }
-    
+	if (theWorld.GetConsole()->IsEnabled())
+	{
+		return;
+	}
+	
 	int deltaX = _mousePosition.X - screenCoordinates.X;
 	int deltaY = _mousePosition.Y - screenCoordinates.Y;
 	_mousePosition.X = screenCoordinates.X;
@@ -191,53 +191,53 @@ void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
 
 void UserInterface::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
-    if (theWorld.GetConsole()->IsEnabled())
-    {
-        return;
-    }
-    
-    _locked = true;
-        AngelCanvas->InputMouseButton(button, true);
-    _locked = false;
+	if (theWorld.GetConsole()->IsEnabled())
+	{
+		return;
+	}
+	
+	_locked = true;
+		AngelCanvas->InputMouseButton(button, true);
+	_locked = false;
 }
 
 void UserInterface::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button)
 {
-    if (theWorld.GetConsole()->IsEnabled())
-    {
-        return;
-    }
-    
-    _locked = true;
-        AngelCanvas->InputMouseButton(button, false);
-    _locked = false;
+	if (theWorld.GetConsole()->IsEnabled())
+	{
+		return;
+	}
+	
+	_locked = true;
+		AngelCanvas->InputMouseButton(button, false);
+	_locked = false;
 }
 
 void UserInterface::MouseWheelEvent(int position)
 {
-    if (theWorld.GetConsole()->IsEnabled())
-    {
-        return;
-    }
-    
-    _locked = true;
-        AngelCanvas->InputMouseWheel(position);
-    _locked = false;
+	if (theWorld.GetConsole()->IsEnabled())
+	{
+		return;
+	}
+	
+	_locked = true;
+		AngelCanvas->InputMouseWheel(position);
+	_locked = false;
 }
 
 void UserInterface::RemoveUIElement(AngelUIHandle element)
 {
-    if (_locked)
-    {
-        _deferredRemoves.push_back(element);
-        return;
-    }
-    std::set<AngelUIHandle>::iterator it = _elements.find(element);
-    if (it != _elements.end())
-    {
-        delete (Gwen::Controls::Base*)(*it);
-        _elements.erase(it);
-    }
+	if (_locked)
+	{
+		_deferredRemoves.push_back(element);
+		return;
+	}
+	std::set<AngelUIHandle>::iterator it = _elements.find(element);
+	if (it != _elements.end())
+	{
+		delete (Gwen::Controls::Base*)(*it);
+		_elements.erase(it);
+	}
 }
 
 AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void (*callback)(), bool center, const String& font, Vec2i padding)
@@ -250,75 +250,75 @@ AngelUIHandle UserInterface::AddButton(const String& label, Vec2i position, void
 	button->SetText(label);
 	button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
 	button->SizeToContents();
-    if (center)
-    {
-        Gwen::Point size = button->GetSize();
-        button->SetPos(position.X - (size.x / 2), position.Y - (size.y / 2));
-    }
-    else
-    {
-        button->SetPos(position.X, position.Y);
-    }
-    
+	if (center)
+	{
+		Gwen::Point size = button->GetSize();
+		button->SetPos(position.X - (size.x / 2), position.Y - (size.y / 2));
+	}
+	else
+	{
+		button->SetPos(position.X, position.Y);
+	}
+
 	button->onPress.Add(&handler, &EventHandler::OnPress);
 	handler.AddButtonCallback(button, callback);
 	
-    _elements.insert(button);
-    
+	_elements.insert(button);
+	
 	return button;
 }
 
 AngelUIHandle UserInterface::ShowChoiceBox(const String& choiceLabel, const StringList& labels, void (*callback)(int), const String& font, Vec2i padding, bool modal)
 {
 	Gwen::Controls::WindowControl* box = new Gwen::Controls::WindowControl(AngelCanvas);
-    
-    box->SetTitle(choiceLabel);
-    	
+
+	box->SetTitle(choiceLabel);
+
 	Gwen::TextObject fontTextObject = Gwen::Utility::StringToUnicode(font);
 
-    Vec2i maxSize;
-    std::vector<Gwen::Controls::Button*> buttons;
-    
+	Vec2i maxSize;
+	std::vector<Gwen::Controls::Button*> buttons;
+
 	for	(unsigned int i=0; i < labels.size(); i++)
 	{
 		Gwen::Controls::Button* button = new Gwen::Controls::Button(box);
-        buttons.push_back(button);
+		buttons.push_back(button);
 		if (font != "")
 		{
 			button->SetFont(fontTextObject, 20, false);
 		}
 		button->SetText(labels[i]);
-        button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
+		button->SetPadding(Gwen::Padding(padding.X, padding.Y, padding.X, padding.Y));
 		button->SizeToContents();
-        Gwen::Point size = button->GetSize();
-        if (maxSize.X < size.x)
-        {
-            maxSize.X = size.x;
-        }
-        if (maxSize.Y < size.y)
-        {
-            maxSize.Y = size.y;
-        }
-        
-        button->onPress.Add(&handler, &EventHandler::OnPress);
+		Gwen::Point size = button->GetSize();
+		if (maxSize.X < size.x)
+		{
+			maxSize.X = size.x;
+		}
+		if (maxSize.Y < size.y)
+		{
+			maxSize.Y = size.y;
+		}
+		
+		button->onPress.Add(&handler, &EventHandler::OnPress);
 	}
-    
-    for (unsigned int i=0; i < buttons.size(); i++)
-    {
-        buttons[i]->SetPos(maxSize.X / 2 - (buttons[i]->GetSize().x / 2), i * (maxSize.Y + padding.Y));
-    }
 
-    box->SetSize(maxSize.X + (padding.X * 2), buttons.size() * (maxSize.Y + padding.Y) + (padding.Y * 3));
+	for (unsigned int i=0; i < buttons.size(); i++)
+	{
+		buttons[i]->SetPos(maxSize.X / 2 - (buttons[i]->GetSize().x / 2), i * (maxSize.Y + padding.Y));
+	}
+
+	box->SetSize(maxSize.X + (padding.X * 2), buttons.size() * (maxSize.Y + padding.Y) + (padding.Y * 3));
 	box->SetPos((AngelCanvas->GetSize().x / 2) - (box->GetSize().x / 2), (AngelCanvas->GetSize().y / 2) - (box->GetSize().y / 2));
-    
-    if (modal)
-    {
-        box->MakeModal();
-    }
-    box->SetDeleteOnClose(true);
-    box->SetClosable(false);
-    
-    handler.AddChoiceCallback(box, callback);
+
+	if (modal)
+	{
+		box->MakeModal();
+	}
+	box->SetDeleteOnClose(true);
+	box->SetClosable(false);
+
+	handler.AddChoiceCallback(box, callback);
 
 	_elements.insert(box);
 

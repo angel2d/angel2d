@@ -97,6 +97,8 @@
  *      - GLFW: A cross-platform framework to handle basic windowing and input 
  *        events \n
  *        (http://www.glfw.org/)
+ *      - gwen: A simple GUI toolkit designed for game engines \n
+ *        (http://gwen.googlecode.com)
  *      - HID Utilities: USB Controller support for Mac OS X \n
  *        (http://developer.apple.com/samplecode/HID_Utilities_Source/index.html)
  *      - LibOgg and LibVorbis: Open source alternative to FMOD \n

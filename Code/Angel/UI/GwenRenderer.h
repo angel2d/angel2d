@@ -75,13 +75,13 @@ public:
 	// virtual void RenderText( Gwen::Font* pFont, Gwen::Point pos, const Gwen::String& text );
 
 private:
-    struct Vertex
-    {
-        float x, y, z;
-        float u, v;
-        unsigned char r, g, b, a;
-    };
-    
+	struct Vertex
+	{
+		float x, y, z;
+		float u, v;
+		unsigned char r, g, b, a;
+	};
+
 	static const int	s_maxVerts = 1024;
 
 	void Flush();
@@ -89,7 +89,7 @@ private:
 
 	Gwen::Color			_color;
 	int					_vertNum;
-    Vertex              _vertices[ s_maxVerts ];
+	Vertex				_vertices[ s_maxVerts ];
 
 	std::map<Gwen::UnicodeString, String> _unicodeCache;
 };

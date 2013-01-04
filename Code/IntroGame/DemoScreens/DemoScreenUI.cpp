@@ -37,100 +37,99 @@ TextActor* DemoScreenUI::_output = NULL;
 
 DemoScreenUI::DemoScreenUI()
 {
-    
 }
 
 void ChoiceMade(int choice)
 {
-    String out = "";
-    if (choice == 0)
-    {
-        out = "You pressed the first button.";
-    }
-    else if (choice == 1)
-    {
-        out = "You pressed the second button.";
-    }
-    else if (choice == 2)
-    {
-        out = "You pressed the third button.";
-    }
-    else
-    {
-        out = "Ummm.... this shouldn't happen. Should be impossible.";
-    }
-    
-    DemoScreenUI::_output->SetDisplayString(out);
+	String out = "";
+	if (choice == 0)
+	{
+		out = "You pressed the first button.";
+	}
+	else if (choice == 1)
+	{
+		out = "You pressed the second button.";
+	}
+	else if (choice == 2)
+	{
+		out = "You pressed the third button.";
+	}
+	else
+	{
+		out = "Ummm.... this shouldn't happen. Should be impossible.";
+	}
+	
+	DemoScreenUI::_output->SetDisplayString(out);
 }
 
 void ButtonPress()
 {
-    // We want to bring up a choice list here.
-    
-    // First we construct a list of the labels that will go on the buttons.
-    StringList labels;
+	// We want to bring up a choice list here.
+	
+	// First we construct a list of the labels that will go on the buttons.
+	StringList labels;
 	labels.push_back("Option 1");
 	labels.push_back("Option 2");
 	labels.push_back("A longer option with more text");
-    
-    DemoScreenUI::_choiceBox = theUI.ShowChoiceBox(
-                        "A choice!", // The title on the choice box
-                        labels, // The list of labels we just constructed
-                        ChoiceMade // The function that will be called when one of the buttons is pressed.
-                                   //   Must return void and take a single integer as a parameter. That
-                                   //   integer will be the index of the clicked button.
-                        );
-    
-    // Note that a choice box will remove itself once one of its buttons is clicked, so you
-    //   don't have to track its handle unless you want to remove it manually.
+	
+	DemoScreenUI::_choiceBox = theUI.ShowChoiceBox(
+						"A choice!", // The title on the choice box
+						labels, // The list of labels we just constructed
+						ChoiceMade 	// The function that will be called when one of the buttons is pressed.
+									//   Must return void and take a single integer as a parameter. That
+									//   integer will be the index of the clicked button.
+						);
+	
+	// Note that a choice box will remove itself once one of its buttons is clicked, so you
+	//   don't have to track its handle unless you want to remove it manually.
 }
 
 void DemoScreenUI::Start()
 {
-    /*AngelUIHandle*/ _button =    // AngelUIHandle is an opaque type that's returned from Angel UI functions.
-                                  //   After you create a button, in this instance, you'll need to hang on to
-                                  //   this handle so you can use it to remove the button later. (See the Stop()
-                                  //   method at the bottom of this file for an example.)
-        theUI.AddButton(
-                        "Press this to bring up a choice box.", // The label for the button
-                        Vec2i(512, 300), // The position of the button (note that it's in pixels)
-                        ButtonPress, // The function that will be called when the button is pressed.
-                                     //   It must return void and take no parameters.
-                        true         // Whether or not to center the button around the given position. If false,
-                                     //   the position will be the buttons top left corner. 
-                        );
+	/*AngelUIHandle*/ _button =	// AngelUIHandle is an opaque type that's returned from Angel UI functions.
+								//   After you create a button, in this instance, you'll need to hang on to
+								//   this handle so you can use it to remove the button later. (See the Stop()
+								//   method at the bottom of this file for an example.)
+		theUI.AddButton(
+						"Press this to bring up a choice box.", // The label for the button
+						Vec2i(512, 300), // The position of the button (note that it's in pixels)
+						ButtonPress, // The function that will be called when the button is pressed.
+									 //   It must return void and take no parameters.
+						true		// Whether or not to center the button around the given position. If false,
+									//   the position will be the buttons top left corner. 
+						);
 
 
 
 	//Demo housekeeping below this point. 
 	#pragma region Demo housekeeping
-    TextActor *t = new TextActor("Console", "Angel has some basic GUI features to make your prototyping easier.");
+	TextActor *t = new TextActor("Console", "Angel has some basic GUI features to make your prototyping easier.");
 	t->SetPosition(0, 5.5);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
-    TextActor *t2 = new TextActor("Console", "(It's based on the GWEN UI toolkit, so if you need\nfancier UI functionality it's all there.\nhttp://gwen.googlecode.com)");
-    t2->SetPosition(0, -5.5);
-    t2->SetAlignment(TXT_Center);
-    theWorld.Add(t2);
-    _output = new TextActor("Console", "");
-    _output->SetPosition(0, -2.5);
-    _output->SetAlignment(TXT_Center);
-    theWorld.Add(_output);
+	TextActor *t2 = new TextActor("Console", "(It's based on the GWEN UI toolkit, so if you need\nfancier UI functionality it's all there.\nhttp://gwen.googlecode.com)");
+	t2->SetPosition(0, -5.5);
+	t2->SetAlignment(TXT_Center);
+	theWorld.Add(t2);
+	_output = new TextActor("Console", "");
+	_output->SetPosition(0, -2.5);
+	_output->SetAlignment(TXT_Center);
+	theWorld.Add(_output);
 	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenUI.cpp");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);
 	_objects.push_back(fileLoc);
 	_objects.push_back(t);
-    _objects.push_back(t2);
+	_objects.push_back(t2);
 	#pragma endregion
 }
 
 void DemoScreenUI::Stop()
 {
-    theUI.RemoveUIElement(_button);
-    theUI.RemoveUIElement(DemoScreenUI::_choiceBox);
-    theWorld.Remove(_output);
-    
-    DemoScreen::Stop();
+	theUI.RemoveUIElement(_button);
+	theUI.RemoveUIElement(DemoScreenUI::_choiceBox);
+	theWorld.Remove(_output);
+	
+	DemoScreen::Stop();
 }
