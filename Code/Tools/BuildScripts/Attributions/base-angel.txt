@@ -29,7 +29,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 GLFW
 http://glfw.sourceforge.net/
 Copyright © 2002-2006 Marcus Geelnard
-Copyright © 2006-2010 Camilla Berglund <elmindreda@elmindreda.org>
+Copyright © 2006-2012 Camilla Berglund <elmindreda@elmindreda.org>
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
