@@ -802,15 +802,15 @@
 		3447521715102C590048129D /* multitouch.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; name = multitouch.i; path = Scripting/Interfaces/multitouch.i; sourceTree = "<group>"; };
 		3447521915102C710048129D /* preferences.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; name = preferences.i; path = Scripting/Interfaces/preferences.i; sourceTree = "<group>"; };
 		345AAD0811CB3710002B4471 /* libAngel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAngel.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3462B40414FC65560049A886 /* cocoa_enable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_enable.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_enable.m"; sourceTree = SOURCE_ROOT; };
-		3462B40514FC65560049A886 /* cocoa_fullscreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_fullscreen.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_fullscreen.m"; sourceTree = SOURCE_ROOT; };
-		3462B40614FC65560049A886 /* cocoa_glext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_glext.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_glext.m"; sourceTree = SOURCE_ROOT; };
-		3462B40714FC65560049A886 /* cocoa_init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_init.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_init.m"; sourceTree = SOURCE_ROOT; };
-		3462B40814FC65560049A886 /* cocoa_joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_joystick.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_joystick.m"; sourceTree = SOURCE_ROOT; };
-		3462B40914FC65560049A886 /* cocoa_thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cocoa_thread.c; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_thread.c"; sourceTree = SOURCE_ROOT; };
-		3462B40A14FC65560049A886 /* cocoa_time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_time.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_time.m"; sourceTree = SOURCE_ROOT; };
-		3462B40B14FC65560049A886 /* cocoa_window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_window.m; path = "Libraries/glfw-2.7.3/lib/cocoa/cocoa_window.m"; sourceTree = SOURCE_ROOT; };
-		3462B40C14FC65560049A886 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform.h; path = "Libraries/glfw-2.7.3/lib/cocoa/platform.h"; sourceTree = SOURCE_ROOT; };
+		3462B40414FC65560049A886 /* cocoa_enable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_enable.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_enable.m"; sourceTree = SOURCE_ROOT; };
+		3462B40514FC65560049A886 /* cocoa_fullscreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_fullscreen.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_fullscreen.m"; sourceTree = SOURCE_ROOT; };
+		3462B40614FC65560049A886 /* cocoa_glext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_glext.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_glext.m"; sourceTree = SOURCE_ROOT; };
+		3462B40714FC65560049A886 /* cocoa_init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_init.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_init.m"; sourceTree = SOURCE_ROOT; };
+		3462B40814FC65560049A886 /* cocoa_joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_joystick.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_joystick.m"; sourceTree = SOURCE_ROOT; };
+		3462B40914FC65560049A886 /* cocoa_thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cocoa_thread.c; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_thread.c"; sourceTree = SOURCE_ROOT; };
+		3462B40A14FC65560049A886 /* cocoa_time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_time.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_time.m"; sourceTree = SOURCE_ROOT; };
+		3462B40B14FC65560049A886 /* cocoa_window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_window.m; path = "Libraries/glfw-2.7.7/lib/cocoa/cocoa_window.m"; sourceTree = SOURCE_ROOT; };
+		3462B40C14FC65560049A886 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform.h; path = "Libraries/glfw-2.7.7/lib/cocoa/platform.h"; sourceTree = SOURCE_ROOT; };
 		346E3B2E0E285EC200E6C79E /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		346E3B2F0E285EC200E6C79E /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		346E3B300E285EC200E6C79E /* FTCharmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCharmap.h; sourceTree = "<group>"; };
@@ -994,19 +994,19 @@
 		34A187CB0E283FF3001C79A5 /* Traversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Traversal.h; sourceTree = "<group>"; };
 		34A18BA70E284044001C79A5 /* libBox2D.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBox2D.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A18C510E284362001C79A5 /* libGLFW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGLFW.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34A18C5B0E2843B4001C79A5 /* enable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = enable.c; path = "Libraries/glfw-2.7.3/lib/enable.c"; sourceTree = "<group>"; };
-		34A18C5C0E2843B4001C79A5 /* time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = time.c; path = "Libraries/glfw-2.7.3/lib/time.c"; sourceTree = "<group>"; };
-		34A18C6B0E2843B4001C79A5 /* stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stream.c; path = "Libraries/glfw-2.7.3/lib/stream.c"; sourceTree = "<group>"; };
-		34A18C6C0E2843B4001C79A5 /* image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = image.c; path = "Libraries/glfw-2.7.3/lib/image.c"; sourceTree = "<group>"; };
-		34A18C6D0E2843B4001C79A5 /* tga.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tga.c; path = "Libraries/glfw-2.7.3/lib/tga.c"; sourceTree = "<group>"; };
-		34A18C6E0E2843B4001C79A5 /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = input.c; path = "Libraries/glfw-2.7.3/lib/input.c"; sourceTree = "<group>"; };
-		34A18C6F0E2843B4001C79A5 /* fullscreen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fullscreen.c; path = "Libraries/glfw-2.7.3/lib/fullscreen.c"; sourceTree = "<group>"; };
-		34A18C700E2843B4001C79A5 /* glext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glext.c; path = "Libraries/glfw-2.7.3/lib/glext.c"; sourceTree = "<group>"; };
-		34A18C710E2843B4001C79A5 /* thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = thread.c; path = "Libraries/glfw-2.7.3/lib/thread.c"; sourceTree = "<group>"; };
-		34A18C720E2843B4001C79A5 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = internal.h; path = "Libraries/glfw-2.7.3/lib/internal.h"; sourceTree = "<group>"; };
-		34A18C730E2843B4001C79A5 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/glfw-2.7.3/lib/window.c"; sourceTree = "<group>"; };
-		34A18C740E2843B4001C79A5 /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = init.c; path = "Libraries/glfw-2.7.3/lib/init.c"; sourceTree = "<group>"; };
-		34A18C750E2843B4001C79A5 /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = joystick.c; path = "Libraries/glfw-2.7.3/lib/joystick.c"; sourceTree = "<group>"; };
+		34A18C5B0E2843B4001C79A5 /* enable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = enable.c; path = "Libraries/glfw-2.7.7/lib/enable.c"; sourceTree = "<group>"; };
+		34A18C5C0E2843B4001C79A5 /* time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = time.c; path = "Libraries/glfw-2.7.7/lib/time.c"; sourceTree = "<group>"; };
+		34A18C6B0E2843B4001C79A5 /* stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stream.c; path = "Libraries/glfw-2.7.7/lib/stream.c"; sourceTree = "<group>"; };
+		34A18C6C0E2843B4001C79A5 /* image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = image.c; path = "Libraries/glfw-2.7.7/lib/image.c"; sourceTree = "<group>"; };
+		34A18C6D0E2843B4001C79A5 /* tga.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tga.c; path = "Libraries/glfw-2.7.7/lib/tga.c"; sourceTree = "<group>"; };
+		34A18C6E0E2843B4001C79A5 /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = input.c; path = "Libraries/glfw-2.7.7/lib/input.c"; sourceTree = "<group>"; };
+		34A18C6F0E2843B4001C79A5 /* fullscreen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fullscreen.c; path = "Libraries/glfw-2.7.7/lib/fullscreen.c"; sourceTree = "<group>"; };
+		34A18C700E2843B4001C79A5 /* glext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glext.c; path = "Libraries/glfw-2.7.7/lib/glext.c"; sourceTree = "<group>"; };
+		34A18C710E2843B4001C79A5 /* thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = thread.c; path = "Libraries/glfw-2.7.7/lib/thread.c"; sourceTree = "<group>"; };
+		34A18C720E2843B4001C79A5 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = internal.h; path = "Libraries/glfw-2.7.7/lib/internal.h"; sourceTree = "<group>"; };
+		34A18C730E2843B4001C79A5 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/glfw-2.7.7/lib/window.c"; sourceTree = "<group>"; };
+		34A18C740E2843B4001C79A5 /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = init.c; path = "Libraries/glfw-2.7.7/lib/init.c"; sourceTree = "<group>"; };
+		34A18C750E2843B4001C79A5 /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = joystick.c; path = "Libraries/glfw-2.7.7/lib/joystick.c"; sourceTree = "<group>"; };
 		34A18C9B0E284445001C79A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		34A31FB411CCE5CD0085EDFB /* start.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.lua; sourceTree = "<group>"; };
 		34A31FB511CCE5CD0085EDFB /* sugar.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sugar.lua; sourceTree = "<group>"; };
@@ -2041,7 +2041,7 @@
 				3462B40C14FC65560049A886 /* platform.h */,
 			);
 			name = cocoa;
-			path = "Libraries/glfw-2.7.3/lib/macosx";
+			path = "Libraries/glfw-2.7.7/lib/macosx";
 			sourceTree = "<group>";
 		};
 		34A18C990E284421001C79A5 /* Frameworks */ = {
@@ -3832,7 +3832,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
-					"\"$(PROJECT_DIR)/Libraries/glfw-2.7.3/include\"",
+					"\"$(PROJECT_DIR)/Libraries/glfw-2.7.7/include\"",
 					"\"$(PROJECT_DIR)/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Libraries/libogg-1.3.0/include\"",
@@ -3864,7 +3864,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
-					"\"$(PROJECT_DIR)/Libraries/glfw-2.7.3/include\"",
+					"\"$(PROJECT_DIR)/Libraries/glfw-2.7.7/include\"",
 					"\"$(PROJECT_DIR)/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Libraries/libogg-1.3.0/include\"",

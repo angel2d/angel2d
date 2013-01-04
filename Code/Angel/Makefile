@@ -13,7 +13,7 @@ ifeq ($(ARCH),x86_64)
 endif
 
 INCLUDE = 							\
-	-ILibraries/glfw-2.7.3/include				\
+	-ILibraries/glfw-2.7.7/include				\
 	-ILibraries/Box2D-2.2.1					\
 	-ILibraries/FTGL/include				\
 	-ILibraries/lua-5.2.1/src				\
@@ -25,7 +25,7 @@ ifneq ($(ANGEL_DISABLE_FMOD), 1)
 endif
 
 LIBS = 								\
-	Libraries/glfw-2.7.3/lib/x11/libglfw.a			\
+	Libraries/glfw-2.7.7/lib/x11/libglfw.a			\
 	Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
 	Libraries/gwen/lib/linux/gmake/libgwen_static.a		\
 	Libraries/FTGL/unix/src/.libs/libftgl.a
@@ -98,16 +98,16 @@ FTGL-clean:
 	cd Libraries/FTGL/unix && rm -f config.log config.status ftgl.pc \
 		Make.conf libtool demo/FTGLDemo docs/doc-stamp
 
-MAKEFILE_X11 = Libraries/glfw-2.7.3/lib/x11/Makefile.x11
+MAKEFILE_X11 = Libraries/glfw-2.7.7/lib/x11/Makefile.x11
 
 $(MAKEFILE_X11):
-	cd Libraries/glfw-2.7.3 && sh ./compile.sh
+	cd Libraries/glfw-2.7.7 && sh ./compile.sh
 
 GLFW: $(MAKEFILE_X11)
-	cd Libraries/glfw-2.7.3/lib/x11 && make -f Makefile.x11 libglfw.a
+	cd Libraries/glfw-2.7.7/lib/x11 && make -f Makefile.x11 libglfw.a
 
 GLFW-clean:
-	cd Libraries/glfw-2.7.3 && make x11-clean
+	cd Libraries/glfw-2.7.7 && make x11-clean
 
 Box2D:
 	cd Libraries/Box2D-2.2.1/Build && cmake .. && make Box2D

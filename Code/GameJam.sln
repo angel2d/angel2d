@@ -25,7 +25,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_FTGL", "Angel\Libraries\FT
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientGame", "ClientGame\ClientGame.vcproj", "{5B267A7F-D9DF-4B2E-B3E7-73A4EF0F1A36}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_GLFW", "Angel\Libraries\glfw-2.7.3\support\msvc90\GLFW.vcproj", "{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_GLFW", "Angel\Libraries\glfw-2.7.7\support\msvc90\GLFW.vcproj", "{BAA85EB9-BE33-45FB-B552-0AB3AC4D9CA9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_LuaLib", "Angel\Libraries\lua-5.2.1\Lua.vcproj", "{958B2042-89DD-422B-B103-85ED2E41F20B}"
 EndProject
