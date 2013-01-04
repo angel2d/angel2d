@@ -37,11 +37,11 @@ public:
 	DemoScreenUI();
 
 	virtual void Start();
-    virtual void Stop();
+	virtual void Stop();
 
-    static TextActor* _output;
-    static AngelUIHandle _choiceBox;
-    
+	static TextActor* _output;
+	static AngelUIHandle _choiceBox;
+
 private:
-    AngelUIHandle _button;
+	AngelUIHandle _button;
 };

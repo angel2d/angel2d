@@ -2,7 +2,8 @@
 --------------------
 * Minor release
 * Adding GUI capabilities with gwen
-* Fixing build system bugs with swig on Linux distributions
+* Fixing build system bugs on Linux distributions (SWIG versions; new header files)
+* Updates for iPhone 5; new Xcode versions
 
 3.0.1  --  3/26/2012
 --------------------
