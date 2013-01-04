@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -164,4 +164,15 @@ Vector2 GetTextExtents(const String& text, const String& nickname)
 	forReturn.X = urx - llx;
 	forReturn.Y = ury - lly;	
 	return forReturn;
+}
+
+float GetTextAscenderHeight(const String& nickname)
+{
+    std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
+	if (it == _fontCache.end())
+	{
+		return 0.0f;
+	}
+    
+    return it->second->Ascender();
 }

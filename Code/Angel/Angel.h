@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -1281,6 +1281,8 @@
 
 #include "Messaging/Message.h"
 #include "Messaging/Switchboard.h"
+
+#include "UI/UserInterface.h"
 
 #include "Util/DrawUtil.h"
 #include "Util/FileUtil.h"

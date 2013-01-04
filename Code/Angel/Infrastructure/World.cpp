@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -48,6 +48,8 @@
 #include "../Scripting/LuaModule.h"
 #include "../Infrastructure/Preferences.h"
 #include "../Infrastructure/SoundDevice.h"
+#include "../UI/UserInterface.h"
+#include "../Util/DrawUtil.h"
 
 #include <algorithm>
 
@@ -333,6 +335,8 @@ void World::Destroy()
 	
 	FinalizeTextureLoading();
 	LuaScriptingModule::Finalize();
+    
+    theUI.Shutdown();
 }
 
 void World::StartGame()
@@ -559,12 +563,16 @@ void World::Render()
 	//Render debug information
 	theSpatialGraph.Render();
 
+	theUI.Render();
+
 	DrawDebugItems();
 
 	#if !ANGEL_MOBILE
 		//Draw developer console
 		_console->Render();
 	#endif
+    
+    HandleGLErrors();
 }
 
 void World::CleanupRenderables()

@@ -26,6 +26,8 @@
 		345AAF4A11CB39A3002B4471 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3462B41814FC67280049A886 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3462B41614FC67280049A886 /* Cocoa.framework */; };
 		34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
+		3490D6541696888C00FF4E47 /* DemoScreenUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3490D6521696888B00FF4E47 /* DemoScreenUI.cpp */; };
+		3490D6551696888C00FF4E47 /* DemoScreenUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3490D6531696888B00FF4E47 /* DemoScreenUI.h */; };
 		34974A320E2925BE0018A032 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A300E2925BE0018A032 /* stdafx.cpp */; };
 		34974A330E2925BE0018A032 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A310E2925BE0018A032 /* Main.cpp */; };
 		34974A3B0E2926460018A032 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 34974A2F0E2925BE0018A032 /* stdafx.h */; };
@@ -170,6 +172,13 @@
 			remoteGlobalIDString = 3401560615A918BF00E4C8BF;
 			remoteInfo = LuaExe;
 		};
+		34D4BFDE1640CE7300DCBFC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E37F1527677000BEA400 /* Angel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34FB467C1638F773002EB836;
+			remoteInfo = GWEN;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -216,6 +225,8 @@
 		347CFFE411DC239200761E0E /* script_interface.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = script_interface.i; sourceTree = "<group>"; };
 		34810A040E679FE500246544 /* libfmodexL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodexL.dylib; path = ../Angel/Libraries/FMOD/libfmodexL.dylib; sourceTree = "<group>"; };
 		34810A050E679FE500246544 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ../Angel/Libraries/FMOD/libfmodex.dylib; sourceTree = "<group>"; };
+		3490D6521696888B00FF4E47 /* DemoScreenUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoScreenUI.cpp; path = DemoScreens/DemoScreenUI.cpp; sourceTree = "<group>"; };
+		3490D6531696888B00FF4E47 /* DemoScreenUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoScreenUI.h; path = DemoScreens/DemoScreenUI.h; sourceTree = "<group>"; };
 		34974A2F0E2925BE0018A032 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		34974A300E2925BE0018A032 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
 		34974A310E2925BE0018A032 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
@@ -385,6 +396,7 @@
 				34A6E3911527677000BEA400 /* libVorbis.a */,
 				34A6E3931527677000BEA400 /* libOgg.a */,
 				34A6E3951527677000BEA400 /* libGLFW.a */,
+				34D4BFDF1640CE7300DCBFC8 /* libGWEN.a */,
 				34A6E3971527677000BEA400 /* libFTGL.a */,
 				34A6E3991527677000BEA400 /* libFreeType.a */,
 				34A6E39B1527677000BEA400 /* libHIDUtilities.a */,
@@ -438,6 +450,8 @@
 				34A6E4221527692E00BEA400 /* DemoScreenStart.h */,
 				34A6E4231527692E00BEA400 /* DemoScreenTuningVariables.cpp */,
 				34A6E4241527692E00BEA400 /* DemoScreenTuningVariables.h */,
+				3490D6521696888B00FF4E47 /* DemoScreenUI.cpp */,
+				3490D6531696888B00FF4E47 /* DemoScreenUI.h */,
 			);
 			name = DemoScreens;
 			sourceTree = "<group>";
@@ -472,6 +486,7 @@
 				34A6E44A1527692E00BEA400 /* DemoScreenSimpleActor.h in Headers */,
 				34A6E44C1527692E00BEA400 /* DemoScreenStart.h in Headers */,
 				34A6E44E1527692E00BEA400 /* DemoScreenTuningVariables.h in Headers */,
+				3490D6551696888C00FF4E47 /* DemoScreenUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +614,13 @@
 			remoteRef = 34A6E39E1527677000BEA400 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		34D4BFDF1640CE7300DCBFC8 /* libGWEN.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGWEN.a;
+			remoteRef = 34D4BFDE1640CE7300DCBFC8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -678,6 +700,7 @@
 				34A6E44B1527692E00BEA400 /* DemoScreenStart.cpp in Sources */,
 				34A6E44D1527692E00BEA400 /* DemoScreenTuningVariables.cpp in Sources */,
 				34A6E45915276A3800BEA400 /* AngelLuaWrappingIntroGame.cpp in Sources */,
+				3490D6541696888C00FF4E47 /* DemoScreenUI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

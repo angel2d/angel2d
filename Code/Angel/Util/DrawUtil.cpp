@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -31,6 +31,7 @@
 #include "../Util/DrawUtil.h"
 
 #include "../Infrastructure/Common.h"
+#include "../Infrastructure/Log.h"
 
 void DrawCross( const Vector2& point, float size )
 {
@@ -81,3 +82,17 @@ void DrawLine( const Vector2& vFrom, const Vector2& vTo )
 	glDrawArrays(GL_LINES, 0, 2);
 }
 
+void HandleGLErrors()
+{
+	GLenum errorCode;
+	const GLubyte *errorString;
+	do
+	{
+		errorCode = glGetError();
+		if (errorCode != GL_NO_ERROR)
+		{
+			errorString = gluErrorString(errorCode);
+			sysLog.Printf("OpenGL Error: %s", errorString);
+		}
+	} while (errorCode != GL_NO_ERROR);
+}

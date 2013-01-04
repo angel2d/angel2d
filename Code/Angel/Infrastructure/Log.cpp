@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -148,6 +148,7 @@ void SystemLog::Log( const String &val)
 	#if defined(_MSC_VER)
 		//output to pane
 		OutputDebugString(val.c_str());
+		OutputDebugString("\n");
 	#else
 		std::cout << val << std::endl;
 	#endif

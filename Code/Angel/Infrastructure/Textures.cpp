@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2012, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -73,6 +73,8 @@ struct TextureCacheEntry
 	GLint			clampMode;
 	GLint			filterMode;
 	GLuint			textureIndex;
+	GLuint			width;
+	GLuint			height;
 	bool			dirty;
 };
 std::map<String, TextureCacheEntry> theTextureCache;
@@ -280,7 +282,7 @@ bool PurgeTexture(const String& filename)
 
 	// adapted from SimpleImage
 	// http://onesadcookie.com/svn/SimpleImage/
-	int BindPNG(const String& filename, GLuint &texRef, GLint clampmode, GLint filtermode, bool optional)
+	int BindPNG(const String& filename, GLuint &texRef, GLuint &outWidth, GLuint &outHeight, GLint clampmode, GLint filtermode, bool optional)
 	{
 		png_byte* pngData;
 		png_uint_32 width, height;
@@ -290,6 +292,9 @@ bool PurgeTexture(const String& filename)
 			//error was output by the load
 			return -1;
 		}
+
+		outWidth = width;
+		outHeight = height;
 
 		glGenTextures(1, &texRef);
 		glBindTexture(GL_TEXTURE_2D, texRef);
@@ -342,6 +347,8 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 	}
 
 	GLuint texRef;
+	GLuint width = 0;
+	GLuint height = 0;
 	#if !_ANGEL_DISABLE_DEVIL
 		ILuint imgRef;
 
@@ -364,6 +371,10 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 			return -1;
 		}
 
+		// Store dimensions
+		width = ilGetInteger(IL_IMAGE_WIDTH);
+		height = ilGetInteger(IL_IMAGE_HEIGHT);
+
 		// Send it to GL
 		texRef = BindTexImageWithClampAndFilter(clampmode, filtermode);
 
@@ -373,7 +384,7 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 		// output any errors that happened during the binding/deleting
 		HandleDevILErrors(filename);
 	#else
-		int result = BindPNG(filename, texRef, clampmode, filtermode, optional);
+		int result = BindPNG(filename, texRef, width, height, clampmode, filtermode, optional);
 		if (result != 0)
 		{
 			return -1;
@@ -393,11 +404,26 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 		newEntry.clampMode = clampmode;
 		newEntry.filterMode = filtermode;
 		newEntry.textureIndex = texRef;
+		newEntry.width = width;
+		newEntry.height = height;
 		newEntry.dirty = false;
 		theTextureCache[filename] = newEntry;
 	}
 	
 	return texRef;
+}
+
+const Vec2i GetTextureSize(const String& filename)
+{
+	std::map<String,TextureCacheEntry>::iterator it = theTextureCache.find(filename);
+	if (it == theTextureCache.end())
+	{
+		return Vec2i(0, 0);
+	}
+	else
+	{
+		return Vec2i(it->second.width, it->second.height);
+	}
 }
 
 bool PixelsToPositions(const String& filename, Vector2List &positions, float gridSize, const Color& pixelColor, float tolerance)
