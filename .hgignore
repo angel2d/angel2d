@@ -18,6 +18,7 @@ Code/Published
 Code/Angel/Debug
 Code/Angel/Release
 Code/Angel/docs
+Code/Angel/libangel.a
 Code/Angel/Libraries/angel-lua-build/liblua.a
 Code/Angel/Libraries/angel-lua-build/lua
 Code/Angel/Libraries/Box2D-2.2.1/Build/glui
@@ -52,6 +53,11 @@ Code/Angel/Libraries/FTGL/unix/Make.conf
 Code/Angel/Libraries/FTGL/unix/libtool
 Code/Angel/Libraries/FTGL/unix/demo/FTGLDemo
 Code/Angel/Libraries/FTGL/unix/docs/doc-stamp
+Code/Angel/Libraries/FTGL/unix/src/.libs/libftgl.a
+Code/Angel/Libraries/FTGL/unix/src/.libs/libftgl.la
+Code/Angel/Libraries/FTGL/unix/src/.libs/libftgl.lai
+Code/Angel/Libraries/FTGL/unix/src/libftgl.la
+Code/Angel/Libraries/FTGL/unix/src/*.lo
 Code/Angel/Libraries/FTGL/win32_vcpp/build
 Code/Angel/Libraries/FTGL/win32_vcpp/Build
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Debug_ST
@@ -74,6 +80,7 @@ Code/Angel/Libraries/glfw-2.7.3/examples/triangle
 Code/Angel/Libraries/glfw-2.7.3/examples/mipmaps
 Code/Angel/Libraries/glfw-2.7.3/lib/x11/Makefile.x11
 Code/Angel/Libraries/glfw-2.7.3/lib/x11/libglfw.pc.in
+Code/Angel/Libraries/glfw-2.7.3/lib/x11/libglfw.a
 Code/Angel/Libraries/glfw-2.7.3/support/msvc90/Debug
 Code/Angel/Libraries/glfw-2.7.3/support/msvc90/DebugStatic
 Code/Angel/Libraries/glfw-2.7.3/support/msvc90/Release
