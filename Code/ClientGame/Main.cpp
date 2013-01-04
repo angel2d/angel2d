@@ -27,14 +27,14 @@ int main(int argc, char* argv[])
 	theWorld.Add(new GridActor(), -1);
 	
 	//YOUR GAME SETUP CODE HERE
-	//AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(100, 100), ButtonPressed);
-//    theUI.RemoveUIElement(button);
+//	AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(100, 100), ButtonPressed);
+//  theUI.RemoveUIElement(button);
 	StringList labels;
 	labels.push_back("Test 1");
 	labels.push_back("Test 2");
-	labels.push_back("");
+//	labels.push_back("");
 	labels.push_back("A longer one with more text");
-	theUI.ShowChoiceBox(labels, Vec2i(100, 100), ChoiceMade);
+	theUI.ShowChoiceBox("A choice!", labels, Vec2i(100, 100), ChoiceMade);
 
 	
 	

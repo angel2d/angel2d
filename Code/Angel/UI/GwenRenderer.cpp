@@ -311,10 +311,11 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
     Flush();
     Translate(pos.x, pos.y);
 	
-    pos.y += GetTextAscenderHeight(Gwen::Utility::UnicodeToString(font->facename));
+    String fontConv = Gwen::Utility::UnicodeToString(font->facename);
+    pos.y += GetTextAscenderHeight(fontConv);
 
     glColor4ubv( (GLubyte*)&_color );
-	DrawGameText(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename), pos.x, pos.y);
+	DrawGameText(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
 }
 
 Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeString& text )

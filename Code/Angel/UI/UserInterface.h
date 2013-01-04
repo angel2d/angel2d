@@ -65,7 +65,8 @@ public:
     
     void RemoveUIElement(AngelUIHandle element);
     AngelUIHandle AddButton(const String& label, Vec2i position, void (*callback)(), const String& font="", Vec2i padding=Vec2i(10, 10));
-	AngelUIHandle ShowChoiceBox(const StringList& labels, Vec2i position, void (*callback)(int), const String& font="", bool modal=true);
+	AngelUIHandle ShowChoiceBox(const String& choiceLabel, const StringList& labels, Vec2i position, void (*callback)(int), const String& font="", Vec2i padding=Vec2i(10, 10), bool modal=true);
+    
     
 protected:
     UserInterface();
@@ -79,4 +80,7 @@ private:
 	Vec2i _mousePosition;
     
     std::set<AngelUIHandle> _elements;
+    std::vector<AngelUIHandle> _deferredRemoves;
+    
+    bool _locked;
 };
