@@ -28,6 +28,7 @@ LIBS = 									\
 	../Angel/Libraries/glfw-2.7.3/lib/x11/libglfw.a			\
 	../Angel/Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
 	../Angel/Libraries/FTGL/unix/src/.libs/libftgl.a		\
+	../Angel/Libraries/gwen/lib/linux/gmake/libgwen_static.a	\
 	../Angel/Libraries/angel-lua-build/liblua.a
 
 ifneq ($(ANGEL_DISABLE_FMOD),1)

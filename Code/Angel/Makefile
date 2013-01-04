@@ -17,6 +17,7 @@ INCLUDE = 							\
 	-ILibraries/Box2D-2.2.1					\
 	-ILibraries/FTGL/include				\
 	-ILibraries/lua-5.2.1/src				\
+	-ILibraries/gwen/include				\
 	-IInfrastructure					\
 	-I/usr/include/freetype2
 ifneq ($(ANGEL_DISABLE_FMOD), 1)
@@ -26,6 +27,7 @@ endif
 LIBS = 								\
 	Libraries/glfw-2.7.3/lib/x11/libglfw.a			\
 	Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
+	Libraries/gwen/lib/linux/gmake/libgwen_static.a		\
 	Libraries/FTGL/unix/src/.libs/libftgl.a
 
 SRCS =								\
@@ -73,6 +75,8 @@ SRCS =								\
 	Messaging/Switchboard.cpp				\
 	Scripting/LuaConsole.cpp				\
 	Scripting/LuaModule.cpp					\
+	UI/GwenRenderer.cpp					\
+	UI/UserInterface.cpp					\
 	Util/DrawUtil.cpp					\
 	Util/FileUtil.cpp					\
 	Util/MathUtil.cpp					\
@@ -113,13 +117,19 @@ Box2D-clean:
 		CMakeCache.txt CMakeFiles cmake_install.cmake freeglut glui \
 		HelloWorld Makefile Testbed
 
+gwen:
+	cd Libraries/gwen/Projects/linux/gmake && make GWEN-Static
+
+gwen-clean:
+	cd Libraries/gwen/Projects/linux/gmake && make clean
+
 Lua:
 	cd Libraries/angel-lua-build && make
 
 Lua-clean:
 	cd Libraries/angel-lua-build && make clean
 
-libraries: FTGL GLFW Box2D
+libraries: FTGL GLFW Box2D gwen
 
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
@@ -130,5 +140,5 @@ $(TARGET): libraries $(OBJS) Lua
 	$(AR) $@ $(OBJS) $(LIBS)
 	$(RANLIB) $@
 
-clean: FTGL-clean GLFW-clean Box2D-clean Lua-clean
+clean: FTGL-clean GLFW-clean Box2D-clean gwen-clean Lua-clean
 	rm -f $(OBJS) $(TARGET)
