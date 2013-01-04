@@ -57,7 +57,7 @@ GwenRenderer::~GwenRenderer()
 }
 
 
-void GwenRenderer::Init()
+void GwenRenderer::FinishInit()
 {
 
 }
@@ -139,7 +139,8 @@ void GwenRenderer::AddVertex(int x, int y, float u, float v)
 
 void GwenRenderer::SetDrawColor( Gwen::Color color )
 {
-	glColor4ubv( (GLubyte*)&color );
+    glColor4ub(color.r, color.g, color.b, color.a);
+	//glColor4ubv( (GLubyte*)&color );
 	_color = color;
 }
 
@@ -314,7 +315,8 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
 	String fontConv = Gwen::Utility::UnicodeToString(font->facename);
 	pos.y += GetTextAscenderHeight(fontConv);
 
-	glColor4ubv( (GLubyte*)&_color );
+    glColor4ub(_color.r, _color.g, _color.b, _color.a);
+	//glColor4ubv( (GLubyte*)&_color );
 	DrawGameText(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
 }
 

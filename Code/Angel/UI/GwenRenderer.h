@@ -39,7 +39,7 @@ public:
 	GwenRenderer();
 	~GwenRenderer();
 
-	virtual void Init();
+	virtual void FinishInit();
 
 	virtual void Begin();
 	virtual void End();
@@ -92,5 +92,6 @@ private:
 	Vertex				_vertices[ s_maxVerts ];
 
 	std::map<Gwen::UnicodeString, String> _unicodeCache;
+    
 };
 

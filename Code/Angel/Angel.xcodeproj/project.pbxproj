@@ -625,7 +625,6 @@
 		34FB489B1638FE0A002EB836 /* ControlFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FB48991638FE0A002EB836 /* ControlFactory.h */; };
 		34FB489C1638FE0A002EB836 /* ImportExport.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FB489A1638FE0A002EB836 /* ImportExport.h */; };
 		34FB48DB163900A3002EB836 /* libGWEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FB467C1638F773002EB836 /* libGWEN.a */; };
-		34FB48DE163900F1002EB836 /* OpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FB48DD163900F1002EB836 /* OpenGL.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1348,7 +1347,6 @@
 		34FB48961638FDFB002EB836 /* UnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTest.h; path = Libraries/gwen/include/Gwen/UnitTest/UnitTest.h; sourceTree = "<group>"; };
 		34FB48991638FE0A002EB836 /* ControlFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlFactory.h; path = Libraries/gwen/include/Gwen/Util/ControlFactory.h; sourceTree = "<group>"; };
 		34FB489A1638FE0A002EB836 /* ImportExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportExport.h; path = Libraries/gwen/include/Gwen/Util/ImportExport.h; sourceTree = "<group>"; };
-		34FB48DD163900F1002EB836 /* OpenGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGL.cpp; path = Libraries/gwen/Renderers/OpenGL/OpenGL.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2273,7 +2271,6 @@
 				34FB46E71638F95E002EB836 /* Gwen.cpp */,
 				34FB46E81638F95E002EB836 /* Hook.cpp */,
 				34FB476B1638F9A5002EB836 /* Platforms */,
-				34FB48DC163900DD002EB836 /* Renderers */,
 				34FB46E91638F95E002EB836 /* Skin.cpp */,
 				34FB46EA1638F95E002EB836 /* ToolTip.cpp */,
 				34FB46EB1638F95E002EB836 /* Utility.cpp */,
@@ -2575,14 +2572,6 @@
 				34FB489A1638FE0A002EB836 /* ImportExport.h */,
 			);
 			name = Util;
-			sourceTree = "<group>";
-		};
-		34FB48DC163900DD002EB836 /* Renderers */ = {
-			isa = PBXGroup;
-			children = (
-				34FB48DD163900F1002EB836 /* OpenGL.cpp */,
-			);
-			name = Renderers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3584,7 +3573,6 @@
 				34FB476A1638F996002EB836 /* Query.cpp in Sources */,
 				34FB476E1638F9B3002EB836 /* Null.cpp in Sources */,
 				34FB476F1638F9B3002EB836 /* Windows.cpp in Sources */,
-				34FB48DE163900F1002EB836 /* OpenGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
