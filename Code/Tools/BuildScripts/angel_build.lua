@@ -246,7 +246,7 @@ end
 -- find a local install of SWIG
 function get_swig_path()
   if (path.is_windows) then
-    -- we're on windows, use the distributed swig
+    -- we're on windows; use the distributed swig
     return "..\\swigwin-2.0.6\\swig.exe"
   end
   
@@ -256,7 +256,15 @@ function get_swig_path()
     check_swig_version(ports_path)
     return ports_path
   end
-    
+
+  local brew_path = "/usr/local/Cellar/swig"
+  local brew_swig_path = "/usr/local/bin/swig"
+  if (path.exists(brew_path)) then
+    -- THIS mac user prefers brew to macports. we can support that!
+    check_swig_version(brew_swig_path)
+    return brew_swig_path
+  end
+
   -- check for other installed swig
   local f = assert(io.popen("which swig", 'r'))
   local s = assert(f:read('*a'))
