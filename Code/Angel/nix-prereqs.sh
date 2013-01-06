@@ -30,17 +30,32 @@ elif [ "$DIST" == 'Ubuntu' ] ; then
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
 		joystick libopenal-dev libvorbis-dev libpng12-dev ncurses-dev
 elif [ "$DIST" == 'Darwin' ] ; then
-	if   [ "`which make`" == "" ] ; then
+	if [ "`which make`" == "" ] ; then
 		echo "The Xcode command line tools are not installed -- use the Downloads section of the Xcode preferences to install them."
 		exit 1
-	elif [ "`which port`" == "" ] ; then
-		echo "MacPorts is not installed -- please download and install from <http://macports.org>."
-		exit 1
-	else
+	fi
+
+	SWIG_INSTALLED=false
+	if [ "`which brew`" != "" ] ; then
+		if [ "`brew list | grep swig`" == "" ] ; then
+			su $SUDO_USER -c "brew install swig"
+		fi
+		SWIG_INSTALLED=true
+	elif [ "`which port`" != "" ] ; then
 		if [ "`port installed swig-lua | grep currently`" == "" ] ; then
 			port install swig-lua
 		fi
+		SWIG_INSTALLED=true
 	fi
+	if [ $SWIG_INSTALLED != true ] ; then
+		echo "Couldn't install swig because neither Homebrew nor MacPorts was available."
+		echo "Please either download and install from:"
+		echo "	<http://mxcl.github.com/homebrew/>"
+		echo "		or"
+		echo "	<http://macports.org>"
+		exit 1
+	fi
+
 	if [ ! -d /System/Library/Extensions/360Controller.kext ] ; then
 		hdiutil attach ../Tools/Mac360/360ControllerInstall.0.11.dmg
 		installer -target / -pkg /Volumes/360ControllerInstall/Install360Controller.pkg
@@ -48,6 +63,7 @@ elif [ "$DIST" == 'Darwin' ] ; then
 		echo "You should restart your machine to get access to the 360 Controller."
 	fi
 else
-	echo "This is not a recognized Linux or UNIX distribution. Currently we support Fedora, Ubuntu, and OS X."
+	echo "This is not a recognized Linux or UNIX distribution."
+	echo "Currently we support Fedora, Ubuntu, and OS X."
 fi
 
