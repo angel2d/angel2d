@@ -45,6 +45,11 @@ DemoScreenMobileSimulator::DemoScreenMobileSimulator()
 	#endif
 }
 
+void Test()
+{
+    NSLog(@"Button was pushed!");
+}
+
 void DemoScreenMobileSimulator::Start()
 {
 	// Add the MobileSimulator object to the world.
@@ -64,7 +69,8 @@ void DemoScreenMobileSimulator::Start()
 	a->SetName("TouchedActor"); // We'll use this name to find it.
 	theWorld.Add(a);
 	
-	
+	// Button?
+    //AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(568, 50), Test, true);
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo Housekeeping

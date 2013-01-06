@@ -81,7 +81,10 @@ private:
 		ButtonMapping::iterator buttonIt = _buttonCallbacks.find(control);
 		if (buttonIt != _buttonCallbacks.end())
 		{
-			buttonIt->second();
+            if (buttonIt->second != NULL)
+            {
+                buttonIt->second();
+            }
 			return;
 		}
 
@@ -103,7 +106,10 @@ private:
 				count++;
 			}
 			
-			choiceIt->second(button);
+            if (choiceIt->second != NULL)
+            {
+                choiceIt->second(button);
+            }
 			theUI.RemoveUIElement(choiceIt->first);
 			return;
 		}
@@ -187,24 +193,27 @@ void UserInterface::Render()
 #if ANGEL_MOBILE
     void UserInterface::TouchMotionEvent(Touch* movedTouch)
     {
-        int deltaX = _mousePosition.X - movedTouch->CurrentPoint.X;
-        int deltaY = _mousePosition.Y - movedTouch->CurrentPoint.Y;
-        _mousePosition.X = movedTouch->CurrentPoint.X;
-        _mousePosition.Y = movedTouch->CurrentPoint.Y;
-        AngelCanvas->InputMouseMoved(movedTouch->CurrentPoint.X, movedTouch->CurrentPoint.Y, deltaX, deltaY);
+        Vec2i translatedPoint(movedTouch->CurrentPoint.X * 2, movedTouch->CurrentPoint.Y * 2);
+        int deltaX = _mousePosition.X - translatedPoint.X;
+        int deltaY = _mousePosition.Y - translatedPoint.Y;
+        _mousePosition.X = translatedPoint.X;
+        _mousePosition.Y = translatedPoint.Y;
+        AngelCanvas->InputMouseMoved(translatedPoint.X, translatedPoint.Y, deltaX, deltaY);
     }
 
     void UserInterface::TouchEndEvent(Touch* endedTouch)
     {
         _locked = true;
-            AngelCanvas->InputMouseButton(0, true); // 0 = left button
+            TouchMotionEvent(endedTouch);
+            AngelCanvas->InputMouseButton(0, false); // 0 = left button
         _locked = false;
     }
 
     void UserInterface::TouchStartEvent(Touch* startedTouch)
     {
         _locked = true;
-            AngelCanvas->InputMouseButton(0, false); // 0 = left button
+            TouchMotionEvent(startedTouch);
+            AngelCanvas->InputMouseButton(0, true); // 0 = left button
         _locked = false;
     }
 

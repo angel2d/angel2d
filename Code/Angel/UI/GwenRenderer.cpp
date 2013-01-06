@@ -309,6 +309,9 @@ Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeStri
 		LoadFont(font);
 	}
 	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
+    #if ANGEL_MOBILE
+        extents.Y = extents.Y * 2.0f;
+    #endif
 	return Gwen::Point(MathUtil::RoundToInt(extents.X), MathUtil::RoundToInt(extents.Y));
 }
 
