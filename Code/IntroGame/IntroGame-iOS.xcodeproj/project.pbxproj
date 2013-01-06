@@ -132,6 +132,13 @@
 			remoteGlobalIDString = 34A36E4A131DC5C5007EAC45;
 			remoteInfo = Lua;
 		};
+		34F65A561697BAD100207781 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34A6E5A2152787D900BEA400 /* Angel-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 34F0F48116970BBE00F3500B;
+			remoteInfo = GWEN;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -259,6 +266,7 @@
 				34A6E5B9152787DA00BEA400 /* libOgg.a */,
 				34A6E5BB152787DA00BEA400 /* libFTGLES.a */,
 				34A6E5BD152787DA00BEA400 /* libFreeType.a */,
+				34F65A571697BAD100207781 /* libGWEN.a */,
 				34A6E5BF152787DA00BEA400 /* liblibpng.a */,
 				34A6E5C1152787DA00BEA400 /* libzlib.a */,
 				34A6E5C3152787DA00BEA400 /* libLua.a */,
@@ -459,6 +467,13 @@
 			fileType = archive.ar;
 			path = libLua.a;
 			remoteRef = 34A6E5C2152787DA00BEA400 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34F65A571697BAD100207781 /* libGWEN.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGWEN.a;
+			remoteRef = 34F65A561697BAD100207781 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -31,7 +31,8 @@ elif [ "$DIST" == 'Ubuntu' ] ; then
 		joystick libopenal-dev libvorbis-dev libpng12-dev ncurses-dev
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which make`" == "" ] ; then
-		echo "The Xcode command line tools are not installed -- use the Downloads section of the Xcode preferences to install them."
+		echo "The Xcode command line tools are not installed."
+		echo "Use the Downloads section of the Xcode preferences to install them."
 		exit 1
 	fi
 

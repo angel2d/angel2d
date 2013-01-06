@@ -107,19 +107,28 @@ const Vec2i GetTextureSize(const String& filename);
 bool PurgeTexture(const String& filename);
 
 /**
-* Use this function to process an image into positional data, in other words,
-* use an image as map or level data. For every pixel within the tolerance
-* range of the specified color, a Vector2 is added to positions. Resulting
-* positions will be in range imageSizeX * gridSize, imageSizeY * gridSize, and
-* be centered on 0,0. 
-* 
-* @param name The path to the file to load. Must be readable by DevIL.
-*   (http://openil.sourceforge.net/)
-* @param positions The vector of Vector2s to populate
-* @param gridSize The size of the grid, i.e. how much space one pixel occupies.
-* @param pixelColor The color to search the image for (channels in 0.0-1.0 range).  
-*   NOTE: Alpha component is unused.
-* @param tolerance The amount RGB channels can deviate from pixelColor.
-* @return Whether the image was found and processed.
-*/
+ * Use this function to get the raw pixel data of an image as a vector
+ *  of Color structures. 
+ *
+ * @param filename The path to the file to load
+ * @param pixels The vector of Colors to populate
+ * @return Whether the image was found and processed.
+ */
+bool GetRawImageData(const String& filename, std::vector<Color> &pixels);
+
+/**
+ * Use this function to process an image into positional data, in other words,
+ *  use an image as map or level data. For every pixel within the tolerance
+ *  range of the specified color, a Vector2 is added to positions. Resulting
+ *  positions will be in range imageSizeX * gridSize, imageSizeY * gridSize, and
+ *  be centered on 0,0. 
+ * 
+ * @param filename The path to the file to load.
+ * @param positions The vector of Vector2s to populate
+ * @param gridSize The size of the grid, i.e. how much space one pixel occupies.
+ * @param pixelColor The color to search the image for (channels in 0.0-1.0 range).  
+ *   NOTE: Alpha component is unused.
+ * @param tolerance The amount RGB channels can deviate from pixelColor.
+ * @return Whether the image was found and processed.
+ */
 bool PixelsToPositions(const String& filename, Vector2List &positions, float gridSize, const Color& pixelColor, float tolerance=0.1f);

@@ -30,13 +30,14 @@
 #pragma once
 
 #include "../Util/StringUtil.h"
+#include "../Infrastructure/Color.h"
 
 #include "Gwen/Gwen.h"
 
 class GwenRenderer : public Gwen::Renderer::Base
 {
 public:
-	GwenRenderer();
+	GwenRenderer(const String& texturePath);
 	~GwenRenderer();
 
 	virtual void FinishInit();
@@ -92,6 +93,6 @@ private:
 	Vertex				_vertices[ s_maxVerts ];
 
 	std::map<Gwen::UnicodeString, String> _unicodeCache;
-    
+    std::vector<Color> _skinTexture;
 };
 

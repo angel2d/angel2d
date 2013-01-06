@@ -41,7 +41,7 @@
 #include "../Infrastructure/Log.h"
 #include "../Util/MathUtil.h"
 
-GwenRenderer::GwenRenderer()
+GwenRenderer::GwenRenderer(const String& texturePath)
 {
 	_vertNum = 0;
 
@@ -49,6 +49,8 @@ GwenRenderer::GwenRenderer()
 	{
 		_vertices[ i ].z = 0.5f;
 	}
+    
+    GetRawImageData(texturePath, _skinTexture);
 }
 
 GwenRenderer::~GwenRenderer()
@@ -59,7 +61,7 @@ GwenRenderer::~GwenRenderer()
 
 void GwenRenderer::FinishInit()
 {
-
+    _skinTexture.clear(); // just saving memory
 }
 
 void GwenRenderer::Begin()
@@ -245,33 +247,13 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, unsigned int y, const Gwen::Color& col_default)
 {
-	GLuint tex = (GLuint)texture->data;
-	if ( !tex ) return col_default;
-
-	unsigned int pixelSize = sizeof(unsigned char) * 4;
-
-	glBindTexture( GL_TEXTURE_2D, tex );
-
-	unsigned char* data = (unsigned char*) malloc( pixelSize * texture->width * texture->height );
-
-	glGetTexImage( GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-
-	unsigned int offset = ((texture->height - y) * texture->width + x) * 4;
-
-	Gwen::Color c;
-	c.r = data[0 + offset];
-	c.g = data[1 + offset];
-	c.b = data[2 + offset];
-	c.a = data[3 + offset];
-
-	//
-	// Retrieving the entire texture for a single pixel read
-	// is kind of a waste - maybe cache this pointer in the texture
-	// data and then release later on? It's never called during runtime
-	// - only during initialization.
-	//
-	free( data );
-
+    unsigned int offset = ((texture->height - y) * texture->width) + x;
+    Gwen::Color c;
+    c.r = int(_skinTexture[offset].R * 255.0f);
+    c.g = int(_skinTexture[offset].G * 255.0f);
+    c.b = int(_skinTexture[offset].B * 255.0f);
+    c.a = int(_skinTexture[offset].A * 255.0f);
+    
 	return c;
 }
 

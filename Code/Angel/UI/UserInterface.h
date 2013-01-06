@@ -29,7 +29,12 @@
 
 #pragma once
 
-#include "../Input/MouseInput.h"
+#if ANGEL_MOBILE
+    #include "../Input/MultiTouch.h"
+#else
+    #include "../Input/MouseInput.h"
+#endif
+
 #include "../Util/StringUtil.h"
 
 class GwenRenderer;
@@ -40,7 +45,11 @@ class GwenRenderer;
 typedef void* AngelUIHandle;
 
 
-class UserInterface : public MouseListener 
+#if ANGEL_MOBILE
+    class UserInterface : public TouchListener
+#else
+    class UserInterface : public MouseListener
+#endif
 {
 public:
 	/**
@@ -56,21 +65,27 @@ public:
 	 */
 	void Render();
 	
-	// Mouse listener implementation functions
-	virtual void MouseMotionEvent(Vec2i screenCoordinates);
-	virtual void MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button);
-	virtual void MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button);
-	virtual void MouseWheelEvent(int position);
-	
-	/**
-	 * For internal engine use only; handles keyboard input.
-	 */
-	void HandleKey(int key, bool down);
-
-	/**
-	 * For internal engine use only; handles keyboard input.
-	 */
-	void HandleCharacter(wchar_t chr);
+    #if ANGEL_MOBILE
+        virtual void TouchMotionEvent(Touch* movedTouch);
+        virtual void TouchEndEvent(Touch* endedTouch);
+        virtual void TouchStartEvent(Touch* startedTouch);
+    #else
+        // Mouse listener implementation functions
+        virtual void MouseMotionEvent(Vec2i screenCoordinates);
+        virtual void MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button);
+        virtual void MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button);
+        virtual void MouseWheelEvent(int position);
+    
+        /**
+         * For internal engine use only; handles keyboard input.
+         */
+        void HandleKey(int key, bool down);
+    
+        /**
+         * For internal engine use only; handles keyboard input.
+         */
+        void HandleCharacter(wchar_t chr);
+    #endif // ANGEL_MOBILE
 	
 	/**
 	 * For internal engine use only; shuts down the UI layer cleanly when the world is destroyed.

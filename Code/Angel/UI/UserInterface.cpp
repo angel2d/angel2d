@@ -135,11 +135,18 @@ UserInterface& UserInterface::GetInstance()
 
 UserInterface::UserInterface()
 {
-	glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
-	_renderer = new GwenRenderer();
+    #if !ANGEL_MOBILE
+        glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
+    #else
+        _mousePosition.X = _mousePosition.Y = 0;
+    #endif
+    
+    const String skinTexture = "Resources/Images/DefaultSkin.png";
+    
+	_renderer = new GwenRenderer(skinTexture);
 
 	AngelSkin = new Gwen::Skin::TexturedBase(_renderer);
-	((Gwen::Skin::TexturedBase*)AngelSkin)->Init("Resources/Images/DefaultSkin.png");
+	((Gwen::Skin::TexturedBase*)AngelSkin)->Init(skinTexture);
 	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20);
 	
     _renderer->FinishInit();
@@ -177,55 +184,83 @@ void UserInterface::Render()
 	_locked = false;
 }
 
-void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
-{
-	if (theWorld.GetConsole()->IsEnabled())
-	{
-		return;
-	}
-	
-	int deltaX = _mousePosition.X - screenCoordinates.X;
-	int deltaY = _mousePosition.Y - screenCoordinates.Y;
-	_mousePosition.X = screenCoordinates.X;
-	_mousePosition.Y = screenCoordinates.Y;
-	AngelCanvas->InputMouseMoved(screenCoordinates.X, screenCoordinates.Y, deltaX, deltaY);
-}
+#if ANGEL_MOBILE
+    void UserInterface::TouchMotionEvent(Touch* movedTouch)
+    {
+        int deltaX = _mousePosition.X - movedTouch->CurrentPoint.X;
+        int deltaY = _mousePosition.Y - movedTouch->CurrentPoint.Y;
+        _mousePosition.X = movedTouch->CurrentPoint.X;
+        _mousePosition.Y = movedTouch->CurrentPoint.Y;
+        AngelCanvas->InputMouseMoved(movedTouch->CurrentPoint.X, movedTouch->CurrentPoint.Y, deltaX, deltaY);
+    }
 
-void UserInterface::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button)
-{
-	if (theWorld.GetConsole()->IsEnabled())
-	{
-		return;
-	}
-	
-	_locked = true;
-		AngelCanvas->InputMouseButton(button, true);
-	_locked = false;
-}
+    void UserInterface::TouchEndEvent(Touch* endedTouch)
+    {
+        _locked = true;
+            AngelCanvas->InputMouseButton(0, true); // 0 = left button
+        _locked = false;
+    }
 
-void UserInterface::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button)
-{
-	if (theWorld.GetConsole()->IsEnabled())
-	{
-		return;
-	}
-	
-	_locked = true;
-		AngelCanvas->InputMouseButton(button, false);
-	_locked = false;
-}
+    void UserInterface::TouchStartEvent(Touch* startedTouch)
+    {
+        _locked = true;
+            AngelCanvas->InputMouseButton(0, false); // 0 = left button
+        _locked = false;
+    }
 
-void UserInterface::MouseWheelEvent(int position)
-{
-	if (theWorld.GetConsole()->IsEnabled())
-	{
-		return;
-	}
-	
-	_locked = true;
-		AngelCanvas->InputMouseWheel(position);
-	_locked = false;
-}
+#else //ANGEL_MOBILE
+    void UserInterface::MouseMotionEvent(Vec2i screenCoordinates)
+    {
+        if (theWorld.GetConsole()->IsEnabled())
+        {
+            return;
+        }
+        
+        _locked = true;
+            int deltaX = _mousePosition.X - screenCoordinates.X;
+            int deltaY = _mousePosition.Y - screenCoordinates.Y;
+            _mousePosition.X = screenCoordinates.X;
+            _mousePosition.Y = screenCoordinates.Y;
+            AngelCanvas->InputMouseMoved(screenCoordinates.X, screenCoordinates.Y, deltaX, deltaY);
+        _locked = false;
+    }
+
+    void UserInterface::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput button)
+    {
+        if (theWorld.GetConsole()->IsEnabled())
+        {
+            return;
+        }
+        
+        _locked = true;
+            AngelCanvas->InputMouseButton(button, true);
+        _locked = false;
+    }
+
+    void UserInterface::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput button)
+    {
+        if (theWorld.GetConsole()->IsEnabled())
+        {
+            return;
+        }
+        
+        _locked = true;
+            AngelCanvas->InputMouseButton(button, false);
+        _locked = false;
+    }
+
+    void UserInterface::MouseWheelEvent(int position)
+    {
+        if (theWorld.GetConsole()->IsEnabled())
+        {
+            return;
+        }
+        
+        _locked = true;
+            AngelCanvas->InputMouseWheel(position);
+        _locked = false;
+    }
+#endif //ANGEL_MOBILE
 
 void UserInterface::RemoveUIElement(AngelUIHandle element)
 {

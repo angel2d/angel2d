@@ -426,6 +426,86 @@ const Vec2i GetTextureSize(const String& filename)
 	}
 }
 
+bool GetRawImageData(const String& filename, std::vector<Color> &pixels)
+{
+	#if _ANGEL_DISABLE_DEVIL
+		png_byte* pngData;
+		float* rawData;
+		png_uint_32 width, height;
+		
+		if (!LoadPNG(filename, pngData, width, height, true))
+		{
+			//error was output by the load
+			return false;
+		}
+
+		// convert png ubyte data to float array
+		rawData = (float*)malloc(4 * width * height * sizeof(float));
+		
+		int j = 0;
+		for (int i = 0; i < (4 * width * height); i++)
+		{
+			rawData[j] = (float)pngData[i] / 255.0f;
+			j++;
+		}
+
+		free(pngData);
+	#else
+		ILuint imgRef;
+
+		ilGenImages(1, &imgRef);
+		ilBindImage(imgRef);
+		
+		// load image into DevIL
+		if (!ilLoadImage(filename.c_str()))
+		{
+			HandleDevILErrors(filename);
+			return false;
+		}
+		
+		// get image datums
+		unsigned int width  = ilGetInteger(IL_IMAGE_WIDTH);
+		unsigned int height = ilGetInteger(IL_IMAGE_HEIGHT);
+		
+		// convert it to RGB floats for easy comparison
+		ilConvertImage(IL_RGBA, IL_FLOAT);
+	
+		// flip it if we need to
+		if (ilGetInteger(IL_IMAGE_ORIGIN) != IL_ORIGIN_LOWER_LEFT)
+		{
+			iluFlipImage();
+		}
+
+		// grab the raw data
+		ILfloat* rawData = (ILfloat*)ilGetData(); 
+	#endif //_ANGEL_DISABLE_DEVIL
+
+	// convert every pixel into colors
+	float pixR, pixG, pixB, pixA;
+	unsigned int pixOffset = 0;
+	for (int y=0; y < height; y++)
+	{
+		for (int x=0; x < width; x++)
+		{
+			pixOffset = (y * width * 4) + (x * 4);
+			pixR = rawData[pixOffset];
+			pixG = rawData[pixOffset + 1];
+			pixB = rawData[pixOffset + 2];
+			pixA = rawData[pixOffset + 3];
+			pixels.push_back(Color(pixR, pixG, pixB, pixA));
+		}
+	}
+
+	// cleanup and return
+	#if _ANGEL_DISABLE_DEVIL
+		free(rawData);
+	#else
+		ilDeleteImages(1, &imgRef);
+	#endif
+
+	return true;
+}
+
 bool PixelsToPositions(const String& filename, Vector2List &positions, float gridSize, const Color& pixelColor, float tolerance)
 {
 	#if _ANGEL_DISABLE_DEVIL
