@@ -47,7 +47,7 @@ DemoScreenMobileSimulator::DemoScreenMobileSimulator()
 
 void Test()
 {
-    NSLog(@"Button was pushed!");
+    sysLog.Printf("Button pressed!");
 }
 
 void DemoScreenMobileSimulator::Start()
@@ -70,7 +70,7 @@ void DemoScreenMobileSimulator::Start()
 	theWorld.Add(a);
 	
 	// Button?
-    //AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(568, 50), Test, true);
+    AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(568, 50), Test, true);
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo Housekeeping

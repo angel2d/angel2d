@@ -40,6 +40,18 @@
 #include "../Infrastructure/Camera.h"
 #include "../Infrastructure/Log.h"
 #include "../Util/MathUtil.h"
+#include "../Util/DrawUtil.h"
+
+
+void err()
+{
+	bool debug = HandleGLErrors();
+	if (debug)
+	{
+		puts("DEBUG!");
+	}
+}
+
 
 GwenRenderer::GwenRenderer(const String& texturePath)
 {
@@ -49,8 +61,8 @@ GwenRenderer::GwenRenderer(const String& texturePath)
 	{
 		_vertices[ i ].z = 0.5f;
 	}
-    
-    GetRawImageData(texturePath, _skinTexture);
+	
+	GetRawImageData(texturePath, _skinTexture);
 }
 
 GwenRenderer::~GwenRenderer()
@@ -61,7 +73,7 @@ GwenRenderer::~GwenRenderer()
 
 void GwenRenderer::FinishInit()
 {
-    _skinTexture.clear(); // just saving memory
+	_skinTexture.clear(); // just saving memory
 }
 
 void GwenRenderer::Begin()
@@ -89,9 +101,8 @@ void GwenRenderer::End()
 	Flush();
 	glAlphaFunc(GL_ALWAYS, 0.0f);
 
-    glDisableClientState( GL_COLOR_ARRAY );
-    glDisable(GL_TEXTURE_2D);
-    
+	glDisableClientState( GL_COLOR_ARRAY );
+	
 	glPopMatrix();
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -141,7 +152,7 @@ void GwenRenderer::AddVertex(int x, int y, float u, float v)
 
 void GwenRenderer::SetDrawColor( Gwen::Color color )
 {
-    glColor4ub(color.r, color.g, color.b, color.a);
+	glColor4ub(color.r, color.g, color.b, color.a);
 	//glColor4ubv( (GLubyte*)&color );
 	_color = color;
 }
@@ -247,13 +258,13 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, unsigned int y, const Gwen::Color& col_default)
 {
-    unsigned int offset = ((texture->height - y) * texture->width) + x;
-    Gwen::Color c;
-    c.r = int(_skinTexture[offset].R * 255.0f);
-    c.g = int(_skinTexture[offset].G * 255.0f);
-    c.b = int(_skinTexture[offset].B * 255.0f);
-    c.a = int(_skinTexture[offset].A * 255.0f);
-    
+	unsigned int offset = ((texture->height - y) * texture->width) + x;
+	Gwen::Color c;
+	c.r = int(_skinTexture[offset].R * 255.0f);
+	c.g = int(_skinTexture[offset].G * 255.0f);
+	c.b = int(_skinTexture[offset].B * 255.0f);
+	c.a = int(_skinTexture[offset].A * 255.0f);
+	
 	return c;
 }
 
@@ -297,7 +308,7 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
 	String fontConv = Gwen::Utility::UnicodeToString(font->facename);
 	pos.y += GetTextAscenderHeight(fontConv);
 
-    glColor4ub(_color.r, _color.g, _color.b, _color.a);
+	glColor4ub(_color.r, _color.g, _color.b, _color.a);
 	//glColor4ubv( (GLubyte*)&_color );
 	DrawGameText(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
 }
@@ -309,9 +320,9 @@ Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeStri
 		LoadFont(font);
 	}
 	Vector2 extents = GetTextExtents(Gwen::Utility::UnicodeToString(text), Gwen::Utility::UnicodeToString(font->facename));
-    #if ANGEL_MOBILE
-        extents.Y = extents.Y * 2.0f;
-    #endif
+	#if ANGEL_MOBILE
+		extents.Y = extents.Y * 2.0f;
+	#endif
 	return Gwen::Point(MathUtil::RoundToInt(extents.X), MathUtil::RoundToInt(extents.Y));
 }
 

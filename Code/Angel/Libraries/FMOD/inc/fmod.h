@@ -16,7 +16,7 @@
     0xaaaabbcc -> aaaa = major version number.  bb = minor version number.  cc = development version number.
 */
 
-#define FMOD_VERSION    0x00044000
+#define FMOD_VERSION    0x00044403
 
 /*
     Compiler specific settings.
@@ -32,7 +32,7 @@
     #define F_STDCALL _stdcall
     #define F_DECLSPEC __declspec
     #define F_DLLEXPORT ( dllexport )
-#elif defined(__MACH__) || defined(__ANDROID__) || defined(__linux__)
+#elif defined(__MACH__) || defined(__ANDROID__) || defined(__linux__) || defined(__QNX__)
     #define F_CDECL
     #define F_STDCALL
     #define F_DECLSPEC
@@ -45,7 +45,7 @@
 #endif
 
 #ifdef DLL_EXPORTS
-    #if defined(__MACH__) || defined(__ANDROID__) || defined(__linux__)
+    #if defined(__MACH__) || defined(__ANDROID__) || defined(__linux__) || defined(__QNX__)
         #define F_API __attribute__ ((visibility("default")))
     #else
         #define F_API __declspec(dllexport) F_STDCALL
@@ -373,6 +373,7 @@ typedef enum
     FMOD_OUTPUTTYPE_OPENSL,          /* Android         - OpenSL ES output.                         (Default on Android 2.3 and above) */   
     FMOD_OUTPUTTYPE_NACL,            /* Native Client   - Native Client output.                     (Default on Native Client) */
     FMOD_OUTPUTTYPE_WIIU,            /* Wii U           - Native Wii U output.                      (Default on Wii U) */
+	FMOD_OUTPUTTYPE_ASOUND,		 	 /* BlackBerry      - Native BlackBerry asound output.          (Default on BlackBerry) */
 
     FMOD_OUTPUTTYPE_MAX,             /* Maximum number of output types supported. */
     FMOD_OUTPUTTYPE_FORCEINT = 65536 /* Makes sure this enum is signed 32bit. */
@@ -409,6 +410,7 @@ typedef enum
 #define FMOD_CAPS_OUTPUT_FORMAT_PCM32    0x00000040  /* Device can output to 32bit integer PCM. */
 #define FMOD_CAPS_OUTPUT_FORMAT_PCMFLOAT 0x00000080  /* Device can output to 32bit floating point PCM. */
 #define FMOD_CAPS_REVERB_LIMITED         0x00002000  /* Device supports some form of limited hardware reverb, maybe parameterless and only selectable by environment. */
+#define FMOD_CAPS_LOOPBACK               0x00004000  /* Device is a loopback recording device */
 /* [DEFINE_END] */
 
 /*
@@ -733,6 +735,8 @@ typedef enum
 #define FMOD_INIT_SYNCMIXERWITHUPDATE        0x00400000 /* Win32/Wii/PS3/Xbox/Xbox 360 - FMOD Mixer thread is woken up to do a mix when System::update is called rather than waking periodically on its own timer. */
 #define FMOD_INIT_GEOMETRY_USECLOSEST        0x04000000 /* All platforms - With the geometry engine, only process the closest polygon rather than accumulating all polygons the sound to listener line intersects. */
 #define FMOD_INIT_DISABLE_MYEARS_AUTODETECT  0x08000000 /* Win32 - Disables automatic setting of FMOD_SPEAKERMODE_STEREO to FMOD_SPEAKERMODE_MYEARS if the MyEars profile exists on the PC.  MyEars is HRTF 7.1 downmixing through headphones. */
+#define FMOD_INIT_PS3_DISABLEDTS             0x10000000 /* PS3 only - Disable DTS output mode selection */
+#define FMOD_INIT_PS3_DISABLEDOLBYDIGITAL    0x20000000 /* PS3 only - Disable Dolby Digital output mode selection */
 /* [DEFINE_END] */
 
 
@@ -780,6 +784,8 @@ typedef enum
     FMOD_SOUND_TYPE_XWMA,            /* Xbox360 XWMA */
     FMOD_SOUND_TYPE_BCWAV,           /* 3DS BCWAV container format for DSP ADPCM and PCM */
     FMOD_SOUND_TYPE_AT9,             /* NGP ATRAC 9 format */
+    FMOD_SOUND_TYPE_VORBIS,          /* Raw vorbis */
+    FMOD_SOUND_TYPE_MEDIA_FOUNDATION,/* Microsoft Media Foundation wrappers, supports ASF/WMA */
 
     FMOD_SOUND_TYPE_MAX,             /* Maximum number of sound types supported. */
     FMOD_SOUND_TYPE_FORCEINT = 65536 /* Makes sure this enum is signed 32bit. */
@@ -820,6 +826,7 @@ typedef enum
     FMOD_SOUND_FORMAT_CELT,             /* Compressed CELT data. */
     FMOD_SOUND_FORMAT_AT9,              /* Compressed PSVita ATRAC9 data. */
     FMOD_SOUND_FORMAT_XWMA,             /* Compressed Xbox360 xWMA data. */
+    FMOD_SOUND_FORMAT_VORBIS,           /* Compressed Vorbis data. */
 
     FMOD_SOUND_FORMAT_MAX,              /* Maximum number of sound formats supported. */   
     FMOD_SOUND_FORMAT_FORCEINT = 65536  /* Makes sure this enum is signed 32bit. */
@@ -1591,6 +1598,7 @@ typedef struct FMOD_REVERB_PROPERTIES
 */
 #define FMOD_REVERB_FLAGS_HIGHQUALITYREVERB     0x00000400 /* Wii. Use high quality reverb */
 #define FMOD_REVERB_FLAGS_HIGHQUALITYDPL2REVERB 0x00000800 /* Wii. Use high quality DPL2 reverb */
+#define FMOD_REVERB_FLAGS_HARDWAREONLY          0x00001000 /* Don't create an SFX reverb for FMOD_SOFTWARE channels, hardware reverb only */
 #define FMOD_REVERB_FLAGS_DEFAULT               0x00000000
 /* [DEFINE_END] */
 
@@ -1773,6 +1781,7 @@ typedef struct FMOD_ADVANCEDSETTINGS
     int             maxADPCMcodecs;             /* [r/w] Optional. Specify 0 to ignore. For use with FMOD_CREATECOMPRESSEDSAMPLE only.  ADPCM codecs consume  2,136 bytes per instance and this number will determine how many ADPCM channels can be played simultaneously.  Default = 32. */
     int             maxXMAcodecs;               /* [r/w] Optional. Specify 0 to ignore. For use with FMOD_CREATECOMPRESSEDSAMPLE only.  XMA   codecs consume 14,836 bytes per instance and this number will determine how many XMA channels can be played simultaneously.    Default = 32. */
     int             maxCELTcodecs;              /* [r/w] Optional. Specify 0 to ignore. For use with FMOD_CREATECOMPRESSEDSAMPLE only.  CELT  codecs consume 11,500 bytes per instance and this number will determine how many CELT channels can be played simultaneously.   Default = 32. */    
+    int             maxVORBIScodecs;            /* [r/w] Optional. Specify 0 to ignore. For use with FMOD_CREATECOMPRESSEDSAMPLE only.  Vorbis codecs consume 12,000 bytes per instance and this number will determine how many Vorbis channels can be played simultaneously. Default = 32. */    
     int             maxPCMcodecs;               /* [r/w] Optional. Specify 0 to ignore. For use with PS3 only.                          PCM   codecs consume 12,672 bytes per instance and this number will determine how many streams and PCM voices can be played simultaneously. Default = 16. */
     int             ASIONumChannels;            /* [r/w] Optional. Specify 0 to ignore. Number of channels available on the ASIO device. */
     char          **ASIOChannelList;            /* [r/w] Optional. Specify 0 to ignore. Pointer to an array of strings (number of entries defined by ASIONumChannels) with ASIO channel names. */

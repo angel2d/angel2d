@@ -65,5 +65,7 @@ void DrawLine( const Vector2& from, const Vector2& to );
 
 /**
  * Checks for OpenGL errors and prints any found to the log.
+ *
+ * @return Whether or not any errors were found. 
  */
-void HandleGLErrors();
+bool HandleGLErrors();

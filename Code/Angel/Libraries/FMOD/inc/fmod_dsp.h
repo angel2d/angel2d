@@ -68,6 +68,7 @@ typedef enum
     FMOD_DSP_TYPE_TREMOLO,            /* This unit produces a tremolo / chopper effect on the sound. */
     FMOD_DSP_TYPE_LADSPAPLUGIN,       /* This unit allows the use of LADSPA standard plugins. */
     FMOD_DSP_TYPE_HIGHPASS_SIMPLE,    /* This unit filters sound using a simple highpass with no resonance, but has flexible cutoff and is fast. */
+    FMOD_DSP_TYPE_HARDWARE = 1000,    /* Offset that platform specific FMOD_HARDWARE DSPs will start at. */
     FMOD_DSP_TYPE_FORCEINT = 65536    /* Makes sure this enum is signed 32bit. */
 } FMOD_DSP_TYPE;
 

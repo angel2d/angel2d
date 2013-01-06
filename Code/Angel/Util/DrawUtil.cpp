@@ -82,8 +82,9 @@ void DrawLine( const Vector2& vFrom, const Vector2& vTo )
 	glDrawArrays(GL_LINES, 0, 2);
 }
 
-void HandleGLErrors()
+bool HandleGLErrors()
 {
+    bool errorFound = false;
 	GLenum errorCode;
 	const GLubyte *errorString;
 	do
@@ -91,8 +92,11 @@ void HandleGLErrors()
 		errorCode = glGetError();
 		if (errorCode != GL_NO_ERROR)
 		{
+            errorFound = true;
 			errorString = gluErrorString(errorCode);
 			sysLog.Printf("OpenGL Error: %s", errorString);
 		}
 	} while (errorCode != GL_NO_ERROR);
+    
+    return errorFound;
 }
