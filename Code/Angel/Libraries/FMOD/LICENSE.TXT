@@ -1,4 +1,4 @@
-FMOD Ex SoundSystem Copyright © 2005-2011 Firelight Technologies Pty, Ltd.
+FMOD Ex SoundSystem Copyright © 2005-2012 Firelight Technologies Pty, Ltd.
 
 FMOD NON-COMMERCIAL LICENSE
 ------------------------------------
@@ -20,7 +20,7 @@ CONDITIONS/LIMITATIONS:
   LOGOS ARE AVAILABLE FOR BOX OR MANUAL ART, BUT ARE NOT MANDANTORY. 
   AN EXAMPLE CREDIT COULD BE:
   
-  FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2011.
+  FMOD Sound System, copyright © Firelight Technologies Pty, Ltd., 1994-2012.
 
   NOTE THIS IN ADVANCE, AS IT MUST BE DONE BEFORE SHIPPING YOUR 
   PRODUCT WITH FMOD.
