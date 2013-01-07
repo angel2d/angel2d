@@ -45,11 +45,6 @@ DemoScreenMobileSimulator::DemoScreenMobileSimulator()
 	#endif
 }
 
-void Test()
-{
-    sysLog.Printf("Button pressed!");
-}
-
 void DemoScreenMobileSimulator::Start()
 {
 	// Add the MobileSimulator object to the world.
@@ -68,9 +63,6 @@ void DemoScreenMobileSimulator::Start()
 	a->SetSprite("Resources/Images/angel.png");
 	a->SetName("TouchedActor"); // We'll use this name to find it.
 	theWorld.Add(a);
-	
-	// Button?
-    //AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(theCamera.GetWindowWidth() / 2, 50), Test, true);
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo Housekeeping
