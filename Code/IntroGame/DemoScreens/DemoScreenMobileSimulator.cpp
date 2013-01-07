@@ -70,7 +70,7 @@ void DemoScreenMobileSimulator::Start()
 	theWorld.Add(a);
 	
 	// Button?
-    AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(568, 50), Test, true);
+    //AngelUIHandle button = theUI.AddButton("Test Button", Vec2i(theCamera.GetWindowWidth() / 2, 50), Test, true);
 	
 	//Demo housekeeping below this point. 
 	#pragma region Demo Housekeeping

@@ -43,15 +43,6 @@
 #include "../Util/DrawUtil.h"
 
 
-void err()
-{
-	bool debug = HandleGLErrors();
-	if (debug)
-	{
-		puts("DEBUG!");
-	}
-}
-
 
 GwenRenderer::GwenRenderer(const String& texturePath)
 {
@@ -61,6 +52,8 @@ GwenRenderer::GwenRenderer(const String& texturePath)
 	{
 		_vertices[ i ].z = 0.5f;
 	}
+	
+	_windowWidth = _windowHeight = 0;
 	
 	GetRawImageData(texturePath, _skinTexture);
 }
@@ -80,15 +73,14 @@ void GwenRenderer::Begin()
 {
 	glAlphaFunc( GL_GREATER, 1.0f );
 
-	Vec2i winDimensions;
-	winDimensions.X = theCamera.GetWindowWidth();
-	winDimensions.Y = theCamera.GetWindowHeight();
-	
+	_windowWidth = theCamera.GetWindowWidth();
+	_windowHeight = theCamera.GetWindowHeight();
+
 	//set up projection
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	gluOrtho2D(0, winDimensions.X, winDimensions.Y, 0);
+	gluOrtho2D(0, _windowWidth, _windowHeight, 0);
 	
 	//set up modelview
 	glMatrixMode(GL_MODELVIEW);
@@ -102,11 +94,12 @@ void GwenRenderer::End()
 	glAlphaFunc(GL_ALWAYS, 0.0f);
 
 	glDisableClientState( GL_COLOR_ARRAY );
+	glDisable(GL_TEXTURE_2D);
 	
+	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
 }
 
 void GwenRenderer::Flush()
@@ -310,7 +303,18 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
 
 	glColor4ub(_color.r, _color.g, _color.b, _color.a);
 	//glColor4ubv( (GLubyte*)&_color );
-	DrawGameText(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
+	
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0, _windowWidth, 0, _windowHeight);
+	
+	DrawGameTextRaw(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
+	
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0, _windowWidth, _windowHeight, 0);
+	glMatrixMode(GL_MODELVIEW);
+	
 }
 
 Gwen::Point GwenRenderer::MeasureText( Gwen::Font* font, const Gwen::UnicodeString& text )

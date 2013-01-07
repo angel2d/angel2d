@@ -91,6 +91,8 @@ private:
 	Gwen::Color			_color;
 	int					_vertNum;
 	Vertex				_vertices[ s_maxVerts ];
+    
+    unsigned int        _windowWidth, _windowHeight;
 
 	std::map<Gwen::UnicodeString, String> _unicodeCache;
     std::vector<Color> _skinTexture;
