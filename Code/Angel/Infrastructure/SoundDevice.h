@@ -67,11 +67,13 @@ class GameManager;
 
 ///Our (very simple) sound system
 /** 
- * Our sound system is pretty much just a light wrapper around FMOD. We don't
- *  expose all of FMOD's functionality, but if you're interested in more advanced
- *  usage, it shouldn't be hard to expand this class. 
+ * Our sound system is pretty much just a light wrapper around FMOD and OpenAL. 
+ *  We don't expose all of their functionality, but if you're interested in 
+ *  more advanced usage, it shouldn't be hard to expand this class. 
  * 
  * For more information on FMOD: http://www.fmod.org/
+ * 
+ * For more information on OpenAL: http://connect.creativelabs.com/openal/default.aspx
  * 
  * Note that FMOD requires licensing fees if you want to distribute your game
  *  for money. Because we're focused on prototyping, and FMOD supports a 

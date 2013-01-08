@@ -59,6 +59,8 @@ public:
 	 * @param start The starting value
 	 * @param end The ending value
 	 * @param duration Length of the transition in seconds
+	 * @param smooth Whether to use a smooth interpolation with ease-in and ease-out
+	 *    instead of a simple linear interpolation.
 	 */
 	Interval(T start, T end, float duration, bool smooth=false) :
 		_start(start),

@@ -125,11 +125,6 @@ SoundDevice& SoundDevice::GetInstance()
 	FMOD_RESULT F_CALLBACK SoundDevice::FMOD_SoundCallback(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, void *commanddata1, void *commanddata2)	{
 		FMOD::Channel *soundChannel = (FMOD::Channel *)channel;
 
-		//rb - Here's how we can get at user data if we need it.
-		//void* userData;
-		//ANGEL_SOUND_CHECKED( soundChannel->getUserData(&userData) )
-		//assert(userData);
-
 		if (theSound.soundCallback.GetInstance() && theSound.soundCallback.GetFunction())
 		{
 			theSound.soundCallback.Execute( reinterpret_cast<AngelSoundHandle>(soundChannel) );		
@@ -296,8 +291,8 @@ AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
 		FMOD::Sound* newSample;
 		ANGEL_SOUND_CHECKED( _system->createSound(filename, flags, 0, &newSample) ) 
 
-		// We don't try and stop duplicates.  If they want to have multiple of the same stream going at once, they have to have 
-		// unique samples loaded for each.
+		// We don't try and stop duplicates.  If they want to have multiples of the 
+		//  same stream going at once, they have to have unique samples loaded for each.
 		_samples.push_back(newSample);
 
 		return newSample;
@@ -433,22 +428,13 @@ AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
 	}
 #endif // ANGEL_DISABLE_FMOD
 
-//rb - TODO - Add flags for Persistent or not?  
-//rb - TODO - Add method to load sample and play sound?  
 AngelSoundHandle SoundDevice::PlaySound(AngelSampleHandle sample, float volume, bool looping, int flags)
 {
 	assert(sample && "Sample is NULL.");
 
 	#if !ANGEL_DISABLE_FMOD
-		//rb - TODO - Allow for flags.  Translate from wrapper flags to FMOD flags.
-		// Currently, we don't use flags, but this way the interface is intact.
 		if (flags)
 			sysLog.Log("WARNING: PlaySound doesn't use the passed in flags yet.");
-
-		//int numChannelsActive;
-		//_system->getChannelsPlaying(&numChannelsActive);
-		//if (numChannelsActive >= 25)
-		//	return NULL;
 
 		// Start paused, tweak setting and unpause.
 		FMOD::Channel* FMOD_Channel;
@@ -469,10 +455,6 @@ AngelSoundHandle SoundDevice::PlaySound(AngelSampleHandle sample, float volume, 
 		// Unpause.
 		ANGEL_SOUND_CHECKED( FMOD_Channel->setPaused(false) )
 		
-		//rb - Here's how we can set user data if we need it.
-		//FMOD_Channel->setUserData(FMOD_Channel);
-		
-		//rb - Should we always call the callback?
 		FMOD_Channel->setCallback(&SoundDevice::FMOD_SoundCallback);
 
 		return FMOD_Channel;

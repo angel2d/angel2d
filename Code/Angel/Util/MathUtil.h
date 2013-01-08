@@ -172,7 +172,9 @@ public:
 	
 	/**
 	 * Smoothly step between two values. Works for any classes that Lerp
-	 *  would work for (and is essentially a drop-in replacement).
+	 *  would work for (and is essentially a drop-in replacement). 
+	 *  Often looks visually better than a simple linear interpolation as
+	 *  it gives ease-in and ease-out. 
 	 * 
 	 * http://www.fundza.com/rman_shaders/smoothstep/index.html
 	 * 
