@@ -141,7 +141,7 @@ void Controller::Setup()
 	#if defined(WIN32)
 		ZeroMemory( &_currentControllerRawState, sizeof(XINPUT_STATE));
 		
-		_dwResult = XInputGetState(0, &_currentControllerRawState);
+		_dwResult = XInputGetState(_controllerID, &_currentControllerRawState);
 		
 		if (_dwResult == ERROR_SUCCESS)
 		{
@@ -152,6 +152,13 @@ void Controller::Setup()
 		{
 			sysLog.Printf("Controller %d not present...", _controllerID+1);
 			ZeroMemory( &_currentControllerRawState, sizeof(XINPUT_STATE));
+			_currentControllerInput.LeftThumbstickX = 
+			_currentControllerInput.LeftThumbstickY =
+			_currentControllerInput.RightThumbstickX =
+			_currentControllerInput.RightThumbstickY = 
+			_currentControllerInput.LeftTriggerValue = 
+			_currentControllerInput.RightTriggerValue = 
+			_currentControllerInput.Buttons = 0;
 			_connected = false;
 		}
 	
