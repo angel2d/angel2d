@@ -51,6 +51,9 @@
 #include "../UI/UserInterface.h"
 #include "../Util/DrawUtil.h"
 
+#if defined(WIN32) && defined(NDEBUG)
+	#include <comdef.h>
+#endif
 #include <algorithm>
 
 World* World::s_World = NULL;
@@ -110,6 +113,46 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	}
 	
 	_running = true;
+
+	// Windows DLL locations
+	#if defined(WIN32) && defined(NDEBUG)
+		String bitsPath = "bits";
+		char currentDir[MAX_PATH];
+		_getcwd(currentDir, MAX_PATH);
+		String currDir(currentDir);
+
+		StringList libs;
+		#if !ANGEL_DISABLE_DEVIL
+			libs.push_back("DevIL.dll");
+			libs.push_back("ILU.dll");
+			libs.push_back("ILUT.dll");
+		#endif
+		#if ANGEL_DISABLE_FMOD
+			libs.push_back("OpenAL32.dll");
+		#else
+			libs.push_back("fmodex.dll");
+		#endif
+
+		for	(int i=0; i < libs.size(); i++)
+		{
+			String libstring = currDir + "\\" + bitsPath + "\\" + libs[i];
+			HMODULE work = LoadLibrary(libstring.c_str());
+			if (work == 0)
+			{
+				DWORD err = GetLastError();
+				_com_error error(err);
+				LPCSTR errorText = error.ErrorMessage();
+				sysLog.Printf("ERROR: Couldn't load DLL (%s); %s", libs[i].c_str(), errorText);
+			}
+		}
+
+		// does bits directory exist?
+		DWORD dwAttrib = GetFileAttributes(bitsPath.c_str());
+		if (dwAttrib != INVALID_FILE_ATTRIBUTES && dwAttrib & FILE_ATTRIBUTE_DIRECTORY)
+		{
+			_chdir(bitsPath.c_str());
+		}
+	#endif
 	
 	// General windowing initialization
 	#if !ANGEL_MOBILE
