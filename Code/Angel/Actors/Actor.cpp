@@ -39,6 +39,7 @@
 #include "../Util/MathUtil.h"
 #include "../Messaging/Switchboard.h"
 #include "../Infrastructure/World.h"
+#include "../Scripting/LuaModule.h"
 
 #include <sstream>
 
@@ -680,20 +681,11 @@ Actor* const Actor::GetNamed(const String& nameLookup)
 
 Actor* Actor::Create(const String& archetype)
 {
-	// Yes it might be faster to directly find the function in the Lua state
-	//   and call it with the C API, but this is much more readable. You're welcome.
-	String toExec = "Actor_CreateAndRegister('" + archetype + "')\n";
-	theWorld.ScriptExec(toExec);
+	lua_State* L = LuaScriptingModule::GetLuaState();
+	lua_getglobal(L, "Actor_CreateAndRegister");
+	lua_pushstring(L, archetype.c_str());
+	lua_call(L, 1, 0);
 	return _scriptCreatedActor;
-	
-	// For those curious, it would look like this:
-		/*
-		lua_State* L = LuaScriptingModule::GetLuaState();
-		lua_getglobal(L, "Actor_CreateAndRegister");
-		lua_pushstring(L, archetype.c_str());
-		lua_call(L, 1, 0);
-        return _scriptCreatedActor;
-		*/
 }
 
 void Actor::SetLayer(int layerIndex)

@@ -337,6 +337,11 @@ void World::Destroy()
 	LuaScriptingModule::Finalize();
     
     theUI.Shutdown();
+
+	if (_gameManager != NULL)
+	{
+		delete _gameManager;
+	}
 }
 
 void World::StartGame()
@@ -382,7 +387,10 @@ void World::ScriptExec(const String& code)
 
 void World::LoadLevel(const String& levelName)
 {
-	ScriptExec("LoadLevel('" + levelName + "')");
+	lua_State* L = LuaScriptingModule::GetLuaState();
+	lua_getglobal(L, "LoadLevel");
+	lua_pushstring(L, levelName.c_str());
+	lua_call(L, 1, 0);
 }
 
 float World::CalculateNewDT()

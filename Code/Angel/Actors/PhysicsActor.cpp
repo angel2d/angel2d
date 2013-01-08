@@ -37,6 +37,9 @@
 #include <Box2D/Box2D.h>
 
 
+#define POST_PHYSICS_INIT_WARNING "WARNING: %s had no effect; don't change an actor after its physics have been initialized."
+#define PRE_PHYSICS_INIT_WARNING "WARNING: %s had no effect; this actor's physics were not initialize."
+
 PhysicsActor::PhysicsActor(void) :	
 _physBody(NULL),
 _density(1.f),
@@ -63,7 +66,7 @@ void PhysicsActor::SetDensity(float density)
 	if (_physBody == NULL)
 		_density = density;
 	else
-		sysLog.Log("WARNING: SetDensity() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetDensity()");
 }
 
 void PhysicsActor::SetFriction(float friction)
@@ -71,7 +74,7 @@ void PhysicsActor::SetFriction(float friction)
 	if (_physBody == NULL)
 		_friction = friction;
 	else
-		sysLog.Log("WARNING: SetFriction() had no effect - don't change this actor after physics have been initialized.");	
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetFriction()");	
 }
 
 void PhysicsActor::SetRestitution(float restitution)
@@ -79,7 +82,7 @@ void PhysicsActor::SetRestitution(float restitution)
 	if (_physBody == NULL)
 		_restitution = restitution;
 	else
-		sysLog.Log("WARNING: SetRestitution() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetRestitution()");
 }
 
 void PhysicsActor::SetShapeType(eShapeType shapeType)
@@ -87,7 +90,7 @@ void PhysicsActor::SetShapeType(eShapeType shapeType)
 	if (_physBody == NULL)
 		_shapeType = shapeType;
 	else
-		sysLog.Log("WARNING: SetShapeType() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetShapeType()");
 }
 
 void PhysicsActor::SetIsSensor(bool isSensor)
@@ -95,7 +98,7 @@ void PhysicsActor::SetIsSensor(bool isSensor)
 	if (_physBody == NULL)
 		_isSensor = isSensor;
 	else
-		sysLog.Log("WARNING: SetIsSensor() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetIsSensor()");
 }
 
 void PhysicsActor::SetGroupIndex(int groupIndex)
@@ -103,7 +106,7 @@ void PhysicsActor::SetGroupIndex(int groupIndex)
 	if (_physBody == NULL)
 		_groupIndex = groupIndex;
 	else
-		sysLog.Log("WARNING: SetGroupIndex() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetGroupIndex()");
 }
 
 void PhysicsActor::SetFixedRotation(bool fixedRotation)
@@ -111,7 +114,7 @@ void PhysicsActor::SetFixedRotation(bool fixedRotation)
 	if (_physBody == NULL)
 		_fixedRotation = fixedRotation;
 	else
-		sysLog.Log("WARNING: SetFixedRotation() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetFixedRotation()");
 }
 
 
@@ -129,13 +132,12 @@ void PhysicsActor::InitPhysics()
 	if (_shapeType == SHAPETYPE_BOX)
 	{
 		// The extents is just a vector of the box's half widths. 
-		// Box2D is tuned for meters, kilograms, and seconds. (Unless you've changed its units.)
+		// Box2D is tuned for meters, kilograms, and seconds. (Unless you've changed its units. [You probably shouldn't.])
 		box.SetAsBox(0.5f*_size.X, 0.5f*_size.Y);
 		shape = &box;
 	}
 	else if (_shapeType == SHAPETYPE_CIRCLE)
 	{
-		// TODO: handle ellipse?
 		circle.m_radius = 0.5f*_size.X;
 		shape = &circle;
 	}
@@ -179,41 +181,41 @@ void PhysicsActor::InitPhysics()
 void PhysicsActor::ApplyForce(const Vector2& force, const Vector2& point)
 {
 	if (_physBody != NULL)
-	{
 		_physBody->ApplyForce(b2Vec2(force.X, force.Y), b2Vec2(point.X + _position.X, point.Y + _position.Y));
-	}
+	else
+		sysLog.Printf(PRE_PHYSICS_INIT_WARNING, "ApplyForce()");
 }
 
 void PhysicsActor::ApplyLocalForce(const Vector2& force, const Vector2& point)
 {
 	if (_physBody != NULL)
-	{
 		_physBody->ApplyForce(_physBody->GetWorldVector(b2Vec2(force.X, force.Y)), b2Vec2(point.X + _position.X, point.Y + _position.Y));
-	}
+	else
+		sysLog.Printf(PRE_PHYSICS_INIT_WARNING, "ApplyLocalForce()");
 }
 
 void PhysicsActor::ApplyTorque(float torque)
 {
 	if (_physBody != NULL)
-	{
 		_physBody->ApplyTorque(torque);
-	}
+	else
+		sysLog.Printf(PRE_PHYSICS_INIT_WARNING, "ApplyTorque()");
 }
 
 void PhysicsActor::ApplyLinearImpulse(const Vector2& impulse, const Vector2& point)
 {
 	if (_physBody != NULL)
-	{
 		_physBody->ApplyLinearImpulse(b2Vec2(impulse.X, impulse.Y), b2Vec2(point.X + _position.X, point.Y + _position.Y));
-	}
+	else
+		sysLog.Printf(PRE_PHYSICS_INIT_WARNING, "ApplyLinearImpulse()");	
 }
 
 void PhysicsActor::ApplyAngularImpulse(float impulse)
 {
 	if (_physBody != NULL)
-	{
 		_physBody->ApplyAngularImpulse(impulse);
-	}
+	else
+		sysLog.Printf(PRE_PHYSICS_INIT_WARNING, "ApplyAngularImpulse()");
 }
 
 void PhysicsActor::SetSize(float x, float y)
@@ -221,7 +223,7 @@ void PhysicsActor::SetSize(float x, float y)
 	if (_physBody == NULL)
 		Actor::SetSize(x, y);
 	else
-		sysLog.Log("WARNING: SetSize() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetSize()");
 }
 
 void PhysicsActor::SetDrawSize(float x, float y)
@@ -234,7 +236,7 @@ void PhysicsActor::SetPosition(float x, float y)
 	if (_physBody == NULL)
 		Actor::SetPosition(x, y);
 	else
-		sysLog.Log("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
 }
 
 void PhysicsActor::SetPosition(const Vector2& pos)
@@ -242,7 +244,7 @@ void PhysicsActor::SetPosition(const Vector2& pos)
 	if (_physBody == NULL)
 		Actor::SetPosition(pos);
 	else
-		sysLog.Log("WARNING: SetPosition() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
 }
 
 void PhysicsActor::SetRotation(float rotation)
@@ -250,7 +252,7 @@ void PhysicsActor::SetRotation(float rotation)
 	if (_physBody == NULL)
 		Actor::SetRotation(rotation);
 	else
-		sysLog.Log("WARNING: SetRotation() had no effect - don't change this actor after physics have been initialized.");
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetRotation()");
 }
 
 void PhysicsActor::_syncPosRot(float x, float y, float rotation)
