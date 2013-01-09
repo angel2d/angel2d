@@ -1,10 +1,12 @@
-3.1    --  1/??/2013
+3.1    -- ??/??/2013
 --------------------
 * Minor release
 * Adding GUI capabilities with gwen
 * Fixing build system bugs on Linux distributions (SWIG versions; new header files)
 * Supporting the use of brew instead of MacPorts
 * Updates for iPhone 5; new Xcode versions
+* Removed silly kicker program in favor of proper DLL delay loading
+* Lots of housekeeping/cleanup of code for readability and correctness
 
 3.0.1  --  3/26/2012
 --------------------

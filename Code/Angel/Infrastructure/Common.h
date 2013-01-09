@@ -49,8 +49,8 @@
 		#include "glu.h"
 		#include <sys/time.h>
 		#import <Availability.h>
-		#ifndef __IPHONE_3_0
-			#warning "This project uses features only available in iPhone SDK 3.0 and later."
+		#ifndef __IPHONE_5_0
+			#warning "This project uses features only available in iPhone SDK 5.0 and later."
 		#endif
 		#ifdef __OBJC__
 			#import <Foundation/Foundation.h>

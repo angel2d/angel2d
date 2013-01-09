@@ -167,7 +167,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 			char path[PATH_MAX];
 			if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
 			{
-				//sysLog.Log("Problem setting up working directory!");
+				sysLog.Log("ERROR: Problem setting up working directory! Probably nothing will work!");
 			}
 			CFRelease(resourcesURL);
 			chdir(path);
@@ -180,7 +180,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 				char exePath[PATH_MAX];
 				if (!CFURLGetFileSystemRepresentation(exeURL, TRUE, (UInt8 *)exePath, PATH_MAX))
 				{
-					//sysLog.Log("Problem setting up working directory!");
+					sysLog.Log("ERROR: Problem setting up working directory! Probably nothing will work!");
 				}
 				CFRelease(exeURL);
 				chdir(dirPath.c_str());
@@ -194,7 +194,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 			char path[PATH_MAX];
 			if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
 			{
-				std::cout << "Problem setting up working directory!" << std::endl;
+				std::cout << "Problem setting up working directory! Probably nothing will work!" << std::endl;
 			}
 			CFRelease(resourcesURL);
 			chdir(path);
