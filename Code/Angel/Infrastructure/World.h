@@ -456,6 +456,13 @@ public:
 	 * @param highRes Whether or not we should be set up for high resolution rendering.
 	 */
 	void SetHighResolutionScreen(bool highRes) { _highResScreen = highRes; }
+
+	/**
+	 * Lets you know whether the current display is antialiased.
+	 *
+	 * @return Whether or not we're running with antialiasing (multisampling). 
+	 */
+	const bool IsAntiAliased() { return _antiAliased; }
 	
 	/**
 	 * INTERNAL: This function is used by various OS systems to run the Angel
@@ -513,6 +520,7 @@ private:
 		float _systemEstimatedDT;
 	#endif
 	bool _highResScreen;
+	bool _antiAliased;
 	float _prevTime;
 	float _currTime;
 	float _dt;

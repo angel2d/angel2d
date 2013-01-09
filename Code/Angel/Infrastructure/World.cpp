@@ -218,6 +218,11 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		if (antiAliasing)
 		{
 			glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
+			_antiAliased = true;
+		}
+		else
+		{
+			_antiAliased = false;
 		}
 		int windowMode = GLFW_WINDOW;
 		if (fullScreen)

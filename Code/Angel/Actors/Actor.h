@@ -204,7 +204,7 @@ public:
 	 * @see actorDrawShape
 	 * @param drawShape Desired shape
 	 */
-	void SetDrawShape( actorDrawShape drawShape );
+	virtual void SetDrawShape( actorDrawShape drawShape );
 	
 	/**
 	 * Get the current shape of this Actor.
