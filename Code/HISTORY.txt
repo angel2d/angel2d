@@ -5,6 +5,7 @@
 * Fixing build system bugs on Linux distributions (SWIG versions; new header files)
 * Supporting the use of brew instead of MacPorts
 * Updates for iPhone 5; new Xcode versions
+* Camera can now use interval interpolation for 3d movement
 * Removed silly kicker program in favor of proper DLL delay loading
 * Lots of housekeeping/cleanup of code for readability and correctness
 

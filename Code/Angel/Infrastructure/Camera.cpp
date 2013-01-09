@@ -157,6 +157,20 @@ void Camera::Update(float dt)
 			theSwitchboard.Broadcast(new Message("CameraChange"));
 		}
 	}
+    else
+    {
+        if (_3dPositionInterval.ShouldStep())
+        {
+            SetPosition(_3dPositionInterval.Step(dt));
+            if (!_3dPositionInterval.ShouldStep())
+            {
+                if (_3dPositionIntervalMessage != "")
+                {
+                    theSwitchboard.Broadcast(new Message(_3dPositionIntervalMessage, this));
+                }
+            }
+        }
+    }
 }
 
 void Camera::Render()
@@ -200,6 +214,12 @@ void Camera::SetPosition(const Vector3& v3)
 	_camera3DPosition = v3;
 	_position = Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
+}
+
+void Camera::MoveTo(const Vector3& newPosition, float duration, bool smooth, String onCompletionMessage)
+{
+	_3dPositionInterval = Interval<Vector3>(_camera3DPosition, newPosition, duration, smooth);
+	_3dPositionIntervalMessage = onCompletionMessage;
 }
 
 Vector2 Camera::GetPosition() const

@@ -20,6 +20,7 @@ public:
 
 	virtual void SetPosition(float x, float y, float z);
 	virtual void SetPosition(Vector3 v3);
+    void MoveTo(Vector3 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	virtual float GetZ();
 	virtual float GetZForViewRadius(float radius);
 	virtual float GetNearClipDist();

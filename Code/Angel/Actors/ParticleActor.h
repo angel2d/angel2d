@@ -32,17 +32,6 @@
 
 #include "../Actors/Actor.h"
 
-///A struct that keeps track of data for individual particles. 
-struct Particle
-{
-	Vector2 _pos;
-	Vector2 _vel;
-	float _age;
-	float _lifetime;
-	Color _color;
-	float _scale;
-};
-
 
 ///An Actor that draws and keeps track of drawing a particle system on screen. 
 /**
@@ -188,6 +177,16 @@ public:
 	virtual const String GetClassName() { return "ParticleActor"; }
 
 protected:
+    struct Particle
+    {
+        Vector2 _pos;
+        Vector2 _vel;
+        float _age;
+        float _lifetime;
+        Color _color;
+        float _scale;
+    };
+    
 	Particle* _particles;
 	int		_maxParticlesAlive;
 	int		_numParticlesAlive;
