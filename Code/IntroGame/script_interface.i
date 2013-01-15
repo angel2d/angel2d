@@ -23,7 +23,7 @@
 //
 // SWIG is very flexible, but it can also be a bit fragile if you feed it datatypes
 //  that it doesn't understand. For more information, check the SWIG documentation
-//  (http://www.swig.org/Doc1.3/) and the Scripting/Interfaces directory. 
+//  <http://www.swig.org/Doc2.0/index.html> and the Scripting/Interfaces directory. 
 class MazeFinder : public Actor
 {
 public:
