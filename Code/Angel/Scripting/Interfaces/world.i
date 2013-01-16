@@ -35,10 +35,15 @@ public:
 	
 	void DrawDebugLine( Vector2 a, Vector2 b, float time = 5.f, Color color = Color(1.f, 0.f, 0.f) );
 	void PurgeDebugDrawing();
+    
+    const bool PauseSimulation();
+    const bool ResumeSimulation();
 	const bool IsSimulationOn();
 	
 	bool SetupPhysics(Vector2 gravity = Vector2(0, -10), Vector2 maxVertex = Vector2(100.0f, 100.0f), Vector2 minVertex = Vector2(-100.0f, -100.0f));
-	const bool IsPhysicsSetUp() { return _physicsSetUp; }
+	const bool IsPhysicsSetUp();
+    const bool PausePhysics();
+    const bool ResumePhysics();
 	
 	void RegisterConsole(Console* console);
 	Console* GetConsole();

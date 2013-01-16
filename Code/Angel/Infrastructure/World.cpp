@@ -65,6 +65,7 @@ World::World()
 	_started = false;
 	_physicsRemainderDT = 0.0f;
 	_physicsSetUp = false;
+	_physicsRunning = false;
 	_running = false;
 
 	_blockersOn = false;
@@ -370,7 +371,7 @@ bool World::SetupPhysics(const Vector2& gravity, const Vector2& maxVertex, const
 
 	_physicsWorld->SetContactListener(this);
 	
-	return _physicsSetUp = true;
+	return _physicsSetUp = _physicsRunning = true;
 }
 
 
@@ -510,7 +511,7 @@ void World::Simulate(bool simRunning)
 
 void World::RunPhysics(float frame_dt)
 {
-	if (!_physicsSetUp) 
+	if (!_physicsSetUp || !_physicsRunning) 
 		return;
 
 	_currentTouches.clear();
@@ -674,19 +675,42 @@ const float World::GetDT()
 	return _dt;
 }
 
-const bool World::StartSimulation()
+const bool World::ResumeSimulation()
 {
 	return _simulateOn = true;
 }
 
-const bool World::StopSimulation()
+const bool World::PauseSimulation()
 {
-	return _simulateOn = false;
+	_simulateOn = false;
+	return true;
 }
 
 const bool World::IsSimulationOn()
 {
 	return _simulateOn;
+}
+
+const bool World::PausePhysics()
+{
+	if (!_physicsSetUp)
+	{
+		sysLog.Log("WARNING: Attempted to pause physics, but physics haven't been set up yet.");
+		return false;
+	}
+	_physicsRunning = false;
+	return true;
+}
+
+const bool World::ResumePhysics()
+{
+	if (!_physicsSetUp)
+	{
+		sysLog.Log("WARNING: Attempted to resume physics, but physics haven't been set up yet.");
+		return false;
+	}
+	_physicsRunning = true;
+	return false;
 }
 
 void World::ResetWorld()

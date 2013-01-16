@@ -206,18 +206,33 @@ public:
 	 *  receive updates (GameManager, Console, Camera, etc.), but all standard
 	 *  Actors will not receive Update calls until you call World::StartSimulation. 
 	 * 
-	 * @return Whether the simulation was successfully stopped
+	 * @return Whether the simulation was successfully paused
 	 */
-	const bool StopSimulation();
+	const bool PauseSimulation();
 	
 	/**
 	 * Toggles the simulation back on. 
 	 * 
-	 * @see World::StopSimulation
-	 * @return Whether the simulation was successfully restarted
+	 * @see World::PauseSimulation
+	 * @return Whether the simulation was successfully resumed
 	 */
-	const bool StartSimulation();
+	const bool ResumeSimulation();
 	
+	/**
+	 * Toggles the physics simulation off.
+	 * 
+	 * @return Whether the physics simulation was successfully paused
+	 */
+	const bool PausePhysics();
+	
+	/**
+	 * Toggles the physics simulation back on. 
+	 * 
+	 * @see World::PausePhysics
+	 * @return Whether the physics simulation was successfully resumed
+	 */
+	const bool ResumePhysics();
+
 	/**
 	 * Sets the world's background color. White by default. 
 	 * 
@@ -543,6 +558,7 @@ private:
 
 	b2World *_physicsWorld;
 	bool _physicsSetUp;
+	bool _physicsRunning;
 	
 	void SendCollisionNotifications(b2Contact* cp, bool beginning);
 	std::map< PhysicsActor*, ActorSet > _currentTouches;
