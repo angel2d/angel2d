@@ -152,7 +152,7 @@ public:
 	/**
 	 * Get the world coordinate of the bottom-left point of the window. 
 	 * 
-	 * @return The world cooredinate (GL units).
+	 * @return The world coordinate (GL units).
 	 */
 	const Vector2 GetWorldMinVertex() const;
 
