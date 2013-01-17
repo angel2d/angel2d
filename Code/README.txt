@@ -80,6 +80,10 @@ there are some prerequisites for each platform, still.
             * Homebrew: `brew install swig`
         * Install the kernel extension that exposes the 360 controller as a
           HID Input device. This extension is in Tools directory. 
+* When you build your game for Archiving (or with any scheme with a Release
+  configuration) it will create a "Published" directory alongside the 
+  project file. This contains the app itself, along with the documentation,
+  ready for zipping and distribution. 
 
 ### iOS ###
 * Follow the same setup instructions for the Mac build. There's a separate
@@ -126,19 +130,6 @@ there are some prerequisites for each platform, still.
   create exceptions for your Angel programs or disable SELinux altogether.
 
 
-Engine Overview
----------------
-* OpenGL for rendering
-* FMOD or OpenAL/Vorbis for audio
-* Box2D for physics
-* FreeType2 and FTGL for text rendering
-* DevIL or libpng for image loading
-* GLFW for windowing and input
-* Lua for scripting
-* SWIG to bind the engine to Lua
-* Doxygen for HTML and PDF documentation
-
-
 FAQ
 ---
 * Why is it called "Angel"?
@@ -159,7 +150,7 @@ FAQ
       lightweight enough, focused on 2D, and in C++. As a bonus, it's kind of
       fun to make an engine. 
 
-* Was this made totally from scratch?
+* Was Angel made from scratch?
     * Yes, but it was based on experiences using the Experimental Gameplay 
       Project engine (which evolved into the 2D Boy engine), Unreal, Panda 3D,
       and some other engines. If you're familiar with any of these, you'll 
@@ -173,4 +164,14 @@ FAQ
       us a lot of flexibility in porting to new platforms, and has kept the
       engine alive as other platforms have fallen away. ( :( RIP XNA)
 
+* What libraries are used in Angel?
+    * OpenGL for rendering
+    * FMOD **or** OpenAL/Vorbis for audio
+    * Box2D for physics
+    * FreeType2 and FTGL for text rendering
+    * DevIL **or** libpng for image loading
+    * GLFW for windowing and input
+    * Lua for scripting
+    * SWIG to bind the engine to Lua
+    * Doxygen for HTML and PDF documentation
 
