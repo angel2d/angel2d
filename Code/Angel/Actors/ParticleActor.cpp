@@ -266,7 +266,7 @@ void ParticleActor::SetEndScale(float scale)
 	_endScale = scale;
 }
 
-void ParticleActor::SetEndColor(Color& color)
+void ParticleActor::SetEndColor(const Color& color)
 {
 	_endColor = color;
 }

@@ -46,8 +46,6 @@
 class ParticleActor : public Actor
 {
 public:
-	friend class ParticleActorFactoryDelegate;
-
 	/** 
 	 * The default constructor creates a particle system that doesn't really 
 	 *  do anything, since its maximum number of particles is 0. You'll need
@@ -124,7 +122,7 @@ public:
 	 * 
 	 * @param color The ending color for each particle in the system. 
 	 */
-	void SetEndColor(Color& color);
+	void SetEndColor(const Color& color);
 	
 	/**
 	 * Set the range of potential initial speeds for the particles. Each 
