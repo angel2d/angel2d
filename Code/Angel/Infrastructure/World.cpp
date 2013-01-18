@@ -484,6 +484,8 @@ void World::Simulate(bool simRunning)
 	{
 		// Deliver any messages that have been queued from the last frame. 
 		theSwitchboard.SendAllMessages();
+
+		RunPhysics(frame_dt);
 		
 		//Flag that the _elements array is locked so we don't try to add any
 		// new actors during the update.
@@ -496,8 +498,6 @@ void World::Simulate(bool simRunning)
 		ProcessDeferredAdds();
 		ProcessDeferredLayerChanges();
 		ProcessDeferredRemoves();
-
-		RunPhysics(frame_dt);
 		
 		theSwitchboard.Update(frame_dt);
 
