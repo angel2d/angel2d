@@ -155,7 +155,7 @@ public:
 	 * @param gravity The vector in which the particles should be pulled
 	 *   (magnitude affecting the force of the pull). 
 	 */
-	void SetGravity(Vector2& gravity);
+	void SetGravity(const Vector2& gravity);
 	
 	/**
 	 * Set the maximum number of particles this system can keep track of

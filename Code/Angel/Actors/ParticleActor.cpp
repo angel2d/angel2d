@@ -287,7 +287,7 @@ void ParticleActor::SetMaxSpeed(float maxSpeed)
 	_maxSpeed = maxSpeed;
 }
 
-void ParticleActor::SetGravity(Vector2& gravity)
+void ParticleActor::SetGravity(const Vector2& gravity)
 {
 	_gravity = gravity;
 }
