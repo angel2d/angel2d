@@ -38,7 +38,7 @@
 
 
 #define POST_PHYSICS_INIT_WARNING "WARNING: %s had no effect; don't change an actor after its physics have been initialized."
-#define PRE_PHYSICS_INIT_WARNING "WARNING: %s had no effect; this actor's physics were not initialize."
+#define PRE_PHYSICS_INIT_WARNING "WARNING: %s had no effect; this actor's physics were not initialized."
 
 PhysicsActor::PhysicsActor(void) :	
 _physBody(NULL),
