@@ -35,6 +35,9 @@ quickly as possible.
         capabilities of those libraries. So if you know what you're doing, 
         you can be making direct OpenGL calls or manually affecting the Box2D
         physics simulation. 
+    * In short, we strive to keep our code relatively shallow -- it's 
+        always relatively easy to find the code doing the actual work, so 
+        you're not slugging through multiple levels of OO redirection.
 
 
 Getting Started
