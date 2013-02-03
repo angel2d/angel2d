@@ -11,7 +11,6 @@ It provides a broad set of basic game functionality in a lightweight fashion,
 and is designed to make it easy to get your game ideas up and running as 
 quickly as possible. 
 
-
 ### Angel's main priorities ###
 
 * Provide all functionality in a quickly understandable way. 
