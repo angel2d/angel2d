@@ -66,9 +66,9 @@ there are some prerequisites for each platform, still.
 
 ### Mac ###
 * You'll need the OS X Development Tools, available either from the Extra 
-  Installs disc that came with your computer (prior to Lion) or from the Mac
-  App Store. After you install Xcode, go to the Downloads section of the Xcode
-  preferences and install the command line tools. 
+  Installs disc that came with your computer (prior to Lion) or free from 
+  the Mac App Store. After you install Xcode, go to the Downloads section of 
+  the Xcode preferences and install the command line tools. 
 * You need to either have [MacPorts](http://www.macports.org/) or 
   [Homebrew](http://mxcl.github.com/homebrew/) installed. Hopefully if you're
   a developer you've already got one of these systems that you like. Either
@@ -93,15 +93,13 @@ there are some prerequisites for each platform, still.
 * There are some differences in building a project for iOS:
     * We only support loading PNG files as textures on iOS, so make sure to
       convert all your resources beforehand.
-* Because of the way iOS apps are structured, the `main()` function is taken
-  over by the base engine. So take any setup that you used to do in main() and
-  move it to the `iPhoneMain.cpp` file. 
-* You can't set the resolution of the game -- it will always be the native 
-  resolution of the device. NOTE that on retina devices, the engine will 
-  virtually think it is at half resolution, but will still be drawing at full
-  resolution. (So on the iPhone 4, any game functions that report pixels 
-  distances will behave as if the screen is 480x320, but it will still be 
-  drawing at 960x640.) This is for backwards compatibility. 
+    * Because of the way iOS apps are structured, the `main()` function is 
+      taken over by the base engine. So take any setup that you used to do 
+      in main() and move it to the `iPhoneMain.cpp` file. 
+    * You can't set the resolution of the game -- it will always be the 
+      native resolution of the device. Note this may cause some differences
+      between high resolution screens and traditional ones, so take this 
+      into account when doing any calculations about pixel distances.
 
 ### Linux ###
 * Angel's tested on the latest releases of Ubuntu and Fedora. It should work
@@ -135,8 +133,8 @@ there are some prerequisites for each platform, still.
 FAQ
 ---
 * Why is it called "Angel"?
-    * Because the original team lived in Los Angeles. It's a whole *city* of
-      angels.
+    * Because the original team was working at Electronic Arts in Los 
+      Angeles. It's a whole *city* of angels.
 
 * Why did you set up {X} that way? Don't you know it's faster if you...
     * Take a look at the top of this document and the goals we laid out there.
