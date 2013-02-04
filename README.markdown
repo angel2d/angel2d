@@ -14,7 +14,7 @@ quickly as possible.
 ### Angel's main priorities ###
 
 * Provide all functionality in a quickly understandable way. 
-    * We try to avoid overly complicated programming structures, even if 
+    * We try to avoid overly complicated programming techniques, even if 
         that means sacrificing efficiency or, in some cases, functionality. 
     * As far down the stack as we can manage, the code is plainly written 
         and thoroughly commented. We expect people to modify the core engine 
@@ -23,7 +23,7 @@ quickly as possible.
 * Provide as much functionality as possible. 
     * Angel was originally created (and is still used) as an engine for game 
         jams, and the last thing you want to be doing in a jam context is 
-        debugging the pathfinding engine you had to cobble together. 
+        debugging the pathfinding code you had to cobble together. 
     * If there's something big you feel is missing from Angel, please send 
         an email to the discussion group. We can't add every feature, 
         obviously, but we want to at least make sure there's nothing we're 
@@ -32,11 +32,11 @@ quickly as possible.
     * Given the first two points, we create a lot of wrappers around 
         third-party libraries, but we always make it simple to access the raw
         capabilities of those libraries. So if you know what you're doing, 
-        you can be making direct OpenGL calls or manually affecting the Box2D
-        physics simulation. 
+        you can be making direct OpenGL calls or poking the Box2D physics 
+        simulation. 
     * In short, we strive to keep our code relatively shallow -- it's 
-        always relatively easy to find the code doing the actual work, so 
-        you're not slugging through multiple levels of OO redirection.
+        always easy to find the code doing the actual work, so you're not 
+        slogging through multiple levels of OO redirection.
 
 
 Getting Started
