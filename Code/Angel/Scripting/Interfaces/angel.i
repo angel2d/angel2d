@@ -78,6 +78,7 @@ typedef std::vector<String>	StringList;
 %include physics_actor.i
 %include particles.i
 %include text_actor.i
+%include misc_actors.i
 
 #ifndef INTROGAME
 %include ../../../ClientGame/script_interface.i

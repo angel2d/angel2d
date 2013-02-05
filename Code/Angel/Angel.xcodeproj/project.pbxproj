@@ -1064,6 +1064,7 @@
 		34E76381133967E200BA9A3C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		34E76403133979E000BA9A3C /* libpng.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng.dylib; path = "Libraries/DevIL-SDK-1.7.8/mac/lib/libpng.dylib"; sourceTree = "<group>"; };
 		34EB438E15A59DD300CF9CD8 /* libjasper.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjasper.dylib; path = "Libraries/DevIL-SDK-1.7.8/mac/lib/libjasper.dylib"; sourceTree = "<group>"; };
+		34EDF10416C0BC4B00144A9B /* misc_actors.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; name = misc_actors.i; path = Scripting/Interfaces/misc_actors.i; sourceTree = "<group>"; };
 		34EECBDC11CB922100667B26 /* libLua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLua.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EF457811DEA34A007E1FED /* autocomplete.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = autocomplete.lua; sourceTree = "<group>"; };
 		34F03CEA14FB1F6D009A3EC4 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
@@ -2236,6 +2237,7 @@
 				34C0BC7911CF157C00CA65A5 /* controller.i */,
 				3436A5290FABED7900659D50 /* log.i */,
 				34CCFFC30E61EA03003772E0 /* messaging.i */,
+				34EDF10416C0BC4B00144A9B /* misc_actors.i */,
 				3472777C0F3E95E100F947AE /* mouse.i */,
 				3447521715102C590048129D /* multitouch.i */,
 				34713D740EA6D65C00AF58CA /* particles.i */,
