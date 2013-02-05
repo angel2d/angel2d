@@ -272,7 +272,7 @@ end
 -- Instantiate and add all Actors described in a previously loaded
 --   Level definition file.
 --   
---   Call theWorld.ResetWorld() to remove all existing Actors beforehand
+--   Call theWorld:ResetWorld() to remove all existing Actors beforehand
 --   if you want to start over.
 function LoadLevel(levelName)
   local levelDef = angelLevelDefs[levelName]
