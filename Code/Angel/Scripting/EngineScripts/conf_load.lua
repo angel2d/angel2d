@@ -282,27 +282,36 @@ function LoadLevel(levelName)
   end
   
   for name, desc in pairs(levelDef) do
-    local def = desc["def"]
-    if (def == nil) then
-      print("Actor " .. name .. " has no definition specified.")
+    local a = nil
+
+    if (desc["def"] ~= nil and desc["class"] ~= nil) then
+      print("Actor " .. name .. " has both class and definition attributes. Invalid.")
+      return
+    end
+
+    if (desc["def"] ~= nil) then
+      a = Actor_Create(desc["def"])
+    elseif (desc["class"]~= nil and type(_G[desc["class"]]) == "function") then
+      a = _G[desc["class"]]()
     else
-      local a = Actor_Create(def)
-      if (a ~= nil) then
-        a:SetName(name)
-        local layer = tonumber(desc["layer"])
-        if (layer == nil) then
-          layer = 0
+      print("Actor " .. name .. " has no definition specified.")
+    end
+
+    if (a ~= nil) then
+      a:SetName(name)
+      local layer = tonumber(desc["layer"])
+      if (layer == nil) then
+        layer = 0
+      end
+      for config, value in pairs(desc) do
+        if (config ~= "def" and config ~= "class") then
+          _ApplyToActor(a, config, value)
         end
-        for config, value in pairs(desc) do
-          if (config ~= "def") then
-            _ApplyToActor(a, config, value)
-          end
-        end
-        theWorld:Add(a, layer)
-        local mt = getmetatable(a)
-        if (type(mt[".fn"]["InitPhysics"]) == "function") then
-          a:InitPhysics()
-        end
+      end
+      theWorld:Add(a, layer)
+      local mt = getmetatable(a)
+      if (type(mt[".fn"]["InitPhysics"]) == "function") then
+        a:InitPhysics()
       end
     end
   end

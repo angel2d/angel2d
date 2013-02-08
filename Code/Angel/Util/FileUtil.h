@@ -99,3 +99,16 @@ const String GetStorageDirectory();
  * @return The name of the current executable
  */
 const String GetExeName();
+
+/**
+ * Returns the modification time of a file. Defined as number of seconds
+ *  after a system-specific epoch, so not portable between operating 
+ *  systems, but useful for comparisons within a single build. 
+ *
+ * @param fileName The file to check
+ * @return The modification time of the file. Returns 0 if file could
+ *   not be found. NOTE: this actually *is* a valid modification time,
+ *   so apologies if you happen to have a file that was modified exactly
+ *   on your epoch time.
+ */
+const long GetModificationTime(const String& fileName);

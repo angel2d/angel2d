@@ -22,10 +22,10 @@ public:
 	
 	void SetBackgroundColor(Color bgColor);
 	
-	%apply SWIGTYPE *DISOWN {Actor *newElement};
-	void Add(Actor *newElement, int layer = 0);
-	void Add(Actor *newElement, String layer);
-	%clear Actor *newElement;
+	%apply SWIGTYPE *DISOWN {Renderable *newElement};
+	void Add(Renderable *newElement, int layer = 0);
+	void Add(Renderable *newElement, String layer);
+	%clear Renderable *newElement;
 	
 	void Remove(Renderable *oldElement);
 	void UpdateLayer(Renderable* element, int newLayer);

@@ -720,7 +720,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Scripting\Interfaces\vector2.i"
+					RelativePath=".\Scripting\Interfaces\vectors.i"
 					>
 				</File>
 				<File

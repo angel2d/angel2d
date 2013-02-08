@@ -54,7 +54,7 @@ typedef std::string			String;
 typedef std::set<String>	StringSet;
 typedef std::vector<String>	StringList;
 
-%include vector2.i
+%include vectors.i
 %include color.i
 %include messaging.i
 %include renderable.i

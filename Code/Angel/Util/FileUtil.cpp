@@ -33,16 +33,17 @@
 #include "../Infrastructure/Common.h"
 #include "../Infrastructure/Log.h"
 #include "../Util/StringUtil.h"
+
 #if defined(WIN32)
 	#include <shlobj.h>
-#elif defined(__APPLE__)
-	#include <sys/stat.h>
 #elif defined(__linux__)
-	#include <sys/stat.h>
 	#include <linux/limits.h>
 	#include <unistd.h>
 #endif
 #include <fstream>
+#include <sys/types.h>
+#include <sys/stat.h>
+
 
 using namespace std;
 
@@ -211,4 +212,21 @@ const String GetExeName()
 	String exeName = pathElements[pathElements.size()-1];
 
 	return exeName;
+}
+
+const long GetModificationTime(const String& fileName)
+{
+	struct stat statInfo;
+	if (stat(fileName.c_str(), &statInfo) != -1)
+	{
+		#if defined(__APPLE__)
+			return statInfo.st_mtimespec.tv_sec;
+		#else //Linux or Windows
+			return statInfo.st_mtime;
+		#endif
+	}
+	else 
+	{
+		return 0;
+	}
 }

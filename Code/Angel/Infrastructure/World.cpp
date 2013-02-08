@@ -243,7 +243,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		glfwSetWindowTitle(windowName.c_str());
 		glfwSetWindowPos(50, 50);
 
-		glfwSwapInterval(1); //better visual quality, set to zero for max drawing performance
+		glfwSwapInterval(0); //better visual quality, set to zero for max drawing performance
 		glfwSetWindowSizeCallback(Camera::ResizeCallback);
 		glfwSetKeyCallback(keyboardInput);
 		glfwSetCharCallback(charInput);

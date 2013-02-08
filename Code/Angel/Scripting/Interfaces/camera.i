@@ -19,6 +19,7 @@ public:
 	const Vector2 GetWorldMinVertex();
 
 	virtual void SetPosition(float x, float y, float z);
+	virtual void SetPosition(float x, float y);
 	virtual void SetPosition(Vector3 v3);
     void MoveTo(Vector3 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	virtual float GetZ();
