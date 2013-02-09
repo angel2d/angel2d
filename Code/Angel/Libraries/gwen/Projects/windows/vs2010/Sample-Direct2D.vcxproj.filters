@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Samples">
+      <UniqueIdentifier>{0D096107-9B09-A14B-8778-6E690DAC5D64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Samples\Direct2D">
+      <UniqueIdentifier>{B7D801D7-9C0E-BE4D-A285-0B0354F4FA46}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Samples\Direct2D\Direct2DSample.cpp">
+      <Filter>Samples\Direct2D</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

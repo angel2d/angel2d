@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Renderers">
+      <UniqueIdentifier>{E36ADD25-4C95-2B4F-922D-F76377848E49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderers\GDIPlus">
+      <UniqueIdentifier>{77C3A971-6A95-844D-8A7F-D7A1605C2C54}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Renderers\GDIPlus\GDIPlus.cpp">
+      <Filter>Renderers\GDIPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Renderers\GDIPlus\GDIPlusBuffered.cpp">
+      <Filter>Renderers\GDIPlus</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

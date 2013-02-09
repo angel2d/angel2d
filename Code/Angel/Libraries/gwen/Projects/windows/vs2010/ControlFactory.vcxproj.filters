@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Util">
+      <UniqueIdentifier>{5B2A72DE-BFD3-604B-8567-384FE7D28B23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\ControlFactory">
+      <UniqueIdentifier>{9596E4F3-9B5F-624E-AF95-FD7B62253C9E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Util\ControlFactory\Base_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\Button_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\CheckBox_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\ComboBox_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\ControlFactory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\DesignerCanvas_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\FilePicker_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\FolderPicker_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\Image_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\Label_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\ListBox_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\MenuStrip_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\PageControl_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\ProgressBar_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\Rectangle_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\Slider_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\TextBox_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ControlFactory\VerticalSplitter_Factory.cpp">
+      <Filter>Util\ControlFactory</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

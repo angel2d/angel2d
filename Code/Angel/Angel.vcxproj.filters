@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AIEvents">
+      <UniqueIdentifier>{44941977-d80e-4f8f-a290-61631a6ff740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{fd1eb424-324c-4eea-a7f5-42ceb6a7bcd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actors">
+      <UniqueIdentifier>{f36eb569-d462-42eb-976c-0d740ae223cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{f674fcd4-4137-41cb-8a50-cbf52172c9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{87c6fd37-4787-4ab3-8e77-bb1eef121c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Infrastructure">
+      <UniqueIdentifier>{83de4546-2b0b-4947-9399-b752412b1b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Messaging">
+      <UniqueIdentifier>{4fbe5302-780d-450a-9305-690e21a81f07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting">
+      <UniqueIdentifier>{6a3d1b2a-9ad1-4cb6-bc7b-566eba17f2b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting\Interfaces">
+      <UniqueIdentifier>{6e7441b8-9dee-47fb-bf94-b51a9719df8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting\EngineScripts">
+      <UniqueIdentifier>{ea2e6bc0-cbdd-4c5f-96b2-de3ea955c390}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{fea38b34-d858-4452-b864-464225a11a88}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AIEvents\GotoAIEvent.cpp">
+      <Filter>AIEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="AIEvents\GotoTargetAIEvent.cpp">
+      <Filter>AIEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="AIEvents\NamedEventAIEvent.cpp">
+      <Filter>AIEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="AIEvents\TimerAIEvent.cpp">
+      <Filter>AIEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="AIEvents\TraversalAIEvent.cpp">
+      <Filter>AIEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Controller.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\Input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\InputManager.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\MobileSimulator.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\MouseInput.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\MultiTouch.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\Actor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\FullScreenActor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\GridActor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\HUDActor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\ParticleActor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\PhysicsActor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actors\TextActor.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\BoundingShapes.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Brain.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\PathFinder.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Ray2.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Sentient.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\SpatialGraph.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\Traversal.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\DrawUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\FileUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\MathUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\StringUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Camera.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Color.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Console.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\GameManager.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Log.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Preferences.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\RenderableIterator.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\SoundDevice.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\stdafx.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\TagCollection.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\TextRendering.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Textures.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\TuningVariable.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Vector2.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\Vector3.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\World.cpp">
+      <Filter>Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Messaging\Message.cpp">
+      <Filter>Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="Messaging\Switchboard.cpp">
+      <Filter>Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripting\LuaConsole.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripting\LuaModule.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\GwenRenderer.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UserInterface.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AIEvents\GotoAIEvent.h">
+      <Filter>AIEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEvents\GotoTargetAIEvent.h">
+      <Filter>AIEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEvents\NamedEventAIEvent.h">
+      <Filter>AIEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEvents\TimerAIEvent.h">
+      <Filter>AIEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEvents\TraversalAIEvent.h">
+      <Filter>AIEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Controller.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\InputKeys.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\InputManager.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\MobileSimulator.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\MouseInput.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\MultiTouch.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\Actor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\FullScreenActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\GridActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\HUDActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\ParticleActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\PhysicsActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Actors\TextActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\BoundingShapes.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\Brain.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\PathFinder.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\Ray2.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\Sentient.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\SpatialGraph.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\stlastar.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\Traversal.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Callback.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\DrawUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\FileUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\MathUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\StringUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Camera.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Color.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Common.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Console.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\DebugDraw.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\GameManager.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Interval.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\LoadedVariable.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Log.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Preferences.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Renderable.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\RenderableIterator.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\SoundDevice.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\stdafx.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\TagCollection.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\TextRendering.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Textures.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\TuningVariable.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\VecStructs.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Vector2.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\Vector3.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Infrastructure\World.h">
+      <Filter>Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Messaging\Message.h">
+      <Filter>Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="Messaging\Switchboard.h">
+      <Filter>Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\LuaConsole.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\LuaModule.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\GwenRenderer.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UserInterface.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Angel.h" />
+    <ClInclude Include="AngelConfig.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripting\Interfaces\actor.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\angel.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\camera.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\color.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\console.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\controller.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\log.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\messaging.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\mouse.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\multitouch.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\particles.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\physics_actor.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\preferences.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\renderable.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\sound.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\text_actor.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\tuning.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\vectors.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\Interfaces\world.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
+    <None Include="Scripting\EngineScripts\autocomplete.lua">
+      <Filter>Scripting\EngineScripts</Filter>
+    </None>
+    <None Include="Scripting\EngineScripts\conf_load.lua">
+      <Filter>Scripting\EngineScripts</Filter>
+    </None>
+    <None Include="Scripting\EngineScripts\pref_load.lua">
+      <Filter>Scripting\EngineScripts</Filter>
+    </None>
+    <None Include="Scripting\EngineScripts\start.lua">
+      <Filter>Scripting\EngineScripts</Filter>
+    </None>
+    <None Include="Scripting\EngineScripts\sugar.lua">
+      <Filter>Scripting\EngineScripts</Filter>
+    </None>
+    <None Include="Scripting\EngineScripts\util.lua">
+      <Filter>Scripting\EngineScripts</Filter>
+    </None>
+  </ItemGroup>
+</Project>

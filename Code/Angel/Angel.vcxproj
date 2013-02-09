@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D9A0401F-5FAF-483D-81EB-1066CD52F9D4}</ProjectGuid>
+    <RootNamespace>Angel</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.obj%3b*.ilk%3b*.tlb%3b*.tli%3b*.tlh%3b*.tmp%3b*.rsp%3b*.pgc%3b*.pgd%3b$(TargetPath)</ExtensionsToDeleteOnClean>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">*.obj%3b*.ilk%3b*.tlb%3b*.tli%3b*.tlh%3b*.tmp%3b*.rsp%3b*.pgc%3b*.pgd%3b$(TargetPath)</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;$(DXSDK_DIR)include;$(ProjectDir)\Libraries\freetype-2.4.8\include;$(ProjectDir)\Libraries\FTGL\include;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include;$(ProjectDir)\Libraries\Box2D-2.2.1;$(ProjectDir)\Libraries\glfw-2.7.7\include;$(ProjectDir)\Libraries\FMOD\inc;$(ProjectDir)\Libraries\lua-5.2.1\src;$(ProjectDir)\Libraries\libogg-1.3.0\include;$(ProjectDir)\Libraries\libvorbis-1.3.2\include;$(ProjectDir)\Libraries\openal-soft-1.15-bin\include;$(ProjectDir)\Libraries\gwen\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;$(DXSDK_DIR)include;$(ProjectDir)\Libraries\freetype-2.4.8\include;$(ProjectDir)\Libraries\FTGL\include;$(ProjectDir)\Libraries\DevIL-SDK-1.7.8\win\include;$(ProjectDir)\Libraries\Box2D-2.2.1;$(ProjectDir)\Libraries\glfw-2.7.7\include;$(ProjectDir)\Libraries\FMOD\inc;$(ProjectDir)\Libraries\lua-5.2.1\src;$(ProjectDir)\Libraries\libogg-1.3.0\include;$(ProjectDir)\Libraries\libvorbis-1.3.2\include;$(ProjectDir)\Libraries\openal-soft-1.15-bin\include;$(ProjectDir)\Libraries\gwen\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="Libraries\Box2D-2.2.1\Build\vs2008\Box2D.vcxproj">
+      <Project>{43a70737-8c58-44ea-bbbb-6bf9bddd1c34}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Libraries\glfw-2.7.7\support\msvc90\GLFW.vcxproj">
+      <Project>{baa85eb9-be33-45fb-b552-0ab3ac4d9ca9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Libraries\gwen\Projects\windows\vs2008\GWEN-Static.vcxproj">
+      <Project>{2363d1a1-73d0-824d-ada8-3276d519c6dd}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AIEvents\GotoAIEvent.cpp" />
+    <ClCompile Include="AIEvents\GotoTargetAIEvent.cpp" />
+    <ClCompile Include="AIEvents\NamedEventAIEvent.cpp" />
+    <ClCompile Include="AIEvents\TimerAIEvent.cpp" />
+    <ClCompile Include="AIEvents\TraversalAIEvent.cpp" />
+    <ClCompile Include="Input\Controller.cpp" />
+    <ClCompile Include="Input\Input.cpp" />
+    <ClCompile Include="Input\InputManager.cpp" />
+    <ClCompile Include="Input\MobileSimulator.cpp" />
+    <ClCompile Include="Input\MouseInput.cpp" />
+    <ClCompile Include="Input\MultiTouch.cpp" />
+    <ClCompile Include="Actors\Actor.cpp" />
+    <ClCompile Include="Actors\FullScreenActor.cpp" />
+    <ClCompile Include="Actors\GridActor.cpp" />
+    <ClCompile Include="Actors\HUDActor.cpp" />
+    <ClCompile Include="Actors\ParticleActor.cpp" />
+    <ClCompile Include="Actors\PhysicsActor.cpp" />
+    <ClCompile Include="Actors\TextActor.cpp" />
+    <ClCompile Include="AI\BoundingShapes.cpp" />
+    <ClCompile Include="AI\Brain.cpp" />
+    <ClCompile Include="AI\PathFinder.cpp" />
+    <ClCompile Include="AI\Ray2.cpp" />
+    <ClCompile Include="AI\Sentient.cpp" />
+    <ClCompile Include="AI\SpatialGraph.cpp" />
+    <ClCompile Include="AI\Traversal.cpp" />
+    <ClCompile Include="Util\DrawUtil.cpp" />
+    <ClCompile Include="Util\FileUtil.cpp" />
+    <ClCompile Include="Util\MathUtil.cpp" />
+    <ClCompile Include="Util\StringUtil.cpp" />
+    <ClCompile Include="Infrastructure\Camera.cpp" />
+    <ClCompile Include="Infrastructure\Color.cpp" />
+    <ClCompile Include="Infrastructure\Console.cpp" />
+    <ClCompile Include="Infrastructure\GameManager.cpp" />
+    <ClCompile Include="Infrastructure\Log.cpp" />
+    <ClCompile Include="Infrastructure\Preferences.cpp" />
+    <ClCompile Include="Infrastructure\RenderableIterator.cpp" />
+    <ClCompile Include="Infrastructure\SoundDevice.cpp" />
+    <ClCompile Include="Infrastructure\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="Infrastructure\TagCollection.cpp" />
+    <ClCompile Include="Infrastructure\TextRendering.cpp" />
+    <ClCompile Include="Infrastructure\Textures.cpp" />
+    <ClCompile Include="Infrastructure\TuningVariable.cpp" />
+    <ClCompile Include="Infrastructure\Vector2.cpp" />
+    <ClCompile Include="Infrastructure\Vector3.cpp" />
+    <ClCompile Include="Infrastructure\World.cpp" />
+    <ClCompile Include="Messaging\Message.cpp" />
+    <ClCompile Include="Messaging\Switchboard.cpp" />
+    <ClCompile Include="Scripting\LuaConsole.cpp" />
+    <ClCompile Include="Scripting\LuaModule.cpp" />
+    <ClCompile Include="UI\GwenRenderer.cpp" />
+    <ClCompile Include="UI\UserInterface.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AIEvents\GotoAIEvent.h" />
+    <ClInclude Include="AIEvents\GotoTargetAIEvent.h" />
+    <ClInclude Include="AIEvents\NamedEventAIEvent.h" />
+    <ClInclude Include="AIEvents\TimerAIEvent.h" />
+    <ClInclude Include="AIEvents\TraversalAIEvent.h" />
+    <ClInclude Include="Input\Controller.h" />
+    <ClInclude Include="Input\Input.h" />
+    <ClInclude Include="Input\InputKeys.h" />
+    <ClInclude Include="Input\InputManager.h" />
+    <ClInclude Include="Input\MobileSimulator.h" />
+    <ClInclude Include="Input\MouseInput.h" />
+    <ClInclude Include="Input\MultiTouch.h" />
+    <ClInclude Include="Actors\Actor.h" />
+    <ClInclude Include="Actors\FullScreenActor.h" />
+    <ClInclude Include="Actors\GridActor.h" />
+    <ClInclude Include="Actors\HUDActor.h" />
+    <ClInclude Include="Actors\ParticleActor.h" />
+    <ClInclude Include="Actors\PhysicsActor.h" />
+    <ClInclude Include="Actors\TextActor.h" />
+    <ClInclude Include="AI\BoundingShapes.h" />
+    <ClInclude Include="AI\Brain.h" />
+    <ClInclude Include="AI\PathFinder.h" />
+    <ClInclude Include="AI\Ray2.h" />
+    <ClInclude Include="AI\Sentient.h" />
+    <ClInclude Include="AI\SpatialGraph.h" />
+    <ClInclude Include="AI\stlastar.h" />
+    <ClInclude Include="AI\Traversal.h" />
+    <ClInclude Include="Infrastructure\Callback.h" />
+    <ClInclude Include="Util\DrawUtil.h" />
+    <ClInclude Include="Util\FileUtil.h" />
+    <ClInclude Include="Util\MathUtil.h" />
+    <ClInclude Include="Util\StringUtil.h" />
+    <ClInclude Include="Infrastructure\Camera.h" />
+    <ClInclude Include="Infrastructure\Color.h" />
+    <ClInclude Include="Infrastructure\Common.h" />
+    <ClInclude Include="Infrastructure\Console.h" />
+    <ClInclude Include="Infrastructure\DebugDraw.h" />
+    <ClInclude Include="Infrastructure\GameManager.h" />
+    <ClInclude Include="Infrastructure\Interval.h" />
+    <ClInclude Include="Infrastructure\LoadedVariable.h" />
+    <ClInclude Include="Infrastructure\Log.h" />
+    <ClInclude Include="Infrastructure\Preferences.h" />
+    <ClInclude Include="Infrastructure\Renderable.h" />
+    <ClInclude Include="Infrastructure\RenderableIterator.h" />
+    <ClInclude Include="Infrastructure\SoundDevice.h" />
+    <ClInclude Include="Infrastructure\stdafx.h" />
+    <ClInclude Include="Infrastructure\TagCollection.h" />
+    <ClInclude Include="Infrastructure\TextRendering.h" />
+    <ClInclude Include="Infrastructure\Textures.h" />
+    <ClInclude Include="Infrastructure\TuningVariable.h" />
+    <ClInclude Include="Infrastructure\VecStructs.h" />
+    <ClInclude Include="Infrastructure\Vector2.h" />
+    <ClInclude Include="Infrastructure\Vector3.h" />
+    <ClInclude Include="Infrastructure\World.h" />
+    <ClInclude Include="Messaging\Message.h" />
+    <ClInclude Include="Messaging\Switchboard.h" />
+    <ClInclude Include="Scripting\LuaConsole.h" />
+    <ClInclude Include="Scripting\LuaModule.h" />
+    <ClInclude Include="UI\GwenRenderer.h" />
+    <ClInclude Include="UI\UserInterface.h" />
+    <ClInclude Include="Angel.h" />
+    <ClInclude Include="AngelConfig.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripting\Interfaces\actor.i" />
+    <None Include="Scripting\Interfaces\angel.i" />
+    <None Include="Scripting\Interfaces\camera.i" />
+    <None Include="Scripting\Interfaces\color.i" />
+    <None Include="Scripting\Interfaces\console.i" />
+    <None Include="Scripting\Interfaces\controller.i" />
+    <None Include="Scripting\Interfaces\log.i" />
+    <None Include="Scripting\Interfaces\messaging.i" />
+    <None Include="Scripting\Interfaces\mouse.i" />
+    <None Include="Scripting\Interfaces\multitouch.i" />
+    <None Include="Scripting\Interfaces\particles.i" />
+    <None Include="Scripting\Interfaces\physics_actor.i" />
+    <None Include="Scripting\Interfaces\preferences.i" />
+    <None Include="Scripting\Interfaces\renderable.i" />
+    <None Include="Scripting\Interfaces\sound.i" />
+    <None Include="Scripting\Interfaces\text_actor.i" />
+    <None Include="Scripting\Interfaces\tuning.i" />
+    <None Include="Scripting\Interfaces\vectors.i" />
+    <None Include="Scripting\Interfaces\world.i" />
+    <None Include="Scripting\EngineScripts\autocomplete.lua" />
+    <None Include="Scripting\EngineScripts\conf_load.lua" />
+    <None Include="Scripting\EngineScripts\pref_load.lua" />
+    <None Include="Scripting\EngineScripts\start.lua" />
+    <None Include="Scripting\EngineScripts\sugar.lua" />
+    <None Include="Scripting\EngineScripts\util.lua" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

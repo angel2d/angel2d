@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{123B2816-4184-6D45-83FC-BC493E040197}</ProjectGuid>
+    <RootNamespace>GWEN-DLL</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\lib\windows\vs2010\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">obj\Release\GWEN-DLL\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">gwen</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\lib\windows\vs2010\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">obj\Debug\GWEN-DLL\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">gwend</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;GWEN_COMPILE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader></PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)gwen.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;GWEN_COMPILE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)gwen.dll</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\lib;..\..\..\lib\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\..\lib\windows\vs2010\gwen.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;GWEN_COMPILE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader></PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)gwend.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;GWEN_COMPILE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)gwend</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\lib;..\..\..\lib\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\..\lib\windows\vs2010\gwend</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\Gwen\Align.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Anim.h" />
+    <ClInclude Include="..\..\..\include\Gwen\BaseRender.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Config.h" />
+    <ClInclude Include="..\..\..\include\Gwen\ControlList.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls.h" />
+    <ClInclude Include="..\..\..\include\Gwen\DragAndDrop.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Events.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Exports.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Font.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Gwen.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Hook.h" />
+    <ClInclude Include="..\..\..\include\Gwen\InputHandler.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Macros.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Platform.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Skin.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Structures.h" />
+    <ClInclude Include="..\..\..\include\Gwen\TextObject.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Texture.h" />
+    <ClInclude Include="..\..\..\include\Gwen\ToolTip.h" />
+    <ClInclude Include="..\..\..\include\Gwen\UserData.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Utility.h" />
+    <ClInclude Include="..\..\..\include\Gwen\WindowProvider.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Base.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Button.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Canvas.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\CheckBox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\CollapsibleCategory.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\CollapsibleList.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ColorControls.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ColorPicker.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ComboBox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\CrossSplitter.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\DockBase.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\DockedTabControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Dragger.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\FieldLabel.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\FilePicker.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\FolderPicker.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\GroupBox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Highlight.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\HorizontalScrollBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\HorizontalSlider.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\HSVColorPicker.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ImagePanel.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Label.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\LabelClickable.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ListBox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Menu.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\MenuItem.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\MenuStrip.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Modal.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\NumericUpDown.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\PageControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ProgressBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Properties.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\PropertyTree.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\RadioButton.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\RadioButtonController.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Rectangle.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ResizableControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Resizer.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\RichLabel.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ScrollBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ScrollBarBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ScrollBarButton.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ScrollControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Slider.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\SplitterBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Splitters.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\StatusBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TabButton.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TabControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TabStrip.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TabTitleBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Text.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TextBox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\ToolBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TreeControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\TreeNode.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\VerticalScrollBar.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\VerticalSlider.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\WindowButtons.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\WindowCanvas.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\WindowControl.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Dialogs\FileOpen.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Dialogs\FileSave.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Dialogs\FolderOpen.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Dialogs\Query.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Layout\Position.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Layout\Table.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Layout\Tile.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\BaseProperty.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\Checkbox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\ColorSelector.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\ComboBox.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\File.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\Folder.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Controls\Property\Text.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Input\Allegro.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Input\SDL13.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Input\SFML.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Input\Windows.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\Allegro.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\Direct2D.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\DirectX9.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\GDIPlus.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\OpenGL.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\OpenGL_DebugFont.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Renderers\SFML.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Skins\Simple.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Skins\TexturedBase.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Skins\Texturing.h" />
+    <ClInclude Include="..\..\..\include\Gwen\UnitTest\UnitTest.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Util\ControlFactory.h" />
+    <ClInclude Include="..\..\..\include\Gwen\Util\ImportExport.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Anim.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BaseRender.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ControlList.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DragAndDrop.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\events.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gwen.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Hook.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\inputhandler.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Skin.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ToolTip.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Utility.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Base.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Button.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Canvas.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\CheckBox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\CollapsibleCategory.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ColorControls.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ColorPicker.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ComboBox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\CrossSplitter.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\DockBase.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\DockedTabControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Dragger.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\GroupBox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\HorizontalScrollBar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\HorizontalSlider.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\HSVColorPicker.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ImagePanel.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Label.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\LabelClickable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ListBox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Menu.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\MenuItem.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\MenuStrip.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\NumericUpDown.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\PageControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ProgressBar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Properties.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\PropertyTree.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\RadioButton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\RadioButtonController.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Rectangle.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ResizableControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Resizer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\RichLabel.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ScrollBar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ScrollBarBar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ScrollBarButton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\ScrollControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Slider.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\SplitterBar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TabButton.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TabControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TabStrip.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Text.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TextBox.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TextBoxNumeric.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TreeControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\TreeNode.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\VerticalScrollBar.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\VerticalSlider.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\WindowCanvas.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\WindowControl.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Dialog\FileOpen.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Dialog\FileSave.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Dialog\FolderOpen.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Controls\Dialog\Query.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Platforms\Null.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Platforms\Windows.cpp">
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

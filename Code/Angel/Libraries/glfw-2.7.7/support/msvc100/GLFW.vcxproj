@@ -42,6 +42,7 @@
     <ProjectGuid>{4DA03747-F505-4A98-9124-03B3B73B9B3B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GLFW</RootNamespace>
+    <ProjectName>_GLFW</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -68,9 +69,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -83,7 +86,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib;$(SolutionDir)\..\..\lib\win32;%(AdditionalIncludeDirectories)$(SolutionDir)\..\..\lib;$(SolutionDir)\..\..\lib\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\lib;$(ProjectDir)\..\..\lib\win32;%(AdditionalIncludeDirectories)$(ProjectDir)\..\..\lib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -105,7 +108,7 @@
       <CompileAsManaged>false</CompileAsManaged>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\lib;$(SolutionDir)\..\..\lib\win32;%(AdditionalIncludeDirectories)$(SolutionDir)\..\..\lib;$(SolutionDir)\..\..\lib\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\lib;$(ProjectDir)\..\..\lib\win32;%(AdditionalIncludeDirectories)$(ProjectDir)\..\..\lib</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>

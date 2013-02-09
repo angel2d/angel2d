@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Util">
+      <UniqueIdentifier>{50FB642F-FF28-F241-BB44-9C367EB834F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\ImportExport">
+      <UniqueIdentifier>{353AFB73-FEEF-0448-872F-D212E592D414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Util\ImportExport\DesignerFormat.h">
+      <Filter>Util\ImportExport</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Util\ImportExport\Base.cpp">
+      <Filter>Util\ImportExport</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Util\ImportExport\DesignerFormat.cpp">
+      <Filter>Util\ImportExport</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

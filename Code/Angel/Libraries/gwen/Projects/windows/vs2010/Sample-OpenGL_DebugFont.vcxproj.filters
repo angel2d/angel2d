@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Samples">
+      <UniqueIdentifier>{350284F4-0693-4C40-8429-B0A54DA69C42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Samples\OpenGL">
+      <UniqueIdentifier>{9C7F110F-A557-0046-B6EB-475DC2951068}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Samples\OpenGL\OpenGLSample.cpp">
+      <Filter>Samples\OpenGL</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
