@@ -49,7 +49,13 @@ class ConfigUpdater : public MessageListener
 {
 public:
 	ConfigUpdater();
+
+	void Reload();
+
 	virtual void ReceiveMessage(Message *message);
+
+private:
+	long _updateTime;
 };
 
 

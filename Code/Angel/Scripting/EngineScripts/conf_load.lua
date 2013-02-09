@@ -170,15 +170,6 @@ function SaveTuningVariables()
   f:close()
 end
 
--- Gets called by the ConfigUpdater object in the engine
-function CheckForTuningUpdate()
-  local modTime = lfs.attributes(TUNING_FILE_PATH, "modification")
-  if (nil == configUpdateTime or modTime ~= configUpdateTime) then
-    configUpdateTime = modTime
-    LoadTuningVariables()
-  end
-end
-
 -- Load actor definitions from Config/ActorDef/*.lua.
 -- 
 -- Instantiate an Actor from a definition with Actor.Create(<name>)

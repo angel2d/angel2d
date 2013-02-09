@@ -37,6 +37,7 @@
 #include "../Infrastructure/World.h"
 #if !ANGEL_MOBILE
 	#include "../Scripting/LuaConsole.h"
+	#include "../Util/FileUtil.h"
 #endif
 
 extern "C"
@@ -191,10 +192,18 @@ void LuaScriptingModule::DumpStack()
 ConfigUpdater::ConfigUpdater()
 {
 	#if !defined(ANGEL_MOBILE)
-		LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
+		Reload();
+		_updateTime = GetModificationTime("Config/tuning.lua");
 		theSwitchboard.SubscribeTo(this, TUNING_MESSAGE_NAME);
 		theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
 	#endif
+}
+
+void ConfigUpdater::Reload()
+{
+	lua_State* L = LuaScriptingModule::GetLuaState();
+	lua_getglobal(L, "LoadTuningVariables");
+	lua_call(L, 0, 0);
 }
 
 void ConfigUpdater::ReceiveMessage(Message *message)
@@ -202,7 +211,12 @@ void ConfigUpdater::ReceiveMessage(Message *message)
 	#if !defined(ANGEL_MOBILE)
 		if (message->GetMessageName() == TUNING_MESSAGE_NAME)
 		{
-			LuaScriptingModule::ExecuteInScript("CheckForTuningUpdate()");
+			long modTime = GetModificationTime("Config/tuning.lua");
+			if (_updateTime < modTime)
+			{
+				Reload();
+				_updateTime = modTime;
+			}
 			theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
 		}
 	#endif
