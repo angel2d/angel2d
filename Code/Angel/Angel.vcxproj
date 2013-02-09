@@ -102,20 +102,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="Libraries\Box2D-2.2.1\Build\vs2008\Box2D.vcxproj">
-      <Project>{43a70737-8c58-44ea-bbbb-6bf9bddd1c34}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Libraries\glfw-2.7.7\support\msvc90\GLFW.vcxproj">
-      <Project>{baa85eb9-be33-45fb-b552-0ab3ac4d9ca9}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Libraries\gwen\Projects\windows\vs2008\GWEN-Static.vcxproj">
-      <Project>{2363d1a1-73d0-824d-ada8-3276d519c6dd}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="AIEvents\GotoAIEvent.cpp" />
     <ClCompile Include="AIEvents\GotoTargetAIEvent.cpp" />
     <ClCompile Include="AIEvents\NamedEventAIEvent.cpp" />

@@ -442,16 +442,6 @@
     <ClInclude Include="..\..\include\FTVector.h" />
     <ClInclude Include="..\..\include\FTVectoriser.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\freetype-2.4.8\builds\win32\vc2008\freetype.vcxproj">
-      <Project>{78b079bd-9fc7-4b9e-b4a6-96da0f00248b}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\freetype-2.4.8\builds\win32\vc2010\freetype.vcxproj">
-      <Project>{78b079bd-9fc7-4b9e-b4a6-96da0f00248b}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
