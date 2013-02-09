@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sys">
+      <UniqueIdentifier>{bd025285-8df3-4edd-a9c1-db4f5dacbeea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{9073b2fd-4c49-4dc9-bc97-6754ac3d6e04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config\Level">
+      <UniqueIdentifier>{2d34c279-7f56-490d-ae34-35dbc06158b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config\ActorDef">
+      <UniqueIdentifier>{85e882e1-5291-453a-b0bd-2eb7dc92c8f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Docs">
+      <UniqueIdentifier>{18537e88-4d11-4001-8630-f5ee9de055c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Icons">
+      <UniqueIdentifier>{982aeeef-8fd2-4dfb-bf3d-9b6d761280ff}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Angel\Scripting\Interfaces\AngelLuaWrapping.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="platforms\win\ClientGame.rc">
+      <Filter>sys</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="platforms\win\resource.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\defaults.lua">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="Config\input_bindings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="Config\tuning.lua">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="Documentation\Attributions.txt">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="Documentation\GameInfo.txt">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="platforms\win\angel.ico">
+      <Filter>Icons</Filter>
+    </None>
+    <None Include="platforms\win\angel_small.ico">
+      <Filter>Icons</Filter>
+    </None>
+    <None Include="build.lua" />
+    <None Include="Resources\Scripts\client_start.lua" />
+    <None Include="script_interface.i" />
+  </ItemGroup>
+</Project>

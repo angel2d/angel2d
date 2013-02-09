@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CA407A30-2127-4368-BAAE-111123F000CB}</ProjectGuid>
+    <RootNamespace>IntroGame</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Message>Scripting setup...</Message>
+      <Command>xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul
+
+cd ..\Tools\BuildScripts
+..\..\Angel\Libraries\lua-5.2.1\$(Configuration)\lua.exe swig_wrap.lua -D INTROGAME -p "$(SolutionDir)
+</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)include;$(ProjectDir)\..\Angel;$(ProjectDir)\..\Angel\Libraries\freetype-2.4.8\include;$(ProjectDir)\..\Angel\Libraries\FTGL\include;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include;$(ProjectDir)\..\Angel\Libraries\glfw-2.7.7\include;$(ProjectDir)\..\Angel\Libraries\Box2D-2.2.1;$(ProjectDir)\..\Angel\Libraries\lua-5.2.1\src;$(ProjectDir)\..\Angel\Libraries\FMOD\inc;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.15-bin\include;$(ProjectDir)\..\Angel\Libraries\libogg-1.3.0\include;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.2\include;$(ProjectDir)\DemoScreens;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalDependencies>libpng.lib;zlib.lib;DevIL.lib;ILU.lib;ILUT.lib;opengl32.lib;glu32.lib;fmodex_vc.lib;_GLFW.lib;_FTGL.lib;freetype248_D.lib;Box2D.lib;Angel.lib;Lua.lib;libOpenAL32.dll.a;_libogg.lib;_libvorbis.lib;_libvorbisfile.lib;gwen_staticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)lib\x86;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib;$(ProjectDir)\..\Angel\Libraries\FMOD\lib;$(ProjectDir)\..\Angel\Libraries\glfw-2.7.7\support\msvc100\$(Configuration);$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build\$(Configuration);$(ProjectDir)\..\Angel\Libraries\freetype-2.4.8\objs\win32\vc2010\;$(ProjectDir)\..\Angel\Libraries\Box2D-2.2.1\Build\vs2010\$(Configuration);$(ProjectDir)\..\Angel\Libraries\lua-5.2.1\$(Configuration);$(ProjectDir)\..\Angel\Libraries\openal-soft-1.15-bin\lib\Win32;$(ProjectDir)\..\Angel\Libraries\libogg-1.3.0\win32\VS2010\Win32\$(Configuration);$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.2\win32\VS2010\libvorbis\Win32\$(Configuration);$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.2\win32\VS2010\libvorbisfile\Win32\$(Configuration);$(ProjectDir)\..\Angel\Libraries\gwen\lib\windows\vs2010;$(ProjectDir)\..\Angel\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.LIB; MSVCRT.LIB;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying DLLs...</Message>
+      <Command>copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul
+copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul
+copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul
+xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul
+copy ..\Angel\Libraries\openal-soft-1.15-bin\Win32\soft_oal.dll .\OpenAL32.dll /y &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Message>Scripting setup...</Message>
+      <Command>xcopy ..\Angel\Scripting\EngineScripts\* Resources\Scripts /y /e &gt; nul
+
+cd ..\Tools\BuildScripts
+..\..\Angel\Libraries\lua-5.2.1\$(Configuration)\lua.exe swig_wrap.lua -D INTROGAME -p "$(SolutionDir)
+</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+      <Outputs>%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)include;$(ProjectDir)\..\Angel;$(ProjectDir)\..\Angel\Libraries\freetype-2.4.8\include;$(ProjectDir)\..\Angel\Libraries\FTGL\include;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\include;$(ProjectDir)\..\Angel\Libraries\glfw-2.7.7\include;$(ProjectDir)\..\Angel\Libraries\Box2D-2.2.1;$(ProjectDir)\..\Angel\Libraries\lua-5.2.1\src;$(ProjectDir)\..\Angel\Libraries\FMOD\inc;$(ProjectDir)\..\Angel\Libraries\openal-soft-1.15-bin\include;$(ProjectDir)\..\Angel\Libraries\libogg-1.3.0\include;$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.2\include;$(ProjectDir)\DemoScreens;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;FTGL_LIBRARY_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalDependencies>libpng.lib;zlib.lib;DevIL.lib;ILU.lib;ILUT.lib;opengl32.lib;glu32.lib;fmodex_vc.lib;_GLFW.lib;_FTGL.lib;freetype248.lib;Box2D.lib;Angel.lib;Lua.lib;libOpenAL32.dll.a;_libogg.lib;_libvorbis.lib;_libvorbisfile.lib;gwen_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)lib\x86;$(ProjectDir)\..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib;$(ProjectDir)\..\Angel\Libraries\FMOD\lib;$(ProjectDir)\..\Angel\Libraries\glfw-2.7.7\support\msvc100\$(Configuration);$(ProjectDir)\..\Angel\Libraries\FTGL\win32_vcpp\build\$(Configuration);$(ProjectDir)\..\Angel\Libraries\freetype-2.4.8\objs\win32\vc2010\;$(ProjectDir)\..\Angel\Libraries\Box2D-2.2.1\Build\vs2010\$(Configuration);$(ProjectDir)\..\Angel\Libraries\lua-5.2.1\$(Configuration);$(ProjectDir)\..\Angel\Libraries\openal-soft-1.15-bin\lib\Win32;$(ProjectDir)\..\Angel\Libraries\libogg-1.3.0\win32\VS2010\Win32\$(Configuration);$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.2\win32\VS2010\libvorbis\Win32\$(Configuration);$(ProjectDir)\..\Angel\Libraries\libvorbis-1.3.2\win32\VS2010\libvorbisfile\Win32\$(Configuration);$(ProjectDir)\..\Angel\Libraries\gwen\lib\windows\vs2010;$(ProjectDir)\..\Angel\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <DelayLoadDLLs>DevIL.dll;ILU.dll;ILUT.dll;fmodex.dll;OpenAL32.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying DLLs and publishing...</Message>
+      <Command>copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\DevIL.dll . /y &gt; nul
+copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILU.dll . /y &gt; nul
+copy ..\Angel\Libraries\DevIL-SDK-1.7.8\win\lib\ILUT.dll . /y &gt; nul
+xcopy ..\Angel\Libraries\FMOD\*.dll . /y &gt; nul
+copy ..\Angel\Libraries\openal-soft-1.15-bin\Win32\soft_oal.dll .\OpenAL32.dll /y &gt; nul
+
+cd ..\Tools\BuildScripts\
+..\..\Angel\Libraries\lua-5.2.1\$(Configuration)\lua.exe "$(ProjectDir)..\Tools\BuildScripts\publish.lua" -g IntroGame.exe -o "$(ProjectDir)Published" -i "$(ProjectDir)\" -v "$(VCInstallDir)\"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Angel\Angel.vcxproj">
+      <Project>{d9a0401f-5faf-483d-81eb-1066cd52f9d4}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Angel\Scripting\Interfaces\AngelLuaWrappingIntroGame.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenBindingInstructions.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenByeBye.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenConsole.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenControllerInstructions.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenDefFile.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenImageMap.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenInstructions.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenIntervals.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenLayeredCollisionLevelFile.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenLevelFile.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenMessagePassing.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenMobileSimulator.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenMovingActor.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenMultipleControllers.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenParticleActors.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenPathfinding.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenPhysicsActor.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenRenderLayers.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenSimpleActor.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenStart.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenTuningVariables.cpp" />
+    <ClCompile Include="DemoScreens\DemoScreenUI.cpp" />
+    <ClCompile Include="DemoGameManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="platforms\win\IntroGame.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="platforms\win\resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="DemoScreens\DemoScreenBindingInstructions.h" />
+    <ClInclude Include="DemoScreens\DemoScreenByeBye.h" />
+    <ClInclude Include="DemoScreens\DemoScreenConsole.h" />
+    <ClInclude Include="DemoScreens\DemoScreenControllerInstructions.h" />
+    <ClInclude Include="DemoScreens\DemoScreenDefFile.h" />
+    <ClInclude Include="DemoScreens\DemoScreenImageMap.h" />
+    <ClInclude Include="DemoScreens\DemoScreenInstructions.h" />
+    <ClInclude Include="DemoScreens\DemoScreenIntervals.h" />
+    <ClInclude Include="DemoScreens\DemoScreenLayeredCollisionLevelFile.h" />
+    <ClInclude Include="DemoScreens\DemoScreenLevelFile.h" />
+    <ClInclude Include="DemoScreens\DemoScreenMessagePassing.h" />
+    <ClInclude Include="DemoScreens\DemoScreenMobileSimulator.h" />
+    <ClInclude Include="DemoScreens\DemoScreenMovingActor.h" />
+    <ClInclude Include="DemoScreens\DemoScreenMultipleControllers.h" />
+    <ClInclude Include="DemoScreens\DemoScreenParticleActors.h" />
+    <ClInclude Include="DemoScreens\DemoScreenPathfinding.h" />
+    <ClInclude Include="DemoScreens\DemoScreenPhysicsActor.h" />
+    <ClInclude Include="DemoScreens\DemoScreenRenderLayers.h" />
+    <ClInclude Include="DemoScreens\DemoScreenSimpleActor.h" />
+    <ClInclude Include="DemoScreens\DemoScreenStart.h" />
+    <ClInclude Include="DemoScreens\DemoScreenTuningVariables.h" />
+    <ClInclude Include="DemoScreens\DemoScreenUI.h" />
+    <ClInclude Include="DemoGameManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\defaults.lua" />
+    <None Include="Config\input_bindings.ini" />
+    <None Include="Config\tuning.lua" />
+    <None Include="Config\Level\collisionlevel_demo.lua" />
+    <None Include="Config\Level\layeredcollisionlevel_demo.lua" />
+    <None Include="Config\Level\level_demo.lua" />
+    <None Include="Config\Level\maze.lua" />
+    <None Include="Config\ActorDef\demo_actors.lua" />
+    <None Include="Logs\LogFile.log" />
+    <None Include="Documentation\Attributions.txt" />
+    <None Include="Documentation\GameInfo.txt" />
+    <None Include="platforms\win\angel.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

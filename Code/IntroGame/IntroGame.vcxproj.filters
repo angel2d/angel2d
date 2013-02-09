@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sys">
+      <UniqueIdentifier>{d7a22fb9-fd8e-4c88-9f22-cfc7eabc0574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{2887b264-164f-465a-9528-bf953297b609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config\Level">
+      <UniqueIdentifier>{fde0c043-192f-4b33-977e-ca35bc5270bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config\ActorDef">
+      <UniqueIdentifier>{3f72f350-fcef-4694-9a27-2f87071b35bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DemoScreens">
+      <UniqueIdentifier>{590a87f7-baba-4e55-9c0e-73580f4e37d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logs">
+      <UniqueIdentifier>{05dc0632-9727-40da-a5ad-6df05eee38a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Docs">
+      <UniqueIdentifier>{c1ad143f-8934-48b8-9873-6b9436fd6020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Icons">
+      <UniqueIdentifier>{16ea3b96-14cb-4d7e-9751-35c2798ead4b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Angel\Scripting\Interfaces\AngelLuaWrappingIntroGame.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenBindingInstructions.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenByeBye.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenConsole.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenControllerInstructions.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenDefFile.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenImageMap.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenInstructions.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenIntervals.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenLayeredCollisionLevelFile.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenLevelFile.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenMessagePassing.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenMobileSimulator.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenMovingActor.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenMultipleControllers.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenParticleActors.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenPathfinding.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenPhysicsActor.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenRenderLayers.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenSimpleActor.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenStart.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenTuningVariables.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScreens\DemoScreenUI.cpp">
+      <Filter>DemoScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoGameManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="platforms\win\IntroGame.rc">
+      <Filter>sys</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="platforms\win\resource.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenBindingInstructions.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenByeBye.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenConsole.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenControllerInstructions.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenDefFile.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenImageMap.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenInstructions.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenIntervals.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenLayeredCollisionLevelFile.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenLevelFile.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenMessagePassing.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenMobileSimulator.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenMovingActor.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenMultipleControllers.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenParticleActors.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenPathfinding.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenPhysicsActor.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenRenderLayers.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenSimpleActor.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenStart.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenTuningVariables.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScreens\DemoScreenUI.h">
+      <Filter>DemoScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoGameManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\defaults.lua">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="Config\input_bindings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="Config\tuning.lua">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="Config\Level\collisionlevel_demo.lua">
+      <Filter>Config\Level</Filter>
+    </None>
+    <None Include="Config\Level\layeredcollisionlevel_demo.lua">
+      <Filter>Config\Level</Filter>
+    </None>
+    <None Include="Config\Level\level_demo.lua">
+      <Filter>Config\Level</Filter>
+    </None>
+    <None Include="Config\Level\maze.lua">
+      <Filter>Config\Level</Filter>
+    </None>
+    <None Include="Config\ActorDef\demo_actors.lua">
+      <Filter>Config\ActorDef</Filter>
+    </None>
+    <None Include="Logs\LogFile.log">
+      <Filter>Logs</Filter>
+    </None>
+    <None Include="Documentation\Attributions.txt">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="Documentation\GameInfo.txt">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="platforms\win\angel.ico">
+      <Filter>Icons</Filter>
+    </None>
+  </ItemGroup>
+</Project>
