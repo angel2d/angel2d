@@ -191,8 +191,9 @@ void LuaScriptingModule::DumpStack()
 
 ConfigUpdater::ConfigUpdater()
 {
+	Reload();
+	
 	#if !defined(ANGEL_MOBILE)
-		Reload();
 		_updateTime = GetModificationTime("Config/tuning.lua");
 		theSwitchboard.SubscribeTo(this, TUNING_MESSAGE_NAME);
 		theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
