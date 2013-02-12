@@ -212,7 +212,7 @@ function _ApplyToActor(actor, config, value)
   
   -- call the function if we can
   if (nil == fname) then
-    print( string.format("WARNING: No method or attribute found for %s, %s, or %s", unpack(name_checks)) )
+    print( string.format("WARNING: No method or attribute found for %s, %s, or %s", table.unpack(name_checks)) )
   else
     actor[fname](actor, value)
   end
