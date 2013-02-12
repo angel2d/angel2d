@@ -243,7 +243,11 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		glfwSetWindowTitle(windowName.c_str());
 		glfwSetWindowPos(50, 50);
 
-		glfwSwapInterval(1);
+		#if defined(__APPLE__)
+			glfwSwapInterval(1);
+		#else
+			glfwSwapInterval(0); // because double-buffering and Windows don't get along apparently
+		#endif
 		glfwSetWindowSizeCallback(Camera::ResizeCallback);
 		glfwSetKeyCallback(keyboardInput);
 		glfwSetCharCallback(charInput);
