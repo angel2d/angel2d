@@ -95,6 +95,6 @@ void DemoScreenPhysicsActor::Update(float dt)
 	if ((theController.IsConnected() && theController.IsBButtonDown()) || (theInput.IsKeyDown('b')))
 	{
 		//punch it upwards
-		p1->ApplyForce(Vector2(0, 20.0f), Vector2());
+		p1->ApplyForce(Vector2(0, 700.0f) * dt, Vector2());
 	}
 }
