@@ -9,6 +9,7 @@
 * Camera can now use interval interpolation for 3d movement
 * Removed silly kicker program in favor of proper DLL delay loading
 * Tweak to simulation loop so that physics actors sync their positions before receiving their normal Actor updates
+* Fixing a long-standing bug in ParticleActors that was causing way too many particles to be emitted per frame. 
 * Lots of housekeeping/cleanup of code for readability and correctness
 * Now mirroring Google Code development on GitHub (http://github.com/sjml/angel-engine)
 

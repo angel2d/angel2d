@@ -135,9 +135,9 @@ void ParticleActor::Update(float dt)
 
 	// Add in any residual time from last emission.
 	dt += _generationResidue;
-
+	
 	int numParticlesToGenerate = int(_particlesPerSecond * dt);
-	_generationResidue = _particlesPerSecond * dt - float(numParticlesToGenerate);
+	_generationResidue = dt - numParticlesToGenerate * _inverseParticlesPerSecond;
 	
 	if (numParticlesToGenerate > 0)
 	{		
@@ -236,6 +236,7 @@ void ParticleActor::SetParticlesPerSecond(float pps)
 		pps = 0.0f;
 	}
 	_particlesPerSecond = pps;
+	_inverseParticlesPerSecond = 1.0f / pps;
 }
 
 void ParticleActor::SetSystemLifetime(float lifetime)

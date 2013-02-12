@@ -206,5 +206,8 @@ protected:
 	float	_endScale; 
 
 	Vector2 _gravity;
+	
+private:
+	float	_inverseParticlesPerSecond;
 };
 
