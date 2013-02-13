@@ -156,6 +156,29 @@ public:
 	 *   (magnitude affecting the force of the pull). 
 	 */
 	void SetGravity(const Vector2& gravity);
+
+	/**
+	 * Set the attractor point for the particles -- in addition to gravity,
+	 *  which gets applied as a vector, particles will be affected by their
+	 *  attraction to this point. Defaults to the origin (0, 0), but since
+	 *  the default attractor strength is zero, it will not actually affect
+	 *  any movement out of the box. 
+	 *
+	 * @param attractor The point to which all particles emitted by the
+	 *   system will be drawn. It is their destiny. 
+	 */
+	void SetAttractor(const Vector2& attractor);
+
+	/**
+	 * Set the strength of the attractor, or how quickly particles will move
+	 *  to it. This does a very simple linear movement; it's not a force in
+	 *  the physics sense, so they won't accelerate towards it or anything
+	 *  like that. 
+	 * 
+	 * @param strength The magnitude of the vector between each particle and
+	 *   the attractor point. 
+	 */
+	void SetAttractorStrength(float strength);
 	
 	/**
 	 * Set the maximum number of particles this system can keep track of
@@ -206,8 +229,7 @@ protected:
 	float	_endScale; 
 
 	Vector2 _gravity;
-	
-private:
-	float	_inverseParticlesPerSecond;
+	Vector2 _attractor;
+	float _attractorStrength;
 };
 

@@ -55,6 +55,8 @@ ParticleActor::ParticleActor()
 	_endScale = 1.0f;
 
 	_gravity = Vector2(0.0f, -4.0f);
+	_attractor = Vector2(0.0f, 0.0f);
+	_attractorStrength = 0.0f;
 }
 
 ParticleActor::~ParticleActor()
@@ -94,7 +96,14 @@ void ParticleActor::Update(float dt)
 				currentParticle._pos = currentParticle._pos + currentParticle._vel * dt;
 
 				// Update our current velocity, which will be used next update.
-				currentParticle._vel =  currentParticle._vel + _gravity * dt;
+				currentParticle._vel = currentParticle._vel + _gravity * dt;
+				if (!MathUtil::FuzzyEquals(_attractorStrength, 0.0f))
+				{
+					Vector2 attractorShift = _attractor - currentParticle._pos;
+					attractorShift.Normalize();
+					attractorShift *= _attractorStrength;
+					currentParticle._vel += attractorShift * dt;
+				}
 
 				currentParticle._color = MathUtil::Lerp(_color, _endColor, lifePercent);
 
@@ -134,10 +143,9 @@ void ParticleActor::Update(float dt)
 	//
 
 	// Add in any residual time from last emission.
-	dt += _generationResidue;
-	
-	int numParticlesToGenerate = int(_particlesPerSecond * dt);
-	_generationResidue = dt - numParticlesToGenerate * _inverseParticlesPerSecond;
+	float particlesToGenerate = _particlesPerSecond * dt + _generationResidue;
+	int numParticlesToGenerate = int(floorf(particlesToGenerate));
+	_generationResidue = particlesToGenerate - float(numParticlesToGenerate);
 	
 	if (numParticlesToGenerate > 0)
 	{		
@@ -236,7 +244,6 @@ void ParticleActor::SetParticlesPerSecond(float pps)
 		pps = 0.0f;
 	}
 	_particlesPerSecond = pps;
-	_inverseParticlesPerSecond = 1.0f / pps;
 }
 
 void ParticleActor::SetSystemLifetime(float lifetime)
@@ -291,6 +298,16 @@ void ParticleActor::SetMaxSpeed(float maxSpeed)
 void ParticleActor::SetGravity(const Vector2& gravity)
 {
 	_gravity = gravity;
+}
+
+void ParticleActor::SetAttractor(const Vector2& attractor)
+{
+	_attractor = attractor;
+}
+
+void ParticleActor::SetAttractorStrength(float strength)
+{
+	_attractorStrength = strength;
 }
 
 void ParticleActor::SetMaxParticles(int maxParticles)

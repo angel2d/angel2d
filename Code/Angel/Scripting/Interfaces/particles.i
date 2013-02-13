@@ -20,5 +20,7 @@ public:
 	void SetMinSpeed(float minSpeed);
 	void SetMaxSpeed(float maxSpeed);
 	void SetGravity(Vector2 gravity);
+	void SetAttractor(Vector2 attractor);
+	void SetAttractorStrength(float strength);
 	void SetMaxParticles(int maxParticles);
 };
