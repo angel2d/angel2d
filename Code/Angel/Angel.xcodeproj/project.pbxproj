@@ -742,7 +742,6 @@
 		340644D211E7E20100033B1D /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ft2build.h; path = "Libraries/freetype-2.4.8/include/ft2build.h"; sourceTree = "<group>"; };
 		3406453F11E7E77B00033B1D /* smooth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smooth.c; path = "Libraries/freetype-2.4.8/src/smooth/smooth.c"; sourceTree = "<group>"; };
 		3411DFE90E5FDD83009D734D /* actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = actor.i; path = Scripting/Interfaces/actor.i; sourceTree = "<group>"; };
-		3411E0B20E5FF1C2009D734D /* vector2.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = vector2.i; path = Scripting/Interfaces/vector2.i; sourceTree = "<group>"; };
 		3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Name_Lookup.c; path = "Libraries/HID Utilities/HID_Name_Lookup.c"; sourceTree = "<group>"; };
 		3433A8C00E2AADAE00A02B4E /* HID_Error_Handler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Error_Handler.c; path = "Libraries/HID Utilities/HID_Error_Handler.c"; sourceTree = "<group>"; };
 		3433A8C10E2AADAE00A02B4E /* HID_Transaction_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Transaction_Utilities.c; path = "Libraries/HID Utilities/HID_Transaction_Utilities.c"; sourceTree = "<group>"; };
@@ -1013,6 +1012,9 @@
 		34AA6C3A0E61CB2F00033685 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		34AA6C3B0E61CB2F00033685 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		34AF113C0F3D237D00A17276 /* sound.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = sound.i; path = Scripting/Interfaces/sound.i; sourceTree = "<group>"; };
+		34AFDEF016CFF2A500E76E30 /* util.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; name = util.i; path = Scripting/Interfaces/util.i; sourceTree = "<group>"; };
+		34AFDEF116CFF2A500E76E30 /* vectors.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; name = vectors.i; path = Scripting/Interfaces/vectors.i; sourceTree = "<group>"; };
+		34AFDEF216CFF30000E76E30 /* textures.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; name = textures.i; path = Scripting/Interfaces/textures.i; sourceTree = "<group>"; };
 		34B9C891150303D00092D6C4 /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Preferences.cpp; sourceTree = "<group>"; };
 		34B9C894150303DE0092D6C4 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		34B9C8961503096E0092D6C4 /* LoadedVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadedVariable.h; sourceTree = "<group>"; };
@@ -2245,9 +2247,11 @@
 				3447521915102C710048129D /* preferences.i */,
 				34CC01C30E621094003772E0 /* renderable.i */,
 				34AF113C0F3D237D00A17276 /* sound.i */,
+				34AFDEF216CFF30000E76E30 /* textures.i */,
 				34713DF40EA6E3CF00AF58CA /* text_actor.i */,
 				346EFC170FE4464E00BC2C5C /* tuning.i */,
-				3411E0B20E5FF1C2009D734D /* vector2.i */,
+				34AFDEF016CFF2A500E76E30 /* util.i */,
+				34AFDEF116CFF2A500E76E30 /* vectors.i */,
 				34F1FFD80E5D3F910065CD22 /* world.i */,
 			);
 			name = Interfaces;

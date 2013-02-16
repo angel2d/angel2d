@@ -204,7 +204,13 @@ void ConfigUpdater::Reload()
 {
 	lua_State* L = LuaScriptingModule::GetLuaState();
 	lua_getglobal(L, "LoadTuningVariables");
-	lua_call(L, 0, 0);
+	if (lua_pcall(L, 0, 0, 0))
+	{
+		const char* errs = lua_tostring(L, -1);
+		sysLog.Printf("ERROR: %s\n", errs);
+		// error, will be in the stack trace
+		lua_gc(L, LUA_GCCOLLECT, 0); // garbage collect on error
+	}
 }
 
 void ConfigUpdater::ReceiveMessage(Message *message)

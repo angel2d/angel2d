@@ -684,8 +684,18 @@ Actor* Actor::Create(const String& archetype)
 	lua_State* L = LuaScriptingModule::GetLuaState();
 	lua_getglobal(L, "Actor_CreateAndRegister");
 	lua_pushstring(L, archetype.c_str());
-	lua_call(L, 1, 0);
-	return _scriptCreatedActor;
+	if (lua_pcall(L, 1, 0, 0))
+	{
+		const char* errs = lua_tostring(L, -1);
+		sysLog.Printf("ERROR: %s\n", errs);
+		// error, will be in the stack trace
+		lua_gc(L, LUA_GCCOLLECT, 0); // garbage collect on error
+		return NULL;
+	}
+	else
+	{
+		return _scriptCreatedActor;
+	}
 }
 
 void Actor::SetLayer(int layerIndex)
