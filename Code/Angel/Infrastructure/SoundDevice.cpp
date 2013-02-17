@@ -136,7 +136,12 @@ SoundDevice& SoundDevice::GetInstance()
 
 void SoundDevice::Initialize()
 {
-	assert(_system == NULL);
+	if (_system != NULL)
+	{
+		sysLog.Log("ERROR: Sound system already initialized.");
+		return;
+	}
+	
 	#if !ANGEL_DISABLE_FMOD
 		unsigned int     version;
 		FMOD_SPEAKERMODE speakermode;
@@ -430,8 +435,12 @@ AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
 
 AngelSoundHandle SoundDevice::PlaySound(AngelSampleHandle sample, float volume, bool looping, int flags)
 {
-	assert(sample && "Sample is NULL.");
-
+	if (sample == NULL)
+	{
+		sysLog.Log("ERROR: Invalid AngelSampleHandle.");
+		return NULL;
+	}
+	
 	#if !ANGEL_DISABLE_FMOD
 		if (flags)
 			sysLog.Log("WARNING: PlaySound doesn't use the passed in flags yet.");
