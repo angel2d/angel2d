@@ -435,13 +435,13 @@ AngelSampleHandle SoundDevice::LoadSample(const String& filename, bool isStream)
 
 AngelSoundHandle SoundDevice::PlaySound(AngelSampleHandle sample, float volume, bool looping, int flags)
 {
-	if (sample == NULL)
-	{
-		sysLog.Log("ERROR: Invalid AngelSampleHandle.");
-		return NULL;
-	}
-	
 	#if !ANGEL_DISABLE_FMOD
+		if (sample == NULL)
+		{
+			sysLog.Log("ERROR: Invalid AngelSampleHandle.");
+			return NULL;
+		}
+	
 		if (flags)
 			sysLog.Log("WARNING: PlaySound doesn't use the passed in flags yet.");
 
