@@ -31,6 +31,7 @@
 
 #include "../AngelConfig.h"
 #include "../Infrastructure/Callback.h"
+#include "../Util/StringUtil.h"
 
 #if !ANGEL_DISABLE_FMOD
 	#include <map>
@@ -117,7 +118,7 @@ public:
 	 * @return The AngelSampleHandle that you should hold on to for when you actually
 	 *   want to play the sound. You'll pass this to SoundDevice::PlaySound. 
 	 */
-	AngelSampleHandle LoadSample(const char* filename, bool isStream);
+	AngelSampleHandle LoadSample(const String& filename, bool isStream);
 	
 	/**
 	 * Plays a sound that has been previously loaded. 

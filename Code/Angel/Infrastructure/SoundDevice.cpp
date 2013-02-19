@@ -286,7 +286,7 @@ void SoundDevice::Shutdown()
 	#endif // !ANGEL_DISABLE_FMOD
 }
 
-AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
+AngelSampleHandle SoundDevice::LoadSample(const String& filename, bool isStream)
 {
 	#if !ANGEL_DISABLE_FMOD
 		int flags = FMOD_DEFAULT;
@@ -294,7 +294,7 @@ AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
 			flags |= FMOD_CREATESTREAM;
 
 		FMOD::Sound* newSample;
-		ANGEL_SOUND_CHECKED( _system->createSound(filename, flags, 0, &newSample) ) 
+		ANGEL_SOUND_CHECKED( _system->createSound(filename.c_str(), flags, 0, &newSample) ) 
 
 		// We don't try and stop duplicates.  If they want to have multiples of the 
 		//  same stream going at once, they have to have unique samples loaded for each.
@@ -315,11 +315,11 @@ AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
 		vorbis_info *pInfo;
 		OggVorbis_File oggFile;
 
-		f = fopen(filename, "rb");
+		f = fopen(filename.c_str(), "rb");
 
 		if (f == NULL)
 		{
-			sysLog.Printf("ERROR: Could not find file named \"%s\"", filename);
+			sysLog.Printf("ERROR: Could not find file named \"%s\"", filename.c_str());
 			return 0;
 		}
 
@@ -328,7 +328,7 @@ AngelSampleHandle SoundDevice::LoadSample(const char *filename, bool isStream)
 		
 		if (pInfo == NULL)
 		{
-			sysLog.Printf("ERROR: \"%s\" is not a valid Ogg Vorbis file.", filename);
+			sysLog.Printf("ERROR: \"%s\" is not a valid Ogg Vorbis file.", filename.c_str());
 			return 0;
 		}
 	
