@@ -174,7 +174,7 @@ void GwenRenderer::DrawFilledRect( Gwen::Rect rect )
 
 void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRect, float u1, float v1, float u2, float v2)
 {
-	GLuint tex = (GLuint)texture->data;
+	GLuint* tex = (GLuint*)texture->data;
 
 	if (!tex)
 	{
@@ -187,7 +187,7 @@ void GwenRenderer::DrawTexturedRect( Gwen::Texture* texture, Gwen::Rect targetRe
 	Translate(targetRect);
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, tex);
+	glBindTexture(GL_TEXTURE_2D, *tex);
 
 	AddVertex( targetRect.x, targetRect.y + targetRect.h,				u1, v2 );
 	AddVertex( targetRect.x+targetRect.w, targetRect.y,					u2, v1 );
@@ -232,7 +232,8 @@ void GwenRenderer::LoadTexture( Gwen::Texture* texture )
 	else
 	{
 		texture->failed = false;
-		texture->data = (void*)texID;
+		texture->data = new GLuint;
+		*((GLuint*)texture->data) = texID;
 		const Vec2i dimensions = GetTextureSize(texture->name.Get());
 		texture->width = dimensions.X;
 		texture->height = dimensions.Y;
@@ -242,6 +243,12 @@ void GwenRenderer::LoadTexture( Gwen::Texture* texture )
 void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 {
 	PurgeTexture(texture->name.Get());
+	GLuint* tex = (GLuint*)texture->data;
+	if (tex)
+	{
+		delete tex;
+		texture->data = NULL;
+	}
 }
 
 //void GwenRenderer::DrawMissingImage( Gwen::Rect targetRect )
