@@ -45,14 +45,17 @@ void ChoiceMade(int choice)
 	if (choice == 0)
 	{
 		out = "You pressed the first button.";
+		DemoScreenUI::_output->SetColor(1.0f, 0.0f, 0.0f);
 	}
 	else if (choice == 1)
 	{
 		out = "You pressed the second button.";
+		DemoScreenUI::_output->SetColor(0.0f, 1.0f, 0.0f);
 	}
 	else if (choice == 2)
 	{
 		out = "You pressed the third button.";
+		DemoScreenUI::_output->SetColor(0.0f, 0.0f, 1.0f);
 	}
 	else
 	{
