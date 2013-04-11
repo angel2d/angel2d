@@ -1070,10 +1070,11 @@
  *  when you change it! 
  * 
  * If you're not familiar with Lua, Roberto Ierusalimschy's <i><a 
- *  href="http://www.lua.org/pil/">Programming in Lua</a></i> is a good 
- *  start. (The online edition is for version 5.0, whereas we ship with 5.1. 
- *  Most functionality is the same, but there are some differences, so if 
- *  you want to dive further into Lua, be sure to track down a print copy.)
+ *  href="http://www.lua.org/pil/contents.html">Programming in Lua</a></i> is 
+ *  a good start. (The online edition is for version 5.0, whereas we ship 
+ *  with 5.2. Most functionality is the same, but there are some differences, 
+ *  so if you want to dive further into Lua, be sure to track down a print 
+ *  copy.)
  * 
  * @subsection console In-Game Console
  * When you press the "~" button, the in-game console appears. This is, for
