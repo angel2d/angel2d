@@ -283,9 +283,6 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	glClearStencil(0);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-
-	theCamera.ResizeCallback(windowWidth, windowHeight);
-	
 	//Get textures going
 	InitializeTextureLoading();
 	

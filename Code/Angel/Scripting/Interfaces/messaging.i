@@ -14,6 +14,26 @@ public:
 	MessageListener* const GetSender();
 };
 
+template <class T>
+class TypedMessage : public Message
+{
+public:
+	TypedMessage(const String& messageName, T value, MessageListener* sender = NULL);
+	
+	const T GetValue();
+};
+
+%template(FloatMessage)		TypedMessage<float>;
+%template(IntMessage)		TypedMessage<int>;
+%template(StringMessage)	TypedMessage<String>;
+%template(Vector2Message)	TypedMessage<Vector2>;
+%template(Vector3Message)	TypedMessage<Vector3>;
+%template(Vec2iMessage)		TypedMessage<Vec2i>;
+%template(Vec2uiMessage)	TypedMessage<Vec2ui>;
+%template(Vec3iMessage)		TypedMessage<Vec3i>;
+%template(Vec3uiMessage)	TypedMessage<Vec3ui>;
+
+
 %feature("director") MessageListener;
 class MessageListener
 {
