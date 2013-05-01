@@ -94,6 +94,14 @@ const String ReadWholeFile(const String& fileName);
 const String GetStorageDirectory();
 
 /**
+ * Returns a path to the My Documents directory on Windows, or the 
+ *  ~/Documents folder on Mac. On Linux? Who knows?!
+ *
+ * @return Path to the user's documents
+ */
+const String GetDocumentsPath();
+
+/**
  * Gives the name of the current executable. 
  *
  * @return The name of the current executable

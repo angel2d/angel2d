@@ -177,6 +177,28 @@ const String GetStorageDirectory()
 	#endif
 }
 
+const String GetDocumentsPath()
+{
+	#if defined(WIN32)
+		char myDocs[MAX_PATH];
+		HRESULT result = SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, myDocs);
+		if (result != S_OK)
+		{
+			sysLog.Log("ERROR: Couldn't get path to \"My Documents\" directory.");
+			return String("");
+		}
+		else
+		{
+			return String(myDocs);
+		}
+	#elif defined(__APPLE__)
+		String path = getenv("HOME");
+		return path + "/Documents/";
+	#elif defined(__linux__)
+		#error Linux docs path not implemented.
+	#endif
+}
+
 const String GetExeName() 
 {
 	String pathSplit = "/";
