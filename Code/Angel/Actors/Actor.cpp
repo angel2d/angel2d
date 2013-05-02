@@ -601,7 +601,8 @@ void Actor::GetUVs(Vector2 &lowleft, Vector2 &upright) const
 
 const bool Actor::IsTagged(const String& tag)
 {
-	StringSet::iterator it = _tags.find(tag);
+	String searchTag = ToLower(tag);
+	StringSet::iterator it = _tags.find(searchTag);
 	if (it != _tags.end())
 	{
 		return true;
@@ -625,8 +626,9 @@ void Actor::Tag(const String& newTag)
 
 void Actor::Untag(const String& oldTag)
 {
-	_tags.erase(oldTag);
-	theTagList.RemoveObjFromTagList(this, oldTag);
+	String delTag = ToLower(oldTag);
+	_tags.erase(delTag);
+	theTagList.RemoveObjFromTagList(this, delTag);
 }
 
 const StringSet& Actor::GetTags() const
