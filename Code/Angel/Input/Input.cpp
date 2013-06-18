@@ -36,16 +36,16 @@
 #include "../Input/InputManager.h"
 
 
-void charInput(int key, int state)
+void charInput(GLFWwindow* window, unsigned int key)
 {
-	if (state == GLFW_PRESS && key != theWorld.GetConsole()->GetToggleConsoleKey())
+	if (key != theWorld.GetConsole()->GetToggleConsoleKey())
 	{
 		if (theWorld.GetConsole()->GetInput(key))
 			return;
 	}
 }
 
-void keyboardInput(int key, int state)
+void keyboardInput(GLFWwindow* window, int key, int scancode, int state, int mods)
 {
 	if (state == GLFW_PRESS)
 	{
@@ -62,7 +62,7 @@ void keyboardInput(int key, int state)
 		if (theInput.OnKeyDown(key))
 			return;
 
-		if (key == GLFW_KEY_ESC)
+		if (key == GLFW_KEY_ESCAPE)
 		{
 			theWorld.StopGame();
 		}

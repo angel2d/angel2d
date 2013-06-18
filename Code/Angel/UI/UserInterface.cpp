@@ -142,7 +142,8 @@ UserInterface& UserInterface::GetInstance()
 UserInterface::UserInterface()
 {
     #if !ANGEL_MOBILE
-        glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
+		//GLFW3TODO: this is totally wrong; just getting it to compile
+        glfwGetCursorPos(NULL, (double*)&_mousePosition.X, (double*)&_mousePosition.Y);
     #else
         _mousePosition.X = _mousePosition.Y = 0;
     #endif

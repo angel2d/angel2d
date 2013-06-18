@@ -121,18 +121,18 @@ void DeregisterMouseSubscriber(MouseListener* actor);
  *  moves. Because our windowing/input toolkit (GLFW) is C-based, it needs 
  *  these loose functions to operate.
  */
-void MouseMotion(int x, int y);
+void MouseMotion(GLFWwindow* window, double x, double y);
 
 /** 
  * A C-based function to get called by the windowing system when the mouse
  *  is clicked. Because our windowing/input toolkit (GLFW) is C-based, it 
  *  needs these loose functions to operate.
  */
-void MouseButton(int button, int state);
+void MouseButton(GLFWwindow* window, int button, int state, int mods);
 
 /** 
  * A C-based function to get called by the windowing system when the
  *  mouse-wheel moves. Because our windowing/input toolkit (GLFW) is 
  *  C-based, it needs these loose functions to operate.
  */
-void MouseWheel(int pos);
+void MouseWheel(GLFWwindow* window, double x, double y);

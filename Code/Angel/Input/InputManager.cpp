@@ -331,7 +331,8 @@ void InputManager::ClearXboxButtonStates()
 
 bool InputManager::IsKeyDown(int keyVal)
 {
-	if (glfwGetKey(toupper(keyVal)) == GLFW_PRESS)
+	//GLFW3TODO: also totally wrong, fix this garbage
+	if (glfwGetKey(NULL, toupper(keyVal)) == GLFW_PRESS)
 	{
 		return true;
 	}

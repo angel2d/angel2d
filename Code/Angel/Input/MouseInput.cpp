@@ -65,10 +65,10 @@ void DeregisterMouseSubscriber(MouseListener *actor)
 	}
 }
 
-void MouseMotion(int x, int y)
+void MouseMotion(GLFWwindow* window, double x, double y)
 {
-	_mouseLocation.X = x;
-	_mouseLocation.Y = y;
+	_mouseLocation.X = (int)x;
+	_mouseLocation.Y = (int)y;
 	std::set<MouseListener*>::iterator it = _mouseSubscribers.begin();
 	while (it != _mouseSubscribers.end())
 	{
@@ -77,7 +77,7 @@ void MouseMotion(int x, int y)
 	}
 }
 
-void MouseButton(int button, int state)
+void MouseButton(int button, int state, int mods)
 {
 	MouseButtonInput mouseButton;
 	if (button == GLFW_MOUSE_BUTTON_RIGHT)
@@ -108,12 +108,12 @@ void MouseButton(int button, int state)
 	}
 }
 
-void MouseWheel(int pos)
+void MouseWheel(GLFWwindow* window, double x, double y)
 {
 	std::set<MouseListener*>::iterator it = _mouseSubscribers.begin();
 	while (it != _mouseSubscribers.end())
 	{
-		(*it)->MouseWheelEvent(pos);
+		(*it)->MouseWheelEvent((int)y);
 		it++;
 	}
 }

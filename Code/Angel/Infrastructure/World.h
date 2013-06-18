@@ -533,6 +533,8 @@ private:
 	#if ANGEL_MOBILE
 		float _startTime;
 		float _systemEstimatedDT;
+	#else
+		GLFWwindow* _mainWindow;
 	#endif
 	bool _highResScreen;
 	bool _antiAliased;

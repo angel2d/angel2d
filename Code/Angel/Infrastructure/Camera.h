@@ -74,7 +74,7 @@ public:
 	 * @param w New width in pixels
 	 * @param h New height in pixels
 	 */
-	static void ResizeCallback(int w, int h);
+	static void ResizeCallback(GLFWwindow* window, int w, int h);
 	
 	/**
 	 * Deletes and NULLs out the singleton -- should only get called at World

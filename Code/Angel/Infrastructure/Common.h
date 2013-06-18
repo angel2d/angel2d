@@ -89,8 +89,8 @@
 	#endif
 #endif
 
-#if !defined(__APPLE__) || !ANGEL_MOBILE
-	#include <GL/glfw.h>
+#if !ANGEL_MOBILE
+	#include <GLFW/glfw3.h>
 #endif
 
 #include <math.h>
