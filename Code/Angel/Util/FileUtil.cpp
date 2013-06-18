@@ -39,7 +39,6 @@
 #elif defined(__linux__)
 	#include <linux/limits.h>
 	#include <unistd.h>
-	#include <pwd.h>
 #endif
 #include <fstream>
 #include <sys/types.h>
