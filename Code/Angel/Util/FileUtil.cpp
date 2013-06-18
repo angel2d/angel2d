@@ -39,6 +39,7 @@
 #elif defined(__linux__)
 	#include <linux/limits.h>
 	#include <unistd.h>
+	#include <pwd.h>
 #endif
 #include <fstream>
 #include <sys/types.h>
@@ -195,7 +196,8 @@ const String GetDocumentsPath()
 		String path = getenv("HOME");
 		return path + "/Documents/";
 	#elif defined(__linux__)
-		#error Linux docs path not implemented.
+		String path = getenv("HOME");
+		return path + "/Documents/";
 	#endif
 }
 
