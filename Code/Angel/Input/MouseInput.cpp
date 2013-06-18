@@ -77,7 +77,7 @@ void MouseMotion(GLFWwindow* window, double x, double y)
 	}
 }
 
-void MouseButton(int button, int state, int mods)
+void MouseButton(GLFWwindow* window, int button, int state, int mods)
 {
 	MouseButtonInput mouseButton;
 	if (button == GLFW_MOUSE_BUTTON_RIGHT)
