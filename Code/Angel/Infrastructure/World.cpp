@@ -241,6 +241,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		
 		//GLFW3TODO: investigate the "share" parameter, consider setting up a multi-window thing
 		_mainWindow = glfwCreateWindow(windowWidth, windowHeight, windowName.c_str(), openOn, NULL);
+		glfwMakeContextCurrent(_mainWindow);
 		glfwSetWindowPos(_mainWindow, 50, 50);
 
 		#if defined(WIN32)
@@ -310,6 +311,12 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	return _initialized = true;
 }
 
+#if !ANGEL_MOBILE
+	GLFWwindow* World::GetMainWindow()
+	{
+		return _mainWindow;
+	}
+#endif
 
 std::vector<Vec3ui> World::GetVideoModes()
 {
