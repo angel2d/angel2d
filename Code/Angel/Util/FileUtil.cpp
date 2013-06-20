@@ -195,7 +195,8 @@ const String GetDocumentsPath()
 		String path = getenv("HOME");
 		return path + "/Documents/";
 	#elif defined(__linux__)
-		#error Linux docs path not implemented.
+		String path = getenv("HOME");
+		return path + "/Documents/";
 	#endif
 }
 
