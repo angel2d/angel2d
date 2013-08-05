@@ -1858,13 +1858,13 @@
 			path = Scripting/EngineScripts;
 			sourceTree = "<group>";
 		};
-		34828121176EA62D003E8994 /* GLFW3 */ = {
+		34828121176EA62D003E8994 /* GLFW */ = {
 			isa = PBXGroup;
 			children = (
 				34828141176EA757003E8994 /* inc */,
 				34828142176EA76F003E8994 /* src */,
 			);
-			name = GLFW3;
+			name = GLFW;
 			sourceTree = "<group>";
 		};
 		34828141176EA757003E8994 /* inc */ = {
@@ -2033,7 +2033,7 @@
 				34EECBE111CB92D300667B26 /* Lua */,
 				3433A8B70E2AAD8900A02B4E /* HID Utilities */,
 				34A18BAF0E2841E8001C79A5 /* Box2D */,
-				34828121176EA62D003E8994 /* GLFW3 */,
+				34828121176EA62D003E8994 /* GLFW */,
 				34FB467E1638F7A9002EB836 /* GWEN */,
 				34A18CD00E284E60001C79A5 /* FTGL */,
 			);
