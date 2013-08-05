@@ -140,7 +140,7 @@
       <PreprocessorDefinitions>_DEBUG;WIN32;_LIB;FTGL_LIBRARY_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\Debug_ST/ftgl_static_lib.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Debug_ST/</AssemblerListingLocation>
       <ObjectFileName>.\Debug_ST/</ObjectFileName>
