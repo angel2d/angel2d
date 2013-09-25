@@ -30,6 +30,7 @@
 #include "stdafx.h"
 #include "../Input/InputManager.h"
 
+#include "../Infrastructure/World.h"
 #include "../Input/Controller.h"
 #include "../Messaging/Switchboard.h"
 #include "../Util/StringUtil.h"
@@ -331,8 +332,7 @@ void InputManager::ClearXboxButtonStates()
 
 bool InputManager::IsKeyDown(int keyVal)
 {
-	//GLFW3TODO: also totally wrong, fix this garbage
-	if (glfwGetKey(NULL, toupper(keyVal)) == GLFW_PRESS)
+	if (glfwGetKey(theWorld.GetMainWindow(), toupper(keyVal)) == GLFW_PRESS)
 	{
 		return true;
 	}

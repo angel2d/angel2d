@@ -99,11 +99,9 @@ void UnloadAllStatic( const String& /*input*/ )
 	theWorld.UnloadAll();
 }
 
-int windowClosed(void)
+void windowClosed(GLFWwindow* window)
 {
 	theWorld.StopGame();
-
-	return GL_FALSE;
 }
 
 bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen, bool resizable)
@@ -239,11 +237,17 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 			glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 		}
 		
-		//GLFW3TODO: investigate the "share" parameter, consider setting up a multi-window thing
 		_mainWindow = glfwCreateWindow(windowWidth, windowHeight, windowName.c_str(), openOn, NULL);
 		glfwMakeContextCurrent(_mainWindow);
 		glfwSetWindowPos(_mainWindow, 50, 50);
 		Camera::ResizeCallback(_mainWindow, windowWidth, windowHeight);
+	
+		int fbw, fbh;
+		glfwGetFramebufferSize(_mainWindow, &fbw, &fbh);
+		if (fbw == windowWidth * 2)
+		{
+			SetHighResolutionScreen(true);
+		}
 
 		#if defined(WIN32)
 			glfwSwapInterval(0); // because double-buffering and Windows don't get along apparently
@@ -256,8 +260,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		glfwSetCursorPosCallback(_mainWindow, MouseMotion);
 		glfwSetMouseButtonCallback(_mainWindow, MouseButton);
 		glfwSetScrollCallback(_mainWindow, MouseWheel);
-		//GLFW3TODO: fix this
-		//glfwSetWindowCloseCallback(windowClosed);
+		glfwSetWindowCloseCallback(_mainWindow, windowClosed);
 		_prevTime = glfwGetTime();
 	#else
 		struct timeval tv;
