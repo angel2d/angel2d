@@ -923,27 +923,27 @@
 		34810A050E679FE500246544 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = Libraries/FMOD/libfmodex.dylib; sourceTree = "<group>"; };
 		34810A510E67B08A00246544 /* console.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = console.i; path = Scripting/Interfaces/console.i; sourceTree = "<group>"; };
 		34828140176EA6F0003E8994 /* libGLFW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGLFW.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		34828143176EA7A3003E8994 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = "Libraries/glfw-3.0/include/GLFW/glfw3.h"; sourceTree = "<group>"; };
-		34828144176EA7A3003E8994 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = internal.h; path = "Libraries/glfw-3.0/src/internal.h"; sourceTree = "<group>"; };
-		34828145176EA7A3003E8994 /* cocoa_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cocoa_platform.h; path = "Libraries/glfw-3.0/src/cocoa_platform.h"; sourceTree = "<group>"; };
-		34828146176EA7A3003E8994 /* nsgl_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nsgl_platform.h; path = "Libraries/glfw-3.0/src/nsgl_platform.h"; sourceTree = "<group>"; };
-		3482814B176EA7B4003E8994 /* clipboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = clipboard.c; path = "Libraries/glfw-3.0/src/clipboard.c"; sourceTree = "<group>"; };
-		3482814C176EA7B4003E8994 /* context.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = context.c; path = "Libraries/glfw-3.0/src/context.c"; sourceTree = "<group>"; };
-		3482814D176EA7B4003E8994 /* gamma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gamma.c; path = "Libraries/glfw-3.0/src/gamma.c"; sourceTree = "<group>"; };
-		3482814E176EA7B4003E8994 /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = init.c; path = "Libraries/glfw-3.0/src/init.c"; sourceTree = "<group>"; };
-		3482814F176EA7B4003E8994 /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = input.c; path = "Libraries/glfw-3.0/src/input.c"; sourceTree = "<group>"; };
-		34828150176EA7B4003E8994 /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = joystick.c; path = "Libraries/glfw-3.0/src/joystick.c"; sourceTree = "<group>"; };
-		34828151176EA7B4003E8994 /* monitor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = monitor.c; path = "Libraries/glfw-3.0/src/monitor.c"; sourceTree = "<group>"; };
-		34828152176EA7B4003E8994 /* time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = time.c; path = "Libraries/glfw-3.0/src/time.c"; sourceTree = "<group>"; };
-		34828153176EA7B4003E8994 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/glfw-3.0/src/window.c"; sourceTree = "<group>"; };
-		34828154176EA7B4003E8994 /* cocoa_clipboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_clipboard.m; path = "Libraries/glfw-3.0/src/cocoa_clipboard.m"; sourceTree = "<group>"; };
-		34828155176EA7B4003E8994 /* cocoa_gamma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cocoa_gamma.c; path = "Libraries/glfw-3.0/src/cocoa_gamma.c"; sourceTree = "<group>"; };
-		34828156176EA7B4003E8994 /* cocoa_init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_init.m; path = "Libraries/glfw-3.0/src/cocoa_init.m"; sourceTree = "<group>"; };
-		34828157176EA7B4003E8994 /* cocoa_joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_joystick.m; path = "Libraries/glfw-3.0/src/cocoa_joystick.m"; sourceTree = "<group>"; };
-		34828158176EA7B4003E8994 /* cocoa_monitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_monitor.m; path = "Libraries/glfw-3.0/src/cocoa_monitor.m"; sourceTree = "<group>"; };
-		34828159176EA7B4003E8994 /* cocoa_time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cocoa_time.c; path = "Libraries/glfw-3.0/src/cocoa_time.c"; sourceTree = "<group>"; };
-		3482815A176EA7B4003E8994 /* cocoa_window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_window.m; path = "Libraries/glfw-3.0/src/cocoa_window.m"; sourceTree = "<group>"; };
-		3482815B176EA7B4003E8994 /* nsgl_context.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = nsgl_context.m; path = "Libraries/glfw-3.0/src/nsgl_context.m"; sourceTree = "<group>"; };
+		34828143176EA7A3003E8994 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glfw3.h; path = "Libraries/glfw-3.0.3/include/GLFW/glfw3.h"; sourceTree = "<group>"; };
+		34828144176EA7A3003E8994 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = internal.h; path = "Libraries/glfw-3.0.3/src/internal.h"; sourceTree = "<group>"; };
+		34828145176EA7A3003E8994 /* cocoa_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cocoa_platform.h; path = "Libraries/glfw-3.0.3/src/cocoa_platform.h"; sourceTree = "<group>"; };
+		34828146176EA7A3003E8994 /* nsgl_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nsgl_platform.h; path = "Libraries/glfw-3.0.3/src/nsgl_platform.h"; sourceTree = "<group>"; };
+		3482814B176EA7B4003E8994 /* clipboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = clipboard.c; path = "Libraries/glfw-3.0.3/src/clipboard.c"; sourceTree = "<group>"; };
+		3482814C176EA7B4003E8994 /* context.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = context.c; path = "Libraries/glfw-3.0.3/src/context.c"; sourceTree = "<group>"; };
+		3482814D176EA7B4003E8994 /* gamma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gamma.c; path = "Libraries/glfw-3.0.3/src/gamma.c"; sourceTree = "<group>"; };
+		3482814E176EA7B4003E8994 /* init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = init.c; path = "Libraries/glfw-3.0.3/src/init.c"; sourceTree = "<group>"; };
+		3482814F176EA7B4003E8994 /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = input.c; path = "Libraries/glfw-3.0.3/src/input.c"; sourceTree = "<group>"; };
+		34828150176EA7B4003E8994 /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = joystick.c; path = "Libraries/glfw-3.0.3/src/joystick.c"; sourceTree = "<group>"; };
+		34828151176EA7B4003E8994 /* monitor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = monitor.c; path = "Libraries/glfw-3.0.3/src/monitor.c"; sourceTree = "<group>"; };
+		34828152176EA7B4003E8994 /* time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = time.c; path = "Libraries/glfw-3.0.3/src/time.c"; sourceTree = "<group>"; };
+		34828153176EA7B4003E8994 /* window.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = window.c; path = "Libraries/glfw-3.0.3/src/window.c"; sourceTree = "<group>"; };
+		34828154176EA7B4003E8994 /* cocoa_clipboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_clipboard.m; path = "Libraries/glfw-3.0.3/src/cocoa_clipboard.m"; sourceTree = "<group>"; };
+		34828155176EA7B4003E8994 /* cocoa_gamma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cocoa_gamma.c; path = "Libraries/glfw-3.0.3/src/cocoa_gamma.c"; sourceTree = "<group>"; };
+		34828156176EA7B4003E8994 /* cocoa_init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_init.m; path = "Libraries/glfw-3.0.3/src/cocoa_init.m"; sourceTree = "<group>"; };
+		34828157176EA7B4003E8994 /* cocoa_joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_joystick.m; path = "Libraries/glfw-3.0.3/src/cocoa_joystick.m"; sourceTree = "<group>"; };
+		34828158176EA7B4003E8994 /* cocoa_monitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_monitor.m; path = "Libraries/glfw-3.0.3/src/cocoa_monitor.m"; sourceTree = "<group>"; };
+		34828159176EA7B4003E8994 /* cocoa_time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cocoa_time.c; path = "Libraries/glfw-3.0.3/src/cocoa_time.c"; sourceTree = "<group>"; };
+		3482815A176EA7B4003E8994 /* cocoa_window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cocoa_window.m; path = "Libraries/glfw-3.0.3/src/cocoa_window.m"; sourceTree = "<group>"; };
+		3482815B176EA7B4003E8994 /* nsgl_context.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = nsgl_context.m; path = "Libraries/glfw-3.0.3/src/nsgl_context.m"; sourceTree = "<group>"; };
 		3489C3D7130CEAAB0034F4FB /* MobileSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileSimulator.h; sourceTree = "<group>"; };
 		3489C3D8130CEAAB0034F4FB /* MobileSimulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MobileSimulator.cpp; sourceTree = "<group>"; };
 		348D1E1D0FC1066700A64A55 /* TuningVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TuningVariable.h; sourceTree = "<group>"; };
@@ -3139,7 +3139,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Angel" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3829,7 +3829,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
-					"\"$(PROJECT_DIR)/Libraries/glfw-3.0/include\"",
+					"\"$(PROJECT_DIR)/Libraries/glfw-3.0.3/include\"",
 					"\"$(PROJECT_DIR)/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Libraries/libogg-1.3.0/include\"",
@@ -3861,7 +3861,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/Libraries/DevIL-SDK-1.7.8/mac/include\"",
 					"\"$(PROJECT_DIR)/Libraries/freetype-2.4.8/include\"",
-					"\"$(PROJECT_DIR)/Libraries/glfw-3.0/include\"",
+					"\"$(PROJECT_DIR)/Libraries/glfw-3.0.3/include\"",
 					"\"$(PROJECT_DIR)/Libraries/FMOD/inc\"",
 					"\"$(PROJECT_DIR)/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/Libraries/libogg-1.3.0/include\"",
@@ -3931,7 +3931,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3949,7 +3948,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -3967,7 +3965,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3985,7 +3982,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4095,7 +4091,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				VALID_ARCHS = i386;
 				WARNING_CFLAGS = "-Wno-write-strings";
 			};

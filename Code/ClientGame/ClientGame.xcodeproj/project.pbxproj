@@ -355,7 +355,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ClientGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -556,7 +556,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/../Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-3.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-3.0.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
@@ -587,7 +587,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_DIR)/../Angel/Libraries/Box2D-2.2.1\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/FMOD/inc\"",
-					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-3.0/include\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/glfw-3.0.3/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libogg-1.3.0/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
@@ -618,7 +618,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				VALID_ARCHS = i386;
 				WARNING_CFLAGS = "-Wno-write-strings";
 			};
