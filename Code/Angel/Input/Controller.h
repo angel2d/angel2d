@@ -111,6 +111,9 @@ public:
 		if ( (controllerIndex >= MAX_CONTROLLERS) || (controllerIndex < 0) )
 		{
 			sysLog.Log("ERROR: Bad controller index.");
+			#if defined(ANGEL_DEBUG)
+				assert(0);
+			#endif
 		}
 		return *_controllers[controllerIndex];
 	}
