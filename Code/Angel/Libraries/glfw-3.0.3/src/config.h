@@ -47,7 +47,6 @@
 #elif defined(__APPLE__)
 	#define _GLFW_COCOA
 	#define _GLFW_NSGL
-	// #define _GLFW_USE_CHDIR
 	#define _GLFW_USE_MENUBAR
 #elif defined(__linux__)
 	#define _GFLW_X11

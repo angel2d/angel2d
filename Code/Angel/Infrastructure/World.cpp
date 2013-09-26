@@ -223,6 +223,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		{
 			_antiAliased = false;
 		}
+		
 		GLFWmonitor* openOn = NULL; // windowed
 		if (fullScreen)
 		{
@@ -239,7 +240,6 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		
 		_mainWindow = glfwCreateWindow(windowWidth, windowHeight, windowName.c_str(), openOn, NULL);
 		glfwMakeContextCurrent(_mainWindow);
-		glfwSetWindowPos(_mainWindow, 50, 50);
 	
 		int fbw, fbh;
 		glfwGetFramebufferSize(_mainWindow, &fbw, &fbh);
@@ -248,14 +248,13 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 			SetHighResolutionScreen(true);
 		}
 	
-		Camera::ResizeCallback(_mainWindow, windowWidth, windowHeight);
-
 		#if defined(WIN32)
 			glfwSwapInterval(0); // because double-buffering and Windows don't get along apparently
 		#else
 			glfwSwapInterval(1);
 		#endif
 		glfwSetWindowSizeCallback(_mainWindow, Camera::ResizeCallback);
+		glfwSetFramebufferSizeCallback(_mainWindow, Camera::ResizeCallback);
 		glfwSetKeyCallback(_mainWindow, keyboardInput);
 		glfwSetCharCallback(_mainWindow, charInput);
 		glfwSetCursorPosCallback(_mainWindow, MouseMotion);
@@ -263,6 +262,8 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		glfwSetScrollCallback(_mainWindow, MouseWheel);
 		glfwSetWindowCloseCallback(_mainWindow, windowClosed);
 		_prevTime = glfwGetTime();
+	
+		Camera::ResizeCallback(_mainWindow, windowWidth, windowHeight);
 	#else
 		struct timeval tv;
 		gettimeofday(&tv, NULL);
