@@ -2,6 +2,7 @@ ANGEL_DISABLE_FMOD := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL_
 ANGEL_DISABLE_DEVIL := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL_DISABLE_DEVIL[[:space:]]+([[:digit:]])[[:space:]]*$$/\1/p' ../Angel/AngelConfig.h)
 CXX = g++
 TARGET = IntroGame
+ANGEL_FLAGS = -D ANGEL_RELEASE
 ARCH := $(shell uname -m)
 ALLEGRO_LIBS := $(shell allegro-config --libs 2>/dev/null)
 CWD := $(shell pwd)
@@ -99,7 +100,7 @@ SWIG-Wrapper:
 $(WRAPPER): SWIG-Wrapper
 
 $(TARGET): $(LIBANGEL) $(OBJS) $(SYSOBJS) $(WRAPPER)
-	$(CXX) -o $@ $(OBJS) $(SYSOBJS) $(LIBS) $(SHLIBS)
+	$(CXX) -o $@ $(OBJS) $(SYSOBJS) $(LIBS) $(SHLIBS) $(ANGEL_FLAGS)
 	cp -p ../Angel/Scripting/EngineScripts/*.lua Resources/Scripts
 
 clean:

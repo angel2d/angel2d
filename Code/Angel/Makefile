@@ -3,6 +3,7 @@ ANGEL_DISABLE_DEVIL := $(shell sed -rn 's/^[[:space:]]*\#define[[:space:]]+ANGEL
 CXX = g++
 CXXFLAGS =
 TARGET = libangel.a
+ANGEL_FLAGS = -D ANGEL_RELEASE
 CWD := $(shell pwd)
 CODE_DIR := $(shell dirname $(CWD))
 ARCH := $(shell uname -m)
@@ -132,7 +133,7 @@ libraries: FTGL GLFW Box2D gwen
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 %.o: %.cpp
-	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated $(CXXFLAGS) -o $@ $^
+	$(CXX) -c $(INCLUDE) -Wno-write-strings -Wno-deprecated $(CXXFLAGS) $(ANGEL_FLAGS) -o $@ $^
 
 $(TARGET): libraries $(OBJS) Lua
 	$(AR) $@ $(OBJS) $(LIBS)

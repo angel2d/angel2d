@@ -51,7 +51,7 @@
 #include "../UI/UserInterface.h"
 #include "../Util/DrawUtil.h"
 
-#if defined(WIN32) && defined(NDEBUG)
+#if defined(WIN32) && defined(ANGEL_RELEASE)
 	#include <comdef.h>
 #endif
 #include <algorithm>
@@ -114,7 +114,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	_running = true;
 
 	// Windows DLL locations
-	#if defined(WIN32) && defined(NDEBUG)
+	#if defined(WIN32) && defined(ANGEL_RELEASE)
 		String bitsPath = "bits";
 		char currentDir[MAX_PATH];
 		_getcwd(currentDir, MAX_PATH);
@@ -171,7 +171,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 			CFRelease(resourcesURL);
 			chdir(path);
 			chdir("..");
-			#if DEBUG
+			#if defined(ANGEL_DEBUG)
 				// set paths to the local resources rather than the copied ones
 				String fileName = __FILE__;
 				String dirPath = fileName.substr(0, fileName.size() - String("Angel/Infrastructure/World.cpp").size());
