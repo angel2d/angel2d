@@ -68,6 +68,7 @@ Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Debug_ST
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Release_ST
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Debug_MT
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Release_MT
+Code/Angel/Libraries/glfw-3.0.3/Makefile
 Code/Angel/Libraries/glfw-3.0.3/ALL_BUILD.vcxproj
 Code/Angel/Libraries/glfw-3.0.3/ALL_BUILD.vcxproj.filters
 Code/Angel/Libraries/glfw-3.0.3/cmake_install.cmake
@@ -83,6 +84,7 @@ Code/Angel/Libraries/glfw-3.0.3/GLFW.sdf
 Code/Angel/Libraries/glfw-3.0.3/GLFW.sln
 Code/Angel/Libraries/glfw-3.0.3/INSTALL.vcxproj
 Code/Angel/Libraries/glfw-3.0.3/INSTALL.vcxproj.filters
+Code/Angel/Libraries/glfw-3.0.3/src/Makefile
 Code/Angel/Libraries/glfw-3.0.3/src/cmake_install.cmake
 Code/Angel/Libraries/glfw-3.0.3/src/CMakeFiles
 Code/Angel/Libraries/glfw-3.0.3/src/CMakeScripts
@@ -93,6 +95,7 @@ Code/Angel/Libraries/glfw-3.0.3/src/glfwConfig.cmake
 Code/Angel/Libraries/glfw-3.0.3/src/glfwConfigVersion.cmake
 Code/Angel/Libraries/glfw-3.0.3/src/INSTALL.vcxproj
 Code/Angel/Libraries/glfw-3.0.3/src/INSTALL.vcxproj.filters
+Code/Angel/Libraries/glfw-3.0.3/src/libglfw3.a
 Code/Angel/Libraries/glfw-3.0.3/src/Release
 Code/Angel/Libraries/glfw-3.0.3/tests
 Code/Angel/Libraries/glfw-3.0.3/uninstall.vcxproj

@@ -24,7 +24,7 @@ fi
 if   [ "$DIST" == 'Fedora' ] ; then
 	yum -y install gcc-c++ make cmake swig mesa-libGLU-devel readline-devel\
 		DevIL-ILUT-devel libXrandr-devel freetype-devel\
-		openal-soft-devel libvorbis-devel libpng-devel
+		openal-soft-devel libvorbis-devel libpng-devel libxi-dev
 elif [ "$DIST" == 'Ubuntu' ] ; then
 	apt-get -y install build-essential cmake swig libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\

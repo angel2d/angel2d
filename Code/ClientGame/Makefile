@@ -12,7 +12,7 @@ WRAPPER = ../Angel/Scripting/Interfaces/AngelLuaWrapping.cpp
 
 INCLUDE = 							\
 	-I../Angel						\
-	-I../Angel/Libraries/glfw-2.7.7/include			\
+	-I../Angel/Libraries/glfw-3.0.3/include			\
 	-I../Angel/Libraries/Box2D-2.2.1			\
 	-I../Angel/Libraries/FTGL/include			\
 	-I../Angel/Libraries/lua-5.2.1/src			\
@@ -23,7 +23,7 @@ endif
 
 LIBS = 									\
 	$(LIBANGEL)							\
-	../Angel/Libraries/glfw-2.7.7/lib/x11/libglfw.a			\
+	../Angel/Libraries/glfw-3.0.3/src/libglfw3.a			\
 	../Angel/Libraries/Box2D-2.2.1/Build/Box2D/libBox2D.a		\
 	../Angel/Libraries/FTGL/unix/src/.libs/libftgl.a		\
 	../Angel/Libraries/gwen/lib/linux/gmake/libgwen_static.a	\
@@ -79,7 +79,6 @@ $(TARGET): $(LIBANGEL) $(OBJS) $(SYSOBJS) $(WRAPPER)
 
 clean:
 	rm -f $(OBJS) $(SYSOBJS) $(TARGET) $(WRAPPER)
-	rm -rf $(TARGET).appdir Published
 
 $(LIBANGEL):
 	cd ../Angel && make

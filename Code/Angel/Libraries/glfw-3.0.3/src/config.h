@@ -32,26 +32,24 @@
 // it.  Instead, you should modify the config.h.in file.
 //========================================================================
 
-/* 
- * NOTE: This file has been altered for use in the Angel project. 
- *       The conditional compilations listed here work for our 
- *       cross-platform build needs, but may not be appropriate for 
- *       or compatible with other GLFW projects. 
- * 
- *       http://angel2d.com
- */
+// Define this to 1 if building GLFW for X11
+#define _GLFW_X11
+// Define this to 1 if building GLFW for Win32
+/* #undef _GLFW_WIN32 */
+// Define this to 1 if building GLFW for Cocoa
+/* #undef _GLFW_COCOA */
 
-#if   defined(WIN32)
-	#define _GLFW_WIN32
-	#define _GLFW_WGL
-#elif defined(__APPLE__)
-	#define _GLFW_COCOA
-	#define _GLFW_NSGL
-	#define _GLFW_USE_MENUBAR
-#elif defined(__linux__)
-	#define _GFLW_X11
-	#define _GLFW_GLX
-#endif
+// Define this to 1 if building GLFW for EGL
+/* #undef _GLFW_EGL */
+// Define this to 1 if building GLFW for GLX
+#define _GLFW_GLX
+// Define this to 1 if building GLFW for WGL
+/* #undef _GLFW_WGL */
+// Define this to 1 if building GLFW for NSGL
+/* #undef _GLFW_NSGL */
+
+// Define this to 1 if building as a shared library / dynamic library / DLL
+/* #undef _GLFW_BUILD_DLL */
 
 // Define this to 1 to disable dynamic loading of winmm
 /* #undef _GLFW_NO_DLOAD_WINMM */
@@ -61,13 +59,18 @@
 /* #undef _GLFW_USE_OPTIMUS_HPG */
 
 // Define this to 1 if glXGetProcAddress is available
-/* #undef _GLFW_HAS_GLXGETPROCADDRESS */
+#define _GLFW_HAS_GLXGETPROCADDRESS
 // Define this to 1 if glXGetProcAddressARB is available
-/* #undef _GLFW_HAS_GLXGETPROCADDRESSARB */
+#define _GLFW_HAS_GLXGETPROCADDRESSARB
 // Define this to 1 if glXGetProcAddressEXT is available
 /* #undef _GLFW_HAS_GLXGETPROCADDRESSEXT */
 // Define this to 1 if dlopen is available
 /* #undef _GLFW_HAS_DLOPEN */
+
+// Define this to 1 if glfwInit should change the current directory
+/* #undef _GLFW_USE_CHDIR */
+// Define this to 1 if glfwCreateWindow should populate the menu bar
+/* #undef _GLFW_USE_MENUBAR */
 
 // Define this to 1 if using OpenGL as the client library
 #define _GLFW_USE_OPENGL
