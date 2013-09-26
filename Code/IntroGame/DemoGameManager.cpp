@@ -216,7 +216,16 @@ void DemoGameManager::Render()
 		infoString = "[A/Space]: Next [Back/Minus]: Previous";
 		xOffset = 680;
 	}
-	DrawGameText(infoString, "ConsoleSmall", xOffset, 763);
+	
+	int yOffset = 763;
+	if (theWorld.IsHighResScreen())
+	{
+		// the perils of using pixel coordinates in a post-retina world
+		xOffset *= 2;
+		yOffset *= 2;
+	}
+	
+	DrawGameText(infoString, "ConsoleSmall", xOffset, yOffset);
 }
 
 void DemoGameManager::SoundEnded(AngelSoundHandle sound)
