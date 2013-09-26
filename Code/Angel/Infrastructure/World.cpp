@@ -240,7 +240,6 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		_mainWindow = glfwCreateWindow(windowWidth, windowHeight, windowName.c_str(), openOn, NULL);
 		glfwMakeContextCurrent(_mainWindow);
 		glfwSetWindowPos(_mainWindow, 50, 50);
-		Camera::ResizeCallback(_mainWindow, windowWidth, windowHeight);
 	
 		int fbw, fbh;
 		glfwGetFramebufferSize(_mainWindow, &fbw, &fbh);
@@ -248,6 +247,8 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		{
 			SetHighResolutionScreen(true);
 		}
+	
+		Camera::ResizeCallback(_mainWindow, windowWidth, windowHeight);
 
 		#if defined(WIN32)
 			glfwSwapInterval(0); // because double-buffering and Windows don't get along apparently
