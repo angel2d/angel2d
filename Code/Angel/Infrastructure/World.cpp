@@ -254,7 +254,6 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 			glfwSwapInterval(1);
 		#endif
 		glfwSetWindowSizeCallback(_mainWindow, Camera::ResizeCallback);
-		glfwSetFramebufferSizeCallback(_mainWindow, Camera::ResizeCallback);
 		glfwSetKeyCallback(_mainWindow, keyboardInput);
 		glfwSetCharCallback(_mainWindow, charInput);
 		glfwSetCursorPosCallback(_mainWindow, MouseMotion);
@@ -263,7 +262,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		glfwSetWindowCloseCallback(_mainWindow, windowClosed);
 		_prevTime = glfwGetTime();
 	
-		Camera::ResizeCallback(_mainWindow, windowWidth, windowHeight);
+		Camera::ResizeCallback(_mainWindow, fbw, fbh);
 	#else
 		struct timeval tv;
 		gettimeofday(&tv, NULL);

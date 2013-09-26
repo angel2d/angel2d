@@ -113,19 +113,10 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 		return forReturn;
 	}
 	
-	int multiplier = 1;
-	
-	#if !ANGEL_MOBILE
-		if (theWorld.IsHighResScreen())
-		{
-			multiplier = 2;
-		}
-	#endif
 	Vec2i winDimensions;
-	winDimensions.X = theCamera.GetWindowWidth() * multiplier;
-	winDimensions.Y = theCamera.GetWindowHeight() * multiplier;
-	pixelY = winDimensions.Y - (pixelY * multiplier);
-	pixelX = pixelX * multiplier;
+	winDimensions.X = theCamera.GetWindowWidth();
+	winDimensions.Y = theCamera.GetWindowHeight();
+	pixelY = winDimensions.Y - pixelY;
 
 	//set up projection
 	glMatrixMode(GL_PROJECTION);
@@ -206,14 +197,7 @@ Vector2 GetTextExtents(const String& text, const String& nickname)
 	it->second->BBox(text.c_str(), llx, lly, llz, urx, ury, urz);
 	forReturn.X = urx - llx;
 	forReturn.Y = ury - lly;
-	
-	#if !ANGEL_MOBILE
-		if (theWorld.IsHighResScreen())
-		{
-			forReturn *= 0.5f;
-		}
-	#endif
-	
+		
 	return forReturn;
 }
 

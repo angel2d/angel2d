@@ -217,13 +217,11 @@ Vector2 MathUtil::ScreenToWorld(const Vec2i& screenCoordinates)
 
 Vector2 MathUtil::ScreenToWorld(int x, int y)
 {
-	#if ANGEL_MOBILE
-		if (theWorld.IsHighResScreen())
-		{
-			x *= 2;
-			y *= 2;
-		}
-	#endif
+	if (theWorld.IsHighResScreen())
+	{
+		x *= 2;
+		y *= 2;
+	}
 	
 	Vector2 worldDimensions = GetWorldDimensions();
 
