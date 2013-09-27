@@ -88,7 +88,7 @@ Code/Angel/Libraries/glfw-3.0.3/src/Makefile
 Code/Angel/Libraries/glfw-3.0.3/src/cmake_install.cmake
 Code/Angel/Libraries/glfw-3.0.3/src/CMakeFiles
 Code/Angel/Libraries/glfw-3.0.3/src/CMakeScripts
-Code/Angel/Libraries/glfw-3.0.3/src/Debug
+Code/Angel/Libraries/glfw-3.0.3/Debug
 Code/Angel/Libraries/glfw-3.0.3/src/glfw.dir
 Code/Angel/Libraries/glfw-3.0.3/src/glfw3.pc
 Code/Angel/Libraries/glfw-3.0.3/src/glfwConfig.cmake
@@ -96,7 +96,7 @@ Code/Angel/Libraries/glfw-3.0.3/src/glfwConfigVersion.cmake
 Code/Angel/Libraries/glfw-3.0.3/src/INSTALL.vcxproj
 Code/Angel/Libraries/glfw-3.0.3/src/INSTALL.vcxproj.filters
 Code/Angel/Libraries/glfw-3.0.3/src/libglfw3.a
-Code/Angel/Libraries/glfw-3.0.3/src/Release
+Code/Angel/Libraries/glfw-3.0.3/Release
 Code/Angel/Libraries/glfw-3.0.3/tests
 Code/Angel/Libraries/glfw-3.0.3/uninstall.vcxproj
 Code/Angel/Libraries/glfw-3.0.3/uninstall.vcxproj.filters

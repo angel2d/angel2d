@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\clipboard.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\window.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\context.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gamma.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\init.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\joystick.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\monitor.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\time.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wgl_context.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_clipboard.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_gamma.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_init.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_joystick.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_monitor.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_time.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32_window.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLFW\glfw3.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLFW\glfw3native.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\wgl_platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\win32_platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{7637eec2-fe92-4f17-b3b6-0981f646aecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{d1446b6b-3dc3-445d-8e15-8117e2d26519}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

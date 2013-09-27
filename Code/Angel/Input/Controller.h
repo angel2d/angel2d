@@ -36,6 +36,7 @@
 #if defined(WIN32)
 	#include <XInput.h>
 	#pragma comment(lib, "XInput.lib")
+	#include <assert.h>
 #elif defined(__APPLE__)
 	#include <Carbon/Carbon.h>
 	#include <IOKit/HID/IOHIDKeys.h>
