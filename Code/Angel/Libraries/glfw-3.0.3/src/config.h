@@ -51,23 +51,11 @@
 #elif defined(__linux__)
 	#define _GFLW_X11
 	#define _GLFW_GLX
+	#define _GLFW_HAS_GLXGETPROCADDRESS
+	#define _GLFW_HAS_GLXGETPROCADDRESSARB
+	// #define _GLFW_HAS_GLXGETPROCADDRESSEXT
+	// #define _GLFW_HAS_DLOPEN
 #endif
-
-// Define this to 1 to disable dynamic loading of winmm
-/* #undef _GLFW_NO_DLOAD_WINMM */
-// Define this to 1 if glfwSwapInterval should ignore DWM compositing status
-/* #undef _GLFW_USE_DWM_SWAP_INTERVAL */
-// Define this to 1 to force use of high-performance GPU on Optimus systems
-/* #undef _GLFW_USE_OPTIMUS_HPG */
-
-// Define this to 1 if glXGetProcAddress is available
-/* #undef _GLFW_HAS_GLXGETPROCADDRESS */
-// Define this to 1 if glXGetProcAddressARB is available
-/* #undef _GLFW_HAS_GLXGETPROCADDRESSARB */
-// Define this to 1 if glXGetProcAddressEXT is available
-/* #undef _GLFW_HAS_GLXGETPROCADDRESSEXT */
-// Define this to 1 if dlopen is available
-/* #undef _GLFW_HAS_DLOPEN */
 
 // Define this to 1 if using OpenGL as the client library
 #define _GLFW_USE_OPENGL
