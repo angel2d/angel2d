@@ -1,3 +1,14 @@
+3.2    --  ?/??/2013
+--------------------
+* Minor release
+* Move to GLFW 3; only immediately noticeable feature is Retina support on Mac OS X
+* TypedMessages now available to scripts
+* Updates to support new versions of Visual Studio and Xcode
+* GetDocumentsPath() added to StringUtil, giving platform-relevant places to put files
+* Fixed a bug where Actor tags were being stored in all lower-case, but search was still case-sensitive; tag retrieval no longer considers case
+* Adding preprocessor definitions ANGEL_DEBUG and ANGEL_RELEASE for conditional compilation
+* Making an out-of-bounds controller read assert in debug mode. 
+
 3.1    --  2/27/2013
 --------------------
 * Minor release
