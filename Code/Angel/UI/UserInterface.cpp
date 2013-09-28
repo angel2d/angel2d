@@ -261,7 +261,7 @@ void UserInterface::Render()
         _locked = false;
     }
 
-    void UserInterface::MouseWheelEvent(int position)
+    void UserInterface::MouseWheelEvent(const Vector2& position)
     {
         if (theWorld.GetConsole()->IsEnabled())
         {
@@ -269,7 +269,7 @@ void UserInterface::Render()
         }
         
         _locked = true;
-            AngelCanvas->InputMouseWheel(position);
+            AngelCanvas->InputMouseWheel(position.Y);
         _locked = false;
     }
 #endif //ANGEL_MOBILE

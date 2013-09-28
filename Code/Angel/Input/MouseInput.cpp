@@ -49,7 +49,7 @@ MouseListener::~MouseListener()
 void MouseListener::MouseDownEvent(Vec2i /*screenCoordinates*/, MouseButtonInput /*button*/) {}
 void MouseListener::MouseUpEvent(Vec2i /*screenCoordinates*/, MouseButtonInput /*button*/) {}
 void MouseListener::MouseMotionEvent(Vec2i /*screenCoordinates*/) {}
-void MouseListener::MouseWheelEvent(int /*pos*/) {}
+void MouseListener::MouseWheelEvent(const Vector2& /*scrollOffset*/) {}
 
 void RegisterMouseSubscriber(MouseListener* actor)
 {
@@ -111,9 +111,10 @@ void MouseButton(GLFWwindow* window, int button, int state, int mods)
 void MouseWheel(GLFWwindow* window, double x, double y)
 {
 	std::set<MouseListener*>::iterator it = _mouseSubscribers.begin();
+	Vector2 offset(x, y);
 	while (it != _mouseSubscribers.end())
 	{
-		(*it)->MouseWheelEvent((int)y);
+		(*it)->MouseWheelEvent(offset);
 		it++;
 	}
 }

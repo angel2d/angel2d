@@ -2,6 +2,7 @@
 --------------------
 * Minor release
 * Move to GLFW 3; only immediately noticeable feature is Retina support on Mac OS X
+    * Client code using MouseWheel will have to be changed and rescaled since those notifications are now reported as a two-dimensional vector of floats instead of a one-dimensional integer. 
 * TypedMessages now available to scripts
 * Updates to support new versions of Visual Studio and Xcode
 * GetDocumentsPath() added to StringUtil, giving platform-relevant places to put files

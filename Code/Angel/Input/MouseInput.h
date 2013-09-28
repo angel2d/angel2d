@@ -30,6 +30,7 @@
 #pragma once
 
 #include "../Infrastructure/VecStructs.h"
+#include "../Infrastructure/Vector2.h"
 
 enum MouseButtonInput
 {
@@ -93,11 +94,11 @@ public:
 	/**
 	 * Called whenever the player moves the scroll wheel on the mouse.
 	 * 
-	 * @param position The position of the scroll wheel, relative to its position
-	 *   when the game was launched. Its rate of change will vary based on operating
-	 *   system, mouse hardware, driver settings, etc. 
+	 * @param scrollOffset The change in position of the scroll wheel. Note that
+	 *   if it's an actual wheel, the X component of the vector will always be
+	 *   0; the two-dimensional vector also takes into account trackpad scrolling.
 	 */
-	virtual void MouseWheelEvent(int position);
+	virtual void MouseWheelEvent(const Vector2& scrollOffset);
 };
 
 
