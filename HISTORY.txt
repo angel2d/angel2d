@@ -9,6 +9,7 @@
 * Fixed a bug where Actor tags were being stored in all lower-case, but search was still case-sensitive; tag retrieval no longer considers case
 * Adding preprocessor definitions ANGEL_DEBUG and ANGEL_RELEASE for conditional compilation
 * Making an out-of-bounds controller read assert in debug mode. 
+* Fixed a bug where BoundingBox outlines would not update if their Actor was moved
 
 3.1    --  2/27/2013
 --------------------

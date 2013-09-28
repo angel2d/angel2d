@@ -276,7 +276,7 @@ bool BoundingBox::Contains(const Vector2& point) const
 
 void BoundingBox::RenderOutline() const
 {
-	static float vertices[] = {
+	float vertices[] = {
 		Min.X, Min.Y,
 		Min.X, Max.Y,
 		Max.X, Max.Y,
@@ -289,7 +289,7 @@ void BoundingBox::RenderOutline() const
 
 void BoundingBox::RenderBox() const
 {
-	static float vertices[] = {
+	float vertices[] = {
 		Max.X, Max.Y,
 		Min.X, Max.Y,
 		Max.X, Min.Y,
