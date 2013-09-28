@@ -258,7 +258,17 @@ void GwenRenderer::FreeTexture( Gwen::Texture* texture )
 
 Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, unsigned int y, const Gwen::Color& col_default)
 {
+	if (texture == NULL) 
+	{
+		return col_default;
+	}
+
 	unsigned int offset = ((texture->height - y) * texture->width) + x;
+	if (offset >= _skinTexture.size())
+	{
+		return col_default;
+	}
+
 	Gwen::Color c;
 	c.r = int(_skinTexture[offset].R * 255.0f);
 	c.g = int(_skinTexture[offset].G * 255.0f);
