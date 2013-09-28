@@ -126,9 +126,7 @@ Color Color::FromHexString(String hexString)
 
 int Color::HexToInteger(String hex)
 {
-	int hexInt;
-	sscanf( hex.c_str(), "%x", &hexInt );
-	return hexInt; 
+	return strtol(hex.c_str(), NULL, 16);
 }
 
 void Color::ClampMe()
