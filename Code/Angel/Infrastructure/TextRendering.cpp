@@ -112,7 +112,7 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 	{
 		return forReturn;
 	}
-
+	
 	Vec2i winDimensions;
 	winDimensions.X = theCamera.GetWindowWidth();
 	winDimensions.Y = theCamera.GetWindowHeight();
@@ -196,7 +196,8 @@ Vector2 GetTextExtents(const String& text, const String& nickname)
 	float llx, lly, llz, urx, ury, urz;
 	it->second->BBox(text.c_str(), llx, lly, llz, urx, ury, urz);
 	forReturn.X = urx - llx;
-	forReturn.Y = ury - lly;	
+	forReturn.Y = ury - lly;
+		
 	return forReturn;
 }
 

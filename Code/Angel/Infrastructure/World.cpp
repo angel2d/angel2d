@@ -99,11 +99,9 @@ void UnloadAllStatic( const String& /*input*/ )
 	theWorld.UnloadAll();
 }
 
-int windowClosed(void)
+void windowClosed(GLFWwindow* window)
 {
 	theWorld.StopGame();
-
-	return GL_FALSE;
 }
 
 bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen, bool resizable)
@@ -218,45 +216,53 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	#if !ANGEL_MOBILE
 		if (antiAliasing)
 		{
-			glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); //4x looks pretty good
+			glfwWindowHint(GLFW_SAMPLES, 4); //4x looks pretty good
 			_antiAliased = true;
 		}
 		else
 		{
 			_antiAliased = false;
 		}
-		int windowMode = GLFW_WINDOW;
+		
+		GLFWmonitor* openOn = NULL; // windowed
 		if (fullScreen)
 		{
-			windowMode = GLFW_FULLSCREEN;
+			openOn = glfwGetPrimaryMonitor();
 		}
 		if (resizable)
 		{
-			glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_FALSE);
+			glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 		}
 		else
 		{
-			glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
+			glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+		}
+		
+		_mainWindow = glfwCreateWindow(windowWidth, windowHeight, windowName.c_str(), openOn, NULL);
+		glfwMakeContextCurrent(_mainWindow);
+	
+		int fbw, fbh;
+		glfwGetFramebufferSize(_mainWindow, &fbw, &fbh);
+		if (fbw == windowWidth * 2)
+		{
+			SetHighResolutionScreen(true);
 		}
 	
-		glfwOpenWindow(windowWidth, windowHeight, 8, 8, 8, 8, 8, 1, windowMode);		
-		glfwSetWindowTitle(windowName.c_str());
-		glfwSetWindowPos(50, 50);
-
 		#if defined(WIN32)
 			glfwSwapInterval(0); // because double-buffering and Windows don't get along apparently
 		#else
 			glfwSwapInterval(1);
 		#endif
-		glfwSetWindowSizeCallback(Camera::ResizeCallback);
-		glfwSetKeyCallback(keyboardInput);
-		glfwSetCharCallback(charInput);
-		glfwDisable(GLFW_KEY_REPEAT);
-		glfwSetMousePosCallback(MouseMotion);
-		glfwSetMouseButtonCallback(MouseButton);
-		glfwSetMouseWheelCallback(MouseWheel);
-		glfwSetWindowCloseCallback(windowClosed);
+		glfwSetWindowSizeCallback(_mainWindow, Camera::ResizeCallback);
+		glfwSetKeyCallback(_mainWindow, keyboardInput);
+		glfwSetCharCallback(_mainWindow, charInput);
+		glfwSetCursorPosCallback(_mainWindow, MouseMotion);
+		glfwSetMouseButtonCallback(_mainWindow, MouseButton);
+		glfwSetScrollCallback(_mainWindow, MouseWheel);
+		glfwSetWindowCloseCallback(_mainWindow, windowClosed);
 		_prevTime = glfwGetTime();
+	
+		Camera::ResizeCallback(_mainWindow, fbw, fbh);
 	#else
 		struct timeval tv;
 		gettimeofday(&tv, NULL);
@@ -310,21 +316,26 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	return _initialized = true;
 }
 
+#if !ANGEL_MOBILE
+	GLFWwindow* World::GetMainWindow()
+	{
+		return _mainWindow;
+	}
+#endif
 
 std::vector<Vec3ui> World::GetVideoModes()
 {
 	std::vector<Vec3ui> forReturn;
 	#if !ANGEL_MOBILE
-		GLFWvidmode vidModes[64];
+		int numModes = 0;
+		const GLFWvidmode* vidModes = glfwGetVideoModes(glfwGetPrimaryMonitor(), &numModes);
 
-		int modesDetected = glfwGetVideoModes(vidModes, 64);
-
-		for (int i=0; i < modesDetected; i++)
+		for (int i=0; i < numModes; i++)
 		{
 			Vec3ui avm;
-			avm.X = vidModes[i].Width;
-			avm.Y = vidModes[i].Height;
-			avm.Z = vidModes[i].RedBits + vidModes[i].GreenBits + vidModes[i].BlueBits;
+			avm.X = vidModes[i].width;
+			avm.Y = vidModes[i].height;
+			avm.Z = vidModes[i].redBits + vidModes[i].greenBits + vidModes[i].blueBits;
 			forReturn.push_back(avm);
 		}
 	#else
@@ -337,13 +348,13 @@ std::vector<Vec3ui> World::GetVideoModes()
 void World::AdjustWindow(int windowWidth, int windowHeight, const String& windowName)
 {
 	#if !ANGEL_MOBILE
-		glfwSetWindowTitle(windowName.c_str());
+		glfwSetWindowTitle(_mainWindow, windowName.c_str());
 
 		int width, height;
-		glfwGetWindowSize(&width, &height);
+		glfwGetWindowSize(_mainWindow, &width, &height);
 		if ( (width != windowWidth) || (height != windowHeight) )
 		{
-			glfwSetWindowSize(windowWidth, windowHeight);
+			glfwSetWindowSize(_mainWindow, windowWidth, windowHeight);
 		}
 	#endif
 }
@@ -351,7 +362,7 @@ void World::AdjustWindow(int windowWidth, int windowHeight, const String& window
 void World::MoveWindow(int xPosition, int yPosition)
 {
 	#if !ANGEL_MOBILE
-		glfwSetWindowPos(xPosition, yPosition);
+		glfwSetWindowPos(_mainWindow, xPosition, yPosition);
 	#endif
 }
 
@@ -416,11 +427,13 @@ void World::StartGame()
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
 		#if !ANGEL_MOBILE
-			glfwSwapBuffers();
+			glfwSwapBuffers(_mainWindow);
+			glfwPollEvents();
 		#endif
 	}
 	
 	#if !ANGEL_MOBILE
+		glfwDestroyWindow(_mainWindow);
 		glfwTerminate();
 	#endif
 }
@@ -635,8 +648,8 @@ void World::Render()
 		//Draw developer console
 		_console->Render();
 	#endif
-    
-    HandleGLErrors();
+
+	HandleGLErrors();
 }
 
 void World::CleanupRenderables()

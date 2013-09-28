@@ -60,7 +60,7 @@ void Camera::Destroy()
 	s_Camera = NULL;
 }
 
-void Camera::ResizeCallback(int w, int h)
+void Camera::ResizeCallback(GLFWwindow* window, int w, int h)
 {
 	theCamera.Resize(w, h);
 }

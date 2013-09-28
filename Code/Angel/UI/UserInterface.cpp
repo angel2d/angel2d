@@ -141,22 +141,25 @@ UserInterface& UserInterface::GetInstance()
 
 UserInterface::UserInterface()
 {
-    #if !ANGEL_MOBILE
-        glfwGetMousePos(&_mousePosition.X, &_mousePosition.Y);
-    #else
-        _mousePosition.X = _mousePosition.Y = 0;
-    #endif
-    
-    const String skinTexture = "Resources/Images/DefaultSkin.png";
-    
+	#if !ANGEL_MOBILE
+		double mpos_x, mpos_y;
+		glfwGetCursorPos(theWorld.GetMainWindow(), &mpos_x, &mpos_y);
+		_mousePosition.X = (float)mpos_x;
+		_mousePosition.Y = (float)mpos_y;
+	#else
+		_mousePosition.X = _mousePosition.Y = 0;
+	#endif
+
+	const String skinTexture = "Resources/Images/DefaultSkin.png";
+
 	_renderer = new GwenRenderer(skinTexture);
 
 	AngelSkin = new Gwen::Skin::TexturedBase(_renderer);
 	((Gwen::Skin::TexturedBase*)AngelSkin)->Init(skinTexture);
 	AngelSkin->SetDefaultFont(Gwen::Utility::StringToUnicode("Resources/Fonts/Inconsolata.otf"), 20);
 	
-    _renderer->FinishInit();
-    
+	_renderer->FinishInit();
+
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
 	AngelCanvas->SetSize(theCamera.GetWindowWidth(), theCamera.GetWindowHeight()); // should be size of window (update when change)
 
@@ -258,7 +261,7 @@ void UserInterface::Render()
         _locked = false;
     }
 
-    void UserInterface::MouseWheelEvent(int position)
+    void UserInterface::MouseWheelEvent(const Vector2& position)
     {
         if (theWorld.GetConsole()->IsEnabled())
         {
@@ -266,7 +269,7 @@ void UserInterface::Render()
         }
         
         _locked = true;
-            AngelCanvas->InputMouseWheel(position);
+            AngelCanvas->InputMouseWheel(position.Y);
         _locked = false;
     }
 #endif //ANGEL_MOBILE

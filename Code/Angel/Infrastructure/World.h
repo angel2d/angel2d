@@ -130,6 +130,18 @@ public:
 	 * @param yPosition The new y position offset from the system origin
 	 */
 	void MoveWindow(int xPosition, int yPosition);
+	
+	#if !ANGEL_MOBILE
+		/**
+		 * Returns a handle for the main window. For most games, you'll only have one
+		 *  window, so this seems a little redundant, but there are several GLFW
+		 *  functions that need to operate on a specific window, so this gives you a
+		 *  hook to that.
+		 *
+		 * @return a handle for the main game window
+		 */
+		GLFWwindow* GetMainWindow();
+	#endif
 
 	/**
 	 * Intialize physics. If you're not using our built-in physics, you don't
@@ -533,6 +545,8 @@ private:
 	#if ANGEL_MOBILE
 		float _startTime;
 		float _systemEstimatedDT;
+	#else
+		GLFWwindow* _mainWindow;
 	#endif
 	bool _highResScreen;
 	bool _antiAliased;

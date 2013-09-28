@@ -108,15 +108,6 @@ void DrawTile( int xPos, int yPos, int width, int height )
 void Console::Enable(bool bEnable /* = true  */)
 {
 	_enabled = bEnable;
-
-	if( _enabled )
-	{
-		glfwEnable(GLFW_KEY_REPEAT);
-	}
-	else
-	{
-		glfwDisable(GLFW_KEY_REPEAT);
-	}
 }
 
 bool Console::GetInput( int key )
@@ -152,7 +143,7 @@ bool Console::GetSpecialInputDown( int key )
 	if( !IsEnabled() )
 		return false;
 
-	if( key == GLFW_KEY_ESC || key == GetToggleConsoleKey() )
+	if( key == GLFW_KEY_ESCAPE || key == GetToggleConsoleKey() )
 	{
 		Enable(false);
 	}
@@ -165,7 +156,7 @@ bool Console::GetSpecialInputDown( int key )
 	{
 		AcceptAutocomplete();
 	}
-	else if( key == GLFW_KEY_DEL )
+	else if( key == GLFW_KEY_DELETE )
 	{
 		if (_cursorPos < _currentInput.length())
 		{

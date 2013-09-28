@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
 	//		std::string windowName	default: "Angel Engine"
 	//		bool antiAliasing		default: false
 	//		bool fullScreen			default: false
+	//		bool resizable			default: false
 	theWorld.Initialize();
 	
 	//adds the default grid so you can more easily place Actors
@@ -20,8 +21,8 @@ int main(int argc, char* argv[])
 	
 	
 	
-    
-    
+	
+	
 	
 	
 	

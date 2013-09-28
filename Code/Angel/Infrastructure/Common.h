@@ -66,7 +66,7 @@
 		#endif
 	#endif
 #endif
-#if defined(__APPLE__) || defined(__linux__)	
+#if defined(__APPLE__) || defined(__linux__)
 	#include <ext/hash_map>
 	
 	//GCC is picky about what types are allowed to be used as indices to hashes. 
@@ -89,8 +89,9 @@
 	#endif
 #endif
 
-#if !defined(__APPLE__) || !ANGEL_MOBILE
-	#include <GL/glfw.h>
+#if !ANGEL_MOBILE
+	#define GLFW_INCLUDE_GLU
+	#include <GLFW/glfw3.h>
 #endif
 
 #include <math.h>
