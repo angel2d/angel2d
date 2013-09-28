@@ -11,6 +11,7 @@
 * Making an out-of-bounds controller read assert in debug mode. 
 * Fixed a bug where BoundingBox outlines would not update if their Actor was moved
 * Removed unsafe string scanning call from hex->int conversion in Color
+* Fixed potential stack overflow in DeveloperLog::Printf
 
 3.1    --  2/27/2013
 --------------------

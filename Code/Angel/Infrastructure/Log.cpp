@@ -63,7 +63,7 @@ void DeveloperLog::Printf(const char* format, ...)
 	char buff[MAX_LOG_STRING];
 	va_list args;
 	va_start(args, format);
-	vsprintf(buff, format, args);
+	vsnprintf(buff, MAX_LOG_STRING, format, args);
 	va_end(args);
 	
 	this->Log(String(buff));
