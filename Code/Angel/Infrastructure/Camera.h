@@ -67,14 +67,16 @@ public:
 	 */
 	static Camera &GetInstance();
 	
-	/**
-	 * The callback used by GLFW to alert us when the user changes the size
-	 *  of the window. You shouldn't need to mess with this. 
-	 * 
-	 * @param w New width in pixels
-	 * @param h New height in pixels
-	 */
-	static void ResizeCallback(GLFWwindow* window, int w, int h);
+	#if !ANGEL_MOBILE
+		/**
+		 * The callback used by GLFW to alert us when the user changes the size
+		 *  of the window. You shouldn't need to mess with this. 
+		 * 
+		 * @param w New width in pixels
+		 * @param h New height in pixels
+		 */
+		static void ResizeCallback(GLFWwindow* window, int w, int h);
+	#endif
 	
 	/**
 	 * Deletes and NULLs out the singleton -- should only get called at World

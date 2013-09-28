@@ -99,10 +99,12 @@ void UnloadAllStatic( const String& /*input*/ )
 	theWorld.UnloadAll();
 }
 
-void windowClosed(GLFWwindow* window)
-{
-	theWorld.StopGame();
-}
+#if !ANGEL_MOBILE
+	void windowClosed(GLFWwindow* window)
+	{
+		theWorld.StopGame();
+	}
+#endif
 
 bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, String windowName, bool antiAliasing, bool fullScreen, bool resizable)
 {

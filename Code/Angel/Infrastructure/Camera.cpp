@@ -60,10 +60,12 @@ void Camera::Destroy()
 	s_Camera = NULL;
 }
 
-void Camera::ResizeCallback(GLFWwindow* window, int w, int h)
-{
-	theCamera.Resize(w, h);
-}
+#if !ANGEL_MOBILE
+	void Camera::ResizeCallback(GLFWwindow* window, int w, int h)
+	{
+		theCamera.Resize(w, h);
+	}
+#endif
 
 void Camera::Reset()
 {
