@@ -603,7 +603,7 @@ public:
 	 * 
 	 * @return The string "Actor"
 	 */
-	virtual const String GetClassName() { return "Actor"; }
+	virtual const String GetClassName() const { return "Actor"; }
 	
 protected:
 	Vector2 _size;

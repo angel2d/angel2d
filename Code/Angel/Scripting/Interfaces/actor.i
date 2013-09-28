@@ -116,7 +116,7 @@ public:
 	virtual void Update(float dt);
 	
 	Actor* GetSelf();
-	virtual const String GetClassName();
+	virtual const String GetClassName() const;
 	
 	%apply SWIGTYPE *DISOWN {Actor* a};
 	static void SetScriptCreatedActor(Actor* a);

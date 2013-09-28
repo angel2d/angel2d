@@ -77,7 +77,7 @@ public:
 	 * 
 	 * @return The string "FullScreenActor"
 	 */
-	virtual const String GetClassName() { return "FullScreenActor"; }
+	virtual const String GetClassName() const { return "FullScreenActor"; }
 	
 private:
 	bool _locked;

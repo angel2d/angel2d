@@ -195,7 +195,7 @@ public:
 	 * 
 	 * @return The string "ParticleActor"
 	 */
-	virtual const String GetClassName() { return "ParticleActor"; }
+	virtual const String GetClassName() const { return "ParticleActor"; }
 
 protected:
     struct Particle

@@ -63,5 +63,5 @@ public:
 	 * 
 	 * @return The string "HUDActor"
 	 */
-	virtual const String GetClassName() { return "HUDActor"; }
+	virtual const String GetClassName() const { return "HUDActor"; }
 };
