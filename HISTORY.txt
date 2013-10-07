@@ -13,6 +13,7 @@
 * Removed unsafe string scanning call from hex->int conversion in Color
 * Fixed potential stack overflow in DeveloperLog::Printf
 * Fixed asserts when running without a UI texture
+* Fixed potential memory leak from Message not including virtual destructor
 
 3.1    --  2/27/2013
 --------------------

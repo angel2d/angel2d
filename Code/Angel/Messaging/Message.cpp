@@ -37,6 +37,10 @@ Message::Message()
 	_sender = NULL;
 }
 
+Message::~Message()
+{
+}
+
 Message::Message(const String& messageName, MessageListener* sender)
 {
 	_messageName = messageName;

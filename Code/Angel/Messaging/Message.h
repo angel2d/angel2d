@@ -56,6 +56,8 @@ public:
 	 */
 	Message();
 	
+	virtual ~Message();
+	
 	/**
 	 * This is the constructor you should actually use -- gives the Message
 	 *  a name and sender. 
