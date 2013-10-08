@@ -56,6 +56,9 @@ public:
 	 */
 	Message();
 	
+	/**
+	 * Virtual destructor.
+	 */
 	virtual ~Message();
 	
 	/**
