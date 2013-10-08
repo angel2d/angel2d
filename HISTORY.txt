@@ -1,4 +1,4 @@
-3.2    --  ?/??/2013
+3.2    --  10/8/2013
 --------------------
 * Minor release
 * Move to GLFW 3; only immediately noticeable feature is Retina support on Mac OS X
