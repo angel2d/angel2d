@@ -55,7 +55,7 @@ We've taken pains to make Angel work as well as possible out of the box, but
 there are some prerequisites for each platform, still. 
 
 ### Windows ###
-* You'll need some version of Visual Studio 2008 or later. Angel works great
+* You'll need some version of Visual Studio 2012 or later. Angel works great
   with Visual Studio Express, so you don't even have to spend money here.
 * You'll also need to install the DirectX SDK, or resign yourself to not being
   able to use a 360 controller. You can get the SDK from [Microsoft's web
