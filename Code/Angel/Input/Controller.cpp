@@ -407,19 +407,19 @@ void Controller::UpdateState()
 							currButton = XINPUT_GAMEPAD_RIGHT_SHOULDER;
 							break;
 						case 6:
-							currButton = XINPUT_GAMEPAD_START;
+							currButton = XINPUT_GAMEPAD_BACK;
 							break;
 						case 7:
+							currButton = XINPUT_GAMEPAD_START;
+							break;
+						case 8:
 							// Big 'X' button - not used.
 							continue;
-						case 8:
+						case 9:
 							currButton = XINPUT_GAMEPAD_LEFT_THUMB;
 							break;
-						case 9:
-							currButton = XINPUT_GAMEPAD_RIGHT_THUMB;
-							break;
 						case 10:
-							currButton = XINPUT_GAMEPAD_BACK;
+							currButton = XINPUT_GAMEPAD_RIGHT_THUMB;
 							break;
 						default:
 							sysLog.Printf("Error! Unknown button press event received!\n");
@@ -453,7 +453,7 @@ void Controller::UpdateState()
 							break;
 						case 6:
 							if (js.value == 0)
-								_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_LEFT & XINPUT_GAMEPAD_DPAD_RIGHT);
+								_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_LEFT | XINPUT_GAMEPAD_DPAD_RIGHT);
 							else if (js.value < 0)
 								_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_LEFT;
 							else
@@ -461,7 +461,7 @@ void Controller::UpdateState()
 							break;
 						case 7:
 							if (js.value == 0)
-								_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_UP & XINPUT_GAMEPAD_DPAD_DOWN);
+								_currentControllerInput.Buttons &= ~(XINPUT_GAMEPAD_DPAD_UP | XINPUT_GAMEPAD_DPAD_DOWN);
 							else if (js.value < 0)
 								_currentControllerInput.Buttons |= XINPUT_GAMEPAD_DPAD_UP;
 							else
