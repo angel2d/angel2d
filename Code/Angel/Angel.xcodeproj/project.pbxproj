@@ -4089,6 +4089,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.8;
 				VALID_ARCHS = i386;
 				WARNING_CFLAGS = "-Wno-write-strings";
 			};
@@ -4105,6 +4106,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx10.8;
 				VALID_ARCHS = i386;
 				WARNING_CFLAGS = "-Wno-write-strings";
 			};
