@@ -223,6 +223,13 @@ void Controller::Setup()
 			}
 		}
 	#elif defined(__linux__)
+		_currentControllerInput.LeftThumbstickX = 
+		_currentControllerInput.LeftThumbstickY =
+		_currentControllerInput.RightThumbstickX =
+		_currentControllerInput.RightThumbstickY = 
+		_currentControllerInput.LeftTriggerValue = 
+		_currentControllerInput.RightTriggerValue = 
+		_currentControllerInput.Buttons = 0;
 		char* devicePath;
 		if (_controllerID == 0)
 			devicePath = LINUX_CONTROLLER_1_PATH;
