@@ -428,6 +428,21 @@ void Controller::UpdateState()
 						case 10:
 							currButton = XINPUT_GAMEPAD_RIGHT_THUMB;
 							break;
+						// Note: for certain XBox 360 Controllers (e.g. wireless models) the
+						// Linux kernel driver maps the DPAD as buttons (vice axes, as handled
+						// below).  We attempt to support both mappings here.
+						case 11:
+							currButton = XINPUT_GAMEPAD_DPAD_LEFT;
+							break;
+						case 12:
+							currButton = XINPUT_GAMEPAD_DPAD_RIGHT;
+							break;
+						case 13:
+							currButton = XINPUT_GAMEPAD_DPAD_UP;
+							break;
+						case 14:
+							currButton = XINPUT_GAMEPAD_DPAD_DOWN;
+							break;
 						default:
 							sysLog.Printf("Error! Unknown button press event received!\n");
 							continue;
