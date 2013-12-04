@@ -17,6 +17,8 @@ elif [ -f /etc/lsb-release ] ; then
 	if [ $DINFO == 'Ubuntu' ] ; then
 		DIST='Ubuntu'
 	fi
+elif [ -f /etc/debian_version ] ; then
+	DIST='Ubuntu'
 elif [ "`uname`" == 'Darwin' ] ; then
 	DIST='Darwin'
 fi
