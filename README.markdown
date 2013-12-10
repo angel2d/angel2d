@@ -102,7 +102,7 @@ there are some prerequisites for each platform, still.
       into account when doing any calculations about pixel distances.
 
 ### Linux ###
-* Angel's tested on the latest releases of Ubuntu and Fedora. It should work
+* Angel's tested on the latest releases of Debian, Ubuntu, and Fedora. It should work
   on other recent distributions as well so long as all the dependencies are
   installed. 
 * If you're on one of those supported distributions, navigate to `Code/Angel` 

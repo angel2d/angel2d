@@ -17,6 +17,8 @@ elif [ -f /etc/lsb-release ] ; then
 	if [ $DINFO == 'Ubuntu' ] ; then
 		DIST='Ubuntu'
 	fi
+elif [ -f /etc/debian_version ] ; then
+	DIST='Debian'
 elif [ "`uname`" == 'Darwin' ] ; then
 	DIST='Darwin'
 fi
@@ -28,8 +30,13 @@ if   [ "$DIST" == 'Fedora' ] ; then
 elif [ "$DIST" == 'Ubuntu' ] ; then
 	apt-get -y install build-essential cmake swig libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
-		joystick libopenal-dev libvorbis-dev libpng12-dev ncurses-dev \
+		joystick libopenal-dev libvorbis-dev libpng12-dev ncurses-dev\
 		libxi-dev
+elif [ "$DIST" == 'Debian' ] ; then
+	apt-get -y install build-essential cmake swig libglu1-mesa-dev\
+		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
+		joystick libopenal-dev libvorbis-dev libpng12-dev\
+		libncurses5-dev libxi-dev xorg-dev libglu1-mesa-dev
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which make`" == "" ] ; then
 		echo "The Xcode command line tools are not installed."
@@ -66,6 +73,6 @@ elif [ "$DIST" == 'Darwin' ] ; then
 	fi
 else
 	echo "This is not a recognized Linux or UNIX distribution."
-	echo "Currently we support Fedora, Ubuntu, and OS X."
+	echo "Currently we support Fedora, Ubuntu, Debian, and OS X."
 fi
 
