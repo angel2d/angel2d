@@ -245,37 +245,20 @@ end
 
 -- find a local install of SWIG
 function get_swig_path()
-  if (path.is_windows) then
-    -- we're on windows; use the distributed swig
-    return "..\\swigwin-2.0.6\\swig.exe"
-  end
-  
-  local ports_path = "/opt/local/bin/swig"
-  if (path.exists(ports_path)) then
-    -- this mac user has wisely installed swig from macports
-    check_swig_version(ports_path)
-    return ports_path
+  local platform = app.platform()
+  local angelSwigPath = path.join("..", "..", "Angel", "Libraries", "swig", "angelSwig")
+
+  local libPath = path.join(angelSwigPath, "swiglib")
+  local exePath = ""
+  if     (platform == "Windows") then
+    exePath = path.join(angelSwigPath, "windows", "swig.exe")
+  elseif (platform == "OSX") then
+    exePath = path.join(angelSwigPath, "mac", "swig")
+  elseif (platform == "Linux") then
+    exePath = path.join(angelSwigPath, "linux", "swig")
   end
 
-  local brew_path = "/usr/local/Cellar/swig"
-  local brew_swig_path = "/usr/local/bin/swig"
-  if (path.exists(brew_path)) then
-    -- THIS mac user prefers brew to macports. we can support that!
-    check_swig_version(brew_swig_path)
-    return brew_swig_path
-  end
-
-  -- check for other installed swig
-  local f = assert(io.popen("which swig", 'r'))
-  local s = assert(f:read('*a'))
-  f:close()
-  if (s == "") then
-    io.stderr:write("ERROR: swig not found.\n")
-    os.exit(1)
-  end
-  local other_path = s:gsub("\n" , "")
-  check_swig_version(other_path)
-  return other_path
+  return exePath .. " -I" .. libPath .. " -I" .. path.join(libPath, "lua")
 end
 
 function find_in_table(haystack, needle)

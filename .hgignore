@@ -120,6 +120,7 @@ Code/Angel/Libraries/lua-5.2.1/Release
 Code/Angel/Libraries/lua-5.2.1/ReleaseExeBuild
 Code/Angel/Libraries/lua-5.2.1/ReleaseLibBuild
 Code/Angel/Libraries/lua-libs/luafilesystem-1.5.0/src/*.o
+Code/Angel/Libraries/swig/angelSwig/linux
 Code/Angel/Scripting/Release
 Code/Angel/Scripting/Debug
 Code/Angel/Scripting/IntroGameDebug
