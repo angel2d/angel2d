@@ -49,7 +49,7 @@
 	#define _GLFW_NSGL
 	#define _GLFW_USE_MENUBAR
 #elif defined(__linux__)
-	#define _GFLW_X11
+	#define _GLFW_X11
 	#define _GLFW_GLX
 	#define _GLFW_HAS_GLXGETPROCADDRESS
 	#define _GLFW_HAS_GLXGETPROCADDRESSARB
