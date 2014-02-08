@@ -102,11 +102,10 @@ FTGL-clean:
 MAKEFILE_X11 = Libraries/glfw-3.0.3/lib/x11/Makefile.x11
 
 GLFW:
-	cd Libraries/glfw-3.0.3 && cmake . && make
+	cd Libraries/glfw-3.0.3 && make
 
 GLFW-clean:
-	cd Libraries/glfw-3.0.3 && make clean && rm -rf CMakeCache.txt \
-		Makefile src/Makefile
+	cd Libraries/glfw-3.0.3 && make clean
 
 Box2D:
 	cd Libraries/Box2D-2.2.1/Build && cmake .. && make Box2D

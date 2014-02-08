@@ -68,7 +68,6 @@ Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Debug_ST
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Release_ST
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Debug_MT
 Code/Angel/Libraries/FTGL/win32_vcpp/ftgl_static_lib/Release_MT
-Code/Angel/Libraries/glfw-3.0.3/Makefile
 Code/Angel/Libraries/glfw-3.0.3/ALL_BUILD.vcxproj
 Code/Angel/Libraries/glfw-3.0.3/ALL_BUILD.vcxproj.filters
 Code/Angel/Libraries/glfw-3.0.3/cmake_install.cmake
