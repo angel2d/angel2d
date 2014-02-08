@@ -232,7 +232,7 @@ function Actor_Create(actor_type)
   if (class_name == nil) then
     class_name = "Actor"
   end
-  if (type(_G[class_name]) ~= "function") then
+  if (type(_G[class_name][".constructor"]) ~= "function") then
     print("ERROR: No class called " .. class_name .. " is available.")
     return nil
   end
