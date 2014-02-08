@@ -13,6 +13,9 @@ ifeq ($(ARCH),x86_64)
 	CXXFLAGS += -fPIC
 endif
 
+SWIG_DIR = Libraries/swig/angelSwig/linux
+SWIG = $(SWIG_DIR)/swig
+
 INCLUDE = 							\
 	-ILibraries/glfw-3.0.3/include				\
 	-ILibraries/Box2D-2.2.1					\
@@ -99,8 +102,6 @@ FTGL-clean:
 	cd Libraries/FTGL/unix && rm -f config.log config.status ftgl.pc \
 		Make.conf libtool demo/FTGLDemo docs/doc-stamp
 
-MAKEFILE_X11 = Libraries/glfw-3.0.3/lib/x11/Makefile.x11
-
 GLFW:
 	cd Libraries/glfw-3.0.3 && make
 
@@ -127,7 +128,13 @@ Lua:
 Lua-clean:
 	cd Libraries/angel-lua-build && make clean
 
-libraries: FTGL GLFW Box2D gwen
+$(SWIG):
+	cd Libraries/swig && python build.py
+
+SWIG-clean:
+	rm -rf $(SWIG_DIR)
+
+libraries: FTGL GLFW Box2D gwen $(SWIG)
 
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
@@ -138,5 +145,5 @@ $(TARGET): libraries $(OBJS) Lua
 	$(AR) $@ $(OBJS) $(LIBS)
 	$(RANLIB) $@
 
-clean: FTGL-clean GLFW-clean Box2D-clean gwen-clean Lua-clean
+clean: FTGL-clean GLFW-clean Box2D-clean gwen-clean Lua-clean SWIG-clean
 	rm -f $(OBJS) $(TARGET)

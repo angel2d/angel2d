@@ -27,19 +27,16 @@ if   [ "$DIST" == 'Fedora' ] ; then
 	yum -y install gcc-c++ make cmake mesa-libGLU-devel readline-devel\
 		DevIL-ILUT-devel libXrandr-devel freetype-devel\
 		openal-soft-devel libvorbis-devel libpng-devel libXi-devel
-	cd Libraries/swig; ./build.py
 elif [ "$DIST" == 'Ubuntu' ] ; then
 	apt-get -y install build-essential cmake libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
 		joystick libopenal-dev libvorbis-dev libpng12-dev ncurses-dev\
 		libxi-dev xorg-dev
-	cd Libraries/swig; ./build.py
 elif [ "$DIST" == 'Debian' ] ; then
 	apt-get -y install build-essential cmake libglu1-mesa-dev\
 		libreadline-dev libdevil-dev libxrandr-dev libfreetype6-dev\
 		joystick libopenal-dev libvorbis-dev libpng12-dev\
 		libncurses5-dev libxi-dev xorg-dev libglu1-mesa-dev
-	cd Libraries/swig; ./build.py
 elif [ "$DIST" == 'Darwin' ] ; then
 	if [ "`which make`" == "" ] ; then
 		echo "The Xcode command line tools are not installed."
