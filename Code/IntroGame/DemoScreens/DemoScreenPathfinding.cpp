@@ -109,7 +109,7 @@ void DemoScreenPathfinding::Update(float dt)
 		theSpatialGraph.EnableDrawGraph(false);
 	}
 	
-	MazeFinder* mf = (MazeFinder*)Actor::GetNamed("MazeFinder");
+	MazeFinder* mf = (MazeFinder*)Actor::GetNamed("RedRunner");
 	if (mf != NULL)
 	{
 		if ((theController.IsConnected() && theController.IsYButtonDown()) || theInput.IsKeyDown('y'))
