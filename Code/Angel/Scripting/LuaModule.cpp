@@ -193,7 +193,7 @@ ConfigUpdater::ConfigUpdater()
 {
 	Reload();
 	
-	#if !defined(ANGEL_MOBILE)
+	#if !ANGEL_MOBILE
 		_updateTime = GetModificationTime("Config/tuning.lua");
 		theSwitchboard.SubscribeTo(this, TUNING_MESSAGE_NAME);
 		theSwitchboard.DeferredBroadcast(new Message(TUNING_MESSAGE_NAME), TUNING_FILE_CHECK_DELAY);
@@ -215,7 +215,7 @@ void ConfigUpdater::Reload()
 
 void ConfigUpdater::ReceiveMessage(Message *message)
 {
-	#if !defined(ANGEL_MOBILE)
+	#if !ANGEL_MOBILE
 		if (message->GetMessageName() == TUNING_MESSAGE_NAME)
 		{
 			long modTime = GetModificationTime("Config/tuning.lua");
