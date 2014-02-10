@@ -115,7 +115,7 @@ Accelerometer& Accelerometer::GetInstance()
 
 const Vector3 Accelerometer::GetData()
 {
-	#if defined(ANGEL_MOBILE)
+	#if !ANGEL_MOBILE
 		return _data;
 	#else
 		if (theController.IsConnected())
