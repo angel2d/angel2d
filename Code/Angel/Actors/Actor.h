@@ -333,8 +333,8 @@ public:
 
 	/**
 	 * A convenience function for loading up a directory of image files as an
-	 *  animation. We expect the name of the first image to end in _###, where
-	 *  ### represents a number. The number of digits you put at the end 
+	 *  animation. We expect the name of the first image to end in _#, where
+	 *  # represents a number. The number of digits you put at the end 
 	 *  doesn't matter, but we are internally limited to 64 frames. If you 
 	 *  want more, just change MAX_SPRITE_FRAMES in Actor.h. 
 	 * 
