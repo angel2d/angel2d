@@ -66,7 +66,7 @@ typedef std::vector<String>	StringList;
 %include preferences.i
 %include sound.i
 
-#ifndef ANGEL_MOBILE
+#if !ANGEL_MOBILE
 %include console.i
 %include controller.i
 %include mouse.i
