@@ -282,7 +282,7 @@ function LoadLevel(levelName)
 
     if (desc["def"] ~= nil) then
       a = Actor_Create(desc["def"])
-    elseif (desc["class"]~= nil and type(_G[desc["class"]]) == "function") then
+    elseif (desc["class"]~= nil and type(_G[desc["class"]][".constructor"]) == "function") then
       a = _G[desc["class"]]()
     else
       print("Actor " .. name .. " has no definition specified.")
