@@ -8,6 +8,9 @@ class ParticleActor : public Actor
 public:
 	ParticleActor();
 	~ParticleActor();
+
+	virtual void Update(float dt);
+	virtual void Render();
 	
 	void SetParticlesPerSecond(float pps);
 	void SetSystemLifetime(float lifetime);
@@ -22,4 +25,6 @@ public:
 	void SetAttractor(Vector2 attractor);
 	void SetAttractorStrength(float strength);
 	void SetMaxParticles(int maxParticles);
+
+	virtual const String GetClassName() const;
 };

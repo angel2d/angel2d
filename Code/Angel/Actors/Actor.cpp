@@ -355,7 +355,7 @@ const Vector2& Actor::GetSize() const
 	return _size;
 }
 
-const BoundingBox Actor::GetBoundingBox() const
+BoundingBox Actor::GetBoundingBox() const
 {
 	BoundingBox forReturn;
 	forReturn.Min = _position - (_size / 2.0f);

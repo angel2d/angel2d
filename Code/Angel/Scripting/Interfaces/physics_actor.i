@@ -24,14 +24,29 @@ public:
 	void SetFixedRotation(bool fixedRotation);
 	
 	virtual void InitPhysics();
-	virtual void CustomInitPhysics() {}
+	virtual void CustomInitPhysics();
 	
 	void ApplyForce(const Vector2& force, const Vector2& point);
-	void ApplyLocalForce(const Vector2& force, const Vector2& point);	// apply a local space force on the object
+	void ApplyLocalForce(const Vector2& force, const Vector2& point);
 	void ApplyTorque(float torque);
 	void ApplyLinearImpulse(const Vector2& impulse, const Vector2& point);
 	void ApplyAngularImpulse(float impulse);
 	
+	void SetSize(float x, float y = -1.f);
+	void SetSize(const Vector2 newSize);
+	
 	void SetDrawSize(float x, float y = -1.f);
+	
+	void SetPosition(float x, float y);
+	void SetPosition(const Vector2 pos);
+
+	void SetRotation(float rotation);
+	
+	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
+
+	virtual const String GetClassName() const;
 };
 

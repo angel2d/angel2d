@@ -17,6 +17,7 @@ public:
 
 	const String GetFont();
 	void SetFont(String newFont);
+
 	const String GetDisplayString();
 	void SetDisplayString(String newString);
 
@@ -25,6 +26,16 @@ public:
 
 	const int GetLineSpacing();
 	void SetLineSpacing(int newSpacing);
+
+	virtual void SetPosition(float x, float y);
+	virtual void SetPosition(const Vector2 position);
+	
+	virtual void SetRotation(float newRotation);
+
+	virtual void Render();
+	virtual void ReceiveMessage(Message* message);
+
+	virtual const String GetClassName();
 };
 
 

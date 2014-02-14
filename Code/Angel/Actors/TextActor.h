@@ -180,7 +180,7 @@ public:
 	 * @return A BoundingBox describing the area covered by the TextActor in 
 	 *   GL units (not pixels). 
 	 */
-	const BoundingBox& GetBoundingBox() const;
+	BoundingBox GetBoundingBox() const;
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 

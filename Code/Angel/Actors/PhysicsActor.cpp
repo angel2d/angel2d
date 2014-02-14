@@ -226,6 +226,14 @@ void PhysicsActor::SetSize(float x, float y)
 		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetSize()");
 }
 
+void PhysicsActor::SetSize(const Vector2& newSize)
+{
+	if (_physBody == NULL)
+		Actor::SetSize(newSize);
+	else
+		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetSize()");
+}
+
 void PhysicsActor::SetDrawSize(float x, float y)
 {
 	Actor::SetSize(x,y);

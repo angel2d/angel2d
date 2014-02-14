@@ -167,7 +167,7 @@ public:
 	 * @param y The new Y position for the camera
 	 * @param z The new Z position for the camera
 	 */
-	virtual void SetPosition(float x, float y, float z);
+	void SetPosition(float x, float y, float z);
 	
 	/**
 	 * Set the position of the camera. Using this two-dimensional function,
@@ -176,7 +176,7 @@ public:
 	 * @param x The new X position for the camera 
 	 * @param y The new Y position for the camera
 	 */
-	virtual void SetPosition(float x, float y);
+	void SetPosition(float x, float y);
 	
 	/**
 	 * Set the position of the camera. Note that the camera is the only
@@ -185,7 +185,7 @@ public:
 	 *
 	 * @param v3 The new position for the camera. 
 	 */
-	virtual void SetPosition(const Vector3& v3);
+	void SetPosition(const Vector3& v3);
 	
 	/**
 	 * Set the position of the camera. Using this two-dimensional function, 
@@ -193,12 +193,12 @@ public:
 	 * 
 	 * @param v2 The new position for the Camera
 	 */
-	virtual void SetPosition(const Vector2& v2);
+	void SetPosition(const Vector2& v2);
     
-    /**
-     * Interval movement for the camera in three dimensions.
-     * 
-     * @see Actor::MoveTo
+	/**
+	 * Interval movement for the camera in three dimensions.
+	 * 
+	 * @see Actor::MoveTo
 	 * @param newPosition The target position for the movement
 	 * @param duration How long it should take to get there
 	 * @param smooth Whether the function should use MathUtil::SmoothStep
@@ -206,8 +206,22 @@ public:
 	 * @param onCompletionMessage If specified, a Message of this type will be
 	 *  sent when the movement is complete, letting you know when it's done.
 	 *  You will have to manually subscribe to this Message, though.
-     */
-    void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	 */
+	void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+
+	/**
+	 * Interval movement for the camera in three dimensions.
+	 * 
+	 * @see Actor::MoveTo
+	 * @param newPosition The target position for the movement
+	 * @param duration How long it should take to get there
+	 * @param smooth Whether the function should use MathUtil::SmoothStep
+	 *  instead of MathUtil::Lerp
+	 * @param onCompletionMessage If specified, a Message of this type will be
+	 *  sent when the movement is complete, letting you know when it's done.
+	 *  You will have to manually subscribe to this Message, though.
+	 */
+	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * Gets the position of the Camera. Only returns the X and Y position so
@@ -216,14 +230,14 @@ public:
 	 * 
 	 * @return The (X, Y) position of the camera. 
 	 */
-	virtual Vector2 GetPosition() const;
+	Vector2 GetPosition() const;
 	
 	/**
 	 * Get the position of the camera on the Z-axis. 
 	 * 
 	 * @return The camera's Z coordinate. 
 	 */
-	virtual float GetZ() const;
+	float GetZ() const;
 	
 	/**
 	 * Set the rotation of the camera. Only rotates about the Z-axis,
@@ -232,7 +246,7 @@ public:
 	 * @param v2 The new rotation for the Camera. As with Actors, positive
 	 *   rotations are counter-clockwise.
 	 */
-	virtual void SetRotation(float rotation);
+	void SetRotation(float rotation);
 	
 	/**
 	* Get the Z value necessary to achieve the requested view radius. 
@@ -240,21 +254,21 @@ public:
 	* @param radius The desired view radius.
 	* @return The Z value. 
 	*/
-	virtual float GetZForViewRadius(float radius);
+	float GetZForViewRadius(float radius);
 
 	/**
 	* Get the near clip distance.
 	* 
 	* @return The near clip distance. 
 	*/
-	virtual float GetNearClipDist();
+	float GetNearClipDist();
 
 	/**
 	* Get the far clip distance.
 	* 
 	* @return The far clip distance. 
 	*/
-	virtual float GetFarClipDist();
+	float GetFarClipDist();
 
 	/**
 	* Set the Z value necessary to achieve the requested view radius. 
@@ -295,7 +309,7 @@ public:
 	 * 
 	 * @return The point where the Camera is currently looking. 
 	 */
-	virtual const Vector3& GetViewCenter() const;
+	const Vector3& GetViewCenter() const;
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 

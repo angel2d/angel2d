@@ -224,6 +224,12 @@ void Camera::MoveTo(const Vector3& newPosition, float duration, bool smooth, Str
 	_3dPositionIntervalMessage = onCompletionMessage;
 }
 
+void Camera::MoveTo(const Vector2& newPosition, float duration, bool smooth, String onCompletionMessage)
+{
+	_3dPositionInterval = Interval<Vector3>(_camera3DPosition, Vector3(newPosition.X, newPosition.Y, _camera3DPosition.Z), duration, smooth);
+	_3dPositionIntervalMessage = onCompletionMessage;
+}
+
 Vector2 Camera::GetPosition() const
 {
 	return Vector2(_camera3DPosition.X, _camera3DPosition.Y);

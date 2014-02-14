@@ -142,7 +142,7 @@ void TextActor::ReceiveMessage(Message* m)
 	}
 }
 
-const BoundingBox& TextActor::GetBoundingBox() const
+BoundingBox TextActor::GetBoundingBox() const
 {
 	return _extents; 
 }
