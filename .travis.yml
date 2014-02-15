@@ -7,7 +7,7 @@ install:
   - sudo ./nix-prereqs.sh
   - cd ..
 script:
-  - cd Code/ClientGame
+  - cd ClientGame
   - make
   - cd ../IntroGame
   - make
