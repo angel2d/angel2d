@@ -1,0 +1,13 @@
+language: cpp
+compiler: gcc
+before_install:
+  - sudo apt-get update
+install: 
+  - cd Code/Angel 
+  - sudo ./nix-prereqs.sh
+  - cd ..
+script:
+  - cd Code/ClientGame
+  - make
+  - cd ../IntroGame
+  - make
