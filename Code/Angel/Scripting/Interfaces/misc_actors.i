@@ -25,9 +25,6 @@ public:
 
 	void SetMaxCoord(const Vector2 &maxCoord);
 	const Vector2 GetMaxCoord() const;
-
-	virtual void Render();
-	virtual void Update(float dt);
 };
 
 class FullScreenActor : public Actor
@@ -46,8 +43,6 @@ public:
 class HUDActor : public Actor 
 {
 public:
-
-	virtual void Render();
 
 	virtual const String GetClassName() const;
 };

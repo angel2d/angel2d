@@ -28,10 +28,10 @@ public:
 
 	Vector2 GetPosition();
 
-	void SetRotation(float rotation);
+	virtual void SetRotation(float rotation);
 
-	void MoveTo(Vector3 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
-	void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 
 	float GetZ();
 	float GetZForViewRadius(float radius);

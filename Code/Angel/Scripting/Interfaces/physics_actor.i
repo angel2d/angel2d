@@ -32,20 +32,20 @@ public:
 	void ApplyLinearImpulse(const Vector2& impulse, const Vector2& point);
 	void ApplyAngularImpulse(float impulse);
 	
-	void SetSize(float x, float y = -1.f);
-	void SetSize(const Vector2 newSize);
+	virtual void SetSize(float x, float y = -1.f);
+	virtual void SetSize(const Vector2 newSize);
 	
 	void SetDrawSize(float x, float y = -1.f);
 	
-	void SetPosition(float x, float y);
-	void SetPosition(const Vector2 pos);
+	virtual void SetPosition(float x, float y);
+	virtual void SetPosition(const Vector2 pos);
 
-	void SetRotation(float rotation);
+	virtual void SetRotation(float rotation);
 	
-	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
-	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
-	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
-	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 
 	virtual const String GetClassName() const;
 };

@@ -93,7 +93,7 @@ public:
 	 * Makes sure the view matrix is properly set up on every frame. Called 
 	 *  by the world before rendering anything else. 
 	 */
-	void Render();
+	virtual void Render();
 	
 	/**
 	 * Resets the viewport to its default. 
@@ -167,7 +167,7 @@ public:
 	 * @param y The new Y position for the camera
 	 * @param z The new Z position for the camera
 	 */
-	void SetPosition(float x, float y, float z);
+	virtual void SetPosition(float x, float y, float z);
 	
 	/**
 	 * Set the position of the camera. Using this two-dimensional function,
@@ -176,7 +176,7 @@ public:
 	 * @param x The new X position for the camera 
 	 * @param y The new Y position for the camera
 	 */
-	void SetPosition(float x, float y);
+	virtual void SetPosition(float x, float y);
 	
 	/**
 	 * Set the position of the camera. Note that the camera is the only
@@ -185,7 +185,7 @@ public:
 	 *
 	 * @param v3 The new position for the camera. 
 	 */
-	void SetPosition(const Vector3& v3);
+	virtual void SetPosition(const Vector3& v3);
 	
 	/**
 	 * Set the position of the camera. Using this two-dimensional function, 
@@ -193,7 +193,7 @@ public:
 	 * 
 	 * @param v2 The new position for the Camera
 	 */
-	void SetPosition(const Vector2& v2);
+	virtual void SetPosition(const Vector2& v2);
     
 	/**
 	 * Interval movement for the camera in three dimensions.
@@ -207,7 +207,7 @@ public:
 	 *  sent when the movement is complete, letting you know when it's done.
 	 *  You will have to manually subscribe to this Message, though.
 	 */
-	void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 
 	/**
 	 * Interval movement for the camera in three dimensions.
@@ -221,7 +221,7 @@ public:
 	 *  sent when the movement is complete, letting you know when it's done.
 	 *  You will have to manually subscribe to this Message, though.
 	 */
-	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * Gets the position of the Camera. Only returns the X and Y position so
@@ -246,7 +246,7 @@ public:
 	 * @param v2 The new rotation for the Camera. As with Actors, positive
 	 *   rotations are counter-clockwise.
 	 */
-	void SetRotation(float rotation);
+	virtual void SetRotation(float rotation);
 	
 	/**
 	* Get the Z value necessary to achieve the requested view radius. 

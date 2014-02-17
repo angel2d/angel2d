@@ -78,7 +78,7 @@ public:
 	float GetRotation();
 
 	void SetColor(float r, float g, float b, float a=1.0f);
-	void SetColor(Color color);
+	void SetColor(const Color color);
 	const Color& GetColor();
 
 	void SetAlpha(float newAlpha);
@@ -87,10 +87,10 @@ public:
 	virtual void SetDrawShape( actorDrawShape DrawShape );
 	const actorDrawShape& GetDrawShape() const;
 	
-	virtual void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	virtual void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
-	void ChangeColorTo(Color newColor, float duration, bool smooth=false, String onCompletionMessage="");
-	virtual void ChangeSizeTo(Vector2 newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	void ChangeColorTo(const Color& newColor, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	virtual void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	const int GetSpriteTexture(int frame = 0);
@@ -116,13 +116,11 @@ public:
 	const String GetName();
 	static const Actor* GetNamed(String nameLookup);
 	
-	virtual void ReceiveMessage(Message* message) {}
+	virtual void ReceiveMessage(Message* message);
 	
 	void SetLayer(int layerIndex);
 	void SetLayer(String layerName);
-	
-	virtual void Update(float dt);
-	virtual void Render();
+
 	virtual void LevelUnloaded();
 	
 	Actor* GetSelf();

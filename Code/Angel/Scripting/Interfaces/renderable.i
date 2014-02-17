@@ -7,10 +7,12 @@
 class Renderable
 {
 public:
+	virtual ~Renderable();
+
 	void Destroy();
 	bool IsDestroyed();
 	int GetLayer();
 	
-	void Update(float dt);
-	void Render();
+	virtual void Update(float dt);
+	virtual void Render();
 };
