@@ -1,4 +1,4 @@
-Angel 2D
+Angel 2D[![Build Status](https://travis-ci.org/angel2d/angel2d.png?branch=master)](https://travis-ci.org/angel2d/angel2d)
 ========
 Homepage:      http://angel2d.com
 Documentation: http://docs.angel2d.com

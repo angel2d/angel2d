@@ -5,12 +5,14 @@ before_install:
 install: 
   - cd Code/Angel 
   - sudo ./nix-prereqs.sh
+  - make
   - cd ..
 script:
   - cd ClientGame
   - make
   - cd ../IntroGame
   - make
+
 
 notifications:
   email:
