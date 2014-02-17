@@ -12,7 +12,4 @@ public:
 	void Destroy();
 	bool IsDestroyed();
 	int GetLayer();
-	
-	virtual void Update(float dt);
-	virtual void Render();
 };

@@ -32,8 +32,6 @@ public:
 	
 	virtual void SetRotation(float newRotation);
 
-	virtual void ReceiveMessage(Message* message);
-
 	virtual const String GetClassName();
 };
 

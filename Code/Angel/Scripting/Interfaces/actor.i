@@ -116,8 +116,6 @@ public:
 	const String GetName();
 	static const Actor* GetNamed(String nameLookup);
 	
-	virtual void ReceiveMessage(Message* message);
-	
 	void SetLayer(int layerIndex);
 	void SetLayer(String layerName);
 

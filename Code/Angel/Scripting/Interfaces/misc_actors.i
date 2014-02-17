@@ -35,8 +35,6 @@ public:
 	void SetLock(bool locked);
 	const bool IsLocked();
 
-	virtual void ReceiveMessage(Message *message);
-
 	virtual const String GetClassName() const;
 };
 
