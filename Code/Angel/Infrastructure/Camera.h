@@ -208,20 +208,6 @@ public:
 	 *  You will have to manually subscribe to this Message, though.
 	 */
 	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
-
-	/**
-	 * Interval movement for the camera in three dimensions.
-	 * 
-	 * @see Actor::MoveTo
-	 * @param newPosition The target position for the movement
-	 * @param duration How long it should take to get there
-	 * @param smooth Whether the function should use MathUtil::SmoothStep
-	 *  instead of MathUtil::Lerp
-	 * @param onCompletionMessage If specified, a Message of this type will be
-	 *  sent when the movement is complete, letting you know when it's done.
-	 *  You will have to manually subscribe to this Message, though.
-	 */
-	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * Gets the position of the Camera. Only returns the X and Y position so

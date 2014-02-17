@@ -31,7 +31,6 @@ public:
 	virtual void SetRotation(float rotation);
 
 	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
-	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 
 	float GetZ();
 	float GetZForViewRadius(float radius);
