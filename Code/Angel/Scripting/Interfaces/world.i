@@ -33,14 +33,14 @@ public:
 	void NameLayer(String name, int number);
 	const int GetLayerByName(String name);
 	
-	void DrawDebugLine( Vector2 a, Vector2 b, float time = 5.f, Color color = Color(1.f, 0.f, 0.f) );
+	void DrawDebugLine( const Vector2& a, const Vector2& b, float time = 5.f, Color color = Color(1.f, 0.f, 0.f) );
 	void PurgeDebugDrawing();
     
     const bool PauseSimulation();
     const bool ResumeSimulation();
 	const bool IsSimulationOn();
 	
-	bool SetupPhysics(Vector2 gravity = Vector2(0, -10), Vector2 maxVertex = Vector2(100.0f, 100.0f), Vector2 minVertex = Vector2(-100.0f, -100.0f));
+	bool SetupPhysics(const Vector2& gravity = Vector2(0, -10), const Vector2& maxVertex = Vector2(100.0f, 100.0f), const Vector2& minVertex = Vector2(-100.0f, -100.0f));
 	const bool IsPhysicsSetUp();
     const bool PausePhysics();
     const bool ResumePhysics();

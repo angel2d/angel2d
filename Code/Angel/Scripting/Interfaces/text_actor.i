@@ -28,7 +28,7 @@ public:
 	void SetLineSpacing(int newSpacing);
 
 	virtual void SetPosition(float x, float y);
-	virtual void SetPosition(const Vector2 position);
+	virtual void SetPosition(const Vector2& position);
 	
 	virtual void SetRotation(float newRotation);
 
