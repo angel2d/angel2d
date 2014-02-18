@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (C) 2008-2014, Shane Liesegang
+// Copyright (C) 2008-2013, Shane Liesegang
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without 
@@ -71,6 +71,7 @@ void Camera::Reset()
 {
 	_aperture = 90.0f;
 	_camera3DPosition = Vector3(0.0f, 0.0f, 10.0f);
+	_position = Vector2(0.0f, 0.0f);
 	_view = Vector3(0.0f, 0.0f, -10.0f);
 	_up = Vector3(0.0f, 1.0f, 0.0);
 	_zNearClip = 0.001f;
@@ -142,11 +143,13 @@ void Camera::Update(float dt)
 		if (_lockX && !MathUtil::FuzzyEquals(_camera3DPosition.X, pos.X))
 		{
 			_camera3DPosition.X = pos.X;
+			_position.X = pos.X;
 			change = true;
 		}
 		if (_lockY && !MathUtil::FuzzyEquals(_camera3DPosition.Y, pos.Y))
 		{
 			_camera3DPosition.Y = pos.Y;
+			_position.Y = pos.Y;
 			change = true;
 		}
 		if (_lockRotation && !MathUtil::FuzzyEquals(_rotation, _locked->GetRotation()))
@@ -194,6 +197,7 @@ void Camera::Render()
 void Camera::SetPosition(float x, float y, float z)
 {
 	_camera3DPosition = Vector3(x, y, z);
+	_position = Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
@@ -222,11 +226,6 @@ void Camera::MoveTo(const Vector3& newPosition, float duration, bool smooth, Str
 {
 	_3dPositionInterval = Interval<Vector3>(_camera3DPosition, newPosition, duration, smooth);
 	_3dPositionIntervalMessage = onCompletionMessage;
-}
-
-Vector2 Camera::GetPosition() const
-{
-	return Vector2(_camera3DPosition.X, _camera3DPosition.Y);
 }
 
 float Camera::GetZ() const
