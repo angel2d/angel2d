@@ -23,8 +23,8 @@ public:
 
 	virtual void SetPosition(float x, float y, float z);
 	virtual void SetPosition(float x, float y);
-	virtual void SetPosition(Vector3 v3);
-	virtual void SetPosition(Vector2 v2);
+	virtual void SetPosition(const Vector3& v3);
+	virtual void SetPosition(const Vector2& v2);
 
 	Vector2 GetPosition();
 

@@ -67,11 +67,11 @@ public:
 	virtual ~Actor();
 	
 	virtual void SetSize(float x, float y = -1.f);
-	virtual void SetSize(const Vector2 newSize);
+	virtual void SetSize(const Vector2& newSize);
 	const Vector2& GetSize();
 
 	virtual void SetPosition(float x, float y);
-	virtual void SetPosition(const Vector2 pos);
+	virtual void SetPosition(const Vector2& pos);
 	const Vector2& GetPosition();
 
 	virtual void SetRotation(float rotation);
@@ -104,7 +104,7 @@ public:
 	const int GetSpriteFrame();
 	bool IsSpriteAnimPlaying();
 
-	void SetUVs(const Vector2 upright, const Vector2 lowleft);
+	void SetUVs(const Vector2& upright, const Vector2& lowleft);
 	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
 	
 	const bool IsTagged(String tag);

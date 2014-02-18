@@ -7,10 +7,10 @@
 %typemap(in) Color
 {
 	// Color conversion
-	Color *col;
-	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&col,SWIGTYPE_p_Color,0))) 
+	Color *colPtr;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&colPtr,SWIGTYPE_p_Color,0))) 
 	{
-		$1 = *col;
+		$1 = *colPtr;
 	}
 	else
 	{
@@ -33,7 +33,10 @@
 		{
 			lua_pushinteger(L, 4);
 			lua_gettable(L, $input);
-			a = lua_tonumber(L, -1);
+			if (lua_isnumber(L, -1))
+			{
+				a = lua_tonumber(L, -1);
+			}
 			lua_pop(L, 1);
 		}
 		
@@ -42,9 +45,55 @@
 	}
 }
 
-%typecheck(SWIG_TYPECHECK_POINTER) Color
+%typemap(in) const Color&
 {
-	// Color typecheck
+	// const Color& conversion
+	Color *colPtr;
+	Color col;
+	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&colPtr,SWIGTYPE_p_Color,0))) 
+	{
+		$1 = colPtr;
+	}
+	else
+	{
+		// convert table parameters to floats
+		lua_pushinteger(L, 1);
+		lua_gettable(L, $input);
+		float r = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		lua_pushinteger(L, 2);
+		lua_gettable(L, $input);
+		float g = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		lua_pushinteger(L, 3);
+		lua_gettable(L, $input);
+		float b = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		
+		float a = 1.0f;
+		if (lua_rawlen(L, $input) >= 4)
+		{
+			lua_pushinteger(L, 4);
+			lua_gettable(L, $input);
+			if (lua_isnumber(L, -1))
+			{
+				a = lua_tonumber(L, -1);
+			}
+			lua_pop(L, 1);
+		}
+		
+		// build the color
+		col.R = r;
+		col.G = g;
+		col.B = b;
+		col.A = a;
+		$1 = &col;
+	}
+}
+
+%typecheck(SWIG_TYPECHECK_POINTER) Color, const Color&
+{
+	// Color / const Color& typecheck
 	$1 = 0;
 	swig_lua_userdata* usr;
 	swig_cast_info *cast;

@@ -33,12 +33,12 @@ public:
 	void ApplyAngularImpulse(float impulse);
 	
 	virtual void SetSize(float x, float y = -1.f);
-	virtual void SetSize(const Vector2 newSize);
+	virtual void SetSize(const Vector2& newSize);
 	
 	void SetDrawSize(float x, float y = -1.f);
 	
 	virtual void SetPosition(float x, float y);
-	virtual void SetPosition(const Vector2 pos);
+	virtual void SetPosition(const Vector2& pos);
 
 	virtual void SetRotation(float rotation);
 	

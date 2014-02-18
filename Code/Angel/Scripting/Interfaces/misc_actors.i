@@ -20,10 +20,10 @@ public:
 	void SetInterval(float interval);
 	const float GetInterval() const;
 
-	void SetMinCoord(const Vector2 &minCoord);
+	void SetMinCoord(const Vector2& minCoord);
 	const Vector2 GetMinCoord() const;
 
-	void SetMaxCoord(const Vector2 &maxCoord);
+	void SetMaxCoord(const Vector2& maxCoord);
 	const Vector2 GetMaxCoord() const;
 };
 
