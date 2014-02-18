@@ -10,6 +10,9 @@ public:
 	static Camera &GetInstance();
 	
 	void Reset();
+
+	void LockTo(Actor* locked, bool lockX=true, bool lockY=true, bool lockRotation=false);
+	Actor* GetLockedActor();
 	
 	const int GetWindowHeight();
 	const int GetWindowWidth();
@@ -20,15 +23,26 @@ public:
 
 	virtual void SetPosition(float x, float y, float z);
 	virtual void SetPosition(float x, float y);
-	virtual void SetPosition(Vector3 v3);
-    void MoveTo(Vector3 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
-	virtual float GetZ();
-	virtual float GetZForViewRadius(float radius);
-	virtual float GetNearClipDist();
-	virtual float GetFarClipDist();
+	virtual void SetPosition(const Vector3& v3);
+	virtual void SetPosition(const Vector2& v2);
+
+	Vector2 GetPosition();
+
+	virtual void SetRotation(float rotation);
+
+	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+
+	float GetZ();
+	float GetZForViewRadius(float radius);
+	float GetNearClipDist();
+	float GetFarClipDist();
+
 	virtual void SetZByViewRadius(float newRadius);
 	virtual void SetNearClipDist(float dist);
-	virtual void SetFarClipDist(float dist);	
+	virtual void SetFarClipDist(float dist);
+	
 	virtual void SetViewCenter(float x, float y, float z);
-	virtual Vector3 GetViewCenter();
+	const Vector3& GetViewCenter();
+
+	virtual const String GetClassName() const;
 };

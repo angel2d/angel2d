@@ -251,7 +251,13 @@ public:
 	 * An override of the Actor::SetSize function that disables itself after
 	 *  #InitPhysics has been called.
 	 */
-	void SetSize(float x, float y = -1.f);
+	virtual void SetSize(float x, float y = -1.f);
+
+	/**
+	 * An override of the Actor::SetSize function that disables itself after
+	 *  #InitPhysics has been called.
+	 */
+	virtual void SetSize(const Vector2& newSize);
 	
 	/**
 	 * Sometimes you want the visible size of an Actor to be larger or smaller
@@ -269,43 +275,43 @@ public:
 	 * An override of the Actor::SetPosition function that disables itself 
 	 *  after #InitPhysics has been called.
 	 */
-	void SetPosition(float x, float y);
+	virtual void SetPosition(float x, float y);
 	
 	/**
 	 * An override of the Actor::SetPosition function that disables itself 
 	 *  after #InitPhysics has been called.
 	 */
-	void SetPosition(const Vector2& pos);
+	virtual void SetPosition(const Vector2& pos);
 	
 	/**
 	 * An override of the Actor::SetRotation function that disables itself 
 	 *  after #InitPhysics has been called.
 	 */
-	void SetRotation(float rotation);
+	virtual void SetRotation(float rotation);
 	
 	/**
 	 * An override of the Actor::MoveTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors. 
 	 */
-	void MoveTo(const Vector2& newPosition, float duration, String onCompletionMessage="") {}
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::RotateTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void RotateTo(float newRotation, float duration, String onCompletionMessage="") {}
+	virtual void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::ChangeSizeTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void ChangeSizeTo(const Vector2& newSize, float duration, String onCompletionMessage="") {}
+	virtual void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::ChangeSizeTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void ChangeSizeTo(float newSize, float duration, String onCompletionMessage="") {}
+	virtual void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="") {}
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 

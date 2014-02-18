@@ -97,7 +97,7 @@ public:
 	 * @param y Vertical size in OpenGL units -- if less than or equal to 
 	 *   zero, assumed to be equal to x
 	 */
-	void SetSize(float x, float y = -1.f); 	// equal dimensions by default
+	virtual void SetSize(float x, float y = -1.f); 	// equal dimensions by default
 	
 	/**
 	 * Set the size of this Actor. 
@@ -105,7 +105,7 @@ public:
 	 * @param newSize Desired size of Actor in OpenGL units. If either 
 	 *  dimension is negative, it's clamped to zero. 
 	 */
-	void SetSize(const Vector2& newSize);
+	virtual void SetSize(const Vector2& newSize);
 	
 	/**
 	 * Return the size of this Actor.
@@ -119,7 +119,7 @@ public:
 	 *
 	 * @return Actor's bounding box
 	 */
-	const BoundingBox GetBoundingBox() const;
+	virtual BoundingBox GetBoundingBox() const;
 	
 	/**
 	 * Set the position of the Actor in world coordinates. 
@@ -241,7 +241,7 @@ public:
 	 *  sent when the movement is complete, letting you know when it's done. 
 	 *  You will have to manually subscribe to this Message, though. 
 	 */
-	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that rotates an Actor over a designated 
@@ -254,7 +254,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's color over a 
@@ -281,7 +281,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's size over a 
@@ -294,7 +294,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
 		
 	/**
 	 * Gets the OpenGL texture reference that the Actor is currently using

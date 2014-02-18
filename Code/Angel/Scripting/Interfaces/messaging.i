@@ -34,12 +34,11 @@ public:
 %template(Vec3uiMessage)	TypedMessage<Vec3ui>;
 
 
-%feature("director") MessageListener;
+%nodefaultctor MessageListener;
 class MessageListener
 {
 public:
 	virtual ~MessageListener();
-	virtual void ReceiveMessage(Message* m) = 0;
 };
 
 %nodefaultctor Switchboard;

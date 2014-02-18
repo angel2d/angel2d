@@ -93,7 +93,7 @@ public:
 	 * Makes sure the view matrix is properly set up on every frame. Called 
 	 *  by the world before rendering anything else. 
 	 */
-	void Render();
+	virtual void Render();
 	
 	/**
 	 * Resets the viewport to its default. 
@@ -195,10 +195,10 @@ public:
 	 */
 	virtual void SetPosition(const Vector2& v2);
     
-    /**
-     * Interval movement for the camera in three dimensions.
-     * 
-     * @see Actor::MoveTo
+	/**
+	 * Interval movement for the camera in three dimensions.
+	 * 
+	 * @see Actor::MoveTo
 	 * @param newPosition The target position for the movement
 	 * @param duration How long it should take to get there
 	 * @param smooth Whether the function should use MathUtil::SmoothStep
@@ -206,8 +206,8 @@ public:
 	 * @param onCompletionMessage If specified, a Message of this type will be
 	 *  sent when the movement is complete, letting you know when it's done.
 	 *  You will have to manually subscribe to this Message, though.
-     */
-    void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	 */
+	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
 	 * Gets the position of the Camera. Only returns the X and Y position so
@@ -216,14 +216,14 @@ public:
 	 * 
 	 * @return The (X, Y) position of the camera. 
 	 */
-	virtual Vector2 GetPosition() const;
+	Vector2 GetPosition() const;
 	
 	/**
 	 * Get the position of the camera on the Z-axis. 
 	 * 
 	 * @return The camera's Z coordinate. 
 	 */
-	virtual float GetZ() const;
+	float GetZ() const;
 	
 	/**
 	 * Set the rotation of the camera. Only rotates about the Z-axis,
@@ -240,21 +240,21 @@ public:
 	* @param radius The desired view radius.
 	* @return The Z value. 
 	*/
-	virtual float GetZForViewRadius(float radius);
+	float GetZForViewRadius(float radius);
 
 	/**
 	* Get the near clip distance.
 	* 
 	* @return The near clip distance. 
 	*/
-	virtual float GetNearClipDist();
+	float GetNearClipDist();
 
 	/**
 	* Get the far clip distance.
 	* 
 	* @return The far clip distance. 
 	*/
-	virtual float GetFarClipDist();
+	float GetFarClipDist();
 
 	/**
 	* Set the Z value necessary to achieve the requested view radius. 
@@ -295,7 +295,7 @@ public:
 	 * 
 	 * @return The point where the Camera is currently looking. 
 	 */
-	virtual const Vector3& GetViewCenter() const;
+	const Vector3& GetViewCenter() const;
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 
