@@ -210,15 +210,6 @@ public:
 	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
 	
 	/**
-	 * Gets the position of the Camera. Only returns the X and Y position so
-	 *  as to fit with the other GetPosition functions in the engine. To get
-	 *  the Z coordinate, see below. 
-	 * 
-	 * @return The (X, Y) position of the camera. 
-	 */
-	Vector2 GetPosition() const;
-	
-	/**
 	 * Get the position of the camera on the Z-axis. 
 	 * 
 	 * @return The camera's Z coordinate. 

@@ -26,8 +26,6 @@ public:
 	virtual void SetPosition(const Vector3& v3);
 	virtual void SetPosition(const Vector2& v2);
 
-	Vector2 GetPosition();
-
 	virtual void SetRotation(float rotation);
 
 	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
